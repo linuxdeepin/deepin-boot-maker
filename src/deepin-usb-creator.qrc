@@ -7,60 +7,10 @@
         <file>unetbootin_24.png</file>
         <file>unetbootin_32.png</file>
         <file>unetbootin_48.png</file>
-        <file>unetbootin_am.qm</file>
-        <file>unetbootin_ar.qm</file>
-        <file>unetbootin_ast.qm</file>
-        <file>unetbootin_bg.qm</file>
-        <file>unetbootin_be.qm</file>
-        <file>unetbootin_bn.qm</file>
-        <file>unetbootin_ca.qm</file>
-        <file>unetbootin_cs.qm</file>
-        <file>unetbootin_da.qm</file>
-        <file>unetbootin_de.qm</file>
-        <file>unetbootin_el.qm</file>
-        <file>unetbootin_eo.qm</file>
-        <file>unetbootin_es.qm</file>
-        <file>unetbootin_et.qm</file>
-        <file>unetbootin_eu.qm</file>
-        <file>unetbootin_fa.qm</file>
-        <file>unetbootin_fi.qm</file>
-        <file>unetbootin_fo.qm</file>
-        <file>unetbootin_fr.qm</file>
-        <file>unetbootin_gl.qm</file>
-        <file>unetbootin_he.qm</file>
-        <file>unetbootin_hr.qm</file>
-        <file>unetbootin_hu.qm</file>
-        <file>unetbootin_id.qm</file>
-        <file>unetbootin_it.qm</file>
-        <file>unetbootin_ja.qm</file>
-        <file>unetbootin_lt.qm</file>
-        <file>unetbootin_lv.qm</file>
-        <file>unetbootin_ml.qm</file>
-        <file>unetbootin_ms.qm</file>
-        <file>unetbootin_nan.qm</file>
-        <file>unetbootin_nb.qm</file>
-        <file>unetbootin_nl.qm</file>
-        <file>unetbootin_nn.qm</file>
-        <file>unetbootin_pl.qm</file>
-        <file>unetbootin_pt.qm</file>
-        <file>unetbootin_pt_BR.qm</file>
-        <file>unetbootin_ro.qm</file>
-        <file>unetbootin_ru.qm</file>
-        <file>unetbootin_si.qm</file>
-        <file>unetbootin_sk.qm</file>
-        <file>unetbootin_sl.qm</file>
-        <file>unetbootin_sr.qm</file>
-        <file>unetbootin_sv.qm</file>
-        <file>unetbootin_sw.qm</file>
-        <file>unetbootin_tr.qm</file>
-        <file>unetbootin_uk.qm</file>
-        <file>unetbootin_ur.qm</file>
-        <file>unetbootin_vi.qm</file>
         <file>unetbootin_zh_CN.qm</file>
         <file>unetbootin_zh_TW.qm</file>
         <file>image/arrow_down_hover.png</file>
         <file>image/arrow_down_normal.png</file>
-        <file>image/background.png</file>
         <file>image/button_center_normal.png</file>
         <file>image/button_center_press.png</file>
         <file>image/button_left_normal.png</file>
@@ -78,5 +28,6 @@
         <file>image/usb-active.png</file>
         <file>image/usb-finished.png</file>
         <file>image/usb-inactive.png</file>
+        <file>unetbootin.qm</file>
     </qresource>
 </RCC>

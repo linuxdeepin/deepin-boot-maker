@@ -32,6 +32,38 @@ QString checkforgraphicalsu(QString graphicalsu)
 	else
 		return "REQCNOTFOUND";
 }
+
+
+
+#include <QtDebug>
+#include <QFile>
+#include <QTextStream>
+
+void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
+{
+    const char * msg = str.toStdString().c_str();
+    QString txt;
+    switch (type) {
+        case QtDebugMsg:
+            txt = QString("Debug: %1").arg(msg);
+            break;
+        case QtWarningMsg:
+            txt = QString("Warning: %1").arg(msg);
+            break;
+        case QtCriticalMsg:
+            txt = QString("Critical: %1").arg(msg);
+            break;
+        case QtFatalMsg:
+            txt = QString("Fatal: %1").arg(msg);
+            abort();
+    }
+
+    QFile outFile("deepin-usb-creator.log");
+    outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream ts(&outFile);
+    ts << txt << endl;
+}
+
 void loadTranslate(QApplication& app) {
     QTranslator custranldr;
     QTranslator translator;
@@ -116,9 +148,12 @@ void loadTranslate(QApplication& app) {
     app.installTranslator(&translator);
 }
 
+#include <QtGlobal>
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv, true);
+
+    qInstallMessageHandler(crashMessageOutput);
 
     loadTranslate(app);
 
@@ -202,9 +237,6 @@ int main(int argc, char **argv)
 	}
 	#endif
 
-//    unetbootinPtr->appNlang = tnapplang;
-//    unetbootinPtr->appDir = QDir::toNativeSeparators(QString("%1/").arg(app.applicationDirPath()));
-//    unetbootinPtr->appLoc = app.applicationFilePath();
     app.addLibraryPath("qrc:/lib/");
     app.addLibraryPath("/home/iceyer/dev/linuxdeepin/deepin-usb-creator/");
 
@@ -222,19 +254,7 @@ int main(int argc, char **argv)
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
 
     if (!window) {
-        QMessageBox unotenoughinputmsgb;
-        unotenoughinputmsgb.setIcon(QMessageBox::Information);
-        unotenoughinputmsgb.setWindowTitle(("Insert a USB flash drive"));
-        QString info = QString("%1").arg(qulonglong(window));
-        unotenoughinputmsgb.setText(info);
-        unotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
-        switch (unotenoughinputmsgb.exec())
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
-        }
+        qCritical("load qrc:/qml/main.qml error!!");
     }
 
     QIcon icon;
@@ -244,10 +264,7 @@ int main(int argc, char **argv)
     icon.addFile("qrc:/unetbootin_32.png", QSize(32,32));
     icon.addFile("qrc:/unetbootin_48.png", QSize(48,48));
     icon.addFile("qrc:/deepin-usb-creator.png");
-#ifdef Q_OS_LINUX
-	icon.addFile("/usr/share/pixmaps/unetbootin.png");
-	icon.addFile("/usr/share/pixmaps/unetbootin.xpm");
-#endif
+
     window->setIcon(icon);
     window->show();
 

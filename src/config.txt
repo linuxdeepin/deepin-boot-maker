@@ -1,3 +1,0 @@
-;!@Install@!UTF-8!
-RunProgram="unetbootin.exe"
-;!@InstallEnd@!
