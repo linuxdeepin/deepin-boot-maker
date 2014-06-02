@@ -1,0 +1,11 @@
+#!/bin/bash
+rm *.o
+rm moc_*.cpp
+cp deepin-usb-creator.pro{,.bak} 
+#sed -i '/^RESOURCES/d' deepin-usb-creator.pro
+/usr/lib/x86_64-linux-gnu/qt5/bin/lupdate deepin-usb-creator.pro
+/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease deepin-usb-creator.pro
+/usr/lib/x86_64-linux-gnu/qt5/bin/qmake "DEFINES += STATIC" "RESOURCES -= deepin-usb-creator.qrc"
+make
+mv deepin-usb-creator.pro.bak deepin-usb-creator.pro 
+

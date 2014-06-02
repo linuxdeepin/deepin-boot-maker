@@ -1,0 +1,22 @@
+#!/bin/sh
+
+rvern="$(./vcs-revno)"
+
+if [ "$(uname -m)" = "x86_64" ]
+then
+archname="amd64"
+else
+archname="i386"
+fi
+
+make clean
+rm Makefile*
+rm release/*
+cp unetbootin.pro unetbootin-pro.bak
+sed -i '/^RESOURCES/d' unetbootin.pro
+lrelease-qt4 unetbootin.pro
+qmake-qt4 -config release "DEFINES += NOSTATIC" "RESOURCES -= unetbootin.qrc"
+make
+mv unetbootin-pro.bak unetbootin.pro
+strip --strip-all unetbootin
+

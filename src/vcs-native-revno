@@ -1,0 +1,43 @@
+#!/bin/bash
+
+vcsname="$(./vcs-name)"
+
+if [ "$vcsname" == "git" ]
+then
+git show-ref 'refs/heads/master' | sed 's/ /\n/g' | head --lines 1
+exit 0
+fi
+
+if [ "$vcsname" == "hg" ]
+then
+hgrevno=$(hg log -r-1 --template='{node}')
+for x in . .. ../..
+do
+if [ -f "$x/.hg/git-mapfile" ]
+then
+cat "$x/.hg/git-mapfile" | grep "$hgrevno$" | sed 's/ /\n/g' | head --lines 1
+exit 0
+fi
+done
+fi
+
+if [ "$vcsname" == "bzr" ]
+then
+bzr log -r-1 | grep git | head --lines 1 | sed 's/ /\n/g' | tail --lines 1
+exit 0
+fi
+
+if [ "$(pwd | grep unetbootin-source-[0-9])" != "" ]
+then
+pwd | sed 's/\//\n/g' | grep 'unetbootin-source-' | sed "s/unetbootin-source-//"
+exit 0
+fi
+
+if [ "$(pwd | grep unetbootin-[0-9])" != "" ]
+then
+pwd | sed 's/\//\n/g' | grep 'unetbootin-' | sed "s/unetbootin-//"
+exit 0
+fi
+
+date "+%Y%m%d"
+

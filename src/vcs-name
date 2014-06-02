@@ -1,0 +1,27 @@
+#!/bin/bash
+
+for x in . .. ../..
+do
+
+if [ -d "$x/.git" ]
+then
+echo "git"
+exit 0
+fi
+
+if [ -d "$x/.hg" ]
+then
+echo "hg"
+exit 0
+fi
+
+if [ -d "$x/.bzr" ]
+then
+echo "bzr"
+exit 0
+fi
+
+done
+
+echo "none"
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+qt5path="/opt/qt5-static/mingw/5.3"
+$qt5path/bin/qmake -config release -spec $qt5path/mkspecs/linux-g++-32 "DEFINES += STATICLINUX" "QMAKE_INCDIR_QT = $qt5path/include" "QMAKE_LIBDIR_QT = $qt5path/lib" "QMAKE_QMAKE = $qt5path/bin/qmake" "QMAKE_MOC = $qt5path/bin/moc" "QMAKE_UIC = $qt5path/bin/uic" "QMAKE_RCC = $qt5path/bin/rcc" "RESOURCES += deepin-usb-creator-linux.qrc" "$@"

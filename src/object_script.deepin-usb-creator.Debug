@@ -1,0 +1,17 @@
+INPUT(
+./debug/main.o
+./debug/unetbootin.o
+./debug/usbcreator.o
+./debug/dicon.o
+./debug/dwindow.o
+./debug/deepin-usb-creator_qml_plugin_import.o
+./debug/deepin-usb-creator_plugin_import.o
+./debug/qrc_unetbootin-windows.o
+./debug/qrc_unetbootin-sevnz.o
+./debug/qrc_deepin-usb-creator.o
+./debug/qrc_deepin-usb-creator-qml.o
+./debug/moc_unetbootin.o
+./debug/moc_usbcreator.o
+./debug/moc_dicon.o
+./debug/moc_dwindow.o
+);
