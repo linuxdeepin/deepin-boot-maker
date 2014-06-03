@@ -1,0 +1,40 @@
+#define RT_MANIFEST 24 
+#define APP_MANIFEST 1
+
+APP_MANIFEST RT_MANIFEST deepin-usb-creator.exe.manifest
+IDI_ICON1 ICON DISCARDABLE "deepin-usb-creator.ico"
+
+1 VERSIONINFO
+FILEVERSION 1,1,1,1
+PRODUCTVERSION 1,1,1,1
+{
+ BLOCK "StringFileInfo"
+  {
+  BLOCK "040904E4"
+   {
+VALUE "CompanyName", "Deepin"
+
+VALUE "FileVersion", " "
+
+VALUE "FileDescription", "Deepin Usb Boot Creator"
+
+VALUE "InternalName", "Deepin Usb Boot Creator"
+
+VALUE "LegalCopyright", "Copyright - Deepin - License - GNU GPL v2+"
+
+VALUE "LegalTrademarks", " "
+
+VALUE "OriginalFilename", "deepin-usb-creator.exe"
+
+VALUE "ProductName", "Deepin Usb Creator"
+
+VALUE "ProductVersion", " "
+
+   }
+  }
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 1033, 1252
+ }
+}
+

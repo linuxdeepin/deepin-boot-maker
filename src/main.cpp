@@ -119,7 +119,7 @@ int main(int argc, char **argv)
 
 #ifdef Q_OS_UNIX
     bool disabledrootcheck = false;
-    disabledrootcheck = true;
+    //disabledrootcheck = true;
     QStringList allappargs = app.arguments();
     if (!disabledrootcheck)
     {
@@ -210,13 +210,7 @@ int main(int argc, char **argv)
     }
 
     QIcon icon;
-    icon.addFile("qrc:/unetbootin_16.png", QSize(16,16));
-    icon.addFile("qrc:/unetbootin_22.png", QSize(22,22));
-    icon.addFile("qrc:/unetbootin_24.png", QSize(24,24));
-    icon.addFile("qrc:/unetbootin_32.png", QSize(32,32));
-    icon.addFile("qrc:/unetbootin_48.png", QSize(48,48));
-    icon.addFile("qrc:/deepin-usb-creator.png");
-
+    icon.addFile(":/image/deepin-usb-creator.png");
     window->setIcon(icon);
     window->show();
 

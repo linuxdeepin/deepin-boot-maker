@@ -2,11 +2,6 @@
     <qresource prefix="/">
         <file>memdisk</file>
         <file>menu.c32</file>
-        <file>unetbootin_16.png</file>
-        <file>unetbootin_22.png</file>
-        <file>unetbootin_24.png</file>
-        <file>unetbootin_32.png</file>
-        <file>unetbootin_48.png</file>
         <file>image/arrow_down_hover.png</file>
         <file>image/arrow_down_normal.png</file>
         <file>image/button_center_normal.png</file>
@@ -32,5 +27,6 @@
         <file>image/window_close_press.png</file>
         <file>image/window_close_normal.png</file>
         <file>image/window_close_hover.png</file>
+        <file>image/deepin-usb-creator.png</file>
     </qresource>
 </RCC>

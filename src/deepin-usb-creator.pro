@@ -47,6 +47,7 @@ RESOURCES += \
     deepin-usb-creator.qrc \
     unetbootin-windows.qrc \
     unetbootin-sevnz.qrc
+    RC_FILE += deepin-usb-creator.rc
 }else{
 RESOURCES += \
     deepin-usb-creator.qrc
