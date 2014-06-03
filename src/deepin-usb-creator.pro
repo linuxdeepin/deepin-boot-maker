@@ -16,6 +16,10 @@ SOURCES += main.cpp \
     qml/Deepin/Widgets/plugins/dicon.cpp \
     qml/Deepin/Widgets/plugins/dwindow.cpp
 
+CONFIG(lupdate) {
+    SOURCES += qml/mainui.qml
+}
+
 QT += core gui quick widgets
 
 ICON =

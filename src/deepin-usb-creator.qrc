@@ -29,5 +29,8 @@
         <file>deepin-usb-creator_zh_TW.qm</file>
         <file>deepin-usb-creator_zh_CN.qm</file>
         <file>deepin-usb-creator_en_US.qm</file>
+        <file>image/window_close_press.png</file>
+        <file>image/window_close_normal.png</file>
+        <file>image/window_close_hover.png</file>
     </qresource>
 </RCC>

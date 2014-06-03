@@ -119,7 +119,7 @@ int main(int argc, char **argv)
 
 #ifdef Q_OS_UNIX
     bool disabledrootcheck = false;
-    //disabledrootcheck = true;
+    disabledrootcheck = true;
     QStringList allappargs = app.arguments();
     if (!disabledrootcheck)
     {
@@ -199,7 +199,7 @@ int main(int argc, char **argv)
 
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/qml/");
-    engine.load(QUrl("qrc:/qml/main.qml"));
+    engine.load(QUrl("qrc:/qml/mainui.qml"));
 
     QList<QObject *> roots = engine.rootObjects();
     QObject *topLevel = roots.value(0);

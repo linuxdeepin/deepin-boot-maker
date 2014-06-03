@@ -52,17 +52,17 @@ DWindow {
         }
     }
 
-    function refreshUsbDriver (){
+    function refreshUsbDriver() {
         var oldCurText = usbDriver.currentText
         var usblist = usbCreator.listUsbDrives()
         var index = 0
         usbDriver.model = usblist
-        for (var i=0; i < usblist.length; i++) {
+        for (var i = 0; i < usblist.length; i++) {
             if (usbDriver.model[i] === oldCurText) {
                 index = i
             }
         }
-        usbDriver.currentIndex = index;
+        usbDriver.currentIndex = index
         if (usbDriver.model.length > 0) {
             usbIcon.source = "qrc:/image/usb-active.png"
         }
@@ -71,6 +71,7 @@ DWindow {
     DWindowFrame {
         id: windowFrame
         anchors.fill: parent
+
         Row {
             Rectangle {
                 color: "transparent"
@@ -113,20 +114,42 @@ DWindow {
                 Column {
                     Rectangle {
                         color: "transparent"
-                        width: 230
+                        width: 430
                         height: 100
-                        Image {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            id: logo
-                            source: "qrc:/image/logo.png"
+                        Row {
+                            Rectangle {
+                                color: "transparent"
+                                width: 230
+                                height: 100
+                                Image {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    id: logo
+                                    source: "qrc:/image/logo.png"
+                                }
+                            }
+                            Rectangle {
+                                color: "transparent"
+                                width: 195
+                                height: 100
+                                DImageButton {
+                                    anchors.right: parent.right
+                                    normal_image: "qrc:/image/window_close_normal.png"
+                                    hover_image: "qrc:/image/window_close_hover.png"
+                                    press_image: "qrc:/image/window_close_press.png"
+
+                                    onClicked: {
+                                        usbCreatorUI.close()
+                                    }
+                                }
+                            }
                         }
                     }
                     Rectangle {
                         color: "transparent"
                         width: 430
                         height: 70
-                        Column{
+                        Column {
                             DLabel {
                                 id: descriptionsBye
                                 font.pixelSize: 12

@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/main.qml</file>
+        <file>qml/mainui.qml</file>
         <file>qml/Deepin/Widgets/DArrowButton.qml</file>
         <file>qml/Deepin/Widgets/DBaseExpand.qml</file>
         <file>qml/Deepin/Widgets/DBaseLine.qml</file>
