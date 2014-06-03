@@ -7,8 +7,6 @@
         <file>unetbootin_24.png</file>
         <file>unetbootin_32.png</file>
         <file>unetbootin_48.png</file>
-        <file>unetbootin_zh_CN.qm</file>
-        <file>unetbootin_zh_TW.qm</file>
         <file>image/arrow_down_hover.png</file>
         <file>image/arrow_down_normal.png</file>
         <file>image/button_center_normal.png</file>
@@ -28,6 +26,8 @@
         <file>image/usb-active.png</file>
         <file>image/usb-finished.png</file>
         <file>image/usb-inactive.png</file>
-        <file>unetbootin.qm</file>
+        <file>deepin-usb-creator_zh_TW.qm</file>
+        <file>deepin-usb-creator_zh_CN.qm</file>
+        <file>deepin-usb-creator_en_US.qm</file>
     </qresource>
 </RCC>

@@ -4,6 +4,7 @@ TARGET = deepin-usb-creator
 DEPENDPATH += .
 INCLUDEPATH += .
 
+
 HEADERS += unetbootin.h \
     usbcreator.h \
     qml/Deepin/Widgets/plugins/dicon.h \
@@ -33,9 +34,9 @@ CONFIG(debug, debug|release) {
     UI_DIR = ../build/release/.ui
 }
 
-TRANSLATIONS += unetbootin.ts \
-    unetbootin_zh_CN.ts \
-    unetbootin_zh_TW.ts \
+TRANSLATIONS += deepin-usb-creator_en_US.ts \
+    deepin-usb-creator_zh_CN.ts \
+    deepin-usb-creator_zh_TW.ts \
 
 win32{
 RESOURCES += \

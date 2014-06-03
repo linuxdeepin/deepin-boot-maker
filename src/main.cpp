@@ -65,8 +65,7 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
 }
 
 void loadTranslate(QApplication& app) {
-    QTranslator custranldr;
-    QTranslator translator;
+    QTranslator *translator = new QTranslator();
     QString tnapplang;
     QString tnappcoun;
     QString clangcode = "";
@@ -99,53 +98,14 @@ void loadTranslate(QApplication& app) {
         }
     }
 
-    QDir applocdir(app.applicationDirPath());
-    QStringList applocfiles = applocdir.entryList(QStringList() << "*.qm", QDir::Files);
-    if (!applocfiles.isEmpty())	{
-        QString custqmfilepath = applocfiles.at(0);
-        if (!applocfiles.filter("unetbootin").isEmpty()) {
-            custqmfilepath = applocfiles.filter("unetbootin").at(0);
-            if (!applocfiles.filter("unetbootin").filter(tnapplang).isEmpty())			{
-                custqmfilepath = applocfiles.filter("unetbootin").filter(tnapplang).at(0);
-                if (!tnappcoun.isEmpty() && !applocfiles.filter("unetbootin").filter(tnapplang).filter(tnappcoun).isEmpty())
-                    custqmfilepath = applocfiles.filter("unetbootin").filter(tnapplang).filter(tnappcoun).at(0);
-            }
-        }
-        if (custranldr.load(custqmfilepath, app.applicationDirPath()))
-            app.installTranslator(&custranldr);
+    QString tranlateUrl = QString(":/deepin-usb-creator_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
+    if (!QFile::exists(tranlateUrl)) {
+        tranlateUrl = ":/deepin-usb-creator_en_US.qm";
     }
 
-    if (!tnappcoun.isEmpty() && QFile::exists(QString("%1/unetbootin_%2_%3.qm").arg(app.applicationDirPath()).arg(tnapplang).arg(tnappcoun)) && translator.load(QString("%1/unetbootin_%2_%3.qm").arg(app.applicationDirPath()).arg(tnapplang).arg(tnappcoun)))
-    {
-        app.installTranslator(&translator);
+    if (translator->load(tranlateUrl)){
+        app.installTranslator(translator);
     }
-    else if (!tnappcoun.isEmpty() && QFile::exists(QString(":/unetbootin_%1_%2.qm").arg(tnapplang).arg(tnappcoun)) && translator.load(QString(":/unetbootin_%1_%2.qm").arg(tnapplang).arg(tnappcoun)))
-    {
-        app.installTranslator(&translator);
-    }
-    else if (!tnappcoun.isEmpty() && QFile::exists(QString("/usr/share/unetbootin/unetbootin_%1_%2.qm").arg(tnapplang).arg(tnappcoun)) && translator.load(QString("/usr/share/unetbootin/unetbootin_%1_%2.qm").arg(tnapplang).arg(tnappcoun)))
-    {
-        app.installTranslator(&translator);
-    }
-    else if (QFile::exists(QString("%1/unetbootin_%2.qm").arg(app.applicationDirPath(), tnapplang)) && translator.load(QString("%1/unetbootin_%2.qm").arg(app.applicationDirPath(), tnapplang)))
-    {
-        app.installTranslator(&translator);
-    }
-    else if (QFile::exists(QString(":/unetbootin_%1.qm").arg(tnapplang)) && translator.load(QString(":/unetbootin_%1.qm").arg(tnapplang)))
-    {
-        app.installTranslator(&translator);
-    }
-    else if (QFile::exists(QString("/usr/share/unetbootin/unetbootin_%1.qm").arg(tnapplang)) && translator.load(QString("/usr/share/unetbootin/unetbootin_%1.qm").arg(tnapplang)))
-    {
-        app.installTranslator(&translator);
-    }
-    else
-    {
-        tnapplang = "en";
-        tnappcoun = "US";
-        clangcode = "en_US";
-    }
-    app.installTranslator(&translator);
 }
 
 #include <QtGlobal>
@@ -157,89 +117,81 @@ int main(int argc, char **argv)
 
     loadTranslate(app);
 
-    if (QObject::tr("LeftToRight") == "RightToLeft") {
-        app.setLayoutDirection(Qt::RightToLeft);
-    }
-
 #ifdef Q_OS_UNIX
     bool disabledrootcheck = false;
-    disabledrootcheck = true;
+    //disabledrootcheck = true;
     QStringList allappargs = app.arguments();
-	if (!disabledrootcheck)
-	{
-		QProcess whoamip;
-		whoamip.start("whoami");
-		whoamip.waitForFinished();
-		if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
-		{
-			QString argsconc = "";
+    if (!disabledrootcheck)
+    {
+        QProcess whoamip;
+        whoamip.start("whoami");
+        whoamip.waitForFinished();
+        if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
+        {
+            QString argsconc = "";
             QString argsconcSingleQuote = "";
-			for (int i = 1; i < allappargs.size(); ++i)
-			{
-				argsconc += QString("\"%1\" ").arg(allappargs.at(i));
+            for (int i = 1; i < allappargs.size(); ++i)
+            {
+                argsconc += QString("\"%1\" ").arg(allappargs.at(i));
                 argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
-			}
+            }
             argsconc += "\"rootcheck=no\"";
             argsconcSingleQuote += "'rootcheck=no'";
 #ifdef Q_OS_LINUX
-			QString gksulocation = checkforgraphicalsu("gksu");
-			if (gksulocation != "REQCNOTFOUND")
-			{
-				QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
-				return 0;
-			}
-			QString kdesulocation = checkforgraphicalsu("kdesu");
-			if (kdesulocation != "REQCNOTFOUND")
-			{
-				QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
-				return 0;
-			}
-			QString gnomesulocation = checkforgraphicalsu("gnomesu");
-			if (gnomesulocation != "REQCNOTFOUND")
-			{
-				QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
-				return 0;
-			}
-			QString kdesudolocation = checkforgraphicalsu("kdesudo");
-			if (kdesudolocation != "REQCNOTFOUND")
-			{
-				QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
-				return 0;
-			}
-			QMessageBox rootmsgb;
-			rootmsgb.setIcon(QMessageBox::Warning);
-			rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
-			rootmsgb.setTextFormat(Qt::RichText);
-			rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
-			rootmsgb.setStandardButtons(QMessageBox::Ok);
-			switch (rootmsgb.exec())
-			{
-				case QMessageBox::Ok:
-					break;
-				default:
-					break;
-			}
+            QString gksulocation = checkforgraphicalsu("gksu");
+            if (gksulocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
+                return 0;
+            }
+            QString kdesulocation = checkforgraphicalsu("kdesu");
+            if (kdesulocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
+                return 0;
+            }
+            QString gnomesulocation = checkforgraphicalsu("gnomesu");
+            if (gnomesulocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
+                return 0;
+            }
+            QString kdesudolocation = checkforgraphicalsu("kdesudo");
+            if (kdesudolocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
+                return 0;
+            }
+            QMessageBox rootmsgb;
+            rootmsgb.setIcon(QMessageBox::Warning);
+            rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
+            rootmsgb.setTextFormat(Qt::RichText);
+            rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
+            rootmsgb.setStandardButtons(QMessageBox::Ok);
+            switch (rootmsgb.exec())
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
 #endif
 #ifdef Q_OS_MAC
             /*
-			QProcess osascriptProc;
-			osascriptProc.start("osascript");
-			osascriptProc.write(QString("do shell script \""+app.applicationFilePath()+"\" with administrator privileges\n").toAscii().data());
-			osascriptProc.closeWriteChannel();
-			osascriptProc.waitForFinished(-1);
+            QProcess osascriptProc;
+            osascriptProc.start("osascript");
+            osascriptProc.write(QString("do shell script \""+app.applicationFilePath()+"\" with administrator privileges\n").toAscii().data());
+            osascriptProc.closeWriteChannel();
+            osascriptProc.waitForFinished(-1);
             */
             //qDebug() << QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc);
             //QProcess::startDetached(QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc));
             QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
             return 0;
 #endif
-		}
-	}
-	#endif
-
-    app.addLibraryPath("qrc:/lib/");
-    app.addLibraryPath("/home/iceyer/dev/linuxdeepin/deepin-usb-creator/");
-
+        }
+    }
+    #endif
     qmlRegisterType<UsbCreator>("com.deepin.usbcreator", 1, 0, "UsbCreator");
     qmlRegisterType<DOverrideWindow>("com.deepin.usbcreator", 1, 0, "DOverrideWindow");
     qmlRegisterType<DWindow>("com.deepin.usbcreator", 1, 0, "DWindow");

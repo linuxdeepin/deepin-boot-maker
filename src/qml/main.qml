@@ -128,17 +128,15 @@ DWindow {
                         height: 70
                         Column{
                             DLabel {
-                                color: "red"
                                 id: descriptionsBye
                                 font.pixelSize: 12
-                                text: "<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>"
+                                text: qsTr("<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>")
                                 wrapMode: TextEdit.WordWrap
                             }
                             DLabel {
-                                color: "blue"
                                 id: descriptions
                                 font.pixelSize: 10
-                                text: "<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and</font></br><br><font color='#a7a7a7'>heavy driver, rookie can also get along well with Linux, support </font><font color='#ebab4c'>UEFI.</font></br>"
+                                text: qsTr("<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and</font></br><br><font color='#a7a7a7'>heavy driver, rookie can also get along well with Linux, support </font><font color='#ebab4c'>UEFI.</font></br>")
                                 wrapMode: TextEdit.WordWrap
                             }
                         }
@@ -159,7 +157,7 @@ DWindow {
                                     DLabel {
                                         id: selectIsoHits
                                         font.pixelSize: 12
-                                        text: "<br><font color='#ffffff'>Select the ISO image file:</font></br>"
+                                        text: qsTr("<br><font color='#ffffff'>Select the ISO image file:</font></br>")
                                         wrapMode: TextEdit.WordWrap
                                     }
                                     Rectangle {
@@ -207,7 +205,7 @@ DWindow {
                                     anchors.verticalCenter: parent.verticalCenter
                                     DLabel {
                                         id: selectUsbHits
-                                        text: "<br><font color='#ffffff'>Select the USB disk file:</font></br>"
+                                        text: qsTr("<br><font color='#ffffff'>Select the USB disk file:</font></br>")
                                         font.pixelSize: 12
                                         wrapMode: TextEdit.WordWrap
                                     }
@@ -277,16 +275,6 @@ DWindow {
                                                 text: control.currentText
                                             }
                                         }
-                                        onPressedChanged: {
-                                            console.log("onPressedChanged")
-                                        }
-
-                                        onActivated: {
-                                            console.log("onActivated" + index)
-                                        }
-                                        onAccepted: {
-                                            console.log("onAccepted")
-                                        }
                                     }
 
                                     Rectangle {
@@ -297,7 +285,7 @@ DWindow {
 
                                     DCheckBox {
                                         id: bisoMode
-                                        text: "<font color='#ffffff'>BIOS Mode. Check if the usb stick can not work</font>"
+                                        text: qsTr("<font color='#ffffff'>BIOS Mode. Check if the usb stick can not work</font>")
                                     }
                                 }
                             }
@@ -308,7 +296,7 @@ DWindow {
                                 height: 100
                                 DTransparentButton {
                                     id: startBt
-                                    text: "Start"
+                                    text: qsTr("Start")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     anchors.horizontalCenter: parent.horizontalCenter
@@ -341,7 +329,7 @@ DWindow {
                                 DLabel {
                                     id: warningLabel
                                     anchors.verticalCenter: parent.verticalCenter
-                                    text: "<font color='#ffffff'><br>Writing USB device, <font color='#ebab4c'>DO NOT</font> pull out the USB equipment the </br><br>power off !</br></font>"
+                                    text: qsTr("<font color='#ffffff'><br>Writing USB device, <font color='#ebab4c'>DO NOT</font> pull out the USB equipment the </br><br>power off !</br></font>")
                                     font.pixelSize: 12
                                     wrapMode: TextEdit.WordWrap
                                 }
@@ -376,7 +364,7 @@ DWindow {
                                 DLabel {
                                     id: finishLabel
                                     anchors.verticalCenter: parent.verticalCenter
-                                    text: "<br><font color='#057aff'>Congratulations!</font></br><br><font color='#ffffff'>The deepin USB installation disk has produced success.</font></br>"
+                                    text: qsTr("<br><font color='#057aff'>Congratulations!</font></br><br><font color='#ffffff'>The deepin USB installation disk has produced success.</font></br>")
                                     font.pixelSize: 12
                                     wrapMode: TextEdit.WordWrap
                                 }
@@ -386,7 +374,7 @@ DWindow {
                                 height: 100
                                 color: "transparent"
                                 DTransparentButton {
-                                    text: "Complete"
+                                    text: qsTr("Complete")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     anchors.horizontalCenter: parent.horizontalCenter
