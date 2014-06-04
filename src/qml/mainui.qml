@@ -19,6 +19,8 @@ DWindow {
         objectName: "usbCreatorDeepin"
         property string isoImagePath: ""
         property string usbDriver: ""
+        property string uiFont: "WenQuanYi Micro Hei"
+        property int lableMaxWidth: 380
     }
 
     DDragableArea {
@@ -154,14 +156,19 @@ DWindow {
                             DLabel {
                                 id: descriptionsBye
                                 font.pixelSize: 12
+                                width: usbCreator.lableMaxWidth
+                                font.family: usbCreator.uiFont
+                                wrapMode: Text.Wrap
                                 text: qsTr("<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>")
-                                //wrapMode: TextEdit.WordWrap
                             }
                             DLabel {
                                 id: descriptions
                                 font.pixelSize: 11
-                                text: qsTr("<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and</font></br><br><font color='#a7a7a7'>heavy driver, rookie can also get along well with Linux, support </font><font color='#ebab4c'>UEFI.</font></br>")
-                                //wrapMode: TextEdit.WordWrap
+                                width: usbCreator.lableMaxWidth
+                                font.family: usbCreator.uiFont
+                                wrapMode: Text.Wrap
+                                //text: "欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和UEFI双启动。"
+                                text: qsTr("<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support <font color='#ebab4c'>UEFI.</font></font></br>")
                             }
                         }
                     }
@@ -181,8 +188,10 @@ DWindow {
                                     DLabel {
                                         id: selectIsoHits
                                         font.pixelSize: 12
+                                        width: usbCreator.lableMaxWidth
+                                        font.family: usbCreator.uiFont
+                                        wrapMode: Text.Wrap
                                         text: qsTr("<br><font color='#ffffff'>Select the ISO image file:</font></br>")
-                                        wrapMode: TextEdit.WordWrap
                                     }
                                     Rectangle {
                                         color: "transparent"
@@ -229,9 +238,11 @@ DWindow {
                                     anchors.verticalCenter: parent.verticalCenter
                                     DLabel {
                                         id: selectUsbHits
-                                        text: qsTr("<br><font color='#ffffff'>Select the USB disk file:</font></br>")
                                         font.pixelSize: 12
-                                        wrapMode: TextEdit.WordWrap
+                                        width: usbCreator.lableMaxWidth
+                                        font.family: usbCreator.uiFont
+                                        wrapMode: Text.Wrap
+                                        text: qsTr("<br><font color='#ffffff'>Select the USB disk file:</font></br>")
                                     }
                                     Rectangle {
                                         color: "transparent"
@@ -324,10 +335,11 @@ DWindow {
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    onClicked: {//Debug Code
-                                        secondStep.visible = true
-                                            firstStep.visible = false
-                                        processNext.visible = true/*
+                                    onClicked: {
+                                        //Debug Code
+                                        //secondStep.visible = true
+                                        //  firstStep.visible = false
+                                        //processNext.visible = true
                                         var result = usbCreator.start(
                                                     isoPath.text,
                                                     usbDriver.currentText,
@@ -341,7 +353,7 @@ DWindow {
                                             processTimer.start()
                                             btClose.visible = false
                                         }
-                                        console.log(isoPath.text + usbDriver.currentText)*/
+                                        console.log(isoPath.text + usbDriver.currentText)
                                     }
                                 }
                             }
@@ -403,24 +415,24 @@ DWindow {
                                 height: 100
                                 color: "transparent"
                                 Row {
-                                DTransparentButton {
-                                    text: qsTr("Complete")
-                                    width: 100
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    //anchors.horizontalCenter: parent.horizontalCenter
-                                    onClicked: {
-                                        usbCreatorUI.close()
+                                    DTransparentButton {
+                                        text: qsTr("Complete")
+                                        width: 100
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        //anchors.horizontalCenter: parent.horizontalCenter
+                                        onClicked: {
+                                            usbCreatorUI.close()
+                                        }
                                     }
-                                }
-                                DTransparentButton {
-                                    text: qsTr("Restart")
-                                    width: 100
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    //anchors.horizontalCenter: parent.horizontalCenter
-                                    onClicked: {
-                                        usbCreator.exitRestart();
+                                    DTransparentButton {
+                                        text: qsTr("Restart")
+                                        width: 100
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        //anchors.horizontalCenter: parent.horizontalCenter
+                                        onClicked: {
+                                            usbCreator.exitRestart()
+                                        }
                                     }
-                                }
                                 }
                             }
                         }

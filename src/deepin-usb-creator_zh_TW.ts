@@ -4,52 +4,52 @@
 <context>
     <name>mainui</name>
     <message>
-        <location filename="qml/mainui.qml" line="157"/>
+        <location filename="qml/mainui.qml" line="162"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Say goodbye to cumbersome, easy to use !&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="163"/>
-        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;heavy driver, rookie can also get along well with Linux, support &lt;/font&gt;&lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/br&gt;</source>
+        <location filename="qml/mainui.qml" line="171"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support &lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="184"/>
+        <location filename="qml/mainui.qml" line="194"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO image file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="232"/>
+        <location filename="qml/mainui.qml" line="245"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB disk file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="312"/>
+        <location filename="qml/mainui.qml" line="323"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;BIOS Mode. Check if the usb stick can not work&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="323"/>
+        <location filename="qml/mainui.qml" line="334"/>
         <source>Start</source>
-        <translation type="unfinished">kaishi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="360"/>
+        <location filename="qml/mainui.qml" line="372"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Writing USB device, &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; pull out the USB equipment the &lt;/br&gt;&lt;br&gt;power off !&lt;/br&gt;&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="396"/>
+        <location filename="qml/mainui.qml" line="408"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;The deepin USB installation disk has produced success.&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="407"/>
+        <location filename="qml/mainui.qml" line="419"/>
         <source>Complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="416"/>
+        <location filename="qml/mainui.qml" line="428"/>
         <source>Restart</source>
         <translation type="unfinished"></translation>
     </message>

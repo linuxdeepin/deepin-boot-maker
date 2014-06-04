@@ -56,3 +56,5 @@ OTHER_FILES +=
 
 RESOURCES += \
     deepin-usb-creator-qml.qrc
+
+ICON = deepin-usb-creator.svg
