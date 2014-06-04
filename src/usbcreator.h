@@ -18,9 +18,11 @@ public:
     Q_INVOKABLE bool isFinish();
     Q_INVOKABLE bool isISOImage(QString isoPath);
     Q_INVOKABLE QString url2LocalFile(QString isoPath);
-
+    Q_INVOKABLE void exitRestart();
 
     unetbootin  *unetbootinPtr;
+protected:
+    void reboot();
 };
 
 #endif // USBCREATOR_H

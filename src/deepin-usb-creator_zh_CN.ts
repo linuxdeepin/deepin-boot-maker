@@ -4,49 +4,54 @@
 <context>
     <name>mainui</name>
     <message>
-        <location filename="qml/mainui.qml" line="156"/>
+        <location filename="qml/mainui.qml" line="157"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Say goodbye to cumbersome, easy to use !&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;告别繁琐，简单易用&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="162"/>
+        <location filename="qml/mainui.qml" line="163"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;heavy driver, rookie can also get along well with Linux, support &lt;/font&gt;&lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘制作器，通过简单设置即可快速制作Linux系统启动盘，&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;并且同时支持BIOS和&lt;/font&gt;&lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;启动。&lt;/br&gt;</translation>
+        <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘制作器，通过简单设置即可快速制作Linux系统启动盘，&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;并且同时支持BIOS和&lt;/font&gt;&lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;启动。&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="183"/>
+        <location filename="qml/mainui.qml" line="184"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO image file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择ISO文件:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="231"/>
+        <location filename="qml/mainui.qml" line="232"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB disk file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择U盘:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="322"/>
+        <location filename="qml/mainui.qml" line="323"/>
         <source>Start</source>
         <translation>开始创建</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="355"/>
+        <location filename="qml/mainui.qml" line="360"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Writing USB device, &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; pull out the USB equipment the &lt;/br&gt;&lt;br&gt;power off !&lt;/br&gt;&lt;/font&gt;</source>
-        <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者 &lt;/br&gt;&lt;br&gt;关机!&lt;/br&gt;&lt;/font&gt;</translation>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="390"/>
+        <location filename="qml/mainui.qml" line="396"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;The deepin USB installation disk has produced success.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Linux系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Linux系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="400"/>
+        <location filename="qml/mainui.qml" line="407"/>
         <source>Complete</source>
-        <translation type="unfinished">现在重启</translation>
+        <translation>完成</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="311"/>
+        <location filename="qml/mainui.qml" line="416"/>
+        <source>Restart</source>
+        <translation>重启</translation>
+    </message>
+    <message>
+        <location filename="qml/mainui.qml" line="312"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;BIOS Mode. Check if the usb stick can not work&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;传统BIOS模式，勾选此选项增强对传统BIOS的主板的支持。&lt;/font&gt;</translation>
     </message>
 </context>
 <context>
@@ -292,12 +297,12 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
 <context>
     <name>uninstaller</name>
     <message>
-        <location filename="main.cpp" line="167"/>
+        <location filename="main.cpp" line="169"/>
         <source>Must run as root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.cpp" line="169"/>
+        <location filename="main.cpp" line="171"/>
         <source>%2 must be run as root. Close it, and re-run using either:&lt;br/&gt;&lt;b&gt;sudo %1&lt;/b&gt;&lt;br/&gt;or:&lt;br/&gt;&lt;b&gt;su - -c &apos;%1&apos;&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>

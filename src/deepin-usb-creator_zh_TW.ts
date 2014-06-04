@@ -4,48 +4,53 @@
 <context>
     <name>mainui</name>
     <message>
-        <location filename="qml/mainui.qml" line="156"/>
+        <location filename="qml/mainui.qml" line="157"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Say goodbye to cumbersome, easy to use !&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="162"/>
+        <location filename="qml/mainui.qml" line="163"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;heavy driver, rookie can also get along well with Linux, support &lt;/font&gt;&lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="183"/>
+        <location filename="qml/mainui.qml" line="184"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO image file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="231"/>
+        <location filename="qml/mainui.qml" line="232"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB disk file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="311"/>
+        <location filename="qml/mainui.qml" line="312"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;BIOS Mode. Check if the usb stick can not work&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="322"/>
+        <location filename="qml/mainui.qml" line="323"/>
         <source>Start</source>
         <translation type="unfinished">kaishi</translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="355"/>
+        <location filename="qml/mainui.qml" line="360"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Writing USB device, &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; pull out the USB equipment the &lt;/br&gt;&lt;br&gt;power off !&lt;/br&gt;&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="390"/>
+        <location filename="qml/mainui.qml" line="396"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;The deepin USB installation disk has produced success.&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/mainui.qml" line="400"/>
+        <location filename="qml/mainui.qml" line="407"/>
         <source>Complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/mainui.qml" line="416"/>
+        <source>Restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -292,12 +297,12 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
 <context>
     <name>uninstaller</name>
     <message>
-        <location filename="main.cpp" line="167"/>
+        <location filename="main.cpp" line="169"/>
         <source>Must run as root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.cpp" line="169"/>
+        <location filename="main.cpp" line="171"/>
         <source>%2 must be run as root. Close it, and re-run using either:&lt;br/&gt;&lt;b&gt;sudo %1&lt;/b&gt;&lt;br/&gt;or:&lt;br/&gt;&lt;b&gt;su - -c &apos;%1&apos;&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>

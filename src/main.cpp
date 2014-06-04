@@ -33,8 +33,6 @@ QString checkforgraphicalsu(QString graphicalsu)
 		return "REQCNOTFOUND";
 }
 
-
-
 #include <QtDebug>
 #include <QFile>
 #include <QTextStream>
@@ -106,6 +104,10 @@ void loadTranslate(QApplication& app) {
     if (translator->load(tranlateUrl)){
         app.installTranslator(translator);
     }
+}
+
+void killApplication(){
+    exit(0);
 }
 
 #include <QtGlobal>

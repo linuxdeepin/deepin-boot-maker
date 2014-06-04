@@ -49,3 +49,26 @@ bool UsbCreator::isISOImage(QString isoPath) {
         return true;
     return false;
 }
+
+void UsbCreator::reboot() {
+#ifdef Q_OS_WIN32
+    HANDLE hToken;
+    TOKEN_PRIVILEGES tkp;
+    OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
+    LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &tkp.Privileges[0].Luid);
+    tkp.PrivilegeCount = 1;
+    tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+    AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, (PTOKEN_PRIVILEGES)NULL, 0);
+    ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
+#endif
+#ifdef Q_OS_LINUX
+    unetbootinPtr->callexternapp("init", "6 &");
+#endif
+#ifdef Q_OS_MAC
+    unetbootinPtr->callexternapp("shutdown", "-r now &");
+#endif
+}
+
+void UsbCreator::exitRestart() {
+    reboot();
+}

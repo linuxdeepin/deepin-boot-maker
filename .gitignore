@@ -1,5 +1,5 @@
 build
 *~
-*.user
+*user
 *.log
-
+src/deepin-usb-creator.pro.user

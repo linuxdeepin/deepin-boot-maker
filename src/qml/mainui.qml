@@ -133,6 +133,7 @@ DWindow {
                                 width: 195
                                 height: 100
                                 DImageButton {
+                                    id: btClose
                                     anchors.right: parent.right
                                     normal_image: "qrc:/image/window_close_normal.png"
                                     hover_image: "qrc:/image/window_close_hover.png"
@@ -154,13 +155,13 @@ DWindow {
                                 id: descriptionsBye
                                 font.pixelSize: 12
                                 text: qsTr("<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>")
-                                wrapMode: TextEdit.WordWrap
+                                //wrapMode: TextEdit.WordWrap
                             }
                             DLabel {
                                 id: descriptions
-                                font.pixelSize: 10
+                                font.pixelSize: 11
                                 text: qsTr("<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and</font></br><br><font color='#a7a7a7'>heavy driver, rookie can also get along well with Linux, support </font><font color='#ebab4c'>UEFI.</font></br>")
-                                wrapMode: TextEdit.WordWrap
+                                //wrapMode: TextEdit.WordWrap
                             }
                         }
                     }
@@ -323,7 +324,10 @@ DWindow {
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    onClicked: {
+                                    onClicked: {//Debug Code
+                                        secondStep.visible = true
+                                            firstStep.visible = false
+                                        processNext.visible = true/*
                                         var result = usbCreator.start(
                                                     isoPath.text,
                                                     usbDriver.currentText,
@@ -335,8 +339,9 @@ DWindow {
                                             process.source = "qrc:/image/process-active.gif"
                                             process.playing = true
                                             processTimer.start()
+                                            btClose.visible = false
                                         }
-                                        console.log(isoPath.text + usbDriver.currentText)
+                                        console.log(isoPath.text + usbDriver.currentText)*/
                                     }
                                 }
                             }
@@ -354,7 +359,7 @@ DWindow {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: qsTr("<font color='#ffffff'><br>Writing USB device, <font color='#ebab4c'>DO NOT</font> pull out the USB equipment the </br><br>power off !</br></font>")
                                     font.pixelSize: 12
-                                    wrapMode: TextEdit.WordWrap
+                                    //wrapMode: TextEdit.WordWrap
                                 }
                             }
                             Rectangle {
@@ -372,6 +377,7 @@ DWindow {
                                         //make the iso/usb selector invisible
                                         secondStep.visible = false
                                         thirdStep.visible = true
+                                        btClose.visible = true
                                     }
                                 }
                             }
@@ -396,14 +402,25 @@ DWindow {
                                 width: 230
                                 height: 100
                                 color: "transparent"
+                                Row {
                                 DTransparentButton {
                                     text: qsTr("Complete")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
-                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    //anchors.horizontalCenter: parent.horizontalCenter
                                     onClicked: {
                                         usbCreatorUI.close()
                                     }
+                                }
+                                DTransparentButton {
+                                    text: qsTr("Restart")
+                                    width: 100
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    //anchors.horizontalCenter: parent.horizontalCenter
+                                    onClicked: {
+                                        usbCreator.exitRestart();
+                                    }
+                                }
                                 }
                             }
                         }
