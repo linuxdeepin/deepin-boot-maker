@@ -1,5 +1,4 @@
 module Deepin.Widgets
-classname DeepinWidgets
 DTextInput 1.0 DTextInput.qml
 DSelectViewDelegate 1.0 DSelectViewDelegate.qml
 DArrowButton 1.0 DArrowButton.qml
@@ -67,3 +66,6 @@ DDragableArea 1.0 DDragableArea.qml
 DDialogBox 1.0 DDialogBox.qml
 DCheckBox 1.0 DCheckBox.qml
 DRadio 1.0 DRadio.qml
+DGroupBox 1.0 DGroupBox.qml
+DPopupWindow 1.0 DPopupWindow.qml
+DPopupRoundItem 1.0 DPopupRoundItem.qml

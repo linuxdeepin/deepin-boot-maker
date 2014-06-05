@@ -9,7 +9,7 @@ ListView {
 	height: childrenRect.height
 
 	property var sections
-    property int cellHeight: 30
+    property int cellHeight: 24
     
     DConstants { id: dconstants }
 
@@ -82,7 +82,7 @@ ListView {
 					id: txt
 					text: sectionName
                     elide: Text.ElideRight
-					font.pixelSize: 16
+					font.pixelSize: 13
 
                     anchors.left: parent.left
                     anchors.leftMargin: 10

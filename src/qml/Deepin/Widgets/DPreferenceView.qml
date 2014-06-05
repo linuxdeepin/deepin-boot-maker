@@ -4,7 +4,7 @@ Row {
     id: root
     width: 300
     height: 300
-    spacing: 3
+    spacing: 10
 
     property int sectionListWidth: 200
 
@@ -61,7 +61,7 @@ Row {
                 if(atYEnd) {
                     root.currentSectionId = col.visibleChildren[col.visibleChildren.length - 1].sectionId
                 } else {
-                    root.currentSectionId = col.childAt(contentX, contentY).sectionId
+                    root.currentSectionId = col.childAt(50, contentY).sectionId
                 }
             }
 

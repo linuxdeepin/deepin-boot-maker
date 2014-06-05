@@ -8,7 +8,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 
 #include "unetbootin.h"
-
+#include <QApplication>
 static const QList<QRegExp> ignoredtypesbothRL = QList<QRegExp>()
 << QRegExp("isolinux.bin$", Qt::CaseInsensitive)
 << QRegExp("isolinux.cfg$", Qt::CaseInsensitive)
@@ -3646,7 +3646,7 @@ void unetbootin::fininstall()
     if (biosMode) {
         targetDev = usbDriverPath;
         QString efiPath = QString("%1/EFI/").arg(targetDev);
-        #if defined (Q_OS_UNIX) || (Q_OS_MAC)
+        #ifdef Q_OS_MAC
             efiPath = QString("%1/EFI/").arg(locatemountpoint(targetDev));
         #endif
         efiPath = QDir::toNativeSeparators(QString("%1").arg(efiPath));

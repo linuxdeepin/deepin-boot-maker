@@ -7,7 +7,7 @@ Window {
 	width: 300
 	height: 300
 	color: "transparent"
-	flags: Qt.FramelessWindowHint | Qt.Popup
+	flags: Qt.FramelessWindowHint | Qt.SubWindow
     
 	property int windowGlowRadius: 8
     property alias content: loader.sourceComponent

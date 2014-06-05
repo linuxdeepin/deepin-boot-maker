@@ -17,6 +17,16 @@ public:
     ~DWindow();
 
     Q_INVOKABLE QPoint getCursorPos();
+
+public slots:
+    void focusChanged(QWindow * win);
+
+signals:
+    void windowFocusChanged(QWindow *window);
+    void mousePressed(QPointF point);
+
+protected:
+    void mousePressEvent(QMouseEvent *ev);
 };
 
 class DOverrideWindow: public DWindow
@@ -27,10 +37,7 @@ class DOverrideWindow: public DWindow
 public:
     DOverrideWindow(DWindow *parent = 0);
     ~DOverrideWindow();
-protected:
-    void mousePressEvent(QMouseEvent *ev);
-signals:
-    void mousePressed(QPointF point);
+
 };
 
 

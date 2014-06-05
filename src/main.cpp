@@ -115,7 +115,15 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv, true);
 
-    qInstallMessageHandler(crashMessageOutput);
+#ifdef Q_OS_WIN32
+    app.setFont(QFont("Microsoft YaHei"));
+#endif
+#ifdef Q_OS_LINUX
+    app.setFont(QFont("WenQuanYi Micro Hei"));
+#endif
+
+    //just for debug
+    //qInstallMessageHandler(crashMessageOutput);
 
     loadTranslate(app);
 
@@ -206,10 +214,12 @@ int main(int argc, char **argv)
     QList<QObject *> roots = engine.rootObjects();
     QObject *topLevel = roots.value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
+    //QQuickWindow->
 
     if (!window) {
         qCritical("load qrc:/qml/main.qml error!!");
     }
+
 
     QIcon icon;
     icon.addFile(":/image/deepin-usb-creator.png");

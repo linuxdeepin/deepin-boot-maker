@@ -9,7 +9,7 @@ import com.deepin.usbcreator 1.0
 
 DWindow {
     id: usbCreatorUI
-    flags: Qt.FramelessWindowHint
+    flags: Qt.FramelessWindowHint | Qt.Window
     color: "transparent"
     width: 660 + windowFrame.shadowRadius * 2
     height: 400 + windowFrame.shadowRadius * 2
@@ -19,7 +19,6 @@ DWindow {
         objectName: "usbCreatorDeepin"
         property string isoImagePath: ""
         property string usbDriver: ""
-        property string uiFont: "WenQuanYi Micro Hei"
         property int lableMaxWidth: 380
     }
 
@@ -155,9 +154,8 @@ DWindow {
                         Column {
                             DLabel {
                                 id: descriptionsBye
-                                font.pixelSize: 12
+                                font.pixelSize: 13
                                 width: usbCreator.lableMaxWidth
-                                font.family: usbCreator.uiFont
                                 wrapMode: Text.Wrap
                                 text: qsTr("<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>")
                             }
@@ -165,7 +163,6 @@ DWindow {
                                 id: descriptions
                                 font.pixelSize: 11
                                 width: usbCreator.lableMaxWidth
-                                font.family: usbCreator.uiFont
                                 wrapMode: Text.Wrap
                                 //text: "欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和UEFI双启动。"
                                 text: qsTr("<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support <font color='#ebab4c'>UEFI.</font></font></br>")
@@ -189,7 +186,6 @@ DWindow {
                                         id: selectIsoHits
                                         font.pixelSize: 12
                                         width: usbCreator.lableMaxWidth
-                                        font.family: usbCreator.uiFont
                                         wrapMode: Text.Wrap
                                         text: qsTr("<br><font color='#ffffff'>Select the ISO image file:</font></br>")
                                     }
@@ -240,7 +236,6 @@ DWindow {
                                         id: selectUsbHits
                                         font.pixelSize: 12
                                         width: usbCreator.lableMaxWidth
-                                        font.family: usbCreator.uiFont
                                         wrapMode: Text.Wrap
                                         text: qsTr("<br><font color='#ffffff'>Select the USB disk file:</font></br>")
                                     }
@@ -307,6 +302,9 @@ DWindow {
                                             }
 
                                             label: DLabel {
+                                                font.pixelSize: 11
+                                                anchors.verticalCenter: parent.verticalCenter
+                                                anchors.horizontalCenter: parent.horizontalCenter
                                                 text: control.currentText
                                             }
                                         }

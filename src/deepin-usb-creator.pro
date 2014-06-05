@@ -4,7 +4,6 @@ TARGET = deepin-usb-creator
 DEPENDPATH += .
 INCLUDEPATH += .
 
-
 HEADERS += unetbootin.h \
     usbcreator.h \
     qml/Deepin/Widgets/plugins/dicon.h \

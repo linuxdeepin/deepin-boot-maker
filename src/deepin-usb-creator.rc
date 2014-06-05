@@ -1,7 +1,7 @@
 #define RT_MANIFEST 24 
 #define APP_MANIFEST 1
 
-APP_MANIFEST RT_MANIFEST deepin-usb-creator.exe.manifest
+APP_MANIFEST RT_MANIFEST "deepin-usb-creator.exe.manifest"
 IDI_ICON1 ICON DISCARDABLE "deepin-usb-creator.ico"
 
 1 VERSIONINFO

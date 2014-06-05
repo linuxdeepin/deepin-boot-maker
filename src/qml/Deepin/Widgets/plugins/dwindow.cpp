@@ -1,5 +1,6 @@
 #include "dwindow.h"
 #include <QCursor>
+#include <QGuiApplication>
 
 DOverrideWindow::DOverrideWindow(DWindow *parent)
     :DWindow(parent)
@@ -23,6 +24,8 @@ DWindow::DWindow(QQuickWindow *parent)
     sformat.setAlphaBufferSize(8);
     this->setFormat(sformat);
     this->setClearBeforeRendering(true);
+    QObject::connect(qApp, SIGNAL(focusWindowChanged(QWindow*)), this, SLOT(focusChanged(QWindow *)));
+
 }
 
 DWindow::~DWindow()
@@ -34,9 +37,14 @@ QPoint DWindow::getCursorPos()
     return QCursor::pos();
 }
 
-void DOverrideWindow::mousePressEvent(QMouseEvent *ev){
+void DWindow::focusChanged(QWindow *win)
+{
+    Q_EMIT windowFocusChanged(win);
+}
+
+void DWindow::mousePressEvent(QMouseEvent *ev){
     //qDebug() << "Event:" << ev->x() << "," << ev->y();
     QPointF p = QPointF(ev->x(), ev->y());
-    DOverrideWindow::mousePressed(p);
+    DWindow::mousePressed(p);
     QQuickWindow::mousePressEvent(ev);
 }

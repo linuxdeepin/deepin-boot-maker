@@ -1,6 +1,6 @@
-#include "plugin.h"
-#include "dwindow.h"
-#include "dicon.h"
+#include "plugins/plugin.h"
+#include "plugins/dwindow.h"
+#include "plugins/dicon.h"
 
 #include <qqml.h>
 

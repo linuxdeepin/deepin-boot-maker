@@ -352,5 +352,21 @@
         <file>qml/QtQuick/Controls/Private/CalendarUtils.js</file>
         <file>qml/QtQuick/Controls/Private/StackView.js</file>
         <file>qml/QtQuick/Controls/Private/style.js</file>
+        <file>qml/Deepin/Widgets/DGroupBox.qml</file>
+        <file>qml/Deepin/Widgets/DMenu.qml</file>
+        <file>qml/Deepin/Widgets/DMenuItem.qml</file>
+        <file>qml/Deepin/Widgets/DPopupRoundItem.qml</file>
+        <file>qml/Deepin/Widgets/images/checkbox_checked.png</file>
+        <file>qml/Deepin/Widgets/images/checkbox_checked_hover.png</file>
+        <file>qml/Deepin/Widgets/images/checkbox_checked_insensitive.png</file>
+        <file>qml/Deepin/Widgets/images/checkbox_unchecked.png</file>
+        <file>qml/Deepin/Widgets/images/checkbox_unchecked_hover.png</file>
+        <file>qml/Deepin/Widgets/images/checkbox_unchecked_insensitive.png</file>
+        <file>qml/Deepin/Widgets/images/radio_selected.png</file>
+        <file>qml/Deepin/Widgets/images/radio_selected_hover.png</file>
+        <file>qml/Deepin/Widgets/images/radio_selected_insensitive.png</file>
+        <file>qml/Deepin/Widgets/images/radio_unselected.png</file>
+        <file>qml/Deepin/Widgets/images/radio_unselected_hover.png</file>
+        <file>qml/Deepin/Widgets/images/radio_unselected_insensitive.png</file>
     </qresource>
 </RCC>

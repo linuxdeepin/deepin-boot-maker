@@ -4,59 +4,36 @@ import QtGraphicalEffects 1.0
 
 Window {
 	id: win
-	flags: Qt.Tool|Qt.FramelessWindowHint
-	width: 300; height: 400		
-	visible: false
-	color: "transparent"
-	x: 300; y: 300
-	property real rectWidth
-	property real rectHeight
-    property color blurColor: Qt.rgba(0, 0, 0, 0.3)
-    property color borderColor: Qt.rgba(255, 255, 255, 0.33)
-	property color blackBorderColor: Qt.rgba(30/255.0, 30/255.0, 30/255.0, 0.6)
-	property real blurWidth: 5
-	property real rectRadius: 3
-	property real sideWidth: blurWidth + rectRadius
-	property rect vaildRect: Qt.rect(sideWidth, sideWidth, width - sideWidth * 2, height - sideWidth * 2)
-	
-    Rectangle {
-        id: rect
-		x: 0; y: 0
-		width: parent.width; height: parent.height
-        radius: rectRadius
-		anchors.centerIn: parent		
-		antialiasing: true
-		color: "transparent"
-		smooth: true
-		
-		Rectangle {
-			id: backgound
-			
-			color: "#fff"
-			anchors.fill: parent
-			antialiasing: true
-			smooth: true
-			
-			Rectangle {
-				border { width: 1; color: blackBorderColor }
-				anchors.fill: parent
-				color: "transparent"
-				radius: rectRadius
-			}
-			
-			Rectangle {
-				anchors.margins: 1
-				border { width: 1; color: borderColor }
-				anchors.fill: parent
-				color: "transparent"
-				radius: rectRadius
-			}
-		}
-		
-		DRoundItem {
-			target: backgound
-			radius: rectRadius
-		}
+	flags: Qt.Tool | Qt.FramelessWindowHint
+    width: 400
+    height: 300
+    color: "transparent"
+
+    property var parentWindow: null
+
+    function isInRect(pos, rect){
+        if(pos.x > rect.x && pos.x < rect.x + rect.width && pos.y > rect.y && pos.y < rect.y + rect.height){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    Connections{
+        target: parentWindow
+        onWindowFocusChanged: {
+            if(!window && win.visible){
+                win.visible = false
+            }
+        }
+
+        onMousePressed: {
+            var pos = parentWindow.getCursorPos()
+            if(!isInRect(pos, win)){
+                win.visible = false
+            }
+        }
     }
 }
 

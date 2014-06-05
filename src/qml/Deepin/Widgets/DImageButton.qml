@@ -8,6 +8,7 @@ Item {
     property url press_image
 
     property alias mouseArea: mouseArea
+    property alias sourceSize: image.sourceSize
     
     signal clicked
 
