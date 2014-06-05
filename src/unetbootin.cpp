@@ -197,8 +197,7 @@ bool unetbootin::ubninitialize()
 	exitOnCompletion = false;
 	testingDownload = false;
 	issalt = false;
-	persistenceSpaceMB = 0;
-    logFile = 0;
+    persistenceSpaceMB = 0;
     logStream = 0;
 #ifdef Q_OS_MAC
 	ignoreoutofspace = true;
@@ -3099,7 +3098,7 @@ void unetbootin::runinst()
 	}
 
     if (!isoImagePath.startsWith("http://") && !isoImagePath.startsWith("ftp://")) {
-            extractiso(isoImagePath);
+           // extractiso(isoImagePath);
         }
     else
     {
@@ -3405,14 +3404,6 @@ void unetbootin::logText(const QString &text)
     */
 }
 
-void unetbootin::finishLogging()
-{
-    if (logFile != 0)
-    {
-        logFile->close();
-    }
-}
-
 void unetbootin::writeTextToFile(const QString &text, const QString &filePath)
 {
     QFile syslinuxcfg(filePath);
@@ -3626,7 +3617,7 @@ void unetbootin::runinstusb()
         instIndvfl("libutil.c32", QString("%1libutil.c32").arg(targetPath));
         instIndvfl("libcom32.c32", QString("%1libcom32.c32").arg(targetPath));
     }
-	fininstall();
+    fininstall();
 }
 
 void unetbootin::killApplication()
@@ -3646,53 +3637,15 @@ void unetbootin::fininstall()
     if (biosMode) {
         targetDev = usbDriverPath;
         QString efiPath = QString("%1/EFI/").arg(targetDev);
-        #ifdef Q_OS_MAC
+        #if defined (Q_OS_UNIX) || (Q_OS_MAC)
             efiPath = QString("%1/EFI/").arg(locatemountpoint(targetDev));
         #endif
+        qDebug()<<efiPath;
         efiPath = QDir::toNativeSeparators(QString("%1").arg(efiPath));
         rmDir(efiPath);
     }
 
-	if (this->persistenceSpaceMB > 0)
-	{
-        qDebug()<<(tr("Setting up persistence"));
-		this->tprogress->setMaximum(persistenceSpaceMB);
-		this->tprogress->setValue(0);
-		QString persfile = "casper-rw";
-		if (issalt && !saltRootDir.isEmpty()) {
-			QStringList persistencedir;
-			persistencedir.append("persistence");
-			makepathtree(QString("%1%2").arg(targetPath).arg(saltRootDir), persistencedir);
-			persfile = QString("%1/persistence/%1.save").arg(saltRootDir);
-		}
-#ifdef Q_OS_WIN32
-		QString mke2fscommand = instTempfl("mke2fs.exe", "exe");
-#endif
-		if (QFile::exists(QString("%1%2").arg(targetPath).arg(persfile)))
-		{
-			rmFile(QString("%1%2").arg(targetPath).arg(persfile));
-		}
-		QFile persistenceFile(QString("%1%2").arg(targetPath).arg(persfile));
-		persistenceFile.open(QFile::WriteOnly);
-		int bytesWritten = 1048576;
-		char writeEmpty[1048576];
-		memset(writeEmpty, 0, 1048576);
-		for (int i = 0; i < persistenceSpaceMB && bytesWritten == 1048576; ++i)
-		{
-			this->tprogress->setValue(i);
-			bytesWritten = persistenceFile.write(writeEmpty, 1048576);
-		}
-#ifdef Q_OS_UNIX
-		callexternapp(mke2fscommand, QString("-F \"%1%2\"").arg(targetPath).arg(persfile));
-#endif
-#ifdef Q_OS_WIN32
-		callexternappWriteToStdin(mke2fscommand, QString("\"%1%2\"").arg(targetPath).arg(persfile), "\n");
-		rmFile(mke2fscommand);
-#endif
-	}
-    qDebug()<<("");
     this->tprogress->setValue(this->tprogress->maximum());
-    finishLogging();
     isFinsh_ = true;
 }
 
