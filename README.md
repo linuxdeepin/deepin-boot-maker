@@ -6,31 +6,38 @@ Deepin Usb Creator is help for user to create a boot usb stick quick and easy, i
 
 ![duc](https://cloud.githubusercontent.com/assets/1117694/3170269/8cfbd364-ebb4-11e3-811e-39da9026f4c7.png)
 
-系统支持:
-====
+#系统支持:
 
-Windows平台:
-Windows 7/ Windows 8
+
+###Windows平台
+
+
+Windows 7/ Windows 8:
 
 **需要安装显卡驱动**
 
-Windows XP 暂时不支持
+Windows XP 
+**不会支持!!!!!!!**
 
-Linux平台
+###Linux平台
+
 Ubuntu12.04/Ubuntu14.04/Deepin 14.04
 
-**64 bit系统请安装以下软件包**
+**64 bit系统请安装以下软件包:**
 
 sudo apt-get install p7zip mtools sudo apt-get install libgl1-mesa-dri:i386 libx11-xcb1:i386 libsm6:i386 libxcb1:i386 libfontconfig1:i386 libxrender1:i386 libpng12-0:i386 libgl1-mesa-dev:i386
-**32 bit系统请安装以下软件包**
+
+**32 bit系统请安装以下软件包:**
 
 sudo apt-get install p7zip mtools sudo apt-get install libgl1-mesa-dri libx11-xcb1 libsm6 libxcb1 libfontconfig1 libxrender1 libpng12-0 libgl1-mesa-dev
 
-Mac:
+###Mac
+
 预计支持
 
-开发指南
-=====
+#开发指南
+
+
 深度启动器制作工具,前端使用Qt/QML强烈依赖opengl支持.请保证qt版本在5.3或以上.
 
 Linux平台需要先静态编译qt5.3, 但是在ubuntu14.04之后系统中不再包含libGL.a库,请先静态编译libgl1-mesa-dev.
