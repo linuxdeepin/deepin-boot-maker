@@ -119,9 +119,9 @@ int main(int argc, char **argv)
     app.setFont(QFont("Microsoft YaHei"));
 #endif
 #ifdef Q_OS_LINUX
-    app.setFont(QFont("WenQuanYi Micro Hei"));
+    app.setFont(QFont("monospace"));
 #endif
-
+    //app.setFont(QFont("monospace"));
     //just for debug
     //qInstallMessageHandler(crashMessageOutput);
 
@@ -129,7 +129,7 @@ int main(int argc, char **argv)
 
 #ifdef Q_OS_UNIX
     bool disabledrootcheck = false;
-    //disabledrootcheck = true;
+    disabledrootcheck = true;
     QStringList allappargs = app.arguments();
     if (!disabledrootcheck)
     {

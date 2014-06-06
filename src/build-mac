@@ -4,18 +4,21 @@ if [ ! -d release ]
 then
 mkdir release
 fi
+qtpath="."
+qlupdate=$qtpath/bin/lupdate
+qlrelease=$qtpath/bin/lrelease
+qqmake=$qtpath/bin/qmake
+$qlupdate deepin-usb-creator.pro
+$qlrelease deepin-usb-creator.pro
 
-#lupdate unetbootin.pro
-#lrelease unetbootin.pro
-/usr/lib/x86_64-linux-gnu/qt4/bin/lrelease unetbootin.pro
-qmake -config release -spec macx-g++
+$qqmake -config release -spec macx-g++
 make
-./fix-unetbootin-frameworkpaths.rb
-mv unetbootin.app unetbootin-old.app
-ditto --arch i386 unetbootin-old.app unetbootin.app
-rm -r unetbootin-old.app
+./fix-deepin-usb-creator-frameworkpaths.rb
+mv deepin-usb-creator.app deepin-usb-creator-old.app
+ditto --arch i386 deepin-usb-creator-old.app deepin-usb-creator.app
+rm -r deepin-usb-creator-old.app
 
 revno=$(./vcs-revno)
-zip -r unetbootin-mac-$revno.zip unetbootin.app
-mv unetbootin-mac-$revno.zip release
+zip -r deepin-usb-creator-mac-$revno.zip deepin-usb-creator.app
+mv deepin-usb-creator-mac-$revno.zip release
 
