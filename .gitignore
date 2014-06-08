@@ -2,4 +2,4 @@ build
 *~
 *user
 *.log
-src/deepin-usb-creator.pro.user
+src/deepin-usb-creator.pro.user*
