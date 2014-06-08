@@ -368,5 +368,8 @@
         <file>qml/Deepin/Widgets/images/radio_unselected.png</file>
         <file>qml/Deepin/Widgets/images/radio_unselected_hover.png</file>
         <file>qml/Deepin/Widgets/images/radio_unselected_insensitive.png</file>
+        <file>qml/xp-fix-mainui.qml</file>
+        <file>qml/MainUI/qmldir</file>
+        <file>qml/MainUI/UsbCreatorFrame.qml</file>
     </qresource>
 </RCC>

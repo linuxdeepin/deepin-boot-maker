@@ -110,18 +110,32 @@ void killApplication(){
     exit(0);
 }
 
+#ifdef Q_OS_WIN32
+bool CheckIsXP() {
+    OSVERSIONINFOEX os;
+    os.dwOSVersionInfoSize=sizeof(OSVERSIONINFOEX);
+    GetVersionEx((OSVERSIONINFO *)&os);
+    //Howerver, Windows 2000 ,XP, Window 2003 majorversion is 5
+    //but there all have bug with opengl
+    if (5 == os.dwMajorVersion) {
+        return true;
+    }
+    return false;
+}
+#endif
+
 #include <QtGlobal>
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
     QApplication app(argc, argv, true);
 
 #ifdef Q_OS_WIN32
     app.setFont(QFont("Microsoft YaHei"));
 #endif
+
 #ifdef Q_OS_LINUX
-    app.setFont(QFont("monospace"));
+    app.setFont(QFont("WenQuanYi Micro Hei"));
 #endif
-    //app.setFont(QFont("monospace"));
+
     //just for debug
     //qInstallMessageHandler(crashMessageOutput);
 
@@ -209,22 +223,33 @@ int main(int argc, char **argv)
 
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/qml/");
-    engine.load(QUrl("qrc:/qml/mainui.qml"));
+
+
+#ifdef Q_OS_WIN32
+    if (CheckIsXP()){
+        engine.load(QUrl("qrc:/qml/xp-fix-mainui.qml"));
+    }
+    else{
+        engine.load(QUrl("qrc:/qml/mainui.qml"));
+    }
+#else
+   engine.load(QUrl("qrc:/qml/mainui.qml"));
+#endif
 
     QList<QObject *> roots = engine.rootObjects();
     QObject *topLevel = roots.value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
-    //QQuickWindow->
 
     if (!window) {
         qCritical("load qrc:/qml/main.qml error!!");
     }
 
-
     QIcon icon;
     icon.addFile(":/image/deepin-usb-creator.png");
     window->setIcon(icon);
     window->show();
-
+    window->setTitle("Deepin USB Creator");
     return app.exec();
 }
+
+

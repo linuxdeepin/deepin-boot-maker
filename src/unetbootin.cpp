@@ -3098,7 +3098,7 @@ void unetbootin::runinst()
 	}
 
     if (!isoImagePath.startsWith("http://") && !isoImagePath.startsWith("ftp://")) {
-           // extractiso(isoImagePath);
+            extractiso(isoImagePath);
         }
     else
     {

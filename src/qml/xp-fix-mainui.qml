@@ -10,10 +10,10 @@ import MainUI 1.0
 
 DWindow {
     id: usbCreatorUI
-    flags: Qt.FramelessWindowHint | Qt.Window
+    flags: /*Qt.FramelessWindowHint |*/ Qt.Window | Qt.WindowMaximizeButtonHint | Qt.WindowSystemMenuHint
     color: "transparent"
-    width: 660 + windowFrame.shadowRadius * 2
-    height: 400 + windowFrame.shadowRadius * 2
+    width: 660
+    height: 400
 
     DDragableArea {
         window: usbCreatorUI
@@ -23,5 +23,7 @@ DWindow {
 
     UsbCreatorFrame {
         id: windowFrame
+        frameRadius: 0
+        shadowRadius: 0
     }
 }
