@@ -1084,6 +1084,7 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
+    qDebug()<<(tr("extractiso"));
     if (!sdesc2String.contains(trcurrent))
 	{
         sdesc1String = (QString(sdesc1String).remove("<b>").replace(trcurrent+"</b>", trdone));
@@ -1107,8 +1108,9 @@ void unetbootin::extractiso(QString isofile)
 	}
 
 	QFileInfo isofileFI(isofile);
+    qDebug()<<isofile;
 	qint64 isofileSize = isofileFI.size();
-
+    qDebug()<<isofileSize;
 	if (listfilesizedirpair.first.first.size() < 10 && isofileSize > 12)
 	{
 		bool foundiso = false;
@@ -2533,9 +2535,12 @@ QString unetbootin::callexternappWriteToStdin(QString xexecFile, QString xexecPa
 QString unetbootin::getdevluid(QString voldrive)
 {
 #ifdef Q_OS_MAC
+    qDebug()<<"getdevluid1"<<voldrive;
 	QString diskutilinfo = callexternapp("diskutil", "info " + voldrive);
-	QString uuidS = getuuid(voldrive, diskutilinfo);
-	if (uuidS == "None")
+    qDebug()<<"getdevluid2"<<voldrive;
+    QString uuidS = getuuid(voldrive, diskutilinfo);
+    qDebug()<<"getdevluid3"<<voldrive;
+    if (uuidS == "None")
 	{
 		return QString("LABEL=%1").arg(getlabel(voldrive, diskutilinfo));
 	}
@@ -3005,6 +3010,7 @@ QString unetbootin::instTempfl(QString srcfName, QString dstfType)
 
 void unetbootin::runinst()
 {
+    qDebug()<<(tr("runinst"));
     this->trcurrent = tr("(Current)");
 	this->trdone = tr("(Done)");
 
@@ -3029,46 +3035,36 @@ void unetbootin::runinst()
 	targetDev = QString("%1").arg(targetDrive).remove("\\");
 	rawtargetDev = targetDev;
 	#endif
-	#ifdef Q_OS_UNIX
-	if (installType == tr("Hard Disk"))
-	{
-		QString devnboot = locatedevicenode("/boot");
-		if (devnboot == "NOT FOUND")
-		{
-			ginstallDir = "boot/";
-			installDir = ginstallDir;
-			targetDev = locatedevicenode("/");
-		}
-		else
-		{
-			ginstallDir = "";
-			installDir = "boot/";
-			targetDev = devnboot;
-		}
-		devluid = getdevluid(targetDev);
-	}
-	if (installType == tr("USB Drive"))
+
+#ifdef Q_OS_UNIX
+    if (installType == tr("USB Drive"))
 	{
         targetDev = usbDriverPath;
+        qDebug()<<"getdevuid";
 		devluid = getdevluid(targetDev);
 		ginstallDir = "";
 		installDir = ginstallDir;
 		targetDrive = QString("%1/").arg(locatemountpoint(targetDev));
 	}
-#ifdef Q_OS_LINUX
-	if (targetDev.contains(QRegExp("p\\d$")))
-		rawtargetDev = QString(targetDev).remove(QRegExp("p\\d$"));
-	else
-		rawtargetDev = QString(targetDev).remove(QRegExp("\\d$"));
+
+    #ifdef Q_OS_LINUX
+        if (targetDev.contains(QRegExp("p\\d$")))
+            rawtargetDev = QString(targetDev).remove(QRegExp("p\\d$"));
+        else
+            rawtargetDev = QString(targetDev).remove(QRegExp("\\d$"));
+    #endif
+
+    #ifdef Q_OS_MAC
+        rawtargetDev = QString(targetDev).remove(QRegExp("s\\d$"));
+    #endif
 #endif
-#ifdef Q_OS_MAC
-	rawtargetDev = QString(targetDev).remove(QRegExp("s\\d$"));
-#endif
-	#endif
+
 #ifndef Q_OS_UNIX
+    qDebug()<<"getdevluid";
 	devluid = getdevluid(targetDev);
 #endif
-	kernelLine = "kernel";
+
+    kernelLine = "kernel";
 	kernelLoc = QString("/%1ubnkern").arg(ginstallDir);
 	initrdLine = "initrd";
 	slinitrdLine = "initrd=";
@@ -3079,15 +3075,20 @@ void unetbootin::runinst()
 	initrdLine = "";
 	slinitrdLine = "";
 #endif
+
 #ifdef NODEFAULTKERNEL
 	kernelLoc = "";
 #endif
-	targetPath = QDir::toNativeSeparators(QString("%1%2").arg(targetDrive).arg(installDir));
+
+    targetPath = QDir::toNativeSeparators(QString("%1%2").arg(targetDrive).arg(installDir));
 	QDir dir;
 	if (!dir.exists(targetPath))
 	{
+        qDebug()<<"make dir: "<<targetPath;
 		dir.mkpath(targetPath);
 	}
+
+    qDebug()<<"Overwrite Kernel";
 	if (QFile::exists(QString("%1ubnkern").arg(targetPath)))
 	{
 		overwritefileprompt(QString("%1ubnkern").arg(targetPath));
@@ -3096,9 +3097,9 @@ void unetbootin::runinst()
 	{
 		overwritefileprompt(QString("%1ubninit").arg(targetPath));
 	}
-
+    qDebug()<<"Start Extractiso";
     if (!isoImagePath.startsWith("http://") && !isoImagePath.startsWith("ftp://")) {
-           // extractiso(isoImagePath);
+            extractiso(isoImagePath);
         }
     else
     {

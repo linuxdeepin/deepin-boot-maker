@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = deepin-usb-creator
-
+CONFIG += static
 DEPENDPATH += .
 INCLUDEPATH += .
 
@@ -16,7 +16,7 @@ SOURCES += main.cpp \
     qml/Deepin/Widgets/plugins/dwindow.cpp
 
 CONFIG(lupdate) {
-    SOURCES += qml/mainui.qml
+    SOURCES += qml/MainUI/UsbCreatorFrame.qml
 }
 
 QT += core gui quick widgets
@@ -49,6 +49,7 @@ RESOURCES += \
 RESOURCES += \
     deepin-usb-creator.qrc
 }
+
 OTHER_FILES +=
 
 RESOURCES += \
