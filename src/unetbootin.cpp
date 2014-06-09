@@ -3637,7 +3637,7 @@ void unetbootin::fininstall()
     if (biosMode) {
         targetDev = usbDriverPath;
         QString efiPath = QString("%1/EFI/").arg(targetDev);
-        #if defined (Q_OS_UNIX) || (Q_OS_MAC)
+        #if defined (Q_OS_UNIX)
             efiPath = QString("%1/EFI/").arg(locatemountpoint(targetDev));
         #endif
         qDebug()<<efiPath;
