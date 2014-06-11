@@ -10,22 +10,35 @@ Deepin Boot Maker is help for user to create a boot usb stick quick and easy, it
 ====
 
 Windows平台:
+
 Windows 7/ Windows 8
+
 **需要安装显卡驱动**
 
 Windows XP
+
 **需要安装显卡驱动**
+
 **需要更新最新版本的DirectX**
+
 Direct X环境安装包：
-DirectX Redist Package 地址
-或者使用DirectX Runtime在线安装工具：
-dxwbsetup 地址
+
+DirectX Redist Package 地址:
+
+![DirectX Redist Package](http://pan.baidu.com/s/1ntJTktb)
+
+或者使用DirectX Runtime在线安装工具 ![dxwbsetup](http://pan.baidu.com/s/1dD289WH)
 
 Linux平台
+
 Ubuntu12.04/Ubuntu14.04/Deepin 14.04
+
 **安装以下软件包**
+
 sudo apt-get install syslinux  p7zip mtools libgl1-mesa-dri libx11-xcb1 libsm6 libxcb1 libfontconfig1 libxrender1 libpng12-0 libgl1-mesa-dev
 
 Mac:
+
 直接安装DMG文件
+
 不支持Mac OS 10.10（可以使用命令行直接运行MacOS目录下的二进制文件）
