@@ -2,59 +2,66 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>QApplication</name>
+    <message>
+        <location filename="main.cpp" line="251"/>
+        <source>Deepin Boot Maker</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UsbCreatorFrame</name>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="148"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="154"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Say goodbye to cumbersome, easy to use !&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;告别繁琐，简单易用&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="156"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="162"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support &lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和&lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;双启动。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="178"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="184"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO image file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择ISO文件:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="227"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="233"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB disk file:&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择U盘:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="307"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="313"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;BIOS Mode. Check if the usb stick can not work&lt;/font&gt;</source>
         <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;传统BIOS模式，增强对BIOS主板的支持。&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="318"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="324"/>
         <source>Start</source>
         <translation type="unfinished">开始创建</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="356"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="362"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Writing USB device, &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; pull out the USB equipment the &lt;/br&gt;&lt;br&gt;power off !&lt;/br&gt;&lt;/font&gt;</source>
         <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="392"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="398"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;The deepin USB installation disk has produced success.&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Linux系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="403"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="409"/>
         <source>Complete</source>
         <translation type="unfinished">完成</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="412"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="418"/>
         <source>Restart</source>
         <translation type="unfinished">重启</translation>
     </message>
 </context>
-
 <context>
     <name>unetbootin</name>
     <message>
@@ -145,12 +152,12 @@
     </message>
     <message>
         <location filename="unetbootin.cpp" line="617"/>
-        <location filename="unetbootin.cpp" line="1196"/>
-        <location filename="unetbootin.cpp" line="1288"/>
-        <location filename="unetbootin.cpp" line="3013"/>
-        <location filename="unetbootin.cpp" line="3024"/>
-        <location filename="unetbootin.cpp" line="3050"/>
-        <location filename="unetbootin.cpp" line="3341"/>
+        <location filename="unetbootin.cpp" line="1198"/>
+        <location filename="unetbootin.cpp" line="1290"/>
+        <location filename="unetbootin.cpp" line="3019"/>
+        <location filename="unetbootin.cpp" line="3030"/>
+        <location filename="unetbootin.cpp" line="3040"/>
+        <location filename="unetbootin.cpp" line="3342"/>
         <source>USB Drive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -191,101 +198,110 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1099"/>
-        <location filename="unetbootin.cpp" line="1128"/>
+        <location filename="unetbootin.cpp" line="1087"/>
+        <source>extractiso</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="unetbootin.cpp" line="1100"/>
+        <location filename="unetbootin.cpp" line="1130"/>
         <source>&lt;b&gt;Extracting compressed iso:&lt;/b&gt; %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1250"/>
+        <location filename="unetbootin.cpp" line="1252"/>
         <source>extractinitrd end</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1258"/>
+        <location filename="unetbootin.cpp" line="1260"/>
         <source>QFile end</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1265"/>
+        <location filename="unetbootin.cpp" line="1267"/>
         <source>QTextStream end</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1269"/>
+        <location filename="unetbootin.cpp" line="1271"/>
         <source>extractallfiles end</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1282"/>
+        <location filename="unetbootin.cpp" line="1284"/>
         <source>extractiso end</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1390"/>
+        <location filename="unetbootin.cpp" line="1392"/>
         <source>&lt;b&gt;Copied:&lt;/b&gt; 0 bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1423"/>
+        <location filename="unetbootin.cpp" line="1425"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; 0 of %1 files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="1426"/>
+        <location filename="unetbootin.cpp" line="1428"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; %1 of %2 files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="2317"/>
-        <location filename="unetbootin.cpp" line="2332"/>
+        <location filename="unetbootin.cpp" line="2319"/>
+        <location filename="unetbootin.cpp" line="2334"/>
         <source>&lt;b&gt;Downloaded:&lt;/b&gt; %1 of %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="2347"/>
+        <location filename="unetbootin.cpp" line="2349"/>
         <source>&lt;b&gt;Copied:&lt;/b&gt; %1 of %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="2716"/>
+        <location filename="unetbootin.cpp" line="2721"/>
         <source>%1 not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="2717"/>
+        <location filename="unetbootin.cpp" line="2722"/>
         <source>%1 not found. This is required for %2 install mode.
 Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3008"/>
+        <location filename="unetbootin.cpp" line="3013"/>
+        <source>runinst</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="unetbootin.cpp" line="3014"/>
         <source>(Current)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3009"/>
+        <location filename="unetbootin.cpp" line="3015"/>
         <source>(Done)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3020"/>
-        <location filename="unetbootin.cpp" line="3033"/>
+        <location filename="unetbootin.cpp" line="3026"/>
         <source>Hard Disk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3423"/>
+        <location filename="unetbootin.cpp" line="3424"/>
         <source>Installing syslinux to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3458"/>
+        <location filename="unetbootin.cpp" line="3459"/>
         <source>Installing extlinux to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3632"/>
+        <location filename="unetbootin.cpp" line="3633"/>
         <source>Syncing filesystems</source>
         <translation type="unfinished"></translation>
     </message>
@@ -293,12 +309,12 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
 <context>
     <name>uninstaller</name>
     <message>
-        <location filename="main.cpp" line="177"/>
+        <location filename="main.cpp" line="191"/>
         <source>Must run as root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.cpp" line="179"/>
+        <location filename="main.cpp" line="193"/>
         <source>%2 must be run as root. Close it, and re-run using either:&lt;br/&gt;&lt;b&gt;sudo %1&lt;/b&gt;&lt;br/&gt;or:&lt;br/&gt;&lt;b&gt;su - -c &apos;%1&apos;&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>

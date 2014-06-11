@@ -6,7 +6,7 @@ This program is free software: you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License at <http://www.gnu.org/licenses/> for more details.
 */
-#include "usbcreator.h"
+#include "bootmaker.h"
 #include "unetbootin.h"
 #include "qml/Deepin/Widgets/plugins/dwindow.h"
 #include "qml/Deepin/Widgets/plugins/dicon.h"
@@ -56,7 +56,7 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
             abort();
     }
 
-    QFile outFile("deepin-usb-creator.log");
+    QFile outFile("deepin-boot-maker.log");
     outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
@@ -96,9 +96,9 @@ void loadTranslate(QApplication& app) {
         }
     }
 
-    QString tranlateUrl = QString(":/deepin-usb-creator_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
+    QString tranlateUrl = QString(":/deepin-boot-maker_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     if (!QFile::exists(tranlateUrl)) {
-        tranlateUrl = ":/deepin-usb-creator_en_US.qm";
+        tranlateUrl = ":/deepin-boot-maker_en_US.qm";
     }
 
     if (translator->load(tranlateUrl)){
@@ -216,7 +216,7 @@ int main(int argc, char **argv){
         }
     }
     #endif
-    qmlRegisterType<UsbCreator>("com.deepin.usbcreator", 1, 0, "UsbCreator");
+    qmlRegisterType<BootMaker>("com.deepin.bootmaker", 1, 0, "BootMaker");
     qmlRegisterType<DOverrideWindow>("com.deepin.usbcreator", 1, 0, "DOverrideWindow");
     qmlRegisterType<DWindow>("com.deepin.usbcreator", 1, 0, "DWindow");
     qmlRegisterType<DIcon>("com.deepin.usbcreator", 1, 0, "DIcon");
@@ -241,14 +241,14 @@ int main(int argc, char **argv){
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
 
     if (!window) {
-        qCritical("load qrc:/qml/main.qml error!!");
+        qCritical("load qrc:/qml/mainui.qml error!!");
     }
 
     QIcon icon;
-    icon.addFile(":/image/deepin-usb-creator.png");
+    icon.addFile(":/image/deepin-boot-maker.png");
     window->setIcon(icon);
     window->show();
-    window->setTitle("Deepin USB Creator");
+    window->setTitle(QApplication::tr("Deepin Boot Maker"));
     return app.exec();
 }
 

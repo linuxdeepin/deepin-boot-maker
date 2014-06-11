@@ -21,12 +21,11 @@
         <file>image/usb-active.png</file>
         <file>image/usb-finished.png</file>
         <file>image/usb-inactive.png</file>
-        <file>deepin-usb-creator_zh_TW.qm</file>
-        <file>deepin-usb-creator_zh_CN.qm</file>
-        <file>deepin-usb-creator_en_US.qm</file>
         <file>image/window_close_press.png</file>
         <file>image/window_close_normal.png</file>
         <file>image/window_close_hover.png</file>
-        <file>image/deepin-usb-creator.png</file>
+        <file>image/deepin-boot-maker.png</file>
+        <file>deepin-boot-maker_en_US.qm</file>
+        <file>deepin-boot-maker_zh_CN.qm</file>
     </qresource>
 </RCC>

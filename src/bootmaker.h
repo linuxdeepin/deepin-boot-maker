@@ -7,10 +7,10 @@
 
 class unetbootin;
 
-class UsbCreator : public QObject{
+class BootMaker : public QObject{
    Q_OBJECT
 public:
-    explicit UsbCreator (QObject* parent = 0);
+    explicit BootMaker (QObject* parent = 0);
     //对外API
     Q_INVOKABLE QStringList listUsbDrives();
     Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool biosMode);

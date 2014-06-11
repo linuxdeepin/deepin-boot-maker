@@ -1,19 +1,19 @@
 TEMPLATE = app
-TARGET = deepin-usb-creator
+TARGET = deepin-boot-maker
 CONFIG += static
 DEPENDPATH += .
 INCLUDEPATH += .
 
 HEADERS += unetbootin.h \
-    usbcreator.h \
     qml/Deepin/Widgets/plugins/dicon.h \
-    qml/Deepin/Widgets/plugins/dwindow.h
+    qml/Deepin/Widgets/plugins/dwindow.h \
+    bootmaker.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
-    usbcreator.cpp \
     qml/Deepin/Widgets/plugins/dicon.cpp \
-    qml/Deepin/Widgets/plugins/dwindow.cpp
+    qml/Deepin/Widgets/plugins/dwindow.cpp \
+    bootmaker.cpp
 
 CONFIG(lupdate) {
     SOURCES += qml/MainUI/UsbCreatorFrame.qml
@@ -35,25 +35,24 @@ CONFIG(debug, debug|release) {
     UI_DIR = ../build/release/.ui
 }
 
-TRANSLATIONS += deepin-usb-creator_en_US.ts \
-    deepin-usb-creator_zh_CN.ts \
-    deepin-usb-creator_zh_TW.ts \
+TRANSLATIONS += deepin-boot-maker_en_US.ts \
+    deepin-boot-maker_zh_CN.ts
 
 win32{
 RESOURCES += \
-    deepin-usb-creator.qrc \
+    deepin-boot-maker.qrc \
     unetbootin-windows.qrc \
     unetbootin-sevnz.qrc
-    RC_FILE += deepin-usb-creator.rc
+    RC_FILE += deepin-boot-maker.rc
 }else{
 RESOURCES += \
-    deepin-usb-creator.qrc
+    deepin-boot-maker.qrc
 }
 
 OTHER_FILES +=
 
 RESOURCES += \
-    deepin-usb-creator-qml.qrc
+    deepin-boot-maker-qml.qrc
 
-ICON = deepin-usb-creator.icns
+ICON = deepin-boot-maker.icns
 

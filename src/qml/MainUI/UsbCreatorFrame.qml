@@ -5,14 +5,14 @@ import QtQuick.Window 2.0
 import Qt.labs.folderlistmodel 2.1
 import QtQuick.Controls.Styles 1.1
 import Deepin.Widgets 1.0
-import com.deepin.usbcreator 1.0
+import com.deepin.bootmaker 1.0
 
 DWindowFrame {
     id: windowFrame
     anchors.fill: parent
 
     Rectangle {
-        UsbCreator {
+        BootMaker {
             id: usbCreator
             objectName: "usbCreatorDeepin"
             property string isoImagePath: ""
@@ -115,6 +115,12 @@ DWindowFrame {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 id: logo
                                 source: "qrc:/image/logo.png"
+                            }
+                            DLabel {
+                                x: parent.x + 178
+                                y: parent.y + 67
+                                font.pixelSize: 10
+                                text: "0.9"
                             }
                         }
                         Rectangle {

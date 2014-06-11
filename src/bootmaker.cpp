@@ -1,27 +1,27 @@
 
 #include "unetbootin.h"
-#include "usbcreator.h"
+#include "bootmaker.h"
 
 #include <QThread>
 #include <QWidget>
 
-UsbCreator::UsbCreator(QObject* parent): QObject(parent){
+BootMaker::BootMaker(QObject* parent): QObject(parent){
      unetbootinPtr = new unetbootin;
      unetbootinPtr->ubninitialize();
 }
 
 
-QStringList UsbCreator::listUsbDrives(){
+QStringList BootMaker::listUsbDrives(){
     QStringList usbDriverlist;
     usbDriverlist = unetbootinPtr->listcurdrives();
     return usbDriverlist;
 }
 
-QString UsbCreator::url2LocalFile(QString url){
+QString BootMaker::url2LocalFile(QString url){
     return QUrl(url).toLocalFile();
 }
 
-int UsbCreator::start(QString isoPath, QString usbDriver, bool biosMode) {
+int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode) {
     unetbootinPtr->isoImagePath = isoPath;
     unetbootinPtr->usbDriverPath = usbDriver;
     unetbootinPtr->biosMode = biosMode;
@@ -36,21 +36,21 @@ int UsbCreator::start(QString isoPath, QString usbDriver, bool biosMode) {
     return 1;
 }
 
-int UsbCreator::processRate() {
+int BootMaker::processRate() {
     return unetbootinPtr->tprogress->rate();
 }
 
-bool UsbCreator::isFinish() {
+bool BootMaker::isFinish() {
     return unetbootinPtr->isFinsh();
 }
 
-bool UsbCreator::isISOImage(QString isoPath) {
+bool BootMaker::isISOImage(QString isoPath) {
     if (!isoPath.isEmpty())
         return true;
     return false;
 }
 
-void UsbCreator::reboot() {
+void BootMaker::reboot() {
 #ifdef Q_OS_WIN32
     HANDLE hToken;
     TOKEN_PRIVILEGES tkp;
@@ -69,6 +69,6 @@ void UsbCreator::reboot() {
 #endif
 }
 
-void UsbCreator::exitRestart() {
+void BootMaker::exitRestart() {
     reboot();
 }

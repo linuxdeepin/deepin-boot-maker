@@ -1,3 +1,0 @@
-rm release -rf
-rm Makefile*
-rm *.o
