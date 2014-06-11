@@ -194,13 +194,13 @@ DWindowFrame {
                                     FileDialog {
                                         id: isoFileChoose
                                         visible: false
-                                    //  nameFilters: ["ISO files (*.iso)"]
+                                        selectMultiple: false
+//                                        nameFilters: ["ISO (*.iso);;"]
                                         onAccepted: {
                                             //check
                                             usbCreator.isoImagePath = usbCreator.url2LocalFile(
                                                         isoFileChoose.fileUrl)
-                                            if (usbCreator.isISOImage(
-                                                        usbCreator.isoImagePath)) {
+                                            if (usbCreator.isISOImage(usbCreator.isoImagePath)) {
                                                 usbCreator.isoImagePath = usbCreator.isoImagePath
                                                 isoPath.textInput.text = usbCreator.isoImagePath
                                                 isoIcon.source = "qrc:/image/iso-active.png"

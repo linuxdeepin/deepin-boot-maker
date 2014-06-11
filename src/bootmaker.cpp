@@ -45,8 +45,15 @@ bool BootMaker::isFinish() {
 }
 
 bool BootMaker::isISOImage(QString isoPath) {
-    if (!isoPath.isEmpty())
+    QFileInfo fileinfo(isoPath);
+    if (fileinfo.suffix() == "iso")
         return true;
+    QMessageBox msg;
+    msg.setIcon(QMessageBox::Information);
+    msg.setWindowTitle(tr("Please select a iso image"));
+    msg.setText(tr("Please select a iso image"));
+    msg.setStandardButtons(QMessageBox::Ok);
+    msg.exec();
     return false;
 }
 
