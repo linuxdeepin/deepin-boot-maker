@@ -265,7 +265,7 @@ DWindowFrame {
                                             width: usbDriver.width
                                             height: usbDriver.height
                                             color: Qt.rgba(25 / 255, 26 / 255,
-                                                           28 / 255, 1)
+                                                           28 / 255, 0)
 
                                             Row {
                                                 id: background
