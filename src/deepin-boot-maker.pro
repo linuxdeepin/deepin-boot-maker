@@ -7,13 +7,15 @@ INCLUDEPATH += .
 HEADERS += unetbootin.h \
     qml/Deepin/Widgets/plugins/dicon.h \
     qml/Deepin/Widgets/plugins/dwindow.h \
-    bootmaker.h
+    bootmaker.h \
+    qml/Deepin/Widgets/plugins/ddroparea.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
     qml/Deepin/Widgets/plugins/dicon.cpp \
     qml/Deepin/Widgets/plugins/dwindow.cpp \
-    bootmaker.cpp
+    bootmaker.cpp \
+    qml/Deepin/Widgets/plugins/ddroparea.cpp
 
 CONFIG(lupdate) {
     SOURCES += qml/MainUI/UsbCreatorFrame.qml

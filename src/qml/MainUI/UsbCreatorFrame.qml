@@ -86,12 +86,17 @@ DWindowFrame {
                         id: usbIcon
                         source: "qrc:/image/usb-inactive.png"
                     }
-                    DLabel {
-                        id: processRate
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: ""
-                        font.pixelSize: 10
+                    Rectangle {
+                        width: 50
+                        height: 64
+                        color: "transparent"
+                        DLabel {
+                            id: processRate
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: ""
+                            font.pixelSize: 10
+                        }
                     }
                 }
             }
@@ -195,12 +200,13 @@ DWindowFrame {
                                         id: isoFileChoose
                                         visible: false
                                         selectMultiple: false
-//                                        nameFilters: ["ISO (*.iso);;"]
+                                        //                                        nameFilters: ["ISO (*.iso);;"]
                                         onAccepted: {
                                             //check
                                             usbCreator.isoImagePath = usbCreator.url2LocalFile(
                                                         isoFileChoose.fileUrl)
-                                            if (usbCreator.isISOImage(usbCreator.isoImagePath)) {
+                                            if (usbCreator.isISOImage(
+                                                        usbCreator.isoImagePath)) {
                                                 usbCreator.isoImagePath = usbCreator.isoImagePath
                                                 isoPath.textInput.text = usbCreator.isoImagePath
                                                 isoIcon.source = "qrc:/image/iso-active.png"

@@ -2,6 +2,7 @@
 import QtQuick 2.1
 import QtGraphicalEffects 1.0
 
+import com.deepin.usbcreator 1.0
 FocusScope {
     id: root
     width: 160
@@ -124,7 +125,7 @@ FocusScope {
                         position: 1.0
                         color: passwordShowButton.pressed ? Qt.rgba(0, 0, 0, 0) : Qt.rgba(1, 1, 1, 0)
                     }
-                } 
+                }
             }
 
             DImageCheckButton {
@@ -167,4 +168,10 @@ FocusScope {
             }
         }
     }
+        DDropArea {
+        anchors.fill: parent
+            onTextDrop: {
+                text_input.text = text
+            }
+        }
 }

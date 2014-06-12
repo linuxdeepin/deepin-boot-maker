@@ -17,8 +17,8 @@ DWindow {
 
     DDragableArea {
         window: usbCreatorUI
-        width: 660
-        height: 30
+        width: usbCreatorUI.width
+        height: usbCreatorUI.height
     }
 
     UsbCreatorFrame {

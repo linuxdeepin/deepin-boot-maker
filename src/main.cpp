@@ -10,6 +10,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 #include "unetbootin.h"
 #include "qml/Deepin/Widgets/plugins/dwindow.h"
 #include "qml/Deepin/Widgets/plugins/dicon.h"
+#include "qml/Deepin/Widgets/plugins/ddroparea.h"
 
 #include <QQuickView>
 #include <QQmlEngine>
@@ -56,7 +57,7 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
             abort();
     }
 
-    QFile outFile("deepin-boot-maker.log");
+    QFile outFile("/User/iceyer/deepin-boot-maker.log");
     outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
@@ -220,6 +221,7 @@ int main(int argc, char **argv){
     qmlRegisterType<DOverrideWindow>("com.deepin.usbcreator", 1, 0, "DOverrideWindow");
     qmlRegisterType<DWindow>("com.deepin.usbcreator", 1, 0, "DWindow");
     qmlRegisterType<DIcon>("com.deepin.usbcreator", 1, 0, "DIcon");
+    qmlRegisterType<DDropArea>("com.deepin.usbcreator", 1, 0, "DDropArea");
 
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/qml/");
