@@ -3,7 +3,7 @@ TARGET = deepin-boot-maker
 CONFIG += static
 DEPENDPATH += .
 INCLUDEPATH += .
-
+DEFINES += STATICLINUX
 HEADERS += unetbootin.h \
     qml/Deepin/Widgets/plugins/dicon.h \
     qml/Deepin/Widgets/plugins/dwindow.h \
