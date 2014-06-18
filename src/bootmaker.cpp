@@ -79,3 +79,8 @@ void BootMaker::reboot() {
 void BootMaker::exitRestart() {
     reboot();
 }
+
+QString BootMaker::homeDir() {
+    qDebug()<<*(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).begin())<<endl;
+    return *(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).begin());
+}

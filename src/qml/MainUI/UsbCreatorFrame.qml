@@ -200,6 +200,7 @@ DWindowFrame {
                                         id: isoFileChoose
                                         visible: false
                                         selectMultiple: false
+                                        folder: usbCreator.homeDir()
                                         //                                        nameFilters: ["ISO (*.iso);;"]
                                         onAccepted: {
                                             //check

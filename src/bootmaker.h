@@ -20,6 +20,8 @@ public:
     Q_INVOKABLE QString url2LocalFile(QString isoPath);
     Q_INVOKABLE void exitRestart();
 
+    Q_INVOKABLE QString homeDir();
+
     unetbootin  *unetbootinPtr;
 protected:
     void reboot();
