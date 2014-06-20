@@ -3427,6 +3427,8 @@ void unetbootin::runinstusb()
 	callexternapp(sysltfloc, QString("-ma %1").arg(targetDev));
 	rmFile(sysltfloc);
 	#endif
+
+#ifdef Q_OS_LINUX
 	#ifdef STATICLINUX
 	if (QFile::exists(syslinuxcommand))
 		rmFile(syslinuxcommand);
@@ -3437,8 +3439,7 @@ void unetbootin::runinstusb()
 				rmFile(extlinuxcommand);
 		instIndvfl("ubnexlnx", extlinuxcommand);
 		QFile::setPermissions(extlinuxcommand, QFile::ReadOwner|QFile::ExeOwner|QFile::ReadGroup|QFile::ExeGroup|QFile::ReadOther|QFile::ExeOther|QFile::WriteOwner);
-	#endif
-#ifdef Q_OS_LINUX
+    #endif
 		isext2 = false;
 		if (!volidcommand.isEmpty())
 		{

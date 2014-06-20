@@ -3,6 +3,13 @@ TARGET = deepin-boot-maker
 CONFIG += static
 DEPENDPATH += .
 INCLUDEPATH += .
+
+win32-msvc* {
+  #  QMAKE_CXXFLAGS += -wd4100 -wd4503 -wd4819
+ #   DEFINES += _WIN32_WINNT=0x0500 WIN32_LEAN_AND_MEAN _SCL_SECURE_NO_WARNINGS
+    LIBS += -llibGLESv2 -llibEGL -lpreprocessor
+}
+
 DEFINES += STATICLINUX
 HEADERS += unetbootin.h \
     qml/Deepin/Widgets/plugins/dicon.h \
