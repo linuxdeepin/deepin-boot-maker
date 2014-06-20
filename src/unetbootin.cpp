@@ -3587,9 +3587,9 @@ void unetbootin::runinstusb()
 			QString abssyslpathloc = QDir::fromNativeSeparators(QString(syslpathloc));
 			if (!abssyslpathloc.startsWith("/"))
 				abssyslpathloc.prepend("/");
-			instIndvfl("menu.c32", QString("%1%2menu.c32").arg(targetPath).arg(syslpathloc));
-            instIndvfl("libutil.c32", QString("%1%2libutil.c32").arg(targetPath).arg(syslpathloc));
-            instIndvfl("libcom32.c32", QString("%1%2libcom32.c32").arg(targetPath).arg(syslpathloc));
+//			instIndvfl("menu.c32", QString("%1%2menu.c32").arg(targetPath).arg(syslpathloc));
+//            instIndvfl("libutil.c32", QString("%1%2libutil.c32").arg(targetPath).arg(syslpathloc));
+//            instIndvfl("libcom32.c32", QString("%1%2libcom32.c32").arg(targetPath).arg(syslpathloc));
 			QString syslrealcfgloc = QString(locatedsyslinuxcfgfiles.at(j)).replace("isolinux.cfg", "syslinux.cfg").replace("extlinux.conf", "syslinux.cfg");
 			if (syslrealcfgloc != locatedsyslinuxcfgfiles.at(j))
 			{
@@ -3614,9 +3614,9 @@ void unetbootin::runinstusb()
     #endif
 
     if (!dontgeneratesyslinuxcfg)  {
-        instIndvfl("menu.c32", QString("%1menu.c32").arg(targetPath));
-        instIndvfl("libutil.c32", QString("%1libutil.c32").arg(targetPath));
-        instIndvfl("libcom32.c32", QString("%1libcom32.c32").arg(targetPath));
+//        instIndvfl("menu.c32", QString("%1menu.c32").arg(targetPath));
+//        instIndvfl("libutil.c32", QString("%1libutil.c32").arg(targetPath));
+//        instIndvfl("libcom32.c32", QString("%1libcom32.c32").arg(targetPath));
     }
     fininstall();
 }

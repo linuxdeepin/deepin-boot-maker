@@ -15,86 +15,64 @@ msgstr ""
 #: main.cpp:255
 msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
-msgstr "Deepin Boot Maker"
+msgstr ""
 
 #: qml/MainUI/UsbCreatorFrame.qml:159
-#, fuzzy
 msgctxt "UsbCreatorFrame|"
-msgid ""
-"<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>"
-msgstr "<font color='#ffffff'>Easy to use without redundancy</font></br>"
-
-#: qml/MainUI/UsbCreatorFrame.qml:167
-#, fuzzy
-msgctxt "UsbCreatorFrame|"
-msgid ""
-"<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough "
-"Technical barriers and heavy driver, rookie can also get along well with "
-"Linux, support <font color='#ebab4c'>UEFI.</font></font></br>"
+msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr ""
+
+#: qml/MainUI/UsbCreatorFrame.qml:166
+msgctxt "UsbCreatorFrame|"
+msgid ""
 "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
 "can quickly create Deepin OS Startup Disk through a simple setting, which "
 "supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>"
-
-#: qml/MainUI/UsbCreatorFrame.qml:189
-#, fuzzy
-msgctxt "UsbCreatorFrame|"
-msgid "<br><font color='#ffffff'>Select the ISO image file:</font></br>"
-msgstr "<br><font color='#ffffff'>Select the ISO File:</font></br>"
-
-#: qml/MainUI/UsbCreatorFrame.qml:240
-#, fuzzy
-msgctxt "UsbCreatorFrame|"
-msgid "<br><font color='#ffffff'>Select the USB disk file:</font></br>"
-msgstr "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
-
-#: qml/MainUI/UsbCreatorFrame.qml:320
-#, fuzzy
-msgctxt "UsbCreatorFrame|"
-msgid ""
-"<font color='#ffffff'>BIOS Mode. Check if the usb stick can not work</font>"
 msgstr ""
-"<font color='#ffffff'>Traditional BIOS mode, selected to strengthen "
-"support.</font>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:331
-#, fuzzy
+#: qml/MainUI/UsbCreatorFrame.qml:188
+msgctxt "UsbCreatorFrame|"
+msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
+msgstr ""
+
+#: qml/MainUI/UsbCreatorFrame.qml:238
+msgctxt "UsbCreatorFrame|"
+msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
+msgstr ""
+
+#: qml/MainUI/UsbCreatorFrame.qml:318
+msgctxt "UsbCreatorFrame|"
+msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
+msgstr ""
+
+#: qml/MainUI/UsbCreatorFrame.qml:329
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
-msgstr "Start to Create"
+msgstr ""
 
-#: qml/MainUI/UsbCreatorFrame.qml:369
-#, fuzzy
+#: qml/MainUI/UsbCreatorFrame.qml:367
 msgctxt "UsbCreatorFrame|"
 msgid ""
-"<font color='#ffffff'><br>Writing USB device, <font color='#ebab4c'>DO "
-"NOT</font> pull out the USB equipment the </br><br>power off !</br></font>"
-msgstr ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
 "the USB flash drive while file is writing.</br></font>"
+msgstr ""
 
-#: qml/MainUI/UsbCreatorFrame.qml:405
-#, fuzzy
+#: qml/MainUI/UsbCreatorFrame.qml:402
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-"color='#ffffff'>The deepin USB installation disk has produced "
-"success.</font></br>"
-msgstr ""
-"<br><font color='#057aff'>Congratulations!</font></br><br><font "
 "color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
+msgstr ""
 
-#: qml/MainUI/UsbCreatorFrame.qml:416
-#, fuzzy
+#: qml/MainUI/UsbCreatorFrame.qml:413
 msgctxt "UsbCreatorFrame|"
-msgid "Complete"
-msgstr "Quit"
+msgid "Quit"
+msgstr ""
 
-#: qml/MainUI/UsbCreatorFrame.qml:425
-#, fuzzy
+#: qml/MainUI/UsbCreatorFrame.qml:422
 msgctxt "UsbCreatorFrame|"
-msgid "Restart"
-msgstr "Reboot"
+msgid "Reboot"
+msgstr ""
 
 #: unetbootin.cpp:227 unetbootin.cpp:233 unetbootin.cpp:237 unetbootin.cpp:241
 #: unetbootin.cpp:245 unetbootin.cpp:251 unetbootin.cpp:279

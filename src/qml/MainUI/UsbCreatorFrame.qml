@@ -156,15 +156,14 @@ DWindowFrame {
                             font.pixelSize: 14
                             width: usbCreator.lableMaxWidth
                             wrapMode: Text.Wrap
-                            text: qsTr("<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>")
+                            text: qsTr("<font color='#ffffff'>Easy to use without redundancy</font></br>")
                         }
                         DLabel {
                             id: descriptions
                             font.pixelSize: 12
                             width: usbCreator.lableMaxWidth
                             wrapMode: Text.Wrap
-                            //text: "欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和UEFI双启动。"
-                            text: qsTr("<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support <font color='#ebab4c'>UEFI.</font></font></br>")
+                            text: qsTr("<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>")
                         }
                     }
                 }
@@ -186,7 +185,7 @@ DWindowFrame {
                                     font.pixelSize: 12
                                     width: usbCreator.lableMaxWidth
                                     wrapMode: Text.Wrap
-                                    text: qsTr("<br><font color='#ffffff'>Select the ISO image file:</font></br>")
+                                    text: qsTr("<br><font color='#ffffff'>Select the ISO File:</font></br>")
                                 }
                                 Rectangle {
                                     color: "transparent"
@@ -201,9 +200,8 @@ DWindowFrame {
                                         visible: false
                                         selectMultiple: false
                                         folder: usbCreator.homeDir()
-                                        //                                        nameFilters: ["ISO (*.iso);;"]
+					//nameFilters: ["ISO (*.iso);;"]
                                         onAccepted: {
-                                            //check
                                             usbCreator.isoImagePath = usbCreator.url2LocalFile(
                                                         isoFileChoose.fileUrl)
                                             if (usbCreator.isISOImage(
@@ -237,7 +235,7 @@ DWindowFrame {
                                     font.pixelSize: 12
                                     width: usbCreator.lableMaxWidth
                                     wrapMode: Text.Wrap
-                                    text: qsTr("<br><font color='#ffffff'>Select the USB disk file:</font></br>")
+                                    text: qsTr("<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>")
                                 }
                                 Rectangle {
                                     color: "transparent"
@@ -317,7 +315,7 @@ DWindowFrame {
 
                                 DCheckBox {
                                     id: bisoMode
-                                    text: qsTr("<font color='#ffffff'>BIOS Mode. Check if the usb stick can not work</font>")
+                                    text: qsTr("<font color='#ffffff'>Support BIOS. Unselect here. </font>")
                                 }
                             }
                         }
@@ -366,9 +364,8 @@ DWindowFrame {
                             DLabel {
                                 id: warningLabel
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: qsTr("<font color='#ffffff'><br>Writing USB device, <font color='#ebab4c'>DO NOT</font> pull out the USB equipment the </br><br>power off !</br></font>")
+                                text: qsTr("<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove the USB flash drive while file is writing.</br></font>")
                                 font.pixelSize: 12
-                                //wrapMode: TextEdit.WordWrap
                             }
                         }
                         Rectangle {
@@ -402,7 +399,7 @@ DWindowFrame {
                             DLabel {
                                 id: finishLabel
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: qsTr("<br><font color='#057aff'>Congratulations!</font></br><br><font color='#ffffff'>The deepin USB installation disk has produced success.</font></br>")
+                                text: qsTr("<br><font color='#057aff'>Congratulations!</font></br><br><font color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>")
                                 font.pixelSize: 12
                                 wrapMode: TextEdit.WordWrap
                             }
@@ -413,7 +410,7 @@ DWindowFrame {
                             color: "transparent"
                             Row {
                                 DTransparentButton {
-                                    text: qsTr("Complete")
+                                    text: qsTr("Quit")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     //anchors.horizontalCenter: parent.horizontalCenter
@@ -422,7 +419,7 @@ DWindowFrame {
                                     }
                                 }
                                 DTransparentButton {
-                                    text: qsTr("Restart")
+                                    text: qsTr("Reboot")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     //anchors.horizontalCenter: parent.horizontalCenter

@@ -19,68 +19,65 @@ msgstr "深度启动盘制作工具"
 
 #: qml/MainUI/UsbCreatorFrame.qml:159
 msgctxt "UsbCreatorFrame|"
-msgid ""
-"<font color='#ffffff'>Say goodbye to cumbersome, easy to use !</font></br>"
+msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr "<font color='#ffffff'>告别繁琐，简单易用</font></br>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:167
+#: qml/MainUI/UsbCreatorFrame.qml:166
 msgctxt "UsbCreatorFrame|"
 msgid ""
-"<br><font color='#a7a7a7'>Does not require any technical basis, breakthrough "
-"Technical barriers and heavy driver, rookie can also get along well with "
-"Linux, support <font color='#ebab4c'>UEFI.</font></font></br>"
+"<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
+"can quickly create Deepin OS Startup Disk through a simple setting, which "
+"supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>"
 msgstr ""
 "<br><font color='#a7a7a7'>欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和<font "
 "color='#ebab4c'>UEFI</font>双启动。</font></br>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:189
+#: qml/MainUI/UsbCreatorFrame.qml:188
 msgctxt "UsbCreatorFrame|"
-msgid "<br><font color='#ffffff'>Select the ISO image file:</font></br>"
+msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>选择ISO文件:</font></br>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:240
+#: qml/MainUI/UsbCreatorFrame.qml:238
 msgctxt "UsbCreatorFrame|"
-msgid "<br><font color='#ffffff'>Select the USB disk file:</font></br>"
+msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>选择U盘:</font></br>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:320
+#: qml/MainUI/UsbCreatorFrame.qml:318
 msgctxt "UsbCreatorFrame|"
-msgid ""
-"<font color='#ffffff'>BIOS Mode. Check if the usb stick can not work</font>"
+msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>旧主板BIOS支持， 默认请不要勾选。</font>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:331
+#: qml/MainUI/UsbCreatorFrame.qml:329
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "开始创建"
 
-#: qml/MainUI/UsbCreatorFrame.qml:369
+#: qml/MainUI/UsbCreatorFrame.qml:367
 msgctxt "UsbCreatorFrame|"
 msgid ""
-"<font color='#ffffff'><br>Writing USB device, <font color='#ebab4c'>DO "
-"NOT</font> pull out the USB equipment the </br><br>power off !</br></font>"
+"<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
+"the USB flash drive while file is writing.</br></font>"
 msgstr ""
-"<font color='#ffffff'><br>正在写入文件, <font color='#ebab4c'>请不要</font> "
-"移除U盘或者关机!</br></font>"
+"<font color='#ffffff'><br>正在写入文件, <font "
+"color='#ebab4c'>请不要</font>移除U盘或者关机!</br></font>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:405
+#: qml/MainUI/UsbCreatorFrame.qml:402
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-"color='#ffffff'>The deepin USB installation disk has produced "
-"success.</font></br>"
+"color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
 msgstr ""
 "<br><font color='#057aff'>恭喜！</font></br><br><font "
-"color='#ffffff'>Linux系统启动盘制作成功。</font></br>"
+"color='#ffffff'>Deepin系统启动盘制作成功。</font></br>"
 
-#: qml/MainUI/UsbCreatorFrame.qml:416
+#: qml/MainUI/UsbCreatorFrame.qml:413
 msgctxt "UsbCreatorFrame|"
-msgid "Complete"
+msgid "Quit"
 msgstr "完成"
 
-#: qml/MainUI/UsbCreatorFrame.qml:425
+#: qml/MainUI/UsbCreatorFrame.qml:422
 msgctxt "UsbCreatorFrame|"
-msgid "Restart"
+msgid "Reboot"
 msgstr "重启"
 
 #: unetbootin.cpp:227 unetbootin.cpp:233 unetbootin.cpp:237 unetbootin.cpp:241
@@ -179,7 +176,9 @@ msgid ""
 "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to "
 "ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr "文件 %1 已经存在。单击 'Yes to All' 进行覆盖并且不再提示， 'Yes' 覆盖单个文件， 而 'No' 保留你现在的版本。 如果不能确定，单击 'Yes to All'。"
+msgstr ""
+"文件 %1 已经存在。单击 'Yes to All' 进行覆盖并且不再提示， 'Yes' 覆盖单个文件， 而 'No' 保留你现在的版本。 "
+"如果不能确定，单击 'Yes to All'。"
 
 #: unetbootin.cpp:617 unetbootin.cpp:1198 unetbootin.cpp:1290
 #: unetbootin.cpp:3019 unetbootin.cpp:3030 unetbootin.cpp:3040
@@ -355,4 +354,6 @@ msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr "%2 必须以 root 身份运行。关闭它，并使用以下方法之一重新运行：<br/><b>sudo %1</b><br/>或：<br/><b>su - -c '%1'</b>"
+msgstr ""
+"%2 必须以 root 身份运行。关闭它，并使用以下方法之一重新运行：<br/><b>sudo %1</b><br/>或：<br/><b>su - -c "
+"'%1'</b>"

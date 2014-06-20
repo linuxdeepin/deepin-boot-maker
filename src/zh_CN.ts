@@ -22,52 +22,52 @@
     <name>UsbCreatorFrame</name>
     <message>
         <location filename="qml/MainUI/UsbCreatorFrame.qml" line="159"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Say goodbye to cumbersome, easy to use !&lt;/font&gt;&lt;/br&gt;</source>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;Easy to use without redundancy&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;告别繁琐，简单易用&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="167"/>
-        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support &lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/font&gt;&lt;/br&gt;</source>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="166"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; start.&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和&lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;双启动。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="189"/>
-        <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO image file:&lt;/font&gt;&lt;/br&gt;</source>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="188"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择ISO文件:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="240"/>
-        <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB disk file:&lt;/font&gt;&lt;/br&gt;</source>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="238"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择U盘:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="320"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;BIOS Mode. Check if the usb stick can not work&lt;/font&gt;</source>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="318"/>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;旧主板BIOS支持， 默认请不要勾选。&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="331"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="329"/>
         <source>Start</source>
         <translation>开始创建</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="369"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Writing USB device, &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; pull out the USB equipment the &lt;/br&gt;&lt;br&gt;power off !&lt;/br&gt;&lt;/font&gt;</source>
-        <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="367"/>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt;移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="405"/>
-        <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;The deepin USB installation disk has produced success.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Linux系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="402"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin OS Startup Disk creates successfully.&lt;/font&gt;&lt;/br&gt;</source>
+        <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="416"/>
-        <source>Complete</source>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="413"/>
+        <source>Quit</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="425"/>
-        <source>Restart</source>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="422"/>
+        <source>Reboot</source>
         <translation>重启</translation>
     </message>
 </context>

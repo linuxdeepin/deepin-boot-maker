@@ -15,5 +15,8 @@ do
     $qtlconvert -i $ts -if ts -o ${ts%.*}.po -of po
 done
 
+cp en_US.po deepin-boot-maker.pot
+
+
 
 

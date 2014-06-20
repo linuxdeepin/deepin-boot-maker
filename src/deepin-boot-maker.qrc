@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>memdisk</file>
-        <file>menu.c32</file>
         <file>image/arrow_down_hover.png</file>
         <file>image/arrow_down_normal.png</file>
         <file>image/button_center_normal.png</file>
