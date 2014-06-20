@@ -6,7 +6,7 @@
     <message>
         <location filename="bootmaker.cpp" line="53"/>
         <location filename="bootmaker.cpp" line="54"/>
-        <source>Please select a iso image</source>
+        <source>Please select an iso image</source>
         <translation>请选择ISO文件</translation>
     </message>
 </context>
@@ -52,8 +52,8 @@
     </message>
     <message>
         <location filename="qml/MainUI/UsbCreatorFrame.qml" line="367"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
-        <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt;移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件，&lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机！&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
         <location filename="qml/MainUI/UsbCreatorFrame.qml" line="402"/>
@@ -117,7 +117,7 @@
     <message>
         <location filename="unetbootin.cpp" line="420"/>
         <source>You must first mount the USB drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB drive.</source>
-        <translation>你必须首先在 %1 挂载 USB 闪存盘。大部分发行版本会在您移除并且重新插入USB 闪存盘后自动执行该操作。</translation>
+        <translation>你必须首先在 %1 挂载 USB 闪存盘。大部分发行版本会在你移除并且重新插入USB 闪存盘后自动执行该操作。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="435"/>
@@ -147,17 +147,17 @@
     <message>
         <location filename="unetbootin.cpp" line="564"/>
         <source>The file %1 already exists. Press &apos;Yes to All&apos; to overwrite it and not be prompted again, &apos;Yes&apos; to overwrite files on an individual basis, and &apos;No&apos; to retain your existing version. If in doubt, press &apos;Yes to All&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>文件 %1 已经存在。单击 &apos;Yes to All&apos; 进行覆盖并且不再提示， &apos;Yes&apos; 覆盖单个文件， 而 &apos;No&apos; 保留你现在的版本。 如果不能确定，单击 &apos;Yes to All&apos;。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="590"/>
         <source>%1 is out of space, abort installation?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 没有空间了，放弃安装吗？</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="591"/>
         <source>The directory %1 is out of space. Press &apos;Yes&apos; to abort installation, &apos;No&apos; to ignore this error and attempt to continue installation, and &apos;No to All&apos; to ignore all out-of-space errors.</source>
-        <translation>文件 %1 已经存在。单击 &apos;Yes to All&apos; 进行覆盖并且不再提示， &apos;Yes&apos; 覆盖单个文件， 而 &apos;No&apos; 保留你现在的版本。 如果不能确定，单击 &apos;Yes to All&apos;。</translation>
+        <translation>目录 %1 没有空间了。单击&apos;Yes&apos;终止安装，单击&apos;No&apos;忽略此错误并尝试继续安装，单击&apos;No to All&apos;忽略所有没有空间的错误。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="617"/>
@@ -188,12 +188,12 @@
     <message>
         <location filename="unetbootin.cpp" line="778"/>
         <source>extractinitrd  in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>在 %1 中extractinitrd</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="780"/>
         <source>locateinitrd end</source>
-        <translation type="unfinished"></translation>
+        <translation>locateinitrd完成</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="783"/>
@@ -208,8 +208,8 @@
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1087"/>
-        <source>extractiso</source>
-        <translation type="unfinished"></translation>
+        <source>extractiso begin</source>
+        <translation>extractiso开始</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1100"/>
@@ -220,27 +220,27 @@
     <message>
         <location filename="unetbootin.cpp" line="1252"/>
         <source>extractinitrd end</source>
-        <translation type="unfinished"></translation>
+        <translation>extractinitrd完成</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1260"/>
         <source>QFile end</source>
-        <translation type="unfinished"></translation>
+        <translation>QFile完成</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1267"/>
         <source>QTextStream end</source>
-        <translation type="unfinished"></translation>
+        <translation>QTextStream完成</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1271"/>
         <source>extractallfiles end</source>
-        <translation type="unfinished"></translation>
+        <translation>extractallfiles完成</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1284"/>
         <source>extractiso end</source>
-        <translation type="unfinished"></translation>
+        <translation>extractiso完成</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1392"/>
@@ -281,8 +281,8 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3013"/>
-        <source>runinst</source>
-        <translation type="unfinished"></translation>
+        <source>runinst begin</source>
+        <translation>runinst 开始</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3014"/>
@@ -305,12 +305,12 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
         <translation>正在安装 syslinux 到 %1</translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3459"/>
+        <location filename="unetbootin.cpp" line="3460"/>
         <source>Installing extlinux to %1</source>
         <translation>正在安装 extlinux 到 %1</translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3633"/>
+        <location filename="unetbootin.cpp" line="3634"/>
         <source>Syncing filesystems</source>
         <translation>正在同步文件系统</translation>
     </message>

@@ -6,7 +6,7 @@
     <message>
         <location filename="bootmaker.cpp" line="53"/>
         <location filename="bootmaker.cpp" line="54"/>
-        <source>Please select a iso image</source>
+        <source>Please select an iso image</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <location filename="qml/MainUI/UsbCreatorFrame.qml" line="367"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -208,7 +208,7 @@
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1087"/>
-        <source>extractiso</source>
+        <source>extractiso begin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -281,7 +281,7 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3013"/>
-        <source>runinst</source>
+        <source>runinst begin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -305,12 +305,12 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3459"/>
+        <location filename="unetbootin.cpp" line="3460"/>
         <source>Installing extlinux to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="unetbootin.cpp" line="3633"/>
+        <location filename="unetbootin.cpp" line="3634"/>
         <source>Syncing filesystems</source>
         <translation type="unfinished"></translation>
     </message>

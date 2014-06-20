@@ -50,8 +50,8 @@ bool BootMaker::isISOImage(QString isoPath) {
         return true;
     QMessageBox msg;
     msg.setIcon(QMessageBox::Information);
-    msg.setWindowTitle(tr("Please select a iso image"));
-    msg.setText(tr("Please select a iso image"));
+    msg.setWindowTitle(tr("Please select an iso image"));
+    msg.setText(tr("Please select an iso image"));
     msg.setStandardButtons(QMessageBox::Ok);
     msg.exec();
     return false;

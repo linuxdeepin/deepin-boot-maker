@@ -9,7 +9,7 @@ msgstr ""
 
 #: bootmaker.cpp:53 bootmaker.cpp:54
 msgctxt "BootMaker|"
-msgid "Please select a iso image"
+msgid "Please select an iso image"
 msgstr "请选择ISO文件"
 
 #: main.cpp:255
@@ -56,10 +56,10 @@ msgstr "开始创建"
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
-"the USB flash drive while file is writing.</br></font>"
+"the USB flash drive or shutdown while file is writing.</br></font>"
 msgstr ""
-"<font color='#ffffff'><br>正在写入文件, <font "
-"color='#ebab4c'>请不要</font>移除U盘或者关机!</br></font>"
+"<font color='#ffffff'><br>正在写入文件，<font color='#ebab4c'>请不要</font> "
+"移除U盘或者关机！</br></font>"
 
 #: qml/MainUI/UsbCreatorFrame.qml:402
 msgctxt "UsbCreatorFrame|"
@@ -125,7 +125,7 @@ msgctxt "unetbootin|"
 msgid ""
 "You must first mount the USB drive %1 to a mountpoint. Most distributions "
 "will do this automatically after you remove and reinsert the USB drive."
-msgstr "你必须首先在 %1 挂载 USB 闪存盘。大部分发行版本会在您移除并且重新插入USB 闪存盘后自动执行该操作。"
+msgstr "你必须首先在 %1 挂载 USB 闪存盘。大部分发行版本会在你移除并且重新插入USB 闪存盘后自动执行该操作。"
 
 #: unetbootin.cpp:435
 msgctxt "unetbootin|"
@@ -162,12 +162,14 @@ msgid ""
 "prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to "
 "retain your existing version. If in doubt, press 'Yes to All'."
 msgstr ""
+"文件 %1 已经存在。单击 'Yes to All' 进行覆盖并且不再提示， 'Yes' 覆盖单个文件， 而 'No' 保留你现在的版本。 "
+"如果不能确定，单击 'Yes to All'。"
 
 #: unetbootin.cpp:590
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
-msgstr ""
+msgstr "%1 没有空间了，放弃安装吗？"
 
 #: unetbootin.cpp:591
 #, qt-format
@@ -176,9 +178,7 @@ msgid ""
 "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to "
 "ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr ""
-"文件 %1 已经存在。单击 'Yes to All' 进行覆盖并且不再提示， 'Yes' 覆盖单个文件， 而 'No' 保留你现在的版本。 "
-"如果不能确定，单击 'Yes to All'。"
+msgstr "目录 %1 没有空间了。单击'Yes'终止安装，单击'No'忽略此错误并尝试继续安装，单击'No to All'忽略所有没有空间的错误。"
 
 #: unetbootin.cpp:617 unetbootin.cpp:1198 unetbootin.cpp:1290
 #: unetbootin.cpp:3019 unetbootin.cpp:3030 unetbootin.cpp:3040
@@ -209,12 +209,12 @@ msgstr "正从 %1 中查找 initrd 文件"
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
-msgstr ""
+msgstr "在 %1 中extractinitrd"
 
 #: unetbootin.cpp:780
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
-msgstr ""
+msgstr "locateinitrd完成"
 
 #: unetbootin.cpp:783
 #, qt-format
@@ -229,8 +229,8 @@ msgstr "正在提取引导装载程序配置"
 
 #: unetbootin.cpp:1087
 msgctxt "unetbootin|"
-msgid "extractiso"
-msgstr ""
+msgid "extractiso begin"
+msgstr "extractiso开始"
 
 #: unetbootin.cpp:1100 unetbootin.cpp:1130
 #, qt-format
@@ -241,27 +241,27 @@ msgstr "<b>正在解压 iso 镜像文件：</b> %1"
 #: unetbootin.cpp:1252
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
-msgstr ""
+msgstr "extractinitrd完成"
 
 #: unetbootin.cpp:1260
 msgctxt "unetbootin|"
 msgid "QFile end"
-msgstr ""
+msgstr "QFile完成"
 
 #: unetbootin.cpp:1267
 msgctxt "unetbootin|"
 msgid "QTextStream end"
-msgstr ""
+msgstr "QTextStream完成"
 
 #: unetbootin.cpp:1271
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
-msgstr ""
+msgstr "extractallfiles完成"
 
 #: unetbootin.cpp:1284
 msgctxt "unetbootin|"
 msgid "extractiso end"
-msgstr ""
+msgstr "extractiso完成"
 
 #: unetbootin.cpp:1392
 msgctxt "unetbootin|"
@@ -308,8 +308,8 @@ msgstr "%1 没有找到。该安装模式需要 %2。安装 “ %3 ” 包或者
 
 #: unetbootin.cpp:3013
 msgctxt "unetbootin|"
-msgid "runinst"
-msgstr ""
+msgid "runinst begin"
+msgstr "runinst 开始"
 
 #: unetbootin.cpp:3014
 msgctxt "unetbootin|"
@@ -332,13 +332,13 @@ msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
 msgstr "正在安装 syslinux 到 %1"
 
-#: unetbootin.cpp:3459
+#: unetbootin.cpp:3460
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing extlinux to %1"
 msgstr "正在安装 extlinux 到 %1"
 
-#: unetbootin.cpp:3633
+#: unetbootin.cpp:3634
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "正在同步文件系统"
