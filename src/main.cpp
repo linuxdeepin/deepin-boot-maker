@@ -57,7 +57,7 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
             abort();
     }
 
-    QFile outFile("/User/iceyer/deepin-boot-maker.log");
+    QFile outFile("/Users/iceyer/deepin-boot-maker.log");
     outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
@@ -97,9 +97,9 @@ void loadTranslate(QApplication& app) {
         }
     }
 
-    QString tranlateUrl = QString(":/deepin-boot-maker_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
+    QString tranlateUrl = QString(":/%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     if (!QFile::exists(tranlateUrl)) {
-        tranlateUrl = ":/deepin-boot-maker_en_US.qm";
+        tranlateUrl = ":/en_US.qm";
     }
 
     if (translator->load(tranlateUrl)){

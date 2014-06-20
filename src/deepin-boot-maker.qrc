@@ -25,9 +25,9 @@
         <file>image/window_close_normal.png</file>
         <file>image/window_close_hover.png</file>
         <file>image/deepin-boot-maker.png</file>
-        <file>deepin-boot-maker_en_US.qm</file>
-        <file>deepin-boot-maker_zh_CN.qm</file>
         <file>ubnexlnx</file>
         <file>ubnsylnx</file>
+        <file>en_US.qm</file>
+        <file>zh_CN.qm</file>
     </qresource>
 </RCC>

@@ -37,8 +37,9 @@ CONFIG(debug, debug|release) {
     UI_DIR = ../build/release/.ui
 }
 
-TRANSLATIONS += deepin-boot-maker_en_US.ts \
-    deepin-boot-maker_zh_CN.ts
+TRANSLATIONS += en_US.ts \
+    zh_CN.ts \
+    zh_TW.ts
 
 win32{
 RESOURCES += \

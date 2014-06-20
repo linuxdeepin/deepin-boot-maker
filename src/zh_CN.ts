@@ -2,64 +2,73 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>BootMaker</name>
+    <message>
+        <location filename="bootmaker.cpp" line="53"/>
+        <location filename="bootmaker.cpp" line="54"/>
+        <source>Please select a iso image</source>
+        <translation>请选择ISO文件</translation>
+    </message>
+</context>
+<context>
     <name>QApplication</name>
     <message>
-        <location filename="main.cpp" line="251"/>
+        <location filename="main.cpp" line="255"/>
         <source>Deepin Boot Maker</source>
-        <translation type="unfinished"></translation>
+        <translation>深度启动盘制作工具</translation>
     </message>
 </context>
 <context>
     <name>UsbCreatorFrame</name>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="154"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="159"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Say goodbye to cumbersome, easy to use !&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;告别繁琐，简单易用&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;告别繁琐，简单易用&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="162"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="167"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Does not require any technical basis, breakthrough Technical barriers and heavy driver, rookie can also get along well with Linux, support &lt;font color=&apos;#ebab4c&apos;&gt;UEFI.&lt;/font&gt;&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和&lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;双启动。&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和&lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;双启动。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="184"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="189"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO image file:&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择ISO文件:&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择ISO文件:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="233"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="240"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB disk file:&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择U盘:&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择U盘:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="313"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="320"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;BIOS Mode. Check if the usb stick can not work&lt;/font&gt;</source>
-        <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;传统BIOS模式，增强对BIOS主板的支持。&lt;/font&gt;</translation>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;旧主板BIOS支持， 默认请不要勾选。&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="324"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="331"/>
         <source>Start</source>
-        <translation type="unfinished">开始创建</translation>
+        <translation>开始创建</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="362"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="369"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Writing USB device, &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; pull out the USB equipment the &lt;/br&gt;&lt;br&gt;power off !&lt;/br&gt;&lt;/font&gt;</source>
-        <translation type="unfinished">&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件, &lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机!&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="398"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="405"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;The deepin USB installation disk has produced success.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished">&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Linux系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Linux系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="409"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="416"/>
         <source>Complete</source>
-        <translation type="unfinished">完成</translation>
+        <translation>完成</translation>
     </message>
     <message>
-        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="418"/>
+        <location filename="qml/MainUI/UsbCreatorFrame.qml" line="425"/>
         <source>Restart</source>
-        <translation type="unfinished">重启</translation>
+        <translation>重启</translation>
     </message>
 </context>
 <context>
@@ -73,67 +82,67 @@
         <location filename="unetbootin.cpp" line="251"/>
         <location filename="unetbootin.cpp" line="279"/>
         <source>either</source>
-        <translation type="unfinished"></translation>
+        <translation>或者</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="258"/>
         <source>LiveUSB persistence</source>
-        <translation type="unfinished"></translation>
+        <translation>LiveUSB 持续存储</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="273"/>
         <source>FAT32-formatted USB drive</source>
-        <translation type="unfinished"></translation>
+        <translation>FAT32 格式 USB 驱动器</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="277"/>
         <source>EXT2-formatted USB drive</source>
-        <translation type="unfinished"></translation>
+        <translation>EXT2 格式 USB 驱动器</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="399"/>
         <source>Insert a USB flash drive</source>
-        <translation type="unfinished"></translation>
+        <translation>插入USB 闪存盘</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="400"/>
         <source>No USB flash drives were found. If you have already inserted a USB drive, try reformatting it as FAT32.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有发现USB 闪存盘。如果您已经插入USB 闪存盘，请尝试重新格式化为FAT32格式。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="419"/>
         <source>%1 not mounted</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 没有挂载</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="420"/>
         <source>You must first mount the USB drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB drive.</source>
-        <translation type="unfinished"></translation>
+        <translation>你必须首先在 %1 挂载 USB 闪存盘。大部分发行版本会在您移除并且重新插入USB 闪存盘后自动执行该操作。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="435"/>
         <source>Select a disk image file</source>
-        <translation type="unfinished"></translation>
+        <translation>选择一个磁盘镜像文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="436"/>
         <source>You must select a disk image file to load.</source>
-        <translation type="unfinished"></translation>
+        <translation>你必须选择加载一个磁盘镜像文件。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="450"/>
         <source>Diskimage file not found</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到磁盘镜像文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="451"/>
         <source>The specified diskimage file %1 does not exist.</source>
-        <translation type="unfinished"></translation>
+        <translation>指定的磁盘镜像文件 %1 不存在。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="563"/>
         <source>%1 exists, overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 已经存在，是否覆盖？</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="564"/>
@@ -148,7 +157,7 @@
     <message>
         <location filename="unetbootin.cpp" line="591"/>
         <source>The directory %1 is out of space. Press &apos;Yes&apos; to abort installation, &apos;No&apos; to ignore this error and attempt to continue installation, and &apos;No to All&apos; to ignore all out-of-space errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>文件 %1 已经存在。单击 &apos;Yes to All&apos; 进行覆盖并且不再提示， &apos;Yes&apos; 覆盖单个文件， 而 &apos;No&apos; 保留你现在的版本。 如果不能确定，单击 &apos;Yes to All&apos;。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="617"/>
@@ -159,22 +168,22 @@
         <location filename="unetbootin.cpp" line="3040"/>
         <location filename="unetbootin.cpp" line="3342"/>
         <source>USB Drive</source>
-        <translation type="unfinished"></translation>
+        <translation>USB 驱动器</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="685"/>
         <source>Locating kernel file in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正在 %1 中查找内核文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="735"/>
         <source>Copying kernel file from %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正从 %1 中复制内核文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="741"/>
         <source>Locating initrd file in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正从 %1 中查找 initrd 文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="778"/>
@@ -189,13 +198,13 @@
     <message>
         <location filename="unetbootin.cpp" line="783"/>
         <source>Copying initrd file from %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正从 %1 中复制 initrd 文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="789"/>
         <location filename="unetbootin.cpp" line="869"/>
         <source>Extracting bootloader configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>正在提取引导装载程序配置</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1087"/>
@@ -206,7 +215,7 @@
         <location filename="unetbootin.cpp" line="1100"/>
         <location filename="unetbootin.cpp" line="1130"/>
         <source>&lt;b&gt;Extracting compressed iso:&lt;/b&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;正在解压 iso 镜像文件：&lt;/b&gt; %1</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1252"/>
@@ -236,39 +245,39 @@
     <message>
         <location filename="unetbootin.cpp" line="1392"/>
         <source>&lt;b&gt;Copied:&lt;/b&gt; 0 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;已复制：&lt;/b&gt; 0 字节</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1425"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; 0 of %1 files</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;已抽取：&lt;/b&gt;0 / %1 个文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="1428"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; %1 of %2 files</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;已抽取：&lt;/b&gt; %1 / %2 个文件</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="2319"/>
         <location filename="unetbootin.cpp" line="2334"/>
         <source>&lt;b&gt;Downloaded:&lt;/b&gt; %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;已下载：&lt;/b&gt; %1 / %2</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="2349"/>
         <source>&lt;b&gt;Copied:&lt;/b&gt; %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;已复制：&lt;/b&gt; %1 / %2</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="2721"/>
         <source>%1 not found</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 没有找到</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="2722"/>
         <source>%1 not found. This is required for %2 install mode.
 Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 没有找到。该安装模式需要 %2。安装 “ %3 ” 包或者你的发行版本的等效版本。</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3013"/>
@@ -278,45 +287,45 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
     <message>
         <location filename="unetbootin.cpp" line="3014"/>
         <source>(Current)</source>
-        <translation type="unfinished"></translation>
+        <translation>(处理中)</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3015"/>
         <source>(Done)</source>
-        <translation type="unfinished"></translation>
+        <translation>(完成)</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3026"/>
         <source>Hard Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>硬盘</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3424"/>
         <source>Installing syslinux to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正在安装 syslinux 到 %1</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3459"/>
         <source>Installing extlinux to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>正在安装 extlinux 到 %1</translation>
     </message>
     <message>
         <location filename="unetbootin.cpp" line="3633"/>
         <source>Syncing filesystems</source>
-        <translation type="unfinished"></translation>
+        <translation>正在同步文件系统</translation>
     </message>
 </context>
 <context>
     <name>uninstaller</name>
     <message>
-        <location filename="main.cpp" line="191"/>
+        <location filename="main.cpp" line="192"/>
         <source>Must run as root</source>
-        <translation type="unfinished"></translation>
+        <translation>必须以root的身份运行</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="193"/>
+        <location filename="main.cpp" line="194"/>
         <source>%2 must be run as root. Close it, and re-run using either:&lt;br/&gt;&lt;b&gt;sudo %1&lt;/b&gt;&lt;br/&gt;or:&lt;br/&gt;&lt;b&gt;su - -c &apos;%1&apos;&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>%2 必须以 root 身份运行。关闭它，并使用以下方法之一重新运行：&lt;br/&gt;&lt;b&gt;sudo %1&lt;/b&gt;&lt;br/&gt;或：&lt;br/&gt;&lt;b&gt;su - -c &apos;%1&apos;&lt;/b&gt;</translation>
     </message>
 </context>
 </TS>
