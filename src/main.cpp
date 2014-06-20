@@ -229,6 +229,7 @@ int main(int argc, char **argv){
 
 #ifdef Q_OS_WIN32
     if (CheckIsXP()){
+        app.setFont(QFont("SimHei", 12));
         engine.load(QUrl("qrc:/qml/xp-fix-mainui.qml"));
     }
     else{

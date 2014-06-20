@@ -5,9 +5,10 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 win32-msvc* {
-  #  QMAKE_CXXFLAGS += -wd4100 -wd4503 -wd4819
- #   DEFINES += _WIN32_WINNT=0x0500 WIN32_LEAN_AND_MEAN _SCL_SECURE_NO_WARNINGS
-    LIBS += -llibGLESv2 -llibEGL -lpreprocessor
+    DEFINES += WIN32 _USING_V110_SDK71_
+    QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
+    QMAKE_LFLAGS += /SUBSYSTEM:WINDOWS",5.01"
+    LIBS += -llibGLESv2 -llibEGL -lpreprocessor -ld3dcompiler_46
 }
 
 DEFINES += STATICLINUX
