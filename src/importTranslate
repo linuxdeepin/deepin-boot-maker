@@ -12,6 +12,7 @@ $qtlupdate deepin-boot-maker.pro
 tslist=`ls *.ts`
 for ts in $tslist
 do
+    rm $ts
     $qtlconvert -i ${ts%.*}.po -if po -o $ts -of ts
 done
 

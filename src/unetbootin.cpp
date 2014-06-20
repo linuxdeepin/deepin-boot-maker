@@ -1084,7 +1084,7 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
-    qDebug()<<(tr("extractiso"));
+    qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
         sdesc1String = (QString(sdesc1String).remove("<b>").replace(trcurrent+"</b>", trdone));
@@ -3010,7 +3010,7 @@ QString unetbootin::instTempfl(QString srcfName, QString dstfType)
 
 void unetbootin::runinst()
 {
-    qDebug()<<(tr("runinst"));
+    qDebug()<<(tr("runinst begin"));
     this->trcurrent = tr("(Current)");
 	this->trdone = tr("(Done)");
 

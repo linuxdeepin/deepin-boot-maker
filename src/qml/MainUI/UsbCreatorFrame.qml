@@ -364,7 +364,7 @@ DWindowFrame {
                             DLabel {
                                 id: warningLabel
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: qsTr("<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove the USB flash drive while file is writing.</br></font>")
+                                text: qsTr("<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove the USB flash drive or shutdown while file is writing.</br></font>" )
                                 font.pixelSize: 12
                             }
                         }
