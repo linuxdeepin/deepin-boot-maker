@@ -1,6 +1,6 @@
 build
 *~
-*user
+*.pro.user
+*.pro.user.*
 *.log
-src/deepin-usb-creator.pro.user*
 .DS_Store

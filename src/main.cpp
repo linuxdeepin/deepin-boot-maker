@@ -238,6 +238,8 @@ int main(int argc, char **argv){
    engine.load(QUrl("qrc:/qml/mainui.qml"));
 #endif
 
+   app.setOverrideCursor( QCursor( Qt::ArrowCursor ) );
+
     QList<QObject *> roots = engine.rootObjects();
     QObject *topLevel = roots.value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
