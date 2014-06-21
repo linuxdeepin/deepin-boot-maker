@@ -1,4 +1,4 @@
-/*
+﻿/*
 unetbootin.cpp from UNetbootin <http://unetbootin.sourceforge.net>
 Copyright (C) 2007-2008 Geza Kovacs <geza0kovacs@gmail.com>
 
@@ -3424,7 +3424,7 @@ void unetbootin::runinstusb()
     qDebug()<<(tr("Installing syslinux to %1").arg(targetDev));
 	#ifdef Q_OS_WIN32
 	QString sysltfloc = instTempfl("syslinux.exe", "exe");
-	callexternapp(sysltfloc, QString("-ma %1").arg(targetDev));
+    callexternapp(sysltfloc, QString("-m -a -f %1").arg(targetDev));
 	rmFile(sysltfloc);
 	#endif
 

@@ -28,5 +28,6 @@
         <file>ubnsylnx</file>
         <file>en_US.qm</file>
         <file>zh_CN.qm</file>
+        <file>mbr.bin</file>
     </qresource>
 </RCC>
