@@ -1,4 +1,4 @@
-﻿/*
+/*
 unetbootin.cpp from UNetbootin <http://unetbootin.sourceforge.net>
 Copyright (C) 2007-2008 Geza Kovacs <geza0kovacs@gmail.com>
 
@@ -65,6 +65,31 @@ static const QList<QRegExp> ignoredtypesinitrdRL = QList<QRegExp>()
 << QRegExp("bzImage$", Qt::CaseInsensitive);
 
 static const QString SALT_DETECTED = "*SaLT*";
+
+#ifdef Q_OS_WIN32
+bool WriteMbr(QString devName, LPBYTE lpMbrBytes) {
+    //get Dev Path
+    QString devPath = "\\\\.\\" + devName;
+    WCHAR wcDevPath[1024];
+    devPath.toWCharArray(wcDevPath);
+
+    //open Dev
+    HANDLE hDevice = CreateFile (wcDevPath,
+                        GENERIC_READ | GENERIC_WRITE,
+                        FILE_SHARE_READ | FILE_SHARE_WRITE,
+                        NULL,
+                        OPEN_EXISTING,
+                        0,
+                        NULL
+                        );
+    if (hDevice == INVALID_HANDLE_VALUE)
+        return false;
+
+    DWORD dwBytesWritten;
+    return WriteFile(hDevice, lpMbrBytes, 440, &dwBytesWritten, NULL);
+}
+
+#endif
 
 void callexternappT::run()
 {
@@ -3425,6 +3450,13 @@ void unetbootin::runinstusb()
 	#ifdef Q_OS_WIN32
 	QString sysltfloc = instTempfl("syslinux.exe", "exe");
     callexternapp(sysltfloc, QString("-m -a -f %1").arg(targetDev));
+
+    //write MBR
+    QFile mbrFile("qrc/:mbr.bin");
+    QByteArray mbrBytes = mbrFile.readAll();
+
+    WriteMbr(targetDev,reinterpret_cast<LPBYTE>(mbrBytes.data()) );
+
 	rmFile(sysltfloc);
 	#endif
 
