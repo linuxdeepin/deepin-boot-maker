@@ -125,7 +125,7 @@ DWindowFrame {
                                 x: parent.x + 178
                                 y: parent.y + 67
                                 font.pixelSize: 10
-                                text: "0.9"
+                                text: "0.95"
                             }
                         }
                         Rectangle {
