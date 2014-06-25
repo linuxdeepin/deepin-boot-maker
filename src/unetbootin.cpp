@@ -3600,51 +3600,52 @@ void unetbootin::runinstusb()
             "ui gfxboot bootlogo\n";
         writeTextToFile(syslinuxcfgtxt, syslinxCfgPath);
 	}
-	else
-	{
-        qDebug()<<"Copy Syslinuxcfg";
-		for (int j = 0; j < locatedsyslinuxcfgfiles.size(); ++j)
-		{
-			QString syslpathloc = QFileInfo(locatedsyslinuxcfgfiles.at(j)).path();
-			if (syslpathloc == ".") syslpathloc = "";
-			if (syslpathloc.contains(QDir::toNativeSeparators("/")))
-			{
-				if (!syslpathloc.endsWith(QDir::toNativeSeparators("/")))
-					syslpathloc.append(QDir::toNativeSeparators("/"));
-			}
-			else
-			{
-				if (!syslpathloc.endsWith("/"))
-					syslpathloc.append("/");
-			}
-			QString abssyslpathloc = QDir::fromNativeSeparators(QString(syslpathloc));
-			if (!abssyslpathloc.startsWith("/"))
-				abssyslpathloc.prepend("/");
-//			instIndvfl("menu.c32", QString("%1%2menu.c32").arg(targetPath).arg(syslpathloc));
-//            instIndvfl("libutil.c32", QString("%1%2libutil.c32").arg(targetPath).arg(syslpathloc));
-//            instIndvfl("libcom32.c32", QString("%1%2libcom32.c32").arg(targetPath).arg(syslpathloc));
-			QString syslrealcfgloc = QString(locatedsyslinuxcfgfiles.at(j)).replace("isolinux.cfg", "syslinux.cfg").replace("extlinux.conf", "syslinux.cfg");
-			if (syslrealcfgloc != locatedsyslinuxcfgfiles.at(j))
-			{
-				QFile::copy(QString("%1%2").arg(targetPath).arg(locatedsyslinuxcfgfiles.at(j)), QString("%1%2").arg(targetPath).arg(syslrealcfgloc));
-			}
-			replaceTextInFile(QString("%1%2").arg(targetPath).arg(syslrealcfgloc), QRegExp("\\S{0,}vesamenu.c32"), QString("%1menu.c32").arg(abssyslpathloc));
-			#ifdef Q_OS_UNIX
-			if (isext2)
-			{
-				QFile::copy(QString("%1%2").arg(targetPath).arg(locatedsyslinuxcfgfiles.at(j)), QString("%1%2extlinux.conf").arg(targetPath).arg(syslpathloc));
-				QString extlpathloc = QString(syslpathloc).replace("syslinux", "extlinux");
-				if (syslpathloc != extlpathloc)
-					callexternapp("ln", QString("-s %1 %2").arg(syslpathloc).arg(extlpathloc));
-			}
-			#endif
-		}
-	}
+//	else
+//	{
+//        qDebug()<<"Copy Syslinuxcfg";
+//		for (int j = 0; j < locatedsyslinuxcfgfiles.size(); ++j)
+//		{
+//			QString syslpathloc = QFileInfo(locatedsyslinuxcfgfiles.at(j)).path();
+//			if (syslpathloc == ".") syslpathloc = "";
+//			if (syslpathloc.contains(QDir::toNativeSeparators("/")))
+//			{
+//				if (!syslpathloc.endsWith(QDir::toNativeSeparators("/")))
+//					syslpathloc.append(QDir::toNativeSeparators("/"));
+//			}
+//			else
+//			{
+//				if (!syslpathloc.endsWith("/"))
+//					syslpathloc.append("/");
+//			}
+//			QString abssyslpathloc = QDir::fromNativeSeparators(QString(syslpathloc));
+//			if (!abssyslpathloc.startsWith("/"))
+//				abssyslpathloc.prepend("/");
+////			instIndvfl("menu.c32", QString("%1%2menu.c32").arg(targetPath).arg(syslpathloc));
+////            instIndvfl("libutil.c32", QString("%1%2libutil.c32").arg(targetPath).arg(syslpathloc));
+////            instIndvfl("libcom32.c32", QString("%1%2libcom32.c32").arg(targetPath).arg(syslpathloc));
+//			QString syslrealcfgloc = QString(locatedsyslinuxcfgfiles.at(j)).replace("isolinux.cfg", "syslinux.cfg").replace("extlinux.conf", "syslinux.cfg");
+//			if (syslrealcfgloc != locatedsyslinuxcfgfiles.at(j))
+//			{
+//				QFile::copy(QString("%1%2").arg(targetPath).arg(locatedsyslinuxcfgfiles.at(j)), QString("%1%2").arg(targetPath).arg(syslrealcfgloc));
+//			}
+//			replaceTextInFile(QString("%1%2").arg(targetPath).arg(syslrealcfgloc), QRegExp("\\S{0,}vesamenu.c32"), QString("%1menu.c32").arg(abssyslpathloc));
+//			#ifdef Q_OS_UNIX
+//			if (isext2)
+//			{
+//				QFile::copy(QString("%1%2").arg(targetPath).arg(locatedsyslinuxcfgfiles.at(j)), QString("%1%2extlinux.conf").arg(targetPath).arg(syslpathloc));
+//				QString extlpathloc = QString(syslpathloc).replace("syslinux", "extlinux");
+//				if (syslpathloc != extlpathloc)
+//					callexternapp("ln", QString("-s %1 %2").arg(syslpathloc).arg(extlpathloc));
+//			}
+//			#endif
+//		}
+//	}
 #endif
-    #ifdef Q_OS_UNIX
+
+#ifdef Q_OS_UNIX
     if (!dontgeneratesyslinuxcfg && isext2)
-        QFile::copy(QString("%1syslinux.cfg").arg(targetPath), QString("%1extlinux.conf").arg(targetPath));
-    #endif
+        QFile::copy(QString("%1syslinux/syslinux.cfg").arg(targetPath), QString("%1extlinux.conf").arg(targetPath));
+#endif
 
     if (!dontgeneratesyslinuxcfg)  {
 //        instIndvfl("menu.c32", QString("%1menu.c32").arg(targetPath));

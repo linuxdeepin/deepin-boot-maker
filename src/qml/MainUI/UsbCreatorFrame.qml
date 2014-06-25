@@ -364,6 +364,8 @@ DWindowFrame {
                             DLabel {
                                 id: warningLabel
                                 anchors.verticalCenter: parent.verticalCenter
+                                width: usbCreator.lableMaxWidth
+                                wrapMode: Text.Wrap
                                 text: qsTr("<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove the USB flash drive or shutdown while file is writing.</br></font>" )
                                 font.pixelSize: 12
                             }
