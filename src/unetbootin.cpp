@@ -3591,14 +3591,14 @@ void unetbootin::runinstusb()
         renameDir(isolinxDir, syslinxDir);
 
         QString syslinxCfgPath = QString("%1syslinux/syslinux.cfg").arg(targetPath);
-        QString syslinuxcfgtxt =
-            "# D-I config version 2.0\n"
-            "include menu.cfg\n"
-            "default vesamenu.c32\n"
-            "prompt 0\n"
-            "timeout 50\n"
-            "ui gfxboot bootlogo\n";
-        writeTextToFile(syslinuxcfgtxt, syslinxCfgPath);
+        QString isolinxCfgPath = QString("%1syslinux/isolinux.cfg").arg(targetPath);
+        QFile isocfg(isolinxCfgPath);
+        QFile syscfg(syslinxCfgPath);
+        isocfg.open(QFile::ReadOnly);
+        syscfg.open(QFile::WriteOnly);
+        syscfg.write(isocfg.readAll());
+        syscfg.close();
+        isocfg.close();
 	}
 //	else
 //	{
