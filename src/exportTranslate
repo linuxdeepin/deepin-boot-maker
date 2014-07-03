@@ -1,6 +1,7 @@
 #!/bin/bash
 
 qtPath=/opt/qt5-static/5.3/linuxg64
+qtPath=/opt/qtstatic/5.3/linuxg64
 qtBin=$qtPath/bin
 
 qtlupdate=$qtBin/lupdate
@@ -15,7 +16,7 @@ do
     $qtlconvert -i $ts -if ts -o ${ts%.*}.po -of po
 done
 
-cp en_US.po deepin-boot-maker.pot
+cp po/en_US.po po/deepin-boot-maker.pot
 
 
 
