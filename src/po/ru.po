@@ -1,0 +1,304 @@
+#
+# Translators:
+# Fox909 <ffox909@mail.ru>, 2014
+# jvjey <justVolodya@gmail.com>, 2014
+# Serge Kukharski, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Deepin Boot Maker\n"
+"PO-Revision-Date: 2014-06-23 13:02+0000\n"
+"Last-Translator: Serge Kukharski\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/deepin-boot-"
+"maker/language/ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Language: en_US\n"
+"X-Qt-Contexts: true\n"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "%1 exists, overwrite?"
+#~ msgstr "%1 существует, заменить?"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "%1 is out of space, abort installation?"
+#~ msgstr "На %1 мало свободного места, прервать установку?"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "%1 not found"
+#~ msgstr "%1 не найдено"
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "%1 not found. This is required for %2 install mode.\n"
+#~ "Install the \"%3\" package or your distribution's equivalent."
+#~ msgstr ""
+#~ "%1 не найден. Это требуется для режима установки %2.\n"
+#~ "Установте пакет «%3» или его эквивалент для вашего дистрибутива."
+
+#~ msgctxt "unetbootin|"
+#~ msgid "%1 not mounted"
+#~ msgstr "%1 не примонтирован"
+
+#~ msgctxt "uninstaller|"
+#~ msgid ""
+#~ "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
+#~ "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
+#~ msgstr ""
+#~ "%2 должно быть запущено от имени суперпользователя! Закройте приложение и "
+#~ "заново запустите, используя:<br/><b>sudo %1</b><br/>либо:<br/><b>su --c "
+#~ "'%1'</b>"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "(Current)"
+#~ msgstr "(Текущий)"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "(Done)"
+#~ msgstr "(Выполнено)"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "<b>Copied:</b> %1 of %2"
+#~ msgstr "<b>Скопировано:</b> %1 из %2"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "<b>Copied:</b> 0 bytes"
+#~ msgstr "<b>Скопировано:</b> 0 байт"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "<b>Downloaded:</b> %1 of %2"
+#~ msgstr "<b>Загружено:</b> %1 из %2"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "<b>Extracted:</b> %1 of %2 files"
+#~ msgstr "<b>Извлечено файлов:</b> %1 из %2"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "<b>Extracted:</b> 0 of %1 files"
+#~ msgstr "<b>Извлечено файлов:</b> 0 из %1"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "<b>Extracting compressed iso:</b> %1"
+#~ msgstr "<b>Извлекается сжатый образ диска:</b> %1"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#057aff'>Congratulations!</font></br><br><font "
+#~ "color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
+#~ msgstr ""
+#~ "<br><font color='#057aff'>Поздравляем!</font></br><br><font "
+#~ "color='#ffffff'>Загрузочный диск с Deepin OS создан успешно!</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and "
+#~ "you can quickly create Deepin OS Startup Disk through a simple setting, "
+#~ "which supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</"
+#~ "font></br>"
+#~ msgstr ""
+#~ "<br><font color='#a7a7a7'>Добро пожаловать в Deepin Boot Maker, где вы "
+#~ "можете быстро создать  загрузочный диск Deepin OS через простую настройку "
+#~ "с поддержкой dual BIOS и <font color='#ebab4c'>UEFI</font>.</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
+#~ msgstr "<br><font color='#ffffff'>Выберите ISO-файл:</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
+#~ msgstr "<br><font color='#ffffff'>Выберите USB-накопитель:</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> "
+#~ "remove the USB flash drive or shutdown while file is writing.</br></font>"
+#~ msgstr ""
+#~ "<font color='#ffffff'><br>Пожалуйста, <font color='#ebab4c'>НЕ ПЫТАЙТЕСЬ</"
+#~ "font> извлечь USB-накопитель или выключить систему во время записи!</br></"
+#~ "font>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
+#~ msgstr ""
+#~ "<font color='#ffffff'>Простота использования без излишеств</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
+#~ msgstr ""
+#~ "<font color='#ffffff'>Поддержка BIOS. Отменить выделение здесь. </font>"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Copying initrd file from %1"
+#~ msgstr "Копируется initrd-файл из %1"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Copying kernel file from %1"
+#~ msgstr "Копируется файл ядра из %1"
+
+#~ msgctxt "QApplication|"
+#~ msgid "Deepin Boot Maker"
+#~ msgstr "Deepin Boot Maker"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Diskimage file not found"
+#~ msgstr "Файл образа диска не найден"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "EXT2-formatted USB drive"
+#~ msgstr "USB-накопитель, форматированный в Ext2"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Extracting bootloader configuration"
+#~ msgstr "Извлечение настроек загрузчика"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "FAT32-formatted USB drive"
+#~ msgstr "USB-накопитель, форматированный в FAT32"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Hard Disk"
+#~ msgstr "Жесткий диск"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Insert a USB flash drive"
+#~ msgstr "Вставьте USB-накопитель"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Installing extlinux to %1"
+#~ msgstr "Устанавливается extlinux на %1"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Installing syslinux to %1"
+#~ msgstr "Устанавливается syslinux на %1"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "LiveUSB persistence"
+#~ msgstr "Продолжительность LiveUSB"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Locating initrd file in %1"
+#~ msgstr "Обнаружение initrd-файла в %1"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Locating kernel file in %1"
+#~ msgstr "Обнаружение файла ядра в %1"
+
+#~ msgctxt "uninstaller|"
+#~ msgid "Must run as root"
+#~ msgstr "Запускать от имени суперпользователя"
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "No USB flash drives were found. If you have already inserted a USB drive, "
+#~ "try reformatting it as FAT32."
+#~ msgstr ""
+#~ "Не найдены USB-накопители. Если вы  Если вы уже вставили USB-накопитель, "
+#~ "попробуйте отформатировать его в FAT32."
+
+#~ msgctxt "BootMaker|"
+#~ msgid "Please select an iso image"
+#~ msgstr "Выберите ISO-образ"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "QFile end"
+#~ msgstr "Конец QFile"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "QTextStream end"
+#~ msgstr "Конец QTextStream"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Quit"
+#~ msgstr "Выйти"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Reboot"
+#~ msgstr "Перезагрузка"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Select a disk image file"
+#~ msgstr "Выберите файл образа диска"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Start"
+#~ msgstr "Старт"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Syncing filesystems"
+#~ msgstr "Синхронизируются файловые системы"
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' "
+#~ "to ignore this error and attempt to continue installation, and 'No to "
+#~ "All' to ignore all out-of-space errors."
+#~ msgstr ""
+#~ "В директории %1 недостаточно места. Нажмите «Да» для отмены установки, "
+#~ "«Нет» для игнорирования ошибки и попытки продолжить установку, и «Нет для "
+#~ "всех» для игрорирования всех ошибок."
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
+#~ "prompted again, 'Yes' to overwrite files on an individual basis, and 'No' "
+#~ "to retain your existing version. If in doubt, press 'Yes to All'."
+#~ msgstr ""
+#~ "Файл %1 уже существует. Нажмите «Да для всех» для его замены без "
+#~ "последующих вопросов, «Да» для замены каждого файла отдельно, и «Нет» для "
+#~ "сохранения существующей версии. Если сомненваетесь, жмите «Да для всех». "
+
+#~ msgctxt "unetbootin|"
+#~ msgid "The specified diskimage file %1 does not exist."
+#~ msgstr "Указанный файл образа диска %1 не существует."
+
+#~ msgctxt "unetbootin|"
+#~ msgid "USB Drive"
+#~ msgstr "USB-накопитель"
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "You must first mount the USB drive %1 to a mountpoint. Most distributions "
+#~ "will do this automatically after you remove and reinsert the USB drive."
+#~ msgstr ""
+#~ "Вы должны сначала примонтировать USB-накопитель %1 к точке монтирования. "
+#~ "Большинство дистрибутивов делает это автоматически после вынимания и "
+#~ "последующего вставления USB-накопителя."
+
+#~ msgctxt "unetbootin|"
+#~ msgid "You must select a disk image file to load."
+#~ msgstr "Вы должны выбрать файл образа для загрузки!"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "either"
+#~ msgstr "любой"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "extractallfiles end"
+#~ msgstr "Конец извлечения файлов"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "extractinitrd  in %1"
+#~ msgstr "Извлечение initrd в %1"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "extractinitrd end"
+#~ msgstr "Конец извлечения initrd"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "extractiso begin"
+#~ msgstr "Начало извлечения образа"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "extractiso end"
+#~ msgstr "Конец извлечения образа"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "locateinitrd end"
+#~ msgstr "Обнаружение initrd закончено"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "runinst begin"
+#~ msgstr "Процесс начат"
