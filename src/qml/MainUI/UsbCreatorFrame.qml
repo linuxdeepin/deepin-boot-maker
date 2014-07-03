@@ -125,8 +125,8 @@ DWindowFrame {
                                 x: parent.x + 178
                                 y: parent.y + 67
                                 font.pixelSize: 10
-                                text: "0.95"
-                            }
+                                text: "0.98"
+                       }
                         }
                         Rectangle {
                             color: "transparent"
@@ -160,7 +160,7 @@ DWindowFrame {
                         }
                         DLabel {
                             id: descriptions
-                            font.pixelSize: 12
+                            font.pixelSize: 11
                             width: usbCreator.lableMaxWidth
                             wrapMode: Text.Wrap
                             text: qsTr("<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>")
