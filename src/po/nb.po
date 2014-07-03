@@ -1,0 +1,98 @@
+#
+# Translators:
+# pjhalsli <pjhalsli@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Deepin Boot Maker\n"
+"PO-Revision-Date: 2014-06-24 17:21+0000\n"
+"Last-Translator: pjhalsli <pjhalsli@gmail.com>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/deepin-"
+"boot-maker/language/nb/)\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Qt-Contexts: true\n"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "%1 exists, overwrite?"
+#~ msgstr "&1 eksisterer allerede, overskrive?"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "%1 not mounted"
+#~ msgstr "&1 ikke montert"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
+#~ msgstr "<br><font color='#ffffff'>Velg en iso fil:"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
+#~ msgstr "<br><font color='#ffffff'>velg en USB minnebrikke:</font></br>"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Diskimage file not found"
+#~ msgstr "Diskbildefil ikke funnet"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "EXT2-formatted USB drive"
+#~ msgstr "EXT2-formatert USB disk"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "FAT32-formatted USB drive"
+#~ msgstr "FAT-32-formatert USB disk"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Insert a USB flash drive"
+#~ msgstr "Sett inn en USB minnebrikke"
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "No USB flash drives were found. If you have already inserted a USB drive, "
+#~ "try reformatting it as FAT32."
+#~ msgstr ""
+#~ "Ingen USB minnebrikke ble funnet. Har du allerede satt inn en USB brikke, "
+#~ "prøv å reformater til FAT32"
+
+#~ msgctxt "BootMaker|"
+#~ msgid "Please select an iso image"
+#~ msgstr "Vennligst velg en iso fil"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Quit"
+#~ msgstr "Avslutt"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Reboot"
+#~ msgstr "Restart"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "Select a disk image file"
+#~ msgstr "Velg en disk bildefil"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "The specified diskimage file %1 does not exist."
+#~ msgstr "Den spesiferte diskbildefilen &1 finnes ikke"
+
+#~ msgctxt "unetbootin|"
+#~ msgid ""
+#~ "You must first mount the USB drive %1 to a mountpoint. Most distributions "
+#~ "will do this automatically after you remove and reinsert the USB drive."
+#~ msgstr ""
+#~ "Du må først montere USB brikke &1 som et monteringspunkt. De fleste "
+#~ "distribusjoner gjør dette automatisk etter du har fjernet den den og satt "
+#~ "den inn igjen."
+
+#~ msgctxt "unetbootin|"
+#~ msgid "You must select a disk image file to load."
+#~ msgstr "Du må velge en disk bildefil å laste"
+
+#~ msgctxt "unetbootin|"
+#~ msgid "either"
+#~ msgstr "enten"
