@@ -9,7 +9,7 @@ qtlconvert=$qtBin/lconvert
 
 $qtlupdate deepin-boot-maker.pro
 
-tslist=`ls *.ts`
+tslist=`ls po/*.ts`
 for ts in $tslist
 do
     rm $ts

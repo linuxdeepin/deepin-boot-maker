@@ -45,9 +45,9 @@ CONFIG(debug, debug|release) {
     UI_DIR = ../build/release/.ui
 }
 
-TRANSLATIONS += en_US.ts \
-    zh_CN.ts \
-    zh_TW.ts
+TRANSLATIONS += po/en_US.ts \
+    po/zh_CN.ts \
+    po/zh_TW.ts
 
 win32{
 RESOURCES += \
