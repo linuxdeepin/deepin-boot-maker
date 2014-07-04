@@ -8,7 +8,7 @@ win32-msvc* {
     DEFINES += _USING_V110_SDK71_
     QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
     QMAKE_LFLAGS += /SUBSYSTEM:WINDOWS",5.01"
-    LIBS += -llibGLESv2 -llibEGL -lpreprocessor -ld3dcompiler_46
+    LIBS += -llibGLESv2 -llibEGL -lpreprocessor
 }
 
 DEFINES += STATICLINUX

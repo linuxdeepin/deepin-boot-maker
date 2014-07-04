@@ -138,6 +138,17 @@ int main(int argc, char **argv){
     QApplication app(argc, argv, true);
 
 #ifdef Q_OS_WIN32
+    //release dll
+    QFile d3d_dll(":/d3dcompiler_46.dll");
+    TCHAR szPath[MAX_PATH];
+    GetSystemDirectory(szPath, MAX_PATH);
+    QString destPath = QString::fromWCharArray(szPath) + "\\d3dcompiler_46.dll";
+    QFile destFile(destPath);
+    destFile.open(QIODevice::WriteOnly);
+    d3d_dll.open(QIODevice::ReadOnly);
+    destFile.write(d3d_dll.readAll());
+    destFile.close();
+    d3d_dll.close();
     app.setFont(QFont("Microsoft YaHei"));
 #endif
 
