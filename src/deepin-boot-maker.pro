@@ -51,21 +51,20 @@ CONFIG(debug, debug|release) {
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
-    po/en_US.ts \
+    po/am.ts \
+    po/cs.ts \
+    po/de_DE.ts \
+    po/es.ts \
+    po/es_CL.ts \
+    po/es_MX.ts \
+    po/fr.ts \
+    po/it.ts \
+    po/nb.ts \
+    po/pt_BR.ts \
+    po/pt_PT.ts \
+    po/ru.ts \
+    po/tr.ts \
     po/zh_TW.ts \
-	po/am.ts \
-	po/de_DE.ts \
-	po/es_MX.ts \
-	po/fr.ts \
-	po/nb.ts \
-	po/pt_PT.ts \
-	po/tr.ts \
-	po/cs.ts \
-	po/es_CL.ts \
-	po/es.ts \
-	po/it.ts \
-	po/pt_BR.ts \
-	po/ru.ts \
 
 
 win32{
