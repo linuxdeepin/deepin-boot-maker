@@ -9,6 +9,8 @@ class DiskUnity : public QObject
 public:
     explicit DiskUnity(QObject *parent = 0);
 
+    QString FormatDisk(const QString &diskDev);
+
     /*
         FixUsbDisk will recreate primary table of the usb disk
         and create only one primary partition as fat32 format,

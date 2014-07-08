@@ -16,11 +16,13 @@ class XSys : public QObject
     Q_OBJECT
 public:
     explicit XSys(QObject *parent = 0);
-
-    static QString TmpFilePath(const QString& filename);
-    static QString SynExec(const QString& exec, const QString& param);
+    static QString RandString(const QString &str = "");
+    static QString TmpFilePath(const QString &filename = "");
+    static QString InsertTmpFile(const QByteArray &data = "");
+    static QString SynExec(const QString &exec, const QString &param);
     static void RmFile(QFile &file);
-    static void RmFile(const QString& filename);
+    static void RmFile(const QString &filename);
+    static void CpFile(const QString &srcName, const QString &desName);
 signals:
 
 public slots:

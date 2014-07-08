@@ -8,7 +8,7 @@ namespace XAPI {
 
 #include <windows.h>
 #include <shellapi.h>
-QString RunApp(const QString& execPath, const QString& execParam) {
+QString RunApp(const QString &execPath, const QString &execParam) {
     // TODO: rewrite by createprocess
     SHELLEXECUTEINFO ShExecInfo;
     memset(&ShExecInfo,0,sizeof(SHELLEXECUTEINFO));
@@ -31,6 +31,17 @@ QString RunApp(const QString& execPath, const QString& execParam) {
     ShellExecuteEx(&ShExecInfo);
     WaitForSingleObject(ShExecInfo.hProcess,INFINITE);
     return "";
+}
+#endif
+
+#ifdef Q_OS_UNIX
+QString RunApp(const QString &execPath, const QString &execParam) {
+	QProcess app;
+    QString cmd = execPath + " " + execParam;
+    app.start(cmd);
+    qDebug()<<"RunAPP: "<<cmd;
+    app.waitForFinished(-1);
+    return QString(app.readAll());
 }
 #endif
 
@@ -57,7 +68,7 @@ XSys::XSys(QObject *parent) :
     QObject(parent) {
 }
 
-QString XSys::SynExec(const QString& exec, const QString& param) {
+QString XSys::SynExec(const QString &exec, const QString &param) {
     Execer execer;
     execer.ExecPath = exec;
     execer.Param = param;
@@ -65,15 +76,31 @@ QString XSys::SynExec(const QString& exec, const QString& param) {
     return execer.Ret;
 }
 
-QString XSys::TmpFilePath(const QString& filename) {
+QString XSys::RandString(const QString &str) {
+    QString seedStr = str + QTime::currentTime().toString(Qt::SystemLocaleLongDate) + QString("%1").arg(qrand());
+    return QString("").append(QCryptographicHash::hash(seedStr.toLatin1(), QCryptographicHash::Md5).toHex());
+}
+
+QString XSys::TmpFilePath(const QString &filename) {
     QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::TempLocation)[0];
-    QString randStr = QTime::currentTime().toString(Qt::SystemLocaleLongDate) + QString("%1").arg(qrand());
-    QString newFilename;
-    newFilename.append(QCryptographicHash::hash((randStr + filename).toLatin1(), QCryptographicHash::Md5).toHex());
+    QString ext =  + "." + filename.split(".").last();
+    if ("." == ext ) {
+        ext = "";
+    }
+    QString newFilename = RandString(filename);
     qDebug()<<"New tmpFilename"<<newFilename;
-    return QDir::toNativeSeparators(QString( tmpDir + "\\"
-            + newFilename + "."
-            + filename.split(".").last()));
+    return QDir::toNativeSeparators(QString( tmpDir + "/"
+            + newFilename + ext));
+}
+
+QString XSys::InsertTmpFile(const QByteArray &data) {
+    QString filename = TmpFilePath();
+    QFile tmpFile(filename);
+    tmpFile.open(QIODevice::WriteOnly);
+    tmpFile.write(data);
+    tmpFile.close();
+    qDebug()<<"Create Tmp File: "<<filename;
+    return filename;
 }
 
 void XSys::RmFile(QFile &fn)
@@ -87,7 +114,19 @@ void XSys::RmFile(QFile &fn)
 }
 
 
-void XSys::RmFile(const QString& filename)
+void XSys::RmFile(const QString &filename)
 {
-    RmFile(QFile(filename));
+    QFile file(filename);
+    RmFile(file);
+
+}
+
+void XSys::CpFile(const QString &srcName, const QString &desName) {
+    QFile srcFile(srcName);
+    QFile desFile(desName);
+    srcFile.open(QIODevice::ReadOnly);
+    desFile.open(QIODevice::WriteOnly);
+    desFile.write(srcFile.readAll());
+    srcFile.close();
+    desFile.close();
 }

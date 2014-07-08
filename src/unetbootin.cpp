@@ -1086,6 +1086,7 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
+    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -3039,8 +3040,6 @@ void unetbootin::runinst()
 	#endif
 
 
-    DiskUnity du;
-    du.FixUsbDisk(targetDev);
 #ifdef Q_OS_UNIX
     if (installType == tr("USB Drive"))
 	{
@@ -3064,11 +3063,25 @@ void unetbootin::runinst()
     #endif
 #endif
 
-#ifndef Q_OS_UNIX
-    qDebug()<<"getdevluid";
-	devluid = getdevluid(targetDev);
+    DiskUnity du;
+    targetDev = du.FormatDisk(rawtargetDev);
+    du.FixUsbDisk(targetDev);
+
+#ifdef Q_OS_UNIX
+    devluid = getdevluid(targetDev);
+    ginstallDir = "";
+    installDir = ginstallDir;
+    targetDrive = QString("%1/").arg(locatemountpoint(targetDev));
+    qDebug()<<"Install to "<<targetDrive;
 #endif
 
+#ifndef Q_OS_UNIX
+    qDebug()<<"getdevluid";
+    devluid = getdevluid(targetDev);
+#endif
+
+
+    
     kernelLine = "kernel";
 	kernelLoc = QString("/%1ubnkern").arg(ginstallDir);
 	initrdLine = "initrd";

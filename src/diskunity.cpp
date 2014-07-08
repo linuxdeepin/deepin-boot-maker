@@ -11,12 +11,6 @@ namespace XAPI {
 #include <windows.h>
 #include <shellapi.h>
 
-//typedef struct _STORAGE_DEVICE_NUMBER {
-//    DEVICE_TYPE DeviceType;
-//    ULONG DeviceNumber;
-//    ULONG PartitionNumber;
-//} STORAGE_DEVICE_NUMBER, *PSTORAGE_DEVICE_NUMBER;
-
 BOOL GetStorageDeviceNumberByHandle(HANDLE handle,
                     const STORAGE_DEVICE_NUMBER * sdn)
 {
@@ -85,13 +79,28 @@ bool FixUsbDisk(QString targetDev) {
 #endif
 
 #ifdef Q_OS_LINUX
-int FixUsbDisk(QString targetDev);
-int GetPartitionDiskDev(QString targetDev);
+
+QString GetPartitionDiskDev(QString targetDev) {
+    if (targetDev.contains(QRegExp("p\\d$")))
+        return QString(targetDev).remove(QRegExp("p\\d$"));
+    else
+        return QString(targetDev).remove(QRegExp("\\d$"));
+}
+
+int FixUsbDisk(QString targetDev) {
+    qDebug()<<"Fix Usb Disk"<<targetDev;
+    QString diskDev = GetPartitionDiskDev(targetDev);
+    XSys::CpFile(":/mbr.bin", diskDev);
+    return true;
+}
+
 #endif
 
 #ifdef Q_OS_MAC
 int FixUsbDisk(QString targetDev);
-int GetPartitionDiskDev(QString targetDev);
+QString GetPartitionDiskDev(QString targetDev) {
+    return QString(targetDev).remove(QRegExp("s\\d$"));
+}
 #endif
 }
 
@@ -99,6 +108,25 @@ DiskUnity::DiskUnity(QObject *parent) :
     QObject(parent){
 }
 
-bool DiskUnity::FixUsbDisk(const QString& targetDev) {
+bool DiskUnity::FixUsbDisk(const QString &targetDev) {
     return XAPI::FixUsbDisk(targetDev);
+}
+
+QString DiskUnity::FormatDisk(const QString &diskDev) {
+//    for (int i = 1; i < 32; ++i) {
+//        XSys::SynExec("umount", (" -v " + diskDev+"%1").arg(i));
+//    }
+    XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
+    XSys::SynExec("sync", "");
+    QString cmdfile = XSys::InsertTmpFile(QString("o\nn\np\n\n\n\n").toLatin1());
+    XSys::SynExec("fdisk", QString(" %1 < %2").arg(diskDev).arg(cmdfile));
+    QString newTargetDev = diskDev + "1";
+    XSys::SynExec("umount", " -v " + newTargetDev);
+    XSys::SynExec("mkfs.fat", newTargetDev);
+    QString mountPoint =  QString("/tmp/%1").arg(XSys::RandString());
+    XSys::SynExec("sync", "");
+    XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
+    XSys::SynExec("mount", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+    XSys::SynExec("sync", "");
+    return newTargetDev;
 }
