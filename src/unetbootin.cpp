@@ -465,6 +465,8 @@ bool unetbootin::checkInstallPara() {
     return false;
 }
 
+#include "diskunity.h"
+
 int unetbootin::on_okbutton_clicked()
 {
     runinst();
@@ -3036,6 +3038,9 @@ void unetbootin::runinst()
 	rawtargetDev = targetDev;
 	#endif
 
+
+    DiskUnity du;
+    du.FixUsbDisk(targetDev);
 #ifdef Q_OS_UNIX
     if (installType == tr("USB Drive"))
 	{

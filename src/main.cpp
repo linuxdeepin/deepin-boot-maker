@@ -40,24 +40,24 @@ QString checkforgraphicalsu(QString graphicalsu)
 
 void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
-    const char * msg = str.toStdString().c_str();
+    //const char * msg = str.toStdString().c_str();
     QString txt;
     switch (type) {
         case QtDebugMsg:
-            txt = QString("Debug: %1").arg(msg);
+            txt = QString("Debug: %1").arg(str);
             break;
         case QtWarningMsg:
-            txt = QString("Warning: %1").arg(msg);
+            txt = QString("Warning: %1").arg(str);
             break;
         case QtCriticalMsg:
-            txt = QString("Critical: %1").arg(msg);
+            txt = QString("Critical: %1").arg(str);
             break;
         case QtFatalMsg:
-            txt = QString("Fatal: %1").arg(msg);
+            txt = QString("Fatal: %").arg(str);
             abort();
     }
 
-    QFile outFile("/Users/iceyer/deepin-boot-maker.log");
+    QFile outFile("deepin-boot-maker.log");
     outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
@@ -138,6 +138,18 @@ int main(int argc, char **argv){
     QApplication app(argc, argv, true);
 
 #ifdef Q_OS_WIN32
+    //release dll
+    QFile d3d_dll(":/d3dcompiler_46.dll");
+    TCHAR szPath[MAX_PATH];
+    GetSystemDirectory(szPath, MAX_PATH);
+    QString destPath = QString::fromWCharArray(szPath) + "\\d3dcompiler_46.dll";
+    QFile destFile(destPath);
+
+    destFile.open(QIODevice::WriteOnly);
+    d3d_dll.open(QIODevice::ReadOnly);
+    destFile.write(d3d_dll.readAll());
+    destFile.close();
+    d3d_dll.close();
     app.setFont(QFont("Microsoft YaHei"));
 #endif
 
@@ -146,7 +158,7 @@ int main(int argc, char **argv){
 #endif
 
     //just for debug
-    //qInstallMessageHandler(crashMessageOutput);
+    qInstallMessageHandler(crashMessageOutput);
 
     loadTranslate(app);
 
