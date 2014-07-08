@@ -14,24 +14,28 @@ if ( -f $DBM_PRO && -f $DBM_PRO ){
 
 my @po_files = glob "*.po";
 my @po_langs = map { s/\.po$//; $_ } @po_files;
-print "po langs : $_ \n" for @po_langs;
-add_lang( $DBM_PRO, '^\s+po/([a-zA-Z_]+)\.ts', '^\s+po/zh_CN\.ts' );
-add_lang( $DBM_QRC, '^\s+<file>po/([a-zA-Z_]+)\.qm</file>', '^\s+<file>po/zh_CN\.qm</file>' );
+#print "po langs : $_ \n" for @po_langs;
+add_lang( $DBM_PRO, '\s+po/<lang>\.ts');
+add_lang( $DBM_QRC, '\s+<file>po/<lang>\.qm</file>');
+qx( rm $DBM_PRO.bak);
+qx( rm $DBM_QRC.bak);
 sub add_lang {
-	my ( $target_fp, $regex, $zhcn_regex ) = @_;
+	my ( $target_fp, $regex ) = @_;
+	my $zhcn_regex = $regex =~ s/<lang>/zh_CN/r ;
+	$regex =~ s/<lang>/([a-zA-Z_]+)/;
 	my @need_add;
 	my @aleady_have;
 	open my $target_fh , '<', $target_fp;
 	for (<$target_fh>){
 		if ( /$regex/ ){
-			print "get :".$1 ."\n";
+			#print "get :".$1 ."\n";
 			push @aleady_have , $1;
 		}
 	}
 	close $target_fh;
 	for my $l ( @po_langs ) {
 		if (! grep { $_ eq $l } @aleady_have ){
-			print "do not have $l  in $target_fp\n";
+			print "add $l  to file $target_fp\n";
 			push @need_add, $l;
 		}
 	}
