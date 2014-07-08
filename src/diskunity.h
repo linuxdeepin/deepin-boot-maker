@@ -17,11 +17,14 @@ public:
         if the usb stick has muti partition, all partition will be
         delete!!!
     */
-    bool FixUsbDisk(const QString& targetDev);
+    bool FixMBR(const QString& targetDev);
 
     /*
         GetPartitionDiskDev will return the
     */
+
+    bool EjectDisk(const QString &targetDev);
+
     static int GetPartitionDiskDev(QString targetDev);
 signals:
 

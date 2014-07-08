@@ -59,7 +59,11 @@ QString GetPartitionPhyDevName(QString targetDev) {
     return physicalDevName;
 }
 
-bool FixUsbDisk(QString targetDev) {
+bool FixMBR(const QString &){
+    return true;
+}
+
+bool FormatDisk(const QString &targetDev) {
     qDebug()<<"FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
     QString diskpartCmd = QString("list disk\r\nselect disk %1\r\nclean\r\ncreate partition primary\r\nlist partition\r\nselect partition 1\r\nformat fs=fat32 quick\r\nassign letter=%2\r\nactive\r\nlist partition\r\nexit\r\n").arg(deviceNum).arg(targetDev[0]);
@@ -69,10 +73,12 @@ bool FixUsbDisk(QString targetDev) {
     diskpartTxt.open(QIODevice::WriteOnly);
     diskpartTxt.write(diskpartCmd.toLatin1());
     diskpartTxt.close();
-
     XSys::SynExec("diskpart.exe", " /s " + cmdfilePath + " ");
-
     XSys::RmFile(diskpartTxt);
+    return true;
+}
+
+bool EjectDisk(const QString &targetDev) {
     return true;
 }
 
@@ -87,10 +93,39 @@ QString GetPartitionDiskDev(QString targetDev) {
         return QString(targetDev).remove(QRegExp("\\d$"));
 }
 
-int FixUsbDisk(QString targetDev) {
+bool FixMBR(const QString &targetDev) {
     qDebug()<<"Fix Usb Disk"<<targetDev;
     QString diskDev = GetPartitionDiskDev(targetDev);
     XSys::CpFile(":/mbr.bin", diskDev);
+    return true;
+}
+
+QString FormatDisk(const QString &diskDev) {
+    QString newTargetDev = diskDev + "1";
+    XSys::SynExec("umount", " -v " + newTargetDev);
+    XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
+    XSys::SynExec("sync", "");
+
+    XSys::SynExec("fdisk", QString(" %1 ").arg(diskDev), QString("o\nn\np\n\n\n\na\n1\nt\nb\nw\n"));
+    XSys::SynExec("sync", "");
+
+    XSys::SynExec("umount", " -v " + newTargetDev);
+    XSys::SynExec("sync", "");
+
+    XSys::SynExec("mkfs.fat", newTargetDev);
+    XSys::SynExec("sync", "");
+
+    QString mountPoint =  QString("/media/%1").arg(XSys::RandString());
+    XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
+    XSys::SynExec("sync", "");
+
+    XSys::SynExec("mount", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+    XSys::SynExec("sync", "");
+    return newTargetDev;
+}
+
+bool EjectDisk(const QString &targetDev) {
+    XSys::SynExec("umount", " -v " + targetDev);
     return true;
 }
 
@@ -108,25 +143,14 @@ DiskUnity::DiskUnity(QObject *parent) :
     QObject(parent){
 }
 
-bool DiskUnity::FixUsbDisk(const QString &targetDev) {
-    return XAPI::FixUsbDisk(targetDev);
+bool DiskUnity::FixMBR(const QString &targetDev) {
+    return XAPI::FixMBR(targetDev);
 }
 
 QString DiskUnity::FormatDisk(const QString &diskDev) {
-//    for (int i = 1; i < 32; ++i) {
-//        XSys::SynExec("umount", (" -v " + diskDev+"%1").arg(i));
-//    }
-    XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
-    XSys::SynExec("sync", "");
-    QString cmdfile = XSys::InsertTmpFile(QString("o\nn\np\n\n\n\n").toLatin1());
-    XSys::SynExec("fdisk", QString(" %1 < %2").arg(diskDev).arg(cmdfile));
-    QString newTargetDev = diskDev + "1";
-    XSys::SynExec("umount", " -v " + newTargetDev);
-    XSys::SynExec("mkfs.fat", newTargetDev);
-    QString mountPoint =  QString("/tmp/%1").arg(XSys::RandString());
-    XSys::SynExec("sync", "");
-    XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    XSys::SynExec("mount", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
-    XSys::SynExec("sync", "");
-    return newTargetDev;
+    return XAPI::FormatDisk(diskDev);
+}
+
+bool DiskUnity::EjectDisk(const QString &targetDev) {
+    return XAPI::EjectDisk(targetDev);
 }

@@ -1086,7 +1086,6 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
-    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -3065,7 +3064,7 @@ void unetbootin::runinst()
 
     DiskUnity du;
     targetDev = du.FormatDisk(rawtargetDev);
-    du.FixUsbDisk(targetDev);
+    du.FixMBR(targetDev);
 
 #ifdef Q_OS_UNIX
     devluid = getdevluid(targetDev);
@@ -3668,6 +3667,8 @@ void unetbootin::fininstall()
 
     this->tprogress->setValue(this->tprogress->maximum());
     isFinsh_ = true;
+    DiskUnity du;
+    du.EjectDisk(targetDev);
 }
 
 bool unetbootin::isFinsh() {

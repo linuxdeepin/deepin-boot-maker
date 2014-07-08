@@ -51,6 +51,7 @@ CONFIG(debug, debug|release) {
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
+    po/en_US.ts \
     po/zh_TW.ts \
 	po/am.ts \
 	po/de_DE.ts \

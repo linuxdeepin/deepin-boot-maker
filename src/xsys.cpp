@@ -8,7 +8,7 @@ namespace XAPI {
 
 #include <windows.h>
 #include <shellapi.h>
-QString RunApp(const QString &execPath, const QString &execParam) {
+QString RunApp(const QString &execPath, const QString &execParam, const QString &execPipeIn="") {
     // TODO: rewrite by createprocess
     SHELLEXECUTEINFO ShExecInfo;
     memset(&ShExecInfo,0,sizeof(SHELLEXECUTEINFO));
@@ -35,13 +35,24 @@ QString RunApp(const QString &execPath, const QString &execParam) {
 #endif
 
 #ifdef Q_OS_UNIX
-QString RunApp(const QString &execPath, const QString &execParam) {
-	QProcess app;
-    QString cmd = execPath + " " + execParam;
-    app.start(cmd);
-    qDebug()<<"RunAPP: "<<cmd;
-    app.waitForFinished(-1);
-    return QString(app.readAll());
+QString RunApp(const QString &execPath, const QString &execParam, const QString &execPipeIn="") {
+    QProcess app;
+    QString cmdline = execPath + " " + execParam;
+    app.start(cmdline);
+    if (!app.waitForStarted()) {
+        qWarning()<<"Start app failed: "<<cmdline;
+        return "";
+    }
+
+    app.write(execPipeIn.toLatin1());
+    app.closeWriteChannel();
+
+    if (!app.waitForFinished()) {
+        qWarning()<<"App quit failed: "<<cmdline;
+        return "";
+    }
+
+    return app.readAll();
 }
 #endif
 
@@ -49,7 +60,7 @@ QString RunApp(const QString &execPath, const QString &execParam) {
 
 class Execer: public QObject {
 public:
-    void run();
+    void run(const QString &execPipeIn="");
     QString ExecPath;
     QString Param;
     QString Ret;
@@ -57,22 +68,22 @@ public:
 };
 
 
-void Execer::run(){
-    Ret = XAPI::RunApp(ExecPath, Param);
-    qDebug()<<"Exec: "<<ExecPath<<endl
-            <<"Params: "<<Param<<endl
-            <<"Output: "<<Ret<<endl;
+void Execer::run(const QString &execPipeIn){
+    Ret = XAPI::RunApp(ExecPath, Param, execPipeIn);
+//    qDebug()<<"Exec: "<<ExecPath<<endl
+//            <<"Params: "<<Param<<endl
+//            <<"Output: "<<Ret<<endl;
 }
 
 XSys::XSys(QObject *parent) :
     QObject(parent) {
 }
 
-QString XSys::SynExec(const QString &exec, const QString &param) {
+QString XSys::SynExec(const QString &exec, const QString &param, const QString &execPipeIn) {
     Execer execer;
     execer.ExecPath = exec;
     execer.Param = param;
-    execer.run();
+    execer.run(execPipeIn);
     return execer.Ret;
 }
 
@@ -121,12 +132,19 @@ void XSys::RmFile(const QString &filename)
 
 }
 
-void XSys::CpFile(const QString &srcName, const QString &desName) {
+bool XSys::CpFile(const QString &srcName, const QString &desName) {
+    bool ret = true;
     QFile srcFile(srcName);
     QFile desFile(desName);
     srcFile.open(QIODevice::ReadOnly);
     desFile.open(QIODevice::WriteOnly);
-    desFile.write(srcFile.readAll());
+    QByteArray data = srcFile.readAll();
+    qint64 writeBytes = desFile.write(data);
+    if (writeBytes != data.size()) {
+        qWarning()<<"Copy File Failed, "<<srcName<<" to "<<desName;
+        ret = false;
+    }
     srcFile.close();
     desFile.close();
+    return ret;
 }
