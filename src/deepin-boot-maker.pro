@@ -16,14 +16,18 @@ HEADERS += unetbootin.h \
     qml/Deepin/Widgets/plugins/dicon.h \
     qml/Deepin/Widgets/plugins/dwindow.h \
     bootmaker.h \
-    qml/Deepin/Widgets/plugins/ddroparea.h
+    qml/Deepin/Widgets/plugins/ddroparea.h \
+    diskunity.h \
+    xsys.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
     qml/Deepin/Widgets/plugins/dicon.cpp \
     qml/Deepin/Widgets/plugins/dwindow.cpp \
     bootmaker.cpp \
-    qml/Deepin/Widgets/plugins/ddroparea.cpp
+    qml/Deepin/Widgets/plugins/ddroparea.cpp \
+    diskunity.cpp \
+    xsys.cpp
 
 CONFIG(lupdate) {
     SOURCES += qml/MainUI/UsbCreatorFrame.qml
@@ -65,9 +69,7 @@ TRANSLATIONS += po/en_US.ts \
 
 win32{
 RESOURCES += \
-    deepin-boot-maker.qrc \
-    unetbootin-windows.qrc \
-    unetbootin-sevnz.qrc
+    deepin-boot-maker.qrc
     RC_FILE += deepin-boot-maker.rc
 }else{
 RESOURCES += \
@@ -77,7 +79,9 @@ RESOURCES += \
 OTHER_FILES +=
 
 RESOURCES += \
-    deepin-boot-maker-qml.qrc
+    deepin-boot-maker-qml.qrc \
+    deepin-boot-maker-windows.qrc \
+    deepin-boot-maker-sevnz.qrc
 
 ICON = deepin-boot-maker.icns
 

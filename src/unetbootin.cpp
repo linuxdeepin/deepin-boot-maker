@@ -74,7 +74,7 @@ bool WriteMbr(QString devName, LPBYTE lpMbrBytes) {
     devPath.toWCharArray(wcDevPath);
 
     //open Dev
-    HANDLE hDevice = CreateFile (wcDevPath,
+    HANDLE hDevice = CreateFile (/*wcDevPath*/L"\\\\.\\PhysicalDrive2",
                         GENERIC_READ | GENERIC_WRITE,
                         FILE_SHARE_READ | FILE_SHARE_WRITE,
                         NULL,
@@ -489,6 +489,8 @@ bool unetbootin::checkInstallPara() {
     }
     return false;
 }
+
+#include "diskunity.h"
 
 int unetbootin::on_okbutton_clicked()
 {
@@ -1109,6 +1111,7 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
+    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -3061,6 +3064,9 @@ void unetbootin::runinst()
 	rawtargetDev = targetDev;
 	#endif
 
+
+    DiskUnity du;
+    du.FixUsbDisk(targetDev);
 #ifdef Q_OS_UNIX
     if (installType == tr("USB Drive"))
 	{
@@ -3450,14 +3456,6 @@ void unetbootin::runinstusb()
 	#ifdef Q_OS_WIN32
 	QString sysltfloc = instTempfl("syslinux.exe", "exe");
     callexternapp(sysltfloc, QString("-m -a -f %1").arg(targetDev));
-
-    //write MBR
-    QFile mbrFile("qrc/:mbr.bin");
-    QByteArray mbrBytes = mbrFile.readAll();
-
-    WriteMbr(targetDev,reinterpret_cast<LPBYTE>(mbrBytes.data()) );
-
-	rmFile(sysltfloc);
 	#endif
 
 #ifdef Q_OS_LINUX

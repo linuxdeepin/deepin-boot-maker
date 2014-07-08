@@ -2,8 +2,11 @@
 #include "unetbootin.h"
 #include "bootmaker.h"
 
+#include "diskunity.h"
+
 #include <QThread>
 #include <QWidget>
+
 
 BootMaker::BootMaker(QObject* parent): QObject(parent){
      unetbootinPtr = new unetbootin;
@@ -22,17 +25,18 @@ QString BootMaker::url2LocalFile(QString url){
 }
 
 int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode) {
+
     unetbootinPtr->isoImagePath = isoPath;
     unetbootinPtr->usbDriverPath = usbDriver;
     unetbootinPtr->biosMode = biosMode;
     if (unetbootinPtr->checkInstallPara()){
+
         QThread *pwork = new QThread();
         unetbootinPtr->moveToThread(pwork);
         pwork->start();
         unetbootinPtr->start();
         return 0;
     }
-    //失败
     return 1;
 }
 
