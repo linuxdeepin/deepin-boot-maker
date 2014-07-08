@@ -68,7 +68,7 @@ QString GetPartitionPhyDevName(QString targetDev) {
 bool FixUsbDisk(QString targetDev) {
     qDebug()<<"FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
-    QString diskpartCmd = QString("list disk\r\nselect disk %1\r\nclean\r\ncreate partition primary\r\nlist partition\r\nselect partition 1\r\nformat fs=fat32 quick\r\nassign\r\nactive\r\nlist partition\r\nexit\r\n").arg(deviceNum);
+    QString diskpartCmd = QString("list disk\r\nselect disk %1\r\nclean\r\ncreate partition primary\r\nlist partition\r\nselect partition 1\r\nformat fs=fat32 quick\r\nassign letter=%2\r\nactive\r\nlist partition\r\nexit\r\n").arg(deviceNum).arg(targetDev[0]);
     QString cmdfilePath = XSys::TmpFilePath("diskpart.txt");
     qWarning()<<"FixUsbDisk: cmdfilePath: "<<cmdfilePath;
     QFile diskpartTxt(cmdfilePath);
