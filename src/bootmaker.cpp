@@ -2,6 +2,8 @@
 #include "unetbootin.h"
 #include "bootmaker.h"
 
+#include "xsys.h"
+
 #include "diskunity.h"
 
 #include <QThread>
@@ -10,7 +12,11 @@
 
 BootMaker::BootMaker(QObject* parent): QObject(parent){
      unetbootinPtr = new unetbootin;
+     flm = new FileListMonitor();
+     tprogress = new ProcessRate();
      unetbootinPtr->ubninitialize();
+     unetbootinPtr->flm = flm;
+     unetbootinPtr->tprogress = tprogress;
 }
 
 
@@ -40,12 +46,20 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
     }
     return 1;
 }
+#include <memory>
 
 int BootMaker::processRate() {
-    return unetbootinPtr->tprogress->rate();
+    if (!unetbootinPtr->isFinsh_) {
+        tprogress->setValue(flm->FinishSize());
+    } else {
+        tprogress->setValue(tprogress->maximum());
+    }
+    qDebug()<<QString("value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(tprogress->maximum()).arg(tprogress->rate());
+    return tprogress->rate();
 }
 
 bool BootMaker::isFinish() {
+     qDebug()<<"isFinish: "<<unetbootinPtr->isFinsh();
     return unetbootinPtr->isFinsh();
 }
 

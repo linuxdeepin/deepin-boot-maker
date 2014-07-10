@@ -105,22 +105,18 @@ QString FormatDisk(const QString &diskDev) {
 
     QString newTargetDev = diskDev + "1";
     XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
-    XSys::SynExec("sync", "");
 
     XSys::SynExec("fdisk", QString(" %1 ").arg(diskDev), QString("o\nn\np\n\n\n\na\n1\nt\nb\nw\n"));
-    XSys::SynExec("sync", "");
 
-    XSys::SynExec("umount", " -v " + newTargetDev);
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
 
-    XSys::SynExec("mkfs.fat", newTargetDev);
-    XSys::SynExec("sync", "");
+    XSys::SynExec("mkfs.fat -F32 -v -I -n \"DeepinOS\" ", newTargetDev);
 
     QString mountPoint =  QString("/media/%1").arg(XSys::RandString());
     XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    XSys::SynExec("sync", "");
+    XSys::SynExec("chmod a+wrx ", mountPoint);
 
-    XSys::SynExec("mount", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
-    XSys::SynExec("sync", "");
+    XSys::SynExec("mount -o rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec,flush", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
     return newTargetDev;
 }
 
@@ -153,4 +149,29 @@ QString DiskUnity::FormatDisk(const QString &diskDev) {
 
 bool DiskUnity::EjectDisk(const QString &targetDev) {
     return XAPI::EjectDisk(targetDev);
+}
+
+
+
+FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){
+    finishSize_ = 0;
+    connect(this, SIGNAL(totalSize(qint64)), SLOT(SetTotalSize(qint64)));
+    connect(this, SIGNAL(toNextFile(const QString &)), SLOT(ToNextFile(const QString &)));
+}
+
+void FileListMonitor::ToNextFile(const QString &filename) {
+    if (!currentFile_.isEmpty()){
+        QFileInfo file(currentFile_);
+        finishSize_ += file.size();
+    }
+    currentFile_ = filename;
+}
+
+void FileListMonitor::SetTotalSize(qint64 size) {
+    totalSize_ = size;
+}
+
+qint64 FileListMonitor::FinishSize() {
+    QFileInfo file(currentFile_);
+    return finishSize_ + file.size();
 }

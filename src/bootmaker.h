@@ -6,7 +6,8 @@
 #include <QStringList>
 
 class unetbootin;
-
+class FileListMonitor;
+class ProcessRate;
 class BootMaker : public QObject{
    Q_OBJECT
 public:
@@ -23,6 +24,8 @@ public:
     Q_INVOKABLE QString homeDir();
 
     unetbootin  *unetbootinPtr;
+    FileListMonitor * flm;
+    ProcessRate *tprogress;
 protected:
     void reboot();
 };

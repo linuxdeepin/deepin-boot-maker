@@ -205,7 +205,7 @@ public:
         if (0 != max) {
             if (value_ > max)
                 return 100;
-            return value_ * 100 / max;
+            return value_ * 100.0 / max;
         }
         return 100;
     }
@@ -216,6 +216,7 @@ protected:
     int value_;
 };
 
+class FileListMonitor;
 
 class unetbootin : public QObject
 {
@@ -240,6 +241,7 @@ public:
     QString sdesc1String;
 
     ProcessRate *tprogress;
+    FileListMonitor * flm;
     bool isFinsh_;
     bool skipExtraction;
 	bool isarch64;
@@ -292,7 +294,6 @@ public:
 #ifdef Q_OS_MAC
 	QDir resourceDir;
 #endif
-
     bool checkInstallPara();
     bool isFinsh();
     bool ubninitialize();

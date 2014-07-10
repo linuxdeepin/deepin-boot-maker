@@ -7,6 +7,7 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License at <http://www.gnu.org/licenses/> for more details.
 */
 
+#include "diskunity.h"
 #include "unetbootin.h"
 #include <QApplication>
 static const QList<QRegExp> ignoredtypesbothRL = QList<QRegExp>()
@@ -182,7 +183,6 @@ bool unetbootin::ubninitialize()
 {
     biosMode = false;
     connect(this, SIGNAL(start()), SLOT(on_okbutton_clicked()));
-    tprogress = new ProcessRate();
     isFinsh_ = false;
     skipExtraction = false;
     redundanttopleveldir = false;
@@ -465,7 +465,6 @@ bool unetbootin::checkInstallPara() {
     return false;
 }
 
-#include "diskunity.h"
 
 int unetbootin::on_okbutton_clicked()
 {
@@ -1086,7 +1085,6 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
-    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -1422,15 +1420,20 @@ QStringList unetbootin::extractallfiles(QString archivefile, QString dirxfilesto
 {
 	QStringList filelist = filesizelist.first;
 	QStringList extractedfiles;
-    tprogress->setMaximum(filelist.size() * 100 / 98);
+    QFileInfo isoFile(isoImagePath);
+    qint64 isoSize = isoFile.size();
+    tprogress->setMaximum(isoSize * 100 / 98);
 	tprogress->setMinimum(0);
     tprogress->setValue(0);
     qDebug()<<(tr("<b>Extracted:</b> 0 of %1 files").arg(filelist.size()));
 	for (int i = 0; i < filelist.size(); ++i)
     {
         qDebug()<<(tr("<b>Extracted:</b> %1 of %2 files").arg(i).arg(filelist.size()));
-		tprogress->setValue(i);
-		if (extractfile(filelist.at(i), QString("%1%2").arg(dirxfilesto).arg(outputfilelist.at(i)), archivefile))
+        tprogress->setValue(flm->FinishSize());
+        qDebug()<<QString("value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(isoSize).arg(tprogress->rate());
+        QString desPath = QString("%1%2").arg(dirxfilesto).arg(outputfilelist.at(i));
+        flm->toNextFile(desPath);
+        if (extractfile(filelist.at(i), desPath, archivefile))
 		{
 			extractedfiles.append(filelist.at(i));
 		}
@@ -3652,7 +3655,7 @@ void unetbootin::killApplication()
 void unetbootin::fininstall()
 {
 	#ifdef Q_OS_UNIX
-	this->tprogress->setValue(this->tprogress->maximum()*2/3);
+    this->tprogress->setValue(this->tprogress->maximum()*99/100);
     qDebug()<<(tr("Syncing filesystems"));
 	callexternapp("sync", "");
 	#endif

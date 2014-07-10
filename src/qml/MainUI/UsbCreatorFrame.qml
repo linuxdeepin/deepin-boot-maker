@@ -38,7 +38,7 @@ DWindowFrame {
 
         Timer {
             id: processTimer
-            interval: 2000
+            interval: 1
             running: false
             repeat: true
             onTriggered: {
