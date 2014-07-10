@@ -1086,6 +1086,7 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
+    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -3062,9 +3063,12 @@ void unetbootin::runinst()
     #endif
 #endif
 
-    DiskUnity du;
-    targetDev = du.FormatDisk(rawtargetDev);
-    du.FixMBR(targetDev);
+    if (formatDisk) {
+        DiskUnity du;
+        targetDev = du.FormatDisk(rawtargetDev);
+        du.FixMBR(targetDev);
+    }
+
 
 #ifdef Q_OS_UNIX
     devluid = getdevluid(targetDev);

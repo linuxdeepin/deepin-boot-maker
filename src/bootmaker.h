@@ -13,7 +13,7 @@ public:
     explicit BootMaker (QObject* parent = 0);
     //对外API
     Q_INVOKABLE QStringList listUsbDrives();
-    Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool biosMode);
+    Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool biosMode = false, bool formatDisk = false);
     Q_INVOKABLE int processRate();
     Q_INVOKABLE bool isFinish();
     Q_INVOKABLE bool isISOImage(QString isoPath);

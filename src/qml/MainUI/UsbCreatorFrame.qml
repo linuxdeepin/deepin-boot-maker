@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Dialogs 1.1
 import QtQuick.Window 2.0
@@ -65,14 +65,24 @@ DWindowFrame {
         Rectangle {
             color: "transparent"
             width: 230
-            height: 400
+            height: 420
             Column {
                 anchors.centerIn: parent
                 width: 64
-                height: 64 * 3
+                height: 68 * 3
                 Image {
                     id: isoIcon
                     source: "qrc:/image/iso-inactive.png"
+                }
+                NumberAnimation {
+                    id: isoAnimation
+                    running: false
+                    loops: Animation.Infinite
+                    target: isoIcon
+                    from: 0
+                    to: 360
+                    property: "rotation"
+                    duration: 2000
                 }
                 AnimatedImage {
                     id: process
@@ -104,7 +114,7 @@ DWindowFrame {
         Rectangle {
             color: "transparent"
             width: 430
-            height: 400
+            height: 420
             Column {
                 Rectangle {
                     color: "transparent"
@@ -171,7 +181,7 @@ DWindowFrame {
                     id: steps
                     color: "transparent"
                     width: 430
-                    height: 230
+                    height: 250
                     Column {
                         id: firstStep
                         Rectangle {
@@ -227,7 +237,7 @@ DWindowFrame {
                             id: rcUsb
                             color: "transparent"
                             width: 430
-                            height: 55
+                            height: 75
                             Column {
                                 anchors.verticalCenter: parent.verticalCenter
                                 DLabel {
@@ -317,6 +327,35 @@ DWindowFrame {
                                     id: bisoMode
                                     text: qsTr("<font color='#ffffff'>Support BIOS. Unselect here. </font>")
                                 }
+                                Rectangle {
+                                    color: "transparent"
+                                    width: 430
+                                    height: 5
+                                }
+                                DCheckBox {
+                                    id: formatDisk
+                                    text: qsTr("<font color='#ffffff'>format usb disk.</font>")
+
+                                    MessageDialog{
+                                        id: messageDialog
+                                        icon: StandardIcon.Warning
+                                        standardButtons: StandardButton.Ok | StandardButton.Cancel
+                                        title: qsTr("Format Disk");
+                                        text: qsTr("Format Disk?")
+                                        onAccepted: {
+                                            formatDisk.checked = true
+                                        }
+                                        onRejected:{
+                                            formatDisk.checked = false
+                                        }
+                                    }
+
+                                    onClicked:{
+                                        if (true === formatDisk.checked) {
+                                            messageDialog.visible = true
+                                        }
+                                    }
+                                }
                             }
                         }
                         Rectangle {
@@ -338,12 +377,14 @@ DWindowFrame {
                                     var result = usbCreator.start(
                                                 isoPath.text,
                                                 usbDriver.currentText,
-                                                bisoMode.checked)
+                                                bisoMode.checked,
+                                                formatDisk.checked)
                                     if (0 === result) {
                                         //make the iso/usb selector invisible
                                         firstStep.visible = false
                                         secondStep.visible = true
                                         process.source = "qrc:/image/process-active.gif"
+                                        isoAnimation.running = true
                                         process.playing = true
                                         processTimer.start()
                                         btClose.visible = false
@@ -386,6 +427,7 @@ DWindowFrame {
                                     secondStep.visible = false
                                     thirdStep.visible = true
                                     btClose.visible = true
+                                    isoAnimation.running = false
                                 }
                             }
                         }

@@ -235,6 +235,7 @@ public:
     QString isoImagePath;
     QString usbDriverPath;
     bool    biosMode;
+    bool    formatDisk;
     QString sdesc2String;
     QString sdesc1String;
 

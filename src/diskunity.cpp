@@ -101,8 +101,9 @@ bool FixMBR(const QString &targetDev) {
 }
 
 QString FormatDisk(const QString &diskDev) {
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
+
     QString newTargetDev = diskDev + "1";
-    XSys::SynExec("umount", " -v " + newTargetDev);
     XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
     XSys::SynExec("sync", "");
 
@@ -110,7 +111,6 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec("sync", "");
 
     XSys::SynExec("umount", " -v " + newTargetDev);
-    XSys::SynExec("sync", "");
 
     XSys::SynExec("mkfs.fat", newTargetDev);
     XSys::SynExec("sync", "");
@@ -125,7 +125,7 @@ QString FormatDisk(const QString &diskDev) {
 }
 
 bool EjectDisk(const QString &targetDev) {
-    XSys::SynExec("umount", " -v " + targetDev);
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDiskDev(targetDev)));
     return true;
 }
 

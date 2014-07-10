@@ -24,11 +24,12 @@ QString BootMaker::url2LocalFile(QString url){
     return QUrl(url).toLocalFile();
 }
 
-int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode) {
+int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool formatDisk) {
 
     unetbootinPtr->isoImagePath = isoPath;
     unetbootinPtr->usbDriverPath = usbDriver;
     unetbootinPtr->biosMode = biosMode;
+    unetbootinPtr->formatDisk = formatDisk;
     if (unetbootinPtr->checkInstallPara()){
 
         QThread *pwork = new QThread();
