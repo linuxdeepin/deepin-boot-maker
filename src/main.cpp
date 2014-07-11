@@ -104,7 +104,7 @@ void loadTranslate(QApplication& app) {
         tranlateUrl = QString(":/po/%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     }
 
-    qDebug()<<"tr file: "<<tranlateUrl<<endl;
+    qDebug()<<"load translate file: "<<tranlateUrl<<endl;
 
     if (!QFile::exists(tranlateUrl)) {
         tranlateUrl = ":/en_US.qm";

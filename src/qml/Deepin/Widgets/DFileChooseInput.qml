@@ -28,17 +28,17 @@ DTextInput {
             gradient: Gradient {
                 GradientStop {
                     position: 0.0
-                    color: increaseButton.pressed ? Qt.rgba(0, 0, 0, 0.05) : Qt.rgba(1, 1, 1, 0.05)
+                    color: loadFileButton.pressed ? Qt.rgba(0, 0, 0, 0.05) : Qt.rgba(1, 1, 1, 0.05)
                 }
                 GradientStop {
                     position: 1.0
-                    color: increaseButton.pressed ? Qt.rgba(0, 0, 0, 0) : Qt.rgba(1, 1, 1, 0)
+                    color: loadFileButton.pressed ? Qt.rgba(0, 0, 0, 0) : Qt.rgba(1, 1, 1, 0)
                 }
             } 
         }
 
         DImageButton {
-            id: increaseButton
+            id: loadFileButton
             anchors.verticalCenter: parent.verticalCenter
             normal_image: "images/loadfile_normal.png"
             hover_image: "images/loadfile_hover.png"

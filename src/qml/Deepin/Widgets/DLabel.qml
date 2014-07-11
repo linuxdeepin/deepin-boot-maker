@@ -3,9 +3,7 @@ import QtQuick.Controls 1.0
 
 Label {
     focus: true
-    DConstants {
-        id: dCnst
-    }
+    property var dconstants: DConstants {}
     
-    color: dCnst.fgColor
+    color: dconstants.fgColor
 }

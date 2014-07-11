@@ -329,5 +329,47 @@
         <file>qml/QtQuick/Controls/Private/CalendarUtils.js</file>
         <file>qml/QtQuick/Controls/Private/StackView.js</file>
         <file>qml/QtQuick/Controls/Private/style.js</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-down.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-down@2x.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-left.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-left@2x.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-right.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-right@2x.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-up.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/arrow-up@2x.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/button.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/button_down.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/check.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/check@2x.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/editbox.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/focusframe.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/groupbox.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/header.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/leftanglearrow.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/progress-indeterminate.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/rightanglearrow.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/scrollbar-handle-horizontal.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/scrollbar-handle-transient.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/scrollbar-handle-vertical.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/slider-groove.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/slider-handle.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/spinner_large.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/spinner_medium.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/spinner_small.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/tab.png</file>
+        <file>qml/QtQuick/Controls/Styles/Base/images/tab_selected.png</file>
+        <file>qml/QtQuick/Dialogs/images/checkers.png</file>
+        <file>qml/QtQuick/Dialogs/images/checkmark.png</file>
+        <file>qml/QtQuick/Dialogs/images/copy.png</file>
+        <file>qml/QtQuick/Dialogs/images/critical.png</file>
+        <file>qml/QtQuick/Dialogs/images/crosshairs.png</file>
+        <file>qml/QtQuick/Dialogs/images/folder.png</file>
+        <file>qml/QtQuick/Dialogs/images/information.png</file>
+        <file>qml/QtQuick/Dialogs/images/question.png</file>
+        <file>qml/QtQuick/Dialogs/images/slider_handle.png</file>
+        <file>qml/QtQuick/Dialogs/images/sunken_frame.png</file>
+        <file>qml/QtQuick/Dialogs/images/up.png</file>
+        <file>qml/QtQuick/Dialogs/images/warning.png</file>
+        <file>qml/QtQuick/Dialogs/images/window_border.png</file>
     </qresource>
 </RCC>

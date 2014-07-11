@@ -10,21 +10,38 @@ Item {
     property bool pressed: false
 
     property alias text: currentLabel.text
-    property var labels
-
-    signal clicked
+    property alias menu: menu
 
     property var parentWindow
+    property var labels
+    property int selectIndex: 0
+    onSelectIndexChanged: menu.currentIndex = selectIndex
 
-    property var menu: DMenu {
+    signal clicked
+    signal menuSelect(int index)
+
+    Component.onCompleted: {
+        if(selectIndex != -1){
+            text = menu.labels[selectIndex]
+            menu.currentIndex = selectIndex
+        }
+    }
+
+    DMenu {
+        id: menu
         parentWindow: combobox.parentWindow
         labels: combobox.labels
+        onMenuSelect: {
+            combobox.menuSelect(index)
+            selectIndex = index
+            combobox.text = menu.labels[selectIndex]
+        }
     }
 
     function showMenu(x, y, w) {
-        menu.x = x - menu.frameEdge
+        menu.x = x - menu.frameEdge + 1
         menu.y = y - menu.frameEdge
-        menu.width = w + menu.frameEdge * 2
+        menu.width = w + menu.frameEdge * 2 -2
         menu.visible = true
     }
 

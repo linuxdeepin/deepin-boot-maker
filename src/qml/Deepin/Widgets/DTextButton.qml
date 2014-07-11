@@ -5,7 +5,7 @@ Rectangle{
     width: buttonHeader.width + buttonMiddle.width + buttonTail.width
     height: buttonHeader.height
     color: "transparent"
-    property int minMiddleWidth: 16
+    property int minMiddleWidth: 50
 
     property alias text: title.text
     property alias textColor: title.color

@@ -8,6 +8,7 @@ Item {
     property alias text: label.text
     property alias fontSize: label.font.pixelSize
     property alias hasUnderline: label.font.underline
+    property alias label: label
 
     signal clicked
 

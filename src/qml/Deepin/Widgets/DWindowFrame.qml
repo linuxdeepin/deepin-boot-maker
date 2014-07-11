@@ -16,7 +16,7 @@ Item {
         color: "#232323"
         radius: frameRadius
         border.width: 1
-        border.color: Qt.rgba(1, 1, 1, 0.3)
+        border.color: Qt.rgba(1, 1, 1, 0.15)
         width: window.width - (shadowRadius + frameRadius) * 2
         height: window.height - (shadowRadius + frameRadius) * 2
 

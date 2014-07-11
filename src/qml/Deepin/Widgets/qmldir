@@ -53,6 +53,9 @@ DSeparatorHorizontal 1.0 DSeparatorHorizontal.qml
 DTransparentButton 1.0 DTransparentButton.qml
 DRectWithCorner 1.0 DRectWithCorner.qml
 DComboBox 1.0 DComboBox.qml
+DComboBoxSimple 1.0 DComboBoxSimple.qml
+DEditComboBox 1.0 DEditComboBox.qml
+DEditComboBoxSimple 1.0 DEditComboBoxSimple.qml
 DRectangle 1.0 DRectangle.qml
 DListView 1.0 DListView.qml
 DGridView 1.0 DGridView.qml
@@ -61,7 +64,6 @@ DPreferenceWindow 1.0 DPreferenceWindow.qml
 DFlickable 1.0 DFlickable.qml
 DFileChooseInput 1.0 DFileChooseInput.qml
 DFileChooseDialog 1.0 DFileChooseDialog.qml
-DEditComboBox 1.0 DEditComboBox.qml
 DDragableArea 1.0 DDragableArea.qml
 DDialogBox 1.0 DDialogBox.qml
 DCheckBox 1.0 DCheckBox.qml
@@ -69,3 +71,4 @@ DRadio 1.0 DRadio.qml
 DGroupBox 1.0 DGroupBox.qml
 DPopupWindow 1.0 DPopupWindow.qml
 DPopupRoundItem 1.0 DPopupRoundItem.qml
+DLinkText 1.0 DLinkText.qml

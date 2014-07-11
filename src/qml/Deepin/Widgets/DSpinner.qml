@@ -91,24 +91,75 @@ DTextInput {
         height: parent.height
         anchors.right: parent.right
 
-        DImageButton {
-            id: increaseButton
-            anchors.verticalCenter: parent.verticalCenter
-            normal_image: "images/spinner_increase_normal.png"
-            hover_image: "images/spinner_increase_hover.png"
-            press_image: "images/spinner_increase_press.png"
-
-            onClicked: increase()
+        Rectangle {
+            width: 1
+            height: parent.height
+            color: Qt.rgba(1, 1, 1, 0.1)
         }
 
-        DImageButton{
-            id: decreaseButton
-            anchors.verticalCenter: parent.verticalCenter
-            normal_image: "images/spinner_decrease_normal.png"
-            hover_image: "images/spinner_decrease_hover.png"
-            press_image: "images/spinner_decrease_press.png"
+        Item {
+            width: increaseButton.width
+            height: parent.height
 
-            onClicked: decrease()
+            Rectangle {
+                anchors.fill: parent
+                gradient: Gradient {
+                    GradientStop {
+                        position: 0.0
+                        color: increaseButton.pressed ? Qt.rgba(0, 0, 0, 0.05) : Qt.rgba(1, 1, 1, 0.05)
+                    }
+                    GradientStop {
+                        position: 1.0
+                        color: increaseButton.pressed ? Qt.rgba(0, 0, 0, 0) : Qt.rgba(1, 1, 1, 0)
+                    }
+                } 
+            }
+
+            DImageButton {
+                id: increaseButton
+                anchors.verticalCenter: parent.verticalCenter
+                normal_image: "images/spinner_increase_normal.png"
+                hover_image: "images/spinner_increase_hover.png"
+                press_image: "images/spinner_increase_press.png"
+
+                onClicked: increase()
+            }
+        }
+
+        Rectangle {
+            width: 1
+            height: parent.height
+            color: Qt.rgba(1, 1, 1, 0.1)
+        }
+
+        Item {
+            width: decreaseButton.width
+            height: parent.height
+
+            Rectangle {
+                anchors.fill: parent
+                radius: 3
+                gradient: Gradient {
+                    GradientStop {
+                        position: 0.0
+                        color: decreaseButton.pressed ? Qt.rgba(0, 0, 0, 0.05) : Qt.rgba(1, 1, 1, 0.05)
+                    }
+                    GradientStop {
+                        position: 1.0
+                        color: decreaseButton.pressed ? Qt.rgba(0, 0, 0, 0) : Qt.rgba(1, 1, 1, 0)
+                    }
+                } 
+            }
+
+            DImageButton{
+                id: decreaseButton
+                anchors.verticalCenter: parent.verticalCenter
+                normal_image: "images/spinner_decrease_normal.png"
+                hover_image: "images/spinner_decrease_hover.png"
+                press_image: "images/spinner_decrease_press.png"
+
+                onClicked: decrease()
+            }
         }
     }
 }

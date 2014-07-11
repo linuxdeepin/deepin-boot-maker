@@ -37,6 +37,8 @@ DPopupWindow {
     width: minWidth + 24
     height: completeViewBox.height + 32
 
+    property int maxHeight: -1
+
     property alias currentIndex: completeView.currentIndex
     property var labels
     visible: false
@@ -56,7 +58,9 @@ DPopupWindow {
             ListView {
                 id: completeView
                 width: parent.width
-                height: childrenRect.height
+                height: maxHeight != -1 ? Math.min(childrenHeight, maxHeight) : childrenHeight
+                property int childrenHeight: childrenRect.height
+                maximumFlickVelocity: 1000
                 model: labels
                 delegate: DMenuItem {
                     text: labels[index]
@@ -66,7 +70,6 @@ DPopupWindow {
                     }
                 }
                 clip: true
-                interactive: false
             }
         }
 

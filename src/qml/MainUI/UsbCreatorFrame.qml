@@ -20,17 +20,10 @@ DWindowFrame {
             property int lableMaxWidth: 380
 
             function refreshUsbDriver() {
-                var oldCurText = usbDriver.currentText
+                var oldCurText = usbDriver.text
                 var usblist = usbCreator.listUsbDrives()
-                var index = 0
-                usbDriver.model = usblist
-                for (var i = 0; i < usblist.length; i++) {
-                    if (usbDriver.model[i] === oldCurText) {
-                        index = i
-                    }
-                }
-                usbDriver.currentIndex = index
-                if (usbDriver.model.length > 0) {
+                usbDriver.labels = usblist
+                if (usblist.length > 0) {
                     usbIcon.source = "qrc:/image/usb-active.png"
                 }
             }
@@ -210,8 +203,8 @@ DWindowFrame {
                                         id: isoFileChoose
                                         visible: false
                                         selectMultiple: false
-                                        folder: usbCreator.homeDir()
-					//nameFilters: ["ISO (*.iso);;"]
+                                        // folder: usbCreator.homeDir()
+                                        //nameFilters: ["ISO (*.iso);;"]
                                         onAccepted: {
                                             usbCreator.isoImagePath = usbCreator.url2LocalFile(
                                                         isoFileChoose.fileUrl)
@@ -253,69 +246,13 @@ DWindowFrame {
                                     width: 430
                                     height: 5
                                 }
-                                ComboBox {
-                                    id: usbDriver
+                                DComboBox {
                                     width: 210
-                                    height: isoPath.height
-                                    model: usbCreator.listUsbDrives()
-
-                                    style: ComboBoxStyle {
-                                        QtObject {
-                                            id: buttonImage
-                                            property string status: usbDriver.pressed ? "press" : "normal"
-                                            property string header: "qrc:/image/button_left_%1.png".arg(
-                                                                        status)
-                                            property string middle: "qrc:/image/button_center_%1.png".arg(
-                                                                        status)
-                                            property string tail: "qrc:/image/button_right_%1.png".arg(
-                                                                      status)
-                                        }
-                                        background: Rectangle {
-                                            id: rectCategory
-                                            width: usbDriver.width
-                                            height: usbDriver.height
-                                            color: Qt.rgba(25 / 255, 26 / 255,
-                                                           28 / 255, 0)
-
-                                            Row {
-                                                id: background
-                                                height: buttonHeader.height
-                                                width: parent.width
-
-                                                Image {
-                                                    id: buttonHeader
-                                                    source: buttonImage.header
-                                                }
-
-                                                Image {
-                                                    id: buttonMiddle
-                                                    source: buttonImage.middle
-                                                    width: parent.width - buttonHeader.width
-                                                           - buttonTail.width
-                                                }
-
-                                                Image {
-                                                    id: buttonTail
-                                                    source: buttonImage.tail
-                                                }
-                                            }
-
-                                            Image {
-                                                id: downArrow
-                                                anchors.right: parent.right
-                                                anchors.rightMargin: 5
-                                                anchors.verticalCenter: parent.verticalCenter
-                                                source: usbDriver.activeFocusOnPress ? "qrc:/image/arrow_down_hover.png" : "qrc:/image/arrow_down_normal.png"
-                                            }
-                                        }
-
-                                        label: DLabel {
-                                            font.pixelSize: 11
-                                            anchors.verticalCenter: parent.verticalCenter
-                                            anchors.horizontalCenter: parent.horizontalCenter
-                                            text: control.currentText
-                                        }
-                                    }
+                                    id: usbDriver
+                                    parentWindow: usbCreatorUI
+                                    menu.parentWindow: usbCreatorUI
+                                    labels: usbCreator.listUsbDrives()
+                                    onMenuSelect: console.log(usbDriver.text)
                                 }
 
                                 Rectangle {
@@ -378,7 +315,7 @@ DWindowFrame {
                                     //processNext.visible = true
                                     var result = usbCreator.start(
                                                 isoPath.text,
-                                                usbDriver.currentText,
+                                                usbDriver.text,
                                                 bisoMode.checked,
                                                 formatDisk.checked)
                                     if (0 === result) {
@@ -391,7 +328,7 @@ DWindowFrame {
                                         processTimer.start()
                                         btClose.visible = false
                                     }
-                                    console.log(isoPath.text + usbDriver.currentText)
+                                    console.log(isoPath.text + usbDriver.text)
                                 }
                             }
                         }

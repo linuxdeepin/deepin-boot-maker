@@ -1,8 +1,6 @@
-
 import QtQuick 2.1
 import QtGraphicalEffects 1.0
 
-import com.deepin.usbcreator 1.0
 FocusScope {
     id: root
     width: 160
@@ -89,6 +87,7 @@ FocusScope {
             verticalAlignment: TextInput.AlignVCenter
             font.pixelSize: text_input.echoMode == TextInput.Password ? 18 : 12
             echoMode: isPassword ? TextInput.Password : TextInput.Normal
+            clip: true
 
             anchors.fill: parent
             anchors.leftMargin: 3
@@ -125,7 +124,7 @@ FocusScope {
                         position: 1.0
                         color: passwordShowButton.pressed ? Qt.rgba(0, 0, 0, 0) : Qt.rgba(1, 1, 1, 0)
                     }
-                }
+                } 
             }
 
             DImageCheckButton {
@@ -158,20 +157,4 @@ FocusScope {
 
         anchors.fill:text_input_box
     }
-
-    MouseArea {
-        anchors.fill: parent
-        onPressed: {
-            mouse.accepted = false
-            if (root.state == "warning") {
-                root.state = "normal"
-            }
-        }
-    }
-        DDropArea {
-        anchors.fill: parent
-            onTextDrop: {
-                text_input.text = text
-            }
-        }
 }

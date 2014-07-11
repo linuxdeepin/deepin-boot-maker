@@ -10,7 +10,7 @@ DOverrideWindow::DOverrideWindow(DWindow *parent)
     this->setFormat(sformat);
     this->setClearBeforeRendering(true);
 
-    this->setFlags(Qt::Tool|Qt::FramelessWindowHint);
+    this->setFlags(Qt::Popup|Qt::FramelessWindowHint);
 }
 
 DOverrideWindow::~DOverrideWindow()

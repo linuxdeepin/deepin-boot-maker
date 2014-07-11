@@ -118,7 +118,7 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
     XSys::SynExec("chmod a+wrx ", mountPoint);
 
-    XSys::SynExec("mount -o rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+    XSys::SynExec("mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
     return newTargetDev;
 }
 

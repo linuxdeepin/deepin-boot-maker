@@ -1,13 +1,19 @@
 import QtQuick 2.1
 import QtQuick.Window 2.1
 import QtGraphicalEffects 1.0
-
-Window {
+import Deepin.Widgets 1.0
+import com.deepin.usbcreator 1.0
+DOverrideWindow {
 	id: win
-	flags: Qt.Tool | Qt.FramelessWindowHint
     width: 400
     height: 300
     color: "transparent"
+
+    onVisibleChanged: {
+        if(visible){
+            raise()
+        }
+    }
 
     property var parentWindow: null
 

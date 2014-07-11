@@ -34,12 +34,15 @@ ListView {
 					name: "normal"
 					PropertyChanges {
 						target: txt
-						color: dconstants.hoverColor
+						color: "#b4b4b4"
 					}
-					/* PropertyChanges { */
-					/* 	target: sub */
-					/* 	visible: false */
-					/* } */
+				},
+				State {
+					name: "hover"
+					PropertyChanges {
+						target: txt
+						color: "white"
+					}
 				},
 				State {
 					name: "selected"
@@ -47,10 +50,6 @@ ListView {
 						target: txt
 						color: isParent ? dconstants.hoverColor : dconstants.activeColor
 					}
-					/* PropertyChanges { */
-					/* 	target: sub */
-					/* 	visible: isParent ? true : false */
-					/* } */
 				}
 			]
 
@@ -83,7 +82,6 @@ ListView {
 					text: sectionName
                     elide: Text.ElideRight
 					font.pixelSize: 13
-
                     anchors.left: parent.left
                     anchors.leftMargin: 10
 					anchors.verticalCenter: parent.verticalCenter
@@ -91,7 +89,11 @@ ListView {
 
 				MouseArea {
 					id: main_column_mouse
+                    hoverEnabled: true
 					anchors.fill: parent
+                    
+                    onEntered: root.currentSectionId == sectionId ? main_column.state = "selected" : main_column.state = "hover"
+                    onExited: root.currentSectionId == sectionId ? main_column.state = "selected" : main_column.state = "normal"
 
 					onClicked: {
 						root.currentSectionId = sectionId

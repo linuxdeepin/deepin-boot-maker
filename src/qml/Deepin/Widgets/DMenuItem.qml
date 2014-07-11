@@ -50,10 +50,11 @@ Item {
         id: mouseArea
         anchors.fill: parent
         hoverEnabled: true
-        onContainsMouseChanged: {
-            if (containsMouse && wrapper.ListView.view.currentIndex != index) {
-                wrapper.ListView.view.currentIndex = index
-            }
+        onEntered:{
+            wrapper.ListView.view.currentIndex = index
+        }
+        onExited: {
+            wrapper.ListView.view.currentIndex = -1
         }
         onClicked: selectAction(index)
     }

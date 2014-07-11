@@ -3,6 +3,8 @@ import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 
 CheckBox {
+    property int fontSize: 12
+    
     text: "hello"
     style: CheckBoxStyle {
         background: Item {}
@@ -11,9 +13,9 @@ CheckBox {
                                     : control.hovered ? "images/checkbox_unchecked_hover.png" : "images/checkbox_unchecked.png"
         }
         label: Text {
-            font.pixelSize: 12
             color: Qt.rgba(1, 1, 1, 0.5)
             text: control.text
+            font.pixelSize: control.fontSize
         }        
     }
 }

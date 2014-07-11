@@ -6,6 +6,8 @@ Item {
     height: 50
     width: 320
 
+    property var dconstants: DConstants {}
+
     property real min: -1
     property real max: 1
     property real init: min+(max-min)/2
@@ -26,6 +28,7 @@ Item {
     signal valueConfirmed
 
     property bool _first_running: true
+
     Component.onCompleted: {
         if(valueDisplayVisible){
             setValue(init, false)
@@ -37,6 +40,14 @@ Item {
     }
 
     function setValue(v, emit) {
+        if(min < max){
+            v = v < min ? min : v
+            v = v > max ? max : v
+        }
+        else{
+            v = v > min ? min : v
+            v = v < max ? max : v
+        }
         handle.x = (v-min)/(max - min) * (mousearea.drag.maximumX - mousearea.drag.minimumX)
             + mousearea.drag.minimumX
         if(emit){
@@ -190,6 +201,7 @@ Item {
                 drag.axis: Drag.XAxis
                 drag.minimumX: 0
                 drag.maximumX: realValueRect.width
+
                 property real value: (handle.x - drag.minimumX) / (drag.maximumX - drag.minimumX)
                 
                 onPressed: slider.pressedFlag = true
@@ -249,13 +261,14 @@ Item {
                         }
                     }
                     anchors.horizontalCenter: parent.horizontalCenter
-                    color: dconstants.fgColor
+                    color: "#505050"
                     width: 1
                     height: 7
                     opacity: rulerVisible ? 1 : 0
                 }
 
                 DssH3 {
+                    color: "#505050"
                     anchors.top: parent.top
                     anchors.topMargin: {
                         if(rulerLine.visible){
