@@ -10,27 +10,81 @@ namespace XAPI {
 #include <shellapi.h>
 QString RunApp(const QString &execPath, const QString &execParam, const QString &execPipeIn="") {
     // TODO: rewrite by createprocess
-    SHELLEXECUTEINFO ShExecInfo;
-    memset(&ShExecInfo,0,sizeof(SHELLEXECUTEINFO));
-    ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
-    ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
-    ShExecInfo.hwnd = NULL;
-    if (QSysInfo::WindowsVersion == QSysInfo::WV_NT || QSysInfo::WindowsVersion == QSysInfo::WV_2000 || QSysInfo::WindowsVersion == QSysInfo::WV_XP || QSysInfo::WindowsVersion == QSysInfo::WV_2003 )
-    {
-        ShExecInfo.lpVerb = NULL;
+
+    SECURITY_ATTRIBUTES sa={sizeof(sa),NULL,TRUE};
+    SECURITY_ATTRIBUTES *psa=NULL;
+    DWORD dwShareMode=FILE_SHARE_READ|FILE_SHARE_WRITE;
+    OSVERSIONINFO osVersion={0};
+    osVersion.dwOSVersionInfoSize=sizeof(osVersion);
+
+    if(GetVersionEx(&osVersion)){
+        if(osVersion.dwPlatformId==VER_PLATFORM_WIN32_NT){
+        psa=&sa;
+        dwShareMode|=FILE_SHARE_DELETE;
+        }
     }
-    else
+
+    QString outPipePath = XSys::TmpFilePath("pipeOut");
+    HANDLE hConsoleCoutRedirect=CreateFile(
+        LPWSTR(outPipePath.utf16()),
+        GENERIC_WRITE,
+        dwShareMode,
+        psa,
+        OPEN_ALWAYS,
+        FILE_ATTRIBUTE_NORMAL,
+        NULL
+        );
+    if(hConsoleCoutRedirect==INVALID_HANDLE_VALUE)
     {
-        ShExecInfo.lpVerb = L"runas";
+        qWarning()<<"cout error"<<GetLastError();
+    };
+
+    QString inPipePath = XSys::TmpFilePath("pipeIn");
+    QFile inFile(inPipePath);
+    inFile.open(QIODevice::WriteOnly);
+    inFile.write(execPipeIn.toLatin1());
+    inFile.close();
+
+    HANDLE hConsoleCinRedirect=CreateFile(
+            LPWSTR(inPipePath.utf16()),
+            GENERIC_READ,
+            dwShareMode,
+            psa,
+            OPEN_ALWAYS,
+            FILE_ATTRIBUTE_NORMAL,
+            NULL
+            );
+
+    STARTUPINFO s={sizeof(s)};
+    s.dwFlags=STARTF_USESHOWWINDOW|STARTF_USESTDHANDLES;
+    s.hStdOutput=hConsoleCoutRedirect;
+    s.hStdInput=hConsoleCinRedirect;
+    s.wShowWindow=SW_HIDE;
+    s.dwFlags=STARTF_USESTDHANDLES;
+
+    PROCESS_INFORMATION pi={0};
+
+    QString cmdline = execPath + " " + execParam;
+
+    if(CreateProcess(NULL,LPWSTR(cmdline.utf16()),NULL,NULL,TRUE,NULL,NULL,NULL,&s,&pi))
+    {
+        WaitForSingleObject(pi.hProcess,INFINITE);
+        CloseHandle(pi.hProcess);
+        CloseHandle(pi.hThread);
+
+        CloseHandle(hConsoleCoutRedirect);
+        CloseHandle(hConsoleCinRedirect);
     }
-    ShExecInfo.lpFile = LPWSTR(execPath.utf16());
-    ShExecInfo.lpParameters = LPWSTR(execParam.utf16());
-    ShExecInfo.lpDirectory = NULL;
-    ShExecInfo.nShow = SW_HIDE;
-    ShExecInfo.hInstApp = NULL;
-    ShellExecuteEx(&ShExecInfo);
-    WaitForSingleObject(ShExecInfo.hProcess,INFINITE);
-    return "";
+
+    QFile outFile(outPipePath);
+    outFile.open(QIODevice::ReadOnly);
+    QString ret = outFile.readAll();
+    outFile.close();
+
+    inFile.remove();
+    outFile.remove();
+
+    return ret;
 }
 #endif
 
@@ -70,9 +124,9 @@ public:
 
 void Execer::run(const QString &execPipeIn){
     Ret = XAPI::RunApp(ExecPath, Param, execPipeIn);
-//    qDebug()<<"Exec: "<<ExecPath<<endl
-//            <<"Params: "<<Param<<endl
-//            <<"Output: "<<Ret<<endl;
+    qDebug()<<"Exec: "<<ExecPath<<endl
+            <<"Params: "<<Param<<endl
+            <<"Output: "<<Ret<<endl;
 }
 
 XSys::XSys(QObject *parent) :
@@ -146,5 +200,8 @@ bool XSys::CpFile(const QString &srcName, const QString &desName) {
     }
     srcFile.close();
     desFile.close();
+#ifdef Q_OS_UNIX
+    SynExec("sync", "");
+#endif
     return ret;
 }
