@@ -111,7 +111,7 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
 
     XSys::SynExec("mkfs.fat -F32 -v -I -n \"DeepinOS\" ", newTargetDev);
-    XSys::SynExec("fatlabel", QString(" %1 DEEPINOS").newTargetDev);
+    XSys::SynExec("fatlabel", QString(" %1 DEEPINOS").arg(newTargetDev));
 
     QString mountPoint =  QString("/media/%1").arg(XSys::RandString());
     XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
