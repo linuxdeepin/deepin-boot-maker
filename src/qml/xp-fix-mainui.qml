@@ -13,7 +13,7 @@ DWindow {
     flags: /*Qt.FramelessWindowHint |*/ Qt.Window | Qt.WindowMaximizeButtonHint | Qt.WindowSystemMenuHint
     color: "transparent"
     width: 660
-    height: 400
+    height: 420
 
     DDragableArea {
         window: usbCreatorUI

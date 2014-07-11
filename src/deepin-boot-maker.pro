@@ -1,8 +1,18 @@
 TEMPLATE = app
 TARGET = deepin-boot-maker
-CONFIG += static
+#CONFIG += static
 DEPENDPATH += .
 INCLUDEPATH += .
+
+#config_static {
+#DEFINES += STATICLINUX
+#RESOURCES += \
+#    deepin-boot-maker-static-qml.qrc
+#}
+
+DEFINES += STATICLINUX
+RESOURCES += \
+    deepin-boot-maker-static-qml.qrc
 
 win32-msvc* {
     DEFINES += _USING_V110_SDK71_
@@ -11,7 +21,6 @@ win32-msvc* {
     LIBS += -llibGLESv2 -llibEGL -lpreprocessor
 }
 
-DEFINES += STATICLINUX
 HEADERS += unetbootin.h \
     qml/Deepin/Widgets/plugins/dicon.h \
     qml/Deepin/Widgets/plugins/dwindow.h \

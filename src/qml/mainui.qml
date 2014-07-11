@@ -13,7 +13,7 @@ DWindow {
     flags: Qt.FramelessWindowHint | Qt.Window
     color: "transparent"
     width: 660 + windowFrame.shadowRadius * 2
-    height: 400 + windowFrame.shadowRadius * 2
+    height: 420 + windowFrame.shadowRadius * 2
 
     DDragableArea {
         window: usbCreatorUI

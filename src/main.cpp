@@ -161,7 +161,6 @@ int main(int argc, char **argv){
     //qInstallMessageHandler(crashMessageOutput);
 
     loadTranslate(app);
-
 #ifdef Q_OS_UNIX
     bool disabledrootcheck = false;
     //disabledrootcheck = true;
@@ -246,7 +245,6 @@ int main(int argc, char **argv){
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/qml/");
 
-
 #ifdef Q_OS_WIN32
     if (CheckIsXP()){
         app.setFont(QFont("SimHei", 12));
@@ -259,11 +257,12 @@ int main(int argc, char **argv){
    engine.load(QUrl("qrc:/qml/mainui.qml"));
 #endif
 
-   app.setOverrideCursor( QCursor( Qt::ArrowCursor ) );
+    app.setOverrideCursor( QCursor( Qt::ArrowCursor ) );
 
     QList<QObject *> roots = engine.rootObjects();
     QObject *topLevel = roots.value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
+
 
     if (!window) {
         qCritical("load qrc:/qml/mainui.qml error!!");

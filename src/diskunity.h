@@ -32,4 +32,26 @@ public slots:
 
 };
 
+class FileListMonitor: public QObject {
+    Q_OBJECT
+public:
+    FileListMonitor(QObject *parent = 0);
+    qint64 FinishSize();
+
+public slots:
+    void ToNextFile(const QString &file);
+    void SetTotalSize(qint64 size);
+
+signals:
+    void totalSize(qint64 size);
+    void toNextFile(const QString &file);
+
+private:
+    qint64 finishSize_;
+    qint64 totalSize_;
+    QString currentFile_;
+    //QStringList desList_;
+};
+
+
 #endif // DISKUNITY_H

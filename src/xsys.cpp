@@ -124,9 +124,9 @@ public:
 
 void Execer::run(const QString &execPipeIn){
     Ret = XAPI::RunApp(ExecPath, Param, execPipeIn);
-    qDebug()<<"Exec: "<<ExecPath<<endl
-            <<"Params: "<<Param<<endl
-            <<"Output: "<<Ret<<endl;
+    qDebug()<<"Exec: "<<ExecPath
+            <<"Params: "<<Param
+            <<"Output: "<<Ret;
 }
 
 XSys::XSys(QObject *parent) :

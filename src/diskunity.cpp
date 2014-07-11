@@ -101,40 +101,55 @@ bool FixMBR(const QString &targetDev) {
 }
 
 QString FormatDisk(const QString &diskDev) {
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
+
     QString newTargetDev = diskDev + "1";
-    XSys::SynExec("umount", " -v " + newTargetDev);
     XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
-    XSys::SynExec("sync", "");
 
     XSys::SynExec("fdisk", QString(" %1 ").arg(diskDev), QString("o\nn\np\n\n\n\na\n1\nt\nb\nw\n"));
-    XSys::SynExec("sync", "");
 
-    XSys::SynExec("umount", " -v " + newTargetDev);
-    XSys::SynExec("sync", "");
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
 
-    XSys::SynExec("mkfs.fat", newTargetDev);
-    XSys::SynExec("sync", "");
+    XSys::SynExec("mkfs.fat -F32 -v -I -n \"DeepinOS\" ", newTargetDev);
+    XSys::SynExec("fatlabel", QString(" %1 DEEPINOS").arg(newTargetDev));
 
     QString mountPoint =  QString("/media/%1").arg(XSys::RandString());
     XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    XSys::SynExec("sync", "");
+    XSys::SynExec("chmod a+wrx ", mountPoint);
 
-    XSys::SynExec("mount", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
-    XSys::SynExec("sync", "");
+    XSys::SynExec("mount -o rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec,flush", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
     return newTargetDev;
 }
 
 bool EjectDisk(const QString &targetDev) {
-    XSys::SynExec("umount", " -v " + targetDev);
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDiskDev(targetDev)));
     return true;
 }
 
 #endif
 
 #ifdef Q_OS_MAC
-int FixUsbDisk(QString targetDev);
 QString GetPartitionDiskDev(QString targetDev) {
     return QString(targetDev).remove(QRegExp("s\\d$"));
+}
+
+bool FixMBR(const QString &targetDev) {
+    qDebug()<<"Fix Usb Disk"<<targetDev;
+    QString diskDev = GetPartitionDiskDev(targetDev);
+    XSys::CpFile(":/mbr.bin", diskDev);
+    return true;
+}
+
+QString FormatDisk(const QString &diskDev) {
+    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(diskDev));
+    XSys::SynExec("diskutil", QString(" eraseDisk fat32  DEEPINOS MBR %1").arg(diskDev));
+    XSys::SynExec("diskutil", QString("mountDisk %1").arg(diskDev));
+    return diskDev + "s1";
+}
+
+bool EjectDisk(const QString &targetDev) {
+    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(GetPartitionDiskDev(targetDev)));
+    return true;
 }
 #endif
 }
@@ -153,4 +168,29 @@ QString DiskUnity::FormatDisk(const QString &diskDev) {
 
 bool DiskUnity::EjectDisk(const QString &targetDev) {
     return XAPI::EjectDisk(targetDev);
+}
+
+
+
+FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){
+    finishSize_ = 0;
+    connect(this, SIGNAL(totalSize(qint64)), SLOT(SetTotalSize(qint64)));
+    connect(this, SIGNAL(toNextFile(const QString &)), SLOT(ToNextFile(const QString &)));
+}
+
+void FileListMonitor::ToNextFile(const QString &filename) {
+    if (!currentFile_.isEmpty()){
+        QFileInfo file(currentFile_);
+        finishSize_ += file.size();
+    }
+    currentFile_ = filename;
+}
+
+void FileListMonitor::SetTotalSize(qint64 size) {
+    totalSize_ = size;
+}
+
+qint64 FileListMonitor::FinishSize() {
+    QFileInfo file(currentFile_);
+    return finishSize_ + file.size();
 }
