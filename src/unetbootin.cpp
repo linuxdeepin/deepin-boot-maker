@@ -293,6 +293,12 @@ QStringList unetbootin::listcurdrives()
 	return listsanedrives();
 }
 
+
+bool unetbootin::isUsbDisk(const QString &dev) {
+    QString info = callexternapp("diskutil", "info " + dev);
+    return info.contains(QRegExp("Protocol:\\s+USB"));
+}
+
 QStringList unetbootin::listsanedrives()
 {
 	QStringList fulldrivelist;
@@ -357,12 +363,13 @@ QString diskutilList = callexternapp("diskutil", "list");
 QStringList usbdevsL = diskutilList.split("\n").filter(QRegExp("(FAT|Microsoft)")).join(" ").split(" ").filter("disk");
 for (int i = 0; i < usbdevsL.size(); ++i)
 {
-	fulldrivelist.append("/dev/"+usbdevsL.at(i));
+    if (isUsbDisk("/dev/" + usbdevsL.at(i))) {
+        fulldrivelist.append("/dev/"+usbdevsL.at(i));
+    }
 }
 #endif
 	return fulldrivelist;
 }
-
 
 QStringList unetbootin::listalldrives()
 {
