@@ -5,10 +5,14 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 config_static {
-    DEFINES += STATICLINUX
+DEFINES += STATICLINUX
 RESOURCES += \
     deepin-boot-maker-static-qml.qrc
 }
+
+DEFINES += STATICLINUX
+RESOURCES += \
+    deepin-boot-maker-static-qml.qrc
 
 win32-msvc* {
     DEFINES += _USING_V110_SDK71_

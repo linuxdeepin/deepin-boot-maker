@@ -350,6 +350,7 @@ public:
 #endif
 	void refreshdriveslist();
 	QStringList listcurdrives();
+    bool isUsbDisk(const QString &dev);
 	QStringList listsanedrives();
 	QStringList listalldrives();
 	void replaceTextInFile(QString repfilepath, QRegExp replaceme, QString replacewith);

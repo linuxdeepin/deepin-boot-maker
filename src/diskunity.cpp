@@ -128,9 +128,27 @@ bool EjectDisk(const QString &targetDev) {
 #endif
 
 #ifdef Q_OS_MAC
-int FixUsbDisk(QString targetDev);
 QString GetPartitionDiskDev(QString targetDev) {
     return QString(targetDev).remove(QRegExp("s\\d$"));
+}
+
+bool FixMBR(const QString &targetDev) {
+    qDebug()<<"Fix Usb Disk"<<targetDev;
+    QString diskDev = GetPartitionDiskDev(targetDev);
+    XSys::CpFile(":/mbr.bin", diskDev);
+    return true;
+}
+
+QString FormatDisk(const QString &diskDev) {
+    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(diskDev));
+    XSys::SynExec("diskutil", QString(" eraseDisk fat32  DEEPINOS MBR %1").arg(diskDev));
+    XSys::SynExec("diskutil", QString("mountDisk %1").arg(diskDev));
+    return diskDev + "s1";
+}
+
+bool EjectDisk(const QString &targetDev) {
+    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(GetPartitionDiskDev(targetDev)));
+    return true;
 }
 #endif
 }
