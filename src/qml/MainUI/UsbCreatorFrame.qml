@@ -323,16 +323,6 @@ DWindowFrame {
                                     width: 430
                                     height: 5
                                 }
-
-                                DCheckBox {
-                                    id: bisoMode
-                                    text: qsTr("<font color='#ffffff'>Support BIOS. Unselect here. </font>")
-                                }
-                                Rectangle {
-                                    color: "transparent"
-                                    width: 430
-                                    height: 5
-                                }
                                 DCheckBox {
                                     id: formatDisk
                                     text: qsTr("<font color='#ffffff'>Format USB disk.</font>")
@@ -356,6 +346,17 @@ DWindowFrame {
                                             messageDialog.visible = true
                                         }
                                     }
+                                }
+
+                                Rectangle {
+                                    color: "transparent"
+                                    width: 430
+                                    height: 5
+                                }
+
+                                DCheckBox {
+                                    id: bisoMode
+                                    text: qsTr("<font color='#ffffff'>Support BIOS. Unselect here. </font>")
                                 }
                             }
                         }

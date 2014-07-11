@@ -50,7 +50,7 @@ msgstr "<font color='#ffffff'>旧主板BIOS支持， 默认请不要勾选。</f
 #: ../qml/MainUI/UsbCreatorFrame.qml:338
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Format USB disk.</font>"
-msgstr "<font color='#ffffff'>安装前格式化U盘。</font>"
+msgstr "<font color='#ffffff'>安装前格式化U盘，提高制作成功率。</font>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:344
 msgctxt "UsbCreatorFrame|"

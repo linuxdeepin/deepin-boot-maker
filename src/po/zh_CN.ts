@@ -48,7 +48,7 @@
     <message>
         <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="338"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB disk.&lt;/font&gt;</source>
-        <translation>&lt;font color=&apos;#ffffff&apos;&gt;安装前格式化U盘。&lt;/font&gt;</translation>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;安装前格式化U盘，提高制作成功率。&lt;/font&gt;</translation>
     </message>
     <message>
         <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="344"/>
