@@ -4,18 +4,14 @@ TARGET = deepin-boot-maker
 DEPENDPATH += .
 INCLUDEPATH += .
 
-#config_static {
-#DEFINES += STATICLINUX
-#RESOURCES += \
-#    deepin-boot-maker-static-qml.qrc
-#}
-
 DEFINES += STATICLINUX
 DEFINES += NOEXTRACTKERNEL
 DEFINES += NOEXTRACTINITRD
 
+static {
 RESOURCES += \
     deepin-boot-maker-static-qml.qrc
+}
 
 win32-msvc* {
     DEFINES += _USING_V110_SDK71_

@@ -3522,16 +3522,15 @@ void unetbootin::runinstusb()
 					}
 				}
 			}
-			QFile usbmbrF(rawtargetDev);
+            qDebug()<<"Begin Write MBR";
+            QFile usbmbrF(rawtargetDev);
 			QFile mbrbinF(":/mbr.bin");
-			#ifdef NOSTATIC
-			mbrbinF.setFileName(QFile::exists("/usr/share/syslinux/mbr.bin") ? "/usr/share/syslinux/mbr.bin" : "/usr/lib/syslinux/mbr.bin");
-			#endif
 			usbmbrF.open(QIODevice::WriteOnly);
 			mbrbinF.open(QIODevice::ReadOnly);
 			usbmbrF.write(mbrbinF.readAll());
 			mbrbinF.close();
 			usbmbrF.close();
+            qDebug()<<"End Write MBR";
 		}
 #endif
 #ifdef Q_OS_MAC
@@ -3558,99 +3557,28 @@ void unetbootin::runinstusb()
         callexternapp("sync", "");
 #endif
 
-#ifndef XPUD
-    if (!dontgeneratesyslinuxcfg) {
+    //rename isolinux to syslinux
+    QString syslinxDir = QString("%1syslinux/").arg(targetPath);
+    QString isolinxDir = QString("%1isolinux/").arg(targetPath);
+    renameDir(isolinxDir, syslinxDir);
+    qDebug()<<"Rename "<<isolinxDir<<" ot "<<syslinxDir;
 
-//        qDebug()<<"Generate Syslinuxcfg";
-//        QString syslinuxcfgtxt = QString("default menu.c32\n"
-//        "prompt 0\n"
-//        "menu title UNetbootin\n"
-//        "timeout 100\n\n"
-//    #ifndef NODEFAULTBOOT
-//        "label unetbootindefault\n"
-//        "menu label Default\n"
-//        "kernel %1\n"
-//        "append %4%2 %3\n"
-//    #endif
-//        ).arg(kernelLoc, initrdLoc, kernelOpts, slinitrdLine);
-
-//        if (!extraoptionsPL.first.first.isEmpty()) {
-//            for (int i = 0; i < extraoptionsPL.first.first.size(); ++i) {
-//                syslinuxcfgtxt.append(QString("\nlabel %5\n"
-//                "menu label %1\n"
-//                "kernel %2\n"
-//                "append %6%3 %4\n").arg(extraoptionsPL.second.first.at(i)).arg(extraoptionsPL.first.first.at(i)).arg(extraoptionsPL.first.second.at(i)).arg(extraoptionsPL.second.second.at(i)).arg(QString("ubnentry%1").arg(i)).arg(slinitrdLine));
-//            }
-//        }
-        //just copy isoliunx config
-
-        //rename isolinux to syslinux
-        QString syslinxDir = QString("%1syslinux/").arg(targetPath);
-        QString isolinxDir = QString("%1isolinux/").arg(targetPath);
-        renameDir(isolinxDir, syslinxDir);
-
-        QString syslinxCfgPath = QString("%1syslinux/syslinux.cfg").arg(targetPath);
-        QString isolinxCfgPath = QString("%1syslinux/isolinux.cfg").arg(targetPath);
-        QFile isocfg(isolinxCfgPath);
-        QFile syscfg(syslinxCfgPath);
-        isocfg.open(QFile::ReadOnly);
-        syscfg.open(QFile::WriteOnly);
-        syscfg.write(isocfg.readAll());
-        syscfg.close();
-        isocfg.close();
-	}
-//	else
-//	{
-//        qDebug()<<"Copy Syslinuxcfg";
-//		for (int j = 0; j < locatedsyslinuxcfgfiles.size(); ++j)
-//		{
-//			QString syslpathloc = QFileInfo(locatedsyslinuxcfgfiles.at(j)).path();
-//			if (syslpathloc == ".") syslpathloc = "";
-//			if (syslpathloc.contains(QDir::toNativeSeparators("/")))
-//			{
-//				if (!syslpathloc.endsWith(QDir::toNativeSeparators("/")))
-//					syslpathloc.append(QDir::toNativeSeparators("/"));
-//			}
-//			else
-//			{
-//				if (!syslpathloc.endsWith("/"))
-//					syslpathloc.append("/");
-//			}
-//			QString abssyslpathloc = QDir::fromNativeSeparators(QString(syslpathloc));
-//			if (!abssyslpathloc.startsWith("/"))
-//				abssyslpathloc.prepend("/");
-////			instIndvfl("menu.c32", QString("%1%2menu.c32").arg(targetPath).arg(syslpathloc));
-////            instIndvfl("libutil.c32", QString("%1%2libutil.c32").arg(targetPath).arg(syslpathloc));
-////            instIndvfl("libcom32.c32", QString("%1%2libcom32.c32").arg(targetPath).arg(syslpathloc));
-//			QString syslrealcfgloc = QString(locatedsyslinuxcfgfiles.at(j)).replace("isolinux.cfg", "syslinux.cfg").replace("extlinux.conf", "syslinux.cfg");
-//			if (syslrealcfgloc != locatedsyslinuxcfgfiles.at(j))
-//			{
-//				QFile::copy(QString("%1%2").arg(targetPath).arg(locatedsyslinuxcfgfiles.at(j)), QString("%1%2").arg(targetPath).arg(syslrealcfgloc));
-//			}
-//			replaceTextInFile(QString("%1%2").arg(targetPath).arg(syslrealcfgloc), QRegExp("\\S{0,}vesamenu.c32"), QString("%1menu.c32").arg(abssyslpathloc));
-//			#ifdef Q_OS_UNIX
-//			if (isext2)
-//			{
-//				QFile::copy(QString("%1%2").arg(targetPath).arg(locatedsyslinuxcfgfiles.at(j)), QString("%1%2extlinux.conf").arg(targetPath).arg(syslpathloc));
-//				QString extlpathloc = QString(syslpathloc).replace("syslinux", "extlinux");
-//				if (syslpathloc != extlpathloc)
-//					callexternapp("ln", QString("-s %1 %2").arg(syslpathloc).arg(extlpathloc));
-//			}
-//			#endif
-//		}
-//	}
-#endif
+    QString syslinxCfgPath = QString("%1syslinux/syslinux.cfg").arg(targetPath);
+    QString isolinxCfgPath = QString("%1syslinux/isolinux.cfg").arg(targetPath);
+    qDebug()<<"Rename "<<isolinxCfgPath<<" ot "<<syslinxCfgPath;
+    QFile isocfg(isolinxCfgPath);
+    QFile syscfg(syslinxCfgPath);
+    isocfg.open(QFile::ReadOnly);
+    syscfg.open(QFile::WriteOnly);
+    syscfg.write(isocfg.readAll());
+    syscfg.close();
+    isocfg.close();
 
 #ifdef Q_OS_UNIX
-    if (!dontgeneratesyslinuxcfg && isext2)
+    if (isext2)
         QFile::copy(QString("%1syslinux/syslinux.cfg").arg(targetPath), QString("%1extlinux.conf").arg(targetPath));
 #endif
 
-    if (!dontgeneratesyslinuxcfg)  {
-//        instIndvfl("menu.c32", QString("%1menu.c32").arg(targetPath));
-//        instIndvfl("libutil.c32", QString("%1libutil.c32").arg(targetPath));
-//        instIndvfl("libcom32.c32", QString("%1libcom32.c32").arg(targetPath));
-    }
     fininstall();
 }
 
