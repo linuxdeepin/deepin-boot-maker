@@ -60,8 +60,12 @@ QString RunApp(const QString &execPath, const QString &execParam, const QString 
     s.hStdOutput=hConsoleCoutRedirect;
     s.hStdInput=hConsoleCinRedirect;
     s.wShowWindow=SW_HIDE;
-    s.dwFlags=STARTF_USESTDHANDLES;
-
+    s.lpReserved = NULL;
+    s.lpDesktop = NULL;
+    s.lpTitle = NULL;
+    s.wShowWindow = SW_HIDE;
+    s.cbReserved2 = NULL;
+    s.lpReserved2 = NULL;
     PROCESS_INFORMATION pi={0};
 
     QString cmdline = execPath + " " + execParam;

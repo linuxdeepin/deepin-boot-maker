@@ -326,5 +326,8 @@
         <file>qml/QtQuick.2/qmldir</file>
         <file>qml/mainui.qml</file>
         <file>qml/xp-fix-mainui.qml</file>
+        <file>qml/QtQuick/Controls/Private/CalendarUtils.js</file>
+        <file>qml/QtQuick/Controls/Private/StackView.js</file>
+        <file>qml/QtQuick/Controls/Private/style.js</file>
     </qresource>
 </RCC>

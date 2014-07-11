@@ -158,7 +158,7 @@ int main(int argc, char **argv){
 #endif
 
     //just for debug
-    //qInstallMessageHandler(crashMessageOutput);
+    qInstallMessageHandler(crashMessageOutput);
 
     loadTranslate(app);
 #ifdef Q_OS_UNIX
@@ -263,6 +263,9 @@ int main(int argc, char **argv){
     QObject *topLevel = roots.value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
 
+//    QMessageBox unotenoughinputmsgb;
+//    unotenoughinputmsgb.setText(QString("Windows %x").arg((qint64)window));
+//    unotenoughinputmsgb.exec();
 
     if (!window) {
         qCritical("load qrc:/qml/mainui.qml error!!");

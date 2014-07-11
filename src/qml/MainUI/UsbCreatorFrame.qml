@@ -45,6 +45,7 @@ DWindowFrame {
                 processRate.text = "%1%".arg(usbCreator.processRate())
                 console << processRate.text
                 if (usbCreator.isFinish()) {
+                    processRate.text = "100%"
                     processTimer.stop()
                     processNext.clicked()
                 }
@@ -334,14 +335,14 @@ DWindowFrame {
                                 }
                                 DCheckBox {
                                     id: formatDisk
-                                    text: qsTr("<font color='#ffffff'>format usb disk.</font>")
+                                    text: qsTr("<font color='#ffffff'>Format USB disk.</font>")
 
                                     MessageDialog{
                                         id: messageDialog
                                         icon: StandardIcon.Warning
-                                        standardButtons: StandardButton.Ok | StandardButton.Cancel
-                                        title: qsTr("Format Disk");
-                                        text: qsTr("Format Disk?")
+                                        standardButtons: StandardButton.Yes | StandardButton.No
+                                        title: qsTr("Format USB Disk");
+                                        text: qsTr("Would you want to FORMAT the USB disk? All partitions on usb disk will be deleted, please backup you data first!")
                                         onAccepted: {
                                             formatDisk.checked = true
                                         }

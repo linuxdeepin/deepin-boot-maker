@@ -66,7 +66,7 @@ bool FixMBR(const QString &){
 bool FormatDisk(const QString &targetDev) {
     qDebug()<<"FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
-    QString diskpartCmd = QString("list disk\r\nselect disk %1\r\nclean\r\ncreate partition primary\r\nlist partition\r\nselect partition 1\r\nformat fs=fat32 quick\r\nassign letter=%2\r\nactive\r\nlist partition\r\nexit\r\n").arg(deviceNum).arg(targetDev[0]);
+    QString diskpartCmd = QString("list disk\r\nselect disk %1\r\nclean\r\ncreate partition primary\r\nlist partition\r\nselect partition 1\r\nformat fs=fat32 label=\"DEEPINOS\" quick\r\nassign letter=%2\r\nactive\r\nlist partition\r\nexit\r\n").arg(deviceNum).arg(targetDev[0]);
     QString cmdfilePath = XSys::TmpFilePath("diskpart.txt");
     qWarning()<<"FixUsbDisk: cmdfilePath: "<<cmdfilePath;
     QFile diskpartTxt(cmdfilePath);
@@ -75,6 +75,7 @@ bool FormatDisk(const QString &targetDev) {
     diskpartTxt.close();
     XSys::SynExec("diskpart.exe", " /s " + cmdfilePath + " ");
     XSys::RmFile(diskpartTxt);
+    XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
     return true;
 }
 

@@ -11,6 +11,9 @@ INCLUDEPATH += .
 #}
 
 DEFINES += STATICLINUX
+DEFINES += NOEXTRACTKERNEL
+DEFINES += NOEXTRACTINITRD
+
 RESOURCES += \
     deepin-boot-maker-static-qml.qrc
 

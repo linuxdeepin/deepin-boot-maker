@@ -49,7 +49,7 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
 #include <memory>
 
 int BootMaker::processRate() {
-    if (!unetbootinPtr->isFinsh_) {
+    if (!(unetbootinPtr->isFinsh_)) {
         tprogress->setValue(flm->FinishSize());
     } else {
         tprogress->setValue(tprogress->maximum());
@@ -59,7 +59,6 @@ int BootMaker::processRate() {
 }
 
 bool BootMaker::isFinish() {
-     qDebug()<<"isFinish: "<<unetbootinPtr->isFinsh();
     return unetbootinPtr->isFinsh();
 }
 
