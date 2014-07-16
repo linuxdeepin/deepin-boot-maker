@@ -9,16 +9,16 @@ import com.deepin.usbcreator 1.0
 import MainUI 1.0
 
 DWindow {
-    id: usbCreatorUI
+    id: bootMakerUI
     flags: Qt.FramelessWindowHint | Qt.Window
     color: "transparent"
     width: 660 + windowFrame.shadowRadius * 2
     height: 420 + windowFrame.shadowRadius * 2
 
     DDragableArea {
-        window: usbCreatorUI
-        width: usbCreatorUI.width
-        height: usbCreatorUI.height
+        window: bootMakerUI
+        width: bootMakerUI.width
+        height: bootMakerUI.height
     }
 
     UsbCreatorFrame {
