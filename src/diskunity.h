@@ -9,19 +9,21 @@ class DiskUnity : public QObject
 public:
     explicit DiskUnity(QObject *parent = 0);
 
-    QString FormatDisk(const QString &diskDev);
+    static QString InstallBootloader(const QString &diskDev);
+
+
+    static bool ConfigSyslinx(const QString &targetDev);
+
+
+    static bool EjectDisk(const QString &targetDev);
 
     /*
         GetPartitionDiskDev will return the
     */
+    static QString GetPartitionDisk(const QString &targetDev);
 
-    bool EjectDisk(const QString &targetDev);
-
-    static int GetPartitionDiskDev(QString targetDev);
-signals:
-
-public slots:
-
+protected:
+    static bool UmountDisk(const QString &targetDev);
 };
 
 class FileListMonitor: public QObject {

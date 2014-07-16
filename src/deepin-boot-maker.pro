@@ -76,11 +76,11 @@ TRANSLATIONS += po/en_US.ts \
 RESOURCES += \
     deepin-boot-maker.qrc \
     deepin-boot-maker-qml.qrc \
+    deepin-boot-maker-bootloader.qrc
 
 win32{
 RESOURCES += \
     deepin-boot-maker-windows.qrc \
-    deepin-boot-maker-sevnz.qrc \
 
 RC_FILE += deepin-boot-maker.rc
 

@@ -18,12 +18,15 @@ public:
     explicit XSys(QObject *parent = 0);
     static QString RandString(const QString &str = "");
     static QString TmpFilePath(const QString &filename = "");
-    static QString InsertTmpFile(const QByteArray &data = "");
+    static QString InsertFileData(const QString &name, const QByteArray &data = "");
     static QString InsertTmpFile(const QString &fileurl);
+    static QString InsertFile(const QString &fileurl, const QString &fullpath);
     static QString SynExec(const QString &exec, const QString &param, const QString &execPipeIn="");
     static void RmFile(QFile &file);
     static void RmFile(const QString &filename);
     static bool CpFile(const QString &srcName, const QString &desName);
+    static void MoveDir(const QString &oldName, const QString &newName);
+    static bool RmDir(const QString &dirpath);
 
     static QString Resource(const QString& name);
 signals:

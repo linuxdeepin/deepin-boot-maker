@@ -383,8 +383,7 @@ public:
     void logText(const QString &text);
     void writeTextToFile(const QString &text, const QString &filePath);
 	void fininstall();
-	void rmFile(const QString &fn);
-    void renameDir(const QString &oldName, const QString &newName);
+    void rmFile(const QString &fn);
     bool rmDir(const QString &fn);
 	void rmFile(QFile &fn);
 	void mvFile(const QString &fn, const QString &outfn);

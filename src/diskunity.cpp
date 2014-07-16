@@ -4,8 +4,6 @@
 
 #include <QtCore>
 
-const QString fgcfgData = "timeout 0\ndefault 0\nmenu F2 syslinux \"ldlinux.bin\"\n";
-
 namespace XAPI {
 #ifdef Q_OS_WIN32
 
@@ -51,7 +49,7 @@ int GetPartitionDiskNum(QString targetDev) {
 /*
  return physic driver name like "\\\\.\\PHYSICALDRIVE1";
 */
-QString GetPartitionPhyDevName(QString targetDev) {
+QString GetPartitionDisk(const QString &targetDev) {
     QString physicalDevName;
     int deviceNum = GetPartitionDiskNum(targetDev);
     if (-1 != deviceNum) {
@@ -60,59 +58,74 @@ QString GetPartitionPhyDevName(QString targetDev) {
     return physicalDevName;
 }
 
-bool DumpPbr(const QString &targetDev, const QString pbrPath) {
-    QString driverName = "\\\\.\\" + targetDev.remove('\\');
-    WCHAR wdriverName[1024] = {0};
-    driverName.toWCharArray(wdriverName);
-    HANDLE handle = CreateFile(wdriverName, GENERIC_READ | GENERIC_WRITE,
-              FILE_SHARE_READ | FILE_SHARE_WRITE,
-              NULL, OPEN_EXISTING, 0, NULL);
-    if (handle == INVALID_HANDLE_VALUE) {
-        qWarning()<<"Open Dev Failed: "<<driverName<<endl;
-        return false;
+
+HANDLE LockDisk (const QString &targetDev) {
+    QString phyName = GetPartitionDisk(targetDev);
+    WCHAR wPhyName[1024] = {0};
+    phyName.toWCharArray(wPhyName);
+    HANDLE handle = CreateFile (wPhyName, GENERIC_READ | GENERIC_WRITE,
+                        FILE_SHARE_READ | FILE_SHARE_WRITE,
+                        NULL, OPEN_EXISTING, 0, 0);
+    if (handle == INVALID_HANDLE_VALUE)
+        return INVALID_HANDLE_VALUE;
+
+    if (! DeviceIoControl (handle, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, NULL, 0)) {
+        CloseHandle(handle);
+        return INVALID_HANDLE_VALUE;
     }
-    return true;
+    return handle;
 }
 
-bool FormatDisk(const QString &targetDev) {
+void UnlockDisk(HANDLE handle) {
+    DeviceIoControl (handle, IOCTL_DISK_UPDATE_PROPERTIES, NULL, 0, NULL, 0, NULL, 0);
+    DeviceIoControl (handle, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, NULL, 0);
+    CloseHandle (handle);
+}
+
+bool InstallBootloader(const QString &targetDev) {
+
     qDebug()<<"FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
-    QString diskpartCmd = QString("list disk\r\nselect disk %1\r\nclean\r\ncreate partition primary\r\nlist partition\r\nselect partition 1\r\nformat fs=fat32 label=\"DEEPINOS\" quick\r\nassign letter=%2\r\nactive\r\nlist partition\r\nexit\r\n").arg(deviceNum).arg(targetDev[0]);
-    QString cmdfilePath = XSys::InsertTmpFile(diskpartCmd.toLatin1());
-    qWarning()<<"FixUsbDisk: cmdfilePath: "<<cmdfilePath;
-    XSys::SynExec("diskpart.exe", " /s " + cmdfilePath + " ");
-    XSys::RmFile(diskpartTxt);
-
     QString xfbinstDiskName = QString("(hd%1)").arg(deviceNum);
 
+    HANDLE handle = LockDisk(targetDev);
     //fbinst format
-    QString xfbinstPath = XSys::InsertTmpFile(":/xfbinst.exe");
+    QString xfbinstPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/xfbinst.exe"));
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
-    QString tmpfgcfgPath = XSys::InsertTmpFile(fgcfgData.toLatin1());
-    XSys::SynExec(xfbinstPath, QString(" %1 add-menu fg.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
+    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
+    XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg \"%2\" ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
     //install syslinux
-    QString sysliuxPath = XSys::InsertTmpFile(":/syslinux.exe");
+    QString sysliuxPath = XSys::InsertTmpFile(QString(":/bootloader/syslinux/syslinux.exe"));
     XSys::SynExec(sysliuxPath , QString(" -i -s %1").arg(targetDev));
 
-    //dd pbr file ldlinux.bin
+    //get pbr file ldlinux.bin
+    qDebug()<<"dump pbr begin";
     QString tmpPbrPath = XSys::TmpFilePath("ldlinux.bin");
+    QFile pbr(tmpPbrPath);
+    pbr.open(QIODevice::WriteOnly);
 
+    QString targetPhyName = "\\\\.\\" + targetDev;
+    QFile targetPhy(targetPhyName);
+    targetPhy.open(QIODevice::ReadOnly);
 
-    XSys::SynExec("dd" , QString(" if=%1 of=%2 count=1").arg(diskDev).arg(tmpPbrPath));
+    pbr.write(targetPhy.read(512));
+    targetPhy.close();
+    pbr.close();
+    qDebug()<<"dump pbr end";
 
     //add pbr file ldlinux.bin
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
     XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
 
-
     XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
+
+    UnlockDisk(handle);
     return true;
 }
 
-bool EjectDisk(const QString &targetDev) {
+bool UmountDisk(const QString &targetDev) {
     return true;
 }
 
@@ -120,23 +133,18 @@ bool EjectDisk(const QString &targetDev) {
 
 #ifdef Q_OS_LINUX
 
-QString GetPartitionDiskDev(QString targetDev) {
+QString GetPartitionDisk(QString targetDev) {
     if (targetDev.contains(QRegExp("p\\d$")))
         return QString(targetDev).remove(QRegExp("p\\d$"));
     else
         return QString(targetDev).remove(QRegExp("\\d$"));
 }
 
-QString FormatDisk(const QString &diskDev) {
+QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
 
     // pre format
     QString newTargetDev = diskDev + "1";
-    XSys::SynExec("dd", QString(" if=/dev/zero of=%1 count=1024").arg(diskDev));
-    XSys::SynExec("fdisk", QString(" %1 ").arg(diskDev), QString("o\nn\np\n\n\n\na\n1\nt\nb\nw\n"));
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
-    XSys::SynExec("mkfs.fat -F32 -v -I -n \"DeepinOS\" ", newTargetDev);
-
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() -1]);
 
     //fbinst format
@@ -145,9 +153,9 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
-    QString tmpfgcfgPath = XSys::InsertTmpFile(fgcfgData.toLatin1());
+    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
-    XSys::SynExec(xfbinstPath, QString(" %1 add-menu fg.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
+    XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
     //install syslinux
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
@@ -167,7 +175,7 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec("fatlabel", QString(" %1 DEEPINOS").arg(newTargetDev));
 
     //mount
-    QString mountPoint =  QString("/media/%1").arg(XSys::RandString());
+    QString mountPoint =  QString("/tmp/%1").arg(XSys::RandString());
     XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
     XSys::SynExec("chmod a+wrx ", mountPoint);
 
@@ -175,21 +183,20 @@ QString FormatDisk(const QString &diskDev) {
     return newTargetDev;
 }
 
-bool EjectDisk(const QString &targetDev) {
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDiskDev(targetDev)));
+bool UmountDisk(const QString &targetDev) {
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDisk(targetDev)));
     return true;
 }
 
 #endif
 
 #ifdef Q_OS_MAC
-QString GetPartitionDiskDev(QString targetDev) {
+QString GetPartitionDisk(QString targetDev) {
     return QString(targetDev).remove(QRegExp("s\\d$"));
 }
 
-QString FormatDisk(const QString &diskDev) {
-    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(diskDev));
-
+QString InstallBootloader(const QString &diskDev) {
+    UmountDisk(diskDev);
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() -1]);
 
     //format with xfbinst
@@ -197,12 +204,12 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
-    QString tmpfgcfgPath = XSys::InsertTmpFile(fgcfgData.toLatin1());
-    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(diskDev));
-    XSys::SynExec(xfbinstPath, QString(" %1 add-menu fg.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
+    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
+    UmountDisk(diskDev);
+    XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
     //install syslinux
-    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(diskDev));
+    UmountDisk(diskDev);
     QString targetDev = diskDev + "s1";
     QString sysliuxPath = XSys::Resource("syslinux-mac");
     XSys::SynExec(sysliuxPath , QString(" -i -s %1").arg(targetDev));
@@ -212,7 +219,7 @@ QString FormatDisk(const QString &diskDev) {
     XSys::SynExec("dd" , QString(" if=%1 of=%2 count=1").arg(diskDev).arg(tmpPbrPath));
 
     //add pbr file ldlinux.bin
-    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(diskDev));
+    UmountDisk(diskDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
 
     //rename to DEEPINOS
@@ -222,8 +229,8 @@ QString FormatDisk(const QString &diskDev) {
     return targetDev;
 }
 
-bool EjectDisk(const QString &targetDev) {
-    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(GetPartitionDiskDev(targetDev)));
+bool UmountDisk(const QString &targetDev) {
+    XSys::SynExec("diskutil", QString("unmountDisk %1").arg(GetPartitionDisk(targetDev)));
     return true;
 }
 #endif
@@ -233,12 +240,50 @@ DiskUnity::DiskUnity(QObject *parent) :
     QObject(parent){
 }
 
-QString DiskUnity::FormatDisk(const QString &diskDev){
-    return XAPI::FormatDisk(diskDev);
+QString DiskUnity::InstallBootloader(const QString &diskDev){
+    return XAPI::InstallBootloader(diskDev);
+}
+
+bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
+    //rename isolinux to syslinux
+    QString syslinxDir = QString("%1syslinux/").arg(targetPath);
+    XSys::RmDir(syslinxDir);
+
+    QString isolinxDir = QString("%1isolinux/").arg(targetPath);
+    XSys::MoveDir(isolinxDir, syslinxDir);
+    qDebug()<<"Rename "<<isolinxDir<<" ot "<<syslinxDir;
+
+    QString syslinxCfgPath = QString("%1syslinux/syslinux.cfg").arg(targetPath);
+    XSys::RmFile(syslinxCfgPath);
+
+    QString isolinxCfgPath = QString("%1syslinux/isolinux.cfg").arg(targetPath);
+    qDebug()<<"Rename "<<isolinxCfgPath<<" ot "<<syslinxCfgPath;
+
+    XSys::CpFile(isolinxCfgPath, syslinxCfgPath);
+
+    QStringList filelist;
+    filelist.append("gfxboot.c32");
+    filelist.append("libcom32.c32");
+    filelist.append("libutil.c32");
+    filelist.append("menu.c32");
+    filelist.append("vesamenu.c32");
+
+    foreach(QString filename, filelist) {
+        XSys::InsertFile(":/bootloader/syslinux/" + filename, QDir::toNativeSeparators(syslinxDir + filename));
+    }
+    return true;
+}
+
+QString DiskUnity::GetPartitionDisk(const QString &targetDev){
+    return XAPI::GetPartitionDisk(targetDev);
 }
 
 bool DiskUnity::EjectDisk(const QString &targetDev) {
-    return XAPI::EjectDisk(targetDev);
+    return UmountDisk(GetPartitionDisk(targetDev));
+}
+
+bool DiskUnity::UmountDisk(const QString &disk) {
+    return XAPI::UmountDisk(disk);
 }
 
 FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){

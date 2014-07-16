@@ -10,8 +10,6 @@ namespace XAPI {
 #include <windows.h>
 #include <shellapi.h>
 QString RunApp(const QString &execPath, const QString &execParam, const QString &execPipeIn="") {
-    // TODO: rewrite by createprocess
-
     SECURITY_ATTRIBUTES sa={sizeof(sa),NULL,TRUE};
     SECURITY_ATTRIBUTES *psa=NULL;
     DWORD dwShareMode=FILE_SHARE_READ|FILE_SHARE_WRITE;
@@ -35,6 +33,7 @@ QString RunApp(const QString &execPath, const QString &execParam, const QString 
         FILE_ATTRIBUTE_NORMAL,
         NULL
         );
+
     if(hConsoleCoutRedirect==INVALID_HANDLE_VALUE)
     {
         qWarning()<<"cout error"<<GetLastError();
@@ -164,20 +163,28 @@ QString XSys::TmpFilePath(const QString &filename) {
 }
 
 QString XSys::InsertTmpFile(const QString &fileurl) {
+    QString filename = TmpFilePath(fileurl);
     QFile file(fileurl);
     file.open(QIODevice::ReadOnly);
-    QString tmpPath = InsertTmpFile(file.readAll());
+    QString tmpPath = InsertFileData(filename, file.readAll());
     file.close();
     return tmpPath;
 }
 
-QString XSys::InsertTmpFile(const QByteArray &data) {
-    QString filename = TmpFilePath();
-    QFile tmpFile(filename);
-    tmpFile.open(QIODevice::WriteOnly);
-    tmpFile.write(data);
-    tmpFile.close();
-    qDebug()<<"Create Tmp File: "<<filename;
+QString XSys::InsertFile(const QString &fileurl, const QString &fullpath) {
+    QFile file(fileurl);
+    file.open(QIODevice::ReadOnly);
+    QString tmpPath = InsertFileData(fullpath, file.readAll());
+    file.close();
+    return tmpPath;
+}
+
+QString XSys::InsertFileData(const QString &filename, const QByteArray &data) {
+    QFile file(filename);
+    file.open(QIODevice::WriteOnly);
+    file.write(data);
+    file.close();
+    qDebug()<<"Create File: "<<filename;
     return filename;
 }
 
@@ -196,7 +203,6 @@ void XSys::RmFile(const QString &filename)
 {
     QFile file(filename);
     RmFile(file);
-
 }
 
 bool XSys::CpFile(const QString &srcName, const QString &desName) {
@@ -217,6 +223,43 @@ bool XSys::CpFile(const QString &srcName, const QString &desName) {
     SynExec("sync", "");
 #endif
     return ret;
+}
+
+bool XSys::RmDir(const QString &dirpath)
+{
+    bool result = true;
+    QDir dir(dirpath);
+
+    if (dir.exists(dirpath)) {
+        Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
+            if (info.isDir()) {
+                result = RmDir(info.absoluteFilePath());
+            }
+            else {
+                result = QFile::remove(info.absoluteFilePath());
+            }
+
+            if (!result) {
+                return result;
+            }
+        }
+        result = dir.rmdir(dirpath);
+    }
+#ifdef Q_OS_UNIX
+    XSys::SynExec("sync", "");
+#endif
+    return result;
+}
+
+void XSys::MoveDir(const QString &oldName, const QString &newName)
+{
+    RmFile(newName);
+    RmDir(newName);
+    QDir dir(oldName);
+    dir.rename(oldName, newName);
+#ifdef Q_OS_UNIX
+    XSys::SynExec("sync", "");
+#endif
 }
 
 QString XSys::Resource(const QString& name) {

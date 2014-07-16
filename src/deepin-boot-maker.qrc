@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>memdisk</file>
         <file>image/arrow_down_hover.png</file>
         <file>image/arrow_down_normal.png</file>
         <file>image/button_center_normal.png</file>
@@ -24,8 +23,6 @@
         <file>image/window_close_normal.png</file>
         <file>image/window_close_hover.png</file>
         <file>image/deepin-boot-maker.png</file>
-        <file>ubnexlnx</file>
-        <file>ubnsylnx</file>
         <file>po/am.qm</file>
         <file>po/cs.qm</file>
         <file>po/de_DE.qm</file>
@@ -42,6 +39,5 @@
         <file>po/tr.qm</file>
         <file>po/zh_CN.qm</file>
         <file>po/zh_TW.qm</file>
-        <file>mbr.bin</file>
     </qresource>
 </RCC>

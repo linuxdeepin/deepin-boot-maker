@@ -1092,6 +1092,7 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
+    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -3075,7 +3076,7 @@ void unetbootin::runinst()
 
     if (formatDisk) {
         DiskUnity du;
-        targetDev = du.FormatDisk(rawtargetDev);
+        targetDev = du.InstallBootloader(rawtargetDev);
     }
 
 
@@ -3287,17 +3288,6 @@ bool unetbootin::rmDir(const QString &fn)
 }
 
 
-void unetbootin::renameDir(const QString &oldName, const QString &newName)
-{
-    rmFile(newName);
-    rmDir(newName);
-    QDir dir(oldName);
-    dir.rename(oldName, newName);
-#ifdef Q_OS_UNIX
-    callexternapp("sync", "");
-#endif
-}
-
 
 void unetbootin::mvFile(QFile &fn, QFile &outfn)
 {
@@ -3452,147 +3442,9 @@ void unetbootin::runinstusb()
 {
     this->tprogress->setValue(this->tprogress->maximum() * 98 / 100);
     qDebug()<<(tr("Installing syslinux to %1").arg(targetDev));
-	#ifdef Q_OS_WIN32
-	QString sysltfloc = instTempfl("syslinux.exe", "exe");
-    callexternapp(sysltfloc, QString("-m -a -f %1").arg(targetDev));
-	rmFile(sysltfloc);
-	#endif
 
-#ifdef Q_OS_LINUX
-	#ifdef STATICLINUX
-	if (QFile::exists(syslinuxcommand))
-		rmFile(syslinuxcommand);
-	instIndvfl("ubnsylnx", syslinuxcommand);
-		QFile::setPermissions(syslinuxcommand, QFile::ReadOwner|QFile::ExeOwner|QFile::ReadGroup|QFile::ExeGroup|QFile::ReadOther|QFile::ExeOther|QFile::WriteOwner);
-//	chmod(syslinuxcommand, S_IRUSR|S_IRGRP|S_IROTH|S_IRWXU);
-		if (QFile::exists(extlinuxcommand))
-				rmFile(extlinuxcommand);
-		instIndvfl("ubnexlnx", extlinuxcommand);
-		QFile::setPermissions(extlinuxcommand, QFile::ReadOwner|QFile::ExeOwner|QFile::ReadGroup|QFile::ExeGroup|QFile::ReadOther|QFile::ExeOther|QFile::WriteOwner);
-    #endif
-		isext2 = false;
-		if (!volidcommand.isEmpty())
-		{
-			if (callexternapp(volidcommand, QString("-t %2").arg(targetDev)).contains(QRegExp("(ext2|ext3|ext4)")))
-				isext2 = true;
-		}
-		else
-		{
-			QString tstrblk = callexternapp(blkidcommand, QString("-s TYPE %2").arg(targetDev));
-			if (tstrblk.contains('='))
-			{
-				if (tstrblk.contains(QRegExp("(ext2|ext3|ext4)")))
-					isext2 = true;
-			}
-		}
-		if (isext2)
-		{
-            qDebug()<<(tr("Installing extlinux to %1").arg(targetDev));
-			callexternapp(extlinuxcommand, QString("-i \"%1\"").arg(targetPath));
-		}
-		else
-			callexternapp(syslinuxcommand, targetDev);
-		if (rawtargetDev != targetDev)
-		{
-			// make active
-			if (sfdiskcommand != "") {
-				// use sfdisk if available
-                callexternapp(sfdiskcommand, QString("%1 -A%2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
-			} else {
-				// use fdisk if sfdisk is unavailable
-				bool isOk = false;
-                int partitionNumber = QString(targetDev).remove(rawtargetDev).remove("p").toInt(&isOk, 10);
-				if (isOk)
-				{
-					QString output = callexternapp("fdisk", "-l");
-					QStringList outputL = output.split('\n');
-					outputL = outputL.filter(targetDev);
-					if (outputL.size() > 0)
-					{
-						outputL = outputL.filter("*");
-						bool isActive = outputL.size() > 0;
-						if (!isActive)
-						{
-							QString fdiskWriteToStdin = "a\n";
-							fdiskWriteToStdin += (QString::number(partitionNumber) + "\n");
-							fdiskWriteToStdin += "w\n";
-							callexternappWriteToStdin("fdisk", rawtargetDev, fdiskWriteToStdin);
-						}
-					}
-				}
-			}
-            qDebug()<<"Begin Write MBR";
-            QFile usbmbrF(rawtargetDev);
-			QFile mbrbinF(":/mbr.bin");
-			usbmbrF.open(QIODevice::WriteOnly);
-			mbrbinF.open(QIODevice::ReadOnly);
-			usbmbrF.write(mbrbinF.readAll());
-			mbrbinF.close();
-			usbmbrF.close();
-            qDebug()<<"End Write MBR";
-		}
-#endif
-#ifdef Q_OS_MAC
-        callexternapp("sync", "");
-        callexternapp("diskutil", "umount "+targetDev);
-        callexternapp("sync", "");
-        callexternapp("hdiutil", "unmount "+targetDev);
-        callexternapp("sync", "");
-        callexternapp(resourceDir.absoluteFilePath("mkbootable"), targetDev);
-        callexternapp("sync", "");
-        callexternapp("diskutil", "umount "+targetDev);
-        callexternapp("sync", "");
-        callexternapp("hdiutil", "unmount "+targetDev);
-        callexternapp("sync", "");
-		QFile usbmbrF(rawtargetDev);
-		QFile mbrbinF(resourceDir.absoluteFilePath("mbr.bin"));
-		usbmbrF.open(QIODevice::WriteOnly);
-		mbrbinF.open(QIODevice::ReadOnly);
-		usbmbrF.write(mbrbinF.readAll());
-		mbrbinF.close();
-		usbmbrF.close();
-        callexternapp("sync", "");
-		callexternapp("diskutil", "mount "+targetDev);
-        callexternapp("sync", "");
-#endif
-
-    //rename isolinux to syslinux
-    QString syslinxDir = QString("%1syslinux/").arg(targetPath);
-    QString isolinxDir = QString("%1isolinux/").arg(targetPath);
-    renameDir(isolinxDir, syslinxDir);
-    qDebug()<<"Rename "<<isolinxDir<<" ot "<<syslinxDir;
-
-    QString syslinxCfgPath = QString("%1syslinux/syslinux.cfg").arg(targetPath);
-    QString isolinxCfgPath = QString("%1syslinux/isolinux.cfg").arg(targetPath);
-    qDebug()<<"Rename "<<isolinxCfgPath<<" ot "<<syslinxCfgPath;
-    QFile isocfg(isolinxCfgPath);
-    QFile syscfg(syslinxCfgPath);
-    isocfg.open(QFile::ReadOnly);
-    syscfg.open(QFile::WriteOnly);
-    syscfg.write(isocfg.readAll());
-    syscfg.close();
-    isocfg.close();
-
-#ifdef Q_OS_UNIX
-    if (isext2)
-        QFile::copy(QString("%1syslinux/syslinux.cfg").arg(targetPath), QString("%1extlinux.conf").arg(targetPath));
-#endif
-
-    fininstall();
-}
-
-void unetbootin::killApplication()
-{
-	exit(0);
-}
-
-void unetbootin::fininstall()
-{
-	#ifdef Q_OS_UNIX
-    this->tprogress->setValue(this->tprogress->maximum()*99/100);
-    qDebug()<<(tr("Syncing filesystems"));
-	callexternapp("sync", "");
-	#endif
+    DiskUnity du;
+    du.ConfigSyslinx(targetPath);
 
     /*remove EFI file if in biosmode*/
     if (biosMode) {
@@ -3606,7 +3458,24 @@ void unetbootin::fininstall()
         rmDir(efiPath);
     }
 
+    fininstall();
+}
+
+void unetbootin::killApplication()
+{
+	exit(0);
+}
+
+void unetbootin::fininstall()
+{
+#ifdef Q_OS_UNIX
+    this->tprogress->setValue(this->tprogress->maximum()*99/100);
+    qDebug()<<(tr("Syncing filesystems"));
+    callexternapp("sync", "");
+#endif
+
     this->tprogress->setValue(this->tprogress->maximum());
+
     isFinsh_ = true;
     DiskUnity du;
     du.EjectDisk(targetDev);

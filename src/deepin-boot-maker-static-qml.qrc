@@ -165,8 +165,6 @@
         <file>qml/Deepin/Widgets/images/radio_unselected_insensitive.png</file>
         <file>qml/QtQuick/Controls/GroupBox.qml</file>
         <file>qml/Deepin/Widgets/qmldir</file>
-        <file>qml/MainUI/qmldir</file>
-        <file>qml/MainUI/UsbCreatorFrame.qml</file>
         <file>qml/Qt/labs/folderlistmodel/qmldir</file>
         <file>qml/Qt/labs/settings/qmldir</file>
         <file>qml/Qt/WebSockets/qmldir</file>
@@ -324,8 +322,6 @@
         <file>qml/QtQuick/Window.2/qmldir</file>
         <file>qml/QtQuick/XmlListModel/qmldir</file>
         <file>qml/QtQuick.2/qmldir</file>
-        <file>qml/mainui.qml</file>
-        <file>qml/xp-fix-mainui.qml</file>
         <file>qml/QtQuick/Controls/Private/CalendarUtils.js</file>
         <file>qml/QtQuick/Controls/Private/StackView.js</file>
         <file>qml/QtQuick/Controls/Private/style.js</file>
