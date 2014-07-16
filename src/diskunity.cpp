@@ -88,7 +88,7 @@ bool InstallBootloader(const QString &targetDev) {
     int deviceNum = GetPartitionDiskNum(targetDev);
     QString xfbinstDiskName = QString("(hd%1)").arg(deviceNum);
 
-    HANDLE handle = LockDisk(targetDev);
+    //HANDLE handle = LockDisk(targetDev);
     //fbinst format
     QString xfbinstPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/xfbinst.exe"));
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
@@ -99,7 +99,7 @@ bool InstallBootloader(const QString &targetDev) {
 
     //install syslinux
     QString sysliuxPath = XSys::InsertTmpFile(QString(":/bootloader/syslinux/syslinux.exe"));
-    XSys::SynExec(sysliuxPath , QString(" -i -s %1").arg(targetDev));
+    XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     //get pbr file ldlinux.bin
     qDebug()<<"dump pbr begin";
@@ -121,7 +121,7 @@ bool InstallBootloader(const QString &targetDev) {
 
     XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
 
-    UnlockDisk(handle);
+    //UnlockDisk(handle);
     return true;
 }
 
@@ -161,7 +161,7 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
     QString targetDev = diskDev + "s1";
     QString sysliuxPath = XSys::InsertTmpFile(":/ubnsylnx");
-    XSys::SynExec(sysliuxPath , QString(" -i -s %1").arg(targetDev));
+    XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     //dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::TmpFilePath("ldlinux.bin");
@@ -212,7 +212,7 @@ QString InstallBootloader(const QString &diskDev) {
     UmountDisk(diskDev);
     QString targetDev = diskDev + "s1";
     QString sysliuxPath = XSys::Resource("syslinux-mac");
-    XSys::SynExec(sysliuxPath , QString(" -i -s %1").arg(targetDev));
+    XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     //dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::TmpFilePath("ldlinux.bin");
