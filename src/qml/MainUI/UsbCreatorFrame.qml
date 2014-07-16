@@ -268,7 +268,7 @@ DWindowFrame {
                                     MessageDialog{
                                         id: messageDialog
                                         icon: StandardIcon.Warning
-                                        standardButtons: StandardButton.Yes | StandardButton.No
+                                        standardButtons: StandardButton.Ok | StandardButton.Cancel
                                         title: qsTr("Format USB flash disk");
                                         text: qsTr("All data will be lost during formatting, please back up in advance and then press OK button.")
                                         onAccepted: {
