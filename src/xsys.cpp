@@ -1,6 +1,7 @@
 #include "xsys.h"
 
 #include <QtCore>
+#include <QApplication>
 
 namespace XAPI {
 
@@ -162,6 +163,14 @@ QString XSys::TmpFilePath(const QString &filename) {
             + newFilename + ext));
 }
 
+QString XSys::InsertTmpFile(const QString &fileurl) {
+    QFile file(fileurl);
+    file.open(QIODevice::ReadOnly);
+    QString tmpPath = InsertTmpFile(file.readAll());
+    file.close();
+    return tmpPath;
+}
+
 QString XSys::InsertTmpFile(const QByteArray &data) {
     QString filename = TmpFilePath();
     QFile tmpFile(filename);
@@ -208,4 +217,11 @@ bool XSys::CpFile(const QString &srcName, const QString &desName) {
     SynExec("sync", "");
 #endif
     return ret;
+}
+
+QString XSys::Resource(const QString& name) {
+    QDir res = QDir(QApplication::applicationDirPath());
+    res.cdUp();
+    res.cd("Resources");
+    return res.absoluteFilePath(name);
 }

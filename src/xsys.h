@@ -19,11 +19,15 @@ public:
     static QString RandString(const QString &str = "");
     static QString TmpFilePath(const QString &filename = "");
     static QString InsertTmpFile(const QByteArray &data = "");
+    static QString InsertTmpFile(const QString &fileurl);
     static QString SynExec(const QString &exec, const QString &param, const QString &execPipeIn="");
     static void RmFile(QFile &file);
     static void RmFile(const QString &filename);
     static bool CpFile(const QString &srcName, const QString &desName);
+
+    static QString Resource(const QString& name);
 signals:
+
 
 public slots:
 

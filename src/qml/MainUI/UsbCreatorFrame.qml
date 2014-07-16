@@ -262,14 +262,15 @@ DWindowFrame {
                                 }
                                 DCheckBox {
                                     id: formatDisk
-                                    text: qsTr("<font color='#ffffff'>Format USB disk.</font>")
+                                    text: qsTr("<font color='#ffffff'>Format USB flash disk before installation to improve the making success rate.</font>")
+                                    width: 380
 
                                     MessageDialog{
                                         id: messageDialog
                                         icon: StandardIcon.Warning
                                         standardButtons: StandardButton.Yes | StandardButton.No
-                                        title: qsTr("Format USB Disk");
-                                        text: qsTr("Would you want to FORMAT the USB disk? All partitions on usb disk will be deleted, please backup you data first!")
+                                        title: qsTr("Format USB flash disk");
+                                        text: qsTr("All data will be lost during formatting, please back up in advance and then press OK button.")
                                         onAccepted: {
                                             formatDisk.checked = true
                                         }
@@ -293,6 +294,7 @@ DWindowFrame {
 
                                 DCheckBox {
                                     id: bisoMode
+                                    width: 380
                                     text: qsTr("<font color='#ffffff'>Support BIOS. Unselect here. </font>")
                                 }
                             }

@@ -3,7 +3,7 @@ import QtQuick.Controls 1.0
 
 Label {
     focus: true
-    property var dconstants: DConstants {}
+    property QtObject dconstants: DConstants {}
     
     color: dconstants.fgColor
 }

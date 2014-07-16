@@ -21,67 +21,67 @@
 <context>
     <name>UsbCreatorFrame</name>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="170"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="163"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Easy to use without redundancy&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;告别繁琐，简单易用&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="177"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="170"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; start.&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和&lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;双启动。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="199"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="192"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择ISO文件:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="249"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="242"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;选择U盘:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="329"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="265"/>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
+        <translation>&lt;font color=&apos;#ffffff&apos;&gt;安装前格式化U盘，提高制作成功率。&lt;/font&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="271"/>
+        <source>Format USB flash disk</source>
+        <translation>格式化U盘</translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="272"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>格式化U盘将丢失U盘上所有资料，请做好备份后点确定按钮</translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="296"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;旧主板BIOS支持， 默认请不要勾选。&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="338"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB disk.&lt;/font&gt;</source>
-        <translation>&lt;font color=&apos;#ffffff&apos;&gt;安装前格式化U盘，提高制作成功率。&lt;/font&gt;</translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="344"/>
-        <source>Format USB Disk</source>
-        <translation>格式化U盘</translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="345"/>
-        <source>Would you want to FORMAT the USB disk? All partitions on usb disk will be deleted, please backup you data first!</source>
-        <translation>格式化U盘将丢失U盘上所有资料，请做好备份后点确定按钮</translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="369"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="307"/>
         <source>Start</source>
         <translation>开始创建</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="411"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="349"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;正在写入文件，&lt;font color=&apos;#ebab4c&apos;&gt;请不要&lt;/font&gt; 移除U盘或者关机！&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="447"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="385"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin OS Startup Disk creates successfully.&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;恭喜！&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin系统启动盘制作成功。&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="458"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="396"/>
         <source>Quit</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="467"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="405"/>
         <source>Reboot</source>
         <translation>重启</translation>
     </message>
@@ -181,7 +181,7 @@
         <location filename="../unetbootin.cpp" line="3032"/>
         <location filename="../unetbootin.cpp" line="3043"/>
         <location filename="../unetbootin.cpp" line="3054"/>
-        <location filename="../unetbootin.cpp" line="3373"/>
+        <location filename="../unetbootin.cpp" line="3372"/>
         <source>USB Drive</source>
         <translation>USB 驱动器</translation>
     </message>
@@ -315,17 +315,17 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
         <translation>硬盘</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3455"/>
+        <location filename="../unetbootin.cpp" line="3454"/>
         <source>Installing syslinux to %1</source>
         <translation>正在安装 syslinux 到 %1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3491"/>
+        <location filename="../unetbootin.cpp" line="3490"/>
         <source>Installing extlinux to %1</source>
         <translation>正在安装 extlinux 到 %1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3666"/>
+        <location filename="../unetbootin.cpp" line="3593"/>
         <source>Syncing filesystems</source>
         <translation>正在同步文件系统</translation>
     </message>

@@ -38,18 +38,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB disk.&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Format USB Disk</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Would you want to FORMAT the USB disk? All partitions on usb disk will be deleted, please backup you data first!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -67,6 +55,18 @@
     </message>
     <message>
         <source>Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Format USB flash disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

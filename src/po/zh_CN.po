@@ -17,12 +17,12 @@ msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "深度启动盘制作工具"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:170
+#: ../qml/MainUI/UsbCreatorFrame.qml:163
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr "<font color='#ffffff'>告别繁琐，简单易用</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:177
+#: ../qml/MainUI/UsbCreatorFrame.qml:170
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
@@ -32,44 +32,47 @@ msgstr ""
 "<br><font color='#a7a7a7'>欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和<font "
 "color='#ebab4c'>UEFI</font>双启动。</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:199
+#: ../qml/MainUI/UsbCreatorFrame.qml:192
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>选择ISO文件:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:249
+#: ../qml/MainUI/UsbCreatorFrame.qml:242
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>选择U盘:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:329
+#: ../qml/MainUI/UsbCreatorFrame.qml:265
+msgctxt "UsbCreatorFrame|"
+msgid ""
+"<font color='#ffffff'>Format USB flash disk before installation to improve "
+"the making success rate.</font>"
+msgstr "<font color='#ffffff'>安装前格式化U盘，提高制作成功率。</font>"
+
+
+#: ../qml/MainUI/UsbCreatorFrame.qml:271
+msgctxt "UsbCreatorFrame|"
+msgid "Format USB flash disk"
+msgstr "格式化U盘"
+
+#: ../qml/MainUI/UsbCreatorFrame.qml:272
+msgctxt "UsbCreatorFrame|"
+msgid ""
+"All data will be lost during formatting, please back up in advance and then "
+"press OK button."
+msgstr "格式化U盘将丢失U盘上所有资料，请做好备份后点确定按钮"
+
+#: ../qml/MainUI/UsbCreatorFrame.qml:296
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>旧主板BIOS支持， 默认请不要勾选。</font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:338
-msgctxt "UsbCreatorFrame|"
-msgid "<font color='#ffffff'>Format USB disk.</font>"
-msgstr "<font color='#ffffff'>安装前格式化U盘，提高制作成功率。</font>"
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:344
-msgctxt "UsbCreatorFrame|"
-msgid "Format USB Disk"
-msgstr "格式化U盘"
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:345
-msgctxt "UsbCreatorFrame|"
-msgid ""
-"Would you want to FORMAT the USB disk? All partitions on usb disk will be "
-"deleted, please backup you data first!"
-msgstr "格式化U盘将丢失U盘上所有资料，请做好备份后点确定按钮"
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:369
+#: ../qml/MainUI/UsbCreatorFrame.qml:307
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "开始创建"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:411
+#: ../qml/MainUI/UsbCreatorFrame.qml:349
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -78,7 +81,7 @@ msgstr ""
 "<font color='#ffffff'><br>正在写入文件，<font color='#ebab4c'>请不要</font> "
 "移除U盘或者关机！</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:447
+#: ../qml/MainUI/UsbCreatorFrame.qml:385
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
@@ -87,12 +90,12 @@ msgstr ""
 "<br><font color='#057aff'>恭喜！</font></br><br><font "
 "color='#ffffff'>Deepin系统启动盘制作成功。</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:458
+#: ../qml/MainUI/UsbCreatorFrame.qml:396
 msgctxt "UsbCreatorFrame|"
 msgid "Quit"
 msgstr "完成"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:467
+#: ../qml/MainUI/UsbCreatorFrame.qml:405
 msgctxt "UsbCreatorFrame|"
 msgid "Reboot"
 msgstr "重启"
@@ -200,7 +203,7 @@ msgstr "目录 %1 没有空间了。单击'Yes'终止安装，单击'No'忽略�
 
 #: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
 #: ../unetbootin.cpp:3032 ../unetbootin.cpp:3043 ../unetbootin.cpp:3054
-#: ../unetbootin.cpp:3373
+#: ../unetbootin.cpp:3372
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "USB 驱动器"
@@ -344,19 +347,19 @@ msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "硬盘"
 
-#: ../unetbootin.cpp:3455
+#: ../unetbootin.cpp:3454
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
 msgstr "正在安装 syslinux 到 %1"
 
-#: ../unetbootin.cpp:3491
+#: ../unetbootin.cpp:3490
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing extlinux to %1"
 msgstr "正在安装 extlinux 到 %1"
 
-#: ../unetbootin.cpp:3666
+#: ../unetbootin.cpp:3593
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "正在同步文件系统"

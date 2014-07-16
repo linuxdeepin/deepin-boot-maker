@@ -3076,7 +3076,6 @@ void unetbootin::runinst()
     if (formatDisk) {
         DiskUnity du;
         targetDev = du.FormatDisk(rawtargetDev);
-        du.FixMBR(targetDev);
     }
 
 

@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = deepin-boot-maker
-#CONFIG += static
+
 DEPENDPATH += .
 INCLUDEPATH += .
 
@@ -8,16 +8,14 @@ DEFINES += STATICLINUX
 DEFINES += NOEXTRACTKERNEL
 DEFINES += NOEXTRACTINITRD
 
+macx {
+CONFIG += static
+ICON = deepin-boot-maker.icns
+}
+
 static {
 RESOURCES += \
     deepin-boot-maker-static-qml.qrc
-}
-
-win32-msvc* {
-    DEFINES += _USING_V110_SDK71_
-    QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
-    QMAKE_LFLAGS += /SUBSYSTEM:WINDOWS",5.01"
-    LIBS += -llibGLESv2 -llibEGL -lpreprocessor
 }
 
 HEADERS += unetbootin.h \
@@ -75,21 +73,26 @@ TRANSLATIONS += po/en_US.ts \
     po/zh_TW.ts \
 
 
+RESOURCES += \
+    deepin-boot-maker.qrc \
+    deepin-boot-maker-qml.qrc \
+
 win32{
 RESOURCES += \
-    deepin-boot-maker.qrc
-    RC_FILE += deepin-boot-maker.rc
-}else{
-RESOURCES += \
-    deepin-boot-maker.qrc
+    deepin-boot-maker-windows.qrc \
+    deepin-boot-maker-sevnz.qrc \
+
+RC_FILE += deepin-boot-maker.rc
+
+}
+
+win32-msvc* {
+    DEFINES += _USING_V110_SDK71_
+    QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
+    QMAKE_LFLAGS += /SUBSYSTEM:WINDOWS",5.01"
+    LIBS += -llibGLESv2 -llibEGL -lpreprocessor
 }
 
 OTHER_FILES +=
 
-RESOURCES += \
-    deepin-boot-maker-qml.qrc \
-    deepin-boot-maker-windows.qrc \
-    deepin-boot-maker-sevnz.qrc
-
-ICON = deepin-boot-maker.icns
 

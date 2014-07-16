@@ -21,67 +21,67 @@
 <context>
     <name>UsbCreatorFrame</name>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="170"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="163"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Easy to use without redundancy&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;Jednoduché při používání, bez nadbytečnosti&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="177"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="170"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; start.&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Vítejte při používání programu na vytvoření spouštěcího média Deepin, kde můžete rychle a jednoduše vytvořit spouštěcí médium Deepin OS skrze jednoduché nastavení, které lze současně spustit přes BIOS a &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;.&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="199"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="192"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Vyberte soubor ISO:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="249"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="242"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Vyberte úložiště USB:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="329"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="265"/>
+        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="271"/>
+        <source>Format USB flash disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="272"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="296"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;Podpora pro BIOS. Vypněte zde. &lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="338"/>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB disk.&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="344"/>
-        <source>Format USB Disk</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="345"/>
-        <source>Would you want to FORMAT the USB disk? All partitions on usb disk will be deleted, please backup you data first!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="369"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="307"/>
         <source>Start</source>
         <translation>Spustit</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="411"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="349"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;&lt;font color=&apos;#ebab4c&apos;&gt;NEODSTRAŇUJTE, PROSÍM,&lt;/font&gt; hromadné úložiště USB a nevypínejte počítač po dobu, kdy je soubor zapisován.&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="447"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="385"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin OS Startup Disk creates successfully.&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Blahopřejeme!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Spouštěcí médium bylo úspěšně vytvořeno.&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="458"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="396"/>
         <source>Quit</source>
         <translation>Ukončit</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="467"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="405"/>
         <source>Reboot</source>
         <translation>Restartovat</translation>
     </message>
@@ -181,7 +181,7 @@
         <location filename="../unetbootin.cpp" line="3032"/>
         <location filename="../unetbootin.cpp" line="3043"/>
         <location filename="../unetbootin.cpp" line="3054"/>
-        <location filename="../unetbootin.cpp" line="3373"/>
+        <location filename="../unetbootin.cpp" line="3372"/>
         <source>USB Drive</source>
         <translation>Hromadné úložiště USB</translation>
     </message>
@@ -316,17 +316,17 @@ Nainstalujte balíček &quot;%3&quot;, nebo jeho obdobu ve vaší distribuci.</t
         <translation>Pevný disk</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3455"/>
+        <location filename="../unetbootin.cpp" line="3454"/>
         <source>Installing syslinux to %1</source>
         <translation>Instalovat syslinux na %1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3491"/>
+        <location filename="../unetbootin.cpp" line="3490"/>
         <source>Installing extlinux to %1</source>
         <translation>Instalovat extlinux na %1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3666"/>
+        <location filename="../unetbootin.cpp" line="3593"/>
         <source>Syncing filesystems</source>
         <translation>Seřídit souborové systémy</translation>
     </message>

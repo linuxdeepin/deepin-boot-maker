@@ -4,7 +4,8 @@ import QtQuick.Controls.Styles 1.1
 
 CheckBox {
     property int fontSize: 12
-    
+    property int textWrapMode: Text.Wrap
+
     text: "hello"
     style: CheckBoxStyle {
         background: Item {}
@@ -16,6 +17,8 @@ CheckBox {
             color: Qt.rgba(1, 1, 1, 0.5)
             text: control.text
             font.pixelSize: control.fontSize
+            width: control.width
+            wrapMode: control.textWrapMode
         }        
     }
 }

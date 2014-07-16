@@ -43,7 +43,7 @@ Item {
         anchors.leftMargin: 5
         anchors.verticalCenter: parent.verticalCenter
         text: "text " + index
-        color: wrapper.ListView.view.currentIndex == index ? dconstants.activeColor : dconstants.fgColor
+        color: wrapper.ListView.view.currentIndex === index ? dconstants.activeColor : dconstants.fgColor
     }
 
     MouseArea {
