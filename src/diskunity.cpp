@@ -345,27 +345,28 @@ bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
 
     XSys::CpFile(isolinxCfgPath, syslinxCfgPath);
 
+
+    QString urlPrifx = ":/bootloader/syslinux/";
+#ifdef Q_OS_MAC
+    urlPrifx = ":/bootloader/syslinux/macosx/";
+#endif
+
     QStringList filelist;
-    filelist.append("gfxboot.c32");
-    filelist.append("chain.c32");
-    filelist.append("menu.c32");
-    filelist.append("vesamenu.c32");
+    filelist.append(urlPrifx + "gfxboot.c32");
+    filelist.append(urlPrifx + "chain.c32");
+    filelist.append(urlPrifx + "menu.c32");
+    filelist.append(urlPrifx + "vesamenu.c32");
 #ifndef Q_OS_MAC
-    filelist.append("libcom32.c32");
-    filelist.append("libutil.c32");
+    filelist.append(urlPrifx + "libcom32.c32");
+    filelist.append(urlPrifx + "libutil.c32");
 #endif
     // bugfix
     // TODO: we change syslinux to 6.02, but gfxboot will not work
     // so use a syslinux.cfg will not use gfxboot and vesamenu
-    filelist.append("syslinux.cfg");
+    filelist.append(":/bootloader/syslinux/syslinux.cfg");
 
-    QString urlPrifx = ":/bootloader/syslinux/";
-
-#ifndef Q_OS_MAC
-    urlPrifx = ":/bootloader/syslinux/macosx/";
-#endif
     foreach(QString filename, filelist) {
-        XSys::InsertFile(urlPrifx + filename, QDir::toNativeSeparators(syslinxDir + filename));
+        XSys::InsertFile(filename, QDir::toNativeSeparators(syslinxDir + filename));
     }
     return true;
 }
