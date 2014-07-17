@@ -140,6 +140,11 @@ QString GetPartitionDisk(QString targetDev) {
         return QString(targetDev).remove(QRegExp("\\d$"));
 }
 
+bool UmountDisk(const QString &targetDev) {
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDisk(targetDev)));
+    return true;
+}
+
 QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
 
@@ -149,7 +154,7 @@ QString InstallBootloader(const QString &diskDev) {
 
     //fbinst format
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
-    QString xfbinstPath = XSys::InsertTmpFile(":/xfbinst");
+    QString xfbinstPath = XSys::InsertTmpFile(":/bootloader/xfbinst/xfbinst");
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
@@ -160,7 +165,7 @@ QString InstallBootloader(const QString &diskDev) {
     //install syslinux
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
     QString targetDev = diskDev + "s1";
-    QString sysliuxPath = XSys::InsertTmpFile(":/ubnsylnx");
+    QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/xfbinst/syslinux");
     XSys::SynExec(sysliuxPath , QString(" -i -s %1").arg(targetDev));
 
     //dd pbr file ldlinux.bin
@@ -183,10 +188,6 @@ QString InstallBootloader(const QString &diskDev) {
     return newTargetDev;
 }
 
-bool UmountDisk(const QString &targetDev) {
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDisk(targetDev)));
-    return true;
-}
 
 #endif
 
