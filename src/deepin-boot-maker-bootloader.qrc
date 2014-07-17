@@ -1,10 +1,17 @@
 <RCC>
     <qresource prefix="/">
-        <file>bootloader/xfbinst/fb.cfg</file>
+        <file>bootloader/syslinux/chain.c32</file>
         <file>bootloader/syslinux/gfxboot.c32</file>
         <file>bootloader/syslinux/libcom32.c32</file>
         <file>bootloader/syslinux/libutil.c32</file>
+        <file>bootloader/syslinux/mbr.bin</file>
         <file>bootloader/syslinux/menu.c32</file>
+        <file>bootloader/syslinux/syslinux</file>
+        <file>bootloader/syslinux/syslinux.cfg</file>
+        <file>bootloader/syslinux/syslinux.exe</file>
         <file>bootloader/syslinux/vesamenu.c32</file>
+        <file>bootloader/xfbinst/fb.cfg</file>
+        <file>bootloader/xfbinst/xfbinst.exe</file>
+        <file>bootloader/xfbinst/xfbinst</file>
     </qresource>
 </RCC>

@@ -153,7 +153,7 @@ QString XSys::RandString(const QString &str) {
 QString XSys::TmpFilePath(const QString &filename) {
     QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::TempLocation)[0];
     QString ext =  + "." + filename.split(".").last();
-    if ("." == ext ) {
+    if ("." == ext || !filename.contains(".") ) {
         ext = "";
     }
     QString newFilename = RandString(filename);
@@ -185,6 +185,9 @@ QString XSys::InsertFileData(const QString &filename, const QByteArray &data) {
     file.write(data);
     file.close();
     qDebug()<<"Create File: "<<filename;
+#ifdef Q_OS_UNIX
+    XSys::SynExec("sync", "");
+#endif
     return filename;
 }
 

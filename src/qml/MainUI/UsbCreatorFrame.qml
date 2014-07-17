@@ -13,15 +13,15 @@ DWindowFrame {
 
     Rectangle {
         BootMaker {
-            id: usbCreator
-            objectName: "usbCreatorDeepin"
+            id: bootMaker
+            objectName: "bootMakerDeepin"
             property string isoImagePath: ""
             property string usbDriver: ""
             property int lableMaxWidth: 380
-
+            property string version: "0.99"
             function refreshUsbDriver() {
                 var oldCurText = usbDriver.text
-                var usblist = usbCreator.listUsbDrives()
+                var usblist = bootMaker.listUsbDrives()
                 usbDriver.labels = usblist
                 if (usblist.length > 0) {
                     usbIcon.source = "qrc:/image/usb-active.png"
@@ -35,9 +35,9 @@ DWindowFrame {
             running: false
             repeat: true
             onTriggered: {
-                processRate.text = "%1%".arg(usbCreator.processRate())
+                processRate.text = "%1%".arg(bootMaker.processRate())
                 console << processRate.text
-                if (usbCreator.isFinish()) {
+                if (bootMaker.isFinish()) {
                     processRate.text = "100%"
                     processTimer.stop()
                     processNext.clicked()
@@ -51,7 +51,7 @@ DWindowFrame {
             running: true
             repeat: true
             onTriggered: {
-                usbCreator.refreshUsbDriver()
+                bootMaker.refreshUsbDriver()
             }
         }
     }
@@ -129,7 +129,7 @@ DWindowFrame {
                                 x: parent.x + 178
                                 y: parent.y + 67
                                 font.pixelSize: 10
-                                text: "0.98"
+                                text: bootMaker.version
                        }
                         }
                         Rectangle {
@@ -144,7 +144,7 @@ DWindowFrame {
                                 press_image: "qrc:/image/window_close_press.png"
 
                                 onClicked: {
-                                    usbCreatorUI.close()
+                                    bootMakerUI.close()
                                 }
                             }
                         }
@@ -158,14 +158,14 @@ DWindowFrame {
                         DLabel {
                             id: descriptionsBye
                             font.pixelSize: 14
-                            width: usbCreator.lableMaxWidth
+                            width: bootMaker.lableMaxWidth
                             wrapMode: Text.Wrap
                             text: qsTr("<font color='#ffffff'>Easy to use without redundancy</font></br>")
                         }
                         DLabel {
                             id: descriptions
                             font.pixelSize: 11
-                            width: usbCreator.lableMaxWidth
+                            width: bootMaker.lableMaxWidth
                             wrapMode: Text.Wrap
                             text: qsTr("<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>")
                         }
@@ -178,6 +178,7 @@ DWindowFrame {
                     height: 250
                     Column {
                         id: firstStep
+                        visible: true
                         Rectangle {
                             id: rcIso
                             color: "transparent"
@@ -187,7 +188,7 @@ DWindowFrame {
                                 DLabel {
                                     id: selectIsoHits
                                     font.pixelSize: 12
-                                    width: usbCreator.lableMaxWidth
+                                    width: bootMaker.lableMaxWidth
                                     wrapMode: Text.Wrap
                                     text: qsTr("<br><font color='#ffffff'>Select the ISO File:</font></br>")
                                 }
@@ -203,21 +204,21 @@ DWindowFrame {
                                         id: isoFileChoose
                                         visible: false
                                         selectMultiple: false
-                                        // folder: usbCreator.homeDir()
+                                        // folder: bootMaker.homeDir()
                                         //nameFilters: ["ISO (*.iso);;"]
                                         onAccepted: {
-                                            usbCreator.isoImagePath = usbCreator.url2LocalFile(
+                                            bootMaker.isoImagePath = bootMaker.url2LocalFile(
                                                         isoFileChoose.fileUrl)
-                                            if (usbCreator.isISOImage(
-                                                        usbCreator.isoImagePath)) {
-                                                usbCreator.isoImagePath = usbCreator.isoImagePath
-                                                isoPath.textInput.text = usbCreator.isoImagePath
+                                            if (bootMaker.isISOImage(
+                                                        bootMaker.isoImagePath)) {
+                                                bootMaker.isoImagePath = bootMaker.isoImagePath
+                                                isoPath.textInput.text = bootMaker.isoImagePath
                                                 isoIcon.source = "qrc:/image/iso-active.png"
                                             } else {
-                                                usbCreator.isoImagePath = ""
+                                                bootMaker.isoImagePath = ""
                                                 isoPath.textInput.text = ""
                                             }
-                                            usbCreator.refreshUsbDriver()
+                                            bootMaker.refreshUsbDriver()
                                         }
                                     }
 
@@ -237,7 +238,7 @@ DWindowFrame {
                                 DLabel {
                                     id: selectUsbHits
                                     font.pixelSize: 12
-                                    width: usbCreator.lableMaxWidth
+                                    width: bootMaker.lableMaxWidth
                                     wrapMode: Text.Wrap
                                     text: qsTr("<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>")
                                 }
@@ -249,9 +250,9 @@ DWindowFrame {
                                 DComboBox {
                                     width: 210
                                     id: usbDriver
-                                    parentWindow: usbCreatorUI
-                                    menu.parentWindow: usbCreatorUI
-                                    labels: usbCreator.listUsbDrives()
+                                    parentWindow: bootMakerUI
+                                    menu.parentWindow: bootMakerUI
+                                    labels: bootMaker.listUsbDrives()
                                     onMenuSelect: console.log(usbDriver.text)
                                 }
 
@@ -268,7 +269,7 @@ DWindowFrame {
                                     MessageDialog{
                                         id: messageDialog
                                         icon: StandardIcon.Warning
-                                        standardButtons: StandardButton.Yes | StandardButton.No
+                                        standardButtons: StandardButton.Ok | StandardButton.Cancel
                                         title: qsTr("Format USB flash disk");
                                         text: qsTr("All data will be lost during formatting, please back up in advance and then press OK button.")
                                         onAccepted: {
@@ -315,7 +316,7 @@ DWindowFrame {
                                     //secondStep.visible = true
                                     //  firstStep.visible = false
                                     //processNext.visible = true
-                                    var result = usbCreator.start(
+                                    var result = bootMaker.start(
                                                 isoPath.text,
                                                 usbDriver.text,
                                                 bisoMode.checked,
@@ -346,7 +347,7 @@ DWindowFrame {
                             DLabel {
                                 id: warningLabel
                                 anchors.verticalCenter: parent.verticalCenter
-                                width: usbCreator.lableMaxWidth
+                                width: bootMaker.lableMaxWidth
                                 wrapMode: Text.Wrap
                                 text: qsTr("<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove the USB flash drive or shutdown while file is writing.</br></font>" )
                                 font.pixelSize: 12
@@ -379,14 +380,15 @@ DWindowFrame {
                         Rectangle {
                             id: finishHits
                             width: 460
-                            height: 130
+                            height: 150
                             color: "transparent"
                             DLabel {
                                 id: finishLabel
+                                width: 380
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: qsTr("<br><font color='#057aff'>Congratulations!</font></br><br><font color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>")
+                                text: qsTr("<br><font color='#057aff'>Congratulations!</font></br><br><font color='#ffffff'><br>You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.</br><br></br><br>Do you need to restart now?</br></font></br>")
                                 font.pixelSize: 12
-                                wrapMode: TextEdit.WordWrap
+                                wrapMode: Text.Wrap
                             }
                         }
                         Rectangle {
@@ -395,21 +397,21 @@ DWindowFrame {
                             color: "transparent"
                             Row {
                                 DTransparentButton {
-                                    text: qsTr("Quit")
+                                    text: qsTr("Restart Later")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     //anchors.horizontalCenter: parent.horizontalCenter
                                     onClicked: {
-                                        usbCreatorUI.close()
+                                        bootMakerUI.close()
                                     }
                                 }
                                 DTransparentButton {
-                                    text: qsTr("Reboot")
+                                    text: qsTr("Restart Now")
                                     width: 100
                                     anchors.verticalCenter: parent.verticalCenter
                                     //anchors.horizontalCenter: parent.horizontalCenter
                                     onClicked: {
-                                        usbCreator.exitRestart()
+                                        bootMaker.exitRestart()
                                     }
                                 }
                             }

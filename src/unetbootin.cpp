@@ -1092,7 +1092,6 @@ QStringList unetbootin::filteroutlistL(QStringList listofdata, QList<QRegExp> li
 
 void unetbootin::extractiso(QString isofile)
 {
-    return;
     qDebug()<<(tr("extractiso begin"));
     if (!sdesc2String.contains(trcurrent))
 	{
@@ -3075,8 +3074,9 @@ void unetbootin::runinst()
 #endif
 
     if (formatDisk) {
-        DiskUnity du;
-        targetDev = du.InstallBootloader(rawtargetDev);
+        targetDev = DiskUnity::InstallBootloader(rawtargetDev);
+    } else {
+        DiskUnity::InstallSyslinux(rawtargetDev);
     }
 
 
@@ -3443,8 +3443,7 @@ void unetbootin::runinstusb()
     this->tprogress->setValue(this->tprogress->maximum() * 98 / 100);
     qDebug()<<(tr("Installing syslinux to %1").arg(targetDev));
 
-    DiskUnity du;
-    du.ConfigSyslinx(targetPath);
+    DiskUnity::ConfigSyslinx(targetPath);
 
     /*remove EFI file if in biosmode*/
     if (biosMode) {
@@ -3477,8 +3476,7 @@ void unetbootin::fininstall()
     this->tprogress->setValue(this->tprogress->maximum());
 
     isFinsh_ = true;
-    DiskUnity du;
-    du.EjectDisk(targetDev);
+    DiskUnity::EjectDisk(targetDev);
 }
 
 bool unetbootin::isFinsh() {

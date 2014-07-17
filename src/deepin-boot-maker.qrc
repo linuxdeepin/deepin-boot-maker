@@ -39,5 +39,6 @@
         <file>po/tr.qm</file>
         <file>po/zh_CN.qm</file>
         <file>po/zh_TW.qm</file>
+        <file>deepinos</file>
     </qresource>
 </RCC>

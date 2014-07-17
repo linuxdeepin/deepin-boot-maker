@@ -7,6 +7,22 @@
         <source>Please select an iso image</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Format error of USB flash drive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only FAT32 USB flash drive supported. Need to format? All partitions and data will be lost during formatting, please back up the data in advance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QApplication</name>
@@ -46,18 +62,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin OS Startup Disk creates successfully.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reboot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -67,6 +71,18 @@
     </message>
     <message>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart Now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Do you need to restart now?&lt;/br&gt;&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -243,10 +259,6 @@ Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</sour
     </message>
     <message>
         <source>Installing syslinux to %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Installing extlinux to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

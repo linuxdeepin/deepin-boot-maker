@@ -7,12 +7,34 @@ msgstr ""
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:71 ../bootmaker.cpp:72
+#: ../bootmaker.cpp:45
+msgctxt "BootMaker|"
+msgid "Format error of USB flash drive"
+msgstr ""
+
+#: ../bootmaker.cpp:46
+msgctxt "BootMaker|"
+msgid ""
+"Only FAT32 USB flash drive supported. Need to format? All partitions and "
+"data will be lost during formatting, please back up the data in advance."
+msgstr ""
+
+#: ../bootmaker.cpp:48
+msgctxt "BootMaker|"
+msgid "Format"
+msgstr ""
+
+#: ../bootmaker.cpp:49
+msgctxt "BootMaker|"
+msgid "Cancel"
+msgstr ""
+
+#: ../bootmaker.cpp:89 ../bootmaker.cpp:90
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "請選擇ISO檔"
 
-#: ../main.cpp:278
+#: ../main.cpp:280
 msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "深度啟動盤製作工具"
@@ -32,46 +54,46 @@ msgstr ""
 "<br><font color='#a7a7a7'>歡迎使用深度啟動盤軟體，通過簡單設置即可快速製作Deepin系統啟動盤，並且支持BIOS和<font "
 "color='#ebab4c'>UEFI</font>雙啟動。</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:192
+#: ../qml/MainUI/UsbCreatorFrame.qml:193
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>選擇ISO檔:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:242
+#: ../qml/MainUI/UsbCreatorFrame.qml:243
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>選擇U盤:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:265
+#: ../qml/MainUI/UsbCreatorFrame.qml:266
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'>Format USB flash disk before installation to improve "
 "the making success rate.</font>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:271
+#: ../qml/MainUI/UsbCreatorFrame.qml:273
 msgctxt "UsbCreatorFrame|"
 msgid "Format USB flash disk"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:272
+#: ../qml/MainUI/UsbCreatorFrame.qml:274
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:296
+#: ../qml/MainUI/UsbCreatorFrame.qml:299
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>舊主板BIOS支持， 默認請不要勾選。</font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:307
+#: ../qml/MainUI/UsbCreatorFrame.qml:310
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "開始創建"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:349
+#: ../qml/MainUI/UsbCreatorFrame.qml:352
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -80,24 +102,40 @@ msgstr ""
 "<font color='#ffffff'><br>正在寫入檔，<font color='#ebab4c'>請不要</font> "
 "移除U盤或者關機！</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:385
+#: ../qml/MainUI/UsbCreatorFrame.qml:389
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-"color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
+"color='#ffffff'><br>You have successfully created a boot disk and select "
+"your boot disk to install Deepin OS after restarted.</br><br></br><br>Do you "
+"need to restart now?</br></font></br>"
 msgstr ""
-"<br><font color='#057aff'>恭喜！</font></br><br><font "
-"color='#ffffff'>Deepin系統啟動盤製作成功。</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:396
+#: ../qml/MainUI/UsbCreatorFrame.qml:400
 msgctxt "UsbCreatorFrame|"
-msgid "Quit"
-msgstr "完成"
+msgid "Restart Later"
+msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:405
+#: ../qml/MainUI/UsbCreatorFrame.qml:409
 msgctxt "UsbCreatorFrame|"
-msgid "Reboot"
-msgstr "重啟"
+msgid "Restart Now"
+msgstr ""
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#057aff'>Congratulations!</font></br><br><font "
+#~ "color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
+#~ msgstr ""
+#~ "<br><font color='#057aff'>恭喜！</font></br><br><font "
+#~ "color='#ffffff'>Deepin系統啟動盤製作成功。</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Quit"
+#~ msgstr "完成"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Reboot"
+#~ msgstr "重啟"
 
 #: ../unetbootin.cpp:227 ../unetbootin.cpp:233 ../unetbootin.cpp:237
 #: ../unetbootin.cpp:241 ../unetbootin.cpp:245 ../unetbootin.cpp:251
@@ -202,7 +240,7 @@ msgstr "目錄 %1 沒有空間了。單擊'Yes'終止安裝，單擊'No'忽略�
 
 #: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
 #: ../unetbootin.cpp:3032 ../unetbootin.cpp:3043 ../unetbootin.cpp:3054
-#: ../unetbootin.cpp:3372
+#: ../unetbootin.cpp:3362
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "USB 驅動器"
@@ -346,29 +384,28 @@ msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "硬碟"
 
-#: ../unetbootin.cpp:3454
+#: ../unetbootin.cpp:3444
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
 msgstr "正在安裝 syslinux 到 %1"
 
-#: ../unetbootin.cpp:3490
 #, qt-format
-msgctxt "unetbootin|"
-msgid "Installing extlinux to %1"
-msgstr "正在安裝 extlinux 到 %1"
+#~ msgctxt "unetbootin|"
+#~ msgid "Installing extlinux to %1"
+#~ msgstr "正在安裝 extlinux 到 %1"
 
-#: ../unetbootin.cpp:3593
+#: ../unetbootin.cpp:3472
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "正在同步檔系統"
 
-#: ../main.cpp:211
+#: ../main.cpp:213
 msgctxt "uninstaller|"
 msgid "Must run as root"
 msgstr "必須以root的身份運行"
 
-#: ../main.cpp:213
+#: ../main.cpp:215
 #, qt-format
 msgctxt "uninstaller|"
 msgid ""

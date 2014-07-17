@@ -3,7 +3,5 @@
         <file>d3dcompiler_46.dll</file>
         <file>sevnz.dll</file>
         <file>sevnz.exe</file>
-        <file>bootloader/xfbinst/xfbinst.exe</file>
-        <file>bootloader/syslinux/syslinux.exe</file>
     </qresource>
 </RCC>

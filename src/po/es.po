@@ -7,12 +7,34 @@ msgstr ""
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:71 ../bootmaker.cpp:72
+#: ../bootmaker.cpp:45
+msgctxt "BootMaker|"
+msgid "Format error of USB flash drive"
+msgstr ""
+
+#: ../bootmaker.cpp:46
+msgctxt "BootMaker|"
+msgid ""
+"Only FAT32 USB flash drive supported. Need to format? All partitions and "
+"data will be lost during formatting, please back up the data in advance."
+msgstr ""
+
+#: ../bootmaker.cpp:48
+msgctxt "BootMaker|"
+msgid "Format"
+msgstr ""
+
+#: ../bootmaker.cpp:49
+msgctxt "BootMaker|"
+msgid "Cancel"
+msgstr ""
+
+#: ../bootmaker.cpp:89 ../bootmaker.cpp:90
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Por favor seleccione una imagen iso"
 
-#: ../main.cpp:278
+#: ../main.cpp:280
 msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "Creador de Arranque Deepin"
@@ -34,46 +56,46 @@ msgstr ""
 "tráves de una simple configuración, la cual soporta BIOS dual e inicio <font "
 "color='#ebab4c'>UEFI</font></font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:192
+#: ../qml/MainUI/UsbCreatorFrame.qml:193
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>Seleccione la Imagen ISO:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:242
+#: ../qml/MainUI/UsbCreatorFrame.qml:243
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>Seleccione el disco USB Flash</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:265
+#: ../qml/MainUI/UsbCreatorFrame.qml:266
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'>Format USB flash disk before installation to improve "
 "the making success rate.</font>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:271
+#: ../qml/MainUI/UsbCreatorFrame.qml:273
 msgctxt "UsbCreatorFrame|"
 msgid "Format USB flash disk"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:272
+#: ../qml/MainUI/UsbCreatorFrame.qml:274
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:296
+#: ../qml/MainUI/UsbCreatorFrame.qml:299
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>Soporte BIOS. Deseleccione aquí. </font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:307
+#: ../qml/MainUI/UsbCreatorFrame.qml:310
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "Iniciar"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:349
+#: ../qml/MainUI/UsbCreatorFrame.qml:352
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -83,25 +105,41 @@ msgstr ""
 "el disco USB flash o apague la pc mientras se esta escribiendo el "
 "archivo.</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:385
+#: ../qml/MainUI/UsbCreatorFrame.qml:389
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-"color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
+"color='#ffffff'><br>You have successfully created a boot disk and select "
+"your boot disk to install Deepin OS after restarted.</br><br></br><br>Do you "
+"need to restart now?</br></font></br>"
 msgstr ""
-"<br><font color='#057aff'>Felicitaciones!</font></br><br><font "
-"color='#ffffff'> el Disco de Incio Deepin OS  fue creado "
-"satisfactoriamente.</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:396
+#: ../qml/MainUI/UsbCreatorFrame.qml:400
 msgctxt "UsbCreatorFrame|"
-msgid "Quit"
-msgstr "Salir"
+msgid "Restart Later"
+msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:405
+#: ../qml/MainUI/UsbCreatorFrame.qml:409
 msgctxt "UsbCreatorFrame|"
-msgid "Reboot"
-msgstr "Reinicio"
+msgid "Restart Now"
+msgstr ""
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#057aff'>Congratulations!</font></br><br><font "
+#~ "color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
+#~ msgstr ""
+#~ "<br><font color='#057aff'>Felicitaciones!</font></br><br><font "
+#~ "color='#ffffff'> el Disco de Incio Deepin OS  fue creado "
+#~ "satisfactoriamente.</font></br>"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Quit"
+#~ msgstr "Salir"
+
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid "Reboot"
+#~ msgstr "Reinicio"
 
 #: ../unetbootin.cpp:227 ../unetbootin.cpp:233 ../unetbootin.cpp:237
 #: ../unetbootin.cpp:241 ../unetbootin.cpp:245 ../unetbootin.cpp:251
@@ -217,7 +255,7 @@ msgstr ""
 
 #: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
 #: ../unetbootin.cpp:3032 ../unetbootin.cpp:3043 ../unetbootin.cpp:3054
-#: ../unetbootin.cpp:3372
+#: ../unetbootin.cpp:3362
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "Dispositivo USB"
@@ -363,29 +401,28 @@ msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "disco duro"
 
-#: ../unetbootin.cpp:3454
+#: ../unetbootin.cpp:3444
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
 msgstr "Instalando syslinux a% 1"
 
-#: ../unetbootin.cpp:3490
 #, qt-format
-msgctxt "unetbootin|"
-msgid "Installing extlinux to %1"
-msgstr "Instalación extlinux a% 1"
+#~ msgctxt "unetbootin|"
+#~ msgid "Installing extlinux to %1"
+#~ msgstr "Instalación extlinux a% 1"
 
-#: ../unetbootin.cpp:3593
+#: ../unetbootin.cpp:3472
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "Sincronización de los sistemas de ficheros"
 
-#: ../main.cpp:211
+#: ../main.cpp:213
 msgctxt "uninstaller|"
 msgid "Must run as root"
 msgstr "Debe ejecutarse como root"
 
-#: ../main.cpp:213
+#: ../main.cpp:215
 #, qt-format
 msgctxt "uninstaller|"
 msgid ""

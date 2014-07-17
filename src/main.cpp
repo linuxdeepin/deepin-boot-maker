@@ -158,7 +158,9 @@ int main(int argc, char **argv){
 #endif
 
     //just for debug
+#ifdef Q_OS_WIN32
     qInstallMessageHandler(crashMessageOutput);
+#endif
 
     loadTranslate(app);
 #ifdef Q_OS_UNIX

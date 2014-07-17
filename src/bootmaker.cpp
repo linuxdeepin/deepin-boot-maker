@@ -31,12 +31,30 @@ QString BootMaker::url2LocalFile(QString url){
 }
 
 int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool formatDisk) {
-
     unetbootinPtr->isoImagePath = isoPath;
     unetbootinPtr->usbDriverPath = usbDriver;
     unetbootinPtr->biosMode = biosMode;
     unetbootinPtr->formatDisk = formatDisk;
+
     if (unetbootinPtr->checkInstallPara()){
+
+        if ((!formatDisk) && (!DiskUnity::CheckInstallDisk(usbDriver))){
+
+            QMessageBox msgbox;
+            msgbox.setIcon(QMessageBox::Critical);
+            msgbox.setWindowTitle(tr("Format error of USB flash drive"));
+            msgbox.setText(tr("Only FAT32 USB flash drive supported. Need to format? All partitions and data will be lost during formatting, please back up the data in advance."));
+            msgbox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+            msgbox.setButtonText(QMessageBox::Ok, tr("Format"));
+            msgbox.setButtonText(QMessageBox::Cancel, tr("Cancel"));
+
+            if(msgbox.exec() == QMessageBox::Ok) {
+                 unetbootinPtr->formatDisk = true;
+            } else {
+                return 1;
+            }
+        }
+        qDebug()<<"Start make boot disk";
 
         QThread *pwork = new QThread();
         unetbootinPtr->moveToThread(pwork);

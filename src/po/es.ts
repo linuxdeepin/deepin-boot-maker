@@ -4,8 +4,28 @@
 <context>
     <name>BootMaker</name>
     <message>
-        <location filename="../bootmaker.cpp" line="71"/>
-        <location filename="../bootmaker.cpp" line="72"/>
+        <location filename="../bootmaker.cpp" line="45"/>
+        <source>Format error of USB flash drive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="46"/>
+        <source>Only FAT32 USB flash drive supported. Need to format? All partitions and data will be lost during formatting, please back up the data in advance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="48"/>
+        <source>Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="49"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="89"/>
+        <location filename="../bootmaker.cpp" line="90"/>
         <source>Please select an iso image</source>
         <translation>Por favor seleccione una imagen iso</translation>
     </message>
@@ -13,7 +33,7 @@
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="278"/>
+        <location filename="../main.cpp" line="280"/>
         <source>Deepin Boot Maker</source>
         <translation>Creador de Arranque Deepin</translation>
     </message>
@@ -31,59 +51,71 @@
         <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Sea bienvenido a usar el programa Creador de Arranque Deepin y podrás crear rápidamente Discos de Inicio de Deepin OS a tráves de una simple configuración, la cual soporta BIOS dual e inicio &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="192"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="193"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Seleccione la Imagen ISO:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="242"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="243"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Seleccione el disco USB Flash&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="265"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="266"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="271"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="273"/>
         <source>Format USB flash disk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="272"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="274"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="296"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="299"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;Soporte BIOS. Deseleccione aquí. &lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="307"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="310"/>
         <source>Start</source>
         <translation>Iniciar</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="349"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="352"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Por favor &lt;font color=&apos;#ebab4c&apos;&gt;NO&lt;/font&gt; remueva el disco USB flash o apague la pc mientras se esta escribiendo el archivo.&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="385"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="389"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Do you need to restart now?&lt;/br&gt;&lt;/font&gt;&lt;/br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="400"/>
+        <source>Restart Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="409"/>
+        <source>Restart Now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Deepin OS Startup Disk creates successfully.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Felicitaciones!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt; el Disco de Incio Deepin OS  fue creado satisfactoriamente.&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation type="vanished">&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Felicitaciones!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt; el Disco de Incio Deepin OS  fue creado satisfactoriamente.&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="396"/>
         <source>Quit</source>
-        <translation>Salir</translation>
+        <translation type="vanished">Salir</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="405"/>
         <source>Reboot</source>
-        <translation>Reinicio</translation>
+        <translation type="vanished">Reinicio</translation>
     </message>
 </context>
 <context>
@@ -181,7 +213,7 @@
         <location filename="../unetbootin.cpp" line="3032"/>
         <location filename="../unetbootin.cpp" line="3043"/>
         <location filename="../unetbootin.cpp" line="3054"/>
-        <location filename="../unetbootin.cpp" line="3372"/>
+        <location filename="../unetbootin.cpp" line="3362"/>
         <source>USB Drive</source>
         <translation>Dispositivo USB</translation>
     </message>
@@ -316,17 +348,16 @@ Paquete de instalación del &quot;3 %&quot; o su distribución es equivalente.</
         <translation>disco duro</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3454"/>
+        <location filename="../unetbootin.cpp" line="3444"/>
         <source>Installing syslinux to %1</source>
         <translation>Instalando syslinux a% 1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3490"/>
         <source>Installing extlinux to %1</source>
-        <translation>Instalación extlinux a% 1</translation>
+        <translation type="vanished">Instalación extlinux a% 1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3593"/>
+        <location filename="../unetbootin.cpp" line="3472"/>
         <source>Syncing filesystems</source>
         <translation>Sincronización de los sistemas de ficheros</translation>
     </message>
@@ -334,12 +365,12 @@ Paquete de instalación del &quot;3 %&quot; o su distribución es equivalente.</
 <context>
     <name>uninstaller</name>
     <message>
-        <location filename="../main.cpp" line="211"/>
+        <location filename="../main.cpp" line="213"/>
         <source>Must run as root</source>
         <translation>Debe ejecutarse como root</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="213"/>
+        <location filename="../main.cpp" line="215"/>
         <source>%2 must be run as root. Close it, and re-run using either:&lt;br/&gt;&lt;b&gt;sudo %1&lt;/b&gt;&lt;br/&gt;or:&lt;br/&gt;&lt;b&gt;su - -c &apos;%1&apos;&lt;/b&gt;</source>
         <translation>%2 se debe ejecutar como root. Cerca de ella, y volver a ejecutar utilizando: &lt;br/&gt; &lt;b&gt; sudo% 1 &lt;/ b&gt; &lt;br/&gt; o: &lt;br/&gt; &lt;b&gt; su - c &apos;% 1&apos; &lt;/ b&gt;</translation>
     </message>
