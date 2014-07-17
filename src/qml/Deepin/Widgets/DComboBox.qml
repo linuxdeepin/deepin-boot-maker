@@ -14,7 +14,7 @@ Item {
 
     property var parentWindow
     property var labels
-    property int selectIndex: 0
+    property int selectIndex: -1
     onSelectIndexChanged: menu.currentIndex = selectIndex
 
     signal clicked

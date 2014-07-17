@@ -13,5 +13,9 @@
         <file>bootloader/xfbinst/fb.cfg</file>
         <file>bootloader/xfbinst/xfbinst.exe</file>
         <file>bootloader/xfbinst/xfbinst</file>
+        <file>bootloader/syslinux/macosx/chain.c32</file>
+        <file>bootloader/syslinux/macosx/gfxboot.c32</file>
+        <file>bootloader/syslinux/macosx/menu.c32</file>
+        <file>bootloader/syslinux/macosx/vesamenu.c32</file>
     </qresource>
 </RCC>

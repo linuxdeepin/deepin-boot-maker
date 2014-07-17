@@ -23,9 +23,25 @@ DWindowFrame {
                 var oldCurText = usbDriver.text
                 var usblist = bootMaker.listUsbDrives()
                 usbDriver.labels = usblist
-                if (usblist.length > 0) {
-                    usbIcon.source = "qrc:/image/usb-active.png"
+                var find = false;
+                for(var i = 0; i < usblist.length; i++) {
+                    if (oldCurText === usblist[i]) {
+                        find = true
+                    }
                 }
+                if (!find) {
+                    oldCurText = ""
+                }
+
+                if (usblist.length > 0) {
+                    if ("" === oldCurText) {
+                        usbDriver.text = usbDriver.labels[0]
+                    }
+                    usbIcon.source = "qrc:/image/usb-active.png"
+                } else {
+                    usbDriver.text= ""
+                }
+
             }
         }
 
