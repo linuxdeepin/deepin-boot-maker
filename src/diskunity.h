@@ -11,9 +11,11 @@ public:
 
     static QString InstallBootloader(const QString &diskDev);
 
+    static bool InstallSyslinux(const QString &diskDev);
 
     static bool ConfigSyslinx(const QString &targetDev);
 
+    static bool CheckInstallDisk(const QString &targetDev);
 
     static bool EjectDisk(const QString &targetDev);
 

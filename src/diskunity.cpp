@@ -82,8 +82,14 @@ void UnlockDisk(HANDLE handle) {
     CloseHandle (handle);
 }
 
-bool InstallBootloader(const QString &targetDev) {
+bool InstallSyslinux(const QString &targetDev) {
+    //install syslinux
+    QString sysliuxPath = XSys::InsertTmpFile(QString(":/bootloader/syslinux/syslinux.exe"));
+    XSys::SynExec(sysliuxPath , QString(" -i -m -a %1").arg(targetDev));
+    return true;
+}
 
+bool InstallBootloader(const QString &targetDev) {
     qDebug()<<"FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
     QString xfbinstDiskName = QString("(hd%1)").arg(deviceNum);
@@ -126,7 +132,16 @@ bool InstallBootloader(const QString &targetDev) {
 }
 
 bool UmountDisk(const QString &targetDev) {
+    qDebug()<<"In Win32 platform, Not UmountDisk "<< targetDev;
     return true;
+}
+
+bool CheckFormatFat32(const QString &targetDev) {
+    QString ret = XSys::SynExec("fsutil",  " fsinfo volumeinfo " + targetDev);
+    if (ret.contains("File System Name : FAT32", Qt::CaseInsensitive)) {
+        return true;
+    }
+    return false;
 }
 
 #endif
@@ -140,6 +155,23 @@ QString GetPartitionDisk(QString targetDev) {
         return QString(targetDev).remove(QRegExp("\\d$"));
 }
 
+bool UmountDisk(const QString &targetDev) {
+    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDisk(targetDev)));
+    return true;
+}
+
+bool InstallSyslinux(const QString &targetDev) {
+    //install syslinux
+    UmountDisk(targetDev);
+    QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
+    XSys::SynExec("chmod +x ", sysliuxPath);
+    XSys::SynExec(sysliuxPath , QString(" -i -a %1").arg(targetDev));
+
+    //dd pbr file ldlinux.bin
+    QString tmpPbrPath = XSys::InsertTmpFile(":/bootloader/syslinux/mbr.bin");
+    XSys::SynExec("dd" , QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(GetPartitionDisk(targetDev)));
+}
+
 QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
 
@@ -149,7 +181,7 @@ QString InstallBootloader(const QString &diskDev) {
 
     //fbinst format
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
-    QString xfbinstPath = XSys::InsertTmpFile(":/xfbinst");
+    QString xfbinstPath = XSys::InsertTmpFile(":/bootloader/xfbinst/xfbinst");
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
@@ -160,7 +192,7 @@ QString InstallBootloader(const QString &diskDev) {
     //install syslinux
     XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
     QString targetDev = diskDev + "s1";
-    QString sysliuxPath = XSys::InsertTmpFile(":/ubnsylnx");
+    QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
     XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     //dd pbr file ldlinux.bin
@@ -181,11 +213,6 @@ QString InstallBootloader(const QString &diskDev) {
 
     XSys::SynExec("mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
     return newTargetDev;
-}
-
-bool UmountDisk(const QString &targetDev) {
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDisk(targetDev)));
-    return true;
 }
 
 #endif
@@ -244,6 +271,10 @@ QString DiskUnity::InstallBootloader(const QString &diskDev){
     return XAPI::InstallBootloader(diskDev);
 }
 
+bool DiskUnity::InstallSyslinux(const QString &diskDev) {
+    return XAPI::InstallSyslinux(diskDev);
+}
+
 bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
     //rename isolinux to syslinux
     QString syslinxDir = QString("%1syslinux/").arg(targetPath);
@@ -263,15 +294,46 @@ bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
 
     QStringList filelist;
     filelist.append("gfxboot.c32");
-    filelist.append("libcom32.c32");
-    filelist.append("libutil.c32");
+    filelist.append("chain.c32");
     filelist.append("menu.c32");
     filelist.append("vesamenu.c32");
+    filelist.append("libcom32.c32");
+    filelist.append("libutil.c32");
+
+    // bugfix
+    // TODO: we change syslinux to 6.02, but gfxboot will not work
+    // so use a syslinux.cfg will not use gfxboot and vesamenu
+    filelist.append("syslinux.cfg");
 
     foreach(QString filename, filelist) {
         XSys::InsertFile(":/bootloader/syslinux/" + filename, QDir::toNativeSeparators(syslinxDir + filename));
     }
     return true;
+}
+
+bool DiskUnity::CheckInstallDisk(const QString &targetDev) {
+    if (!XAPI::CheckFormatFat32(targetDev)) {
+        qDebug()<<"disk format error "<<targetDev;
+        return false;
+    }
+
+    QFile test(QDir::toNativeSeparators(targetDev + "/" + "deepinos"));
+    if (!test.open(QIODevice::ReadWrite)) {
+        return false;
+    }
+
+    QFile deepinos(":/deepinos");
+    deepinos.open(QIODevice::ReadOnly);
+    QByteArray data = deepinos.readAll();
+    if (data.length() != test.write(data)) {
+        return false;
+    }
+    test.close();
+    deepinos.close();
+    test.remove();
+
+    return true;
+
 }
 
 QString DiskUnity::GetPartitionDisk(const QString &targetDev){

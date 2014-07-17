@@ -185,6 +185,9 @@ QString XSys::InsertFileData(const QString &filename, const QByteArray &data) {
     file.write(data);
     file.close();
     qDebug()<<"Create File: "<<filename;
+#ifdef Q_OS_UNIX
+    XSys::SynExec("sync", "");
+#endif
     return filename;
 }
 

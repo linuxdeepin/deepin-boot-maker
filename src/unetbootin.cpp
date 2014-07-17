@@ -3075,6 +3075,8 @@ void unetbootin::runinst()
 
     if (formatDisk) {
         targetDev = DiskUnity::InstallBootloader(rawtargetDev);
+    } else {
+        DiskUnity::InstallSyslinux(rawtargetDev);
     }
 
 

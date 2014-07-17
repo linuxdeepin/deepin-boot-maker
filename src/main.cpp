@@ -159,7 +159,7 @@ int main(int argc, char **argv){
 
     //just for debug
 #ifdef Q_OS_WIN32
-    //qInstallMessageHandler(crashMessageOutput);
+    qInstallMessageHandler(crashMessageOutput);
 #endif
 
     loadTranslate(app);
