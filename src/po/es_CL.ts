@@ -41,67 +41,71 @@
 <context>
     <name>UsbCreatorFrame</name>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="163"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="179"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Easy to use without redundancy&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;Facil de usar sin excesos&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="170"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; start.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Bienvenido a la aplicacion Fabricador de arranque Deepin, aqui puede crear facilmente discos de inicios por medio de una configuracion sencilla, la cual soporta BIOS doble y&lt;font color=&apos;#ebab4c&apos;&gt;Inicio con&lt;/font&gt; UEFI.&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation type="vanished">&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Bienvenido a la aplicacion Fabricador de arranque Deepin, aqui puede crear facilmente discos de inicios por medio de una configuracion sencilla, la cual soporta BIOS doble y&lt;font color=&apos;#ebab4c&apos;&gt;Inicio con&lt;/font&gt; UEFI.&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="193"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="186"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to Deepin Boot Maker. After setting a few options, you&apos;ll be able to create a Deepin OS Startup Disk, which supports both BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; boot.&lt;/font&gt;&lt;/br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="209"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Selecciona el archivo ISO:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="243"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="259"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Selecciona la unidad de usb:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="266"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="282"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="273"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="289"/>
         <source>Format USB flash disk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="274"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="290"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="299"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="315"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt; BIOS Soportada. Quitar la seleccion aqui. &lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="310"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="326"/>
         <source>Start</source>
         <translation>Iniciar</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="352"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="368"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Por favor &lt;font color=&apos;#ebab4c&apos;&gt; NO&lt;/font&gt;  quite la unidad USB movil o apague el equipo mientras se copian los archivos.&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="389"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="405"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Do you need to restart now?&lt;/br&gt;&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="400"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="416"/>
         <source>Restart Later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="409"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="425"/>
         <source>Restart Now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -210,10 +214,10 @@
         <location filename="../unetbootin.cpp" line="625"/>
         <location filename="../unetbootin.cpp" line="1206"/>
         <location filename="../unetbootin.cpp" line="1298"/>
-        <location filename="../unetbootin.cpp" line="3032"/>
-        <location filename="../unetbootin.cpp" line="3043"/>
-        <location filename="../unetbootin.cpp" line="3054"/>
-        <location filename="../unetbootin.cpp" line="3362"/>
+        <location filename="../unetbootin.cpp" line="3035"/>
+        <location filename="../unetbootin.cpp" line="3046"/>
+        <location filename="../unetbootin.cpp" line="3057"/>
+        <location filename="../unetbootin.cpp" line="3365"/>
         <source>USB Drive</source>
         <translation>Unidad movil USB</translation>
     </message>
@@ -295,60 +299,60 @@
         <translation>&lt;b&gt;Copiado:&lt;/b&gt; 0 bytes</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="1435"/>
+        <location filename="../unetbootin.cpp" line="1438"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; 0 of %1 files</source>
         <translation>&lt;b&gt;Extraido:&lt;/b&gt; 0 de %1 los archivos</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="1438"/>
+        <location filename="../unetbootin.cpp" line="1441"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; %1 of %2 files</source>
         <translation>&lt;b&gt;Extraido:&lt;/b&gt; %1 de %2 los archivos</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2332"/>
-        <location filename="../unetbootin.cpp" line="2347"/>
+        <location filename="../unetbootin.cpp" line="2335"/>
+        <location filename="../unetbootin.cpp" line="2350"/>
         <source>&lt;b&gt;Downloaded:&lt;/b&gt; %1 of %2</source>
         <translation>&lt;b&gt;Descargado:&lt;/b&gt; %1 de %2</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2362"/>
+        <location filename="../unetbootin.cpp" line="2365"/>
         <source>&lt;b&gt;Copied:&lt;/b&gt; %1 of %2</source>
         <translation>&lt;b&gt;Copiado:&lt;/b&gt; %1 de %2</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2734"/>
+        <location filename="../unetbootin.cpp" line="2737"/>
         <source>%1 not found</source>
         <translation>%1 no encontrado</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2735"/>
+        <location filename="../unetbootin.cpp" line="2738"/>
         <source>%1 not found. This is required for %2 install mode.
 Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</source>
         <translation>%1 no encontrado. Se requiere para %2 en modo de instalacion.
 Instalar el &quot;%3&quot; de los paquetes o un equivalente de la distribucion.</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3026"/>
+        <location filename="../unetbootin.cpp" line="3029"/>
         <source>runinst begin</source>
         <translation>Comienza la instalacion</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3027"/>
+        <location filename="../unetbootin.cpp" line="3030"/>
         <source>(Current)</source>
         <translation>(Normal)</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3028"/>
+        <location filename="../unetbootin.cpp" line="3031"/>
         <source>(Done)</source>
         <translation>(Finalizado)</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3039"/>
+        <location filename="../unetbootin.cpp" line="3042"/>
         <source>Hard Disk</source>
         <translation>Disco duro</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3444"/>
+        <location filename="../unetbootin.cpp" line="3447"/>
         <source>Installing syslinux to %1</source>
         <translation>Instalando syslinux en %1</translation>
     </message>
@@ -357,7 +361,7 @@ Instalar el &quot;%3&quot; de los paquetes o un equivalente de la distribucion.<
         <translation type="vanished">Instalando extlinux en %1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3472"/>
+        <location filename="../unetbootin.cpp" line="3475"/>
         <source>Syncing filesystems</source>
         <translation>Sincronizando archivos filesystems</translation>
     </message>

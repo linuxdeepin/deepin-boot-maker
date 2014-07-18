@@ -39,66 +39,74 @@ msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "Gestionnaire de démarrage Deepin"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:163
+#: ../qml/MainUI/UsbCreatorFrame.qml:179
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr ""
 "<font color='#ffffff'>Facile à l'utilisation sans redondance</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:170
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and "
+#~ "you can quickly create Deepin OS Startup Disk through a simple setting, "
+#~ "which supports dual BIOS and <font color='#ebab4c'>UEFI</font> "
+#~ "start.</font></br>"
+#~ msgstr ""
+#~ "<br><font color='#a7a7a7'>Bienvenue dans le logiciel Deepin Boot Maker, "
+#~ "grâce à celui-ci vous pouvez facilement créer un disque de démarrage pour "
+#~ "Deepin OS à travers un simple paramétrage, qui supporte le démarrage dual "
+#~ "BIOS et l'<font color='#ebab4c'>UEFI</font></font></br>"
+
+#: ../qml/MainUI/UsbCreatorFrame.qml:186
 msgctxt "UsbCreatorFrame|"
 msgid ""
-"<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
-"can quickly create Deepin OS Startup Disk through a simple setting, which "
-"supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>"
+"<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few "
+"options, you'll be able to create a Deepin OS Startup Disk, which supports "
+"both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
 msgstr ""
-"<br><font color='#a7a7a7'>Bienvenue dans le logiciel Deepin Boot Maker, "
-"grâce à celui-ci vous pouvez facilement créer un disque de démarrage pour "
-"Deepin OS à travers un simple paramétrage, qui supporte le démarrage dual "
-"BIOS et l'<font color='#ebab4c'>UEFI</font></font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:193
+#: ../qml/MainUI/UsbCreatorFrame.qml:209
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>Sélectionner le fichier ISO : </font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:243
+#: ../qml/MainUI/UsbCreatorFrame.qml:259
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr ""
 "<br><font color='#ffffff'>Sélectionner le périphérique USB Flash : "
 "</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:266
+#: ../qml/MainUI/UsbCreatorFrame.qml:282
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'>Format USB flash disk before installation to improve "
 "the making success rate.</font>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:273
+#: ../qml/MainUI/UsbCreatorFrame.qml:289
 msgctxt "UsbCreatorFrame|"
 msgid "Format USB flash disk"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:274
+#: ../qml/MainUI/UsbCreatorFrame.qml:290
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:299
+#: ../qml/MainUI/UsbCreatorFrame.qml:315
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>Support du BIOS. Désélectionner ici.</font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:310
+#: ../qml/MainUI/UsbCreatorFrame.qml:326
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "Démarrer"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:352
+#: ../qml/MainUI/UsbCreatorFrame.qml:368
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -108,7 +116,7 @@ msgstr ""
 "retirer le périphérique USB Flash ou éteindre votre ordinateur pendant "
 "l'écriture.</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:389
+#: ../qml/MainUI/UsbCreatorFrame.qml:405
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
@@ -117,12 +125,12 @@ msgid ""
 "need to restart now?</br></font></br>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:400
+#: ../qml/MainUI/UsbCreatorFrame.qml:416
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Later"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:409
+#: ../qml/MainUI/UsbCreatorFrame.qml:425
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Now"
 msgstr ""
@@ -257,8 +265,8 @@ msgstr ""
 "de ce type."
 
 #: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
-#: ../unetbootin.cpp:3032 ../unetbootin.cpp:3043 ../unetbootin.cpp:3054
-#: ../unetbootin.cpp:3362
+#: ../unetbootin.cpp:3035 ../unetbootin.cpp:3046 ../unetbootin.cpp:3057
+#: ../unetbootin.cpp:3365
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "Périphérique USB"
@@ -344,37 +352,37 @@ msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
 msgstr "<b>Copié : </b> 0 octets"
 
-#: ../unetbootin.cpp:1435
+#: ../unetbootin.cpp:1438
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
 msgstr "<b>Extrait :</b> 0 sur %1 fichiers"
 
-#: ../unetbootin.cpp:1438
+#: ../unetbootin.cpp:1441
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
 msgstr "<b>Extrait :</b> %1 sur %2 fichiers"
 
-#: ../unetbootin.cpp:2332 ../unetbootin.cpp:2347
+#: ../unetbootin.cpp:2335 ../unetbootin.cpp:2350
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
 msgstr "<b>Téléchargé :</b> %1 sur %2"
 
-#: ../unetbootin.cpp:2362
+#: ../unetbootin.cpp:2365
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
 msgstr "<b>Copié :</b> %1 sur %2"
 
-#: ../unetbootin.cpp:2734
+#: ../unetbootin.cpp:2737
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
 msgstr "%1 introuvable"
 
-#: ../unetbootin.cpp:2735
+#: ../unetbootin.cpp:2738
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
@@ -384,27 +392,27 @@ msgstr ""
 "%1 introuvable. Celui-ci est requis pour le mode d'installation %2.\n"
 "Installer le paquets \"%3\" ou l'équivalent pour vous distribution."
 
-#: ../unetbootin.cpp:3026
+#: ../unetbootin.cpp:3029
 msgctxt "unetbootin|"
 msgid "runinst begin"
 msgstr "Démarrage de runinst"
 
-#: ../unetbootin.cpp:3027
+#: ../unetbootin.cpp:3030
 msgctxt "unetbootin|"
 msgid "(Current)"
 msgstr "(Courant)"
 
-#: ../unetbootin.cpp:3028
+#: ../unetbootin.cpp:3031
 msgctxt "unetbootin|"
 msgid "(Done)"
 msgstr "(Fini)"
 
-#: ../unetbootin.cpp:3039
+#: ../unetbootin.cpp:3042
 msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "Disque dur"
 
-#: ../unetbootin.cpp:3444
+#: ../unetbootin.cpp:3447
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
@@ -415,7 +423,7 @@ msgstr "Installation de syslinux vers %1"
 #~ msgid "Installing extlinux to %1"
 #~ msgstr "Installation d'extlinux vers %1"
 
-#: ../unetbootin.cpp:3472
+#: ../unetbootin.cpp:3475
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "Synchronisation des systèmes de fichiers"

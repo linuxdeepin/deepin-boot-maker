@@ -41,67 +41,71 @@
 <context>
     <name>UsbCreatorFrame</name>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="163"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="179"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Easy to use without redundancy&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;Jednoduché při používání, bez nadbytečnosti&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="170"/>
         <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; start.&lt;/font&gt;&lt;/br&gt;</source>
-        <translation>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Vítejte při používání programu na vytvoření spouštěcího média Deepin, kde můžete rychle a jednoduše vytvořit spouštěcí médium Deepin OS skrze jednoduché nastavení, které lze současně spustit přes BIOS a &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;.&lt;/font&gt;&lt;/br&gt;</translation>
+        <translation type="vanished">&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Vítejte při používání programu na vytvoření spouštěcího média Deepin, kde můžete rychle a jednoduše vytvořit spouštěcí médium Deepin OS skrze jednoduché nastavení, které lze současně spustit přes BIOS a &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt;.&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="193"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="186"/>
+        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to Deepin Boot Maker. After setting a few options, you&apos;ll be able to create a Deepin OS Startup Disk, which supports both BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; boot.&lt;/font&gt;&lt;/br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="209"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Vyberte soubor ISO:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="243"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="259"/>
         <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
         <translation>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Vyberte úložiště USB:&lt;/font&gt;&lt;/br&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="266"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="282"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="273"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="289"/>
         <source>Format USB flash disk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="274"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="290"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="299"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="315"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;Podpora pro BIOS. Vypněte zde. &lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="310"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="326"/>
         <source>Start</source>
         <translation>Spustit</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="352"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="368"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;&lt;font color=&apos;#ebab4c&apos;&gt;NEODSTRAŇUJTE, PROSÍM,&lt;/font&gt; hromadné úložiště USB a nevypínejte počítač po dobu, kdy je soubor zapisován.&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="389"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="405"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Do you need to restart now?&lt;/br&gt;&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="400"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="416"/>
         <source>Restart Later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="409"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="425"/>
         <source>Restart Now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -210,10 +214,10 @@
         <location filename="../unetbootin.cpp" line="625"/>
         <location filename="../unetbootin.cpp" line="1206"/>
         <location filename="../unetbootin.cpp" line="1298"/>
-        <location filename="../unetbootin.cpp" line="3032"/>
-        <location filename="../unetbootin.cpp" line="3043"/>
-        <location filename="../unetbootin.cpp" line="3054"/>
-        <location filename="../unetbootin.cpp" line="3362"/>
+        <location filename="../unetbootin.cpp" line="3035"/>
+        <location filename="../unetbootin.cpp" line="3046"/>
+        <location filename="../unetbootin.cpp" line="3057"/>
+        <location filename="../unetbootin.cpp" line="3365"/>
         <source>USB Drive</source>
         <translation>Hromadné úložiště USB</translation>
     </message>
@@ -295,60 +299,60 @@
         <translation>&lt;b&gt;Zkopírováno:&lt;/b&gt; 0 bytů</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="1435"/>
+        <location filename="../unetbootin.cpp" line="1438"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; 0 of %1 files</source>
         <translation>&lt;b&gt;Vytaženo:&lt;/b&gt; 0 z %1 souborů</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="1438"/>
+        <location filename="../unetbootin.cpp" line="1441"/>
         <source>&lt;b&gt;Extracted:&lt;/b&gt; %1 of %2 files</source>
         <translation>&lt;b&gt;Vytaženo:&lt;/b&gt; %1 z %2 souborů</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2332"/>
-        <location filename="../unetbootin.cpp" line="2347"/>
+        <location filename="../unetbootin.cpp" line="2335"/>
+        <location filename="../unetbootin.cpp" line="2350"/>
         <source>&lt;b&gt;Downloaded:&lt;/b&gt; %1 of %2</source>
         <translation>&lt;b&gt;Staženo:&lt;/b&gt; %1 z %2</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2362"/>
+        <location filename="../unetbootin.cpp" line="2365"/>
         <source>&lt;b&gt;Copied:&lt;/b&gt; %1 of %2</source>
         <translation>&lt;b&gt;Zkopírováno:&lt;/b&gt; %1 z %2</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2734"/>
+        <location filename="../unetbootin.cpp" line="2737"/>
         <source>%1 not found</source>
         <translation>%1 nenalezen</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="2735"/>
+        <location filename="../unetbootin.cpp" line="2738"/>
         <source>%1 not found. This is required for %2 install mode.
 Install the &quot;%3&quot; package or your distribution&apos;s equivalent.</source>
         <translation>%1 nenalezen. Toto je požadováno pro instalační režim %2.
 Nainstalujte balíček &quot;%3&quot;, nebo jeho obdobu ve vaší distribuci.</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3026"/>
+        <location filename="../unetbootin.cpp" line="3029"/>
         <source>runinst begin</source>
         <translation>Runinst začíná</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3027"/>
+        <location filename="../unetbootin.cpp" line="3030"/>
         <source>(Current)</source>
         <translation>(Nynější)</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3028"/>
+        <location filename="../unetbootin.cpp" line="3031"/>
         <source>(Done)</source>
         <translation>(Hotovo)</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3039"/>
+        <location filename="../unetbootin.cpp" line="3042"/>
         <source>Hard Disk</source>
         <translation>Pevný disk</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3444"/>
+        <location filename="../unetbootin.cpp" line="3447"/>
         <source>Installing syslinux to %1</source>
         <translation>Instalovat syslinux na %1</translation>
     </message>
@@ -357,7 +361,7 @@ Nainstalujte balíček &quot;%3&quot;, nebo jeho obdobu ve vaší distribuci.</t
         <translation type="vanished">Instalovat extlinux na %1</translation>
     </message>
     <message>
-        <location filename="../unetbootin.cpp" line="3472"/>
+        <location filename="../unetbootin.cpp" line="3475"/>
         <source>Syncing filesystems</source>
         <translation>Seřídit souborové systémy</translation>
     </message>

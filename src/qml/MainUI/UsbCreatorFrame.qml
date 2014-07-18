@@ -182,8 +182,8 @@ DWindowFrame {
                             id: descriptions
                             font.pixelSize: 11
                             width: bootMaker.lableMaxWidth
-                            wrapMode: Text.Wrap
-                            text: qsTr("<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you can quickly create Deepin OS Startup Disk through a simple setting, which supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>")
+                            wrapMode: Text.Wrap                                                   
+                            text: qsTr("<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few options, you'll be able to create a Deepin OS Startup Disk, which supports both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>")
                         }
                     }
                 }

@@ -359,22 +359,24 @@ bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
 #endif
 
     QStringList filelist;
-    filelist.append(urlPrifx + "gfxboot.c32");
-    filelist.append(urlPrifx + "chain.c32");
-    filelist.append(urlPrifx + "menu.c32");
-    filelist.append(urlPrifx + "vesamenu.c32");
+    filelist.append("gfxboot.c32");
+    filelist.append("chain.c32");
+    filelist.append("menu.c32");
+    filelist.append("vesamenu.c32");
 #ifndef Q_OS_MAC
-    filelist.append(urlPrifx + "libcom32.c32");
-    filelist.append(urlPrifx + "libutil.c32");
+    filelist.append("libcom32.c32");
+    filelist.append("libutil.c32");
 #endif
+
+    foreach(QString filename, filelist) {
+        XSys::InsertFile(urlPrifx + filename, QDir::toNativeSeparators(syslinxDir + filename));
+    }
+
     // bugfix
     // TODO: we change syslinux to 6.02, but gfxboot will not work
     // so use a syslinux.cfg will not use gfxboot and vesamenu
-    filelist.append(":/bootloader/syslinux/syslinux.cfg");
+    XSys::InsertFile(":/bootloader/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
 
-    foreach(QString filename, filelist) {
-        XSys::InsertFile(filename, QDir::toNativeSeparators(syslinxDir + filename));
-    }
     return true;
 }
 
@@ -427,7 +429,8 @@ FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){
 void FileListMonitor::ToNextFile(const QString &filename) {
     if (!currentFile_.isEmpty()){
         QFileInfo file(currentFile_);
-        finishSize_ += file.size() + fakeSizePerFile_;
+        qDebug()<<"file.size() fakesize"<<file.size()<<"\t"<<fakeSizePerFile_;
+        finishSize_ += (file.size() + fakeSizePerFile_);
     }
     currentFile_ = filename;
 }
@@ -436,6 +439,7 @@ void FileListMonitor::SetTotalSize(qint64 size, qint64 total) {
     totalSize_ = size;
     fileNum_ = total;
     fakeSizePerFile_ = totalSize_ /  fileNum_ / 3;
+    qDebug()<<"fakesize"<<fakeSizePerFile_;
     totalSize_ = size + fakeSizePerFile_*fileNum_;
     qDebug()<<size<<totalSize_;
 }

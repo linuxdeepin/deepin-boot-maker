@@ -38,13 +38,6 @@ msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr ""
 
 msgctxt "UsbCreatorFrame|"
-msgid ""
-"<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
-"can quickly create Deepin OS Startup Disk through a simple setting, which "
-"supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>"
-msgstr ""
-
-msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr ""
 
@@ -96,6 +89,13 @@ msgid ""
 "color='#ffffff'><br>You have successfully created a boot disk and select "
 "your boot disk to install Deepin OS after restarted.</br><br></br><br>Do you "
 "need to restart now?</br></font></br>"
+msgstr ""
+
+msgctxt "UsbCreatorFrame|"
+msgid ""
+"<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few "
+"options, you'll be able to create a Deepin OS Startup Disk, which supports "
+"both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
 msgstr ""
 
 msgctxt "unetbootin|"

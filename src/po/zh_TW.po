@@ -39,61 +39,70 @@ msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "深度啟動盤製作工具"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:163
+#: ../qml/MainUI/UsbCreatorFrame.qml:179
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr "<font color='#ffffff'>告別繁瑣，簡單易用</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:170
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and "
+#~ "you can quickly create Deepin OS Startup Disk through a simple setting, "
+#~ "which supports dual BIOS and <font color='#ebab4c'>UEFI</font> "
+#~ "start.</font></br>"
+#~ msgstr ""
+#~ "<br><font "
+#~ "color='#a7a7a7'>歡迎使用深度啟動盤軟體，通過簡單設置即可快速製作Deepin系統啟動盤，並且支持BIOS和<font "
+#~ "color='#ebab4c'>UEFI</font>雙啟動。</font></br>"
+
+#: ../qml/MainUI/UsbCreatorFrame.qml:186
 msgctxt "UsbCreatorFrame|"
 msgid ""
-"<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
-"can quickly create Deepin OS Startup Disk through a simple setting, which "
-"supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>"
+"<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few "
+"options, you'll be able to create a Deepin OS Startup Disk, which supports "
+"both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
 msgstr ""
-"<br><font color='#a7a7a7'>歡迎使用深度啟動盤軟體，通過簡單設置即可快速製作Deepin系統啟動盤，並且支持BIOS和<font "
-"color='#ebab4c'>UEFI</font>雙啟動。</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:193
+#: ../qml/MainUI/UsbCreatorFrame.qml:209
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>選擇ISO檔:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:243
+#: ../qml/MainUI/UsbCreatorFrame.qml:259
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>選擇U盤:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:266
+#: ../qml/MainUI/UsbCreatorFrame.qml:282
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'>Format USB flash disk before installation to improve "
 "the making success rate.</font>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:273
+#: ../qml/MainUI/UsbCreatorFrame.qml:289
 msgctxt "UsbCreatorFrame|"
 msgid "Format USB flash disk"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:274
+#: ../qml/MainUI/UsbCreatorFrame.qml:290
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:299
+#: ../qml/MainUI/UsbCreatorFrame.qml:315
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>舊主板BIOS支持， 默認請不要勾選。</font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:310
+#: ../qml/MainUI/UsbCreatorFrame.qml:326
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "開始創建"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:352
+#: ../qml/MainUI/UsbCreatorFrame.qml:368
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -102,7 +111,7 @@ msgstr ""
 "<font color='#ffffff'><br>正在寫入檔，<font color='#ebab4c'>請不要</font> "
 "移除U盤或者關機！</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:389
+#: ../qml/MainUI/UsbCreatorFrame.qml:405
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
@@ -111,12 +120,12 @@ msgid ""
 "need to restart now?</br></font></br>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:400
+#: ../qml/MainUI/UsbCreatorFrame.qml:416
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Later"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:409
+#: ../qml/MainUI/UsbCreatorFrame.qml:425
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Now"
 msgstr ""
@@ -239,8 +248,8 @@ msgid ""
 msgstr "目錄 %1 沒有空間了。單擊'Yes'終止安裝，單擊'No'忽略此錯誤並嘗試繼續安裝，單擊'No to All'忽略所有沒有空間的錯誤。"
 
 #: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
-#: ../unetbootin.cpp:3032 ../unetbootin.cpp:3043 ../unetbootin.cpp:3054
-#: ../unetbootin.cpp:3362
+#: ../unetbootin.cpp:3035 ../unetbootin.cpp:3046 ../unetbootin.cpp:3057
+#: ../unetbootin.cpp:3365
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "USB 驅動器"
@@ -326,37 +335,37 @@ msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
 msgstr "<b>已複製：</b> 0 位元組"
 
-#: ../unetbootin.cpp:1435
+#: ../unetbootin.cpp:1438
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
 msgstr "<b>已抽取：</b>0 / %1 個檔"
 
-#: ../unetbootin.cpp:1438
+#: ../unetbootin.cpp:1441
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
 msgstr "<b>已抽取：</b> %1 / %2 個檔"
 
-#: ../unetbootin.cpp:2332 ../unetbootin.cpp:2347
+#: ../unetbootin.cpp:2335 ../unetbootin.cpp:2350
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
 msgstr "<b>已下載：</b> %1 / %2"
 
-#: ../unetbootin.cpp:2362
+#: ../unetbootin.cpp:2365
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
 msgstr "<b>已複製：</b> %1 / %2"
 
-#: ../unetbootin.cpp:2734
+#: ../unetbootin.cpp:2737
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
 msgstr "%1 沒有找到"
 
-#: ../unetbootin.cpp:2735
+#: ../unetbootin.cpp:2738
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
@@ -364,27 +373,27 @@ msgid ""
 "Install the \"%3\" package or your distribution's equivalent."
 msgstr "%1 沒有找到。該安裝模式需要 %2。安裝 “ %3 ” 包或者你的發行版本的等效版本。"
 
-#: ../unetbootin.cpp:3026
+#: ../unetbootin.cpp:3029
 msgctxt "unetbootin|"
 msgid "runinst begin"
 msgstr "runinst 開始"
 
-#: ../unetbootin.cpp:3027
+#: ../unetbootin.cpp:3030
 msgctxt "unetbootin|"
 msgid "(Current)"
 msgstr "(處理中)"
 
-#: ../unetbootin.cpp:3028
+#: ../unetbootin.cpp:3031
 msgctxt "unetbootin|"
 msgid "(Done)"
 msgstr "(完成)"
 
-#: ../unetbootin.cpp:3039
+#: ../unetbootin.cpp:3042
 msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "硬碟"
 
-#: ../unetbootin.cpp:3444
+#: ../unetbootin.cpp:3447
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
@@ -395,7 +404,7 @@ msgstr "正在安裝 syslinux 到 %1"
 #~ msgid "Installing extlinux to %1"
 #~ msgstr "正在安裝 extlinux 到 %1"
 
-#: ../unetbootin.cpp:3472
+#: ../unetbootin.cpp:3475
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "正在同步檔系統"

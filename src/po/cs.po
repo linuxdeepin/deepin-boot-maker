@@ -39,64 +39,72 @@ msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "Tvůrce spouštěcího média Deepin"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:163
+#: ../qml/MainUI/UsbCreatorFrame.qml:179
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr ""
 "<font color='#ffffff'>Jednoduché při používání, bez nadbytečnosti</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:170
+#~ msgctxt "UsbCreatorFrame|"
+#~ msgid ""
+#~ "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and "
+#~ "you can quickly create Deepin OS Startup Disk through a simple setting, "
+#~ "which supports dual BIOS and <font color='#ebab4c'>UEFI</font> "
+#~ "start.</font></br>"
+#~ msgstr ""
+#~ "<br><font color='#a7a7a7'>Vítejte při používání programu na vytvoření "
+#~ "spouštěcího média Deepin, kde můžete rychle a jednoduše vytvořit "
+#~ "spouštěcí médium Deepin OS skrze jednoduché nastavení, které lze současně "
+#~ "spustit přes BIOS a <font color='#ebab4c'>UEFI</font>.</font></br>"
+
+#: ../qml/MainUI/UsbCreatorFrame.qml:186
 msgctxt "UsbCreatorFrame|"
 msgid ""
-"<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and you "
-"can quickly create Deepin OS Startup Disk through a simple setting, which "
-"supports dual BIOS and <font color='#ebab4c'>UEFI</font> start.</font></br>"
+"<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few "
+"options, you'll be able to create a Deepin OS Startup Disk, which supports "
+"both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
 msgstr ""
-"<br><font color='#a7a7a7'>Vítejte při používání programu na vytvoření "
-"spouštěcího média Deepin, kde můžete rychle a jednoduše vytvořit spouštěcí "
-"médium Deepin OS skrze jednoduché nastavení, které lze současně spustit přes "
-"BIOS a <font color='#ebab4c'>UEFI</font>.</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:193
+#: ../qml/MainUI/UsbCreatorFrame.qml:209
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>Vyberte soubor ISO:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:243
+#: ../qml/MainUI/UsbCreatorFrame.qml:259
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>Vyberte úložiště USB:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:266
+#: ../qml/MainUI/UsbCreatorFrame.qml:282
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'>Format USB flash disk before installation to improve "
 "the making success rate.</font>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:273
+#: ../qml/MainUI/UsbCreatorFrame.qml:289
 msgctxt "UsbCreatorFrame|"
 msgid "Format USB flash disk"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:274
+#: ../qml/MainUI/UsbCreatorFrame.qml:290
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:299
+#: ../qml/MainUI/UsbCreatorFrame.qml:315
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>Podpora pro BIOS. Vypněte zde. </font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:310
+#: ../qml/MainUI/UsbCreatorFrame.qml:326
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "Spustit"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:352
+#: ../qml/MainUI/UsbCreatorFrame.qml:368
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -106,7 +114,7 @@ msgstr ""
 "PROSÍM,</font> hromadné úložiště USB a nevypínejte počítač po dobu, kdy je "
 "soubor zapisován.</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:389
+#: ../qml/MainUI/UsbCreatorFrame.qml:405
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
@@ -115,12 +123,12 @@ msgid ""
 "need to restart now?</br></font></br>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:400
+#: ../qml/MainUI/UsbCreatorFrame.qml:416
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Later"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:409
+#: ../qml/MainUI/UsbCreatorFrame.qml:425
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Now"
 msgstr ""
@@ -253,8 +261,8 @@ msgstr ""
 "všechny pro přehlížení všech chyb, kdy není místo."
 
 #: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
-#: ../unetbootin.cpp:3032 ../unetbootin.cpp:3043 ../unetbootin.cpp:3054
-#: ../unetbootin.cpp:3362
+#: ../unetbootin.cpp:3035 ../unetbootin.cpp:3046 ../unetbootin.cpp:3057
+#: ../unetbootin.cpp:3365
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "Hromadné úložiště USB"
@@ -340,37 +348,37 @@ msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
 msgstr "<b>Zkopírováno:</b> 0 bytů"
 
-#: ../unetbootin.cpp:1435
+#: ../unetbootin.cpp:1438
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
 msgstr "<b>Vytaženo:</b> 0 z %1 souborů"
 
-#: ../unetbootin.cpp:1438
+#: ../unetbootin.cpp:1441
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
 msgstr "<b>Vytaženo:</b> %1 z %2 souborů"
 
-#: ../unetbootin.cpp:2332 ../unetbootin.cpp:2347
+#: ../unetbootin.cpp:2335 ../unetbootin.cpp:2350
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
 msgstr "<b>Staženo:</b> %1 z %2"
 
-#: ../unetbootin.cpp:2362
+#: ../unetbootin.cpp:2365
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
 msgstr "<b>Zkopírováno:</b> %1 z %2"
 
-#: ../unetbootin.cpp:2734
+#: ../unetbootin.cpp:2737
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
 msgstr "%1 nenalezen"
 
-#: ../unetbootin.cpp:2735
+#: ../unetbootin.cpp:2738
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
@@ -380,27 +388,27 @@ msgstr ""
 "%1 nenalezen. Toto je požadováno pro instalační režim %2.\n"
 "Nainstalujte balíček \"%3\", nebo jeho obdobu ve vaší distribuci."
 
-#: ../unetbootin.cpp:3026
+#: ../unetbootin.cpp:3029
 msgctxt "unetbootin|"
 msgid "runinst begin"
 msgstr "Runinst začíná"
 
-#: ../unetbootin.cpp:3027
+#: ../unetbootin.cpp:3030
 msgctxt "unetbootin|"
 msgid "(Current)"
 msgstr "(Nynější)"
 
-#: ../unetbootin.cpp:3028
+#: ../unetbootin.cpp:3031
 msgctxt "unetbootin|"
 msgid "(Done)"
 msgstr "(Hotovo)"
 
-#: ../unetbootin.cpp:3039
+#: ../unetbootin.cpp:3042
 msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "Pevný disk"
 
-#: ../unetbootin.cpp:3444
+#: ../unetbootin.cpp:3447
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
@@ -411,7 +419,7 @@ msgstr "Instalovat syslinux na %1"
 #~ msgid "Installing extlinux to %1"
 #~ msgstr "Instalovat extlinux na %1"
 
-#: ../unetbootin.cpp:3472
+#: ../unetbootin.cpp:3475
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "Seřídit souborové systémy"
