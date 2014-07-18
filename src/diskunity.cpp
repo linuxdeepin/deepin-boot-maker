@@ -153,9 +153,15 @@ const QString MountPoint(const QString &targetDev){
 
 #ifdef Q_OS_UNIX
 const QString MountPoint(const QString &targetDev){
+    /*
+Filesystem    512-blocks     Used Available Capacity iused     ifree %iused  Mounted on
+/dev/disk2s1     3920616  2683872   1236744    69%       0         0  100%   /Volumes/DEEPINOS 1
+    */
     QString ret = XSys::SynExec("df", "");
     QStringList mounts = ret.split("\n").filter(targetDev);
-    return mounts.last().split(" ").last();
+    QString mountinfo = mounts.last();
+    mountinfo.remove(targetDev);
+    return mountinfo.mid(mountinfo.indexOf('/'));
 }
 #endif
 
@@ -254,7 +260,8 @@ bool UmountDisk(const QString &targetDev) {
 
 bool CheckFormatFat32(const QString &targetDev) {
     QString ret = XSys::SynExec("diskutil info ",  targetDev);
-    if (ret.contains(QRegExp("Windows_FAT_32"))) {
+    QString partitionType = ret.split("\n").filter("Partition Type:").first();
+    if (partitionType.contains(QRegExp("_FAT_32"))) {
         return true;
     }
     return false;
@@ -413,20 +420,24 @@ bool DiskUnity::UmountDisk(const QString &disk) {
 
 FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){
     finishSize_ = 0;
-    connect(this, SIGNAL(totalSize(qint64)), SLOT(SetTotalSize(qint64)));
+    connect(this, SIGNAL(totalSize(qint64, qint64)), SLOT(SetTotalSize(qint64, qint64)));
     connect(this, SIGNAL(toNextFile(const QString &)), SLOT(ToNextFile(const QString &)));
 }
 
 void FileListMonitor::ToNextFile(const QString &filename) {
     if (!currentFile_.isEmpty()){
         QFileInfo file(currentFile_);
-        finishSize_ += file.size();
+        finishSize_ += file.size() + fakeSizePerFile_;
     }
     currentFile_ = filename;
 }
 
-void FileListMonitor::SetTotalSize(qint64 size) {
+void FileListMonitor::SetTotalSize(qint64 size, qint64 total) {
     totalSize_ = size;
+    fileNum_ = total;
+    fakeSizePerFile_ = totalSize_ /  fileNum_ / 3;
+    totalSize_ = size + fakeSizePerFile_*fileNum_;
+    qDebug()<<size<<totalSize_;
 }
 
 qint64 FileListMonitor::FinishSize() {

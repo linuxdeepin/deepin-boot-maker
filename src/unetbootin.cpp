@@ -1429,7 +1429,10 @@ QStringList unetbootin::extractallfiles(QString archivefile, QString dirxfilesto
 	QStringList extractedfiles;
     QFileInfo isoFile(isoImagePath);
     qint64 isoSize = isoFile.size();
-    tprogress->setMaximum(isoSize * 100 / 98);
+    flm->SetTotalSize(isoSize, filelist.size());
+    qint64 ts = flm->getTotalSize();
+    qDebug()<<"Total Size: "<<ts<<"\tIsosize: "<<isoSize;
+    tprogress->setMaximum(ts  * 100 / 98);
 	tprogress->setMinimum(0);
     tprogress->setValue(0);
     qDebug()<<(tr("<b>Extracted:</b> 0 of %1 files").arg(filelist.size()));
@@ -1437,7 +1440,7 @@ QStringList unetbootin::extractallfiles(QString archivefile, QString dirxfilesto
     {
         qDebug()<<(tr("<b>Extracted:</b> %1 of %2 files").arg(i).arg(filelist.size()));
         tprogress->setValue(flm->FinishSize());
-        qDebug()<<QString("value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(isoSize).arg(tprogress->rate());
+        qDebug()<<QString("value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(ts).arg(tprogress->rate());
         QString desPath = QString("%1%2").arg(dirxfilesto).arg(outputfilelist.at(i));
         flm->toNextFile(desPath);
         if (extractfile(filelist.at(i), desPath, archivefile))

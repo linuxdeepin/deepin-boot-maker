@@ -186,22 +186,22 @@ public:
         min = 0;
         value_ = 0;
     }
-    void setMaximum(int m) {
+    void setMaximum(qint64 m) {
         max = m;
     }
-    void setMinimum(int m) {
+    void setMinimum(qint64 m) {
         min = m;
     }
-    void setValue(int v) {
+    void setValue(qint64 v) {
         value_ = v;
     }
-    int maximum() {
+    qint64 maximum() {
         return max;
     }
-    int value(){
+    qint64 value(){
         return value_;
     }
-    int rate(){
+    qint64 rate(){
         if (0 != max) {
             if (value_ > max)
                 return 100;
@@ -211,9 +211,9 @@ public:
     }
 
 protected:
-    int max;
-    int min;
-    int value_;
+    qint64 max;
+    qint64 min;
+    qint64 value_;
 };
 
 class FileListMonitor;

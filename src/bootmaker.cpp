@@ -72,7 +72,7 @@ int BootMaker::processRate() {
     } else {
         tprogress->setValue(tprogress->maximum());
     }
-    qDebug()<<QString("value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(tprogress->maximum()).arg(tprogress->rate());
+    qDebug()<<QString("processRate value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(tprogress->maximum()).arg(tprogress->rate());
     return tprogress->rate();
 }
 
