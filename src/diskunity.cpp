@@ -189,7 +189,7 @@ bool CheckFormatFat32(const QString &targetDev) {
 
 bool InstallSyslinux(const QString &targetDev) {
     //install syslinux
-    UmountDisk(targetDev);
+    //UmountDisk(targetDev);
     QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
     XSys::SynExec("chmod +x ", sysliuxPath);
     XSys::SynExec(sysliuxPath , QString(" -i -a %1").arg(targetDev));

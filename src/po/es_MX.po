@@ -24,7 +24,7 @@ msgctxt "BootMaker|"
 msgid "Format"
 msgstr ""
 
-#: ../bootmaker.cpp:49
+#: ../bootmaker.cpp:49 ../bootmaker.cpp:103
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr ""
@@ -33,6 +33,23 @@ msgstr ""
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Por favor selecciona una imagen iso"
+
+#: ../bootmaker.cpp:99
+msgctxt "BootMaker|"
+msgid "Format USB flash disk"
+msgstr ""
+
+#: ../bootmaker.cpp:100
+msgctxt "BootMaker|"
+msgid ""
+"All data will be lost during formatting, please back up in advance and then "
+"press OK button."
+msgstr ""
+
+#: ../bootmaker.cpp:102
+msgctxt "BootMaker|"
+msgid "Ok"
+msgstr ""
 
 #: ../main.cpp:280
 msgctxt "QApplication|"
@@ -81,29 +98,17 @@ msgid ""
 "the making success rate.</font>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:289
-msgctxt "UsbCreatorFrame|"
-msgid "Format USB flash disk"
-msgstr ""
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:290
-msgctxt "UsbCreatorFrame|"
-msgid ""
-"All data will be lost during formatting, please back up in advance and then "
-"press OK button."
-msgstr ""
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:315
+#: ../qml/MainUI/UsbCreatorFrame.qml:306
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>Soporte de BIOS. Deselecciona aqui.</font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:326
+#: ../qml/MainUI/UsbCreatorFrame.qml:317
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "Iniciar"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:368
+#: ../qml/MainUI/UsbCreatorFrame.qml:359
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
@@ -112,7 +117,7 @@ msgstr ""
 "<font color='#ffffff'><br>Por favor <font color='#ebab4c'>NO</font> quite la "
 "unidad USB o apague mientras está escribiendo.</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:405
+#: ../qml/MainUI/UsbCreatorFrame.qml:396
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
@@ -121,12 +126,12 @@ msgid ""
 "need to restart now?</br></font></br>"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:416
+#: ../qml/MainUI/UsbCreatorFrame.qml:407
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Later"
 msgstr ""
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:425
+#: ../qml/MainUI/UsbCreatorFrame.qml:416
 msgctxt "UsbCreatorFrame|"
 msgid "Restart Now"
 msgstr ""

@@ -93,6 +93,22 @@ bool BootMaker::isISOImage(QString isoPath) {
     return false;
 }
 
+bool BootMaker::confirmFormatDlg() {
+    QMessageBox msgbox;
+    msgbox.setIcon(QMessageBox::Critical);
+    msgbox.setWindowTitle(tr("Format USB flash disk"));
+    msgbox.setText(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
+    msgbox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    msgbox.setButtonText(QMessageBox::Ok, tr("Ok"));
+    msgbox.setButtonText(QMessageBox::Cancel, tr("Cancel"));
+
+    if(msgbox.exec() == QMessageBox::Ok) {
+         return true;
+    } else {
+        return false;
+    }
+}
+
 void BootMaker::reboot() {
 #ifdef Q_OS_WIN32
     HANDLE hToken;
