@@ -29,6 +29,20 @@ msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr ""
 
+msgctxt "BootMaker|"
+msgid "Format USB flash disk"
+msgstr ""
+
+msgctxt "BootMaker|"
+msgid ""
+"All data will be lost during formatting, please back up in advance and then "
+"press OK button."
+msgstr ""
+
+msgctxt "BootMaker|"
+msgid "Ok"
+msgstr ""
+
 msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr ""
@@ -63,16 +77,6 @@ msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'>Format USB flash disk before installation to improve "
 "the making success rate.</font>"
-msgstr ""
-
-msgctxt "UsbCreatorFrame|"
-msgid "Format USB flash disk"
-msgstr ""
-
-msgctxt "UsbCreatorFrame|"
-msgid ""
-"All data will be lost during formatting, please back up in advance and then "
-"press OK button."
 msgstr ""
 
 msgctxt "UsbCreatorFrame|"

@@ -282,23 +282,14 @@ DWindowFrame {
                                     text: qsTr("<font color='#ffffff'>Format USB flash disk before installation to improve the making success rate.</font>")
                                     width: 380
 
-                                    MessageDialog{
-                                        id: messageDialog
-                                        icon: StandardIcon.Warning
-                                        standardButtons: StandardButton.Ok | StandardButton.Cancel
-                                        title: qsTr("Format USB flash disk");
-                                        text: qsTr("All data will be lost during formatting, please back up in advance and then press OK button.")
-                                        onAccepted: {
-                                            formatDisk.checked = true
-                                        }
-                                        onRejected:{
-                                            formatDisk.checked = false
-                                        }
-                                    }
-
                                     onClicked:{
                                         if (true === formatDisk.checked) {
-                                            messageDialog.visible = true
+                                            if (true === bootMaker.confirmFormatDlg()) {
+                                                formatDisk.checked = true
+                                            } else {
+                                                formatDisk.checked = false
+                                            }
+
                                         }
                                     }
                                 }

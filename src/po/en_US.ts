@@ -23,6 +23,18 @@
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Format USB flash disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QApplication</name>
@@ -59,14 +71,6 @@
     </message>
     <message>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Format USB flash disk</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

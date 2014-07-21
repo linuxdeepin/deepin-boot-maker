@@ -23,6 +23,10 @@ public:
 
     Q_INVOKABLE QString homeDir();
 
+    /*
+        THE QML Messagebox is too sample, so do here
+    */
+    Q_INVOKABLE bool confirmFormatDlg();
     unetbootin  *unetbootinPtr;
     FileListMonitor * flm;
     ProcessRate *tprogress;

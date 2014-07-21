@@ -20,6 +20,7 @@
     </message>
     <message>
         <location filename="../bootmaker.cpp" line="49"/>
+        <location filename="../bootmaker.cpp" line="103"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -28,6 +29,21 @@
         <location filename="../bootmaker.cpp" line="90"/>
         <source>Please select an iso image</source>
         <translation>Lütfen iso imajını seçin</translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="99"/>
+        <source>Format USB flash disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="100"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bootmaker.cpp" line="102"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -70,42 +86,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="289"/>
-        <source>Format USB flash disk</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="290"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="315"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="306"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;BIOS desteği. Buradan kaldırılır. &lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="326"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="317"/>
         <source>Start</source>
         <translation>Başlat</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="368"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="359"/>
         <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
         <translation>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Lütfen&lt;font color=&apos;#ebab4c&apos;&gt;KESİNLİKLE&lt;/font&gt; USB flash sürücüyü kaldırmayın veya dosya yazılırken kapatmayın.&lt;/br&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="405"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="396"/>
         <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Do you need to restart now?&lt;/br&gt;&lt;/font&gt;&lt;/br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="416"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="407"/>
         <source>Restart Later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="425"/>
+        <location filename="../qml/MainUI/UsbCreatorFrame.qml" line="416"/>
         <source>Restart Now</source>
         <translation type="unfinished"></translation>
     </message>
