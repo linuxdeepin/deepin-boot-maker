@@ -145,7 +145,7 @@ bool CheckFormatFat32(const QString &targetDev) {
 
 
 const QString MountPoint(const QString &targetDev){
-    return targetDev.remove("/").remove("\\") + "/";
+    return QString(targetDev).remove("/").remove("\\") + "/";
 }
 
 #endif
