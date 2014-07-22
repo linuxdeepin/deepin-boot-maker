@@ -132,7 +132,7 @@ bool CheckIsXP() {
     return false;
 }
 #endif
-
+#include "ui/dwindowui.h"
 #include <QtGlobal>
 int main(int argc, char **argv){
     QApplication app(argc, argv, true);
@@ -275,9 +275,12 @@ int main(int argc, char **argv){
 
     QIcon icon;
     icon.addFile(":/image/deepin-boot-maker.png");
-    window->setIcon(icon);
-    window->show();
-    window->setTitle(QApplication::tr("Deepin Boot Maker"));
+//    window->setIcon(icon);
+//    window->show();
+//    window->setTitle(QApplication::tr("Deepin Boot Maker"));
+
+    DWindowUI mainWindow;
+    mainWindow.show();
     return app.exec();
 }
 
