@@ -24,7 +24,12 @@ HEADERS += unetbootin.h \
     bootmaker.h \
     qml/Deepin/Widgets/plugins/ddroparea.h \
     diskunity.h \
-    xsys.h
+    xsys.h \
+    ui/dwindowui.h \
+    ui/dcombobox.h \
+    ui/dfilechooseinput.h \
+    ui/dcheckbox.h \
+    ui/dpushbutton.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
@@ -33,7 +38,12 @@ SOURCES += main.cpp \
     bootmaker.cpp \
     qml/Deepin/Widgets/plugins/ddroparea.cpp \
     diskunity.cpp \
-    xsys.cpp
+    xsys.cpp \
+    ui/dwindowui.cpp \
+    ui/dcombobox.cpp \
+    ui/dfilechooseinput.cpp \
+    ui/dcheckbox.cpp \
+    ui/dpushbutton.cpp
 
 CONFIG(lupdate) {
     SOURCES += qml/MainUI/UsbCreatorFrame.qml

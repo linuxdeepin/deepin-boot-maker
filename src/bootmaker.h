@@ -1,17 +1,17 @@
 #ifndef USBCREATOR_H
 #define USBCREATOR_H
 
-#include <QObject>
 #include <QString>
 #include <QStringList>
-
+#include <QWidget>
 class unetbootin;
 class FileListMonitor;
 class ProcessRate;
-class BootMaker : public QObject{
+
+class BootMaker : public QWidget{
    Q_OBJECT
 public:
-    explicit BootMaker (QObject* parent = 0);
+    explicit BootMaker (QWidget* parent = 0);
     //对外API
     Q_INVOKABLE QStringList listUsbDrives();
     Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool biosMode = false, bool formatDisk = false);
