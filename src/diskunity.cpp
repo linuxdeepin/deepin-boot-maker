@@ -122,7 +122,7 @@ bool InstallBootloader(const QString &targetDev) {
     qDebug()<<"dump pbr end";
 
     //add pbr file ldlinux.bin
-    XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
+    XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin \"%2\" -s").arg(xfbinstDiskName).arg(tmpPbrPath));
 
     XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
 
