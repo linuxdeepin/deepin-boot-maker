@@ -7,18 +7,15 @@
 #include "diskunity.h"
 
 #include <QThread>
-#include <QWidget>
 
-
-BootMaker::BootMaker(QObject* parent): QObject(parent){
-     unetbootinPtr = new unetbootin;
+BootMaker::BootMaker(QWidget* parent): QWidget(parent){
+     unetbootinPtr = new unetbootin(this);
      flm = new FileListMonitor();
      tprogress = new ProcessRate();
      unetbootinPtr->ubninitialize();
      unetbootinPtr->flm = flm;
      unetbootinPtr->tprogress = tprogress;
 }
-
 
 QStringList BootMaker::listUsbDrives(){
     QStringList usbDriverlist;
@@ -40,7 +37,7 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
 
         if ((!formatDisk) && (!DiskUnity::CheckInstallDisk(usbDriver))){
 
-            QMessageBox msgbox;
+            QMessageBox msgbox(this);
             msgbox.setIcon(QMessageBox::Critical);
             msgbox.setWindowTitle(tr("Format error of USB flash drive"));
             msgbox.setText(tr("Only FAT32 USB flash drive supported. Need to format? All partitions and data will be lost during formatting, please back up the data in advance."));
@@ -84,7 +81,7 @@ bool BootMaker::isISOImage(QString isoPath) {
     QFileInfo fileinfo(isoPath);
     if (fileinfo.suffix() == "iso")
         return true;
-    QMessageBox msg;
+    QMessageBox msg(this);
     msg.setIcon(QMessageBox::Information);
     msg.setWindowTitle(tr("Please select an iso image"));
     msg.setText(tr("Please select an iso image"));
@@ -94,7 +91,7 @@ bool BootMaker::isISOImage(QString isoPath) {
 }
 
 bool BootMaker::confirmFormatDlg() {
-    QMessageBox msgbox;
+    QMessageBox msgbox(this);
     msgbox.setIcon(QMessageBox::Critical);
     msgbox.setWindowTitle(tr("Format USB flash disk"));
     msgbox.setText(tr("All data will be lost during formatting, please back up in advance and then press OK button."));

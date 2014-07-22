@@ -41,5 +41,18 @@
         <file>po/zh_TW.qm</file>
         <file>deepinos</file>
         <file>ui/images/uibackgound.png</file>
+        <file>ui/images/button_normal.png</file>
+        <file>ui/images/loadfile_hover.png</file>
+        <file>ui/images/loadfile_normal.png</file>
+        <file>ui/images/loadfile_press.png</file>
+        <file>ui/images/checkbox_checked.png</file>
+        <file>ui/images/checkbox_checked_hover.png</file>
+        <file>ui/images/checkbox_checked_insensitive.png</file>
+        <file>ui/images/checkbox_unchecked.png</file>
+        <file>ui/images/checkbox_unchecked_hover.png</file>
+        <file>ui/images/checkbox_unchecked_insensitive.png</file>
+        <file>ui/images/transparent_button_hover.png</file>
+        <file>ui/images/transparent_button_normal.png</file>
+        <file>ui/images/transparent_button_press.png</file>
     </qresource>
 </RCC>

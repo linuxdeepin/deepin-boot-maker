@@ -218,12 +218,12 @@ protected:
 
 class FileListMonitor;
 
-class unetbootin : public QObject
+class unetbootin : public QWidget
 {
 	Q_OBJECT
 
 public:
-    unetbootin(QObject *parent = 0);
+    unetbootin(QWidget *parent = 0);
 	QString trcurrent;
 	QString trdone;
 	QString appNlang;
