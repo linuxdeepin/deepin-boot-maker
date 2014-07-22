@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>d3dcompiler_46.dll</file>
         <file>sevnz.dll</file>
         <file>sevnz.exe</file>
     </qresource>

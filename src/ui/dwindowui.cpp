@@ -87,7 +87,7 @@ void DWindowUI::AddProcessUI(QBoxLayout * top) {
 
 void DWindowUI::AddOptionUI(QBoxLayout *top) {
     QVBoxLayout *option = new QVBoxLayout();
-    option->setSpacing(8);
+    option->setSpacing(7);
 
     const int labelMaxWidth =380;
 
@@ -173,7 +173,7 @@ void DWindowUI::AddOptionUI(QBoxLayout *top) {
     bisoMode->setFixedWidth(labelMaxWidth);
     option->addWidget(bisoMode);
 
-    option->addSpacing(15);
+    option->addSpacing(10);
     actionlayout = new QHBoxLayout();
     startBt = new DPushButton(tr("Start"));
     startBt->setFixedWidth(100);

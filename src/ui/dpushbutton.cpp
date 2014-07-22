@@ -5,7 +5,7 @@ DPushButton::DPushButton(const QString& text, QWidget *parent) :
 {
     QString style = "QPushButton{"
         "color: #b4b4b4;"
-        "font-size: 14px;"
+        "font-size: 12px;"
         "border-image:url(:/ui/images/transparent_button_normal.png) 3 6 3 6;"
         "border-top: 3px transparent;"
         "border-bottom: 3px transparent;"

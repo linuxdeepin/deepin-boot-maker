@@ -8,16 +8,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 #include "bootmaker.h"
 #include "unetbootin.h"
-#include "qml/Deepin/Widgets/plugins/dwindow.h"
-#include "qml/Deepin/Widgets/plugins/dicon.h"
-#include "qml/Deepin/Widgets/plugins/ddroparea.h"
-
-#include <QQuickView>
-#include <QQmlEngine>
-#include <QQmlComponent>
-#include <QQmlContext>
-#include <QQmlApplicationEngine>
-
 
 #include <QtGui>
 #include <QtWidgets/QApplication>
@@ -138,19 +128,7 @@ int main(int argc, char **argv){
     QApplication app(argc, argv, true);
 
 #ifdef Q_OS_WIN32
-    //release dll
-    QFile d3d_dll(":/d3dcompiler_46.dll");
-    TCHAR szPath[MAX_PATH];
-    GetSystemDirectory(szPath, MAX_PATH);
-    QString destPath = QString::fromWCharArray(szPath) + "\\d3dcompiler_46.dll";
-    QFile destFile(destPath);
-
-    destFile.open(QIODevice::WriteOnly);
-    d3d_dll.open(QIODevice::ReadOnly);
-    destFile.write(d3d_dll.readAll());
-    destFile.close();
-    d3d_dll.close();
-    app.setFont(QFont("Microsoft YaHei"));
+    app.setFont(QFont("Microsoft YaHei", 11));
 #endif
 
 #ifdef Q_OS_LINUX
@@ -237,47 +215,16 @@ int main(int argc, char **argv){
 #endif
         }
     }
-    #endif
-    qmlRegisterType<BootMaker>("com.deepin.bootmaker", 1, 0, "BootMaker");
-    qmlRegisterType<DOverrideWindow>("com.deepin.usbcreator", 1, 0, "DOverrideWindow");
-    qmlRegisterType<DWindow>("com.deepin.usbcreator", 1, 0, "DWindow");
-    qmlRegisterType<DIcon>("com.deepin.usbcreator", 1, 0, "DIcon");
-    qmlRegisterType<DDropArea>("com.deepin.usbcreator", 1, 0, "DDropArea");
-
-    QQmlApplicationEngine engine;
-    engine.addImportPath("qrc:/qml/");
+#endif
 
 #ifdef Q_OS_WIN32
     if (CheckIsXP()){
         app.setFont(QFont("SimHei", 12));
-        engine.load(QUrl("qrc:/qml/xp-fix-mainui.qml"));
     }
-    else{
-        engine.load(QUrl("qrc:/qml/mainui.qml"));
-    }
-#else
-   engine.load(QUrl("qrc:/qml/mainui.qml"));
 #endif
-
-    app.setOverrideCursor( QCursor( Qt::ArrowCursor ) );
-
-    QList<QObject *> roots = engine.rootObjects();
-    QObject *topLevel = roots.value(0);
-    QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
-
-//    QMessageBox unotenoughinputmsgb;
-//    unotenoughinputmsgb.setText(QString("Windows %x").arg((qint64)window));
-//    unotenoughinputmsgb.exec();
-
-    if (!window) {
-        qCritical("load qrc:/qml/mainui.qml error!!");
-    }
 
     QIcon icon;
     icon.addFile(":/image/deepin-boot-maker.png");
-//    window->setIcon(icon);
-//    window->show();
-//    window->setTitle(QApplication::tr("Deepin Boot Maker"));
 
     DWindowUI mainWindow;
     mainWindow.show();
