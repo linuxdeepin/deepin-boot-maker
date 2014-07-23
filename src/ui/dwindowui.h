@@ -25,6 +25,7 @@ public:
     void paintEvent(QPaintEvent *);
 
     void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 
 signals:
@@ -48,6 +49,7 @@ private slots:
 
 private:
     QPoint      pos_;
+    bool        pressed_;
 
     BootMaker   *bootMaker_;
 

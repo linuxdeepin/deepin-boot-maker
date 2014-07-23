@@ -28,11 +28,6 @@ DWindowUI::DWindowUI(QWidget *parent) :
     resize(680, 440);
     setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
     setAttribute(Qt::WA_TranslucentBackground, true);
-    QString style = "DWindowUI {"
-            "margin : 1px"
-            "}";
-    setStyleSheet(style);
-
     bootMaker_ = new BootMaker(this);
     InitUI();
 }
@@ -339,13 +334,18 @@ void DWindowUI::SwitchToEndUI() {
 
 void DWindowUI::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton) {
-        pos_ = event->globalPos() - frameGeometry().topLeft();
-        event->accept();
+        pressed_ = true;
+        pos_ = event->globalPos() - this->pos();
     }
 }
 void DWindowUI::mouseMoveEvent(QMouseEvent *event){
-    if (event->buttons() & Qt::LeftButton) {
+    if (pressed_) {
         move(event->globalPos() - pos_);
-        event->accept();
     }
+}
+
+void DWindowUI::mouseReleaseEvent(QMouseEvent *event)
+{
+    pressed_ = false;
+    event->accept();
 }
