@@ -451,7 +451,7 @@ FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){
 void FileListMonitor::ToNextFile(const QString &filename) {
     if (!currentFile_.isEmpty()){
         QFileInfo file(currentFile_);
-        qDebug()<<"file.size() fakesize"<<file.size()<<"\t"<<fakeSizePerFile_;
+//        qDebug()<<"file.size() fakesize"<<file.size()<<"\t"<<fakeSizePerFile_;
         finishSize_ += (file.size() + fakeSizePerFile_);
     }
     currentFile_ = filename;

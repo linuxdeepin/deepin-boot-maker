@@ -108,10 +108,10 @@ bool SwitchToRoot(QApplication &app) {
 }
 #endif
 
-#ifdef Q_OS_WIN32
+static QString g_LogPath;
+
 void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
-    //const char * msg = str.toStdString().c_str();
     QString txt;
     switch (type) {
         case QtDebugMsg:
@@ -128,12 +128,17 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
             abort();
     }
 
-    QFile outFile("deepin-boot-maker.log");
+    QFile outFile(g_LogPath);
     outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
 }
-#endif
+
+void installLogHandler() {
+    g_LogPath = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first() + "/" + "deepin-boot-maker.log");
+    qDebug()<<"Install Log to "<<g_LogPath;
+    qInstallMessageHandler(crashMessageOutput);
+}
 
 void loadTranslate(QApplication& app) {
     QTranslator *translator = new QTranslator();
@@ -212,9 +217,7 @@ void loadFonts(QApplication& app) {
 
 int main(int argc, char **argv){
     QApplication app(argc, argv, true);
-#ifdef Q_OS_WIN32
-    qInstallMessageHandler(crashMessageOutput);
-#endif
+    installLogHandler();
 
     loadFonts(app);
     loadTranslate(app);
