@@ -30,7 +30,7 @@ QString checkforgraphicalsu(QString graphicalsu)
 		return "REQCNOTFOUND";
 }
 
-bool switchroot() {
+bool SwitchToRoot(QApplication &app) {
     bool disabledrootcheck = false;
     //disabledrootcheck = true;
     QStringList allappargs = app.arguments();
@@ -220,12 +220,12 @@ int main(int argc, char **argv){
     loadTranslate(app);
 
 #ifdef Q_OS_UNIX
-    if(SwitchToRoot())
+    if(SwitchToRoot(app))
         exit(0);
 #endif
 
     QIcon icon;
-    icon.addFile(":/ui/image/deepin-boot-maker.png");
+    icon.addFile(":/ui/images/deepin-boot-maker.png");
 
     DWindowUI mainWindow;
     mainWindow.setWindowIcon(icon);

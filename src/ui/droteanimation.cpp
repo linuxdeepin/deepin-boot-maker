@@ -41,4 +41,5 @@ void DRoteAnimation::stop() {
 
 void DRoteAnimation::setPixmap(const QPixmap &pixmap) {
     pixmap_ = pixmap;
+    update();
 }
