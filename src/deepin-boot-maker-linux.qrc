@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/" >
-        <file>mbr.bin</file>
-        <file>ubnsylnx</file>
-        <file>ubnexlnx</file>
-    </qresource>
-</RCC>

@@ -6,6 +6,7 @@
 class QCheckBox;
 class QLabel;
 class QString;
+class QPushButton;
 
 class DCheckBox : public QWidget
 {
@@ -15,23 +16,35 @@ public:
 
     void setFixedWidth(int w);
 
-    bool checked() {return checkState_ == Qt::Checked;}
+    void setChecked(bool checked);
+    bool checked() {
+        return checkState_ == Qt::Checked;
+    }
 
 public:
-    Qt::CheckState checkState() const { return checkState_; }
-    void setCheckState(Qt::CheckState state) {checkState_ = state; emit stateChanged(state);}
+    Qt::CheckState checkState() const {
+        return checkState_;
+    }
+    void setCheckState(Qt::CheckState state) {
+        checkState_ = state;
+        emit stateChanged(state);
+    }
 
 Q_SIGNALS:
     void stateChanged(int);
+    void clicked();
 
 public slots:
-    void click(bool checked = false);
+    void click();
 
 private:
-    QCheckBox       *checkBox_;
+    QPushButton     *checkBox_;
     QLabel          *label_;
     int             indicatorSize_;
     Qt::CheckState  checkState_;
+
+    QString         styleChecked_;
+    QString         styleUnchecked_;
 
 };
 

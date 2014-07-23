@@ -72,25 +72,25 @@ void callexternappT::run()
 	#ifdef Q_OS_WIN32
     SHELLEXECUTEINFO ShExecInfo;
     memset(&ShExecInfo,0,sizeof(SHELLEXECUTEINFO));
-	ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
-	ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
-	ShExecInfo.hwnd = NULL;
-	if (QSysInfo::WindowsVersion == QSysInfo::WV_NT || QSysInfo::WindowsVersion == QSysInfo::WV_2000 || QSysInfo::WindowsVersion == QSysInfo::WV_XP || QSysInfo::WindowsVersion == QSysInfo::WV_2003 )
-	{
-		ShExecInfo.lpVerb = NULL;
-	}
-	else
-	{
-		ShExecInfo.lpVerb = L"runas";
-	}
-	ShExecInfo.lpFile = LPWSTR(execFile.utf16());
-	ShExecInfo.lpParameters = LPWSTR(execParm.utf16());
-	ShExecInfo.lpDirectory = NULL;
-	ShExecInfo.nShow = SW_HIDE;
-	ShExecInfo.hInstApp = NULL;
-	ShellExecuteEx(&ShExecInfo);
-	WaitForSingleObject(ShExecInfo.hProcess,INFINITE);
-	retnValu = "";
+    ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
+    ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
+    ShExecInfo.hwnd = NULL;
+    if (QSysInfo::WindowsVersion == QSysInfo::WV_NT || QSysInfo::WindowsVersion == QSysInfo::WV_2000 || QSysInfo::WindowsVersion == QSysInfo::WV_XP || QSysInfo::WindowsVersion == QSysInfo::WV_2003 )
+    {
+        ShExecInfo.lpVerb = NULL;
+    }
+    else
+    {
+        ShExecInfo.lpVerb = L"runas";
+    }
+    ShExecInfo.lpFile = LPWSTR(execFile.utf16());
+    ShExecInfo.lpParameters = LPWSTR(execParm.utf16());
+    ShExecInfo.lpDirectory = NULL;
+    ShExecInfo.nShow = SW_HIDE;
+    ShExecInfo.hInstApp = NULL;
+    ShellExecuteEx(&ShExecInfo);
+    WaitForSingleObject(ShExecInfo.hProcess,INFINITE);
+    retnValu = "";
 	#endif
 	#ifdef Q_OS_UNIX
 	QProcess lnexternapp;
@@ -175,14 +175,13 @@ QString randtmpfile::getrandfilename(QString rfpath, QString rfextn)
 //}
 
 unetbootin::unetbootin(QWidget *parent)
-    : QWidget(parent)
+    : QObject(parent)
 {
 }
 
 bool unetbootin::ubninitialize()
 {
     biosMode = false;
-    connect(this, SIGNAL(start()), SLOT(on_okbutton_clicked()));
     isFinsh_ = false;
     skipExtraction = false;
     redundanttopleveldir = false;
@@ -401,7 +400,7 @@ QStringList unetbootin::listalldrives()
 bool unetbootin::checkInstallPara() {
     if (usbDriverPath.isEmpty())
     {
-        QMessageBox unotenoughinputmsgb(this);
+        QMessageBox unotenoughinputmsgb;
         unotenoughinputmsgb.setIcon(QMessageBox::Information);
         unotenoughinputmsgb.setWindowTitle(tr("Insert a USB flash drive"));
         unotenoughinputmsgb.setText(tr("No USB flash drives were found. If you have already inserted a USB drive, try reformatting it as FAT32."));
@@ -421,7 +420,7 @@ bool unetbootin::checkInstallPara() {
     #ifdef Q_OS_LINUX
     else if (locatemountpoint(usbDriverPath) == "NOT MOUNTED")
     {
-        QMessageBox merrordevnotmountedmsgbx(this);
+        QMessageBox merrordevnotmountedmsgbx;
         merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
         merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(usbDriverPath));
         merrordevnotmountedmsgbx.setText(QString(tr("You must first mount the USB drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB drive.")).arg(usbDriverPath));
@@ -437,7 +436,7 @@ bool unetbootin::checkInstallPara() {
     #endif
     else if (isoImagePath.isEmpty())
     {
-        QMessageBox fnotenoughinputmsgb(this);
+        QMessageBox fnotenoughinputmsgb;
         fnotenoughinputmsgb.setIcon(QMessageBox::Information);
         fnotenoughinputmsgb.setWindowTitle(tr("Select a disk image file"));
         fnotenoughinputmsgb.setText(tr("You must select a disk image file to load."));
@@ -452,7 +451,7 @@ bool unetbootin::checkInstallPara() {
     }
     else if (!QFile::exists(isoImagePath) && !isoImagePath.startsWith("http://") && !isoImagePath.startsWith("ftp://"))
     {
-        QMessageBox ffnotexistsmsgb(this);
+        QMessageBox ffnotexistsmsgb;
         ffnotexistsmsgb.setIcon(QMessageBox::Information);
         ffnotexistsmsgb.setWindowTitle(tr("Diskimage file not found"));
         ffnotexistsmsgb.setText(tr("The specified diskimage file %1 does not exist.").arg(isoImagePath));
@@ -473,7 +472,7 @@ bool unetbootin::checkInstallPara() {
 }
 
 
-int unetbootin::on_okbutton_clicked()
+int unetbootin::startProcess()
 {
     runinst();
     return 0;
@@ -486,7 +485,7 @@ void unetbootin::on_fexitbutton_clicked()
 
 void unetbootin::on_frebootbutton_clicked()
 {
-	sysreboot();
+    //sysreboot();
 }
 
 QString unetbootin::displayfisize(quint64 fisize)
@@ -566,7 +565,7 @@ bool unetbootin::overwritefileprompt(QString ovwfileloc)
 		rmFile(ovwfileloc);
 		return true;
 	}
-    QMessageBox overwritefilemsgbx(this);
+    QMessageBox overwritefilemsgbx;
 	overwritefilemsgbx.setIcon(QMessageBox::Warning);
 	overwritefilemsgbx.setWindowTitle(QString(tr("%1 exists, overwrite?")).arg(ovwfileloc));
 	overwritefilemsgbx.setText(QString(tr("The file %1 already exists. Press 'Yes to All' to overwrite it and not be prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to retain your existing version. If in doubt, press 'Yes to All'.")).arg(ovwfileloc));
@@ -593,7 +592,7 @@ bool unetbootin::overwritefileprompt(QString ovwfileloc)
 
 bool unetbootin::ignoreoutofspaceprompt(QString destindir)
 {
-    QMessageBox overwritefilemsgbx(this);
+    QMessageBox overwritefilemsgbx;
 	overwritefilemsgbx.setIcon(QMessageBox::Warning);
 	overwritefilemsgbx.setWindowTitle(QString(tr("%1 is out of space, abort installation?")).arg(destindir));
 	overwritefilemsgbx.setText(QString(tr("The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to ignore this error and attempt to continue installation, and 'No to All' to ignore all out-of-space errors.")).arg(destindir));
@@ -2503,25 +2502,25 @@ QPair<QString, int> unetbootin::filterBestMatch(QStringList ufStringList, QList<
 	return qMakePair(hRegxMatchString, hRegxMatch);
 }
 
-void unetbootin::sysreboot()
-{
-	#ifdef Q_OS_WIN32
-	HANDLE hToken;
-	TOKEN_PRIVILEGES tkp;
-	OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
-	LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &tkp.Privileges[0].Luid);
-	tkp.PrivilegeCount = 1;
-	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-	AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, (PTOKEN_PRIVILEGES)NULL, 0);
-	ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
-	#endif
-	#ifdef Q_OS_LINUX
-	callexternapp("init", "6 &");
-	#endif
-#ifdef Q_OS_MAC
-callexternapp("shutdown", "-r now &");
-#endif
-}
+//void unetbootin::sysreboot()
+//{
+//	#ifdef Q_OS_WIN32
+//	HANDLE hToken;
+//	TOKEN_PRIVILEGES tkp;
+//	OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
+//	LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &tkp.Privileges[0].Luid);
+//	tkp.PrivilegeCount = 1;
+//	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+//	AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, (PTOKEN_PRIVILEGES)NULL, 0);
+//	ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
+//	#endif
+//	#ifdef Q_OS_LINUX
+//	callexternapp("init", "6 &");
+//	#endif
+//#ifdef Q_OS_MAC
+//callexternapp("shutdown", "-r now &");
+//#endif
+//}
 
 QString unetbootin::callexternapp(QString xexecFile, QString xexecParm)
 {
@@ -2732,7 +2731,7 @@ QString unetbootin::locatecommand(QString commandtolocate, QString reqforinstall
 //			return commandbinpathL.at(i);
 //		}
 //	}
-    QMessageBox errorcmdnotfoundmsgbx(this);
+    QMessageBox errorcmdnotfoundmsgbx;
 	errorcmdnotfoundmsgbx.setIcon(QMessageBox::Warning);
 	errorcmdnotfoundmsgbx.setWindowTitle(QString(tr("%1 not found")).arg(commandtolocate));
 	errorcmdnotfoundmsgbx.setText(QString(tr("%1 not found. This is required for %2 install mode.\nInstall the \"%3\" package or your distribution's equivalent.")).arg(commandtolocate, reqforinstallmode, packagename));

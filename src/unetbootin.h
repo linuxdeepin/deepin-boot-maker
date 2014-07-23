@@ -218,7 +218,7 @@ protected:
 
 class FileListMonitor;
 
-class unetbootin : public QWidget
+class unetbootin : public QObject
 {
 	Q_OBJECT
 
@@ -394,14 +394,11 @@ private slots:
 	void on_frebootbutton_clicked();
 	void on_fexitbutton_clicked();
 
-signals:
-    void start();
-
 public slots:
 	void dlprogressupdate(int dlbytes, int maxbytes);
 	void dlprogressupdate64(qint64 dlbytes, qint64 maxbytes);
 	void cpprogressupdate64(qint64 dlbytes, qint64 maxbytes);
-    int on_okbutton_clicked();
+    int startProcess();
 	void killApplication();
 };
 

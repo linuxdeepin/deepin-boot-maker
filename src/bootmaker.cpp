@@ -8,8 +8,8 @@
 
 #include <QThread>
 
-BootMaker::BootMaker(QWidget* parent): QWidget(parent){
-     unetbootinPtr = new unetbootin(this);
+BootMaker::BootMaker(QObject* parent): QObject(parent){
+     unetbootinPtr = new unetbootin();
      flm = new FileListMonitor();
      tprogress = new ProcessRate();
      unetbootinPtr->ubninitialize();
@@ -37,7 +37,7 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
 
         if ((!formatDisk) && (!DiskUnity::CheckInstallDisk(usbDriver))){
 
-            QMessageBox msgbox(this);
+            QMessageBox msgbox;
             msgbox.setIcon(QMessageBox::Critical);
             msgbox.setWindowTitle(tr("Format error of USB flash drive"));
             msgbox.setText(tr("Only FAT32 USB flash drive supported. Need to format? All partitions and data will be lost during formatting, please back up the data in advance."));
@@ -55,8 +55,11 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
 
         QThread *pwork = new QThread();
         unetbootinPtr->moveToThread(pwork);
+        QObject::connect(this, SIGNAL(process()), unetbootinPtr, SLOT(startProcess()));
         pwork->start();
-        unetbootinPtr->start();
+
+        emit this->process();
+        qDebug()<<"BootMaker Return";
         return 0;
     }
     return 1;
@@ -81,7 +84,7 @@ bool BootMaker::isISOImage(QString isoPath) {
     QFileInfo fileinfo(isoPath);
     if (fileinfo.suffix() == "iso")
         return true;
-    QMessageBox msg(this);
+    QMessageBox msg;
     msg.setIcon(QMessageBox::Information);
     msg.setWindowTitle(tr("Please select an iso image"));
     msg.setText(tr("Please select an iso image"));
@@ -91,7 +94,7 @@ bool BootMaker::isISOImage(QString isoPath) {
 }
 
 bool BootMaker::confirmFormatDlg() {
-    QMessageBox msgbox(this);
+    QMessageBox msgbox;
     msgbox.setIcon(QMessageBox::Critical);
     msgbox.setWindowTitle(tr("Format USB flash disk"));
     msgbox.setText(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
@@ -129,7 +132,3 @@ void BootMaker::exitRestart() {
     reboot();
 }
 
-QString BootMaker::homeDir() {
-    qDebug()<<*(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).begin())<<endl;
-    return *(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).begin());
-}

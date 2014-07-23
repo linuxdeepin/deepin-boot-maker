@@ -10,16 +10,22 @@ class DComboBox;
 class DFileChooseInput;
 class DPushButton;
 class QHBoxLayout;
-
+class QVBoxLayout;
+class QTimer;
 class BootMaker;
+class DRoteAnimation;
 
 class DWindowUI : public QMainWindow
 {
     Q_OBJECT
 public:
     explicit DWindowUI(QWidget *parent = 0);
+    ~DWindowUI();
 
     void paintEvent(QPaintEvent *);
+
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 signals:
 
@@ -30,24 +36,37 @@ private:
     void AddProcessUI(QBoxLayout * top);
     void AddOptionUI(QBoxLayout * top);
 
+    void SwitchToProcessUI();
+    void SwitchToEndUI();
+
 private slots:
     void start();
     void refrshUsbDriverList();
+    void checkProcess();
+    void fileSelect(const QString& filePath);
+    void confirmFormat();
 
 private:
-    BootMaker *bootMaker_;
+    QPoint      pos_;
 
-    QLabel * isoLabel;
-    QLabel * processLabel;
-    QLabel * usbLabel;
+    BootMaker   *bootMaker_;
 
-    DFileChooseInput *isoFile;
-    DComboBox *usbDriver;
-    DCheckBox *bisoMode;
-    DCheckBox *formatDisk;
+    DRoteAnimation  *isoLabel_;
+    QLabel          *processLabel_;
+    QLabel          *usbLabel_;
 
-    QHBoxLayout *actionlayout;
-    DPushButton *startBt;
+    DFileChooseInput    *isoFile_;
+    DComboBox       *usbDriver_;
+    DCheckBox       *bisoMode_;
+    DCheckBox       *formatDisk_;
+
+    QVBoxLayout     *selectLayout_;
+
+    QHBoxLayout     *actionLayout_;
+    DPushButton     *startBt_;
+
+    QTimer          *usbTimer_;
+    QTimer          *processTimer_;
 };
 
 #endif // DWINDOWUI_H

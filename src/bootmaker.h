@@ -3,15 +3,15 @@
 
 #include <QString>
 #include <QStringList>
-#include <QWidget>
+#include <QObject>
 class unetbootin;
 class FileListMonitor;
 class ProcessRate;
 
-class BootMaker : public QWidget{
+class BootMaker : public QObject{
    Q_OBJECT
 public:
-    explicit BootMaker (QWidget* parent = 0);
+    explicit BootMaker (QObject* parent = 0);
     //对外API
     Q_INVOKABLE QStringList listUsbDrives();
     Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool biosMode = false, bool formatDisk = false);
@@ -21,8 +21,6 @@ public:
     Q_INVOKABLE QString url2LocalFile(QString isoPath);
     Q_INVOKABLE void exitRestart();
 
-    Q_INVOKABLE QString homeDir();
-
     /*
         THE QML Messagebox is too sample, so do here
     */
@@ -30,8 +28,15 @@ public:
     unetbootin  *unetbootinPtr;
     FileListMonitor * flm;
     ProcessRate *tprogress;
-protected:
+
+public slots:
     void reboot();
+
+signals:
+    void process();
+
+
+
 };
 
 #endif // USBCREATOR_H

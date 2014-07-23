@@ -37,28 +37,21 @@
     </message>
 </context>
 <context>
-    <name>QApplication</name>
+    <name>DWindowUI</name>
     <message>
-        <source>Deepin Boot Maker</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UsbCreatorFrame</name>
-    <message>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Easy to use without redundancy&lt;/font&gt;&lt;/br&gt;</source>
+        <source>&lt;p style=&apos;color:white; font-size:14px;&apos;&gt;Easy to use without redundancy&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the ISO File:&lt;/font&gt;&lt;/br&gt;</source>
+        <source>&lt;a style=&apos;color:#a7a7a7; font-size:11px;&apos;&gt;Welcome to Deepin Boot Maker. After setting a few options, you&apos;ll be able to create a Deepin OS Startup Disk, which supports both BIOS and &lt;/a&gt;&lt;a style=&apos;color:#ebab4c; font-size:11px;&apos;&gt;UEFI&lt;/a&gt;&lt;a style=&apos;color:#a7a7a7; font-size:11px;&apos;&gt; boot.&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;Select the USB Flash Drive:&lt;/font&gt;&lt;/br&gt;</source>
+        <source>&lt;p style=&apos;color:white; font-size:12px;&apos;&gt;Select the ISO File:&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Support BIOS. Unselect here. &lt;/font&gt;</source>
+        <source>&lt;p style=&apos;color:white; font-size:12px;&apos;&gt;Select the USB Flash Drive:&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -66,11 +59,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;Please &lt;font color=&apos;#ebab4c&apos;&gt;DO NOT&lt;/font&gt; remove the USB flash drive or shutdown while file is writing.&lt;/br&gt;&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;font color=&apos;#ffffff&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/font&gt;</source>
+        <source>&lt;p style=&apos;color:#057aff; font-size:14px&apos;&gt;Congratulations!&lt;/p&gt;&lt;p style=&apos;color:#ffffff; font-size:12px&apos;&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/p&gt;&lt;p style=&apos;color:#ffffff; font-size:12px&apos;&gt;Do you need to restart now?&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -82,11 +71,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;br&gt;&lt;font color=&apos;#057aff&apos;&gt;Congratulations!&lt;/font&gt;&lt;/br&gt;&lt;br&gt;&lt;font color=&apos;#ffffff&apos;&gt;&lt;br&gt;You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;Do you need to restart now?&lt;/br&gt;&lt;/font&gt;&lt;/br&gt;</source>
+        <source>&lt;a style=&apos;color:#ffffff; font-size:12px&apos;&gt;Please &lt;/a&gt;&lt;a style=&apos;color:#ebab4c; font-size:12px&apos;&gt;DO NOT&lt;/a&gt;&lt;a style=&apos;color:#ffffff; font-size:12px&apos;&gt; remove the USB flash drive or shutdown while file is writing.&lt;a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;br&gt;&lt;font color=&apos;#a7a7a7&apos;&gt;Welcome to Deepin Boot Maker. After setting a few options, you&apos;ll be able to create a Deepin OS Startup Disk, which supports both BIOS and &lt;font color=&apos;#ebab4c&apos;&gt;UEFI&lt;/font&gt; boot.&lt;/font&gt;&lt;/br&gt;</source>
+        <source>&lt;p style=&apos;color:white; font-size:12px;&apos;&gt;Format USB flash disk before installation to improve the making success rate.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;p style=&apos;color:white; font-size:12px;&apos;&gt;Support BIOS. Unselect here.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

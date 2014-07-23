@@ -1,28 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>image/arrow_down_hover.png</file>
-        <file>image/arrow_down_normal.png</file>
-        <file>image/button_center_normal.png</file>
-        <file>image/button_center_press.png</file>
-        <file>image/button_left_normal.png</file>
-        <file>image/button_left_press.png</file>
-        <file>image/button_right_normal.png</file>
-        <file>image/button_right_press.png</file>
-        <file>image/iso-active.png</file>
-        <file>image/iso-inactive.png</file>
-        <file>image/logo.png</file>
-        <file>image/process-active.gif</file>
-        <file>image/process-inactive.png</file>
-        <file>image/transparent_button_left_normal.png</file>
-        <file>image/transparent_button_middle_normal.png</file>
-        <file>image/transparent_button_right_normal.png</file>
-        <file>image/usb-active.png</file>
-        <file>image/usb-finished.png</file>
-        <file>image/usb-inactive.png</file>
-        <file>image/window_close_press.png</file>
-        <file>image/window_close_normal.png</file>
-        <file>image/window_close_hover.png</file>
-        <file>image/deepin-boot-maker.png</file>
         <file>po/am.qm</file>
         <file>po/cs.qm</file>
         <file>po/de_DE.qm</file>
@@ -54,5 +31,19 @@
         <file>ui/images/transparent_button_hover.png</file>
         <file>ui/images/transparent_button_normal.png</file>
         <file>ui/images/transparent_button_press.png</file>
+        <file>ui/images/arrow_down_hover.png</file>
+        <file>ui/images/arrow_down_normal.png</file>
+        <file>ui/images/deepin-boot-maker.png</file>
+        <file>ui/images/iso-active.png</file>
+        <file>ui/images/iso-inactive.png</file>
+        <file>ui/images/logo.png</file>
+        <file>ui/images/process-active.gif</file>
+        <file>ui/images/process-inactive.png</file>
+        <file>ui/images/usb-active.png</file>
+        <file>ui/images/usb-finished.png</file>
+        <file>ui/images/usb-inactive.png</file>
+        <file>ui/images/window_close_hover.png</file>
+        <file>ui/images/window_close_normal.png</file>
+        <file>ui/images/window_close_press.png</file>
     </qresource>
 </RCC>

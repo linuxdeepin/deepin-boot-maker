@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>qml/mainui.qml</file>
-        <file>qml/xp-fix-mainui.qml</file>
-        <file>qml/MainUI/qmldir</file>
-        <file>qml/MainUI/UsbCreatorFrame.qml</file>
-    </qresource>
-</RCC>

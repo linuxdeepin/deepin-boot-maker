@@ -8,10 +8,16 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 #include "bootmaker.h"
 #include "unetbootin.h"
+#include "ui/dwindowui.h"
 
 #include <QtGui>
+#include <QtDebug>
+#include <QFile>
+#include <QTextStream>
+#include <QtGlobal>
 #include <QtWidgets/QApplication>
 
+#ifdef Q_OS_UNIX
 QString checkforgraphicalsu(QString graphicalsu)
 {
 	QProcess whereiscommand;
@@ -24,10 +30,85 @@ QString checkforgraphicalsu(QString graphicalsu)
 		return "REQCNOTFOUND";
 }
 
-#include <QtDebug>
-#include <QFile>
-#include <QTextStream>
+bool switchroot() {
+    bool disabledrootcheck = false;
+    //disabledrootcheck = true;
+    QStringList allappargs = app.arguments();
+    if (!disabledrootcheck)
+    {
+        QProcess whoamip;
+        whoamip.start("whoami");
+        whoamip.waitForFinished();
+        if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
+        {
+            QString argsconc = "";
+            QString argsconcSingleQuote = "";
+            for (int i = 1; i < allappargs.size(); ++i)
+            {
+                argsconc += QString("\"%1\" ").arg(allappargs.at(i));
+                argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
+            }
+            argsconc += "\"rootcheck=no\"";
+            argsconcSingleQuote += "'rootcheck=no'";
+#ifdef Q_OS_LINUX
+            QString gksulocation = checkforgraphicalsu("gksu");
+            if (gksulocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
+                return true;
+            }
+            QString kdesulocation = checkforgraphicalsu("kdesu");
+            if (kdesulocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
+                return true;
+            }
+            QString gnomesulocation = checkforgraphicalsu("gnomesu");
+            if (gnomesulocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
+                return true;
+            }
+            QString kdesudolocation = checkforgraphicalsu("kdesudo");
+            if (kdesudolocation != "REQCNOTFOUND")
+            {
+                QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
+                return true;
+            }
+            QMessageBox rootmsgb;
+            rootmsgb.setIcon(QMessageBox::Warning);
+            rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
+            rootmsgb.setTextFormat(Qt::RichText);
+            rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
+            rootmsgb.setStandardButtons(QMessageBox::Ok);
+            switch (rootmsgb.exec())
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+#endif
+#ifdef Q_OS_MAC
+            /*
+            QProcess osascriptProc;
+            osascriptProc.start("osascript");
+            osascriptProc.write(QString("do shell script \""+app.applicationFilePath()+"\" with administrator privileges\n").toAscii().data());
+            osascriptProc.closeWriteChannel();
+            osascriptProc.waitForFinished(-1);
+            */
+            //qDebug() << QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc);
+            //QProcess::startDetached(QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc));
+            QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
+            return true;
+#endif
+        }
+    }
+    return false;
+}
+#endif
 
+#ifdef Q_OS_WIN32
 void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
     //const char * msg = str.toStdString().c_str();
@@ -52,6 +133,7 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
     QTextStream ts(&outFile);
     ts << txt << endl;
 }
+#endif
 
 void loadTranslate(QApplication& app) {
     QTranslator *translator = new QTranslator();
@@ -94,7 +176,7 @@ void loadTranslate(QApplication& app) {
         tranlateUrl = QString(":/po/%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     }
 
-    qDebug()<<"load translate file: "<<tranlateUrl<<endl;
+    qDebug()<<&app<<"load translate file: "<<tranlateUrl<<endl;
 
     if (!QFile::exists(tranlateUrl)) {
         tranlateUrl = ":/en_US.qm";
@@ -105,130 +187,52 @@ void loadTranslate(QApplication& app) {
     }
 }
 
-void killApplication(){
-    exit(0);
+/*select the best font*/
+#include <QFontDatabase>
+void loadFonts(QApplication& app) {
+    QFontDatabase database;
+    QStringList fontlist = database.families();
+
+    QStringList preferList;
+    preferList.append("Microsoft YaHei UI");
+    preferList.append("微软雅黑");
+    preferList.append("SimSong");
+    preferList.append("宋体");
+    preferList.append("WenQuanYi Micro Hei");
+    preferList.append("文泉驿微米黑");
+
+    foreach (QString font, preferList) {
+        if (fontlist.contains(font)) {
+            app.setFont(QFont(font));
+            qDebug()<<&app<<" set font: "<<font;
+            return;
+        }
+    }
 }
 
-#ifdef Q_OS_WIN32
-bool CheckIsXP() {
-    OSVERSIONINFOEX os;
-    os.dwOSVersionInfoSize=sizeof(OSVERSIONINFOEX);
-    GetVersionEx((OSVERSIONINFO *)&os);
-    //Howerver, Windows 2000 ,XP, Window 2003 majorversion is 5
-    //but there all have bug with opengl
-    if (5 == os.dwMajorVersion) {
-        return true;
-    }
-    return false;
-}
-#endif
-#include "ui/dwindowui.h"
-#include <QtGlobal>
 int main(int argc, char **argv){
     QApplication app(argc, argv, true);
-
-#ifdef Q_OS_WIN32
-    app.setFont(QFont("Microsoft YaHei", 11));
-#endif
-
-#ifdef Q_OS_LINUX
-    app.setFont(QFont("WenQuanYi Micro Hei"));
-#endif
-
-    //just for debug
 #ifdef Q_OS_WIN32
     qInstallMessageHandler(crashMessageOutput);
 #endif
 
+    loadFonts(app);
     loadTranslate(app);
-#ifdef Q_OS_UNIX
-    bool disabledrootcheck = false;
-    //disabledrootcheck = true;
-    QStringList allappargs = app.arguments();
-    if (!disabledrootcheck)
-    {
-        QProcess whoamip;
-        whoamip.start("whoami");
-        whoamip.waitForFinished();
-        if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
-        {
-            QString argsconc = "";
-            QString argsconcSingleQuote = "";
-            for (int i = 1; i < allappargs.size(); ++i)
-            {
-                argsconc += QString("\"%1\" ").arg(allappargs.at(i));
-                argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
-            }
-            argsconc += "\"rootcheck=no\"";
-            argsconcSingleQuote += "'rootcheck=no'";
-#ifdef Q_OS_LINUX
-            QString gksulocation = checkforgraphicalsu("gksu");
-            if (gksulocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
-                return 0;
-            }
-            QString kdesulocation = checkforgraphicalsu("kdesu");
-            if (kdesulocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
-                return 0;
-            }
-            QString gnomesulocation = checkforgraphicalsu("gnomesu");
-            if (gnomesulocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
-                return 0;
-            }
-            QString kdesudolocation = checkforgraphicalsu("kdesudo");
-            if (kdesudolocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
-                return 0;
-            }
-            QMessageBox rootmsgb;
-            rootmsgb.setIcon(QMessageBox::Warning);
-            rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
-            rootmsgb.setTextFormat(Qt::RichText);
-            rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
-            rootmsgb.setStandardButtons(QMessageBox::Ok);
-            switch (rootmsgb.exec())
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
-#endif
-#ifdef Q_OS_MAC
-            /*
-            QProcess osascriptProc;
-            osascriptProc.start("osascript");
-            osascriptProc.write(QString("do shell script \""+app.applicationFilePath()+"\" with administrator privileges\n").toAscii().data());
-            osascriptProc.closeWriteChannel();
-            osascriptProc.waitForFinished(-1);
-            */
-            //qDebug() << QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc);
-            //QProcess::startDetached(QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc));
-            QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
-            return 0;
-#endif
-        }
-    }
-#endif
 
-#ifdef Q_OS_WIN32
-    if (CheckIsXP()){
-        app.setFont(QFont("SimHei", 12));
-    }
+#ifdef Q_OS_UNIX
+    if(SwitchToRoot())
+        exit(0);
 #endif
 
     QIcon icon;
-    icon.addFile(":/image/deepin-boot-maker.png");
+    icon.addFile(":/ui/image/deepin-boot-maker.png");
 
     DWindowUI mainWindow;
+    mainWindow.setWindowIcon(icon);
     mainWindow.show();
-    return app.exec();
+
+    app.exec();
+    exit(0);
 }
 
 

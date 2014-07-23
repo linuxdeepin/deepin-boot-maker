@@ -18,6 +18,7 @@ public:
     void setFixedHeight(int h);
 
 signals:
+    void filedSelected(const QString& filepath);
 
 public slots:
     void selectFile();

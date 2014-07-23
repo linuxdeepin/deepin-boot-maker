@@ -21,7 +21,8 @@ HEADERS += unetbootin.h \
     ui/dcombobox.h \
     ui/dfilechooseinput.h \
     ui/dcheckbox.h \
-    ui/dpushbutton.h
+    ui/dpushbutton.h \
+    ui/droteanimation.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
@@ -32,7 +33,8 @@ SOURCES += main.cpp \
     ui/dcombobox.cpp \
     ui/dfilechooseinput.cpp \
     ui/dcheckbox.cpp \
-    ui/dpushbutton.cpp
+    ui/dpushbutton.cpp \
+    ui/droteanimation.cpp
 
 QT += core gui widgets
 
@@ -84,7 +86,6 @@ win32-msvc* {
     DEFINES += _USING_V110_SDK71_
     QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
     QMAKE_LFLAGS += /SUBSYSTEM:WINDOWS",5.01"
-    LIBS += -llibGLESv2 -llibEGL -lpreprocessor
 }
 
 OTHER_FILES +=

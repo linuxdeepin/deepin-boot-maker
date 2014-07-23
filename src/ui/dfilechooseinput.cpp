@@ -26,7 +26,6 @@ DFileChooseInput::DFileChooseInput(QWidget *parent) :
                                 "stop: 0 rgba(0, 0, 0, 50%), stop: 1 rgba(0, 0, 0, 40%));"
     "}";
     edit_->setStyleSheet(style);
-    edit_->setAlignment(Qt::AlignRight);
     edit_->setEnabled(false);
     edit_->setFixedHeight(22);
 
@@ -98,5 +97,6 @@ void DFileChooseInput::selectFile() {
     if (QFileDialog::Accepted == fileDlg.exec()) {
         text_ = fileDlg.selectedFiles().first();
         edit_->setText(text_);
+        emit filedSelected(text_);
     }
 }
