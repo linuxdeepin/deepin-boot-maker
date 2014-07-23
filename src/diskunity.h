@@ -9,6 +9,8 @@ class DiskUnity : public QObject
 public:
     explicit DiskUnity(QObject *parent = 0);
 
+    static void ClearTargetDev(const QString &targetPath);
+
     static QString InstallBootloader(const QString &diskDev);
 
     static bool InstallSyslinux(const QString &diskDev);

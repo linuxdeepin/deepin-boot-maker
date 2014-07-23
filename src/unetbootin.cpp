@@ -3114,6 +3114,10 @@ void unetbootin::runinst()
 #endif
 
     targetPath = QDir::toNativeSeparators(QString("%1%2").arg(targetDrive).arg(installDir));
+
+    // if there is same file on disk, it will make slow, so remove them.
+    DiskUnity::ClearTargetDev(targetPath);
+
 	QDir dir;
 	if (!dir.exists(targetPath))
 	{

@@ -335,6 +335,28 @@ bool DiskUnity::InstallSyslinux(const QString &diskDev) {
     return XAPI::InstallSyslinux(diskDev);
 }
 
+void DiskUnity::ClearTargetDev(const QString &targetPath) {
+    QStringList dirlist;
+    dirlist.append("/boot/");
+    dirlist.append("/EFI/");
+    dirlist.append("/casper/");
+    dirlist.append("/dists/");
+    dirlist.append("/isolinux/");
+    dirlist.append("/pool/");
+    dirlist.append("/preseed/");
+    dirlist.append("/syslinux/");
+
+    foreach(QString dirname, dirlist) {
+        QString fullDir = targetPath + dirname;
+        XSys::RmDir(fullDir);
+    }
+
+#ifdef Q_OS_UNIX
+    XSys::SynExec("sync", "");
+#endif
+
+}
+
 bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
     //rename isolinux to syslinux
     QString syslinxDir = QString("%1syslinux/").arg(targetPath);
