@@ -14,6 +14,7 @@ class QVBoxLayout;
 class QTimer;
 class BootMaker;
 class DRoteAnimation;
+class QPushButton;
 
 class DWindowUI : public QMainWindow
 {
@@ -53,6 +54,7 @@ private:
 
     BootMaker   *bootMaker_;
 
+    QPushButton *closeBt;
     DRoteAnimation  *isoLabel_;
     QLabel          *processLabel_;
     QLabel          *usbLabel_;

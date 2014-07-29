@@ -96,7 +96,7 @@ void DWindowUI::AddOptionUI(QBoxLayout *top) {
 
     //add close button
     QHBoxLayout *btlayout = new QHBoxLayout();
-    QPushButton *closeBt = new QPushButton();
+    closeBt = new QPushButton();
     QString style = "QPushButton{"
         "background:url(:/ui/images/window_close_normal.png);"
         "border:0px;"
@@ -258,6 +258,7 @@ void DWindowUI::checkProcess() {
 }
 
 void DWindowUI::SwitchToProcessUI() {
+    closeBt->setDisabled(true);
     QLayoutItem *child;
     while ((child = actionLayout_->takeAt(0)) != 0)  {
         if (child->widget()) {
@@ -294,6 +295,7 @@ void DWindowUI::SwitchToProcessUI() {
 }
 
 void DWindowUI::SwitchToEndUI() {
+    closeBt->setDisabled(false);
     QLayoutItem *child;
     while ((child = actionLayout_->takeAt(0)) != 0)  {
         if (child->widget()) {
