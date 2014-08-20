@@ -22,7 +22,15 @@ HEADERS += unetbootin.h \
     ui/dfilechooseinput.h \
     ui/dcheckbox.h \
     ui/dpushbutton.h \
-    ui/droteanimation.h
+    ui/dprogressframe.h \
+    ui/dlistview.h \
+    ui/dtips.h \
+    ui/dusblist.h \
+    ui/dclosebutton.h \
+    ui/dserialframemovie.h \
+    ui/ddigitprogressmovie.h \
+    ui/dusbprogressmovie.h \
+    ui/drotemovie.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
@@ -34,22 +42,31 @@ SOURCES += main.cpp \
     ui/dfilechooseinput.cpp \
     ui/dcheckbox.cpp \
     ui/dpushbutton.cpp \
-    ui/droteanimation.cpp
+    ui/dprogressframe.cpp \
+    ui/dlistview.cpp \
+    ui/dtips.cpp \
+    ui/dusblist.cpp \
+    ui/dclosebutton.cpp \
+    ui/dusbprogressmovie.cpp \
+    ui/ddigitprogressmovie.cpp \
+    ui/dserialframemovie.cpp \
+    ui/drotemovie.cpp \
+
 
 QT += core gui widgets
 
 CONFIG(debug, debug|release) {
-    DESTDIR = ../build/debug
-    OBJECTS_DIR = ../build/debug/.obj
-    MOC_DIR = ../build/debug/.moc
-    RCC_DIR = ../build/debug/.rcc
-    UI_DIR = ../build/debug/.ui
+    DESTDIR = .build/debug
+    OBJECTS_DIR = .build/debug/.obj
+    MOC_DIR = .build/debug/.moc
+    RCC_DIR = .build/debug/.rcc
+    UI_DIR = .build/debug/.ui
 } else {
-    DESTDIR = ../build/release
-    OBJECTS_DIR = ../build/release/.obj
-    MOC_DIR = ../build/release/.moc
-    RCC_DIR = ../build/release/.rcc
-    UI_DIR = ../build/release/.ui
+    DESTDIR = .build/release
+    OBJECTS_DIR = .build/release/.obj
+    MOC_DIR = .build/release/.moc
+    RCC_DIR = .build/release/.rcc
+    UI_DIR = .build/release/.ui
 }
 
 TRANSLATIONS += po/en_US.ts \

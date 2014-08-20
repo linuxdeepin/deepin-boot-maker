@@ -31,78 +31,73 @@ QString checkforgraphicalsu(QString graphicalsu)
 }
 
 bool SwitchToRoot(QApplication &app) {
-    bool disabledrootcheck = false;
-    //disabledrootcheck = true;
     QStringList allappargs = app.arguments();
-    if (!disabledrootcheck)
+    QProcess whoamip;
+    whoamip.start("whoami");
+    whoamip.waitForFinished();
+    if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
     {
-        QProcess whoamip;
-        whoamip.start("whoami");
-        whoamip.waitForFinished();
-        if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
+        QString argsconc = "";
+        QString argsconcSingleQuote = "";
+        for (int i = 1; i < allappargs.size(); ++i)
         {
-            QString argsconc = "";
-            QString argsconcSingleQuote = "";
-            for (int i = 1; i < allappargs.size(); ++i)
-            {
-                argsconc += QString("\"%1\" ").arg(allappargs.at(i));
-                argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
-            }
-            argsconc += "\"rootcheck=no\"";
-            argsconcSingleQuote += "'rootcheck=no'";
+            argsconc += QString("\"%1\" ").arg(allappargs.at(i));
+            argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
+        }
+        argsconc += "\"rootcheck=no\"";
+        argsconcSingleQuote += "'rootcheck=no'";
 #ifdef Q_OS_LINUX
-            QString gksulocation = checkforgraphicalsu("gksu");
-            if (gksulocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
-                return true;
-            }
-            QString kdesulocation = checkforgraphicalsu("kdesu");
-            if (kdesulocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
-                return true;
-            }
-            QString gnomesulocation = checkforgraphicalsu("gnomesu");
-            if (gnomesulocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
-                return true;
-            }
-            QString kdesudolocation = checkforgraphicalsu("kdesudo");
-            if (kdesudolocation != "REQCNOTFOUND")
-            {
-                QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
-                return true;
-            }
-            QMessageBox rootmsgb;
-            rootmsgb.setIcon(QMessageBox::Warning);
-            rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
-            rootmsgb.setTextFormat(Qt::RichText);
-            rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
-            rootmsgb.setStandardButtons(QMessageBox::Ok);
-            switch (rootmsgb.exec())
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
+        QString gksulocation = checkforgraphicalsu("gksu");
+        if (gksulocation != "REQCNOTFOUND")
+        {
+            QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
+            return true;
+        }
+        QString kdesulocation = checkforgraphicalsu("kdesu");
+        if (kdesulocation != "REQCNOTFOUND")
+        {
+            QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
+            return true;
+        }
+        QString gnomesulocation = checkforgraphicalsu("gnomesu");
+        if (gnomesulocation != "REQCNOTFOUND")
+        {
+            QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
+            return true;
+        }
+        QString kdesudolocation = checkforgraphicalsu("kdesudo");
+        if (kdesudolocation != "REQCNOTFOUND")
+        {
+            QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
+            return true;
+        }
+        QMessageBox rootmsgb;
+        rootmsgb.setIcon(QMessageBox::Warning);
+        rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
+        rootmsgb.setTextFormat(Qt::RichText);
+        rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
+        rootmsgb.setStandardButtons(QMessageBox::Ok);
+        switch (rootmsgb.exec())
+        {
+            case QMessageBox::Ok:
+                break;
+            default:
+                break;
+        }
 #endif
 #ifdef Q_OS_MAC
-            /*
-            QProcess osascriptProc;
-            osascriptProc.start("osascript");
-            osascriptProc.write(QString("do shell script \""+app.applicationFilePath()+"\" with administrator privileges\n").toAscii().data());
-            osascriptProc.closeWriteChannel();
-            osascriptProc.waitForFinished(-1);
-            */
-            //qDebug() << QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc);
-            //QProcess::startDetached(QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc));
-            QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
-            return true;
+        /*
+        QProcess osascriptProc;
+        osascriptProc.start("osascript");
+        osascriptProc.write(QString("do shell script \""+app.applicationFilePath()+"\" with administrator privileges\n").toAscii().data());
+        osascriptProc.closeWriteChannel();
+        osascriptProc.waitForFinished(-1);
+        */
+        //qDebug() << QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc);
+        //QProcess::startDetached(QString("osascript -e 'do shell script \"%1 %2\" with administrator privileges'").arg(app.applicationFilePath()).arg(argsconc));
+        QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
+        return true;
 #endif
-        }
     }
     return false;
 }

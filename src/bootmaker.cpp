@@ -8,7 +8,7 @@
 
 #include <QThread>
 
-BootMaker::BootMaker(QObject* parent): QObject(parent){
+BootMaker::BootMaker(QWidget* parent): QWidget(parent){
      unetbootinPtr = new unetbootin();
      flm = new FileListMonitor();
      tprogress = new ProcessRate();
@@ -94,7 +94,7 @@ bool BootMaker::isISOImage(QString isoPath) {
 }
 
 bool BootMaker::confirmFormatDlg() {
-    QMessageBox msgbox;
+    QMessageBox msgbox(this);
     msgbox.setIcon(QMessageBox::Critical);
     msgbox.setWindowTitle(tr("Format USB flash disk"));
     msgbox.setText(tr("All data will be lost during formatting, please back up in advance and then press OK button."));

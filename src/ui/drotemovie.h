@@ -6,11 +6,11 @@
 
 class QTimer;
 
-class DRoteAnimation : public QWidget
+class DRoteMovie : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DRoteAnimation(const QPixmap &pixmap, QWidget *parent = 0);
+    explicit DRoteMovie(const QPixmap &pixmap, QWidget *parent = 0);
 
     void paintEvent(QPaintEvent * /*event*/);
 

@@ -12,7 +12,7 @@ DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
     top->setSpacing(0);
     top->setMargin(0);
 
-    styleChecked_ = "QPushButton{"
+    m_styleChecked = "QPushButton{"
         "border-image:url(:/ui/images/checkbox_checked.png);"
         "margin-top: 2px;"
         "margin-right: 4px;"
@@ -28,7 +28,7 @@ DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
         "margin-right: 4px;"
     "}";
 
-    styleUnchecked_ = "QPushButton{"
+    m_styleUnchecked = "QPushButton{"
         "border-image:url(:/ui/images/checkbox_unchecked.png);"
         "margin-top: 2px;"
         "margin-right: 4px;"
@@ -45,33 +45,35 @@ DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
     "}";
 
     QPixmap checkPixmap(":/ui/images/checkbox_unchecked.png");
-    checkBox_ = new QPushButton();
-    checkBox_->setFixedWidth(checkPixmap.size().width() + 4);
-    checkBox_->setFixedHeight(checkPixmap.size().height() + 2);
-    checkBox_->setStyleSheet(styleUnchecked_);
-    top->addWidget(checkBox_);
-    top->setAlignment(checkBox_, Qt::AlignTop);
-    indicatorSize_ = 13;
+    m_checkBox = new QPushButton();
+    m_checkBox->setFixedWidth(checkPixmap.size().width() + 4);
+    m_checkBox->setFixedHeight(checkPixmap.size().height() + 2);
+    m_checkBox->setStyleSheet(m_styleUnchecked);
+    m_checkBox->setFocusPolicy(Qt::NoFocus);
+    top->addWidget(m_checkBox);
+    top->setAlignment(m_checkBox, Qt::AlignTop);
+    m_indicatorSize = 13;
 
-    label_ = new QLabel(text);
-    label_->setWordWrap(true);
-    top->addWidget(label_);
+    m_label = new QLabel(text);
+    m_label->setWordWrap(true);
+    top->addWidget(m_label);
+    top->setAlignment(m_label, Qt::AlignTop);
     top->addStretch();
     this->setLayout(top);
 
-    connect(checkBox_, SIGNAL(clicked()), this, SLOT(click()));
+    connect(m_checkBox, SIGNAL(clicked()), this, SLOT(click()));
 }
 
 void DCheckBox::setFixedWidth(int w) {
-    label_->setFixedWidth(w - indicatorSize_);
+    m_label->setFixedWidth(w - m_indicatorSize);
 }
 
 void DCheckBox::click() {
-    if (Qt::Checked == checkState_) {
-        checkBox_->setStyleSheet(styleUnchecked_);
+    if (Qt::Checked == m_checkState) {
+        m_checkBox->setStyleSheet(m_styleUnchecked);
         setCheckState(Qt::Unchecked);
     } else {
-        checkBox_->setStyleSheet(styleChecked_);
+        m_checkBox->setStyleSheet(m_styleChecked);
         setCheckState(Qt::Checked);
     }
     emit clicked();
@@ -79,10 +81,10 @@ void DCheckBox::click() {
 
 void DCheckBox::setChecked(bool checked){
     if (!checked) {
-        checkBox_->setStyleSheet(styleUnchecked_);
+        m_checkBox->setStyleSheet(m_styleUnchecked);
         setCheckState(Qt::Unchecked);
     } else {
-        checkBox_->setStyleSheet(styleChecked_);
+        m_checkBox->setStyleSheet(m_styleChecked);
         setCheckState(Qt::Checked);
     }
 }
