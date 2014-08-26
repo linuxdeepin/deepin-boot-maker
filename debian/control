@@ -1,0 +1,16 @@
+Source: deepin-boot-maker
+Section: non-free/admin
+Priority: extra
+Maintainer: Deepin Packages Builder <packages@linuxdeepin.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: http://www.linuxdeepin.com/
+#Vcs-Git: git://git.debian.org/collab-maint/deepin-boot-maker.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/deepin-boot-maker.git;a=summary
+
+Package: deepin-boot-maker
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, syslinux, p7zip, mtools, libpng12-0, fontconfig
+Description: Deepin Boot Maker is help for user to create a boot usb stick quick and easy
+ Deepin Boot Maker is help for user to create a boot usb stick quick and easy, it 
+ designed to support only deepin install iso, but it can can work for all ubuntu live install iso too.

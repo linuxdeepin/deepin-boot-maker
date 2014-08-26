@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+
+BINARY=deepin-boot-maker 
+
+%:
+	dh $@ 
+
+
+override_dh_auto_build:
+	mkdir -p build
+	cd build && qmake ../src
+	cd build && make
+	
+override_dh_install:
+	dh_install
+	install -Dm755 build/$(BINARY) debian/deepin-boot-maker/opt/deepin-boot-maker/bin/deepin-boot-maker
+
+override_dh_auto_clean:
+	rm -rf build
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
+override_dh_shlibdeps:
+
