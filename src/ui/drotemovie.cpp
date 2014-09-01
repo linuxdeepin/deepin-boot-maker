@@ -1,10 +1,10 @@
-#include "droteanimation.h"
+#include "drotemovie.h"
 #include <QPixmap>
 #include <QTransform>
 #include <QTimer>
 #include <QPainter>
 
-DRoteAnimation::DRoteAnimation(const QPixmap &pixmap, QWidget *parent) :
+DRoteMovie::DRoteMovie(const QPixmap &pixmap, QWidget *parent) :
     QWidget(parent)
 {
     pixmap_ = pixmap;
@@ -15,7 +15,7 @@ DRoteAnimation::DRoteAnimation(const QPixmap &pixmap, QWidget *parent) :
     connect(timer_, SIGNAL(timeout()), this, SLOT(refresh()));
 }
 
-void DRoteAnimation::paintEvent(QPaintEvent *) {
+void DRoteMovie::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::SmoothPixmapTransform);
     painter.setRenderHint(QPainter::Antialiasing);
@@ -26,20 +26,20 @@ void DRoteAnimation::paintEvent(QPaintEvent *) {
     painter.drawPixmap(QPointF(0, 0), pixmap_);
 }
 
-void DRoteAnimation::refresh(){
+void DRoteMovie::refresh(){
     degrees_ += 5;
     update();
 }
 
-void DRoteAnimation::start() {
+void DRoteMovie::start() {
     timer_->start();
 }
 
-void DRoteAnimation::stop() {
+void DRoteMovie::stop() {
     timer_->stop();
 }
 
-void DRoteAnimation::setPixmap(const QPixmap &pixmap) {
+void DRoteMovie::setPixmap(const QPixmap &pixmap) {
     pixmap_ = pixmap;
     update();
 }

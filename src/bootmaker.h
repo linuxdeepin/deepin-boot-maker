@@ -3,16 +3,17 @@
 
 #include <QString>
 #include <QStringList>
-#include <QObject>
+#include <QWidget>
+
 class unetbootin;
 class FileListMonitor;
 class ProcessRate;
 
-class BootMaker : public QObject{
+class BootMaker : public QWidget{
    Q_OBJECT
 public:
-    explicit BootMaker (QObject* parent = 0);
-    //对外API
+    explicit BootMaker (QWidget* parent = 0);
+    //API
     Q_INVOKABLE QStringList listUsbDrives();
     Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool biosMode = false, bool formatDisk = false);
     Q_INVOKABLE int processRate();
@@ -25,9 +26,6 @@ public:
         THE QML Messagebox is too sample, so do here
     */
     Q_INVOKABLE bool confirmFormatDlg();
-    unetbootin  *unetbootinPtr;
-    FileListMonitor * flm;
-    ProcessRate *tprogress;
 
 public slots:
     void reboot();
@@ -35,6 +33,10 @@ public slots:
 signals:
     void process();
 
+protected:
+    unetbootin  *unetbootinPtr;
+    FileListMonitor * flm;
+    ProcessRate *tprogress;
 
 
 };

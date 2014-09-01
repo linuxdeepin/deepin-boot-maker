@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QCheckBox>
+
 class QCheckBox;
 class QLabel;
 class QString;
@@ -17,16 +18,13 @@ public:
     void setFixedWidth(int w);
 
     void setChecked(bool checked);
-    bool checked() {
-        return checkState_ == Qt::Checked;
-    }
 
-public:
-    Qt::CheckState checkState() const {
-        return checkState_;
-    }
+    bool checked() { return m_checkState == Qt::Checked; }
+
+    Qt::CheckState checkState() const { return m_checkState; }
+
     void setCheckState(Qt::CheckState state) {
-        checkState_ = state;
+        m_checkState = state;
         emit stateChanged(state);
     }
 
@@ -38,14 +36,13 @@ public slots:
     void click();
 
 private:
-    QPushButton     *checkBox_;
-    QLabel          *label_;
-    int             indicatorSize_;
-    Qt::CheckState  checkState_;
+    QPushButton     *m_checkBox;
+    QLabel          *m_label;
+    int             m_indicatorSize;
+    Qt::CheckState  m_checkState;
 
-    QString         styleChecked_;
-    QString         styleUnchecked_;
-
+    QString         m_styleChecked;
+    QString         m_styleUnchecked;
 };
 
 #endif // DCHECKBOX_H

@@ -45,5 +45,59 @@
         <file>ui/images/window_close_hover.png</file>
         <file>ui/images/window_close_normal.png</file>
         <file>ui/images/window_close_press.png</file>
+        <file>ui/images/uimini.png</file>
+        <file>ui/images/select.png</file>
+        <file>ui/images/tips.png</file>
+        <file>ui/images/iso/1.png</file>
+        <file>ui/images/iso/2.png</file>
+        <file>ui/images/iso/3.png</file>
+        <file>ui/images/iso/4.png</file>
+        <file>ui/images/iso/5.png</file>
+        <file>ui/images/iso/6.png</file>
+        <file>ui/images/iso/7.png</file>
+        <file>ui/images/iso/8.png</file>
+        <file>ui/images/iso/9.png</file>
+        <file>ui/images/iso/10.png</file>
+        <file>ui/images/iso/11.png</file>
+        <file>ui/images/iso/12.png</file>
+        <file>ui/images/iso/13.png</file>
+        <file>ui/images/iso/14.png</file>
+        <file>ui/images/iso/15.png</file>
+        <file>ui/images/iso/16.png</file>
+        <file>ui/images/iso/17.png</file>
+        <file>ui/images/iso/18.png</file>
+        <file>ui/images/iso/19.png</file>
+        <file>ui/images/iso/20.png</file>
+        <file>ui/images/iso/21.png</file>
+        <file>ui/images/iso/22.png</file>
+        <file>ui/images/iso/23.png</file>
+        <file>ui/images/usb/1.png</file>
+        <file>ui/images/usb/2.png</file>
+        <file>ui/images/usb/3.png</file>
+        <file>ui/images/usb/4.png</file>
+        <file>ui/images/usb/5.png</file>
+        <file>ui/images/usb/6.png</file>
+        <file>ui/images/usb/7.png</file>
+        <file>ui/images/usb/8.png</file>
+        <file>ui/images/usb/9.png</file>
+        <file>ui/images/usb/10.png</file>
+        <file>ui/images/usb/11.png</file>
+        <file>ui/images/usb/12.png</file>
+        <file>ui/images/usb/13.png</file>
+        <file>ui/images/usb/14.png</file>
+        <file>ui/images/usb/15.png</file>
+        <file>ui/images/usb/16.png</file>
+        <file>ui/images/usb/17.png</file>
+        <file>ui/images/usb/18.png</file>
+        <file>ui/images/usb/19.png</file>
+        <file>ui/images/usb/20.png</file>
+        <file>ui/images/usb/21.png</file>
+        <file>ui/images/usb/22.png</file>
+        <file>ui/images/usb/23.png</file>
+        <file>ui/images/unselect.png</file>
+        <file>ui/images/usb/light.png</file>
+        <file>ui/images/usb/mask.png</file>
+        <file>ui/images/usb/usb.png</file>
+        <file>ui/images/usb/wave.png</file>
     </qresource>
 </RCC>
