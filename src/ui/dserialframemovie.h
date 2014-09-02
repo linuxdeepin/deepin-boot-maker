@@ -23,10 +23,10 @@ public slots:
     void nextFrame();
 
 protected:
-    QString     m_qssTemplate;
-    QStringList m_sourceList;
-    int         m_frameIndex;
-    QTimer      *m_timer;
+    QString     m_QssTemplate;
+    QStringList m_SourceList;
+    int         m_FrameIndex;
+    QTimer      *m_Timer;
 };
 
 #endif // DSERIALFRAMEMOVIE_H

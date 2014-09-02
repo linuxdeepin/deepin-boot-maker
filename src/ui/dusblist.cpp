@@ -2,12 +2,12 @@
 
 #include <QStandardItemModel>
 
-QString DUSBList::s_EmptyString = tr("NO Usb Driver");
+QString DUsbList::s_EmptyString = tr("NO Usb Driver");
 
-DUSBList::DUSBList(QWidget *parent) :
+DUsbList::DUsbList(QWidget *parent) :
     DListView(parent)
 {
-    m_standardItemModel = new QStandardItemModel();
+    m_StandardItemModel = new QStandardItemModel();
     initList();
     this->setFixedSize(160,128);
     this->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -15,59 +15,67 @@ DUSBList::DUSBList(QWidget *parent) :
     connect(this, SIGNAL(clicked(QModelIndex)), this, SLOT(selectDriver(QModelIndex)));
 }
 
-void DUSBList::initList(){
-    m_standardItemModel->clear();
+void DUsbList::initList(){
+    m_SelectedDev = "";
+    m_StandardItemModel->clear();
     QStandardItem *standItem = new QStandardItem(s_EmptyString);
     standItem->setIcon(QIcon(":/ui/images/unselect.png"));
-    m_standardItemModel->appendRow(standItem);
-    this->setModel(m_standardItemModel);
+    m_StandardItemModel->appendRow(standItem);
+    this->setModel(m_StandardItemModel);
+    m_LastIndex = m_StandardItemModel->index(0,0);
 }
 
-void DUSBList::selectDriver(QModelIndex index) {
-    QStandardItem *selectItem = m_standardItemModel->itemFromIndex(m_lastIndex);
+void DUsbList::selectDriver(QModelIndex index) {
+    QStandardItem *selectItem = m_StandardItemModel->itemFromIndex(m_LastIndex);
     if (selectItem){
         selectItem->setIcon(QIcon(":/ui/images/unselect.png"));
     }
 
-    selectItem = m_standardItemModel->itemFromIndex(index);
+    selectItem = m_StandardItemModel->itemFromIndex(index);
     if (selectItem){
         selectItem->setIcon(QIcon(":/ui/images/unselect.png"));
     }
     QString dev = index.data(Qt::DisplayRole).toString();
     if (!dev.isEmpty() && (dev != s_EmptyString)) {
-        m_selectedDev = dev;
+        m_SelectedDev = dev;
         selectItem->setIcon(QIcon(":/ui/images/select.png"));
         emit selectDev(dev);
     }
     emit itemClick(dev);
 }
 
-void DUSBList::refreshDriverList(const QStringList & list) {
+void DUsbList::refreshDriverList(const QStringList & list) {
     if (list.isEmpty()) {
         initList();
+        emit selectDev("");
         return;
     }
 
-    m_standardItemModel->clear();
-    int selectIndex = 0;
+    m_StandardItemModel->clear();
+    int selectIndex = -1;
     int rowIndex = 0;
 
     foreach(QString dev, list) {
         QStandardItem *standItem = new QStandardItem(dev);
-        if (dev == m_selectedDev) {
+        if (dev == m_SelectedDev) {
             selectIndex = rowIndex;
         }
         standItem->setIcon(QIcon(":/ui/images/unselect.png"));
         rowIndex++;
-        m_standardItemModel->appendRow(standItem);
+        m_StandardItemModel->appendRow(standItem);
     }
-    QModelIndex selectModelIndex = m_standardItemModel->index(selectIndex,0);
-    QStandardItem *selectItem = m_standardItemModel->itemFromIndex(selectModelIndex);
+
+    if (-1 == selectIndex) {
+        emit selectDev("");
+        return;
+    }
+
+    QModelIndex selectModelIndex = m_StandardItemModel->index(selectIndex,0);
+    QStandardItem *selectItem = m_StandardItemModel->itemFromIndex(selectModelIndex);
     if (selectItem){
         selectItem->setIcon(QIcon(":/ui/images/select.png"));
         this->setCurrentIndex(selectModelIndex);
-        m_lastIndex = selectModelIndex;
+        m_LastIndex = selectModelIndex;
     }
-    this->setModel(m_standardItemModel);
-
+    this->setModel(m_StandardItemModel);
 }

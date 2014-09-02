@@ -50,7 +50,6 @@ private slots:
     void start();
     void refrshUsbDriverList();
     void checkProcess();
-    void fileSelect(const QString& filePath);
     void confirmFormat();
 
 private:

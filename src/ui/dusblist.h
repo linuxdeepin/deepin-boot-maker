@@ -5,11 +5,11 @@
 #include <QStringList>
 class QStandardItemModel;
 
-class DUSBList : public DListView
+class DUsbList : public DListView
 {
     Q_OBJECT
 public:
-    explicit DUSBList(QWidget *parent = 0);
+    explicit DUsbList(QWidget *parent = 0);
 
 signals:
     void selectDev(const QString& dev);
@@ -22,12 +22,12 @@ public slots:
 protected:
     void initList();
 
-    QString m_devList;
-    QString m_selectedDev;
-    QStandardItemModel *m_standardItemModel;
-    QModelIndex m_lastIndex;
+    QString             m_DevList;
+    QString             m_SelectedDev;
+    QModelIndex         m_LastIndex;
+    QStandardItemModel *m_StandardItemModel;
 
-    static QString s_EmptyString;
+    static QString      s_EmptyString;
 };
 
 #endif // DUSBLIST_H

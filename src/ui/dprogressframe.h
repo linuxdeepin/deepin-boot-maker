@@ -7,7 +7,7 @@ class DRoteMovie;
 class QLabel;
 class DPushButton;
 class DTips;
-class DUSBList;
+class DUsbList;
 class DSerialFrameMovie;
 class QParallelAnimationGroup;
 class DDigitProgressMovie;
@@ -60,26 +60,22 @@ protected:
     };
 
     bool                    m_Active;
-    ShowStatus              m_showStatus;
-    QWidget                 *m_topShadow;
-    QWidget                 *m_bottonShadow;
-    QWidget                 *m_bottonShadowFrame;
-    QWidget                 *m_firstWidget;
-    QWidget                 *m_secondWidget;
-    QVBoxLayout             *firstLayout;
-    QLabel                  *m_processLabel;
-    //DDigitProgressAnimation *m_processLabel;
-    DUsbProgressMovie   *m_processUsb;
-    DTips                   *m_usbTpis;
-    DTips                   *tipsIso;
-    DSerialFrameMovie   *m_isoLabel;
-    DSerialFrameMovie   *m_usbLabel;
-    QParallelAnimationGroup *m_animgroup;
-    DUSBList *              m_listView;
-    int                     m_speed;
+    int                     m_Speed;
 
-    QString                 m_isoFile;
-    QString                 m_usbDev;
+    ShowStatus              m_ShowStatus;
+    QWidget                 *m_TopShadow;
+    QWidget                 *m_FirstWidget;
+    QWidget                 *m_SecondWidget;
+    QVBoxLayout             *m_FirstLayout;
+    QLabel                  *m_ProcessLabel;
+    //DDigitProgressAnimation *m_processLabel;
+    DUsbProgressMovie       *m_ProcessUsb;
+    DSerialFrameMovie       *m_IsoLabel;
+    DSerialFrameMovie       *m_UsbLabel;
+    QParallelAnimationGroup *m_AnimGroup;
+    DUsbList                *m_UsbList;
+    QString                 m_IsoFile;
+    QString                 m_UsbDev;
 
 
 public slots:

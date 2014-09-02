@@ -5,35 +5,36 @@
 DSerialFrameMovie::DSerialFrameMovie(const QStringList &sourcesList, QWidget *parent):
     DPushButton("",parent)
 {
-    m_timer=new QTimer(this);
+    m_Timer=new QTimer(this);
 
-    connect(m_timer,SIGNAL(timeout()),this,SLOT(nextFrame()));
-    m_sourceList = sourcesList;
-    m_frameIndex = 0;
-    m_qssTemplate =  "DSerialFrameMovie {"
+    connect(m_Timer,SIGNAL(timeout()),this,SLOT(nextFrame()));
+    m_SourceList = sourcesList;
+    m_FrameIndex = 0;
+    m_QssTemplate =  "DSerialFrameMovie {"
             "background: url(%1);"
             "border:0px;"
             "}";
-    QString firstFrame = m_sourceList[0];
+    QString firstFrame = m_SourceList[0];
     this->setFixedSize(QPixmap(firstFrame).size());
-    this->setStyleSheet(m_qssTemplate.arg(firstFrame));
+    this->setStyleSheet(m_QssTemplate.arg(firstFrame));
 }
 
 void DSerialFrameMovie::nextFrame() {
-    if (m_frameIndex >= m_sourceList.length()) {
-        m_frameIndex = 0;
+    if (m_FrameIndex >= m_SourceList.length()) {
+        m_FrameIndex = 0;
     }
-    QString source = m_sourceList[m_frameIndex];
-    this->setStyleSheet(m_qssTemplate.arg(source));
-    ++m_frameIndex;
+    QString source = m_SourceList[m_FrameIndex];
+    this->setStyleSheet(m_QssTemplate.arg(source));
+    ++m_FrameIndex;
 }
 
 void DSerialFrameMovie::start() {
-    m_timer->start(100);
+    m_Timer->start(100);
 }
 
 void DSerialFrameMovie::stop() {
-    m_timer->stop();
+    this->setStyleSheet(m_QssTemplate.arg(m_SourceList[0]));
+    m_Timer->stop();
 }
 
 void DSerialFrameMovie::moveEvent(QMoveEvent *e) {

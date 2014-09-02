@@ -181,10 +181,6 @@ void DWindowUI::confirmFormat() {
         m_formatCheckBox->setChecked(m_BootMaker->confirmFormatDlg());
 }
 
-void DWindowUI::fileSelect(const QString &filePath) {
-    qDebug()<<filePath;
-}
-
 void DWindowUI::refrshUsbDriverList() {
     QStringList list = m_BootMaker->listUsbDrives();
     emit  refrshUsbDrivers(list);
