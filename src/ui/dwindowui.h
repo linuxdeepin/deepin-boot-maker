@@ -54,33 +54,25 @@ private slots:
     void confirmFormat();
 
 private:
-    QPoint      pos_;
-    bool        pressed_;
+    int     m_Margin;
+    int     m_Radius;
+    QPoint  m_LastMousePos;
+    bool    m_MousePressed;
 
-    BootMaker   *bootMaker_;
+    BootMaker        *m_BootMaker;
 
     QVBoxLayout     *m_topLayout;
-    DCloseButton    *m_closeButton;
-    DRoteMovie  *isoLabel_;
-    QLabel          *processLabel_;
-    QLabel          *m_progressText;
-    QLabel          *m_processHints;
-
-    DComboBox       *usbDriver_;
-    DCheckBox       *bisoMode_;
-    DCheckBox       *m_formatCheckBox;
-
-    QVBoxLayout     *selectLayout_;
-
-    QHBoxLayout     *actionLayout_;
-    DPushButton     *m_start;
-
-    QTimer          *m_usbRefreshTimer;
-    QTimer          *processTimer_;
-
-    DProgressFrame  *m_progressFrame;
     QVBoxLayout     *m_progressLayout;
     QVBoxLayout     *m_optionLayout;
+    DCloseButton    *m_closeButton;
+    QLabel          *m_progressText;
+    QLabel          *m_processHints;
+    DCheckBox       *m_formatCheckBox;
+    QHBoxLayout     *m_ActionLayout;
+    DPushButton     *m_start;
+    DProgressFrame  *m_progressFrame;
+    QTimer          *m_usbRefreshTimer;
+    QTimer          *m_ProcessTimer;
 };
 
 #endif // DWINDOWUI_H

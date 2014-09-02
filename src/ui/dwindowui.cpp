@@ -8,6 +8,7 @@
 #include "dprogressframe.h"
 #include "dclosebutton.h"
 #include "../bootmaker.h"
+#include "dui.h"
 
 #include <QDebug>
 #include <QPainter>
@@ -20,6 +21,10 @@
 #include <QListView>
 #include <QTimer>
 #include <QMouseEvent>
+#include <QGraphicsDropShadowEffect>
+
+// TODO: move all dui class to namespace DUI, and then remove this
+// using namespace DUI;
 
 const int labelMaxWidth = 220;
 const int buttonFixWidth = 100;
@@ -29,24 +34,48 @@ DWindowUI::DWindowUI(QWidget *parent) :
 {
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_ShowWithoutActivating, true);
-    resize(310, 470);
     setWindowFlags(Qt::FramelessWindowHint | Qt::Window |Qt::WindowStaysOnTopHint);
     setFocusPolicy(Qt::NoFocus);
-    bootMaker_ = new BootMaker(this);
+
+    m_Margin = 10;
+    m_Radius = 4;
+    resize(310, 470);
+
+    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+    shadow->setOffset(0,0);
+    shadow->setBlurRadius(m_Margin);
+    shadow->setColor(DUI::ShadowColor);
+    this->setGraphicsEffect(shadow);
+
+    m_BootMaker = new BootMaker(this);
     InitUI();
 }
 
 DWindowUI::~DWindowUI(){
     m_usbRefreshTimer->stop();
-    processTimer_->stop();
+    m_ProcessTimer->stop();
 }
 
 void DWindowUI::paintEvent(QPaintEvent *)
 {
-    QPainter p(this);
-    p.save();
-    p.drawPixmap(0,0, QPixmap(":/ui/images/uimini.png"));
-    p.restore();
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    QRect rect = this->rect().marginsRemoved(QMargins(m_Margin, m_Margin, m_Margin, m_Margin));
+    QPoint topLeft(rect.x(), rect.y());
+    QPoint bottomRight(rect.x() + rect.width(), rect.y() + rect.height());
+    QPainterPath border;
+    border.addRoundedRect(rect, m_Radius, m_Radius);
+
+    QLinearGradient linearGradient(topLeft, QPoint(topLeft.x(), bottomRight.y()));
+    linearGradient.setColorAt(0.0, DUI::BackgroundTopColor);
+    linearGradient.setColorAt(0.2, DUI::BackgroundBottonColor);
+    linearGradient.setColorAt(1.0, DUI::BackgroundBottonColor);
+
+    QPen borderPen(DUI::BorderColor);
+    painter.setBrush(QBrush(linearGradient));
+    painter.strokePath(border, borderPen);
+    painter.fillPath(border, QBrush(linearGradient));
 }
 
 void DWindowUI::InitUI() {
@@ -78,7 +107,7 @@ void DWindowUI::InitUI() {
     m_topLayout->setAlignment(m_progressFrame, Qt::AlignCenter);
 
     m_progressText = new QLabel();
-    m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(bootMaker_->processRate()));
+    m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(m_BootMaker->processRate()));
     m_progressLayout->addWidget(m_progressText);
     m_progressLayout->setAlignment(m_progressText, Qt::AlignCenter);
     m_progressText->hide();
@@ -141,7 +170,7 @@ void DWindowUI::start() {
     QString usbDev = m_progressFrame->usbDev();
     bool format = m_formatCheckBox->checked();
 
-    if (0 != bootMaker_->start(isoPath, usbDev, false, format)) {
+    if (0 != m_BootMaker->start(isoPath, usbDev, false, format)) {
         return;
     }
     SwitchToProcessUI();
@@ -149,28 +178,27 @@ void DWindowUI::start() {
 
 void DWindowUI::confirmFormat() {
     if (m_formatCheckBox->checked())
-        m_formatCheckBox->setChecked(bootMaker_->confirmFormatDlg());
+        m_formatCheckBox->setChecked(m_BootMaker->confirmFormatDlg());
 }
 
 void DWindowUI::fileSelect(const QString &filePath) {
     qDebug()<<filePath;
-    isoLabel_->setPixmap(QPixmap(":/ui/images/iso-active.png"));
 }
 
 void DWindowUI::refrshUsbDriverList() {
-    QStringList list = bootMaker_->listUsbDrives();
+    QStringList list = m_BootMaker->listUsbDrives();
     emit  refrshUsbDrivers(list);
 }
 
 void DWindowUI::checkProcess() {
-    if (bootMaker_->isFinish()) {
+    if (m_BootMaker->isFinish()) {
         m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(100));
         SwitchToEndUI();
-        processTimer_->stop();
+        m_ProcessTimer->stop();
         m_progressFrame->setProgress(100);
     } else {
-        m_progressFrame->setProgress(bootMaker_->processRate());
-        m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(bootMaker_->processRate()));
+        m_progressFrame->setProgress(m_BootMaker->processRate());
+        m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(m_BootMaker->processRate()));
     }
 }
 
@@ -182,10 +210,10 @@ void DWindowUI::SwitchToProcessUI() {
     m_progressText->show();
     m_processHints->show();
 
-    processTimer_ = new QTimer(this);
-    processTimer_->setInterval(5000);
-    connect(processTimer_, SIGNAL(timeout()), this, SLOT(checkProcess()));
-    processTimer_->start();
+    m_ProcessTimer = new QTimer(this);
+    m_ProcessTimer->setInterval(5000);
+    connect(m_ProcessTimer, SIGNAL(timeout()), this, SLOT(checkProcess()));
+    m_ProcessTimer->start();
 
     m_progressFrame->switchProgress();
 }
@@ -224,42 +252,42 @@ void DWindowUI::SwitchToEndUI() {
     m_topLayout->addWidget(tips);
     m_topLayout->setAlignment(tips, Qt::AlignCenter);
 
-    actionLayout_ = new QHBoxLayout();
+    m_ActionLayout = new QHBoxLayout();
     DPushButton *rebootLater = new DPushButton(tr("Restart Later"));
     rebootLater->setFixedWidth(buttonFixWidth);
     DPushButton *rebootNow = new DPushButton(tr("Restart Now"));
     rebootNow->setFixedWidth(buttonFixWidth);
     connect(rebootLater, SIGNAL(clicked()), this, SLOT(close()));
-    connect(rebootNow, SIGNAL(clicked()), bootMaker_, SLOT(reboot()));
+    connect(rebootNow, SIGNAL(clicked()), m_BootMaker, SLOT(reboot()));
 
-    actionLayout_->setMargin(0);
-    actionLayout_->setSpacing(20);
-    actionLayout_->addStretch();
-    actionLayout_->addWidget(rebootLater);
-    actionLayout_->addWidget(rebootNow);
-    actionLayout_->addStretch();
+    m_ActionLayout->setMargin(0);
+    m_ActionLayout->setSpacing(20);
+    m_ActionLayout->addStretch();
+    m_ActionLayout->addWidget(rebootLater);
+    m_ActionLayout->addWidget(rebootNow);
+    m_ActionLayout->addStretch();
 
     m_topLayout->addStretch();
-    m_topLayout->addLayout(actionLayout_);
-    m_topLayout->setAlignment(actionLayout_, Qt::AlignCenter);
+    m_topLayout->addLayout(m_ActionLayout);
+    m_topLayout->setAlignment(m_ActionLayout, Qt::AlignCenter);
     m_topLayout->addSpacing(30);
 }
 
 
 void DWindowUI::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton) {
-        pressed_ = true;
-        pos_ = event->globalPos() - this->pos();
+        m_MousePressed = true;
+        m_LastMousePos = event->globalPos() - this->pos();
     }
 }
 void DWindowUI::mouseMoveEvent(QMouseEvent *event){
-    if (pressed_) {
-        move(event->globalPos() - pos_);
+    if (m_MousePressed) {
+        move(event->globalPos() - m_LastMousePos);
     }
 }
 
 void DWindowUI::mouseReleaseEvent(QMouseEvent *event)
 {
-    pressed_ = false;
+    m_MousePressed = false;
     event->accept();
 }
