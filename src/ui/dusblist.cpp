@@ -21,12 +21,12 @@ void DUsbList::initList(){
     QStandardItem *standItem = new QStandardItem(s_EmptyString);
     standItem->setIcon(QIcon(":/ui/images/unselect.png"));
     m_StandardItemModel->appendRow(standItem);
-    this->setModel(m_StandardItemModel);
     m_LastIndex = m_StandardItemModel->index(0,0);
+    this->setModel(m_StandardItemModel);
 }
 
 void DUsbList::selectDriver(QModelIndex index) {
-    QStandardItem *selectItem = m_StandardItemModel->itemFromIndex(m_LastIndex);
+    QStandardItem *selectItem = m_StandardItemModel->item(m_LastIndex.row(), m_LastIndex.column());
     if (selectItem){
         selectItem->setIcon(QIcon(":/ui/images/unselect.png"));
     }
