@@ -209,7 +209,7 @@ QString InstallBootloader(const QString &diskDev) {
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() -1].toLatin1() - 'a');
 
     //fbinst format
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
+    UmountDisk(diskDev);
     QString xfbinstPath = XSys::InsertTmpFile(":/bootloader/xfbinst/xfbinst");
     XSys::SynExec("chmod +x ", xfbinstPath);
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
@@ -220,7 +220,7 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
     //install syslinux
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
+    UmountDisk(diskDev);
     QString targetDev = diskDev + "1";
     QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
     XSys::SynExec("chmod +x ", sysliuxPath);
@@ -231,7 +231,7 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("dd" , QString(" if=%1 of=%2 count=1").arg(targetDev).arg(tmpPbrPath));
 
     //add pbr file ldlinux.bin
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
+    UmountDisk(diskDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
 
     //rename label
@@ -242,7 +242,19 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
     XSys::SynExec("chmod a+wrx ", mountPoint);
 
-    XSys::SynExec("mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec", QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+    QString mountCmd = "mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec";
+    UmountDisk(diskDev);
+    XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+
+    //the disk must be mount
+    int retryTimes = 10;
+    while ((MountPoint(targetDev) != mountPoint) && retryTimes) {
+        UmountDisk(diskDev);
+        XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+        QThread::sleep(3);
+        retryTimes--;
+    }
+
     return newTargetDev;
 }
 
