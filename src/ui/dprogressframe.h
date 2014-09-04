@@ -4,16 +4,19 @@
 #include <QStackedWidget>
 
 class DRoteMovie;
-class QLabel;
 class DPushButton;
 class DTips;
 class DUsbList;
 class DSerialFrameMovie;
-class QParallelAnimationGroup;
 class DDigitProgressMovie;
+class DUsbProgressMovie;
+class DImageIcon;
+class DDevIcon;
+
+class QLabel;
+class QParallelAnimationGroup;
 class QVBoxLayout;
 class QMovie;
-class DUsbProgressMovie;
 
 class DProgressFrame : public QStackedWidget
 {
@@ -68,10 +71,8 @@ protected:
     QWidget                 *m_SecondWidget;
     QVBoxLayout             *m_FirstLayout;
     QLabel                  *m_ProcessLabel;
-    //DDigitProgressAnimation *m_processLabel;
-    DUsbProgressMovie       *m_ProcessUsb;
-    DSerialFrameMovie       *m_IsoLabel;
-    DSerialFrameMovie       *m_UsbLabel;
+    DImageIcon              *m_IsoLabel;
+    DDevIcon                *m_UsbLabel;
     QParallelAnimationGroup *m_AnimGroup;
     DUsbList                *m_UsbList;
     QString                 m_IsoFile;

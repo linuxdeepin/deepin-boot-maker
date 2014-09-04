@@ -25,6 +25,8 @@ public:
     explicit DWindowUI(QWidget *parent = 0);
     ~DWindowUI();
 
+    static DWindowUI* CurrentWindow() {return s_MainWindow;}
+
     void paintEvent(QPaintEvent *);
 
     void mousePressEvent(QMouseEvent *event);
@@ -72,6 +74,8 @@ private:
     DProgressFrame  *m_progressFrame;
     QTimer          *m_usbRefreshTimer;
     QTimer          *m_ProcessTimer;
+
+    static DWindowUI* s_MainWindow;
 };
 
 #endif // DWINDOWUI_H

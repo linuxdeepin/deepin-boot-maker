@@ -1,9 +1,9 @@
 #ifndef DTIPS_H
 #define DTIPS_H
 
-#include <QPushButton>
+#include <QLabel>
 
-class DTips : public QPushButton
+class DTips : public QLabel
 {
     Q_OBJECT
 public:
@@ -14,13 +14,14 @@ signals:
 
 public slots:
     void pop();
+    void pack();
 
 protected slots:
     void popDone();
 
 protected:
-    QWidget *m_attachWidget;
     bool    m_active;
+    QWidget *m_AttachWidget;
 };
 
 #endif // DTIPS_H

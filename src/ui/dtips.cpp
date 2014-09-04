@@ -1,10 +1,12 @@
 #include "dtips.h"
 #include <QPropertyAnimation>
 #include <QSizePolicy>
-
+#include "dwindowui.h"
 DTips::DTips(QWidget *parent):
-    QPushButton(parent)
+    QLabel(parent)
 {
+    m_AttachWidget = parent;
+    this->setParent(DWindowUI::CurrentWindow());
     QString qss =
         "DTips { "
         "color:#ebab4c;"
@@ -15,17 +17,18 @@ DTips::DTips(QWidget *parent):
         "border-right: 6px transparent;"
         "border-left: 6px transparent;"
         "}";
+    this->setAlignment(Qt::AlignCenter);
     this->setStyleSheet(qss);
     this->setFocusPolicy(Qt::NoFocus);
     this->setFixedHeight(this->font().pointSize() + 24);
     this->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding));
-
-    m_attachWidget = parent;
-    QWidget *parentWidget = qobject_cast<QWidget*>(parent->parent());
-    if (parentWidget) {
-        this->setParent(parentWidget);
-    }
+    this->setWindowFlags(Qt::WindowStaysOnTopHint );
     m_active = false;
+    this->setFrameStyle(Qt::FramelessWindowHint);
+}
+
+void DTips::pack() {
+    this->hide();
 }
 
 void DTips::pop() {
@@ -34,18 +37,17 @@ void DTips::pop() {
     }
     m_active = true;
     this->show();
-    this->raise();
-    this->raise();
     QPropertyAnimation *movie = new QPropertyAnimation(this, "geometry");
     movie->setDuration(300);
     movie->setEasingCurve(QEasingCurve::InOutCubic);
-    QPoint pos = m_attachWidget->pos();
-    QSize szLabel = m_attachWidget->size();
+    QPoint pos = m_AttachWidget->mapToGlobal(m_AttachWidget->pos()) - m_AttachWidget->pos();
+    QPoint attachPos = this->mapFromGlobal(pos);
+    QSize szLabel = m_AttachWidget->size();
 
     QSize sz = this->size();
-    movie->setStartValue(QRect(pos.x() + szLabel.width() / 2 , pos.y() - szLabel.height()/2 + 5, 0, 0));
-    movie->setEndValue(QRect(pos.x() + szLabel.width() / 2 - sz.width()/2,
-                                 pos.y() - sz.height() + 5,
+    movie->setStartValue(QRect(attachPos.x() + szLabel.width() / 2 , attachPos.y() - szLabel.height()/2 + 5, 0, 0));
+    movie->setEndValue(QRect(attachPos.x() + szLabel.width() / 2 - sz.width()/2,
+                                 attachPos.y() - sz.height() + 5,
                                  sz.width(),
                                  sz.height()));
     movie->start();

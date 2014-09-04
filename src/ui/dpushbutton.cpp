@@ -36,6 +36,7 @@ DPushButton::DPushButton(const QString& text, QWidget *parent) :
     m_dtips= NULL;
     m_tipsString = "";
     connect(this, SIGNAL(leaved()), this, SLOT(leaveDone()));
+
 }
 
 void DPushButton::setImages(const QString &normal, const QString &hover, const QString &pressed){
@@ -66,7 +67,6 @@ void DPushButton::setImages(const QString &normal, const QString &hover, const Q
     setStyleSheet(style);
 }
 
-
 void DPushButton::enterEvent( QEvent* e ) {
     m_mouseInRect = true;
     if (m_showDtips && !m_tipsString.isEmpty()) {
@@ -75,6 +75,7 @@ void DPushButton::enterEvent( QEvent* e ) {
             m_dtips->setText(m_tipsString);
             m_dtips->pop();
             m_dtipsPoping = true;
+            connect(this, SIGNAL(clicked()), m_dtips, SLOT(pack()));
             connect(m_dtips, SIGNAL(poped()), this, SLOT(dtipPoped()));
         }
     }

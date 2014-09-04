@@ -30,7 +30,9 @@ HEADERS += unetbootin.h \
     ui/dserialframemovie.h \
     ui/ddigitprogressmovie.h \
     ui/dusbprogressmovie.h \
-    ui/drotemovie.h
+    ui/drotemovie.h \
+    ui/dimageicon.h \
+    ui/ddevicon.h
 
 SOURCES += main.cpp \
     unetbootin.cpp \
@@ -51,6 +53,8 @@ SOURCES += main.cpp \
     ui/ddigitprogressmovie.cpp \
     ui/dserialframemovie.cpp \
     ui/drotemovie.cpp \
+    ui/dimageicon.cpp \
+    ui/ddevicon.cpp
 
 
 QT += core gui widgets

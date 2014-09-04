@@ -6,6 +6,8 @@
 #include "dserialframemovie.h"
 #include "ddigitprogressmovie.h"
 #include "dusbprogressmovie.h"
+#include "dimageicon.h"
+#include "ddevicon.h"
 
 #include <QDebug>
 #include <QLabel>
@@ -31,7 +33,7 @@ QString TopShadowShow =
 DProgressFrame::DProgressFrame(QWidget *parent) :
     QStackedWidget(parent)
 {
-    int m_height = 250;
+    int m_height = 235;
     this->setFixedHeight(m_height);
     m_FirstWidget = new QWidget();
 
@@ -39,14 +41,8 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstLayout->setSpacing(0);
     m_FirstLayout->addSpacing(25 + 250 / 20);
 
-    QStringList isoSourceList;
-    for (int i = 1; i < 23; ++i) {
-        isoSourceList.append(QString(":/ui/images/iso/%1.png").arg(i));
-    }
-    m_IsoLabel = new DSerialFrameMovie(isoSourceList, this);
-    m_IsoLabel->start();
+    m_IsoLabel = new DImageIcon(this);
     m_IsoLabel->setDTips(tr("Select ISO"));
-    m_IsoLabel->showDTips(true);
     m_FirstLayout->addWidget(m_IsoLabel);
     m_FirstLayout->setAlignment(m_IsoLabel, Qt::AlignCenter);
     connect(m_IsoLabel, SIGNAL(clicked()), this, SLOT(selectISO()));
@@ -58,27 +54,18 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstLayout->addWidget(m_ProcessLabel);
     m_FirstLayout->setAlignment(m_ProcessLabel, Qt::AlignCenter);
 
-    m_ProcessUsb =new DUsbProgressMovie();
-
-    QStringList usbSourceList;
-    for (int i = 1; i < 23; ++i) {
-        usbSourceList.append(QString(":/ui/images/usb/%1.png").arg(i));
-    }
-    m_UsbLabel = new DSerialFrameMovie(usbSourceList, this);
-    m_UsbLabel->setDTips(tr("Select USB"));
-    m_UsbLabel->showDTips(true);
-    m_UsbLabel->start();
+    m_UsbLabel = new DDevIcon(this);
     m_FirstLayout->addWidget(m_UsbLabel);
     m_FirstLayout->setAlignment(m_UsbLabel, Qt::AlignCenter);
     connect(m_UsbLabel, SIGNAL(clicked()), this, SLOT(switchShowStatus()));
     m_FirstWidget->setLayout(m_FirstLayout);
-
     this->addWidget(m_FirstWidget);
 
     m_SecondWidget = new QWidget();
-    m_SecondWidget->setFixedSize(220, 160);
+    m_SecondWidget->setFixedSize(220, 130);
     QVBoxLayout *secondLayout = new QVBoxLayout();
     m_UsbList =new DUsbList();
+    m_FirstLayout->addStretch();
     secondLayout->addWidget(m_UsbList);
     secondLayout->setAlignment(m_UsbList, Qt::AlignCenter);
     connect(m_UsbList, SIGNAL(itemClick(QString)), this, SLOT(finishSelectDev(QString)));
@@ -106,24 +93,16 @@ void DProgressFrame::finishSelectDev(const QString &) {
 
 void DProgressFrame::usbDevSelected(const QString & dev) {
     if (dev.isEmpty()) {
-        qDebug()<<"Start";
-        m_UsbLabel->start();
+        m_UsbLabel->setStatus(DDevIcon::UnSelected);
     } else {
-        qDebug()<<"Stop";
-        m_UsbLabel->stop();
+        m_UsbLabel->setStatus(DDevIcon::Selected);
     }
     setUsbDev(dev);
 }
 
 void DProgressFrame::switchProgress() {
-    QMovie *processMovie = new QMovie(":/ui/images/process-active.gif");
-    m_ProcessLabel->setMovie(processMovie);
-    processMovie->start();
-    m_FirstLayout->addWidget(m_ProcessUsb);
-    m_FirstLayout->setAlignment(m_ProcessUsb, Qt::AlignCenter);
-
-    m_UsbLabel->hide();
-    m_ProcessUsb->start();
+    m_UsbLabel->setStatus(DDevIcon::Progress);
+    m_IsoLabel->setStatus(DImageIcon::Progress);
 }
 
 void DProgressFrame::switchShowStatus() {
@@ -146,9 +125,8 @@ void DProgressFrame::slideUsbSeclect() {
     else {
         m_Active=true;
     }
+    m_ProcessLabel->setPixmap(QPixmap(""));
     emit changedUsbSeclet();
-    m_UsbLabel->showDTips(false);
-    m_UsbLabel->ingonreLeaveEvent();
 
     int offsetx=frameRect().width(); //inherited from mother
     int offsety=frameRect().height();//inherited from mother
@@ -159,8 +137,8 @@ void DProgressFrame::slideUsbSeclect() {
     //re-position the next widget outside/aside of the display area
     QPoint pnext=m_SecondWidget->pos();
     QPoint pnow=m_FirstWidget->pos();
-    m_FirstWidget->move(pnow.x(), pnow.y()- offsety + 64);
-    m_SecondWidget->move(pnext.x(), pnext.y() + 64);
+    m_FirstWidget->move(pnow.x(), pnow.y()- offsety + 64+ 36);
+    m_SecondWidget->move(pnext.x(), pnext.y() + 64+ 36);
     //make it visible/show
     m_SecondWidget->show();
     m_SecondWidget->raise();
@@ -170,13 +148,13 @@ void DProgressFrame::slideUsbSeclect() {
     animnow->setDuration(m_Speed);
     animnow->setEasingCurve(QEasingCurve::OutBack);
     animnow->setStartValue(QPoint(pnow.x(), pnow.y()));
-    animnow->setEndValue(QPoint(offsetx+pnow.x(), -offsety+pnow.y() + 64));
+    animnow->setEndValue(QPoint(offsetx+pnow.x(), -offsety+pnow.y() + 64 + 36));
 
     QPropertyAnimation *animnext = new QPropertyAnimation(m_SecondWidget, "pos");
     animnext->setDuration(m_Speed);
     animnext->setEasingCurve(QEasingCurve::OutBack);
     animnext->setStartValue(QPoint(pnext.x(), offsety+pnext.y()));
-    animnext->setEndValue(QPoint(pnext.x(), pnext.y() + 64));
+    animnext->setEndValue(QPoint(pnext.x(), pnext.y() + 64+ 36));
 
     m_AnimGroup = new QParallelAnimationGroup;
     m_AnimGroup->addAnimation(animnow);
@@ -205,6 +183,7 @@ void DProgressFrame::slideProcess() {
         m_Active=true;
     }
 
+    m_ProcessLabel->setPixmap(QPixmap(":/ui/images/process-inactive.png"));
     emit changedProgress();
 
     int offsetx=frameRect().width(); //inherited from mother
@@ -217,8 +196,6 @@ void DProgressFrame::slideProcess() {
     //re-position the next widget outside/aside of the display area
     QPoint pnext=m_FirstWidget->pos();
     QPoint pnow=m_SecondWidget->pos();
-   // m_firstWidget->move(pnext.x(), pnext.y()+ offsety - 64);
-   // m_secondWidget->move(pnow.x(), pnow.y()+ offsety - 64);
     //make it visible/show
     m_FirstWidget->show();
     m_FirstWidget->raise();
@@ -247,7 +224,6 @@ void DProgressFrame::slideProcess() {
 }
 
 void DProgressFrame::slideProgressDone(){
-    m_UsbLabel->showDTips(true);
     m_ShowStatus = ShowFirst;
     m_Active = false;
 }
@@ -261,7 +237,7 @@ void DProgressFrame::selectISO(){
         QString text = fileDlg.selectedFiles().first();
         setIsoFile(text);
         emit isoFileSelected(text);
-        m_IsoLabel->stop();
+        m_IsoLabel->setStatus(DImageIcon::Selected);
         connect(m_UsbLabel, SIGNAL(clicked()), this, SLOT(switchShowStatus()));
     }
 }
@@ -291,5 +267,5 @@ void DProgressFrame::setIsoFile(const QString &isoFile)
 }
 
 void DProgressFrame::setProgress(int p) {
-    m_ProcessUsb->setProgress(p);
+    m_UsbLabel->setProgress(p);
 }

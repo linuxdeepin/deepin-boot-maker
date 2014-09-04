@@ -28,10 +28,11 @@
 
 const int labelMaxWidth = 220;
 const int buttonFixWidth = 100;
-
+DWindowUI *DWindowUI::s_MainWindow = NULL;
 DWindowUI::DWindowUI(QWidget *parent) :
     QMainWindow(parent)
 {
+    s_MainWindow = this;
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_ShowWithoutActivating, true);
     setWindowFlags(Qt::FramelessWindowHint | Qt::Window |Qt::WindowStaysOnTopHint);

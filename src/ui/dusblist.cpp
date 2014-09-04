@@ -9,7 +9,7 @@ DUsbList::DUsbList(QWidget *parent) :
 {
     m_StandardItemModel = new QStandardItemModel();
     initList();
-    this->setFixedSize(160,128);
+    this->setFixedSize(160,120);
     this->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setSelectionMode(QAbstractItemView::SingleSelection);
     connect(this, SIGNAL(clicked(QModelIndex)), this, SLOT(selectDriver(QModelIndex)));

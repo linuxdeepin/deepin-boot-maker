@@ -17,8 +17,8 @@ DWaterMovie::DWaterMovie(QWidget *parent) :
     m_timer = new QTimer;
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
 
-    int begin = 6;
-    int offset = 35;
+    int begin = 8;
+    int offset = 25;
     this->setProgressImage(":/ui/images/usb/wave.png", begin, begin + offset);
 }
 
@@ -91,9 +91,10 @@ DUsbProgressMovie::DUsbProgressMovie(QWidget *parent) :
 
     m_WaterProgress = new DWaterMovie;
     m_layout->addWidget(m_WaterProgress);
+    m_layout->setAlignment(m_WaterProgress, Qt::AlignVCenter);
 
     QLabel *light = new QLabel;
-    light->setMargin(2);
+    light->setMargin(1);
     light->setPixmap(QPixmap(":/ui/images/usb/light.png"));
     m_layout->addWidget(light);
 

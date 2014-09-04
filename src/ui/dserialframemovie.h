@@ -10,6 +10,8 @@ class DSerialFrameMovie : public DPushButton
 {
     Q_OBJECT
 public:
+    explicit DSerialFrameMovie(QWidget *parent = 0);
+
     explicit DSerialFrameMovie(const QStringList& sourcesList, QWidget *parent = 0);
 
     void start();
@@ -23,10 +25,12 @@ public slots:
     void nextFrame();
 
 protected:
-    QString     m_QssTemplate;
     QStringList m_SourceList;
     int         m_FrameIndex;
     QTimer      *m_Timer;
+
+
+    static QString     s_QssTemplate;
 };
 
 #endif // DSERIALFRAMEMOVIE_H
