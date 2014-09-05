@@ -397,83 +397,11 @@ QStringList unetbootin::listalldrives()
 	return fulldrivelist;
 }
 
-bool unetbootin::checkInstallPara() {
-    if (usbDriverPath.isEmpty())
-    {
-        QMessageBox unotenoughinputmsgb;
-        unotenoughinputmsgb.setIcon(QMessageBox::Information);
-        unotenoughinputmsgb.setWindowTitle(tr("Insert a USB flash drive"));
-        unotenoughinputmsgb.setText(tr("No USB flash drives were found. If you have already inserted a USB drive, try reformatting it as FAT32."));
-        unotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
-        switch (unotenoughinputmsgb.exec())
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
-        }
-    }
-#ifdef Q_OS_MAC
-    if (locatemountpoint(usbDriverPath) == "NOT MOUNTED")
-        callexternapp("diskutil", "mount "+usbDriverPath);
-#endif
-    #ifdef Q_OS_LINUX
-    else if (locatemountpoint(usbDriverPath) == "NOT MOUNTED")
-    {
-        QMessageBox merrordevnotmountedmsgbx;
-        merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
-        merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(usbDriverPath));
-        merrordevnotmountedmsgbx.setText(QString(tr("You must first mount the USB drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB drive.")).arg(usbDriverPath));
-        merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
-        switch (merrordevnotmountedmsgbx.exec())
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
-        }
-    }
-    #endif
-    else if (isoImagePath.isEmpty())
-    {
-        QMessageBox fnotenoughinputmsgb;
-        fnotenoughinputmsgb.setIcon(QMessageBox::Information);
-        fnotenoughinputmsgb.setWindowTitle(tr("Select a disk image file"));
-        fnotenoughinputmsgb.setText(tr("You must select a disk image file to load."));
-        fnotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
-        switch (fnotenoughinputmsgb.exec())
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
-        }
-    }
-    else if (!QFile::exists(isoImagePath) && !isoImagePath.startsWith("http://") && !isoImagePath.startsWith("ftp://"))
-    {
-        QMessageBox ffnotexistsmsgb;
-        ffnotexistsmsgb.setIcon(QMessageBox::Information);
-        ffnotexistsmsgb.setWindowTitle(tr("Diskimage file not found"));
-        ffnotexistsmsgb.setText(tr("The specified diskimage file %1 does not exist.").arg(isoImagePath));
-        ffnotexistsmsgb.setStandardButtons(QMessageBox::Ok);
-        switch (ffnotexistsmsgb.exec())
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
-        }
-    }
-    else
-    {
-        return true;
-    }
-    return false;
-}
-
-
-int unetbootin::startProcess()
+int unetbootin::startProcess(const QString &isoPath, const QString &usbDriver, bool formatDisk)
 {
+    this->isoImagePath = isoPath;
+    this->usbDriverPath = usbDriver;
+    this->formatDisk = formatDisk;
     runinst();
     return 0;
 }
@@ -570,7 +498,10 @@ bool unetbootin::overwritefileprompt(QString ovwfileloc)
 	overwritefilemsgbx.setWindowTitle(QString(tr("%1 exists, overwrite?")).arg(ovwfileloc));
 	overwritefilemsgbx.setText(QString(tr("The file %1 already exists. Press 'Yes to All' to overwrite it and not be prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to retain your existing version. If in doubt, press 'Yes to All'.")).arg(ovwfileloc));
 	overwritefilemsgbx.setStandardButtons(QMessageBox::Yes | QMessageBox::YesToAll | QMessageBox::No);
-	switch (overwritefilemsgbx.exec())
+    overwritefilemsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
+    overwritefilemsgbx.setButtonText(QMessageBox::YesToAll, tr("YesToAll"));
+    overwritefilemsgbx.setButtonText(QMessageBox::No, tr("No"));
+    switch (overwritefilemsgbx.exec())
 	{
 		case QMessageBox::Yes:
 		{
@@ -597,6 +528,9 @@ bool unetbootin::ignoreoutofspaceprompt(QString destindir)
 	overwritefilemsgbx.setWindowTitle(QString(tr("%1 is out of space, abort installation?")).arg(destindir));
 	overwritefilemsgbx.setText(QString(tr("The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to ignore this error and attempt to continue installation, and 'No to All' to ignore all out-of-space errors.")).arg(destindir));
 	overwritefilemsgbx.setStandardButtons(QMessageBox::Yes | QMessageBox::YesToAll | QMessageBox::No);
+    overwritefilemsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
+    overwritefilemsgbx.setButtonText(QMessageBox::YesToAll, tr("YesToAll"));
+    overwritefilemsgbx.setButtonText(QMessageBox::No, tr("No"));
 	switch (overwritefilemsgbx.exec())
 	{
 		case QMessageBox::Yes:
@@ -2736,6 +2670,7 @@ QString unetbootin::locatecommand(QString commandtolocate, QString reqforinstall
 	errorcmdnotfoundmsgbx.setWindowTitle(QString(tr("%1 not found")).arg(commandtolocate));
 	errorcmdnotfoundmsgbx.setText(QString(tr("%1 not found. This is required for %2 install mode.\nInstall the \"%3\" package or your distribution's equivalent.")).arg(commandtolocate, reqforinstallmode, packagename));
 	errorcmdnotfoundmsgbx.setStandardButtons(QMessageBox::Ok);
+    errorcmdnotfoundmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
 	switch (errorcmdnotfoundmsgbx.exec())
 	{
 		case QMessageBox::Ok:

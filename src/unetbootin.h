@@ -294,7 +294,6 @@ public:
 #ifdef Q_OS_MAC
 	QDir resourceDir;
 #endif
-    bool checkInstallPara();
     bool isFinsh();
     bool ubninitialize();
 	QString displayfisize(quint64 fisize);
@@ -398,7 +397,7 @@ public slots:
 	void dlprogressupdate(int dlbytes, int maxbytes);
 	void dlprogressupdate64(qint64 dlbytes, qint64 maxbytes);
 	void cpprogressupdate64(qint64 dlbytes, qint64 maxbytes);
-    int startProcess();
+    int startProcess(const QString &isoPath, const QString &usbDriver, bool formatDisk);
 	void killApplication();
 };
 

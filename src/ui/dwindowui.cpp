@@ -35,7 +35,7 @@ DWindowUI::DWindowUI(QWidget *parent) :
     s_MainWindow = this;
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_ShowWithoutActivating, true);
-    setWindowFlags(Qt::FramelessWindowHint | Qt::Window |Qt::WindowStaysOnTopHint);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
     setFocusPolicy(Qt::NoFocus);
 
     m_Margin = 10;
@@ -171,7 +171,7 @@ void DWindowUI::start() {
     QString usbDev = m_progressFrame->usbDev();
     bool format = m_formatCheckBox->checked();
 
-    if (0 != m_BootMaker->start(isoPath, usbDev, false, format)) {
+    if (0 != m_BootMaker->start(isoPath, usbDev, format)) {
         return;
     }
     SwitchToProcessUI();
@@ -189,13 +189,13 @@ void DWindowUI::refrshUsbDriverList() {
 
 void DWindowUI::checkProcess() {
     if (m_BootMaker->isFinish()) {
-        m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(100));
+        m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>Has written %1% </p>")).arg(100));
         SwitchToEndUI();
         m_ProcessTimer->stop();
         m_progressFrame->setProgress(100);
     } else {
         m_progressFrame->setProgress(m_BootMaker->processRate());
-        m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(m_BootMaker->processRate()));
+        m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>Has written %1% </p>")).arg(m_BootMaker->processRate()));
     }
 }
 
@@ -236,7 +236,7 @@ void DWindowUI::SwitchToEndUI() {
 
     QLabel *tips = new QLabel(tr(
          "<a style='color:#057aff; font-size:12px'>Tips: </a>"
-         "<a style='color:#ffffff; font-size:12px'>If t he boot failure, please close the BIOS EFO option</a>"));
+         "<a style='color:#ffffff; font-size:12px'>If the boot failure, please close the BIOS EFO option</a>"));
     tips->setFixedWidth(labelMaxWidth);
     tips->setWordWrap(true);
     m_topLayout->addSpacing(60);

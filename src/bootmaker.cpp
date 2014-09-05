@@ -9,17 +9,17 @@
 #include <QThread>
 
 BootMaker::BootMaker(QWidget* parent): QWidget(parent){
-     unetbootinPtr = new unetbootin();
-     flm = new FileListMonitor();
-     tprogress = new ProcessRate();
-     unetbootinPtr->ubninitialize();
-     unetbootinPtr->flm = flm;
-     unetbootinPtr->tprogress = tprogress;
+     m_UnetbootinPtr = new unetbootin();
+     m_FileListMonitor = new FileListMonitor();
+     m_Progress = new ProcessRate();
+     m_UnetbootinPtr->ubninitialize();
+     m_UnetbootinPtr->flm = m_FileListMonitor;
+     m_UnetbootinPtr->tprogress = m_Progress;
 }
 
 QStringList BootMaker::listUsbDrives(){
     QStringList usbDriverlist;
-    usbDriverlist = unetbootinPtr->listcurdrives();
+    usbDriverlist = m_UnetbootinPtr->listcurdrives();
     return usbDriverlist;
 }
 
@@ -27,13 +27,12 @@ QString BootMaker::url2LocalFile(QString url){
     return QUrl(url).toLocalFile();
 }
 
-int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool formatDisk) {
-    unetbootinPtr->isoImagePath = isoPath;
-    unetbootinPtr->usbDriverPath = usbDriver;
-    unetbootinPtr->biosMode = biosMode;
-    unetbootinPtr->formatDisk = formatDisk;
+int BootMaker::start(QString isoPath, QString usbDriver, bool formatDisk) {
+    m_ImagePath = isoPath;
+    m_DriverPath = usbDriver;
+    m_FormatDisk = formatDisk;
 
-    if (unetbootinPtr->checkInstallPara()){
+    if (this->checkInstallPara()){
 
         if ((!formatDisk) && (!DiskUnity::CheckInstallDisk(usbDriver))){
 
@@ -46,7 +45,7 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
             msgbox.setButtonText(QMessageBox::Cancel, tr("Cancel"));
 
             if(msgbox.exec() == QMessageBox::Ok) {
-                 unetbootinPtr->formatDisk = true;
+                 m_FormatDisk = true;
             } else {
                 return 1;
             }
@@ -54,11 +53,12 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
         qDebug()<<"Start make boot disk";
 
         QThread *pwork = new QThread();
-        unetbootinPtr->moveToThread(pwork);
-        QObject::connect(this, SIGNAL(process()), unetbootinPtr, SLOT(startProcess()));
+        m_UnetbootinPtr->moveToThread(pwork);
+        QObject::connect(this, SIGNAL(process(QString, QString, bool)),
+                         m_UnetbootinPtr, SLOT(startProcess(QString, QString, bool)));
         pwork->start();
 
-        emit this->process();
+        emit this->process(m_ImagePath, m_DriverPath, m_FormatDisk);
         qDebug()<<"BootMaker Return";
         return 0;
     }
@@ -67,17 +67,17 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool biosMode, bool for
 #include <memory>
 
 int BootMaker::processRate() {
-    if (!(unetbootinPtr->isFinsh_)) {
-        tprogress->setValue(flm->FinishSize());
+    if (!(m_UnetbootinPtr->isFinsh_)) {
+        m_Progress->setValue(m_FileListMonitor->FinishSize());
     } else {
-        tprogress->setValue(tprogress->maximum());
+        m_Progress->setValue(m_Progress->maximum());
     }
-    qDebug()<<QString("processRate value: %1/total: %2, rate: %3").arg(tprogress->value()).arg(tprogress->maximum()).arg(tprogress->rate());
-    return tprogress->rate();
+    qDebug()<<QString("processRate value: %1/total: %2, rate: %3").arg(m_Progress->value()).arg(m_Progress->maximum()).arg(m_Progress->rate());
+    return m_Progress->rate();
 }
 
 bool BootMaker::isFinish() {
-    return unetbootinPtr->isFinsh();
+    return m_UnetbootinPtr->isFinsh();
 }
 
 bool BootMaker::isISOImage(QString isoPath) {
@@ -121,7 +121,7 @@ void BootMaker::reboot() {
     ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
 #endif
 #ifdef Q_OS_LINUX
-    unetbootinPtr->callexternapp("init", "6 &");
+    m_UnetbootinPtr->callexternapp("init", "6 &");
 #endif
 #ifdef Q_OS_MAC
     unetbootinPtr->callexternapp("shutdown", "-r now &");
@@ -132,3 +132,81 @@ void BootMaker::exitRestart() {
     reboot();
 }
 
+
+bool BootMaker::checkInstallPara() {
+    if (m_DriverPath.isEmpty())
+    {
+        QMessageBox unotenoughinputmsgb(this);
+        unotenoughinputmsgb.setIcon(QMessageBox::Information);
+        unotenoughinputmsgb.setWindowTitle(tr("Insert a USB flash drive"));
+        unotenoughinputmsgb.setText(tr("No USB flash drives were found. If you have already inserted a USB drive, try reformatting it as FAT32."));
+        unotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
+        unotenoughinputmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
+        switch (unotenoughinputmsgb.exec())
+        {
+            case QMessageBox::Ok:
+                break;
+            default:
+                break;
+        }
+    }
+#ifdef Q_OS_MAC
+    if (locatemountpoint(m_DriverPath) == "NOT MOUNTED")
+        callexternapp("diskutil", "mount "+usbDriverPath);
+#endif
+    #ifdef Q_OS_LINUX
+    else if (m_UnetbootinPtr->locatemountpoint(m_DriverPath) == "NOT MOUNTED")
+    {
+        QMessageBox merrordevnotmountedmsgbx(this);
+        merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
+        merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
+        merrordevnotmountedmsgbx.setText(QString(tr("You must first mount the USB drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB drive.")).arg(m_DriverPath));
+        merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
+        merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
+        switch (merrordevnotmountedmsgbx.exec())
+        {
+            case QMessageBox::Ok:
+                break;
+            default:
+                break;
+        }
+    }
+    #endif
+    else if (m_ImagePath.isEmpty())
+    {
+        QMessageBox fnotenoughinputmsgb(this);
+        fnotenoughinputmsgb.setIcon(QMessageBox::Information);
+        fnotenoughinputmsgb.setWindowTitle(tr("Select a disk image file"));
+        fnotenoughinputmsgb.setText(tr("You must select a disk image file to load."));
+        fnotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
+        fnotenoughinputmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
+        switch (fnotenoughinputmsgb.exec())
+        {
+            case QMessageBox::Ok:
+                break;
+            default:
+                break;
+        }
+    }
+    else if (!QFile::exists(m_ImagePath) && !m_ImagePath.startsWith("http://") && !m_ImagePath.startsWith("ftp://"))
+    {
+        QMessageBox ffnotexistsmsgb(this);
+        ffnotexistsmsgb.setIcon(QMessageBox::Information);
+        ffnotexistsmsgb.setWindowTitle(tr("Diskimage file not found"));
+        ffnotexistsmsgb.setText(tr("The specified diskimage file %1 does not exist.").arg(m_ImagePath));
+        ffnotexistsmsgb.setStandardButtons(QMessageBox::Ok);
+        ffnotexistsmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
+        switch (ffnotexistsmsgb.exec())
+        {
+            case QMessageBox::Ok:
+                break;
+            default:
+                break;
+        }
+    }
+    else
+    {
+        return true;
+    }
+    return false;
+}

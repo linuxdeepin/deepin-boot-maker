@@ -1,0 +1,11 @@
+#!/bin/bash
+
+qtlupdate=lupdate
+qtlrelease=lrelease
+qtlconvert=lconvert
+tsfile=po/deepin-boot-maker.ts
+
+$qtlupdate deepin-boot-maker.pro -target-language en_US -ts $tsfile
+$qtlconvert -i $tsfile -if ts -o po/deepin-boot-maker.pot -of po
+rm $tsfile
+
