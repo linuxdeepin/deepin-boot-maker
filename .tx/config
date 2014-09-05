@@ -5,6 +5,11 @@ mode = developer
 
 [deepin-boot-maker.deepin-boot-makerpot]
 file_filter = src/po/<lang>.po
+source_file = src/po/deepin-boot-maker.pot
 source_lang = en
 type = PO
 
+[deepin-boot-maker.desktop]
+source_file = debian/deepin-boot-maker.desktop
+source_lang = en
+type = DESKTOP 
