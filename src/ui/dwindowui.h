@@ -39,16 +39,18 @@ signals:
 public slots:
     void disableStartButton();
     void enableStartButton();
+    void disableFormatOption(bool show);
 
 private:
-    void InitUI();
-    void AddProcessUI(QBoxLayout * top);
-    void AddOptionUI(QBoxLayout * top);
+    void initUI();
+    void addProcessUI(QBoxLayout * top);
+    void addOptionUI(QBoxLayout * top);
 
-    void SwitchToProcessUI();
+
+    void switchToEndUI();
+    void switchToProcessUI();
 
 private slots:
-    void SwitchToEndUI();
     void start();
     void refrshUsbDriverList();
     void checkProcess();

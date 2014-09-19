@@ -1,11 +1,8 @@
 #include "dpushbutton.h"
 #include "dtips.h"
 
-DPushButton::DPushButton(const QString& text, QWidget *parent) :
-    QPushButton(text, parent)
-{
-    QString style = "DPushButton{"
-        "color: #b4b4b4;"
+static QString sStyleTemplate = "DPushButton{"
+        "color: %1;"
         "font-size: 12px;"
         "border-image:url(:/ui/images/transparent_button_normal.png) 3 6 3 6;"
         "border-top: 3px transparent;"
@@ -27,6 +24,11 @@ DPushButton::DPushButton(const QString& text, QWidget *parent) :
         "border-right: 6px transparent;"
         "border-left: 6px transparent;"
     "}";
+
+DPushButton::DPushButton(const QString& text, QWidget *parent) :
+    QPushButton(text, parent)
+{
+    QString style = sStyleTemplate.arg("#b4b4b4");
     setFocusPolicy(Qt::NoFocus);
     setStyleSheet(style);
     m_showDtips = false;
@@ -37,6 +39,11 @@ DPushButton::DPushButton(const QString& text, QWidget *parent) :
     m_tipsString = "";
     connect(this, SIGNAL(leaved()), this, SLOT(leaveDone()));
 
+}
+
+void DPushButton::setTextColor(const QString &colorStr){
+    QString style = sStyleTemplate.arg(colorStr);
+    setStyleSheet(style);
 }
 
 void DPushButton::setImages(const QString &normal, const QString &hover, const QString &pressed){

@@ -42,7 +42,7 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstLayout->addSpacing(25 + 250 / 20);
 
     m_IsoLabel = new DImageIcon(this);
-    m_IsoLabel->setDTips(tr("Select ISO"));
+    m_IsoLabel->setDTips(tr("<p style='font-weight:bold;'>Select a disk image</p>"));
     m_FirstLayout->addWidget(m_IsoLabel);
     m_FirstLayout->setAlignment(m_IsoLabel, Qt::AlignCenter);
     connect(m_IsoLabel, SIGNAL(clicked()), this, SLOT(selectISO()));
@@ -94,8 +94,10 @@ void DProgressFrame::finishSelectDev(const QString &) {
 void DProgressFrame::usbDevSelected(const QString & dev) {
     if (dev.isEmpty()) {
         m_UsbLabel->setStatus(DDevIcon::UnSelected);
+        emit selectEmptyUsb(false);
     } else {
         m_UsbLabel->setStatus(DDevIcon::Selected);
+        emit selectEmptyUsb(true);
     }
     setUsbDev(dev);
 }
@@ -132,7 +134,7 @@ void DProgressFrame::slideUsbSeclect() {
     int offsety=frameRect().height();//inherited from mother
     m_SecondWidget->setGeometry(0, 0, offsetx, offsety);
     offsetx=0;
-    offsety=offsety;
+    //offsety=offsety;
 
     //re-position the next widget outside/aside of the display area
     QPoint pnext=m_SecondWidget->pos();
@@ -191,7 +193,7 @@ void DProgressFrame::slideProcess() {
 
     m_FirstWidget->setGeometry ( 0,  64 - offsety, offsetx, offsety );
     offsetx=0;
-    offsety=offsety;
+    //offsety=offsety;
 
     //re-position the next widget outside/aside of the display area
     QPoint pnext=m_FirstWidget->pos();

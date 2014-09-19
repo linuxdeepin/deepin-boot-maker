@@ -96,7 +96,7 @@ bool BootMaker::isISOImage(QString isoPath) {
 bool BootMaker::confirmFormatDlg() {
     QMessageBox msgbox(this);
     msgbox.setIcon(QMessageBox::Critical);
-    msgbox.setWindowTitle(tr("Format USB flash disk"));
+    msgbox.setWindowTitle(tr("Format USB flash drive"));
     msgbox.setText(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
     msgbox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
     msgbox.setButtonText(QMessageBox::Ok, tr("Ok"));
@@ -139,7 +139,7 @@ bool BootMaker::checkInstallPara() {
         QMessageBox unotenoughinputmsgb(this);
         unotenoughinputmsgb.setIcon(QMessageBox::Information);
         unotenoughinputmsgb.setWindowTitle(tr("Insert a USB flash drive"));
-        unotenoughinputmsgb.setText(tr("No USB flash drives were found. If you have already inserted a USB drive, try reformatting it as FAT32."));
+        unotenoughinputmsgb.setText(tr("No USB flash drives were found. If you have already inserted a USB flash drive, try to reformat it as FAT32."));
         unotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
         unotenoughinputmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
         switch (unotenoughinputmsgb.exec())
@@ -160,7 +160,7 @@ bool BootMaker::checkInstallPara() {
         QMessageBox merrordevnotmountedmsgbx(this);
         merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
         merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
-        merrordevnotmountedmsgbx.setText(QString(tr("You must first mount the USB drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB drive.")).arg(m_DriverPath));
+        merrordevnotmountedmsgbx.setText(QString(tr("You must firstly mount the USB flash drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB flash drive.")).arg(m_DriverPath));
         merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
         merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
         switch (merrordevnotmountedmsgbx.exec())
@@ -192,8 +192,8 @@ bool BootMaker::checkInstallPara() {
     {
         QMessageBox ffnotexistsmsgb(this);
         ffnotexistsmsgb.setIcon(QMessageBox::Information);
-        ffnotexistsmsgb.setWindowTitle(tr("Diskimage file not found"));
-        ffnotexistsmsgb.setText(tr("The specified diskimage file %1 does not exist.").arg(m_ImagePath));
+        ffnotexistsmsgb.setWindowTitle(tr("Disk image file not found"));
+        ffnotexistsmsgb.setText(tr("The specified disk image file %1 does not exist.").arg(m_ImagePath));
         ffnotexistsmsgb.setStandardButtons(QMessageBox::Ok);
         ffnotexistsmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
         switch (ffnotexistsmsgb.exec())

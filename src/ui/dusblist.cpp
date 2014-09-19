@@ -2,11 +2,12 @@
 
 #include <QStandardItemModel>
 
-QString DUsbList::s_EmptyString = tr("NO Usb Driver");
+QString DUsbList::s_EmptyString;
 
 DUsbList::DUsbList(QWidget *parent) :
     DListView(parent)
 {
+    s_EmptyString = tr("USB drive not detected");
     m_StandardItemModel = new QStandardItemModel();
     initList();
     this->setFixedSize(160,120);

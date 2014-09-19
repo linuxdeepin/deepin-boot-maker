@@ -35,6 +35,7 @@ signals:
     void isoFileSelected(const QString&);
     void changedUsbSeclet();
     void changedProgress();
+    void selectEmptyUsb(bool);
 
 public slots:
     void toggleShadow();

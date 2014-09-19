@@ -16,7 +16,7 @@ public:
     explicit DCheckBox(const QString& text, QWidget *parent = 0);
 
     void setFixedWidth(int w);
-
+    void setDisabled(bool);
     void setChecked(bool checked);
 
     bool checked() { return m_checkState == Qt::Checked; }

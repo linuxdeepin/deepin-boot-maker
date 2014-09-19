@@ -9,6 +9,7 @@ class DTips : public QLabel
 public:
     explicit DTips(QWidget *parent = 0);
 
+    void paintEvent(QPaintEvent *);
 signals:
     void poped();
 

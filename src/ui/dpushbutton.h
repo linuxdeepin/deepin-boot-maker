@@ -10,6 +10,7 @@ class DPushButton : public QPushButton
 public:
     explicit DPushButton(const QString& text, QWidget *parent = 0);
 
+    void setTextColor(const QString& colorStr);
     void setImages(const QString& normal, const QString& hover, const QString& pressed);
     void setDTips(const QString& tips) {m_tipsString = tips;}
     void showDTips(bool show) {m_showDtips = show;}

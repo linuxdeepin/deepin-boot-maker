@@ -171,5 +171,6 @@
         <file>ui/images/iso/roate/7.png</file>
         <file>ui/images/iso/roate/8.png</file>
         <file>ui/images/iso/roate/9.png</file>
+        <file>ui/images/success.png</file>
     </qresource>
 </RCC>

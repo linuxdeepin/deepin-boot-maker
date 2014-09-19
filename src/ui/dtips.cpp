@@ -1,7 +1,11 @@
 #include "dtips.h"
 #include <QPropertyAnimation>
 #include <QSizePolicy>
+#include <QPainter>
+
 #include "dwindowui.h"
+#include "dui.h"
+
 DTips::DTips(QWidget *parent):
     QLabel(parent)
 {
@@ -11,20 +15,60 @@ DTips::DTips(QWidget *parent):
         "DTips { "
         "color:#ebab4c;"
         "font-size: 10px;"
-        "border-image : url(:/ui/images/tips.png) 5 6 17 6;"
-        "border-top: 5px transparent;"
-        "border-bottom: 17px transparent;"
-        "border-right: 6px transparent;"
-        "border-left: 6px transparent;"
+        "margin-bottom: 7px;"
         "}";
     this->setAlignment(Qt::AlignCenter);
     this->setStyleSheet(qss);
     this->setFocusPolicy(Qt::NoFocus);
-    this->setFixedHeight(this->font().pointSize() + 24);
+    this->setFixedHeight(8 + 24);
     this->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding));
     this->setWindowFlags(Qt::WindowStaysOnTopHint );
     m_active = false;
     this->setFrameStyle(Qt::FramelessWindowHint);
+}
+
+QPainterPath DrawTipsPath(const QRect& rect, int radius) {
+    int triHeight = 8;
+    int triWidth = 12;
+
+    QPoint topLeft(rect.x(), rect.y());
+    QPoint topRight(rect.x() + rect.width(), rect.y());
+    QPoint bottomRight(rect.x() + rect.width(), rect.y() + rect.height() - triHeight);
+    QPoint bottomLeft(rect.x(), rect.y() + rect.height() - triHeight);
+    QPoint cornerPoint(rect.x() + rect.width() / 2, rect.y() + rect.height());
+    QPainterPath border;
+    border.moveTo(topLeft.x() + radius, topLeft.y());
+    border.lineTo(topRight.x() - radius, topRight.y());
+    border.arcTo(topRight.x() - 2 * radius, topRight.y(), 2 * radius, 2 * radius, 90, -90);
+    border.lineTo(bottomRight.x(), bottomRight.y() - radius);
+    border.arcTo(bottomRight.x() - 2 * radius, bottomRight.y() - 2 * radius, 2 * radius, 2 * radius, 0, -90);
+    border.lineTo(cornerPoint.x() + triWidth / 2, cornerPoint.y() - triHeight);
+    border.lineTo(cornerPoint);
+    border.lineTo(cornerPoint.x() - triWidth / 2, cornerPoint.y() - triHeight);
+    border.lineTo(bottomLeft.x() + radius, bottomLeft.y());
+    border.arcTo(bottomLeft.x(), bottomLeft.y() - 2 * radius, 2 * radius, 2 * radius, -90, -90);
+    border.lineTo(topLeft.x(), topLeft.y() + radius);
+    border.arcTo(topLeft.x(), topLeft.y(), 2 * radius, 2 * radius, 180, -90);
+    return border;
+}
+
+void DTips::paintEvent(QPaintEvent *e) {
+    QPainter painter(this);
+    painter.save();
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    QRect rect = QLabel::rect();
+
+    QPainterPath border = DrawTipsPath(rect, 4);
+    QRect shadowRect = QRect(rect.x() + 1, rect.y()+1, rect.width() - 2, rect.height() - 1);
+    QPainterPath shadowBorder = DrawTipsPath(shadowRect, 4);
+
+    QPen borderPen(DUI::TipsBorderColor);
+    painter.strokePath(border, borderPen);
+
+    painter.fillPath(shadowBorder, QBrush(DUI::TipsBackground));
+
+    QLabel::paintEvent(e);
 }
 
 void DTips::pack() {

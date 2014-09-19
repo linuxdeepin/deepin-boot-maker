@@ -17,7 +17,7 @@ DDevIcon::DDevIcon(QWidget *parent) :
         breatheSourceList.append(QString(":/ui/images/usb/%1.png").arg(i));
     }
     m_BreatheMovie = new DSerialFrameMovie(breatheSourceList, this);
-    m_BreatheMovie->setDTips(tr("Select USB"));
+    m_BreatheMovie->setDTips(tr("<p style='font-weight:bold;'>Select USB drive</p>"));
     m_BreatheMovie->showDTips(true);
     m_Layout->addWidget(m_BreatheMovie);
     m_Layout->setAlignment(m_BreatheMovie, Qt::AlignHCenter);

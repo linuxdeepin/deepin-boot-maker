@@ -26,8 +26,10 @@
 // TODO: move all dui class to namespace DUI, and then remove this
 // using namespace DUI;
 
-const int labelMaxWidth = 220;
-const int buttonFixWidth = 100;
+//static const int sLabelMaxWidth = 220;
+static const int sButtonFixWidth = 100;
+static const int sButtonFixHeight = 22;
+
 DWindowUI *DWindowUI::s_MainWindow = NULL;
 DWindowUI::DWindowUI(QWidget *parent) :
     QMainWindow(parent)
@@ -49,7 +51,7 @@ DWindowUI::DWindowUI(QWidget *parent) :
     this->setGraphicsEffect(shadow);
 
     m_BootMaker = new BootMaker(this);
-    InitUI();
+    initUI();
 }
 
 DWindowUI::~DWindowUI(){
@@ -79,7 +81,7 @@ void DWindowUI::paintEvent(QPaintEvent *)
     painter.fillPath(border, QBrush(linearGradient));
 }
 
-void DWindowUI::InitUI() {
+void DWindowUI::initUI() {
     m_topLayout = new QVBoxLayout();
 
     QHBoxLayout *btlayout = new QHBoxLayout();
@@ -108,7 +110,7 @@ void DWindowUI::InitUI() {
     m_topLayout->setAlignment(m_progressFrame, Qt::AlignCenter);
 
     m_progressText = new QLabel();
-    m_progressText->setText(QString("<p style='color:white; font-size:12px;'>Has written %1% </p>").arg(m_BootMaker->processRate()));
+    m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>%1% has been completed</p>")).arg(m_BootMaker->processRate()));
     m_progressLayout->addWidget(m_progressText);
     m_progressLayout->setAlignment(m_progressText, Qt::AlignCenter);
     m_progressText->hide();
@@ -119,32 +121,35 @@ void DWindowUI::InitUI() {
     connect(this, SIGNAL(refrshUsbDrivers(QStringList)), m_progressFrame, SLOT(refreshUsbDrivers(QStringList)));
     connect(m_progressFrame, SIGNAL(changedProgress()), this, SLOT(enableStartButton()));
     connect(m_progressFrame, SIGNAL(changedUsbSeclet()), this, SLOT(disableStartButton()));
+    connect(m_progressFrame, SIGNAL(selectEmptyUsb(bool)), this, SLOT(disableFormatOption(bool)));
 
-    m_formatCheckBox = new DCheckBox(tr("<p style='color:white; font-size:12px;'>Format USB flash disk before installation to improve the making success rate.</p>"));
-    m_formatCheckBox->setFixedWidth(220);
-    m_formatCheckBox->setFixedHeight(30);
+    m_formatCheckBox = new DCheckBox(tr("<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be improved by formatting USB drive.</p>"));
+    m_formatCheckBox->setFixedWidth(200);
+    m_formatCheckBox->setFixedHeight(28);
+    m_formatCheckBox->setMaximumSize(240, 45);
+    m_formatCheckBox->setDisabled(true);
     connect(m_formatCheckBox, SIGNAL(clicked()), this, SLOT(confirmFormat()));
     m_optionLayout->addWidget(m_formatCheckBox);
     m_optionLayout->setAlignment(m_formatCheckBox, Qt::AlignCenter);
-    m_optionLayout->addSpacing(4);
+    m_optionLayout->addSpacing(8);
 
-    m_processHints = new QLabel(("<a style='color:#ffffff; font-size:12px'>Please </a>"
-                                         "<a style='color:#ebab4c; font-size:12px'>DO NOT</a>"
-                                         "<a style='color:#ffffff; font-size:12px'> remove the USB flash drive or shutdown while file is writing.<a>"));
-    m_processHints->setFixedWidth(labelMaxWidth);
+    m_processHints = new QLabel((tr("<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive or shutdown while file is writing.<a>")));
+    m_processHints->setFixedWidth(230);
+    m_processHints->setFixedHeight(45);
+    m_processHints->setAlignment(Qt::AlignCenter);
     m_processHints->setWordWrap(true);
     m_optionLayout->addWidget(m_processHints);
     m_optionLayout->setAlignment(m_processHints, Qt::AlignCenter);
     m_processHints->hide();
 
-    m_optionLayout->addSpacing(4);
+    m_optionLayout->addSpacing(0);
     m_start = new DPushButton(tr("Start"));
-    m_start->setFixedWidth(buttonFixWidth);
+    m_start->setFixedSize(sButtonFixWidth, sButtonFixHeight);
     connect(m_start, SIGNAL(clicked()), this, SLOT(start()));
 
     m_optionLayout->addWidget(m_start);
     m_optionLayout->setAlignment(m_start, Qt::AlignCenter);
-    m_optionLayout->addSpacing(10);
+    m_optionLayout->addSpacing(30);
     m_optionLayout->addStretch();
 
     m_topLayout->addLayout(m_optionLayout);
@@ -156,6 +161,10 @@ void DWindowUI::InitUI() {
     m_usbRefreshTimer->setInterval(3000);
     connect(m_usbRefreshTimer, SIGNAL(timeout()), this, SLOT(refrshUsbDriverList()));
     m_usbRefreshTimer->start();
+}
+
+void DWindowUI::disableFormatOption(bool disbale) {
+    m_formatCheckBox->setDisabled(!disbale);
 }
 
 void DWindowUI::disableStartButton(){
@@ -174,7 +183,7 @@ void DWindowUI::start() {
     if (0 != m_BootMaker->start(isoPath, usbDev, format)) {
         return;
     }
-    SwitchToProcessUI();
+    switchToProcessUI();
 }
 
 void DWindowUI::confirmFormat() {
@@ -189,17 +198,17 @@ void DWindowUI::refrshUsbDriverList() {
 
 void DWindowUI::checkProcess() {
     if (m_BootMaker->isFinish()) {
-        m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>Has written %1% </p>")).arg(100));
-        SwitchToEndUI();
+        m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>%1% has been completed</p>")).arg(100));
+        switchToEndUI();
         m_ProcessTimer->stop();
         m_progressFrame->setProgress(100);
     } else {
         m_progressFrame->setProgress(m_BootMaker->processRate());
-        m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>Has written %1% </p>")).arg(m_BootMaker->processRate()));
+        m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>%1% has been completed</p>")).arg(m_BootMaker->processRate()));
     }
 }
 
-void DWindowUI::SwitchToProcessUI() {
+void DWindowUI::switchToProcessUI() {
     m_closeButton->setDisabled(true);
     m_formatCheckBox->hide();
     m_start->hide();
@@ -215,7 +224,8 @@ void DWindowUI::SwitchToProcessUI() {
     m_progressFrame->switchProgress();
 }
 
-void DWindowUI::SwitchToEndUI() {
+void DWindowUI::switchToEndUI() {
+    qDebug()<<"to End";
 
     m_closeButton->setDisabled(false);
 
@@ -229,36 +239,42 @@ void DWindowUI::SwitchToEndUI() {
     m_progressText->hide();
     m_processHints->hide();
     m_progressFrame->hide();
-    QLabel *congratulations = new QLabel(tr("<p style='color:#057aff; font-size:24px'>Congratulations!</p>"));
-    QLabel *finishHints = new QLabel(tr("<p style='color:#ffffff; font-size:12px'>You have successfully created a boot disk and select your boot disk to install Deepin OS after restarted.</p>"));
-    finishHints->setFixedWidth(labelMaxWidth);
+    QLabel *sucess = new QLabel();
+    sucess->setPixmap(QPixmap(":/ui/images/success.png"));
+
+    QLabel *congratulations = new QLabel(tr("<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made successfully</p>"));
+    QLabel *finishHints = new QLabel(tr("<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot when installing Deepin OS.</p>"));
+    finishHints->setFixedWidth(200);
     finishHints->setWordWrap(true);
 
     QLabel *tips = new QLabel(tr(
-         "<a style='color:#057aff; font-size:12px'>Tips: </a>"
-         "<a style='color:#ffffff; font-size:12px'>If the boot failure, please close the BIOS EFO option</a>"));
-    tips->setFixedWidth(labelMaxWidth);
+         "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable EFI option.</a>"));
+    tips->setFixedWidth(200);
     tips->setWordWrap(true);
-    m_topLayout->addSpacing(60);
+    m_topLayout->addSpacing(34);
+    m_topLayout->addWidget(sucess);
+    m_topLayout->addSpacing(16);
+    m_topLayout->setAlignment(sucess, Qt::AlignCenter);
     m_topLayout->addWidget(congratulations);
     m_topLayout->setAlignment(congratulations, Qt::AlignCenter);
-    m_topLayout->addSpacing(10);
+    m_topLayout->addSpacing(50);
     m_topLayout->addWidget(finishHints);
     m_topLayout->setAlignment(finishHints, Qt::AlignCenter);
-    m_topLayout->addSpacing(20);
     m_topLayout->addWidget(tips);
     m_topLayout->setAlignment(tips, Qt::AlignCenter);
 
     m_ActionLayout = new QHBoxLayout();
     DPushButton *rebootLater = new DPushButton(tr("Restart Later"));
-    rebootLater->setFixedWidth(buttonFixWidth);
+    rebootLater->setFixedSize(sButtonFixWidth, sButtonFixHeight);
     DPushButton *rebootNow = new DPushButton(tr("Restart Now"));
-    rebootNow->setFixedWidth(buttonFixWidth);
+    rebootNow->setTextColor("#ffffff");
+
+    rebootNow->setFixedSize(sButtonFixWidth, sButtonFixHeight);
     connect(rebootLater, SIGNAL(clicked()), this, SLOT(close()));
     connect(rebootNow, SIGNAL(clicked()), m_BootMaker, SLOT(reboot()));
 
     m_ActionLayout->setMargin(0);
-    m_ActionLayout->setSpacing(20);
+    m_ActionLayout->setSpacing(10);
     m_ActionLayout->addStretch();
     m_ActionLayout->addWidget(rebootLater);
     m_ActionLayout->addWidget(rebootNow);
@@ -267,7 +283,7 @@ void DWindowUI::SwitchToEndUI() {
     m_topLayout->addStretch();
     m_topLayout->addLayout(m_ActionLayout);
     m_topLayout->setAlignment(m_ActionLayout, Qt::AlignCenter);
-    m_topLayout->addSpacing(30);
+    m_topLayout->addSpacing(40);
 }
 
 

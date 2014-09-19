@@ -11,6 +11,7 @@ DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
     QHBoxLayout *top = new QHBoxLayout();
     top->setSpacing(0);
     top->setMargin(0);
+    top->addStretch();
 
     m_styleChecked = "QPushButton{"
         "border-image:url(:/ui/images/checkbox_checked.png);"
@@ -87,4 +88,8 @@ void DCheckBox::setChecked(bool checked){
         m_checkBox->setStyleSheet(m_styleChecked);
         setCheckState(Qt::Checked);
     }
+}
+
+void DCheckBox::setDisabled(bool disable) {
+    m_checkBox->setDisabled(disable);
 }

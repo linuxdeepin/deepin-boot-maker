@@ -496,10 +496,11 @@ bool unetbootin::overwritefileprompt(QString ovwfileloc)
     QMessageBox overwritefilemsgbx;
 	overwritefilemsgbx.setIcon(QMessageBox::Warning);
 	overwritefilemsgbx.setWindowTitle(QString(tr("%1 exists, overwrite?")).arg(ovwfileloc));
-	overwritefilemsgbx.setText(QString(tr("The file %1 already exists. Press 'Yes to All' to overwrite it and not be prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to retain your existing version. If in doubt, press 'Yes to All'.")).arg(ovwfileloc));
+
+	overwritefilemsgbx.setText(QString(tr("The file %1 already exists. Press 'Yes to All' to overwrite it and not be prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your existing version. If in doubt, press 'Yes to All'.")).arg(ovwfileloc));
 	overwritefilemsgbx.setStandardButtons(QMessageBox::Yes | QMessageBox::YesToAll | QMessageBox::No);
     overwritefilemsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
-    overwritefilemsgbx.setButtonText(QMessageBox::YesToAll, tr("YesToAll"));
+    overwritefilemsgbx.setButtonText(QMessageBox::YesToAll, tr("Yes to All"));
     overwritefilemsgbx.setButtonText(QMessageBox::No, tr("No"));
     switch (overwritefilemsgbx.exec())
 	{
@@ -529,7 +530,7 @@ bool unetbootin::ignoreoutofspaceprompt(QString destindir)
 	overwritefilemsgbx.setText(QString(tr("The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to ignore this error and attempt to continue installation, and 'No to All' to ignore all out-of-space errors.")).arg(destindir));
 	overwritefilemsgbx.setStandardButtons(QMessageBox::Yes | QMessageBox::YesToAll | QMessageBox::No);
     overwritefilemsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
-    overwritefilemsgbx.setButtonText(QMessageBox::YesToAll, tr("YesToAll"));
+    overwritefilemsgbx.setButtonText(QMessageBox::YesToAll, tr("Yes to All"));
     overwritefilemsgbx.setButtonText(QMessageBox::No, tr("No"));
 	switch (overwritefilemsgbx.exec())
 	{
