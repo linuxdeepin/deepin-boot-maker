@@ -1,16 +1,17 @@
 # 
 # Translators:
-# Maxximo88 <real.massimo@hotmail.it>, 2014
+# Carl Andersen <carl@manjaro.dk>, 2014
+# Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-09-24 20:50+0000\n"
-"Last-Translator: Maxximo88 <real.massimo@hotmail.it>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/deepin-boot-maker/language/it/)\n"
+"PO-Revision-Date: 2014-09-24 11:37+0000\n"
+"Last-Translator: Carl Andersen <carl@manjaro.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/deepin-boot-maker/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
@@ -18,65 +19,65 @@ msgstr ""
 #: ../bootmaker.cpp:41
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
-msgstr "Formattazione dispositivo USB fallita"
+msgstr "Fejl ved formattering af USB-flashdrev"
 
 #: ../bootmaker.cpp:42
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr "Sono supportate solo dispositivi Fat32. Vuoi formattarlo?Tutte le partizioni ed i dati presenti saranno eliminati, nel caso fai un backup prima di proseguire."
+msgstr "Kun FAT32 USB-flashdrev understøttes. Nødt til at formatere? Alle partitioner og data vil blive tabt under formateringen, så sikkerhedskopie  dataene hvis du har noget på USB-flashdrev."
 
 #: ../bootmaker.cpp:44
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "Formato"
+msgstr "Format"
 
 #: ../bootmaker.cpp:45 ../bootmaker.cpp:103
 msgctxt "BootMaker|"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annuller"
 
 #: ../bootmaker.cpp:89 ../bootmaker.cpp:90
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
-msgstr "Seleziona un'immagine ISO"
+msgstr "Vælg venligst et iso-aftryk"
 
 #: ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
-msgstr "Formatta unità USB"
+msgstr "Formater USB-flashdrev"
 
 #: ../bootmaker.cpp:100
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "Tutti i dati saranno persi con la formattazione., fai un backup e poi premi OK."
+msgstr "Alle data vil blive tabt under formatering, sikkerhedskopiere hvis du har noget på USB-flasdrev, og tryk derefter på OK-knappen."
 
 #: ../bootmaker.cpp:102 ../bootmaker.cpp:144 ../bootmaker.cpp:165
 #: ../bootmaker.cpp:182 ../bootmaker.cpp:198
 msgctxt "BootMaker|"
 msgid "Ok"
-msgstr "Ok"
+msgstr "OK"
 
 #: ../bootmaker.cpp:141
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
-msgstr "Inserisci un dispositivo USB"
+msgstr "Indsæt et USB flash drive"
 
 #: ../bootmaker.cpp:142
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
-msgstr "Nessun dispositivo USB rilevato. Se hai già collegato il dispositivo prova a riformattarlo in Fat32."
+msgstr "Ingen USB-flashdrev blev fundet. Hvis du allerede har indsat et USB-flashdrev, skal du prøve at omformatere den til FAT32."
 
 #: ../bootmaker.cpp:162
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
-msgstr "%1 non montato"
+msgstr "%1  er ikke monteret"
 
 #: ../bootmaker.cpp:163
 #, qt-format
@@ -85,127 +86,127 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr "Devi prima montare il dispositivo USB %1 in un punto di mount. Molte distribuzioni lo fanno in automatic, dopodiché rimuovi lo e reinserisci il dispositivo USB."
+msgstr "Du skal først montere USB-flashdrev %1 til et mountpunkt. De fleste distributioner vil gøre dette automatisk, når du fjerner og genindsætter USB-flashdrevet."
 
 #: ../bootmaker.cpp:179
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
-msgstr "Seleziona un file immagine"
+msgstr "Vælg en disk image fil"
 
 #: ../bootmaker.cpp:180
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
-msgstr "Devi selezionare il file immagine da caricare"
+msgstr "Du skal vælge en disk image fil der skal loades."
 
 #: ../bootmaker.cpp:195
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
-msgstr "File immagine disco non trovata"
+msgstr "Disk image fil ikke fundet"
 
 #: ../bootmaker.cpp:196
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr "L'immagine disco %1 non esiste.l'immagine disco %1 non esiste."
+msgstr "Den angivne disk image fil %1 findes ikke."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "<p style='font-weight:bold;'>Select USB drive</p>"
-msgstr "<p style='font-weight:bold;'>Seleziona il drive USB</p>"
+msgstr "<p style='font-weight:bold;'> Vælg USB-drev</p>"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "<p style='font-weight:bold;'>Select a disk image</p>"
-msgstr "<p style='font-weight:bold;'>Seleziona l'immagine disco</p>"
+msgstr "<p style='font-weight:bold;'>Vælg et disk aftryk</p>"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
-msgstr "Dispositivo USB non rilevato"
+msgstr "USB-drevet blev ikke detekteret"
 
 #: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
-msgstr "<p style='color:white; font-size:12px;'>completamento %1%</p>"
+msgstr "<p style='color:white; font-size:12px;'>%1% er blevet færdiggjort</p>"
 
 #: ../ui/dwindowui.cpp:126
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px;'>il grado di successo potrebbe aumentare formattando il dispositivo.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>succesraten kan forbedres ved at formatere USB-drevet.</p>"
 
 #: ../ui/dwindowui.cpp:136
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Non rimuovere il dispositivo USB mentre sto elaborando.<a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Du må IKKE fjerne USB-drevet eller slukke computeren mens filen overføres.<a>"
 
 #: ../ui/dwindowui.cpp:146
 msgctxt "DWindowUI|"
 msgid "Start"
-msgstr "Inizio"
+msgstr "Start"
 
 #: ../ui/dwindowui.cpp:245
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
-msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Operazione conclusa con successo!</p>"
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Blev overført med succes</p>"
 
 #: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px'>ricordati di selezionare il dispositivo usb durante il boot per poi installare Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Vælg venligdt USB-drev til opstart, når du installerer Deepin</p>"
 
 #: ../ui/dwindowui.cpp:250
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Se fallisce disabilita l'opzione EFI.</a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Det mislykkedes, prøv at deaktivere EFI indstilling.</a>"
 
 #: ../ui/dwindowui.cpp:267
 msgctxt "DWindowUI|"
 msgid "Restart Later"
-msgstr "Riavvia dopo"
+msgstr "Genstarte senere"
 
 #: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid "Restart Now"
-msgstr "Riavvia ora"
+msgstr "Genstart nu"
 
 #: ../unetbootin.cpp:226 ../unetbootin.cpp:232 ../unetbootin.cpp:236
 #: ../unetbootin.cpp:240 ../unetbootin.cpp:244 ../unetbootin.cpp:250
 #: ../unetbootin.cpp:278
 msgctxt "unetbootin|"
 msgid "either"
-msgstr "o"
+msgstr "enten"
 
 #: ../unetbootin.cpp:257
 msgctxt "unetbootin|"
 msgid "LiveUSB persistence"
-msgstr "LiveUSB Persistente"
+msgstr "LiveUSB handling"
 
 #: ../unetbootin.cpp:272
 msgctxt "unetbootin|"
 msgid "FAT32-formatted USB drive"
-msgstr "Dispositivo formattato in FAT32"
+msgstr "FAT32-formatteret USB drive"
 
 #: ../unetbootin.cpp:276
 msgctxt "unetbootin|"
 msgid "EXT2-formatted USB drive"
-msgstr "Dispositivo formattato in EXT2"
+msgstr "EXT2-formatteret USB drive"
 
 #: ../unetbootin.cpp:498
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 exists, overwrite?"
-msgstr "%1 rilevata, sovrascrivere?"
+msgstr "%1 findes, overskrives?"
 
 #: ../unetbootin.cpp:500
 #, qt-format
@@ -214,28 +215,28 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr "Il file %1 esiste già. Premi 'Si a tutti' per sovrascriverlo e far in modo che non ti venga chiesto nuovamente., 'Si' per far in modo che ti venga chiesto ogni volta, 'No' per lasciare la versione attuale. Se sei in dubbio premi 'Si a tutti'."
+msgstr "Filen %1 findes allerede. Tryk på 'Ja til alle\" for at overskrive den og ikke blive bedt om fet igen,' Ja 'for at overskrive filerne én ad gangen, og' Nej 'for at bevare den eksisterende version. Hvis du er i tvivl, skal du trykke på 'Ja til alle\"."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"
 msgid "Ok"
-msgstr "Ok"
+msgstr "OK"
 
 #: ../unetbootin.cpp:503 ../unetbootin.cpp:533
 msgctxt "unetbootin|"
 msgid "Yes to All"
-msgstr "Si a tutti"
+msgstr "Ja til alle"
 
 #: ../unetbootin.cpp:504 ../unetbootin.cpp:534
 msgctxt "unetbootin|"
 msgid "No"
-msgstr "No"
+msgstr "Nej"
 
 #: ../unetbootin.cpp:529
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
-msgstr "%1 non ha abbastanza spazio, annullare l'installazione?"
+msgstr "%1 er fyldt op , afbryd installationen?"
 
 #: ../unetbootin.cpp:530
 #, qt-format
@@ -244,125 +245,125 @@ msgid ""
 "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to"
 " ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr "La cartella %1 è piena. Premi \"Si\" per annullare l'installazione, \"No\" per ignorare questo errore e continuare l'installazione, oppure \"No a tutti\" per ignorare tutti gli errori di spazio."
+msgstr "USB %1 er er fyldt op. Tryk på 'Ja' for at afbryde installationen, 'Nej' for at ignorere denne fejl og forsøge at fortsætte installationen, og 'Nej til alle' for at ignorere alle fejl."
 
 #: ../unetbootin.cpp:559 ../unetbootin.cpp:1140 ../unetbootin.cpp:1232
 #: ../unetbootin.cpp:2970 ../unetbootin.cpp:2981 ../unetbootin.cpp:2992
 #: ../unetbootin.cpp:3304
 msgctxt "unetbootin|"
 msgid "USB Drive"
-msgstr "Drive USB"
+msgstr "USB pen"
 
 #: ../unetbootin.cpp:627
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating kernel file in %1"
-msgstr "Posiziono il file del kernel in %1"
+msgstr "Lokaliseret kerne fil i %1"
 
 #: ../unetbootin.cpp:677
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying kernel file from %1"
-msgstr "Copia del Kernel da %1"
+msgstr "Kopierer kerne fil fra %1"
 
 #: ../unetbootin.cpp:683
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating initrd file in %1"
-msgstr "Posiziono Initrd in %1"
+msgstr "Lokaliseret initrd fil i %1"
 
 #: ../unetbootin.cpp:720
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
-msgstr "Estraggo Initrd in %1"
+msgstr "ekstrakt initrd i %1"
 
 #: ../unetbootin.cpp:722
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
-msgstr "Posizionamento Initrd concluso"
+msgstr "lokaliseret initrd slut"
 
 #: ../unetbootin.cpp:725
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying initrd file from %1"
-msgstr "Copia del file Initrd da %1"
+msgstr "Kopierer initrd fil fra %1"
 
 #: ../unetbootin.cpp:731 ../unetbootin.cpp:811
 msgctxt "unetbootin|"
 msgid "Extracting bootloader configuration"
-msgstr "Estrazione configurazione bootloader"
+msgstr "Udpakker bootloader konfiguration"
 
 #: ../unetbootin.cpp:1029
 msgctxt "unetbootin|"
 msgid "extractiso begin"
-msgstr "Estrazione ISO iniziata"
+msgstr "Udpakning af ISO begynder"
 
 #: ../unetbootin.cpp:1042 ../unetbootin.cpp:1072
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracting compressed iso:</b> %1"
-msgstr "<b>Estrazione ISO compressa:</b> %1"
+msgstr "<b>Udpakning komprimeret iso:</b> %1"
 
 #: ../unetbootin.cpp:1194
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
-msgstr "Estrazione Initrd conclusa"
+msgstr "Udpakning af initrd slut"
 
 #: ../unetbootin.cpp:1202
 msgctxt "unetbootin|"
 msgid "QFile end"
-msgstr "QFile concluso"
+msgstr "QFil slut"
 
 #: ../unetbootin.cpp:1209
 msgctxt "unetbootin|"
 msgid "QTextStream end"
-msgstr "QTextStream concluso"
+msgstr "QTextStream slut"
 
 #: ../unetbootin.cpp:1213
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
-msgstr "Estrazione dei file conclusa"
+msgstr "udpakkede filer slut"
 
 #: ../unetbootin.cpp:1226
 msgctxt "unetbootin|"
 msgid "extractiso end"
-msgstr "estrazione ISO conclusa"
+msgstr "udpakket ISO slut"
 
 #: ../unetbootin.cpp:1334
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
-msgstr "<b>Copiati:</b> 0 bytes"
+msgstr "<b>Kopieret:</b> 0 bytes"
 
 #: ../unetbootin.cpp:1372
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
-msgstr "<b>Estratti:</b> 0 di %1 files"
+msgstr "<b>Udpakket:</b> 0 af %1 filer"
 
 #: ../unetbootin.cpp:1375
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
-msgstr "<b>Estratti:</b> %1 di %2 files"
+msgstr "<b>Udpakket:</b> 1 af % 2 filer"
 
 #: ../unetbootin.cpp:2269 ../unetbootin.cpp:2284
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
-msgstr "<b>Scaricati:</b> %1 di %2"
+msgstr "<b>Downloadet:</b> %1 af %2"
 
 #: ../unetbootin.cpp:2299
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
-msgstr "<b>Copiati:</b> %1 di %2"
+msgstr "<b>Kopieret:</b> %1 af %2 "
 
 #: ../unetbootin.cpp:2671
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
-msgstr "%1 non trovato"
+msgstr "%1 ikke fundet"
 
 #: ../unetbootin.cpp:2672
 #, qt-format
@@ -370,22 +371,22 @@ msgctxt "unetbootin|"
 msgid ""
 "%1 not found. This is required for %2 install mode.\n"
 "Install the \"%3\" package or your distribution's equivalent."
-msgstr "%1 non trovato. E' necessario per la modalità d'installazione %2.\nInstalla il pacchetto \"%3\" o quello equivalente della tua distribuzione."
+msgstr "%1 ikke fundet. Dette er påkrævet for %2 installeringstilstand\nInstaller \"%3\" pakke eller din distributions tilsvarende."
 
 #: ../unetbootin.cpp:2964
 msgctxt "unetbootin|"
 msgid "runinst begin"
-msgstr "elaborazione iniziata"
+msgstr "kør installation begynder"
 
 #: ../unetbootin.cpp:2965
 msgctxt "unetbootin|"
 msgid "(Current)"
-msgstr "(Corrente)"
+msgstr "(Nuværende)"
 
 #: ../unetbootin.cpp:2966
 msgctxt "unetbootin|"
 msgid "(Done)"
-msgstr "(Fatto)"
+msgstr "(Færdig)"
 
 #: ../unetbootin.cpp:2977
 msgctxt "unetbootin|"
@@ -396,17 +397,17 @@ msgstr "Hard Disk"
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
-msgstr "Installazione Syslinux in %1"
+msgstr "Installerer syslinux til %1"
 
 #: ../unetbootin.cpp:3414
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
-msgstr "Sincronizzazione Filesystems"
+msgstr "Synkroniser filsystemer"
 
 #: ../main.cpp:76
 msgctxt "uninstaller|"
 msgid "Must run as root"
-msgstr "Devi eseguirlo come amministratore"
+msgstr "Skal køres som root"
 
 #: ../main.cpp:78
 #, qt-format
@@ -414,4 +415,4 @@ msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr "%2 deve essere eseguito come amministratore. Chiudi, riavvia utilizzando:<br/><b>sudo %1</b><br/>o:<br/><b>su - -c '%1'</b>"
+msgstr "%2 skal køres som root. Luk det, og gen-kør ved hjælp af enten:<br/><b>sudo %1</b><br/>eller:<br/><b>su - -c '%1'</b>"

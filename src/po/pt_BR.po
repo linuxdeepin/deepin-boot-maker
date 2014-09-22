@@ -1,444 +1,359 @@
+# 
+# Translators:
+# Kayo Martins <kayomfreire@gmail.com>, 2014
+# RAFAEL GAUNA <rafaelgt.mbin@gmail.com>, 2014
 msgid ""
 msgstr ""
+"Project-Id-Version: Deepin Boot Maker\n"
+"PO-Revision-Date: 2014-09-18 01:39+0000\n"
+"Last-Translator: iceleaf <iceleaf916@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/deepin-boot-maker/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:45
-msgctxt "BootMaker|"
-msgid "Format error of USB flash drive"
-msgstr ""
-
-#: ../bootmaker.cpp:46
-msgctxt "BootMaker|"
-msgid ""
-"Only FAT32 USB flash drive supported. Need to format? All partitions and "
-"data will be lost during formatting, please back up the data in advance."
-msgstr ""
-
-#: ../bootmaker.cpp:48
-msgctxt "BootMaker|"
-msgid "Format"
-msgstr ""
-
-#: ../bootmaker.cpp:49 ../bootmaker.cpp:103
-msgctxt "BootMaker|"
-msgid "Cancel"
-msgstr ""
-
-#: ../bootmaker.cpp:89 ../bootmaker.cpp:90
+#: ../bootmaker.cpp:53 ../bootmaker.cpp:54
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Por favor selecione uma imagem de disco"
 
-#: ../bootmaker.cpp:99
-msgctxt "BootMaker|"
-msgid "Format USB flash disk"
-msgstr ""
-
-#: ../bootmaker.cpp:100
-msgctxt "BootMaker|"
-msgid ""
-"All data will be lost during formatting, please back up in advance and then "
-"press OK button."
-msgstr ""
-
-#: ../bootmaker.cpp:102
-msgctxt "BootMaker|"
-msgid "Ok"
-msgstr ""
-
-#: ../main.cpp:280
+#: ../main.cpp:256
 msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
 msgstr "Deepin Boot Maker"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:179
+#: ../qml/MainUI/UsbCreatorFrame.qml:159
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 msgstr "<font color='#ffffff'>Fácil de usar sem redundância</font></br>"
 
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid ""
-#~ "<br><font color='#a7a7a7'>Welcome to use Deepin Boot Maker software and "
-#~ "you can quickly create Deepin OS Startup Disk through a simple setting, "
-#~ "which supports dual BIOS and <font color='#ebab4c'>UEFI</font> "
-#~ "start.</font></br>"
-#~ msgstr ""
-#~ "<br><font color='#a7a7a7'>Bem vindo ao aplicativo Deepin Boot Maker e "
-#~ "você pode rapidamente criar um Disco de Inicialização Deepin OS através "
-#~ "de simples ajustes, que suporta dual Bios e <font "
-#~ "color='#ebab4c'>UEFI</font> start.</font></br>"
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:186
+#: ../qml/MainUI/UsbCreatorFrame.qml:166
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few "
 "options, you'll be able to create a Deepin OS Startup Disk, which supports "
 "both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
-msgstr ""
+msgstr "<br><font color='#a7a7a7'>Bem-Vindo ao Deepin Boot Maker. após definir algumas opções, você estará apto a criar um Disco de Inicialização Deepin OS, o qual suporta ambos BIOS e boot <font color='#ebab4c'>UEFI</font>.</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:209
+#: ../qml/MainUI/UsbCreatorFrame.qml:188
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
 msgstr "<br><font color='#ffffff'>Selecione o arquivo ISO:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:259
+#: ../qml/MainUI/UsbCreatorFrame.qml:238
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
 msgstr "<br><font color='#ffffff'>Selecione o Disco Removível USB:</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:282
-msgctxt "UsbCreatorFrame|"
-msgid ""
-"<font color='#ffffff'>Format USB flash disk before installation to improve "
-"the making success rate.</font>"
-msgstr ""
-
-#: ../qml/MainUI/UsbCreatorFrame.qml:306
+#: ../qml/MainUI/UsbCreatorFrame.qml:318
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
 msgstr "<font color='#ffffff'>BIOS Suporte. Deselecione aqui. </font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:317
+#: ../qml/MainUI/UsbCreatorFrame.qml:329
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
 msgstr "Iniciar"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:359
+#: ../qml/MainUI/UsbCreatorFrame.qml:369
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
 "the USB flash drive or shutdown while file is writing.</br></font>"
-msgstr ""
-"<font color='#ffffff'><br>Por favor <font color='#ebab4c'>NÃO</font> remova "
-"o disco removível USB ou desligue enquanto está sendo copiado.</br></font>"
+msgstr "<font color='#ffffff'><br>Por favor <font color='#ebab4c'>NÃO</font> remova o disco removível USB ou desligue enquanto está sendo copiado.</br></font>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:396
+#: ../qml/MainUI/UsbCreatorFrame.qml:404
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-"color='#ffffff'><br>You have successfully created a boot disk and select "
-"your boot disk to install Deepin OS after restarted.</br><br></br><br>Do you "
-"need to restart now?</br></font></br>"
-msgstr ""
+"color='#ffffff'>Deepin OS Startup Disk is created successfully.</font></br>"
+msgstr "<br><font color='#057aff'>Parabéns!</font></br><br><font color='#ffffff'>O Disco de Inicialização Deepin OS foi criado com sucesso.</font></br>"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:407
+#: ../qml/MainUI/UsbCreatorFrame.qml:415
 msgctxt "UsbCreatorFrame|"
-msgid "Restart Later"
-msgstr ""
+msgid "Quit"
+msgstr "Sair"
 
-#: ../qml/MainUI/UsbCreatorFrame.qml:416
+#: ../qml/MainUI/UsbCreatorFrame.qml:424
 msgctxt "UsbCreatorFrame|"
-msgid "Restart Now"
-msgstr ""
+msgid "Reboot"
+msgstr "Reiniciar"
 
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid ""
-#~ "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-#~ "color='#ffffff'>Deepin OS Startup Disk creates successfully.</font></br>"
-#~ msgstr ""
-#~ "<br><font color='#057aff'>Parabéns!</font></br><br><font "
-#~ "color='#ffffff'>A criação do Disco de inicialização Deepin OS foi um "
-#~ "sucesso.</font></br>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "Reboot"
-#~ msgstr "Reiniciar"
-
-#: ../unetbootin.cpp:227 ../unetbootin.cpp:233 ../unetbootin.cpp:237
-#: ../unetbootin.cpp:241 ../unetbootin.cpp:245 ../unetbootin.cpp:251
-#: ../unetbootin.cpp:279
+#: ../unetbootin.cpp:252 ../unetbootin.cpp:258 ../unetbootin.cpp:262
+#: ../unetbootin.cpp:266 ../unetbootin.cpp:270 ../unetbootin.cpp:276
+#: ../unetbootin.cpp:304
 msgctxt "unetbootin|"
 msgid "either"
 msgstr "ou"
 
-#: ../unetbootin.cpp:258
+#: ../unetbootin.cpp:283
 msgctxt "unetbootin|"
 msgid "LiveUSB persistence"
 msgstr "Persistência LiveUSB"
 
-#: ../unetbootin.cpp:273
+#: ../unetbootin.cpp:298
 msgctxt "unetbootin|"
 msgid "FAT32-formatted USB drive"
 msgstr "Disco USB formatado em FAT32"
 
-#: ../unetbootin.cpp:277
+#: ../unetbootin.cpp:302
 msgctxt "unetbootin|"
 msgid "EXT2-formatted USB drive"
 msgstr "Disco USB formatado em EXT2"
 
-#: ../unetbootin.cpp:406
+#: ../unetbootin.cpp:424
 msgctxt "unetbootin|"
 msgid "Insert a USB flash drive"
 msgstr "Insira um disco removível USB "
 
-#: ../unetbootin.cpp:407
+#: ../unetbootin.cpp:425
 msgctxt "unetbootin|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB drive, "
 "try reformatting it as FAT32."
-msgstr ""
-"Não foram encontrados discos removíveis USB. Se você já inseriu um disco "
-"USB, tente reformatá-lo como FAT32."
+msgstr "Não foram encontrados discos removíveis USB. Se você já inseriu um disco USB, tente reformatá-lo como FAT32."
 
-#: ../unetbootin.cpp:426
+#: ../unetbootin.cpp:444
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not mounted"
 msgstr "%1 não montado"
 
-#: ../unetbootin.cpp:427
+#: ../unetbootin.cpp:445
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
 "You must first mount the USB drive %1 to a mountpoint. Most distributions "
 "will do this automatically after you remove and reinsert the USB drive."
-msgstr ""
-"Você deve primeiramente montar o disco USB %1 para um ponto de montagem. A "
-"maioria das distribuições farão isso automaticamente após você remover e "
-"reinserir o disco USB."
+msgstr "Você deve primeiramente montar o disco USB %1 para um ponto de montagem. A maioria das distribuições farão isso automaticamente após você remover e reinserir o disco USB."
 
-#: ../unetbootin.cpp:442
+#: ../unetbootin.cpp:460
 msgctxt "unetbootin|"
 msgid "Select a disk image file"
 msgstr "Selecione um arquivo de imagem de disco"
 
-#: ../unetbootin.cpp:443
+#: ../unetbootin.cpp:461
 msgctxt "unetbootin|"
 msgid "You must select a disk image file to load."
 msgstr "Você deve selecionar um arquivo de imagem de disco para carregar."
 
-#: ../unetbootin.cpp:457
+#: ../unetbootin.cpp:475
 msgctxt "unetbootin|"
 msgid "Diskimage file not found"
 msgstr "Imagem de Disco não encontrada"
 
-#: ../unetbootin.cpp:458
+#: ../unetbootin.cpp:476
 #, qt-format
 msgctxt "unetbootin|"
 msgid "The specified diskimage file %1 does not exist."
 msgstr "O arquivo de Imagem de Disco especificada %1 não existe."
 
-#: ../unetbootin.cpp:571
+#: ../unetbootin.cpp:588
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 exists, overwrite?"
 msgstr "%1 existe, sobrescrever? "
 
-#: ../unetbootin.cpp:572
+#: ../unetbootin.cpp:589
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
-"prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to "
-"retain your existing version. If in doubt, press 'Yes to All'."
-msgstr ""
-"O arquivo %1 já existe. Pressione \"Sim para Todos\" para sobrescrever isso "
-"e não ser perguntado novamente, \"Sim\" para sobrescrever arquivos "
-"individualmente, e \"Não\" para manter sua versão existente. Em caso de "
-"dúvida, pressione \"Sim para Todos\"."
+"prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to"
+" retain your existing version. If in doubt, press 'Yes to All'."
+msgstr "O arquivo %1 já existe. Pressione \"Sim para Todos\" para sobrescrever isso e não ser perguntado novamente, \"Sim\" para sobrescrever arquivos individualmente, e \"Não\" para manter sua versão existente. Em caso de dúvida, pressione \"Sim para Todos\"."
 
-#: ../unetbootin.cpp:598
+#: ../unetbootin.cpp:615
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
 msgstr "%1 esta sem espaço, abortar instalação?"
 
-#: ../unetbootin.cpp:599
+#: ../unetbootin.cpp:616
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
-"The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to "
-"ignore this error and attempt to continue installation, and 'No to All' to "
+"The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to"
+" ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr ""
-"O diretório %1 está sem espaço. Pressione 'Sim' para abortar a instalação, "
-"'Não' para ignorar esse erro e tentar continuar a instalação, e 'Não para "
-"Todos' para ignorar todos os erros de falta de espaço."
+msgstr "O diretório %1 está sem espaço. Pressione 'Sim' para abortar a instalação, 'Não' para ignorar esse erro e tentar continuar a instalação, e 'Não para Todos' para ignorar todos os erros de falta de espaço."
 
-#: ../unetbootin.cpp:625 ../unetbootin.cpp:1206 ../unetbootin.cpp:1298
-#: ../unetbootin.cpp:3035 ../unetbootin.cpp:3046 ../unetbootin.cpp:3057
-#: ../unetbootin.cpp:3365
+#: ../unetbootin.cpp:642 ../unetbootin.cpp:1223 ../unetbootin.cpp:1315
+#: ../unetbootin.cpp:3044 ../unetbootin.cpp:3055 ../unetbootin.cpp:3065
+#: ../unetbootin.cpp:3367
 msgctxt "unetbootin|"
 msgid "USB Drive"
 msgstr "Unidade USB"
 
-#: ../unetbootin.cpp:693
+#: ../unetbootin.cpp:710
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating kernel file in %1"
 msgstr "Localizando arquivo kernel em %1"
 
-#: ../unetbootin.cpp:743
+#: ../unetbootin.cpp:760
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying kernel file from %1"
 msgstr "Copiando arquivo kernel de %1"
 
-#: ../unetbootin.cpp:749
+#: ../unetbootin.cpp:766
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating initrd file in %1"
 msgstr "Localizando arquivo initrd em %1"
 
-#: ../unetbootin.cpp:786
+#: ../unetbootin.cpp:803
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
 msgstr "extrairinitrd in %1"
 
-#: ../unetbootin.cpp:788
+#: ../unetbootin.cpp:805
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
 msgstr "localizarinitrd fim"
 
-#: ../unetbootin.cpp:791
+#: ../unetbootin.cpp:808
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying initrd file from %1"
 msgstr "Copiando arquivo initrd de %1"
 
-#: ../unetbootin.cpp:797 ../unetbootin.cpp:877
+#: ../unetbootin.cpp:814 ../unetbootin.cpp:894
 msgctxt "unetbootin|"
 msgid "Extracting bootloader configuration"
 msgstr "Extraindo configuração de bootloader"
 
-#: ../unetbootin.cpp:1095
+#: ../unetbootin.cpp:1112
 msgctxt "unetbootin|"
 msgid "extractiso begin"
 msgstr "extrairiso começou"
 
-#: ../unetbootin.cpp:1108 ../unetbootin.cpp:1138
+#: ../unetbootin.cpp:1125 ../unetbootin.cpp:1155
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracting compressed iso:</b> %1"
 msgstr "<b>Extraindo iso comprimida:</b> %1"
 
-#: ../unetbootin.cpp:1260
+#: ../unetbootin.cpp:1277
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
 msgstr "extrairinitrd terminou"
 
-#: ../unetbootin.cpp:1268
+#: ../unetbootin.cpp:1285
 msgctxt "unetbootin|"
 msgid "QFile end"
 msgstr "QFile fim"
 
-#: ../unetbootin.cpp:1275
+#: ../unetbootin.cpp:1292
 msgctxt "unetbootin|"
 msgid "QTextStream end"
 msgstr "QTextStream fim"
 
-#: ../unetbootin.cpp:1279
+#: ../unetbootin.cpp:1296
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
 msgstr "extrairtodososarquivos fim"
 
-#: ../unetbootin.cpp:1292
+#: ../unetbootin.cpp:1309
 msgctxt "unetbootin|"
 msgid "extractiso end"
 msgstr "extrairimagem fim"
 
-#: ../unetbootin.cpp:1400
+#: ../unetbootin.cpp:1417
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
 msgstr "<b>Copiado:</b> 0 bytes"
 
-#: ../unetbootin.cpp:1438
+#: ../unetbootin.cpp:1450
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
 msgstr "<b>Extraído:</b> 0 de %1 arquivos"
 
-#: ../unetbootin.cpp:1441
+#: ../unetbootin.cpp:1453
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
 msgstr "<b>Extraído:</b> %1 de %2 arquivos"
 
-#: ../unetbootin.cpp:2335 ../unetbootin.cpp:2350
+#: ../unetbootin.cpp:2344 ../unetbootin.cpp:2359
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
 msgstr "<b>Baixado:</b> %1 de %2"
 
-#: ../unetbootin.cpp:2365
+#: ../unetbootin.cpp:2374
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
 msgstr "<b>Copiado:</b> %1 de %2"
 
-#: ../unetbootin.cpp:2737
+#: ../unetbootin.cpp:2746
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
 msgstr "%1 não foi encontrado"
 
-#: ../unetbootin.cpp:2738
+#: ../unetbootin.cpp:2747
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
 "%1 not found. This is required for %2 install mode.\n"
 "Install the \"%3\" package or your distribution's equivalent."
-msgstr ""
-"%1 não foi encontrado. Isso é requerido para o modo de instalação %2.\n"
-"Instale o pacote \"%3\" ou suas distribuições equivalentes."
+msgstr "%1 não foi encontrado. Isso é requerido para o modo de instalação %2.\nInstale o pacote \"%3\" ou suas distribuições equivalentes."
 
-#: ../unetbootin.cpp:3029
+#: ../unetbootin.cpp:3038
 msgctxt "unetbootin|"
 msgid "runinst begin"
 msgstr "executandoinst começou"
 
-#: ../unetbootin.cpp:3030
+#: ../unetbootin.cpp:3039
 msgctxt "unetbootin|"
 msgid "(Current)"
 msgstr "(Atual)"
 
-#: ../unetbootin.cpp:3031
+#: ../unetbootin.cpp:3040
 msgctxt "unetbootin|"
 msgid "(Done)"
 msgstr "(Feito)"
 
-#: ../unetbootin.cpp:3042
+#: ../unetbootin.cpp:3051
 msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "Disco Rígido"
 
-#: ../unetbootin.cpp:3447
+#: ../unetbootin.cpp:3449
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
 msgstr "Instalando syslinux em %1"
 
+#: ../unetbootin.cpp:3492
 #, qt-format
-#~ msgctxt "unetbootin|"
-#~ msgid "Installing extlinux to %1"
-#~ msgstr "Instalando extlinux em %1"
+msgctxt "unetbootin|"
+msgid "Installing extlinux to %1"
+msgstr "Instalando extlinux em %1"
 
-#: ../unetbootin.cpp:3475
+#: ../unetbootin.cpp:3667
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "Sincronizando arquivos de sistema"
 
-#: ../main.cpp:213
+#: ../main.cpp:192
 msgctxt "uninstaller|"
 msgid "Must run as root"
 msgstr "Deve ser executado como root"
 
-#: ../main.cpp:215
+#: ../main.cpp:194
 #, qt-format
 msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr ""
-"%2 deve ser executado como root. Feche-o, e reinicie-o usando:<br/><b>sudo "
-"%1</b><br/>ou:<br/><b>su - -c '%1'</b>"
+msgstr "%2 deve ser executado como root. Feche-o, e reinicie-o usando:<br/><b>sudo %1</b><br/>ou:<br/><b>su - -c '%1'</b>"

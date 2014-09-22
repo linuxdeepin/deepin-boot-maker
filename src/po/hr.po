@@ -1,35 +1,34 @@
 # 
 # Translators:
-# grognak <alex-_88@hotmail.com>, 2014
-# pjhalsli <pjhalsli@gmail.com>, 2014
+# gogo <trebelnik2@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
 "PO-Revision-Date: 2014-09-18 01:39+0000\n"
 "Last-Translator: iceleaf <iceleaf916@gmail.com>\n"
-"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/deepin-boot-maker/language/nb/)\n"
+"Language-Team: Croatian (http://www.transifex.com/projects/p/deepin-boot-maker/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nb\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
 #: ../bootmaker.cpp:53 ../bootmaker.cpp:54
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
-msgstr "Vennligst velg en iso fil"
+msgstr "Odaberi iso datoteku"
 
 #: ../main.cpp:256
 msgctxt "QApplication|"
 msgid "Deepin Boot Maker"
-msgstr "Deepin Boot Maker"
+msgstr "Deepin stvaratelj diska pokretanja"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:159
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
-msgstr "<font color='#ffffff'>Enkel og bruke uten redundans</font></br>"
+msgstr "<font color='#ffffff'>Easy to use without redundancy</font></br>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:166
 msgctxt "UsbCreatorFrame|"
@@ -37,91 +36,91 @@ msgid ""
 "<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a few "
 "options, you'll be able to create a Deepin OS Startup Disk, which supports "
 "both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
-msgstr "<br><font color='#a7a7a7'>Velkommen til bruk av Deepin Boot Maker software og her kan du raskt etablere Deepin OS Oppstart Disk gjennom enkle innstillinger, som støtter dual BIOS og <font color='#ebab4c'>UEFI</font> start.</font></br>"
+msgstr "<br><font color='#a7a7a7'>Dobrodošli u Deepin stvaratelja diska pokretanja. Nakon postavljanja nekoliko mogućnosti, moći ćete stvoriti Deepin OS Disk pokretanja, koji podržava BIOS i <font color='#ebab4c'>UEFI</font> pokretanje sustava.</font></br>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:188
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
-msgstr "<br><font color='#ffffff'>Velg en iso fil:"
+msgstr "<br><font color='#ffffff'>Odaberi ISO datoteku:</font></br>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:238
 msgctxt "UsbCreatorFrame|"
 msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
-msgstr "<br><font color='#ffffff'>velg en USB minnebrikke:</font></br>"
+msgstr "<br><font color='#ffffff'>Odaberi USB disk:</font></br>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:318
 msgctxt "UsbCreatorFrame|"
 msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
-msgstr "<font color='#ffffff'>Støtt BIOS. Klikk av her. </font>"
+msgstr "<font color='#ffffff'>Podržani BIOS. Odznačite ovdje. </font>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:329
 msgctxt "UsbCreatorFrame|"
 msgid "Start"
-msgstr "Start"
+msgstr "Pokreni"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:369
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> remove "
 "the USB flash drive or shutdown while file is writing.</br></font>"
-msgstr "<font color='#ffffff'><br>Vennligst <font color='#ebab4c'>IKKE</font> fjern USB flash enheten, eller slå av mens fil blir skrevet.</br></font>"
+msgstr "<font color='#ffffff'><br>Molim <font color='#ebab4c'>NEMOJTE</font> ukloniti USB disk ili isključiti računalo tijekom zapisivanja.</br></font>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:404
 msgctxt "UsbCreatorFrame|"
 msgid ""
 "<br><font color='#057aff'>Congratulations!</font></br><br><font "
 "color='#ffffff'>Deepin OS Startup Disk is created successfully.</font></br>"
-msgstr "<br><font color='#057aff'>Gratulere!</font></br><br><font color='#ffffff'>Deepin OS Oppstart Disk oppretting vellykket.</font></br>"
+msgstr "<br><font color='#057aff'>Čestitke!</font></br><br><font color='#ffffff'>Deepin OS Disk pokretanja je stvoren uspješno.</font></br>"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:415
 msgctxt "UsbCreatorFrame|"
 msgid "Quit"
-msgstr "Avslutt"
+msgstr "Zatvori"
 
 #: ../qml/MainUI/UsbCreatorFrame.qml:424
 msgctxt "UsbCreatorFrame|"
 msgid "Reboot"
-msgstr "Restart"
+msgstr "Ponovno pokreni"
 
 #: ../unetbootin.cpp:252 ../unetbootin.cpp:258 ../unetbootin.cpp:262
 #: ../unetbootin.cpp:266 ../unetbootin.cpp:270 ../unetbootin.cpp:276
 #: ../unetbootin.cpp:304
 msgctxt "unetbootin|"
 msgid "either"
-msgstr "enten"
+msgstr "ili"
 
 #: ../unetbootin.cpp:283
 msgctxt "unetbootin|"
 msgid "LiveUSB persistence"
-msgstr "LiveUSB bestandighet "
+msgstr "LiveUSB dodatni prostor pohrane"
 
 #: ../unetbootin.cpp:298
 msgctxt "unetbootin|"
 msgid "FAT32-formatted USB drive"
-msgstr "FAT-32-formatert USB disk"
+msgstr "FAT32-formatiran USB disk"
 
 #: ../unetbootin.cpp:302
 msgctxt "unetbootin|"
 msgid "EXT2-formatted USB drive"
-msgstr "EXT2-formatert USB disk"
+msgstr "EXT2-formatiran USB disk"
 
 #: ../unetbootin.cpp:424
 msgctxt "unetbootin|"
 msgid "Insert a USB flash drive"
-msgstr "Sett inn en USB minnebrikke"
+msgstr "Priključite USB disk"
 
 #: ../unetbootin.cpp:425
 msgctxt "unetbootin|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB drive, "
 "try reformatting it as FAT32."
-msgstr "Ingen USB minnebrikke ble funnet. Har du allerede satt inn en USB brikke, prøv å reformater til FAT32"
+msgstr "Nema pronađenih USB diskova. Ako ste već priključili USB disk, pokušajte ga ponovno formatirati kao FAT32."
 
 #: ../unetbootin.cpp:444
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not mounted"
-msgstr "&1 ikke montert"
+msgstr "%1 nije montiran"
 
 #: ../unetbootin.cpp:445
 #, qt-format
@@ -129,34 +128,34 @@ msgctxt "unetbootin|"
 msgid ""
 "You must first mount the USB drive %1 to a mountpoint. Most distributions "
 "will do this automatically after you remove and reinsert the USB drive."
-msgstr "Du må først montere USB brikke &1 som et monteringspunkt. De fleste distribusjoner gjør dette automatisk etter du har fjernet den den og satt den inn igjen."
+msgstr "Prvo morate montirati USB disk %1 u točku montiranja. Većina distribucija će to učiniti automatski nakon što uklonite i ponovno priključite USB disk."
 
 #: ../unetbootin.cpp:460
 msgctxt "unetbootin|"
 msgid "Select a disk image file"
-msgstr "Velg en disk bildefil"
+msgstr "Odaberi datoteku slike diska"
 
 #: ../unetbootin.cpp:461
 msgctxt "unetbootin|"
 msgid "You must select a disk image file to load."
-msgstr "Du må velge en disk bildefil å laste"
+msgstr "Morate odabrati datoteku slike diska za učitavanje."
 
 #: ../unetbootin.cpp:475
 msgctxt "unetbootin|"
 msgid "Diskimage file not found"
-msgstr "Diskbildefil ikke funnet"
+msgstr "Slika diska nije pronađena."
 
 #: ../unetbootin.cpp:476
 #, qt-format
 msgctxt "unetbootin|"
 msgid "The specified diskimage file %1 does not exist."
-msgstr "Den spesiferte diskbildefilen &1 finnes ikke"
+msgstr "Određena datoteka slike diska %1 ne postoji."
 
 #: ../unetbootin.cpp:588
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 exists, overwrite?"
-msgstr "&1 eksisterer allerede, overskrive?"
+msgstr "%1 postoji, želite li prepisati?"
 
 #: ../unetbootin.cpp:589
 #, qt-format
@@ -165,13 +164,13 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to"
 " retain your existing version. If in doubt, press 'Yes to All'."
-msgstr "Filen %1 finnes allerede. Klikk 'Ja til Alt' for å overskrive og ikke bli spurt igjen, 'Ja' for å overskrive filer på en individuell basis, og 'Nei' for å beholde eksisterende versjon. Viss i tvil, klikk 'Ja til Alt'."
+msgstr "Datoteka %1 već postoji. Pritisnite 'Da za sve' za prepisivanje i bez ponovnog upita, 'Da' za prepisivanje datoteka na pojedinačnoj osnovi i 'Ne' za zadržavanje postojeće inačice. Ako ste u dvojbi, pritisnite 'Da za sve'."
 
 #: ../unetbootin.cpp:615
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
-msgstr "%1 er fri for minne, kanseller installasjon?  "
+msgstr "%1 je nestalo slobodnog prostora, prekini instalaciju?"
 
 #: ../unetbootin.cpp:616
 #, qt-format
@@ -180,125 +179,125 @@ msgid ""
 "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to"
 " ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr "Katalogen %1 er fri for plass. Trykk 'Ja' for å avbryte installasjonen, 'Nei' for å ignorere feilen og forsøk å fortsett installasjonen, og 'Nei til Alt' for å ignorere alle fri-for-plass feiler. "
+msgstr "Direktorij %1 nema slobodnog prostora. Pritisnite 'Da' za prekid instalacije, 'Ne' za zanemarivanje ove greške i pokušaj nastavka instalacije i 'Ne za sve' za zanemarivanje svih greški nedostatka slobodnog prostora."
 
 #: ../unetbootin.cpp:642 ../unetbootin.cpp:1223 ../unetbootin.cpp:1315
 #: ../unetbootin.cpp:3044 ../unetbootin.cpp:3055 ../unetbootin.cpp:3065
 #: ../unetbootin.cpp:3367
 msgctxt "unetbootin|"
 msgid "USB Drive"
-msgstr "USB Enhet "
+msgstr "USB disk"
 
 #: ../unetbootin.cpp:710
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating kernel file in %1"
-msgstr "Lokaliserer kjerne fil i %1"
+msgstr "Lociranje datoteke kernela u %1"
 
 #: ../unetbootin.cpp:760
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying kernel file from %1"
-msgstr "Kopierer kjerne fil fra %1"
+msgstr "Kopiranje datoteke kernela iz %1"
 
 #: ../unetbootin.cpp:766
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating initrd file in %1"
-msgstr "Lokaliserer initrd fil i %1"
+msgstr "Lociranje datoteke initrd u %1"
 
 #: ../unetbootin.cpp:803
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
-msgstr "pakkutinitrd i %1"
+msgstr "raspakiravanje initrd datoteke u %1"
 
 #: ../unetbootin.cpp:805
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
-msgstr "lokaliserinitrd slutt"
+msgstr "lociranje initrd datoteke završeno"
 
 #: ../unetbootin.cpp:808
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying initrd file from %1"
-msgstr "Kopierer initrd fil fra %1"
+msgstr "Kopiranje datoteke initrd iz %1"
 
 #: ../unetbootin.cpp:814 ../unetbootin.cpp:894
 msgctxt "unetbootin|"
 msgid "Extracting bootloader configuration"
-msgstr "Henter ut oppstartlaster konfigurasjon  "
+msgstr "Raspakiravanje datoteke podešavanja pokretača sustava"
 
 #: ../unetbootin.cpp:1112
 msgctxt "unetbootin|"
 msgid "extractiso begin"
-msgstr "pakkutiso begynn "
+msgstr "raspakiravanje iso datoteke pokrenuto"
 
 #: ../unetbootin.cpp:1125 ../unetbootin.cpp:1155
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracting compressed iso:</b> %1"
-msgstr "<b>Pakker ut komprimert iso:</b> %1"
+msgstr "<b>Raspakiravanje iso datoteke:</b> %1"
 
 #: ../unetbootin.cpp:1277
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
-msgstr "pakkutinitrd slutt "
+msgstr "raspakiravanje initrd datoteke završeno"
 
 #: ../unetbootin.cpp:1285
 msgctxt "unetbootin|"
 msgid "QFile end"
-msgstr "QFil slutt"
+msgstr "Qdatoteka završeno"
 
 #: ../unetbootin.cpp:1292
 msgctxt "unetbootin|"
 msgid "QTextStream end"
-msgstr "QTextStrøm slutt"
+msgstr "QTextStream završeno"
 
 #: ../unetbootin.cpp:1296
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
-msgstr "pakkutallefiler slutt"
+msgstr "Raspakiravanje svih datoteka završeno"
 
 #: ../unetbootin.cpp:1309
 msgctxt "unetbootin|"
 msgid "extractiso end"
-msgstr "pakkutiso slutt"
+msgstr "raspakiravanje iso datoteke završeno"
 
 #: ../unetbootin.cpp:1417
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
-msgstr "<b>Kopiert:</b> 0 bytes"
+msgstr "<b>Kopirano:</b> 0 bajta"
 
 #: ../unetbootin.cpp:1450
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
-msgstr "<b>Pakket ut:</b> 0 av %1 filer"
+msgstr "<b>Raspakirano:</b> 0 od %1 datoteka"
 
 #: ../unetbootin.cpp:1453
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
-msgstr "<b>Pakket ut:</b> %1 av %2 filer"
+msgstr "<b>Raspakirano:</b> %1 od%2 datoteka"
 
 #: ../unetbootin.cpp:2344 ../unetbootin.cpp:2359
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
-msgstr "<b>Lastet ned:</b> %1 av %2"
+msgstr "<b>Preuzeto:</b> %1 od %2"
 
 #: ../unetbootin.cpp:2374
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
-msgstr "<b>Kopiert:</b> %1 av %2"
+msgstr "<b>Kopirano:</b> %1 od %2"
 
 #: ../unetbootin.cpp:2746
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
-msgstr "%1 ikke funnet"
+msgstr "%1 nije pronađeno"
 
 #: ../unetbootin.cpp:2747
 #, qt-format
@@ -306,49 +305,49 @@ msgctxt "unetbootin|"
 msgid ""
 "%1 not found. This is required for %2 install mode.\n"
 "Install the \"%3\" package or your distribution's equivalent."
-msgstr "%1 ikke funnet. Er nødvendig for %2 installasjons modus0.\nInstaller \"%3\" pakken eller din distribusjons tillsvarende."
+msgstr "%1 nije pronađeno. To je potrebno za %2 instalacijski način.\nInstaliraj \"%3\" paket ili ekvivalent na vašoj distribuciji."
 
 #: ../unetbootin.cpp:3038
 msgctxt "unetbootin|"
 msgid "runinst begin"
-msgstr "runinst begynn "
+msgstr "pokretanje instalcije započelo"
 
 #: ../unetbootin.cpp:3039
 msgctxt "unetbootin|"
 msgid "(Current)"
-msgstr "(Nåværende)"
+msgstr "(Trenutno)"
 
 #: ../unetbootin.cpp:3040
 msgctxt "unetbootin|"
 msgid "(Done)"
-msgstr "(Ferdig)"
+msgstr "(Završeno)"
 
 #: ../unetbootin.cpp:3051
 msgctxt "unetbootin|"
 msgid "Hard Disk"
-msgstr "Hard Disk"
+msgstr "Tvrdi disk"
 
 #: ../unetbootin.cpp:3449
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
-msgstr "Installerer syslinux til %1"
+msgstr "Instalacija syslinux na %1"
 
 #: ../unetbootin.cpp:3492
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing extlinux to %1"
-msgstr "Installerer extlinux til %1"
+msgstr "Instalacija exlinux na %1"
 
 #: ../unetbootin.cpp:3667
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
-msgstr "Synkroniserer filsystemer "
+msgstr "Usklađivanje datotečnog sustava"
 
 #: ../main.cpp:192
 msgctxt "uninstaller|"
 msgid "Must run as root"
-msgstr "Må kjøres som root"
+msgstr "Mora biti pokrenuto kao root"
 
 #: ../main.cpp:194
 #, qt-format
@@ -356,4 +355,4 @@ msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr "%2 må kjøres som root. Lukk, og start på nytt ved og:<br/><b>sudo %1</b><br/>eller:<br/><b>su - -c '%1'</b>"
+msgstr "%2 mora biti pokrenuto kao root. Zatvorite i ponovno pokrenite koristeći:<br/><b>sudo %1</b><br/>ili:<br/><b>su - -c '%1'</b>"

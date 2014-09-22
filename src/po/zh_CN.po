@@ -1,30 +1,39 @@
+# 
+# Translators:
+# JackieLiu <liuyun01@kylinos.com.cn>, 2014
+# szd_liufei <liufei@linuxdeepin.com>, 2014
 msgid ""
 msgstr ""
+"Project-Id-Version: Deepin Boot Maker\n"
+"PO-Revision-Date: 2014-09-26 10:01+0000\n"
+"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/deepin-boot-maker/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Language: zh_CN\n"
+"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:42
+#: ../bootmaker.cpp:41
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "U盘格式错误"
 
-#: ../bootmaker.cpp:43
+#: ../bootmaker.cpp:42
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "仅支持FAT32格式U盘。是否格式化U盘，格式化U盘会丢失U盘上所有的分区及其数据，请先备份U盘上的数据。"
 
-#: ../bootmaker.cpp:45
+#: ../bootmaker.cpp:44
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "格式化"
+msgstr "格式"
 
-#: ../bootmaker.cpp:46 ../bootmaker.cpp:103
+#: ../bootmaker.cpp:45 ../bootmaker.cpp:103
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "取消"
@@ -36,7 +45,7 @@ msgstr "请选择ISO文件"
 
 #: ../bootmaker.cpp:99
 msgctxt "BootMaker|"
-msgid "Format USB flash disk"
+msgid "Format USB flash drive"
 msgstr "格式化U盘"
 
 #: ../bootmaker.cpp:100
@@ -44,162 +53,132 @@ msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "格式化U盘将丢失U盘上所有资料，请做好备份后点确定按钮"
+msgstr "格式化U盘将丢失U盘上所有资料，请做好备份后点“确定”按钮。"
 
-#: ../bootmaker.cpp:102
+#: ../bootmaker.cpp:102 ../bootmaker.cpp:144 ../bootmaker.cpp:165
+#: ../bootmaker.cpp:182 ../bootmaker.cpp:198
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "确定"
 
-#: ../ui/dwindowui.cpp:145
+#: ../bootmaker.cpp:141
+msgctxt "BootMaker|"
+msgid "Insert a USB flash drive"
+msgstr "插入U盘"
+
+#: ../bootmaker.cpp:142
+msgctxt "BootMaker|"
+msgid ""
+"No USB flash drives were found. If you have already inserted a USB flash "
+"drive, try to reformat it as FAT32."
+msgstr "没有发现U盘。如果您已经插入U盘，请尝试重新格式化为FAT32格式。"
+
+#: ../bootmaker.cpp:162
+#, qt-format
+msgctxt "BootMaker|"
+msgid "%1 not mounted"
+msgstr "%1 没有挂载"
+
+#: ../bootmaker.cpp:163
+#, qt-format
+msgctxt "BootMaker|"
+msgid ""
+"You must firstly mount the USB flash drive %1 to a mountpoint. Most "
+"distributions will do this automatically after you remove and reinsert the "
+"USB flash drive."
+msgstr "你必须首先在 %1 挂载U盘。大部分发行版本会在你移除并且重新插入U盘后自动执行该操作。"
+
+#: ../bootmaker.cpp:179
+msgctxt "BootMaker|"
+msgid "Select a disk image file"
+msgstr "选择一个磁盘镜像文件"
+
+#: ../bootmaker.cpp:180
+msgctxt "BootMaker|"
+msgid "You must select a disk image file to load."
+msgstr "你必须选择加载一个磁盘镜像文件。"
+
+#: ../bootmaker.cpp:195
+msgctxt "BootMaker|"
+msgid "Disk image file not found"
+msgstr "没有找到磁盘镜像文件"
+
+#: ../bootmaker.cpp:196
+#, qt-format
+msgctxt "BootMaker|"
+msgid "The specified disk image file %1 does not exist."
+msgstr "指定的磁盘镜像文件 %1 不存在。"
+
+#: ../ui/ddevicon.cpp:20
+msgctxt "DDevIcon|"
+msgid "<p style='font-weight:bold;'>Select USB drive</p>"
+msgstr "选择U盘"
+
+#: ../ui/dprogressframe.cpp:45
+msgctxt "DProgressFrame|"
+msgid "<p style='font-weight:bold;'>Select a disk image</p>"
+msgstr "选择一个磁盘镜像文件"
+
+#: ../ui/dusblist.cpp:10
+msgctxt "DUsbList|"
+msgid "USB drive not detected"
+msgstr "未检测到U盘"
+
+#: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
+#, qt-format
+msgctxt "DWindowUI|"
+msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
+msgstr "<p style='color:white; font-size:12px;'>已完成%1%</p>"
+
+#: ../ui/dwindowui.cpp:126
 msgctxt "DWindowUI|"
 msgid ""
-"<p style='color:white; font-size:14px;'>Easy to use without redundancy</p>"
-msgstr "<p style='color:white; font-size:14px;'>告别繁琐，简单易用</p>"
+"<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
+"improved by formatting USB drive.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>格式化U盘可提高制作成功率</p>"
 
-#: ../ui/dwindowui.cpp:150
+#: ../ui/dwindowui.cpp:136
 msgctxt "DWindowUI|"
 msgid ""
-"<a style='color:#a7a7a7; font-size:11px;'>Welcome to Deepin Boot Maker. "
-"After setting a few options, you'll be able to create a Deepin OS Startup "
-"Disk, which supports both BIOS and </a><a style='color:#ebab4c; "
-"font-size:11px;'>UEFI</a><a style='color:#a7a7a7; font-size:11px;'> boot.</a>"
-msgstr ""
-"<a style='color:#a7a7a7; "
-"font-size:11px;'>欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和</a><a "
-"style='color:#ebab4c; font-size:11px;'>UEFI</a><a style='color:#a7a7a7; "
-"font-size:11px;'>双启动。</a>"
+"<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
+"or shutdown while file is writing.<a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>正在写入文件，请不要移除U盘或者关机。</a>"
 
-#: ../ui/dwindowui.cpp:161
-msgctxt "DWindowUI|"
-msgid "<p style='color:white; font-size:12px;'>Select the ISO File:</p>"
-msgstr "<p style='color:white; font-size:12px;'>选择ISO文件：</p>"
-
-#: ../ui/dwindowui.cpp:173
-msgctxt "DWindowUI|"
-msgid "<p style='color:white; font-size:12px;'>Select the USB Flash Drive:</p>"
-msgstr "<p style='color:white; font-size:12px;'>选择U盘：</p>"
-
-#: ../ui/dwindowui.cpp:183
-msgctxt "DWindowUI|"
-msgid ""
-"<p style='color:white; font-size:12px;'>Format USB flash disk before "
-"installation to improve the making success rate.</p>"
-msgstr ""
-"<p style='color:white; font-size:12px;'>安装前格式化U盘，提高制作成功率。</p>"
-
-#: ../ui/dwindowui.cpp:189
-msgctxt "DWindowUI|"
-msgid ""
-"<p style='color:white; font-size:12px;'>Support BIOS. Unselect here.</p>"
-msgstr ""
-"<p style='color:white; font-size:12px;'>旧主板BIOS支持， 默认请不要勾选。</p>"
-
-#: ../ui/dwindowui.cpp:197
-#, fuzzy
+#: ../ui/dwindowui.cpp:146
 msgctxt "DWindowUI|"
 msgid "Start"
-msgstr "开始创建"
+msgstr "开始"
 
-#: ../ui/dwindowui.cpp:276
+#: ../ui/dwindowui.cpp:245
 msgctxt "DWindowUI|"
 msgid ""
-"<a style='color:#ffffff; font-size:12px'>Please </a><a style='color:#ebab4c; "
-"font-size:12px'>DO NOT</a><a style='color:#ffffff; font-size:12px'> remove "
-"the USB flash drive or shutdown while file is writing.<a>"
-msgstr ""
-"<a style='color:#ffffff; font-size:12px'>正在写入文件，</a><a style='color:#ebab4c; "
-"font-size:12px'>请不要</a><a style='color:#ffffff; font-size:12px'> 移除U盘或者关机！<a>"
+"<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
+"successfully</p>"
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>制作成功</p>"
 
-#: ../ui/dwindowui.cpp:312
+#: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
-"<p style='color:#057aff; font-size:14px'>Congratulations!</p><p "
-"style='color:#ffffff; font-size:12px'>You have successfully created a boot "
-"disk and select your boot disk to install Deepin OS after restarted.</p><p "
-"style='color:#ffffff; font-size:12px'>Do you need to restart now?</p>"
-msgstr ""
-"<p style='color:#057aff; font-size:14px'>恭喜！</p><p style='color:#ffffff; "
-"font-size:12px'>您已经成功制作启动盘，请在重启后选择您的启动盘来安装Deepin操作系统。</p><p "
-"style='color:#ffffff; font-size:12px'>您现在需要重启吗？</p>"
+"<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
+"when installing Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>安装深度系统时请选择从U盘启动。</p>"
 
-#: ../ui/dwindowui.cpp:323
-#, fuzzy
+#: ../ui/dwindowui.cpp:250
+msgctxt "DWindowUI|"
+msgid ""
+"<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
+"EFI option.</a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>若启动失败，请尝试关闭EFI选项。</a>"
+
+#: ../ui/dwindowui.cpp:267
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "稍后重启"
 
-#: ../ui/dwindowui.cpp:324
-#, fuzzy
+#: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid "Restart Now"
-msgstr "现在重启"
-
-#~ msgctxt "QApplication|"
-#~ msgid "Deepin Boot Maker"
-#~ msgstr "深度启动盘制作工具"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "<font color='#ffffff'>Easy to use without redundancy</font></br>"
-#~ msgstr "<font color='#ffffff'>告别繁琐，简单易用</font></br>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid ""
-#~ "<br><font color='#a7a7a7'>Welcome to Deepin Boot Maker. After setting a "
-#~ "few options, you'll be able to create a Deepin OS Startup Disk, which "
-#~ "supports both BIOS and <font color='#ebab4c'>UEFI</font> boot.</font></br>"
-#~ msgstr ""
-#~ "<br><font "
-#~ "color='#a7a7a7'>欢迎使用深度启动盘软件，通过简单设置即可快速制作Deepin系统启动盘，并且支持BIOS和<font "
-#~ "color='#ebab4c'>UEFI</font>双启动。</font></br>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "<br><font color='#ffffff'>Select the ISO File:</font></br>"
-#~ msgstr "<br><font color='#ffffff'>选择ISO文件:</font></br>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "<br><font color='#ffffff'>Select the USB Flash Drive:</font></br>"
-#~ msgstr "<br><font color='#ffffff'>选择U盘:</font></br>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid ""
-#~ "<font color='#ffffff'>Format USB flash disk before installation to "
-#~ "improve the making success rate.</font>"
-#~ msgstr "<font color='#ffffff'>安装前格式化U盘，提高制作成功率。</font>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "<font color='#ffffff'>Support BIOS. Unselect here. </font>"
-#~ msgstr "<font color='#ffffff'>旧主板BIOS支持， 默认请不要勾选。</font>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "Start"
-#~ msgstr "开始创建"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid ""
-#~ "<font color='#ffffff'><br>Please <font color='#ebab4c'>DO NOT</font> "
-#~ "remove the USB flash drive or shutdown while file is writing.</br></font>"
-#~ msgstr ""
-#~ "<font color='#ffffff'><br>正在写入文件，<font color='#ebab4c'>请不要</font> "
-#~ "移除U盘或者关机！</br></font>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid ""
-#~ "<br><font color='#057aff'>Congratulations!</font></br><br><font "
-#~ "color='#ffffff'><br>You have successfully created a boot disk and select "
-#~ "your boot disk to install Deepin OS after restarted.</br><br></br><br>Do "
-#~ "you need to restart now?</br></font></br>"
-#~ msgstr ""
-#~ "<br><font color='#057aff'>恭喜!</font></br><br><font "
-#~ "color='#ffffff'><br>您已经成功制作启动盘，　请在重启后选择您的启动盘来安装Deepin操作系统。</br><br></br><br>您现在需要重启吗？</br></font></br>"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "Restart Later"
-#~ msgstr "稍后重启"
-
-#~ msgctxt "UsbCreatorFrame|"
-#~ msgid "Restart Now"
-#~ msgstr "现在重启"
+msgstr "立即重启"
 
 #: ../unetbootin.cpp:226 ../unetbootin.cpp:232 ../unetbootin.cpp:236
 #: ../unetbootin.cpp:240 ../unetbootin.cpp:244 ../unetbootin.cpp:250
@@ -216,211 +195,177 @@ msgstr "LiveUSB 持续存储"
 #: ../unetbootin.cpp:272
 msgctxt "unetbootin|"
 msgid "FAT32-formatted USB drive"
-msgstr "FAT32 格式 USB 驱动器"
+msgstr "FAT32 格式 U盘"
 
 #: ../unetbootin.cpp:276
 msgctxt "unetbootin|"
 msgid "EXT2-formatted USB drive"
-msgstr "EXT2 格式 USB 驱动器"
+msgstr "EXT2 格式 U盘"
 
-#: ../unetbootin.cpp:405
-msgctxt "unetbootin|"
-msgid "Insert a USB flash drive"
-msgstr "插入USB 闪存盘"
-
-#: ../unetbootin.cpp:406
-msgctxt "unetbootin|"
-msgid ""
-"No USB flash drives were found. If you have already inserted a USB drive, "
-"try reformatting it as FAT32."
-msgstr "没有发现USB 闪存盘。如果您已经插入USB 闪存盘，请尝试重新格式化为FAT32格式。"
-
-#: ../unetbootin.cpp:425
-#, qt-format
-msgctxt "unetbootin|"
-msgid "%1 not mounted"
-msgstr "%1 没有挂载"
-
-#: ../unetbootin.cpp:426
-#, qt-format
-msgctxt "unetbootin|"
-msgid ""
-"You must first mount the USB drive %1 to a mountpoint. Most distributions "
-"will do this automatically after you remove and reinsert the USB drive."
-msgstr "你必须首先在 %1 挂载 USB 闪存盘。大部分发行版本会在你移除并且重新插入USB 闪存盘后自动执行该操作。"
-
-#: ../unetbootin.cpp:441
-msgctxt "unetbootin|"
-msgid "Select a disk image file"
-msgstr "选择一个磁盘镜像文件"
-
-#: ../unetbootin.cpp:442
-msgctxt "unetbootin|"
-msgid "You must select a disk image file to load."
-msgstr "你必须选择加载一个磁盘镜像文件。"
-
-#: ../unetbootin.cpp:456
-msgctxt "unetbootin|"
-msgid "Diskimage file not found"
-msgstr "没有找到磁盘镜像文件"
-
-#: ../unetbootin.cpp:457
-#, qt-format
-msgctxt "unetbootin|"
-msgid "The specified diskimage file %1 does not exist."
-msgstr "指定的磁盘镜像文件 %1 不存在。"
-
-#: ../unetbootin.cpp:570
+#: ../unetbootin.cpp:498
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 exists, overwrite?"
 msgstr "%1 已经存在，是否覆盖？"
 
-#: ../unetbootin.cpp:571
+#: ../unetbootin.cpp:500
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
-"prompted again, 'Yes' to overwrite files on an individual basis, and 'No' to "
-"retain your existing version. If in doubt, press 'Yes to All'."
-msgstr ""
-"文件 %1 已经存在。单击 'Yes to All' 进行覆盖并且不再提示， 'Yes' 覆盖单个文件， 而 'No' 保留你现在的版本。 "
-"如果不能确定，单击 'Yes to All'。"
+"prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
+" existing version. If in doubt, press 'Yes to All'."
+msgstr "文件 %1 已经存在。单击 “全部” 进行覆盖并且不再提示，“确定” 覆盖单个文件， 而“取消”保留你现在的版本。如果不能确定，单击 “全部”。"
 
-#: ../unetbootin.cpp:597
+#: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
+msgctxt "unetbootin|"
+msgid "Ok"
+msgstr "确定"
+
+#: ../unetbootin.cpp:503 ../unetbootin.cpp:533
+msgctxt "unetbootin|"
+msgid "Yes to All"
+msgstr "全部"
+
+#: ../unetbootin.cpp:504 ../unetbootin.cpp:534
+msgctxt "unetbootin|"
+msgid "No"
+msgstr "否"
+
+#: ../unetbootin.cpp:529
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
 msgstr "%1 没有空间了，放弃安装吗？"
 
-#: ../unetbootin.cpp:598
+#: ../unetbootin.cpp:530
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
-"The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to "
-"ignore this error and attempt to continue installation, and 'No to All' to "
+"The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to"
+" ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr "目录 %1 没有空间了。单击'Yes'终止安装，单击'No'忽略此错误并尝试继续安装，单击'No to All'忽略所有没有空间的错误。"
+msgstr "目录 %1 没有空间了。单击“确定”终止安装，单击“取消”忽略此错误并尝试继续安装，单击“取消全部”忽略所有没有空间的错误。"
 
-#: ../unetbootin.cpp:624 ../unetbootin.cpp:1205 ../unetbootin.cpp:1297
-#: ../unetbootin.cpp:3034 ../unetbootin.cpp:3045 ../unetbootin.cpp:3056
-#: ../unetbootin.cpp:3364
+#: ../unetbootin.cpp:559 ../unetbootin.cpp:1140 ../unetbootin.cpp:1232
+#: ../unetbootin.cpp:2970 ../unetbootin.cpp:2981 ../unetbootin.cpp:2992
+#: ../unetbootin.cpp:3304
 msgctxt "unetbootin|"
 msgid "USB Drive"
-msgstr "USB 驱动器"
+msgstr "U盘"
 
-#: ../unetbootin.cpp:692
+#: ../unetbootin.cpp:627
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating kernel file in %1"
 msgstr "正在 %1 中查找内核文件"
 
-#: ../unetbootin.cpp:742
+#: ../unetbootin.cpp:677
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying kernel file from %1"
 msgstr "正从 %1 中复制内核文件"
 
-#: ../unetbootin.cpp:748
+#: ../unetbootin.cpp:683
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating initrd file in %1"
 msgstr "正从 %1 中查找 initrd 文件"
 
-#: ../unetbootin.cpp:785
+#: ../unetbootin.cpp:720
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
 msgstr "在 %1 中extractinitrd"
 
-#: ../unetbootin.cpp:787
+#: ../unetbootin.cpp:722
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
 msgstr "locateinitrd完成"
 
-#: ../unetbootin.cpp:790
+#: ../unetbootin.cpp:725
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying initrd file from %1"
 msgstr "正从 %1 中复制 initrd 文件"
 
-#: ../unetbootin.cpp:796 ../unetbootin.cpp:876
+#: ../unetbootin.cpp:731 ../unetbootin.cpp:811
 msgctxt "unetbootin|"
 msgid "Extracting bootloader configuration"
-msgstr "正在提取引导装载程序配置"
+msgstr "正在抽取引导装载程序配置"
 
-#: ../unetbootin.cpp:1094
+#: ../unetbootin.cpp:1029
 msgctxt "unetbootin|"
 msgid "extractiso begin"
 msgstr "extractiso开始"
 
-#: ../unetbootin.cpp:1107 ../unetbootin.cpp:1137
+#: ../unetbootin.cpp:1042 ../unetbootin.cpp:1072
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracting compressed iso:</b> %1"
 msgstr "<b>正在解压 iso 镜像文件：</b> %1"
 
-#: ../unetbootin.cpp:1259
+#: ../unetbootin.cpp:1194
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
 msgstr "extractinitrd完成"
 
-#: ../unetbootin.cpp:1267
+#: ../unetbootin.cpp:1202
 msgctxt "unetbootin|"
 msgid "QFile end"
 msgstr "QFile完成"
 
-#: ../unetbootin.cpp:1274
+#: ../unetbootin.cpp:1209
 msgctxt "unetbootin|"
 msgid "QTextStream end"
 msgstr "QTextStream完成"
 
-#: ../unetbootin.cpp:1278
+#: ../unetbootin.cpp:1213
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
 msgstr "extractallfiles完成"
 
-#: ../unetbootin.cpp:1291
+#: ../unetbootin.cpp:1226
 msgctxt "unetbootin|"
 msgid "extractiso end"
 msgstr "extractiso完成"
 
-#: ../unetbootin.cpp:1399
+#: ../unetbootin.cpp:1334
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
 msgstr "<b>已复制：</b> 0 字节"
 
-#: ../unetbootin.cpp:1437
+#: ../unetbootin.cpp:1372
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
 msgstr "<b>已抽取：</b>0 / %1 个文件"
 
-#: ../unetbootin.cpp:1440
+#: ../unetbootin.cpp:1375
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
 msgstr "<b>已抽取：</b> %1 / %2 个文件"
 
-#: ../unetbootin.cpp:2334 ../unetbootin.cpp:2349
+#: ../unetbootin.cpp:2269 ../unetbootin.cpp:2284
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
 msgstr "<b>已下载：</b> %1 / %2"
 
-#: ../unetbootin.cpp:2364
+#: ../unetbootin.cpp:2299
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
 msgstr "<b>已复制：</b> %1 / %2"
 
-#: ../unetbootin.cpp:2736
+#: ../unetbootin.cpp:2671
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
 msgstr "%1 没有找到"
 
-#: ../unetbootin.cpp:2737
+#: ../unetbootin.cpp:2672
 #, qt-format
 msgctxt "unetbootin|"
 msgid ""
@@ -428,53 +373,46 @@ msgid ""
 "Install the \"%3\" package or your distribution's equivalent."
 msgstr "%1 没有找到。该安装模式需要 %2。安装 “ %3 ” 包或者你的发行版本的等效版本。"
 
-#: ../unetbootin.cpp:3028
+#: ../unetbootin.cpp:2964
 msgctxt "unetbootin|"
 msgid "runinst begin"
 msgstr "runinst 开始"
 
-#: ../unetbootin.cpp:3029
+#: ../unetbootin.cpp:2965
 msgctxt "unetbootin|"
 msgid "(Current)"
 msgstr "(处理中)"
 
-#: ../unetbootin.cpp:3030
+#: ../unetbootin.cpp:2966
 msgctxt "unetbootin|"
 msgid "(Done)"
 msgstr "(完成)"
 
-#: ../unetbootin.cpp:3041
+#: ../unetbootin.cpp:2977
 msgctxt "unetbootin|"
 msgid "Hard Disk"
 msgstr "硬盘"
 
-#: ../unetbootin.cpp:3446
+#: ../unetbootin.cpp:3386
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
 msgstr "正在安装 syslinux 到 %1"
 
-#, qt-format
-#~ msgctxt "unetbootin|"
-#~ msgid "Installing extlinux to %1"
-#~ msgstr "正在安装 extlinux 到 %1"
-
-#: ../unetbootin.cpp:3474
+#: ../unetbootin.cpp:3414
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
 msgstr "正在同步文件系统"
 
-#: ../main.cpp:80
+#: ../main.cpp:76
 msgctxt "uninstaller|"
 msgid "Must run as root"
 msgstr "必须以root的身份运行"
 
-#: ../main.cpp:82
+#: ../main.cpp:78
 #, qt-format
 msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr ""
-"%2 必须以 root 身份运行。关闭它，并使用以下方法之一重新运行：<br/><b>sudo %1</b><br/>或：<br/><b>su - -c "
-"'%1'</b>"
+msgstr "%2 必须以 root 身份运行。关闭它，并使用以下方法之一重新运行：<br/><b>sudo %1</b><br/>或：<br/><b>su - -c '%1'</b>"
