@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-09-26 10:01+0000\n"
+"PO-Revision-Date: 2014-09-30 02:40+0000\n"
 "Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/deepin-boot-maker/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -16,70 +16,70 @@ msgstr ""
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:41
+#: ../bootmaker.cpp:46
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "U盘格式错误"
 
-#: ../bootmaker.cpp:42
+#: ../bootmaker.cpp:47
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "仅支持FAT32格式U盘。是否格式化U盘，格式化U盘会丢失U盘上所有的分区及其数据，请先备份U盘上的数据。"
 
-#: ../bootmaker.cpp:44
+#: ../bootmaker.cpp:49
 msgctxt "BootMaker|"
 msgid "Format"
 msgstr "格式"
 
-#: ../bootmaker.cpp:45 ../bootmaker.cpp:103
+#: ../bootmaker.cpp:50 ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../bootmaker.cpp:89 ../bootmaker.cpp:90
+#: ../bootmaker.cpp:94 ../bootmaker.cpp:95
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "请选择ISO文件"
 
-#: ../bootmaker.cpp:99
+#: ../bootmaker.cpp:104
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
 msgstr "格式化U盘"
 
-#: ../bootmaker.cpp:100
+#: ../bootmaker.cpp:105
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr "格式化U盘将丢失U盘上所有资料，请做好备份后点“确定”按钮。"
 
-#: ../bootmaker.cpp:102 ../bootmaker.cpp:144 ../bootmaker.cpp:165
-#: ../bootmaker.cpp:182 ../bootmaker.cpp:198
+#: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
+#: ../bootmaker.cpp:187 ../bootmaker.cpp:203
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "确定"
 
-#: ../bootmaker.cpp:141
+#: ../bootmaker.cpp:146
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
 msgstr "插入U盘"
 
-#: ../bootmaker.cpp:142
+#: ../bootmaker.cpp:147
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
 msgstr "没有发现U盘。如果您已经插入U盘，请尝试重新格式化为FAT32格式。"
 
-#: ../bootmaker.cpp:162
+#: ../bootmaker.cpp:167
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
 msgstr "%1 没有挂载"
 
-#: ../bootmaker.cpp:163
+#: ../bootmaker.cpp:168
 #, qt-format
 msgctxt "BootMaker|"
 msgid ""
@@ -88,22 +88,22 @@ msgid ""
 "USB flash drive."
 msgstr "你必须首先在 %1 挂载U盘。大部分发行版本会在你移除并且重新插入U盘后自动执行该操作。"
 
-#: ../bootmaker.cpp:179
+#: ../bootmaker.cpp:184
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
 msgstr "选择一个磁盘镜像文件"
 
-#: ../bootmaker.cpp:180
+#: ../bootmaker.cpp:185
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
 msgstr "你必须选择加载一个磁盘镜像文件。"
 
-#: ../bootmaker.cpp:195
+#: ../bootmaker.cpp:200
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
 msgstr "没有找到磁盘镜像文件"
 
-#: ../bootmaker.cpp:196
+#: ../bootmaker.cpp:201
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
@@ -116,8 +116,8 @@ msgstr "选择U盘"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
-msgid "<p style='font-weight:bold;'>Select a disk image</p>"
-msgstr "选择一个磁盘镜像文件"
+msgid "<p style='font-weight:bold;'>Select disk image</p>"
+msgstr "<p style='font-weight:bold;'>选择光盘镜像</p>"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -170,12 +170,12 @@ msgid ""
 "EFI option.</a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>若启动失败，请尝试关闭EFI选项。</a>"
 
-#: ../ui/dwindowui.cpp:267
+#: ../ui/dwindowui.cpp:268
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "稍后重启"
 
-#: ../ui/dwindowui.cpp:269
+#: ../ui/dwindowui.cpp:270
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "立即重启"
