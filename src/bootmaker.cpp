@@ -8,6 +8,11 @@
 
 #include <QThread>
 
+#ifdef Q_OS_WIN32
+#pragma comment(lib, "shell32.lib")
+#pragma comment(lib, "advapi32.lib")
+#endif
+
 BootMaker::BootMaker(QWidget* parent): QWidget(parent){
      m_UnetbootinPtr = new unetbootin();
      m_FileListMonitor = new FileListMonitor();

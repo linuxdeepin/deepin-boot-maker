@@ -250,6 +250,7 @@ void DWindowUI::switchToEndUI() {
     QLabel *tips = new QLabel(tr(
          "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable EFI option.</a>"));
     tips->setFixedWidth(200);
+    tips->setFixedHeight(30);
     tips->setWordWrap(true);
     m_topLayout->addSpacing(34);
     m_topLayout->addWidget(sucess);

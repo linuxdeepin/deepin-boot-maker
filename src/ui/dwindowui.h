@@ -47,14 +47,14 @@ private:
     void addOptionUI(QBoxLayout * top);
 
 
-    void switchToEndUI();
-    void switchToProcessUI();
 
 private slots:
     void start();
     void refrshUsbDriverList();
     void checkProcess();
     void confirmFormat();
+    void switchToProcessUI();
+    void switchToEndUI();
 
 private:
     int     m_Margin;
