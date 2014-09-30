@@ -42,7 +42,7 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstLayout->addSpacing(25 + 250 / 20);
 
     m_IsoLabel = new DImageIcon(this);
-    m_IsoLabel->setDTips(tr("<p style='font-weight:bold;'>Select a disk image</p>"));
+    m_IsoLabel->setDTips(tr("<p style='font-weight:bold;'>Select disk image</p>"));
     m_FirstLayout->addWidget(m_IsoLabel);
     m_FirstLayout->setAlignment(m_IsoLabel, Qt::AlignCenter);
     connect(m_IsoLabel, SIGNAL(clicked()), this, SLOT(selectISO()));
