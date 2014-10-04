@@ -1,11 +1,12 @@
 # 
 # Translators:
-# Maxximo88 <real.massimo@hotmail.it>, 2014
+# Massimo Antonio Carofano <real.massimo@hotmail.it>, 2014
+# Massimo Antonio Carofano <real.massimo@hotmail.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-09-30 02:28+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-10-12 08:30+0000\n"
+"Last-Translator: Massimo Antonio Carofano <real.massimo@hotmail.it>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/deepin-boot-maker/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,12 +26,12 @@ msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr "Sono supportate solo dispositivi Fat32. Vuoi formattarlo?Tutte le partizioni ed i dati presenti saranno eliminati, nel caso fai un backup prima di proseguire."
+msgstr "Sono supportati solo dispositivi Fat32. Vuoi formattarlo?Tutte le partizioni ed i dati presenti saranno eliminati, nel caso fai un backup prima di proseguire."
 
 #: ../bootmaker.cpp:49
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "Formato"
+msgstr "Formatta"
 
 #: ../bootmaker.cpp:50 ../bootmaker.cpp:108
 msgctxt "BootMaker|"
@@ -52,7 +53,7 @@ msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "Tutti i dati saranno persi con la formattazione., fai un backup e poi premi OK."
+msgstr "Tutti i dati saranno persi con la formattazione, fai un backup e poi premi OK."
 
 #: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
 #: ../bootmaker.cpp:187 ../bootmaker.cpp:203
@@ -85,7 +86,7 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr "Devi prima montare il dispositivo USB %1 in un punto di mount. Molte distribuzioni lo fanno in automatic, dopodiché rimuovi lo e reinserisci il dispositivo USB."
+msgstr "Devi prima montare il dispositivo USB %1 in un punto di mount. Molte distribuzioni lo fanno in automatico, dopodiché rimuovi e reinserisci il dispositivo USB."
 
 #: ../bootmaker.cpp:184
 msgctxt "BootMaker|"
@@ -106,7 +107,7 @@ msgstr "File immagine disco non trovata"
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr "L'immagine disco %1 non esiste.l'immagine disco %1 non esiste."
+msgstr "L'immagine disco %1 non esiste."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
@@ -116,7 +117,7 @@ msgstr "<p style='font-weight:bold;'>Seleziona il drive USB</p>"
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr ""
+msgstr "<p style='font-weight:bold;'>Seleziona immagine disco</p>"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -127,7 +128,7 @@ msgstr "Dispositivo USB non rilevato"
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
-msgstr "<p style='color:white; font-size:12px;'>completamento %1%</p>"
+msgstr "<p style='color:white; font-size:12px;'>%1% completato</p>"
 
 #: ../ui/dwindowui.cpp:126
 msgctxt "DWindowUI|"
@@ -160,7 +161,7 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px'>ricordati di selezionare il dispositivo usb durante il boot per poi installare Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Ricordati di selezionare il dispositivo USB durante il boot per poi installare Deepin OS.</p>"
 
 #: ../ui/dwindowui.cpp:250
 msgctxt "DWindowUI|"
@@ -214,7 +215,7 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr "Il file %1 esiste già. Premi 'Si a tutti' per sovrascriverlo e far in modo che non ti venga chiesto nuovamente., 'Si' per far in modo che ti venga chiesto ogni volta, 'No' per lasciare la versione attuale. Se sei in dubbio premi 'Si a tutti'."
+msgstr "Il file %1 esiste già. Premi 'Si a tutti' per sovrascriverlo e far in modo che non ti venga chiesto nuovamente, 'Si' per far in modo che ti venga chiesto ogni volta, 'No' per lasciare la versione attuale. Se sei in dubbio premi 'Si a tutti'."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"

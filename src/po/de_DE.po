@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-09-30 02:28+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-09-30 22:51+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/deepin-boot-maker/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,7 +109,7 @@ msgstr "Festplatten-Abbilddatei nicht gefunden"
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr ""
+msgstr "Die angegebene Festplattenabbilddatei %1 ist nicht vorhanden."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
@@ -119,7 +119,7 @@ msgstr "<p style='font-weight:bold;'>USB-Laufwerk auswählen</p>"
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr ""
+msgstr "<p style='font-weight:bold;'>Festplattenabbild auswählen</p>"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
