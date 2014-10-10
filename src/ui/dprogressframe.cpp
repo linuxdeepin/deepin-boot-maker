@@ -105,6 +105,9 @@ void DProgressFrame::usbDevSelected(const QString & dev) {
 void DProgressFrame::switchProgress() {
     m_UsbLabel->setStatus(DDevIcon::Progress);
     m_IsoLabel->setStatus(DImageIcon::Progress);
+    QMovie *process = new QMovie(":/ui/images/process-active.gif");
+    m_ProcessLabel->setMovie(process);
+    process->start();
 }
 
 void DProgressFrame::switchShowStatus() {

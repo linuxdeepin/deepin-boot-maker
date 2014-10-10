@@ -10,7 +10,7 @@ DUsbList::DUsbList(QWidget *parent) :
     s_EmptyString = tr("USB drive not detected");
     m_StandardItemModel = new QStandardItemModel();
     initList();
-    this->setFixedSize(160,120);
+    this->setFixedSize(170,120);
     this->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setSelectionMode(QAbstractItemView::SingleSelection);
     connect(this, SIGNAL(clicked(QModelIndex)), this, SLOT(selectDriver(QModelIndex)));
@@ -20,7 +20,8 @@ void DUsbList::initList(){
     m_SelectedDev = "";
     m_StandardItemModel->clear();
     QStandardItem *standItem = new QStandardItem(s_EmptyString);
-    standItem->setIcon(QIcon(":/ui/images/unselect.png"));
+   // standItem->setIcon(QIcon(":/ui/images/unselect.png"));
+    standItem->setTextAlignment(Qt::AlignCenter);
     m_StandardItemModel->appendRow(standItem);
     m_LastIndex = m_StandardItemModel->index(0,0);
     this->setModel(m_StandardItemModel);
