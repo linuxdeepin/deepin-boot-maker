@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-09-30 02:28+0000\n"
+"PO-Revision-Date: 2014-10-17 06:02+0000\n"
 "Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: Afrikaans (South Africa) (http://www.transifex.com/projects/p/deepin-boot-maker/language/af_ZA/)\n"
 "MIME-Version: 1.0\n"

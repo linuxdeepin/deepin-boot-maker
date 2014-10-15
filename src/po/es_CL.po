@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-07 20:00+0000\n"
+"PO-Revision-Date: 2014-10-17 06:02+0000\n"
 "Last-Translator: cristianhcd <cristianhcd@gmail.com>\n"
 "Language-Team: Spanish (Chile) (http://www.transifex.com/projects/p/deepin-boot-maker/language/es_CL/)\n"
 "MIME-Version: 1.0\n"
