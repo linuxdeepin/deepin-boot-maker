@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-17 07:20+0000\n"
+"PO-Revision-Date: 2014-10-20 06:30+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/deepin-boot-maker/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr "USB podržava samo FAT32. Trebate formatirati? Tijekom formatiranja sve particije i podaci će biti izgubljeni, molim napravite unaprijed sigurnosnu kopiju."
+msgstr "USB flash podržava samo FAT32. Trebate formatirati? Tijekom formatiranja sve particije i podaci će biti izgubljeni, molim napravite unaprijed sigurnosnu kopiju."
 
 #: ../bootmaker.cpp:49
 msgctxt "BootMaker|"
@@ -46,7 +46,7 @@ msgstr "Odaberi iso datoteku"
 #: ../bootmaker.cpp:104
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
-msgstr "Formatiraj USB pogon"
+msgstr "Formatiraj USB flash pogon"
 
 #: ../bootmaker.cpp:105
 msgctxt "BootMaker|"
@@ -64,14 +64,14 @@ msgstr "U redu"
 #: ../bootmaker.cpp:146
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
-msgstr "Priključite USB disk"
+msgstr "Umetnite USB flash pogon"
 
 #: ../bootmaker.cpp:147
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
-msgstr "Nijedan USB pogon nije nađen. Ako ste već umetnuli USB pogon, pokušajte ga reformatirati kao FAT32."
+msgstr "Nijedan USB flash pogon nije nađen. Ako ste već umetnuli USB flash pogon, pokušajte ga reformatirati kao FAT32."
 
 #: ../bootmaker.cpp:167
 #, qt-format
@@ -86,7 +86,7 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr "najprije morate montirati USB pogon %1 na točku montiranja. Većina distribucija to radi automatski nakon što uklonite i ponovno umetnete USB pogon."
+msgstr "Najprije morate montirati USB flash pogon %1 na točku montiranja. Većina distribucija to radi automatski nakon što uklonite i ponovno umetnete USB flash pogon."
 
 #: ../bootmaker.cpp:184
 msgctxt "BootMaker|"
