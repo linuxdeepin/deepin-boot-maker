@@ -1,5 +1,5 @@
 Source: deepin-boot-maker
-Section: non-free/admin
+Section: misc
 Priority: extra
 Maintainer: Deepin Packages Builder <packages@linuxdeepin.com>
 Build-Depends: debhelper (>= 9), qt5-default, qt5-qmake
