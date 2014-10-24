@@ -227,6 +227,7 @@ int main(int argc, char **argv){
 
     DWindowUI mainWindow;
     mainWindow.setWindowIcon(icon);
+    mainWindow.setWindowTitle(QObject::tr("Deepin Boot Maker"));
     mainWindow.show();
 
     app.exec();
