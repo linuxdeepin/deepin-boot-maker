@@ -110,7 +110,7 @@ QString RunApp(const QString &execPath, const QString &execParam, const QString 
         return "";
     }
 
-    return app.readAll();
+    return  app.readAllStandardError() + app.readAllStandardOutput();
 }
 #endif
 
@@ -128,9 +128,8 @@ public:
 
 void Execer::run(const QString &execPipeIn){
     Ret = XAPI::RunApp(ExecPath, Param, execPipeIn);
-    qDebug()<<"Exec: "<<ExecPath
-            <<"Params: "<<Param
-            <<"Output: "<<Ret;
+    qDebug()<<"Cmdline: "<<ExecPath + Param
+            <<"Output: "<<endl<<Ret;
 }
 
 XSys::XSys(QObject *parent) :

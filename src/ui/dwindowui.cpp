@@ -110,7 +110,7 @@ void DWindowUI::initUI() {
     m_topLayout->setAlignment(m_progressFrame, Qt::AlignCenter);
 
     m_progressText = new QLabel();
-    m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>%1% has been completed</p>")).arg(m_BootMaker->processRate()));
+    m_progressText->setText(QString(tr("<p style='color:white; font-size:12px;'>%1% has been completed</p>")).arg(0));
     m_progressLayout->addWidget(m_progressText);
     m_progressLayout->setAlignment(m_progressText, Qt::AlignCenter);
     m_progressText->hide();

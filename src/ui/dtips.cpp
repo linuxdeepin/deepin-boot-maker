@@ -54,7 +54,6 @@ QPainterPath DrawTipsPath(const QRect& rect, int radius) {
 
 void DTips::paintEvent(QPaintEvent *e) {
     QPainter painter(this);
-    painter.save();
     painter.setRenderHint(QPainter::Antialiasing);
 
     QRect rect = QLabel::rect();

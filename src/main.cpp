@@ -104,7 +104,7 @@ bool SwitchToRoot(QApplication &app) {
 #endif
 
 static QString g_LogPath;
-
+//#include <iostream>
 void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
     QString txt;
@@ -127,6 +127,8 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
     outFile.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
+
+//    std::wcout<<txt.toStdWString()<<std::endl;
 }
 
 void installLogHandler() {
@@ -176,7 +178,7 @@ void loadTranslate(QApplication& app) {
         tranlateUrl = QString(":/po/%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     }
 
-    qDebug()<<&app<<"load translate file: "<<tranlateUrl<<endl;
+    qDebug()<<&app<<"load translate file: "<<tranlateUrl;
 
     if (!QFile::exists(tranlateUrl)) {
         tranlateUrl = ":/en_US.qm";

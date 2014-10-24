@@ -192,11 +192,17 @@ bool InstallSyslinux(const QString &targetDev) {
     //UmountDisk(targetDev);
     QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
     XSys::SynExec("chmod +x ", sysliuxPath);
-    XSys::SynExec(sysliuxPath , QString(" -i -a %1").arg(targetDev));
+    XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
+
+    QString rawtargetDev = GetPartitionDisk(targetDev);
     //dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::InsertTmpFile(":/bootloader/syslinux/mbr.bin");
-    XSys::SynExec("dd" , QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(GetPartitionDisk(targetDev)));
+    XSys::SynExec("dd" , QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(rawtargetDev));
+
+
+    // make active
+    XSys::SynExec("sfdisk", QString("%1 -A%2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
 
     return true;
 }
