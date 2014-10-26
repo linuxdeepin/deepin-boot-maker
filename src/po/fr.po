@@ -7,15 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-19 00:30+0000\n"
-"Last-Translator: FFXP <ffxpstudio@gmail.com>\n"
+"PO-Revision-Date: 2014-10-24 16:21+0000\n"
+"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/deepin-boot-maker/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
 #: ../bootmaker.cpp:46
@@ -181,6 +180,11 @@ msgstr "Redémarrer plus tard"
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Redémarrer maintenant"
+
+#: ../main.cpp:230
+msgctxt "QObject|"
+msgid "Deepin Boot Maker"
+msgstr "Gestionnaire de démarrage Deepin"
 
 #: ../unetbootin.cpp:226 ../unetbootin.cpp:232 ../unetbootin.cpp:236
 #: ../unetbootin.cpp:240 ../unetbootin.cpp:244 ../unetbootin.cpp:250
