@@ -131,6 +131,7 @@ void DProgressFrame::slideUsbSeclect() {
     else {
         m_Active=true;
     }
+    this->layout()->setEnabled(false);
     m_ProcessLabel->setPixmap(QPixmap(""));
     emit changedUsbSeclet();
 
@@ -188,7 +189,7 @@ void DProgressFrame::slideProcess() {
     else {
         m_Active=true;
     }
-
+    this->layout()->setEnabled(true);
     m_ProcessLabel->setPixmap(QPixmap(":/ui/images/process-inactive.png"));
     emit changedProgress();
 
