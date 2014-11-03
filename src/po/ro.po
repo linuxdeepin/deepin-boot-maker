@@ -1,12 +1,12 @@
 # 
 # Translators:
-# cricri8o <cricri8o@yahoo.com>, 2014
+# cricri8o <inactive+cricri8o@transifex.com>, 2014
 # Vasilii Rusu <basil_russu@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-24 11:50+0000\n"
-"Last-Translator: Vasilii Rusu <basil_russu@hotmail.com>\n"
+"PO-Revision-Date: 2014-10-30 03:18+0000\n"
+"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/deepin-boot-maker/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

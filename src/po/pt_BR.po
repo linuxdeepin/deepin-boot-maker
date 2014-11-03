@@ -3,11 +3,12 @@
 # Eduardo Martello <edubitcoin@gmail.com>, 2014
 # Kayo Martins <kayomfreire@gmail.com>, 2014
 # RAFAEL GAUNA <rafaelgt.mbin@gmail.com>, 2014
+# Tati Navarro <tahh.vampyra@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-24 06:11+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-10-30 03:18+0000\n"
+"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/deepin-boot-maker/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,19 +20,19 @@ msgstr ""
 #: ../bootmaker.cpp:46
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
-msgstr ""
+msgstr "Erro de formatação em disco removível USB"
 
 #: ../bootmaker.cpp:47
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr ""
+msgstr "Apenas dispositivos flash USB com FAT32 são suportados. Precisa formatar? Todas as partições e dados serão perdidas durante a formatação, por favor salve os dados por precaução."
 
 #: ../bootmaker.cpp:49
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "Formato"
+msgstr "Formatar"
 
 #: ../bootmaker.cpp:50 ../bootmaker.cpp:108
 msgctxt "BootMaker|"
@@ -46,14 +47,14 @@ msgstr "Por favor selecione uma imagem de disco"
 #: ../bootmaker.cpp:104
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
-msgstr ""
+msgstr "Formatar disco removível USB"
 
 #: ../bootmaker.cpp:105
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "Todos os dados serão perdidos durante a formatação, por favor, faça um backup de seus dados, em seguida, pressione o botão OK."
+msgstr "Todos os dados serão perdidos durante a formatação, por favor, faça um backup de seus dados e em seguida pressione o botão OK."
 
 #: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
 #: ../bootmaker.cpp:187 ../bootmaker.cpp:203
@@ -71,7 +72,7 @@ msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
-msgstr ""
+msgstr "Não foram encontrados discos removíveis USB. Se você já inseriu um disco removível USB, tente reformatá-lo como FAT32."
 
 #: ../bootmaker.cpp:167
 #, qt-format
@@ -86,7 +87,7 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr ""
+msgstr "Você deve primeiramente montar o dispositivo flash USB %1 em um ponto de montagem. A maioria das distribuição fará isso automaticamente após você remover e reinserir o dispositivo flash USB."
 
 #: ../bootmaker.cpp:184
 msgctxt "BootMaker|"
@@ -107,7 +108,7 @@ msgstr "O arquivo de imagem de disco não foi encontrado"
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr ""
+msgstr "O arquivo de imagem de disco especificado %1 não existe."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
@@ -122,7 +123,7 @@ msgstr "<p style='font-weight:bold;'>Selecione a imagem de disco</p>"
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
-msgstr "Dispositivo USB não detectado"
+msgstr "Disco USB não detectado"
 
 #: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
 #, qt-format
@@ -135,14 +136,14 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>A taxa de sucesso na criação pode ser melhorada ao formatar o dispositivo USB.</p>"
 
 #: ../ui/dwindowui.cpp:136
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
-msgstr ""
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Por favor NÃO remova o drive USB ou desligue enquanto o arquivo está sendo escrito.<a>"
 
 #: ../ui/dwindowui.cpp:146
 msgctxt "DWindowUI|"
@@ -154,21 +155,21 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
-msgstr ""
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Feito com sucesso</p>"
 
 #: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Por favor selecione para inicializar pelo disco USB quando for instalar o Deepin OS.</p>"
 
 #: ../ui/dwindowui.cpp:250
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr ""
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Se falhar, por favor tente desabilitar a opção EFI.</a>"
 
 #: ../ui/dwindowui.cpp:268
 msgctxt "DWindowUI|"
@@ -220,7 +221,7 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr ""
+msgstr "O arquivo %1 já existe. Pressione 'Sim para Todos' para sobrescrever e não ser perguntado novamente, 'Sim' para sobrescrever os arquivos um por um, e 'Não' para manter sua versão existente. Se estiver em dúvida, pressione 'Sim para Todos'."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"
@@ -230,7 +231,7 @@ msgstr "Ok"
 #: ../unetbootin.cpp:503 ../unetbootin.cpp:533
 msgctxt "unetbootin|"
 msgid "Yes to All"
-msgstr "Sim para todos"
+msgstr "Sim para Todos"
 
 #: ../unetbootin.cpp:504 ../unetbootin.cpp:534
 msgctxt "unetbootin|"

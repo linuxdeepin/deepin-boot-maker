@@ -1,81 +1,81 @@
 # 
 # Translators:
-# Jacques Strydom <jacquesafro@gmail.com>, 2014
+# Piotr Strębski <strebski@o2.pl>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-30 03:18+0000\n"
-"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
-"Language-Team: Afrikaans (South Africa) (http://www.transifex.com/projects/p/deepin-boot-maker/language/af_ZA/)\n"
+"PO-Revision-Date: 2014-10-30 07:20+0000\n"
+"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/deepin-boot-maker/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: af_ZA\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Qt-Contexts: true\n"
 
 #: ../bootmaker.cpp:46
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
-msgstr "Formateer fout van USB geheuestokkie"
+msgstr "Błąd formatowania przenośnego dysku USB"
 
 #: ../bootmaker.cpp:47
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr "Slegs FAT32 USB geheuestokkie word ondersteun. Nodig om die formateer? Alle afskortings en data sal tydens die formatering verloor word, rugsteun asseblief die data in voorlopig."
+msgstr "Wspierane są tylko pamięci przenośne USB w formacie FAT32. Potrzeba sformatowania? Wszystkie partycje i dane zostaną utracone podczas formatowania, prosimy uprzednio o wykonanie kopii zapasowej."
 
 #: ../bootmaker.cpp:49
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "Formateer"
+msgstr "Format"
 
 #: ../bootmaker.cpp:50 ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Cancel"
-msgstr "Kanselleer"
+msgstr "Anuluj"
 
 #: ../bootmaker.cpp:94 ../bootmaker.cpp:95
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
-msgstr "Kies asseblief 'n ISO-beeld"
+msgstr "Proszę wybrać obraz iso"
 
 #: ../bootmaker.cpp:104
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
-msgstr "Formateer die USB geheuestokkie"
+msgstr "Formatuj dysk przenośny USB"
 
 #: ../bootmaker.cpp:105
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "Alle data sal tydens formatering verloor word, rugsteun asseblief voorlopig en druk dan die OK knoppie."
+msgstr "Wszystkie dane na nośniku podczas formatowania zostaną utracone, tak więc prosimy o uprzednie zrobienie kopii zapasowej a następnie przyciśnięcie przycisku OK."
 
 #: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
 #: ../bootmaker.cpp:187 ../bootmaker.cpp:203
 msgctxt "BootMaker|"
 msgid "Ok"
-msgstr "Ok"
+msgstr "OK"
 
 #: ../bootmaker.cpp:146
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
-msgstr "Konnekteer 'n USB dryf"
+msgstr "Włóż dysk przenośny USB"
 
 #: ../bootmaker.cpp:147
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
-msgstr "Geen USB-stokkie is gevind. As jy reeds 'n USB geheuestokkie gekoppel het, probeer om dit te formatteer as FAT32."
+msgstr "Nie odnaleziono napędów przenośnych USB. Jeśli już włożyłeś pamięć przenośną USB to spróbuj ją sformatować jako FAT32."
 
 #: ../bootmaker.cpp:167
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
-msgstr "%1 nie gemonteer"
+msgstr "%1 nie zamontowany"
 
 #: ../bootmaker.cpp:168
 #, qt-format
@@ -84,132 +84,132 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr "Jy moet eers die die USB dryf %1 na 'n mountpoint berg. Die meeste verklarings sal dit outomaties doen nadat jy dit verwyder en herkoppel die USB dryf."
+msgstr "Wpierw musisz zamontować pamięć przenośną USB %1 do punktu montowania. Większość dystrybucji robi to automatycznie po usunięciu i ponownym włożeniu pamięci przenośnej USB."
 
 #: ../bootmaker.cpp:184
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
-msgstr "Kies 'n skyf beeld-lêer"
+msgstr "Wybierz plik obrazu dysku"
 
 #: ../bootmaker.cpp:185
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
-msgstr "Jy moet 'n skyf beeld-lêer om te laai, kies."
+msgstr "Musisz wskazać plik obrazu dysku do wczytania."
 
 #: ../bootmaker.cpp:200
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
-msgstr "Skyf beeld-lêer nie gevind nie"
+msgstr "Plik obrazu dysku nie został odnaleziony"
 
 #: ../bootmaker.cpp:201
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr "Die gespesifiseerde diskimage lêer %1 bestaan ​​nie."
+msgstr "Określony plik obrazu dysku %1 nie istnieje."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "<p style='font-weight:bold;'>Select USB drive</p>"
-msgstr "<p style='font-weight:bold;'>Selekteer USB dryf</p>"
+msgstr "<p style='font-weight:bold;'>Wybierz napęd USB</p>"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr ""
+msgstr "<p style='font-weight:bold;'>Wybierz obraz dysku</p>"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
-msgstr "USB dryf nie geselekteer nie"
+msgstr "Nie wykryto napędu USB"
 
 #: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
-msgstr "<p style='color:white; font-size:12px;'>%1% is afgehandel</p>"
+msgstr "<p style='color:white; font-size:12px;'>Ukończono %1%</p>"
 
 #: ../ui/dwindowui.cpp:126
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px;'>Die sukses tempo kan verbeter word deur formatering van die USB dryf.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Szanse na pomyślne zakończenie zadania mogą być zwiększone poprzez uprzednie sformatowanie napędu USB.</p>"
 
 #: ../ui/dwindowui.cpp:136
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Moet asseblief nie die USB drive afsluit of verwyder terwyl lêer skryf.<a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Prosimy NIE usuwać napędu USB lub wyłączać komputera podczas zapisywania pliku.<a>"
 
 #: ../ui/dwindowui.cpp:146
 msgctxt "DWindowUI|"
 msgid "Start"
-msgstr "Begin"
+msgstr "Uruchom"
 
 #: ../ui/dwindowui.cpp:245
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
-msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Is suksesvol gemaak</p>"
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Pomyślnie wykonano</p>"
 
 #: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px'>Kies USB dryf by selflaai vir die installering van Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Wybierz napęd USB do wykonania rozruchu po zainstalowaniu Deepin OS.</p>"
 
 #: ../ui/dwindowui.cpp:250
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Indien dit misluk, probeer EFI opsie af te skakel.</a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Jeśli wystąpił błąd, prosimy spróbować wyłączyć opcję EFI.</a>"
 
 #: ../ui/dwindowui.cpp:268
 msgctxt "DWindowUI|"
 msgid "Restart Later"
-msgstr "Herlaai Later"
+msgstr "Uruchom ponownie później"
 
 #: ../ui/dwindowui.cpp:270
 msgctxt "DWindowUI|"
 msgid "Restart Now"
-msgstr "Herlaai Nou"
+msgstr "Uruchom ponownie teraz"
 
 #: ../main.cpp:230
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
-msgstr "Deepin Selflaai Skepper"
+msgstr "Twórca rozruchu Deepin"
 
 #: ../unetbootin.cpp:226 ../unetbootin.cpp:232 ../unetbootin.cpp:236
 #: ../unetbootin.cpp:240 ../unetbootin.cpp:244 ../unetbootin.cpp:250
 #: ../unetbootin.cpp:278
 msgctxt "unetbootin|"
 msgid "either"
-msgstr "enigeen"
+msgstr "lub/oraz"
 
 #: ../unetbootin.cpp:257
 msgctxt "unetbootin|"
 msgid "LiveUSB persistence"
-msgstr "LiveUSB volharding"
+msgstr "LiveUSB z trybem zachowywania"
 
 #: ../unetbootin.cpp:272
 msgctxt "unetbootin|"
 msgid "FAT32-formatted USB drive"
-msgstr "FAT32-formaat USB dryf"
+msgstr "Napęd USB sformatowany jako FAT32"
 
 #: ../unetbootin.cpp:276
 msgctxt "unetbootin|"
 msgid "EXT2-formatted USB drive"
-msgstr "EXT2-formaat USB dryf"
+msgstr "Napęd USB sformatowany jako EXT2"
 
 #: ../unetbootin.cpp:498
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 exists, overwrite?"
-msgstr "%1 bestaan​​, oorskryf?"
+msgstr "%1 już istnieje, nadpisać?"
 
 #: ../unetbootin.cpp:500
 #, qt-format
@@ -218,28 +218,28 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr "Die lêer %1 bestaan ​​reeds. Druk \"Ja aan Almal\" om dit te oorskryf en nie weer gevra te word nie, \"Ja\" om dit te oorskryf een vir een en \"Nee\" om die huidige weergawe te hou. Indien onseker, druk \"Ja aan Almal\"."
+msgstr "Plik %1 już istnieje. Naciśnij 'Tak dla wszystkich', aby go nadpisać i nie być ponownie pytanym; 'Tak', aby nadpisywać pliki po kolei; i 'Nie', aby zachować swoją bieżącą wersję pliku. Jeśli masz wątpliwości, naciśnij 'Tak dla wszystkich'."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"
 msgid "Ok"
-msgstr "Ok"
+msgstr "OK"
 
 #: ../unetbootin.cpp:503 ../unetbootin.cpp:533
 msgctxt "unetbootin|"
 msgid "Yes to All"
-msgstr "Ja aan Almal"
+msgstr "Tak dla wszystkich"
 
 #: ../unetbootin.cpp:504 ../unetbootin.cpp:534
 msgctxt "unetbootin|"
 msgid "No"
-msgstr "Nee"
+msgstr "Nie"
 
 #: ../unetbootin.cpp:529
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
-msgstr "%1 is uit ruimte uit, staak die installasie?"
+msgstr "Zabrakło miejsca na %1, przerwać instalację?"
 
 #: ../unetbootin.cpp:530
 #, qt-format
@@ -248,125 +248,125 @@ msgid ""
 "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to"
 " ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr "Die gids %1 is uit ruimte uit. Druk \"Ja\" om die installasie te staak, \"Nee\" hierdie fout te ignoreer en probeer die installasie voort te gaan, en 'Nee vir almal' om al buite-ruimte foute te ignoreer."
+msgstr "Katalog %1 nie posiada wolnej przestrzeni na dysku. Naciśnij 'Tak', aby przerwać instalację; 'Nie', aby zignorować ten błąd i spróbować kontynuować instalację; lub 'Nie dla wszystkich', aby zignorować wszystkie błędy wynikające z braku przestrzeni dyskowej."
 
 #: ../unetbootin.cpp:559 ../unetbootin.cpp:1140 ../unetbootin.cpp:1232
 #: ../unetbootin.cpp:2970 ../unetbootin.cpp:2981 ../unetbootin.cpp:2992
 #: ../unetbootin.cpp:3304
 msgctxt "unetbootin|"
 msgid "USB Drive"
-msgstr "USB Dryf"
+msgstr "Napęd USB"
 
 #: ../unetbootin.cpp:627
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating kernel file in %1"
-msgstr "Opspoor van kern lêer %1"
+msgstr "Lokowanie pliku jądra na %1"
 
 #: ../unetbootin.cpp:677
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying kernel file from %1"
-msgstr "Kopiëring van kern lêer van %1"
+msgstr "Kopiowanie pliku jądra z %1"
 
 #: ../unetbootin.cpp:683
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating initrd file in %1"
-msgstr "Opspoor van initrd lêer in %1"
+msgstr "Lokowanie pliku initrd na %1"
 
 #: ../unetbootin.cpp:720
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
-msgstr "onttrek van initrd in %1"
+msgstr "extractinitrd  na %1"
 
 #: ../unetbootin.cpp:722
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
-msgstr "Spoor initrd einde op"
+msgstr "locateinitrd zakończone"
 
 #: ../unetbootin.cpp:725
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying initrd file from %1"
-msgstr "Kopiëring van initrd lêer %1"
+msgstr "Kopiowanie pliku initrd z %1"
 
 #: ../unetbootin.cpp:731 ../unetbootin.cpp:811
 msgctxt "unetbootin|"
 msgid "Extracting bootloader configuration"
-msgstr "Onttrek herlaaistelsel opset"
+msgstr "Rozpakowywanie konfiguracji programu rozruchowego"
 
 #: ../unetbootin.cpp:1029
 msgctxt "unetbootin|"
 msgid "extractiso begin"
-msgstr "onttrek ISO begin"
+msgstr "extractiso rozpoczęte"
 
 #: ../unetbootin.cpp:1042 ../unetbootin.cpp:1072
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracting compressed iso:</b> %1"
-msgstr "<b>Onttrek saamgeperste ISO:</b> %1"
+msgstr "<b>Rozpakowywanie skompresowanego obrazu iso:</b> %1"
 
 #: ../unetbootin.cpp:1194
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
-msgstr "onttrek van initrd einde"
+msgstr "extractinitrd zakończone"
 
 #: ../unetbootin.cpp:1202
 msgctxt "unetbootin|"
 msgid "QFile end"
-msgstr "QFile einde"
+msgstr "QFile zakończone"
 
 #: ../unetbootin.cpp:1209
 msgctxt "unetbootin|"
 msgid "QTextStream end"
-msgstr "QTextStream einde"
+msgstr "QTextStream zakończone"
 
 #: ../unetbootin.cpp:1213
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
-msgstr "onttrek al die lêers eindig"
+msgstr "extractallfiles zakończone"
 
 #: ../unetbootin.cpp:1226
 msgctxt "unetbootin|"
 msgid "extractiso end"
-msgstr "onttrek ISO einde"
+msgstr "extractiso zakończone"
 
 #: ../unetbootin.cpp:1334
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
-msgstr "<b>Gekopieer:</b> 0 grepe"
+msgstr "<b>Skopiowano:</b> 0 bajtów"
 
 #: ../unetbootin.cpp:1372
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
-msgstr "<b>Onttrek:</b> 0 van %1 dokumente"
+msgstr "<b>Rozpakowano:</b> 0 z %1 plików"
 
 #: ../unetbootin.cpp:1375
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
-msgstr "<b>Onttrek:</b> %1 van %2 dokumente"
+msgstr "<b>Rozpakowano:</b> %1 z %2 plików"
 
 #: ../unetbootin.cpp:2269 ../unetbootin.cpp:2284
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
-msgstr "<b>Afgelaai:</b> %1 van %2"
+msgstr "<b>Pobrano:</b> %1 z %2"
 
 #: ../unetbootin.cpp:2299
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
-msgstr "<b>Gekopieer:</b> %1 van %2"
+msgstr "<b>Skopiowano:</b> %1 z %2"
 
 #: ../unetbootin.cpp:2671
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
-msgstr "%1 nie gevind"
+msgstr "%1 nie został znaleziony"
 
 #: ../unetbootin.cpp:2672
 #, qt-format
@@ -374,43 +374,43 @@ msgctxt "unetbootin|"
 msgid ""
 "%1 not found. This is required for %2 install mode.\n"
 "Install the \"%3\" package or your distribution's equivalent."
-msgstr "%1 nie gevind nie. Dit is nodig vir %2 installeer mode.\nInstalleer \"%3\" pakket of jou verspreiding ekwivalent."
+msgstr "Nie odnaleziono %1. Jest ono wymagane do trybu instalacji %2.\nZainstaluj pakiet \"%3\" lub odpowiednik w Twojej dystrybucji."
 
 #: ../unetbootin.cpp:2964
 msgctxt "unetbootin|"
 msgid "runinst begin"
-msgstr "runinst begin"
+msgstr "runinst rozpoczęte"
 
 #: ../unetbootin.cpp:2965
 msgctxt "unetbootin|"
 msgid "(Current)"
-msgstr "(Huidig)"
+msgstr "(Obecnie)"
 
 #: ../unetbootin.cpp:2966
 msgctxt "unetbootin|"
 msgid "(Done)"
-msgstr "(Klaar)"
+msgstr "(Ukończono)"
 
 #: ../unetbootin.cpp:2977
 msgctxt "unetbootin|"
 msgid "Hard Disk"
-msgstr "Hardeskyf"
+msgstr "Dysk twardy"
 
 #: ../unetbootin.cpp:3386
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
-msgstr "Installering van syslinux na %1"
+msgstr "Instalowanie syslinux na %1"
 
 #: ../unetbootin.cpp:3414
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
-msgstr "Sinchroniseer lêerstelsels"
+msgstr "Synchronizacja systemu plików"
 
 #: ../main.cpp:76
 msgctxt "uninstaller|"
 msgid "Must run as root"
-msgstr "Moet hardloop as root"
+msgstr "Należy uruchomić w trybie administratora"
 
 #: ../main.cpp:78
 #, qt-format
@@ -418,4 +418,4 @@ msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr "%2 moet hardloop as root. Maak dit toe, en her-hardloop deur gebruik van: <br/> <b> sudo %1 </ b> <br/> of: <br/> <b> su - -c '%1' </ b>"
+msgstr "%2 musi zostać uruchomione w trybie administratora. Zamknij to i ponownie uruchom używając albo:<br/><b>sudo %1</b><br/>albo:<br/><b>su - -c '%1'</b>"
