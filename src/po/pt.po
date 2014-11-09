@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-10-30 03:18+0000\n"
+"PO-Revision-Date: 2014-11-14 17:02+0000\n"
 "Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/deepin-boot-maker/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -123,63 +123,63 @@ msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "Unidade USB não detectada"
 
-#: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
+#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
 msgstr "<p style='color:white; font-size:12px;'>%1% foi completada</p>"
 
-#: ../ui/dwindowui.cpp:126
+#: ../ui/dwindowui.cpp:127
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px;'>A taxa de sucesso de criação pode ser melhorada formatando a unidade USB.</p>"
 
-#: ../ui/dwindowui.cpp:136
+#: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>Por favor NÃO REMOVA a unidade USB ou encerre enquanto o ficheiro estiver a ser escrito.<a>"
 
-#: ../ui/dwindowui.cpp:146
+#: ../ui/dwindowui.cpp:147
 msgctxt "DWindowUI|"
 msgid "Start"
 msgstr "Iniciar"
 
-#: ../ui/dwindowui.cpp:245
+#: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
 msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Feito com sucesso</p>"
 
-#: ../ui/dwindowui.cpp:246
+#: ../ui/dwindowui.cpp:247
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px'>Por favor selecione unidade USB para arrancar quando instalar o Deepin OS.</p>"
 
-#: ../ui/dwindowui.cpp:250
+#: ../ui/dwindowui.cpp:251
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>Se falhou, por favor tente desativar a opção EFI.</a>"
 
-#: ../ui/dwindowui.cpp:268
+#: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "Reiniciar Mais Tarde"
 
-#: ../ui/dwindowui.cpp:270
+#: ../ui/dwindowui.cpp:271
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Reiniciar Agora"
 
-#: ../main.cpp:230
+#: ../bootmaker.h:49
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "Criador de Arranque Deepin"

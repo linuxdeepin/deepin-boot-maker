@@ -123,63 +123,63 @@ msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "未检测到U盘"
 
-#: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
+#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
 msgstr "<p style='color:white; font-size:12px;'>已完成%1%</p>"
 
-#: ../ui/dwindowui.cpp:126
+#: ../ui/dwindowui.cpp:127
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px;'>格式化U盘可提高制作成功率</p>"
 
-#: ../ui/dwindowui.cpp:136
+#: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>正在写入文件，请不要移除U盘或者关机。</a>"
 
-#: ../ui/dwindowui.cpp:146
+#: ../ui/dwindowui.cpp:147
 msgctxt "DWindowUI|"
 msgid "Start"
 msgstr "开始"
 
-#: ../ui/dwindowui.cpp:245
+#: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
 msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>制作成功</p>"
 
-#: ../ui/dwindowui.cpp:246
+#: ../ui/dwindowui.cpp:247
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px'>安装深度系统时请选择从U盘启动。</p>"
 
-#: ../ui/dwindowui.cpp:250
+#: ../ui/dwindowui.cpp:251
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>若启动失败，请尝试关闭EFI选项。</a>"
 
-#: ../ui/dwindowui.cpp:268
+#: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "稍后重启"
 
-#: ../ui/dwindowui.cpp:270
+#: ../ui/dwindowui.cpp:271
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "立即重启"
 
-#: ../main.cpp:230
+#: ../bootmaker.h:49
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "深度启动盘制作工具"

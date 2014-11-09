@@ -122,63 +122,63 @@ msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "USB dryf nie geselekteer nie"
 
-#: ../ui/dwindowui.cpp:113 ../ui/dwindowui.cpp:201 ../ui/dwindowui.cpp:207
+#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
 msgstr "<p style='color:white; font-size:12px;'>%1% is afgehandel</p>"
 
-#: ../ui/dwindowui.cpp:126
+#: ../ui/dwindowui.cpp:127
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px;'>Die sukses tempo kan verbeter word deur formatering van die USB dryf.</p>"
 
-#: ../ui/dwindowui.cpp:136
+#: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>Moet asseblief nie die USB drive afsluit of verwyder terwyl lêer skryf.<a>"
 
-#: ../ui/dwindowui.cpp:146
+#: ../ui/dwindowui.cpp:147
 msgctxt "DWindowUI|"
 msgid "Start"
 msgstr "Begin"
 
-#: ../ui/dwindowui.cpp:245
+#: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
 msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Is suksesvol gemaak</p>"
 
-#: ../ui/dwindowui.cpp:246
+#: ../ui/dwindowui.cpp:247
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px'>Kies USB dryf by selflaai vir die installering van Deepin OS.</p>"
 
-#: ../ui/dwindowui.cpp:250
+#: ../ui/dwindowui.cpp:251
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>Indien dit misluk, probeer EFI opsie af te skakel.</a>"
 
-#: ../ui/dwindowui.cpp:268
+#: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "Herlaai Later"
 
-#: ../ui/dwindowui.cpp:270
+#: ../ui/dwindowui.cpp:271
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Herlaai Nou"
 
-#: ../main.cpp:230
+#: ../bootmaker.h:49
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "Deepin Selflaai Skepper"
