@@ -1,8 +1,8 @@
 #!/bin/bash
 
-qtlupdate=lupdate
-qtlrelease=lrelease
-qtlconvert=lconvert
+qtlupdate=/usr/lib/x86_64-linux-gnu/qt5/bin/lupdate
+qtlrelease=/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease
+qtlconvert=/usr/lib/x86_64-linux-gnu/qt5/bin/lconvert
 tsfile=po/deepin-boot-maker.ts
 
 $qtlupdate deepin-boot-maker.pro -target-language en_US -ts $tsfile

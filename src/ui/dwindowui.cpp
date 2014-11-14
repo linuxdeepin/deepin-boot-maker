@@ -91,14 +91,15 @@ void DWindowUI::initUI() {
     btlayout->addWidget(m_closeButton);
     btlayout->setAlignment(m_closeButton, Qt::AlignRight);
 
-    QHBoxLayout *logolayout = new QHBoxLayout();
+    QVBoxLayout *logolayout = new QVBoxLayout();
     QLabel *logolabel = new QLabel();
     logolabel->setPixmap(QPixmap(":/ui/images/logo.png"));
-    logolayout->addSpacing(70);
     logolayout->addWidget(logolabel);
-    QLabel *versionlabel = new QLabel("<p style='color:white; font-size:10px;'>0.99</p>");
+    logolayout->setAlignment(logolabel, Qt::AlignCenter);
+    logolayout->addSpacing(10);
+    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:bold;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle));
     logolayout->addWidget(versionlabel);
-    logolayout->setAlignment(versionlabel, Qt::AlignBottom);
+    logolayout->setAlignment(versionlabel, Qt::AlignCenter);
     logolayout->addStretch();
 
     m_topLayout->addLayout(btlayout);
