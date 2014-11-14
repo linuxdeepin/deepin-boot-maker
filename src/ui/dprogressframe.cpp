@@ -79,7 +79,7 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_TopShadow->setStyleSheet(TopShadowShow);
     m_TopShadow->setFixedHeight(m_height);
     this->addWidget(m_TopShadow);
-    m_TopShadow->show();
+    m_TopShadow->hide();
     m_TopShadow->raise();
     m_TopShadow->setAttribute(Qt::WA_TransparentForMouseEvents,true);
     m_Active = false;
@@ -132,6 +132,7 @@ void DProgressFrame::slideUsbSeclect() {
         m_Active=true;
     }
     this->layout()->setEnabled(false);
+    m_TopShadow->show();
     m_ProcessLabel->setPixmap(QPixmap(""));
     emit changedUsbSeclet();
 
@@ -174,6 +175,7 @@ void DProgressFrame::slideUsbSeclect() {
 }
 
 void DProgressFrame::slideUsbDone() {
+    m_TopShadow->hide();
     m_ShowStatus = ShowSecond;
     m_Active = false;
 }
@@ -190,6 +192,7 @@ void DProgressFrame::slideProcess() {
         m_Active=true;
     }
     this->layout()->setEnabled(true);
+    m_TopShadow->show();
     m_ProcessLabel->setPixmap(QPixmap(":/ui/images/process-inactive.png"));
     emit changedProgress();
 
@@ -231,6 +234,7 @@ void DProgressFrame::slideProcess() {
 }
 
 void DProgressFrame::slideProgressDone(){
+    m_TopShadow->hide();
     m_ShowStatus = ShowFirst;
     m_Active = false;
 }
