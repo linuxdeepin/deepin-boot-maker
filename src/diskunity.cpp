@@ -88,7 +88,7 @@ bool InstallSyslinux(const QString &targetDev) {
     return true;
 }
 
-bool InstallBootloader(const QString &targetDev) {
+QString InstallBootloader(const QString &targetDev) {
     qDebug()<<"FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
     QString xfbinstDiskName = QString("(hd%1)").arg(deviceNum);
@@ -127,7 +127,7 @@ bool InstallBootloader(const QString &targetDev) {
     XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
 
     //UnlockDisk(handle);
-    return true;
+    return targetDev;
 }
 
 bool UmountDisk(const QString &targetDev) {

@@ -1,39 +1,31 @@
-#define RT_MANIFEST 24 
-#define APP_MANIFEST 1
+#include <windows.h>
 
-IDI_ICON1 ICON DISCARDABLE "deepin-boot-maker.ico"
+IDI_APPICON ICON  "deepin-boot-maker.ico"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "deepin-boot-maker.manifest"
 
-1 VERSIONINFO
+VS_VERSION_INFO    VERSIONINFO
 FILEVERSION 1,1,1,1
 PRODUCTVERSION 1,1,1,1
 {
- BLOCK "StringFileInfo"
-  {
-  BLOCK "040904E4"
-   {
-VALUE "CompanyName", "Deepin"
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "040904E4"
+		{
+			VALUE "CompanyName", "Deepin"
+			VALUE "FileVersion", " "
+			VALUE "FileDescription", "Deepin Boot Maker"
+			VALUE "InternalName", "Deepin Boot Maker"
+			VALUE "LegalCopyright", "Copyright - Deepin - License - GNU GPL v2+"
+			VALUE "LegalTrademarks", " "
+			VALUE "OriginalFilename", "deepin-boot-maker.exe"
+			VALUE "ProductName", "Deepin Boot Maker"
+			VALUE "ProductVersion", " "
+		}
+	}
 
-VALUE "FileVersion", " "
-
-VALUE "FileDescription", "Deepin Boot Maker"
-
-VALUE "InternalName", "Deepin Boot Maker"
-
-VALUE "LegalCopyright", "Copyright - Deepin - License - GNU GPL v2+"
-
-VALUE "LegalTrademarks", " "
-
-VALUE "OriginalFilename", "deepin-boot-maker.exe"
-
-VALUE "ProductName", "Deepin Boot Maker"
-
-VALUE "ProductVersion", " "
-
-   }
-  }
- BLOCK "VarFileInfo"
- {
-  VALUE "Translation", 1033, 1252
- }
+	BLOCK "VarFileInfo"
+	{
+		VALUE "Translation", 1033, 1252
+	}
 }
 
