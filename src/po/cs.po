@@ -13,72 +13,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:46
+#: ../bootmaker.cpp:50
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "Chyba formátování ukládací jednotky USB"
 
-#: ../bootmaker.cpp:47
+#: ../bootmaker.cpp:51
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "Je podporována pouze ukládací jednotka FAT32 USB. Je potřeba ji zformátovat? Všechny diskové oddíly a data budou během formátování ztraceny. Zazálohujte si svá data, prosím, dopředu.."
 
-#: ../bootmaker.cpp:49
+#: ../bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format"
 msgstr "Formátovat"
 
-#: ../bootmaker.cpp:50 ../bootmaker.cpp:108
+#: ../bootmaker.cpp:54 ../bootmaker.cpp:112
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../bootmaker.cpp:94 ../bootmaker.cpp:95
+#: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Vyberte, prosím, obraz ISO"
 
-#: ../bootmaker.cpp:104
+#: ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
 msgstr "Formátovat ukládací jednotku USB"
 
-#: ../bootmaker.cpp:105
+#: ../bootmaker.cpp:109
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr "Během formátování budou ztracena veškerá data. Zazálohujte je, prosím, předem a potom stiskněte tlačítko OK."
 
-#: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
-#: ../bootmaker.cpp:187 ../bootmaker.cpp:203
+#: ../bootmaker.cpp:111 ../bootmaker.cpp:153 ../bootmaker.cpp:174
+#: ../bootmaker.cpp:191 ../bootmaker.cpp:207
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "OK"
 
-#: ../bootmaker.cpp:146
+#: ../bootmaker.cpp:150
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
 msgstr "Zastrčte ukládací jednotku USB"
 
-#: ../bootmaker.cpp:147
+#: ../bootmaker.cpp:151
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
 msgstr "Nebyly nalezeny žádné ukládací jednotky USB. Pokud jste již ukládací jednotku USB do počítače zastrčil, zkuste ji zformátovat jako FAT32."
 
-#: ../bootmaker.cpp:167
+#: ../bootmaker.cpp:171
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
 msgstr "%1 nepřipojeno"
 
-#: ../bootmaker.cpp:168
+#: ../bootmaker.cpp:172
 #, qt-format
 msgctxt "BootMaker|"
 msgid ""
@@ -87,22 +88,22 @@ msgid ""
 "USB flash drive."
 msgstr "Nejprve musíte ukládací jednotku USB %1 připojit k přípojnému bodu. Většina distribucí to udělá automaticky, poté co ukládací jednotku USB odstraníte a znovu zastrčíte."
 
-#: ../bootmaker.cpp:184
+#: ../bootmaker.cpp:188
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
 msgstr "Vyberte soubor s obrazem disku"
 
-#: ../bootmaker.cpp:185
+#: ../bootmaker.cpp:189
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
 msgstr "Musíte vybrat soubor s obrazem disku k nahrání"
 
-#: ../bootmaker.cpp:200
+#: ../bootmaker.cpp:204
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
 msgstr "Soubor s obrazem disku nenalezen"
 
-#: ../bootmaker.cpp:201
+#: ../bootmaker.cpp:205
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
@@ -179,7 +180,7 @@ msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Restartovat nyní"
 
-#: ../bootmaker.h:49
+#: ../bootmaker.cpp:17
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "Tvůrce spouštěcího média Deepin"

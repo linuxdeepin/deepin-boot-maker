@@ -13,72 +13,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:46
+#: ../bootmaker.cpp:50
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "U盘格式错误"
 
-#: ../bootmaker.cpp:47
+#: ../bootmaker.cpp:51
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "仅支持FAT32格式U盘。是否格式化U盘，格式化U盘会丢失U盘上所有的分区及其数据，请先备份U盘上的数据。"
 
-#: ../bootmaker.cpp:49
+#: ../bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format"
 msgstr "格式"
 
-#: ../bootmaker.cpp:50 ../bootmaker.cpp:108
+#: ../bootmaker.cpp:54 ../bootmaker.cpp:112
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../bootmaker.cpp:94 ../bootmaker.cpp:95
+#: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "请选择ISO文件"
 
-#: ../bootmaker.cpp:104
+#: ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
 msgstr "格式化U盘"
 
-#: ../bootmaker.cpp:105
+#: ../bootmaker.cpp:109
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr "格式化U盘将丢失U盘上所有资料，请做好备份后点“确定”按钮。"
 
-#: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
-#: ../bootmaker.cpp:187 ../bootmaker.cpp:203
+#: ../bootmaker.cpp:111 ../bootmaker.cpp:153 ../bootmaker.cpp:174
+#: ../bootmaker.cpp:191 ../bootmaker.cpp:207
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "确定"
 
-#: ../bootmaker.cpp:146
+#: ../bootmaker.cpp:150
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
 msgstr "插入U盘"
 
-#: ../bootmaker.cpp:147
+#: ../bootmaker.cpp:151
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
 msgstr "没有发现U盘。如果您已经插入U盘，请尝试重新格式化为FAT32格式。"
 
-#: ../bootmaker.cpp:167
+#: ../bootmaker.cpp:171
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
 msgstr "%1 没有挂载"
 
-#: ../bootmaker.cpp:168
+#: ../bootmaker.cpp:172
 #, qt-format
 msgctxt "BootMaker|"
 msgid ""
@@ -87,22 +88,22 @@ msgid ""
 "USB flash drive."
 msgstr "你必须首先在 %1 挂载U盘。大部分发行版本会在你移除并且重新插入U盘后自动执行该操作。"
 
-#: ../bootmaker.cpp:184
+#: ../bootmaker.cpp:188
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
 msgstr "选择一个磁盘镜像文件"
 
-#: ../bootmaker.cpp:185
+#: ../bootmaker.cpp:189
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
 msgstr "你必须选择加载一个磁盘镜像文件。"
 
-#: ../bootmaker.cpp:200
+#: ../bootmaker.cpp:204
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
 msgstr "没有找到磁盘镜像文件"
 
-#: ../bootmaker.cpp:201
+#: ../bootmaker.cpp:205
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
@@ -179,7 +180,7 @@ msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "立即重启"
 
-#: ../bootmaker.h:49
+#: ../bootmaker.cpp:17
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "深度启动盘制作工具"

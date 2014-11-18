@@ -13,72 +13,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:46
+#: ../bootmaker.cpp:50
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "Erro de formatação da unidade flash USB"
 
-#: ../bootmaker.cpp:47
+#: ../bootmaker.cpp:51
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "Apenas é suportada uma unidade flash USB com FAT32. Precisa de formatar? Todas as partições e dados serão perdidos durante a formatação, por favor faça antecipadamente um cópia de segurança dos dados."
 
-#: ../bootmaker.cpp:49
+#: ../bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format"
 msgstr "Formatar"
 
-#: ../bootmaker.cpp:50 ../bootmaker.cpp:108
+#: ../bootmaker.cpp:54 ../bootmaker.cpp:112
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../bootmaker.cpp:94 ../bootmaker.cpp:95
+#: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Por favor selecione uma imagem iso"
 
-#: ../bootmaker.cpp:104
+#: ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
 msgstr "Formatar unidade flash USB"
 
-#: ../bootmaker.cpp:105
+#: ../bootmaker.cpp:109
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr "Todos os dados serão perdidos durante a formatação, por favor faça antecipadamente uma cópia de segurança e depois pressione o botão OK."
 
-#: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
-#: ../bootmaker.cpp:187 ../bootmaker.cpp:203
+#: ../bootmaker.cpp:111 ../bootmaker.cpp:153 ../bootmaker.cpp:174
+#: ../bootmaker.cpp:191 ../bootmaker.cpp:207
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "OK"
 
-#: ../bootmaker.cpp:146
+#: ../bootmaker.cpp:150
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
 msgstr "Insira uma unidade flash USB"
 
-#: ../bootmaker.cpp:147
+#: ../bootmaker.cpp:151
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
 msgstr "Nenhuma unidade flash USB encontrada. Se já inseriu a unidade flash USB, tente reformatá-la como FAT32."
 
-#: ../bootmaker.cpp:167
+#: ../bootmaker.cpp:171
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
 msgstr "%1 não montado"
 
-#: ../bootmaker.cpp:168
+#: ../bootmaker.cpp:172
 #, qt-format
 msgctxt "BootMaker|"
 msgid ""
@@ -87,22 +88,22 @@ msgid ""
 "USB flash drive."
 msgstr "Tem de primeiro montar a unidade flash USB %1 para um ponto de montagem. A maior parte das distribuições fará isto automaticamente depois de remover e reinserir a unidade flash USB."
 
-#: ../bootmaker.cpp:184
+#: ../bootmaker.cpp:188
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
 msgstr "Selecione um ficheiro de imagem de disco"
 
-#: ../bootmaker.cpp:185
+#: ../bootmaker.cpp:189
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
 msgstr "Tem de selecionar um ficheiro de imagem de disco para carregar."
 
-#: ../bootmaker.cpp:200
+#: ../bootmaker.cpp:204
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
 msgstr "Ficheiro de imagem de disco não encontrado"
 
-#: ../bootmaker.cpp:201
+#: ../bootmaker.cpp:205
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
@@ -179,7 +180,7 @@ msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Reiniciar Agora"
 
-#: ../bootmaker.h:49
+#: ../bootmaker.cpp:17
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "Criador de Arranque Deepin"

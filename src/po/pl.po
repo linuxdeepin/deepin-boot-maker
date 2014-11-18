@@ -12,72 +12,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:46
+#: ../bootmaker.cpp:50
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "Błąd formatowania przenośnego dysku USB"
 
-#: ../bootmaker.cpp:47
+#: ../bootmaker.cpp:51
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "Wspierane są tylko pamięci przenośne USB w formacie FAT32. Potrzeba sformatowania? Wszystkie partycje i dane zostaną utracone podczas formatowania, prosimy uprzednio o wykonanie kopii zapasowej."
 
-#: ../bootmaker.cpp:49
+#: ../bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format"
 msgstr "Format"
 
-#: ../bootmaker.cpp:50 ../bootmaker.cpp:108
+#: ../bootmaker.cpp:54 ../bootmaker.cpp:112
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../bootmaker.cpp:94 ../bootmaker.cpp:95
+#: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Proszę wybrać obraz iso"
 
-#: ../bootmaker.cpp:104
+#: ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
 msgstr "Formatuj dysk przenośny USB"
 
-#: ../bootmaker.cpp:105
+#: ../bootmaker.cpp:109
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr "Wszystkie dane na nośniku podczas formatowania zostaną utracone, tak więc prosimy o uprzednie zrobienie kopii zapasowej a następnie przyciśnięcie przycisku OK."
 
-#: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
-#: ../bootmaker.cpp:187 ../bootmaker.cpp:203
+#: ../bootmaker.cpp:111 ../bootmaker.cpp:153 ../bootmaker.cpp:174
+#: ../bootmaker.cpp:191 ../bootmaker.cpp:207
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "OK"
 
-#: ../bootmaker.cpp:146
+#: ../bootmaker.cpp:150
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
 msgstr "Włóż dysk przenośny USB"
 
-#: ../bootmaker.cpp:147
+#: ../bootmaker.cpp:151
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
 msgstr "Nie odnaleziono napędów przenośnych USB. Jeśli już włożyłeś pamięć przenośną USB to spróbuj ją sformatować jako FAT32."
 
-#: ../bootmaker.cpp:167
+#: ../bootmaker.cpp:171
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
 msgstr "%1 nie zamontowany"
 
-#: ../bootmaker.cpp:168
+#: ../bootmaker.cpp:172
 #, qt-format
 msgctxt "BootMaker|"
 msgid ""
@@ -86,22 +87,22 @@ msgid ""
 "USB flash drive."
 msgstr "Wpierw musisz zamontować pamięć przenośną USB %1 do punktu montowania. Większość dystrybucji robi to automatycznie po usunięciu i ponownym włożeniu pamięci przenośnej USB."
 
-#: ../bootmaker.cpp:184
+#: ../bootmaker.cpp:188
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
 msgstr "Wybierz plik obrazu dysku"
 
-#: ../bootmaker.cpp:185
+#: ../bootmaker.cpp:189
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
 msgstr "Musisz wskazać plik obrazu dysku do wczytania."
 
-#: ../bootmaker.cpp:200
+#: ../bootmaker.cpp:204
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
 msgstr "Plik obrazu dysku nie został odnaleziony"
 
-#: ../bootmaker.cpp:201
+#: ../bootmaker.cpp:205
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
@@ -178,7 +179,7 @@ msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Uruchom ponownie teraz"
 
-#: ../bootmaker.h:49
+#: ../bootmaker.cpp:17
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "Twórca rozruchu Deepin"

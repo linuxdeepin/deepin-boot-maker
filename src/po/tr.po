@@ -13,72 +13,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../bootmaker.cpp:46
+#: ../bootmaker.cpp:50
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
 msgstr "USB flash sürücüsünün biçimlendirme hatası"
 
-#: ../bootmaker.cpp:47
+#: ../bootmaker.cpp:51
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
 msgstr "Yanlız FAT32 USB flash sürücüsü destekleniyor. Biçimlendirmeye mi ihtiyaç var? Tüm bölümler ve veriler biçimlendirme esnasında kaybolacak, lütfen özellikle yedeğini alın."
 
-#: ../bootmaker.cpp:49
+#: ../bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format"
 msgstr "Format"
 
-#: ../bootmaker.cpp:50 ../bootmaker.cpp:108
+#: ../bootmaker.cpp:54 ../bootmaker.cpp:112
 msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "Vazgeç"
 
-#: ../bootmaker.cpp:94 ../bootmaker.cpp:95
+#: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
 msgstr "Lütfen iso imajını seçin"
 
-#: ../bootmaker.cpp:104
+#: ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
 msgstr "USB flash sürücüyü biçimlendir"
 
-#: ../bootmaker.cpp:105
+#: ../bootmaker.cpp:109
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
 msgstr "Tüm veriler biçimlendirme esnasında kaybolacak, lütfen özellikle yedeğini alın ve Tamam tuşuna basın."
 
-#: ../bootmaker.cpp:107 ../bootmaker.cpp:149 ../bootmaker.cpp:170
-#: ../bootmaker.cpp:187 ../bootmaker.cpp:203
+#: ../bootmaker.cpp:111 ../bootmaker.cpp:153 ../bootmaker.cpp:174
+#: ../bootmaker.cpp:191 ../bootmaker.cpp:207
 msgctxt "BootMaker|"
 msgid "Ok"
 msgstr "Tamam"
 
-#: ../bootmaker.cpp:146
+#: ../bootmaker.cpp:150
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
 msgstr "USB flash sürücüyü tak"
 
-#: ../bootmaker.cpp:147
+#: ../bootmaker.cpp:151
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
 msgstr "USB flash sürücüler bulunamadı. zaten bir USB sürücü taktıysanız, FAT32 olarak yeniden biçimlendirme deneyin."
 
-#: ../bootmaker.cpp:167
+#: ../bootmaker.cpp:171
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
 msgstr "%1 bağlanmadı"
 
-#: ../bootmaker.cpp:168
+#: ../bootmaker.cpp:172
 #, qt-format
 msgctxt "BootMaker|"
 msgid ""
@@ -87,22 +88,22 @@ msgid ""
 "USB flash drive."
 msgstr "Önce bir bağlanma noktasına USB sürücü % 1 monte etmelisiniz. Kaldırın ve USB sürücüsünü yeniden takın, sonra dağıtımların çoğu otomatik olarak yapacaktır."
 
-#: ../bootmaker.cpp:184
+#: ../bootmaker.cpp:188
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
 msgstr "Disk resim dosyası seç"
 
-#: ../bootmaker.cpp:185
+#: ../bootmaker.cpp:189
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
 msgstr "Yüklemek için bir disk imaj dosyasını seçmelisiniz."
 
-#: ../bootmaker.cpp:200
+#: ../bootmaker.cpp:204
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
 msgstr "Disk imaj dosyası bulunamadı"
 
-#: ../bootmaker.cpp:201
+#: ../bootmaker.cpp:205
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
@@ -179,7 +180,7 @@ msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Şimdi Tekrar Başlat"
 
-#: ../bootmaker.h:49
+#: ../bootmaker.cpp:17
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
 msgstr "Deepin Boot Maker"
