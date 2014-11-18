@@ -46,6 +46,6 @@ protected:
 };
 
 
-const QString AppTitle = QObject::tr("Deepin Boot Maker");
+const QString AppTitle();
 
 #endif // USBCREATOR_H

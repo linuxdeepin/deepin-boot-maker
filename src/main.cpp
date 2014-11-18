@@ -20,14 +20,14 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 #ifdef Q_OS_UNIX
 QString checkforgraphicalsu(QString graphicalsu)
 {
-	QProcess whereiscommand;
-	whereiscommand.start(QString("which %1").arg(graphicalsu));
-	whereiscommand.waitForFinished(-1);
-	QString commandbinpath = QString(whereiscommand.readAll()).trimmed();
-	if (!commandbinpath.isEmpty() && QFile::exists(commandbinpath))
-		return commandbinpath;
-	else
-		return "REQCNOTFOUND";
+    QProcess whereiscommand;
+    whereiscommand.start(QString("which %1").arg(graphicalsu));
+    whereiscommand.waitForFinished(-1);
+    QString commandbinpath = QString(whereiscommand.readAll()).trimmed();
+    if (!commandbinpath.isEmpty() && QFile::exists(commandbinpath))
+        return commandbinpath;
+    else
+        return "REQCNOTFOUND";
 }
 
 bool SwitchToRoot(QApplication &app) {
@@ -229,7 +229,7 @@ int main(int argc, char **argv){
 
     DWindowUI mainWindow;
     mainWindow.setWindowIcon(icon);
-    mainWindow.setWindowTitle(AppTitle);
+    mainWindow.setWindowTitle(AppTitle());
     mainWindow.show();
 
     app.exec();

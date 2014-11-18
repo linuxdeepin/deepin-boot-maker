@@ -1,6 +1,7 @@
 #include <windows.h>
 
 IDI_APPICON ICON  "deepin-boot-maker.ico"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "deepin-boot-maker.manifest"
 
 VS_VERSION_INFO    VERSIONINFO
 FILEVERSION 1,1,1,1

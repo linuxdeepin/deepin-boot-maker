@@ -92,13 +92,17 @@ RESOURCES += \
 
 win32* {
 RESOURCES += deepin-boot-maker-windows.qrc
-RC_FILE += deepin-boot-maker.rc
 DEFINES += _USING_V110_SDK71_
 }
 
 win32-msvc* {
 QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
 QMAKE_LFLAGS += /SUBSYSTEM:WINDOWS",5.01"
+RC_FILE += deepin-boot-maker.rc
+}
+
+win32-g++* {
+RC_FILE += deepin-boot-maker-manifest.rc
 }
 
 macx {

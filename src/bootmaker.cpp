@@ -13,6 +13,10 @@
 #pragma comment(lib, "advapi32.lib")
 #endif
 
+const QString AppTitle() {
+    return QObject::tr("Deepin Boot Maker");
+}
+
 BootMaker::BootMaker(QWidget* parent): QWidget(parent){
      m_UnetbootinPtr = new unetbootin();
      m_FileListMonitor = new FileListMonitor();

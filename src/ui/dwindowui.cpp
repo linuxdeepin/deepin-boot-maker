@@ -97,7 +97,7 @@ void DWindowUI::initUI() {
     logolayout->addWidget(logolabel);
     logolayout->setAlignment(logolabel, Qt::AlignCenter);
     logolayout->addSpacing(10);
-    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:bold;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle));
+    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:bold;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle()));
     logolayout->addWidget(versionlabel);
     logolayout->setAlignment(versionlabel, Qt::AlignCenter);
     logolayout->addStretch();
@@ -126,8 +126,8 @@ void DWindowUI::initUI() {
 
     m_formatCheckBox = new DCheckBox(tr("<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be improved by formatting USB drive.</p>"));
     m_formatCheckBox->setFixedWidth(200);
-    m_formatCheckBox->setFixedHeight(28);
-    m_formatCheckBox->setMaximumSize(240, 45);
+    m_formatCheckBox->setFixedHeight(50);
+    m_formatCheckBox->setMaximumSize(240, 50);
     m_formatCheckBox->setDisabled(true);
     connect(m_formatCheckBox, SIGNAL(clicked()), this, SLOT(confirmFormat()));
     m_optionLayout->addWidget(m_formatCheckBox);
