@@ -136,13 +136,12 @@ bool UmountDisk(const QString &targetDev) {
 }
 
 bool CheckFormatFat32(const QString &targetDev) {
-    QString ret = XSys::SynExec("fsutil",  " fsinfo volumeinfo " + targetDev);
+    QString ret = XSys::SynExec("cmd",  QString("/C \"chcp 437 & fsutil fsinfo volumeinfo %1\" ").arg(targetDev));
     if (ret.contains("File System Name : FAT32", Qt::CaseInsensitive)) {
         return true;
     }
     return false;
 }
-
 
 const QString MountPoint(const QString &targetDev){
     return QString(targetDev).remove("/").remove("\\") + "/";
