@@ -216,7 +216,10 @@ int main(int argc, char **argv){
     QApplication app(argc, argv, true);
     installLogHandler();
 
+#ifdef Q_OS_WIN32
     loadFonts(app);
+#endif
+
     loadTranslate(app);
 
 #ifdef Q_OS_UNIX

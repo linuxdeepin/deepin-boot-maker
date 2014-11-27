@@ -221,7 +221,7 @@ QString InstallBootloader(const QString &diskDev) {
 
     //install fg.cfg
     QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(diskDev));
+    UmountDisk(diskDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
     //install syslinux
@@ -248,17 +248,18 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("chmod a+wrx ", mountPoint);
 
     QString mountCmd = "mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec";
-    UmountDisk(diskDev);
-    XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+//    UmountDisk(diskDev);
+//    XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
 
     //the disk must be mount
     int retryTimes = 10;
-    while ((MountPoint(targetDev) != mountPoint) && retryTimes) {
+    do{
+        qDebug()<<"Try mount the disk "<<(11-retryTimes)<<" first time";
         UmountDisk(diskDev);
         XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
         QThread::sleep(3);
         retryTimes--;
-    }
+    }while ((MountPoint(targetDev) != mountPoint) && retryTimes);
 
     return newTargetDev;
 }
