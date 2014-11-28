@@ -16,6 +16,8 @@ DTips::DTips(QWidget *parent):
         "color:#ebab4c;"
         "font-size: 10px;"
         "margin-bottom: 7px;"
+        "margin-left: 8px;"
+        "margin-right: 8px;"
         "}";
     this->setAlignment(Qt::AlignCenter);
     this->setStyleSheet(qss);
@@ -86,7 +88,7 @@ void DTips::pop() {
     QPoint pos = m_AttachWidget->mapToGlobal(m_AttachWidget->pos()) - m_AttachWidget->pos();
     QPoint attachPos = this->mapFromGlobal(pos);
     QSize szLabel = m_AttachWidget->size();
-
+    this->adjustSize();
     QSize sz = this->size();
     movie->setStartValue(QRect(attachPos.x() + szLabel.width() / 2 , attachPos.y() - szLabel.height()/2 + 5, 0, 0));
     movie->setEndValue(QRect(attachPos.x() + szLabel.width() / 2 - sz.width()/2,
