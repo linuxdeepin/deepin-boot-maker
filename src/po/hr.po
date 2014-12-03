@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-11-20 17:11+0000\n"
-"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-12-07 18:11+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/deepin-boot-maker/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -135,7 +135,7 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Stopa uspješnosti može se poboljšati ako se formatira USB pogon.</p>"
 
 #: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
@@ -220,7 +220,7 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr ""
+msgstr "DAtoteka %1 već postoji. Pritisnite 'Da za sve' da bi ste ju prebrisali i da to ne bude od vas ponovno zatraženo, 'Da' za prebisanje datoteka jednu po jednu i 'Ne' da zadržite postojeću verziju. Ako niste sigurni, pritisnite 'Da za sve'."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"

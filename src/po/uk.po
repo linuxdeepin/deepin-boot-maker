@@ -1,82 +1,82 @@
 # 
 # Translators:
-# Heimen Stoffels <motionshot@vivaldi.net>, 2014
+# Yuri Chornoivan <yurchor@ukr.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-04 19:21+0000\n"
-"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/deepin-boot-maker/language/nl/)\n"
+"PO-Revision-Date: 2014-12-01 14:30+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/projects/p/deepin-boot-maker/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
 #: ../bootmaker.cpp:50
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
-msgstr "Fout in formaat van USB-flashschijf"
+msgstr "Помилка під час спроби форматування флеш-диска USB"
 
 #: ../bootmaker.cpp:51
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr "Alleen FAT32 USB-flashschijven worden ondersteund. Moet u formatteren? Alle partities en data zullen tijdens het formatteren verloren gaan. Gelieve eerst een back-up van de gegevens te maken."
+msgstr "Передбачено підтримку лише флеш-дисків із файловою системою FAT32. Потрібне форматування? У результаті форматування буде втрачено дані з усіх розділів диска. Будь ласка, заздалегідь подбайте про резервне копіювання усіх цінних даних."
 
 #: ../bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "Formaat"
+msgstr "Форматувати"
 
 #: ../bootmaker.cpp:54 ../bootmaker.cpp:112
 msgctxt "BootMaker|"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Скасувати"
 
 #: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
-msgstr "Selecteer een ISO-schijfafbeelding"
+msgstr "Будь ласка, виберіть образ ISO"
 
 #: ../bootmaker.cpp:108
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
-msgstr "Formaat USB-flashschijf"
+msgstr "Форматування флеш-диска USB"
 
 #: ../bootmaker.cpp:109
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "Alle gegevens zullen verloren gaan tijdens het formatteren, gelieve eerst een back-up te maken en dan op de knop OK te klikken. "
+msgstr "У результаті форматування усіх дані з диска буде втрачено. Будь ласка, подбайте про створення резервних копій даних, а потім натисніть кнопку «Гаразд»."
 
 #: ../bootmaker.cpp:111 ../bootmaker.cpp:153 ../bootmaker.cpp:174
 #: ../bootmaker.cpp:191 ../bootmaker.cpp:207
 msgctxt "BootMaker|"
 msgid "Ok"
-msgstr "Oké"
+msgstr "Гаразд"
 
 #: ../bootmaker.cpp:150
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
-msgstr "Plug een USB-schijf in"
+msgstr "Вставте флеш-диск USB"
 
 #: ../bootmaker.cpp:151
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
-msgstr "Er zijn geen USB-flashschijven gevonden. Als u al een USB-flashschijf heeft aangesloten, probeer deze dan te formatteren als FAT32. "
+msgstr "Не знайдено жодного флеш-диска USB. Якщо вами вже було вставлено флеш-диск USB, спробуйте виконати його форматування у FAT32."
 
 #: ../bootmaker.cpp:171
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
-msgstr "%1 niet aangekoppeld"
+msgstr "%1 не змонтовано"
 
 #: ../bootmaker.cpp:172
 #, qt-format
@@ -85,132 +85,132 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr "U moet eerst de USB-flashschijf %1 aankoppelen aan een koppelpunt. In de meeste gevallen wordt dit automatisch gedaan als u de USB-flashschijf verwijdert en weer aansluit."
+msgstr "Спочатку вам слід змонтувати флеш-диск USB %1 до точки монтування. У більшості дистрибутивів таке монтування виконується автоматично після роз’єднання і повторного з’єднування флеш-диска USB."
 
 #: ../bootmaker.cpp:188
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
-msgstr "Selecteer een schijfafbeeldingsbestand"
+msgstr "Виберіть файл образу диска"
 
 #: ../bootmaker.cpp:189
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
-msgstr "U moet een schijfafbeeldingsbestand selecteren om te laden."
+msgstr "Вам слід вибрати файл образу диска для завантаження."
 
 #: ../bootmaker.cpp:204
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
-msgstr "Bestand voor schijfafbeelding niet gevonden"
+msgstr "Не знайдено файла образу диска"
 
 #: ../bootmaker.cpp:205
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr "Het geselecteerde bestand voor de schijfafbeelding, %1, bestaat niet. "
+msgstr "Вказаного файла образу диска, %1, не існує."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "<p style='font-weight:bold;'>Select USB drive</p>"
-msgstr "<p style='font-weight:bold;'>Selecteer USB-schijf</p>"
+msgstr "<p style='font-weight:bold;'>Виберіть диск USB</p>"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr "<p style='font-weight:bold;'>Selecteer schijfafbeelding</p>"
+msgstr "<p style='font-weight:bold;'>Виберіть образ диска</p>"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
-msgstr "USB-schijf niet gedetecteerd"
+msgstr "Не виявлено диска USB"
 
 #: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
-msgstr "<p style='color:white; font-size:12px;'>%1% is voltooid</p>"
+msgstr "<p style='color:white; font-size:12px;'>Виконано на %1%</p>"
 
 #: ../ui/dwindowui.cpp:127
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px;'>De slagingskans kan verhoogd worden door de USB-schijf te formatteren.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Швидкість виконання завдання можна покращити форматуванням диска USB.</p>"
 
 #: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
 "or shutdown while file is writing.<a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Gelieve de USB-schijf NIET te verwijderen of de computer uit te schakelen tijdens het branden van de schijf.<a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Будь ласка, НЕ ВИЛУЧАЙТЕ диск USB і не вимикайте комп’ютер, доки не буде завершено запис файла.<a>"
 
 #: ../ui/dwindowui.cpp:147
 msgctxt "DWindowUI|"
 msgid "Start"
-msgstr "Beginnen"
+msgstr "Почати"
 
 #: ../ui/dwindowui.cpp:246
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
-msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Aanmaken geslaagd</p>"
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Успішно виконано</p>"
 
 #: ../ui/dwindowui.cpp:247
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px'>Gelieve de USB-schijf te selecteren die opgestart dient te worden bij het installeren van Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Будь ласка, виберіть диск USB для завантаження під час встановлення операційної системи Deepin.</p>"
 
 #: ../ui/dwindowui.cpp:251
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Indien onsuccesvol, gelieve proberen de EFI-optie uit te schakelen.</a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Якщо дію не вдасться виконати, спробуйте вимкнути EFI.</a>"
 
 #: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid "Restart Later"
-msgstr "Later opnieuw opstarten."
+msgstr "Перезавантажити пізніше"
 
 #: ../ui/dwindowui.cpp:271
 msgctxt "DWindowUI|"
 msgid "Restart Now"
-msgstr "Nu opnieuw opstarten"
+msgstr "Перезавантажити зараз"
 
 #: ../bootmaker.cpp:17
 msgctxt "QObject|"
 msgid "Deepin Boot Maker"
-msgstr "Deepin Opstartmedium-maker"
+msgstr "Засіб створення дисків з Deepin"
 
 #: ../unetbootin.cpp:226 ../unetbootin.cpp:232 ../unetbootin.cpp:236
 #: ../unetbootin.cpp:240 ../unetbootin.cpp:244 ../unetbootin.cpp:250
 #: ../unetbootin.cpp:278
 msgctxt "unetbootin|"
 msgid "either"
-msgstr "elke"
+msgstr "або"
 
 #: ../unetbootin.cpp:257
 msgctxt "unetbootin|"
 msgid "LiveUSB persistence"
-msgstr "LiveUSB-aanhoudendheid"
+msgstr "Портативний LiveUSB"
 
 #: ../unetbootin.cpp:272
 msgctxt "unetbootin|"
 msgid "FAT32-formatted USB drive"
-msgstr "FAT32-geformatteerde USB-schijf"
+msgstr "Форматований у FAT32 диск USB"
 
 #: ../unetbootin.cpp:276
 msgctxt "unetbootin|"
 msgid "EXT2-formatted USB drive"
-msgstr "EXT2-geformatteerde USB-schijf"
+msgstr "Форматований у EXT2 диск USB"
 
 #: ../unetbootin.cpp:498
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 exists, overwrite?"
-msgstr "%1 bestaat; overschrijven?"
+msgstr "Існує %1, перезаписати?"
 
 #: ../unetbootin.cpp:500
 #, qt-format
@@ -219,28 +219,28 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr "Het bestand %1 bestaat al. Klik op 'Ja op Alles' om deze te overschrijven en dit in alle volgende gevallen te herhalen, 'Ja' om de bestanden één voor één te overschrijven, en 'Nee' om de oorspronkelijke versie te behouden. Bij twijfel, klik op 'Ja op Alles'. "
+msgstr "Файл %1 вже існує. Натисніть кнопку «Так для всіх», щоб програма вас більше ні про що не запитувала, «Так», щоб перезаписати файли один за одним, і «Ні», щоб зберегти наявну версію. Якщо не знаєте що вибрати,, натисніть кнопку «Так для всіх»."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"
 msgid "Ok"
-msgstr "Oké"
+msgstr "Гаразд"
 
 #: ../unetbootin.cpp:503 ../unetbootin.cpp:533
 msgctxt "unetbootin|"
 msgid "Yes to All"
-msgstr "Ja op Alles"
+msgstr "Так для всіх"
 
 #: ../unetbootin.cpp:504 ../unetbootin.cpp:534
 msgctxt "unetbootin|"
 msgid "No"
-msgstr "Nee"
+msgstr "Ні"
 
 #: ../unetbootin.cpp:529
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 is out of space, abort installation?"
-msgstr "%1 heeft geen vrije ruimte; installatie afbreken?"
+msgstr "На %1 не залишилося вільного місця. Перервати встановлення?"
 
 #: ../unetbootin.cpp:530
 #, qt-format
@@ -249,125 +249,125 @@ msgid ""
 "The directory %1 is out of space. Press 'Yes' to abort installation, 'No' to"
 " ignore this error and attempt to continue installation, and 'No to All' to "
 "ignore all out-of-space errors."
-msgstr "De map %1 heeft geen vrije ruimte. Klik op 'Ja' om de installatie af te breken, 'Nee' om deze fout te negeren en proberen door te gaan met de installatie of 'Nee op alles' om alle fouten te negeren."
+msgstr "У каталозі «%1» не залишилося вільного місця. Натисніть кнопку «Так», щоб перервати встановлення, кнопку «Ні», щоб проігнорувати цю помилку і спробувати продовжити встановлення, і кнопку «Ні для всіх», щоб ігнорувати усі помилки, пов’язані із нестачею місця."
 
 #: ../unetbootin.cpp:559 ../unetbootin.cpp:1140 ../unetbootin.cpp:1232
 #: ../unetbootin.cpp:2970 ../unetbootin.cpp:2981 ../unetbootin.cpp:2992
 #: ../unetbootin.cpp:3304
 msgctxt "unetbootin|"
 msgid "USB Drive"
-msgstr "USB-schijf"
+msgstr "Пристрій USB"
 
 #: ../unetbootin.cpp:627
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating kernel file in %1"
-msgstr "Bezig met opsporen van kernelbestand in %1"
+msgstr "Шукаємо файл ядра у %1"
 
 #: ../unetbootin.cpp:677
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying kernel file from %1"
-msgstr "Bezig met kopiëren van kernelbestand van %1"
+msgstr "Копіюємо файл ядра з %1"
 
 #: ../unetbootin.cpp:683
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Locating initrd file in %1"
-msgstr "Bezig met opsporen van initrd-bestand in %1"
+msgstr "Шукаємо файл initrd у %1"
 
 #: ../unetbootin.cpp:720
 #, qt-format
 msgctxt "unetbootin|"
 msgid "extractinitrd  in %1"
-msgstr "extractinitrd  in %1"
+msgstr "extractinitrd у %1"
 
 #: ../unetbootin.cpp:722
 msgctxt "unetbootin|"
 msgid "locateinitrd end"
-msgstr "locateinitrd einde"
+msgstr "Завершення locateinitrd"
 
 #: ../unetbootin.cpp:725
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Copying initrd file from %1"
-msgstr "Bezig met kopiëren van initrd-bestand van %1"
+msgstr "Копіюємо файл initrd з %1"
 
 #: ../unetbootin.cpp:731 ../unetbootin.cpp:811
 msgctxt "unetbootin|"
 msgid "Extracting bootloader configuration"
-msgstr "Bezig met extraheren van opstartlader-configuratie"
+msgstr "Видобуваємо налаштування засобу завантаження"
 
 #: ../unetbootin.cpp:1029
 msgctxt "unetbootin|"
 msgid "extractiso begin"
-msgstr "extractiso begin"
+msgstr "Розпочато extractiso"
 
 #: ../unetbootin.cpp:1042 ../unetbootin.cpp:1072
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracting compressed iso:</b> %1"
-msgstr "<b>Bezig met extraheren van gecomprimeerde ISO:</b> %1"
+msgstr "<b>Видобуваємо стиснений ISO:</b> %1"
 
 #: ../unetbootin.cpp:1194
 msgctxt "unetbootin|"
 msgid "extractinitrd end"
-msgstr "extractinitrd einde"
+msgstr "Завершено extractinitrd"
 
 #: ../unetbootin.cpp:1202
 msgctxt "unetbootin|"
 msgid "QFile end"
-msgstr "QFile einde"
+msgstr "Завершено QFile"
 
 #: ../unetbootin.cpp:1209
 msgctxt "unetbootin|"
 msgid "QTextStream end"
-msgstr "QTextStream einde"
+msgstr "Завершено QTextStream"
 
 #: ../unetbootin.cpp:1213
 msgctxt "unetbootin|"
 msgid "extractallfiles end"
-msgstr "extractallfiles einde"
+msgstr "Завершено extractallfiles"
 
 #: ../unetbootin.cpp:1226
 msgctxt "unetbootin|"
 msgid "extractiso end"
-msgstr "extractiso einde"
+msgstr "Завершено extractiso"
 
 #: ../unetbootin.cpp:1334
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> 0 bytes"
-msgstr "<b>Gekopieerd:</b> 0 bytes"
+msgstr "<b>Скопійовано:</b> 0 байтів"
 
 #: ../unetbootin.cpp:1372
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> 0 of %1 files"
-msgstr "<b>Ge-extraheerd:</b> 0 van %1 bestanden"
+msgstr "<b>Видобуто:</b> 0 з %1 файлів"
 
 #: ../unetbootin.cpp:1375
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Extracted:</b> %1 of %2 files"
-msgstr "<b>Ge-extraheerd:</b> %1 van %2 bestanden"
+msgstr "<b>Видобуто:</b> %1 з %2 файлів"
 
 #: ../unetbootin.cpp:2269 ../unetbootin.cpp:2284
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Downloaded:</b> %1 of %2"
-msgstr "<b>Gedownload:</b> %1 van %2"
+msgstr "<b>Отримано:</b> %1 з %2"
 
 #: ../unetbootin.cpp:2299
 #, qt-format
 msgctxt "unetbootin|"
 msgid "<b>Copied:</b> %1 of %2"
-msgstr "<b>Gekopieerd:</b> %1 van %2"
+msgstr "<b>Скопійовано:</b> %1 з %2"
 
 #: ../unetbootin.cpp:2671
 #, qt-format
 msgctxt "unetbootin|"
 msgid "%1 not found"
-msgstr "%1 niet gevonden"
+msgstr "%1 не знайдено"
 
 #: ../unetbootin.cpp:2672
 #, qt-format
@@ -375,43 +375,43 @@ msgctxt "unetbootin|"
 msgid ""
 "%1 not found. This is required for %2 install mode.\n"
 "Install the \"%3\" package or your distribution's equivalent."
-msgstr "%1 niet gevonden. Dit is vereist voor %2-installatiemodus.\nInstalleer het pakket \"%3\" of vergelijkbaar van uw distributie."
+msgstr "%1 не знайдено. Цей файл потрібен для режиму встановлення %2.\nВстановіть пакунок «%3» або еквівалентний пакунок для вашого дистрибутива."
 
 #: ../unetbootin.cpp:2964
 msgctxt "unetbootin|"
 msgid "runinst begin"
-msgstr "runinst begin"
+msgstr "розпочато runinst"
 
 #: ../unetbootin.cpp:2965
 msgctxt "unetbootin|"
 msgid "(Current)"
-msgstr "(Huidig)"
+msgstr "(Поточний)"
 
 #: ../unetbootin.cpp:2966
 msgctxt "unetbootin|"
 msgid "(Done)"
-msgstr "(Gereed)"
+msgstr "(Завершено)"
 
 #: ../unetbootin.cpp:2977
 msgctxt "unetbootin|"
 msgid "Hard Disk"
-msgstr "Harde schijf"
+msgstr "Жорсткий диск"
 
 #: ../unetbootin.cpp:3386
 #, qt-format
 msgctxt "unetbootin|"
 msgid "Installing syslinux to %1"
-msgstr "Bezig met installeren van syslinux naar %1"
+msgstr "Встановлюємо syslinux на %1"
 
 #: ../unetbootin.cpp:3414
 msgctxt "unetbootin|"
 msgid "Syncing filesystems"
-msgstr "Bezig met synchroniseren van bestandssystemen"
+msgstr "Синхронізуємо файлові системи"
 
 #: ../main.cpp:76
 msgctxt "uninstaller|"
 msgid "Must run as root"
-msgstr "Moet worden gedraaid als root"
+msgstr "Слід запускати від імені root"
 
 #: ../main.cpp:78
 #, qt-format
@@ -419,4 +419,4 @@ msgctxt "uninstaller|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>or:<br/><b>su - -c '%1'</b>"
-msgstr "%2 moet worden gedraaid als root. Sluit het en start het opnieuw als:<br/><b>sudo %1</b><br/>of:<br/><b>su --c '%1'</b>"
+msgstr "%2 слід запускати від імені користувача root. Завершіть роботу програми і перезапустіть її за допомогою команди:<br/><b>sudo %1</b><br/>або команди:<br/><b>su - -c '%1'</b>"

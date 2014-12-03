@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-11-09 02:52+0000\n"
+"PO-Revision-Date: 2014-12-05 01:41+0000\n"
 "Last-Translator: yakup <mutouk@yandex.ru>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/deepin-boot-maker/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +135,7 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Burdaki başarı oranı USB diskinin formatlanması ile arttırılabilir.</p>"
 
 #: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
@@ -161,7 +161,7 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Deepin'in kurulumunu başlatmak için lütfen USB sürücüsünü seçin.</p>"
 
 #: ../ui/dwindowui.cpp:251
 msgctxt "DWindowUI|"
