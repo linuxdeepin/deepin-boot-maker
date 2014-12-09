@@ -210,6 +210,7 @@ void DWindowUI::checkProcess() {
 }
 
 void DWindowUI::switchToProcessUI() {
+    m_usbRefreshTimer->stop();
     m_closeButton->setDisabled(true);
     m_formatCheckBox->hide();
     m_start->hide();

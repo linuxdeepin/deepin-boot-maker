@@ -158,6 +158,9 @@ Filesystem    512-blocks     Used Available Capacity iused     ifree %iused  Mou
     */
     QString ret = XSys::SynExec("df", "");
     QStringList mounts = ret.split("\n").filter(targetDev);
+    if (0 == mounts.size()) {
+        return "";
+    }
     QString mountinfo = mounts.last();
     mountinfo.remove(targetDev);
     return mountinfo.mid(mountinfo.indexOf('/'));
@@ -248,14 +251,12 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec("chmod a+wrx ", mountPoint);
 
     QString mountCmd = "mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec";
-//    UmountDisk(diskDev);
-//    XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
-
     //the disk must be mount
     int retryTimes = 10;
     do{
         qDebug()<<"Try mount the disk "<<(11-retryTimes)<<" first time";
         UmountDisk(diskDev);
+        XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
         XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
         QThread::sleep(3);
         retryTimes--;
