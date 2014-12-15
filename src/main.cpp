@@ -172,17 +172,20 @@ void loadTranslate(QApplication& app) {
     }
 
     QString tranlateUrl;
-    if (tnappcoun.isEmpty()) {
-        tranlateUrl = QString(":/po/%1.qm").arg(tnapplang);
-    } else {
+
+    if (!tnappcoun.isEmpty()) {
         tranlateUrl = QString(":/po/%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     }
 
-    qDebug()<<&app<<"load translate file: "<<tranlateUrl;
+    if (!QFile::exists(tranlateUrl)) {
+        tranlateUrl = QString(":/po/%1.qm").arg(tnapplang);
+    }
 
     if (!QFile::exists(tranlateUrl)) {
         tranlateUrl = ":/en_US.qm";
     }
+
+    qDebug()<<"locate: "<<clangcode<<"\nload translate file: "<<tranlateUrl;
 
     if (translator->load(tranlateUrl)){
         app.installTranslator(translator);
