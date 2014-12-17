@@ -24,9 +24,9 @@ Windows XP
 
 Direct X环境安装包：
 
-DirectX Redist Package 地址：![DirectX Redist Package](http://pan.baidu.com/s/1ntJTktb)
+DirectX Redist Package 地址：[DirectX Redist Package](http://pan.baidu.com/s/1ntJTktb)
 
-或者使用DirectX Runtime在线安装工具：![dxwbsetup](http://pan.baidu.com/s/1dD289WH)
+或者使用DirectX Runtime在线安装工具：[dxwbsetup](http://pan.baidu.com/s/1dD289WH)
 
 **Linux平台：**
 
@@ -68,9 +68,7 @@ configure -prefix "C:\Qt\QtStatic\5.3\vs2010" -release -platform win32-msvc2010 
 
 注意：
 1.不要编译icu，不然发布时会附带30M左右的icu支持的dll
-2.静态编译版本，如果程序运行需要libegl相关dll，请自行编译angle。需要win7系统，msvc 2010。详细编译参数参考
-
-![Angle编译](https://code.google.com/p/angleproject/wiki/DevSetup)
+2.静态编译版本，如果程序运行需要libegl相关dll，请自行编译angle。需要win7系统，msvc 2010。详细编译参数参考  [Angle编译](https://code.google.com/p/angleproject/wiki/DevSetup)
           
 2.如果不准备支持Windows XP，则可以使用官方版本的Qt with mingw 进行静态编译：
 ```
