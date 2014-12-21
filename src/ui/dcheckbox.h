@@ -19,6 +19,8 @@ public:
     void setDisabled(bool);
     void setChecked(bool checked);
 
+    void setCbk(bool checked);
+
     bool checked() { return m_checkState == Qt::Checked; }
 
     Qt::CheckState checkState() const { return m_checkState; }

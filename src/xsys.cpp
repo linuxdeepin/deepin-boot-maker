@@ -95,7 +95,7 @@ QString RunApp(const QString &execPath, const QString &execParam, const QString 
 #ifdef Q_OS_UNIX
 QString RunApp(const QString &execPath, const QString &execParam, const QString &execPipeIn="") {
     QProcess app;
-    QString cmdline = execPath + " " + execParam;
+    QString cmdline = execPath + "  " + execParam;
     app.start(cmdline);
     if (!app.waitForStarted()) {
         qWarning()<<"Start app failed: "<<cmdline;
@@ -105,7 +105,7 @@ QString RunApp(const QString &execPath, const QString &execParam, const QString 
     app.write(execPipeIn.toLatin1());
     app.closeWriteChannel();
 
-    if (!app.waitForFinished()) {
+    if (!app.waitForFinished(-1)) {
         qWarning()<<"App quit failed: "<<cmdline;
         return "";
     }
@@ -128,12 +128,16 @@ public:
 
 void Execer::run(const QString &execPipeIn){
     Ret = XAPI::RunApp(ExecPath, Param, execPipeIn);
-    qDebug()<<"Cmdline: "<<ExecPath + Param
+    qDebug()<<"Cmdline: "<<ExecPath + " " + Param
             <<"Output: "<<endl<<Ret;
 }
 
+static XSys g_xsys;
+
 XSys::XSys(QObject *parent) :
     QObject(parent) {
+    QDir tmpdir(QStandardPaths::standardLocations(QStandardPaths::TempLocation)[0]);
+    tmpdir.mkdir("dbmtmp");
 }
 
 QString XSys::SynExec(const QString &exec, const QString &param, const QString &execPipeIn) {
@@ -157,7 +161,7 @@ QString XSys::TmpFilePath(const QString &filename) {
     }
     QString newFilename = RandString(filename);
     qDebug()<<"New tmpFilename"<<newFilename;
-    return QDir::toNativeSeparators(QString( tmpDir + "/"
+    return QDir::toNativeSeparators(QString( tmpDir + "/dbmtmp/"
             + newFilename + ext));
 }
 

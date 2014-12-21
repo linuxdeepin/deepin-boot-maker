@@ -51,7 +51,7 @@ signals:
 
 private slots:
     void start();
-    void refrshUsbDriverList();
+    void refrshUsbDriverList(const QStringList &list);
     void checkProcess();
     void confirmFormat();
     void popConfirmFormatPrompt();
@@ -76,7 +76,6 @@ private:
     QHBoxLayout     *m_ActionLayout;
     DPushButton     *m_start;
     DProgressFrame  *m_progressFrame;
-    QTimer          *m_usbRefreshTimer;
     QTimer          *m_ProcessTimer;
 
     static DWindowUI* s_MainWindow;

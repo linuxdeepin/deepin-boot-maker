@@ -4,12 +4,7 @@ TARGET = deepin-boot-maker
 DEPENDPATH += .
 INCLUDEPATH += .
 
-DEFINES += STATICLINUX
-DEFINES += NOEXTRACTKERNEL
-DEFINES += NOEXTRACTINITRD
-
-HEADERS += unetbootin.h \
-    bootmaker.h \
+HEADERS += bootmaker.h \
     diskunity.h \
     xsys.h \
     ui/dwindowui.h \
@@ -27,10 +22,10 @@ HEADERS += unetbootin.h \
     ui/dusbprogressmovie.h \
     ui/drotemovie.h \
     ui/dimageicon.h \
-    ui/ddevicon.h
+    ui/ddevicon.h \
+    usbinstaller.h
 
 SOURCES += main.cpp \
-    unetbootin.cpp \
     bootmaker.cpp \
     diskunity.cpp \
     xsys.cpp \
@@ -49,7 +44,8 @@ SOURCES += main.cpp \
     ui/dserialframemovie.cpp \
     ui/drotemovie.cpp \
     ui/dimageicon.cpp \
-    ui/ddevicon.cpp
+    ui/ddevicon.cpp \
+    usbinstaller.cpp
 
 
 QT += core gui widgets

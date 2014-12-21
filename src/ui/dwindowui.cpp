@@ -51,11 +51,14 @@ DWindowUI::DWindowUI(QWidget *parent) :
     this->setGraphicsEffect(shadow);
 
     m_BootMaker = new BootMaker(this);
+
     initUI();
+
+    connect(m_BootMaker, SIGNAL(listUsbDevice(QStringList)),
+            this, SLOT(refrshUsbDriverList(QStringList)));
 }
 
 DWindowUI::~DWindowUI(){
-    m_usbRefreshTimer->stop();
     m_ProcessTimer->stop();
 }
 
@@ -126,7 +129,7 @@ void DWindowUI::initUI() {
 
     m_formatCheckBox = new DCheckBox(tr("<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be improved by formatting USB drive.</p>"));
     m_formatCheckBox->setFixedWidth(200);
-    m_formatCheckBox->setFixedHeight(50);
+    m_formatCheckBox->setFixedHeight(54);
     m_formatCheckBox->setMaximumSize(240, 50);
     m_formatCheckBox->setDisabled(true);
     connect(m_formatCheckBox, SIGNAL(clicked()), this, SLOT(confirmFormat()));
@@ -163,10 +166,6 @@ void DWindowUI::initUI() {
     connect(this, SIGNAL(confirmFormatPrompt()),
             this, SLOT(popConfirmFormatPrompt()));
 
-    m_usbRefreshTimer = new QTimer(this);
-    m_usbRefreshTimer->setInterval(3000);
-    connect(m_usbRefreshTimer, SIGNAL(timeout()), this, SLOT(refrshUsbDriverList()));
-    m_usbRefreshTimer->start();
 }
 
 void DWindowUI::disableFormatOption(bool disbale) {
@@ -202,8 +201,8 @@ void DWindowUI::popConfirmFormatPrompt() {
     m_formatCheckBox->repaint();
 }
 
-void DWindowUI::refrshUsbDriverList() {
-    QStringList list = m_BootMaker->listUsbDrives();
+void DWindowUI::refrshUsbDriverList(const QStringList &list) {
+    qDebug()<<"lsit:"<<list;
     emit  refrshUsbDrivers(list);
 }
 
@@ -220,7 +219,6 @@ void DWindowUI::checkProcess() {
 }
 
 void DWindowUI::switchToProcessUI() {
-    m_usbRefreshTimer->stop();
     m_closeButton->setDisabled(true);
     m_formatCheckBox->hide();
     m_start->hide();

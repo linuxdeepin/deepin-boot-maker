@@ -3,6 +3,12 @@
 #include "xsys.h"
 
 #include <QtCore>
+#include <QString>
+
+#ifdef Q_OS_WIN32
+#include <windows.h>
+#include <shellapi.h>
+#endif
 
 namespace XAPI {
 #ifdef Q_OS_WIN32
@@ -11,13 +17,13 @@ namespace XAPI {
 #include <shellapi.h>
 
 BOOL GetStorageDeviceNumberByHandle(HANDLE handle,
-                    const STORAGE_DEVICE_NUMBER * sdn)
+                                    const STORAGE_DEVICE_NUMBER * sdn)
 {
     BOOL result = FALSE;
     DWORD count;
 
     if (DeviceIoControl(handle, IOCTL_STORAGE_GET_DEVICE_NUMBER, NULL,
-            0, (LPVOID) sdn, sizeof(*sdn), &count, NULL)) {
+                        0, (LPVOID) sdn, sizeof(*sdn), &count, NULL)) {
         result = TRUE;
     } else {
         qWarning("GetDriveNumber: DeviceIoControl failed");
@@ -31,8 +37,8 @@ int GetPartitionDiskNum(QString targetDev) {
     WCHAR wdriverName[1024] = {0};
     driverName.toWCharArray(wdriverName);
     HANDLE handle = CreateFile(wdriverName, GENERIC_READ | GENERIC_WRITE,
-              FILE_SHARE_READ | FILE_SHARE_WRITE,
-              NULL, OPEN_EXISTING, 0, NULL);
+                               FILE_SHARE_READ | FILE_SHARE_WRITE,
+                               NULL, OPEN_EXISTING, 0, NULL);
     if (handle == INVALID_HANDLE_VALUE) {
         qWarning()<<"Open Dev Failed: "<<driverName<<endl;
         return -1;
@@ -47,8 +53,8 @@ int GetPartitionDiskNum(QString targetDev) {
 }
 
 /*
- return physic driver name like "\\\\.\\PHYSICALDRIVE1";
-*/
+   return physic driver name like "\\\\.\\PHYSICALDRIVE1";
+   */
 QString GetPartitionDisk(const QString &targetDev) {
     QString physicalDevName;
     int deviceNum = GetPartitionDiskNum(targetDev);
@@ -63,8 +69,8 @@ HANDLE LockDisk (const QString &targetDev) {
     WCHAR wPhyName[1024] = {0};
     phyName.toWCharArray(wPhyName);
     HANDLE handle = CreateFile (wPhyName, GENERIC_READ | GENERIC_WRITE,
-                        FILE_SHARE_READ | FILE_SHARE_WRITE,
-                        NULL, OPEN_EXISTING, 0, 0);
+                                FILE_SHARE_READ | FILE_SHARE_WRITE,
+                                NULL, OPEN_EXISTING, 0, 0);
     if (handle == INVALID_HANDLE_VALUE)
         return INVALID_HANDLE_VALUE;
 
@@ -143,7 +149,7 @@ bool CheckFormatFat32(const QString &targetDev) {
     return false;
 }
 
-const QString MountPoint(const QString &targetDev){
+const QString MountPoint(const QString &targetDev) {
     return QString(targetDev).remove("/").remove("\\") + "/";
 }
 
@@ -151,11 +157,11 @@ const QString MountPoint(const QString &targetDev){
 
 
 #ifdef Q_OS_UNIX
-const QString MountPoint(const QString &targetDev){
+const QString MountPoint(const QString &targetDev) {
     /*
-Filesystem    512-blocks     Used Available Capacity iused     ifree %iused  Mounted on
-/dev/disk2s1     3920616  2683872   1236744    69%       0         0  100%   /Volumes/DEEPINOS 1
-    */
+       Filesystem    512-blocks     Used Available Capacity iused     ifree %iused  Mounted on
+       /dev/disk2s1     3920616  2683872   1236744    69%       0         0  100%   /Volumes/DEEPINOS 1
+       */
     QString ret = XSys::SynExec("df", "");
     QStringList mounts = ret.split("\n").filter(targetDev);
     if (0 == mounts.size()) {
@@ -177,7 +183,7 @@ QString GetPartitionDisk(QString targetDev) {
 }
 
 bool UmountDisk(const QString &targetDev) {
-    XSys::SynExec("bash", QString("-c \"umount -v %1?*\"").arg(GetPartitionDisk(targetDev)));
+    XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
     return true;
 }
 
@@ -194,6 +200,7 @@ bool InstallSyslinux(const QString &targetDev) {
     //UmountDisk(targetDev);
     QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
     XSys::SynExec("chmod +x ", sysliuxPath);
+    UmountDisk(targetDev);
     XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     QString rawtargetDev = GetPartitionDisk(targetDev);
@@ -256,14 +263,14 @@ QString InstallBootloader(const QString &diskDev) {
     QString mountCmd = "mount -o flush,rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec";
     //the disk must be mount
     int retryTimes = 10;
-    do{
+    do {
         qDebug()<<"Try mount the disk "<<(11-retryTimes)<<" first time";
         UmountDisk(diskDev);
         XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
         XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
         QThread::sleep(3);
         retryTimes--;
-    }while ((MountPoint(targetDev) != mountPoint) && retryTimes);
+    } while ((MountPoint(targetDev) == "") && retryTimes);
 
     return newTargetDev;
 }
@@ -299,6 +306,8 @@ bool InstallSyslinux(const QString &targetDev) {
     UmountDisk(targetDev);
     QString tmpPbrPath = XSys::InsertTmpFile(":/bootloader/syslinux/mbr.bin");
     XSys::SynExec("dd" , QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(GetPartitionDisk(targetDev)));
+
+    XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
 
     return true;
 }
@@ -346,10 +355,10 @@ QString InstallBootloader(const QString &diskDev) {
 }
 
 DiskUnity::DiskUnity(QObject *parent) :
-    QObject(parent){
+    QObject(parent) {
 }
 
-QString DiskUnity::InstallBootloader(const QString &diskDev){
+QString DiskUnity::InstallBootloader(const QString &diskDev) {
     return XAPI::InstallBootloader(diskDev);
 }
 
@@ -381,17 +390,17 @@ void DiskUnity::ClearTargetDev(const QString &targetPath) {
 
 bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
     //rename isolinux to syslinux
-    QString syslinxDir = QString("%1syslinux/").arg(targetPath);
+    QString syslinxDir = QString("%1/syslinux/").arg(targetPath);
     XSys::RmDir(syslinxDir);
 
-    QString isolinxDir = QString("%1isolinux/").arg(targetPath);
+    QString isolinxDir = QString("%1/isolinux/").arg(targetPath);
     XSys::MoveDir(isolinxDir, syslinxDir);
     qDebug()<<"Rename "<<isolinxDir<<" ot "<<syslinxDir;
 
-    QString syslinxCfgPath = QString("%1syslinux/syslinux.cfg").arg(targetPath);
+    QString syslinxCfgPath = QString("%1/syslinux/syslinux.cfg").arg(targetPath);
     XSys::RmFile(syslinxCfgPath);
 
-    QString isolinxCfgPath = QString("%1syslinux/isolinux.cfg").arg(targetPath);
+    QString isolinxCfgPath = QString("%1/syslinux/isolinux.cfg").arg(targetPath);
     qDebug()<<"Rename "<<isolinxCfgPath<<" ot "<<syslinxCfgPath;
 
     XSys::CpFile(isolinxCfgPath, syslinxCfgPath);
@@ -452,7 +461,7 @@ bool DiskUnity::CheckInstallDisk(const QString &targetDev) {
     return true;
 }
 
-QString DiskUnity::GetPartitionDisk(const QString &targetDev){
+QString DiskUnity::GetPartitionDisk(const QString &targetDev) {
     return XAPI::GetPartitionDisk(targetDev);
 }
 
@@ -464,16 +473,83 @@ bool DiskUnity::UmountDisk(const QString &disk) {
     return XAPI::UmountDisk(disk);
 }
 
-FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent){
+bool isUsbDisk(const QString &dev) {
+    QString out = XSys::TmpFilePath("diskutil_isusb_out");
+    XSys::SynExec("bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
+    QFile outfile(out);
+    outfile.open(QIODevice::ReadOnly);
+    QString info =  outfile.readAll();
+    outfile.close();
+    outfile.remove();
+    return info.contains(QRegExp("Protocol:\\s+USB"));
+}
+
+QStringList ListUsbDrives()
+{
+    QStringList fulldrivelist;
+
+#ifdef Q_OS_WIN32
+    QFileInfoList extdrivesList = QDir::drives();
+    for (int i = 0; i < extdrivesList.size(); ++i)
+    {
+        if (QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper()) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper()).contains("A:") && !QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper()).contains("B:"))
+        {
+            if (GetDriveType(LPWSTR(extdrivesList.at(i).path().toUpper().utf16())) == 2)
+            {
+                fulldrivelist.append(QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper()));
+            }
+        }
+    }
+#endif
+#ifdef Q_OS_LINUX
+    QDir devlstdir("/dev/disk/by-id/");
+    QFileInfoList usbfileinfoL = devlstdir.entryInfoList(QDir::NoDotAndDotDot|QDir::Files);
+    for (int i = 0; i < usbfileinfoL.size(); ++i)
+    {
+        if (usbfileinfoL.at(i).fileName().contains(QRegExp("^usb-\\S{1,}$")) ||
+                usbfileinfoL.at(i).fileName().contains(QRegExp("^mmc-\\S{1,}$")))
+        {
+            QString tstrblk = XSys::SynExec("blkid", QString("-s TYPE %2").arg(usbfileinfoL.at(i).canonicalFilePath()));
+            if (tstrblk.contains('='))
+            {
+                if (tstrblk.section('=', -1, -1).remove('"').contains(QRegExp("(vfat|ext2|ext3|ext4)")))
+                    fulldrivelist.append(usbfileinfoL.at(i).canonicalFilePath());
+            }
+
+        }
+    }
+
+#endif
+#ifdef Q_OS_MAC
+    QString out = XSys::TmpFilePath("diskutil_out");
+    XSys::SynExec("bash", QString("-c \" diskutil list > \"%1\" \" ").arg(out));
+    QFile outfile(out);
+    outfile.open(QIODevice::ReadOnly);
+    QString diskutilList =  outfile.readAll();
+    QStringList usbdevsL = diskutilList.split("\n").filter(QRegExp("(FAT|Microsoft)")).join(" ").split(" ").filter("disk");
+    for (int i = 0; i < usbdevsL.size(); ++i)
+    {
+        if (isUsbDisk("/dev/" + usbdevsL.at(i))) {
+            fulldrivelist.append("/dev/"+usbdevsL.at(i));
+        }
+    }
+    outfile.close();
+    outfile.remove();
+#endif
+    return fulldrivelist;
+}
+
+FileListMonitor::FileListMonitor(QObject *parent) :QObject(parent) {
     finishSize_ = 0;
     connect(this, SIGNAL(totalSize(qint64, qint64)), SLOT(SetTotalSize(qint64, qint64)));
     connect(this, SIGNAL(toNextFile(const QString &)), SLOT(ToNextFile(const QString &)));
 }
 
 void FileListMonitor::ToNextFile(const QString &filename) {
-    if (!currentFile_.isEmpty()){
+    qDebug()<<"Monitor: "<<filename;
+    if (!currentFile_.isEmpty()) {
         QFileInfo file(currentFile_);
-//        qDebug()<<"file.size() fakesize"<<file.size()<<"\t"<<fakeSizePerFile_;
+        //        qDebug()<<"file.size() fakesize"<<file.size()<<"\t"<<fakeSizePerFile_;
         finishSize_ += (file.size() + fakeSizePerFile_);
     }
     currentFile_ = filename;

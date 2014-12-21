@@ -1,4 +1,5 @@
 build
+bin
 *~
 *.pro.user
 *.pro.user.*

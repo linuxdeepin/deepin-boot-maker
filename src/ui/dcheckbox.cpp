@@ -5,6 +5,8 @@
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QFontDatabase>
+#include <QDebug>
+
 DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
     QWidget(parent)
 {
@@ -15,50 +17,60 @@ DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
 
     m_styleChecked = "QPushButton{"
         "border-image:url(:/ui/images/checkbox_checked.png);"
-        "margin-top: 2px;"
         "margin-right: 4px;"
+        "margin-top: 2px;"
+        #ifdef Q_OS_UNIX
+            "margin-top: 6px;"
+        #endif
+        #ifdef Q_OS_MAC
+            "margin-right: 8px;"
+            "margin-left: 8px;"
+        #endif
     "}"
     "QPushButton:hover{"
         "border-image:url(:/ui/images/checkbox_checked_hover.png);"
-        "margin-top: 2px;"
-        "margin-right: 4px;"
     "}"
     "QPushButton:pressed{"
         "border-image:url(:/ui/images/checkbox_checked_insensitive.png);"
-        "margin-top: 2px;"
-        "margin-right: 4px;"
     "}";
 
     m_styleUnchecked = "QPushButton{"
         "border-image:url(:/ui/images/checkbox_unchecked.png);"
-        "margin-top: 2px;"
         "margin-right: 4px;"
+        "margin-top: 2px;"
+        #ifdef Q_OS_UNIX
+            "margin-top: 6px;"
+        #endif
+        #ifdef Q_OS_MAC
+            "margin-right: 8px;"
+            "margin-left: 8px;"
+        #endif
     "}"
     "QPushButton:hover{"
         "border-image:url(:/ui/images/checkbox_unchecked_hover.png);"
-        "margin-top: 2px;"
-        "margin-right: 4px;"
     "}"
     "QPushButton:pressed{"
         "border-image:url(:/ui/images/checkbox_unchecked_insensitive.png);"
-        "margin-top: 2px;"
-        "margin-right: 4px;"
     "}";
 
     QPixmap checkPixmap(":/ui/images/checkbox_unchecked.png");
     m_checkBox = new QPushButton();
     m_checkBox->setFixedWidth(checkPixmap.size().width() + 4);
     m_checkBox->setFixedHeight(checkPixmap.size().height() + 2);
+#ifdef Q_OS_UNIX
+    m_checkBox->setFixedHeight(checkPixmap.size().height() + 6);
+#endif
+#ifdef Q_OS_MAC
+    m_checkBox->setFixedWidth(checkPixmap.size().width() + 16);
+#endif
     m_checkBox->setStyleSheet(m_styleUnchecked);
     m_checkBox->setFocusPolicy(Qt::NoFocus);
     top->addWidget(m_checkBox);
     top->setAlignment(m_checkBox, Qt::AlignTop);
     m_indicatorSize = 13;
-
+    top->addSpacing(4);
     m_label = new QLabel(text);
     m_label->setWordWrap(true);
-    QFontMetrics fm(m_label->font());
-    m_label->setContentsMargins(0, 14 - fm.lineSpacing(),0,0);
     top->addWidget(m_label);
     top->setAlignment(m_label, Qt::AlignTop);
     top->addStretch();
@@ -81,7 +93,19 @@ void DCheckBox::click() {
     }
     emit clicked();
 }
+void DCheckBox::setCbk(bool checked) {
+        m_checkBox->hide();
+    if (!checked) {
+        m_checkBox->setStyleSheet(m_styleUnchecked);
+        m_checkState = Qt::Unchecked;
+    } else {
+        m_checkBox->setStyleSheet(m_styleChecked);
+        m_checkState = Qt::Checked;
+    }
+    m_checkBox->show();
 
+    m_checkBox->update();
+}
 void DCheckBox::setChecked(bool checked){
     if (!checked) {
         m_checkBox->setStyleSheet(m_styleUnchecked);

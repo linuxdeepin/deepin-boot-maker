@@ -15,7 +15,10 @@ DTips::DTips(QWidget *parent):
         "DTips { "
         "color:#ebab4c;"
         "font-size: 10px;"
-        "margin-bottom: 7px;"
+        #ifdef Q_OS_LINUX
+            "margin-top: -2px;"
+        #endif
+        "margin-bottom: 8px;"
         "margin-left: 8px;"
         "margin-right: 8px;"
         "}";
@@ -26,8 +29,6 @@ DTips::DTips(QWidget *parent):
     this->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding));
     this->setWindowFlags(Qt::WindowStaysOnTopHint );
     m_active = false;
-    QFontMetrics fm(this->font());
-    this->setContentsMargins(0, 14 - fm.lineSpacing(),0,0);
     this->setFrameStyle(Qt::FramelessWindowHint);
 }
 

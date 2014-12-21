@@ -7,7 +7,6 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License at <http://www.gnu.org/licenses/> for more details.
 */
 #include "bootmaker.h"
-#include "unetbootin.h"
 #include "ui/dwindowui.h"
 
 #include <QtGui>
@@ -16,15 +15,16 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 #include <QTextStream>
 #include <QtGlobal>
 #include <QtWidgets/QApplication>
+#include <QMessageBox>
 
 #ifdef Q_OS_UNIX
-QString checkforgraphicalsu(QString graphicalsu)
-{
+QString checkforgraphicalsu(QString graphicalsu) {
     QProcess whereiscommand;
     whereiscommand.start(QString("which %1").arg(graphicalsu));
     whereiscommand.waitForFinished(-1);
     QString commandbinpath = QString(whereiscommand.readAll()).trimmed();
-    if (!commandbinpath.isEmpty() && QFile::exists(commandbinpath))
+
+    if(!commandbinpath.isEmpty() && QFile::exists(commandbinpath))
         return commandbinpath;
     else
         return "REQCNOTFOUND";
@@ -35,55 +35,62 @@ bool SwitchToRoot(QApplication &app) {
     QProcess whoamip;
     whoamip.start("whoami");
     whoamip.waitForFinished();
-    if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root")
-    {
+
+    if(QString(whoamip.readAll()).remove("\r").remove("\n") != "root") {
         QString argsconc = "";
         QString argsconcSingleQuote = "";
-        for (int i = 1; i < allappargs.size(); ++i)
-        {
+
+        for(int i = 1; i < allappargs.size(); ++i) {
             argsconc += QString("\"%1\" ").arg(allappargs.at(i));
             argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
         }
+
         argsconc += "\"rootcheck=no\"";
         argsconcSingleQuote += "'rootcheck=no'";
 #ifdef Q_OS_LINUX
         QString gksulocation = checkforgraphicalsu("gksu");
-        if (gksulocation != "REQCNOTFOUND")
-        {
+
+        if(gksulocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
+
         QString kdesulocation = checkforgraphicalsu("kdesu");
-        if (kdesulocation != "REQCNOTFOUND")
-        {
+
+        if(kdesulocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
+
         QString gnomesulocation = checkforgraphicalsu("gnomesu");
-        if (gnomesulocation != "REQCNOTFOUND")
-        {
+
+        if(gnomesulocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
+
         QString kdesudolocation = checkforgraphicalsu("kdesudo");
-        if (kdesudolocation != "REQCNOTFOUND")
-        {
+
+        if(kdesudolocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
+
         QMessageBox rootmsgb;
         rootmsgb.setIcon(QMessageBox::Warning);
-        rootmsgb.setWindowTitle(uninstaller::tr("Must run as root"));
+        rootmsgb.setWindowTitle(QObject::tr("Must run as root"));
         rootmsgb.setTextFormat(Qt::RichText);
-        rootmsgb.setText(uninstaller::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>or:<br/><b>su - -c '%1'</b>").arg(app.applicationFilePath()).arg(UNETBOOTINB));
+        rootmsgb.setText(QObject::tr("%2 must be run as root. Close it, and re-run using either:<br/><b>sudo %1</b><br/>").arg(app.applicationFilePath()));
         rootmsgb.setStandardButtons(QMessageBox::Ok);
-        switch (rootmsgb.exec())
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
+
+        switch(rootmsgb.exec()) {
+        case QMessageBox::Ok:
+            break;
+
+        default:
+            break;
         }
+
 #endif
 #ifdef Q_OS_MAC
         /*
@@ -99,28 +106,32 @@ bool SwitchToRoot(QApplication &app) {
         return true;
 #endif
     }
+
     return false;
 }
 #endif
 
 static QString g_LogPath;
 #include <iostream>
-void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
-{
+void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str) {
     QString txt;
-    switch (type) {
-        case QtDebugMsg:
-            txt = QString("Debug: %1").arg(str);
-            break;
-        case QtWarningMsg:
-            txt = QString("Warning: %1").arg(str);
-            break;
-        case QtCriticalMsg:
-            txt = QString("Critical: %1").arg(str);
-            break;
-        case QtFatalMsg:
-            txt = QString("Fatal: %").arg(str);
-            abort();
+
+    switch(type) {
+    case QtDebugMsg:
+        txt = QString("Debug: %1").arg(str);
+        break;
+
+    case QtWarningMsg:
+        txt = QString("Warning: %1").arg(str);
+        break;
+
+    case QtCriticalMsg:
+        txt = QString("Critical: %1").arg(str);
+        break;
+
+    case QtFatalMsg:
+        txt = QString("Fatal: %").arg(str);
+        abort();
     }
 
     QFile outFile(g_LogPath);
@@ -128,12 +139,12 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
     QTextStream ts(&outFile);
     ts << txt << endl;
 
-    //std::wcout<<txt.toStdWString()<<std::endl;
+    std::wcout<<txt.toStdWString()<<std::endl;
 }
 
 void installLogHandler() {
     g_LogPath = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first() + "/" + "deepin-boot-maker.log");
-    qDebug()<<"Install Log to "<<g_LogPath;
+    qDebug() << "Install Log to " << g_LogPath;
     qInstallMessageHandler(crashMessageOutput);
 }
 
@@ -144,29 +155,31 @@ void loadTranslate(QApplication& app) {
     QString clangcode = "";
     QStringList allappargs = app.arguments();
     QList<QPair<QString, QString> > oppairs;
-    for (QList<QString>::const_iterator i = allappargs.constBegin(); i < allappargs.constEnd(); ++i) {
-        if (i->count('=') == 1) {
-            oppairs.append(QPair<QString, QString>(i->section('=', 0, 0).simplified(), i->section('=',1, 1).simplified()));
+
+    for(QList<QString>::const_iterator i = allappargs.constBegin(); i < allappargs.constEnd(); ++i) {
+        if(i->count('=') == 1) {
+            oppairs.append(QPair<QString, QString> (i->section('=', 0, 0).simplified(), i->section('=', 1, 1).simplified()));
         }
     }
-    for (QList<QPair<QString, QString> >::const_iterator i = oppairs.constBegin(); i < oppairs.constEnd(); ++i) {
-        if (i->first.contains("lang", Qt::CaseInsensitive))
-        {
+
+    for(QList<QPair<QString, QString> >::const_iterator i = oppairs.constBegin(); i < oppairs.constEnd(); ++i) {
+        if(i->first.contains("lang", Qt::CaseInsensitive)) {
             clangcode = i->second;
             tnapplang = clangcode.left(2);
-            if (clangcode.contains('_') && clangcode.size() == 5)
-            {
+
+            if(clangcode.contains('_') && clangcode.size() == 5) {
                 tnappcoun = clangcode.section('_', -1, -1);
             }
+
             break;
         }
     }
-    if (clangcode.isEmpty())
-    {
+
+    if(clangcode.isEmpty()) {
         clangcode = QLocale::system().name();
         tnapplang = clangcode.left(2);
-        if (clangcode.contains('_') && clangcode.size() == 5)
-        {
+
+        if(clangcode.contains('_') && clangcode.size() == 5) {
             tnappcoun = clangcode.section('_', -1, -1);
         }
     }
@@ -181,13 +194,14 @@ void loadTranslate(QApplication& app) {
         tranlateUrl = QString(":/po/%1.qm").arg(tnapplang);
     }
 
-    if (!QFile::exists(tranlateUrl)) {
+
+    if(!QFile::exists(tranlateUrl)) {
         tranlateUrl = ":/en_US.qm";
     }
 
     qDebug()<<"locate: "<<clangcode<<"\nload translate file: "<<tranlateUrl;
 
-    if (translator->load(tranlateUrl)){
+    if(translator->load(tranlateUrl)) {
         app.installTranslator(translator);
     }
 }
@@ -199,32 +213,33 @@ void loadFonts() {
     QStringList fontlist = database.families();
 
     QStringList preferList;
-    preferList.append("Microsoft YaHei UI");
+    preferList.append("Microsoft YaHei");
     preferList.append("微软雅黑");
-    preferList.append("SimSong");
-    preferList.append("宋体");
-    preferList.append("思源黑体");
-    preferList.append("Source Han Sans SC");
+    preferList.append("SimHei");
+    preferList.append("黑体");
 
     foreach (QString font, preferList) {
         if (fontlist.contains(font)) {
-            QFont newFont = QFont(font, 9, QFont::Normal);
+            QFont newFont = QFont(font);
             QApplication::setFont(newFont);
-            qDebug()<<" set font: "<<newFont;
             return;
         }
     }
 }
-
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
     QApplication app(argc, argv, true);
     installLogHandler();
     loadTranslate(app);
+
+#ifdef Q_OS_WIN32
     loadFonts();
+#endif
+
 #ifdef Q_OS_UNIX
     if(SwitchToRoot(app))
         exit(0);
 #endif
+    qDebug()<<app.font();
 
     QIcon icon;
     icon.addFile(":/ui/images/deepin-boot-maker.png");

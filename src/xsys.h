@@ -11,8 +11,7 @@
 
 class QFile;
 
-class XSys : public QObject
-{
+class XSys : public QObject {
     Q_OBJECT
 public:
     explicit XSys(QObject *parent = 0);
@@ -21,7 +20,7 @@ public:
     static QString InsertFileData(const QString &name, const QByteArray &data = "");
     static QString InsertTmpFile(const QString &fileurl);
     static QString InsertFile(const QString &fileurl, const QString &fullpath);
-    static QString SynExec(const QString &exec, const QString &param, const QString &execPipeIn="");
+    static QString SynExec(const QString &exec, const QString &param, const QString &execPipeIn = "");
     static void RmFile(QFile &file);
     static void RmFile(const QString &filename);
     static bool CpFile(const QString &srcName, const QString &desName);

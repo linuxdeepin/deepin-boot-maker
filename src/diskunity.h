@@ -2,9 +2,9 @@
 #define DISKUNITY_H
 
 #include <QObject>
+#include <QString>
 
-class DiskUnity : public QObject
-{
+class DiskUnity : public QObject {
     Q_OBJECT
 public:
     explicit DiskUnity(QObject *parent = 0);
@@ -35,7 +35,9 @@ class FileListMonitor: public QObject {
 public:
     FileListMonitor(QObject *parent = 0);
     qint64 FinishSize();
-    qint64 getTotalSize(){return totalSize_;}
+    qint64 getTotalSize() {
+        return totalSize_;
+    }
 
 public slots:
     void ToNextFile(const QString &file);
@@ -54,5 +56,13 @@ private:
     //QStringList desList_;
 };
 
+QStringList ListUsbDrives();
+
+
+#ifdef Q_OS_UNIX
+namespace XAPI {
+const QString MountPoint(const QString &targetDev);
+}
+#endif
 
 #endif // DISKUNITY_H
