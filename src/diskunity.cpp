@@ -196,7 +196,6 @@ bool InstallSyslinux(const QString &targetDev) {
     XSys::SynExec("chmod +x ", sysliuxPath);
     XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
-
     QString rawtargetDev = GetPartitionDisk(targetDev);
     //dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::InsertTmpFile(":/bootloader/syslinux/mbr.bin");
@@ -226,6 +225,10 @@ QString InstallBootloader(const QString &diskDev) {
     QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
     UmountDisk(diskDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
+
+    //after format, diskdev change to /dev/sd?1
+    UmountDisk(diskDev);
+    XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
 
     //install syslinux
     UmountDisk(diskDev);
