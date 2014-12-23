@@ -83,11 +83,12 @@ void DCheckBox::click() {
 void DCheckBox::setChecked(bool checked){
     if (!checked) {
         m_checkBox->setStyleSheet(m_styleUnchecked);
-        setCheckState(Qt::Unchecked);
+        m_checkState = Qt::Unchecked;
     } else {
         m_checkBox->setStyleSheet(m_styleChecked);
-        setCheckState(Qt::Checked);
+        m_checkState = Qt::Checked;
     }
+    m_checkBox->repaint();
 }
 
 void DCheckBox::setDisabled(bool disable) {

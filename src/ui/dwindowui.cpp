@@ -158,6 +158,9 @@ void DWindowUI::initUI() {
     window->setLayout(m_topLayout);
     setCentralWidget(window);
 
+    connect(this, SIGNAL(confirmFormatPrompt()),
+            this, SLOT(popConfirmFormatPrompt()));
+
     m_usbRefreshTimer = new QTimer(this);
     m_usbRefreshTimer->setInterval(3000);
     connect(m_usbRefreshTimer, SIGNAL(timeout()), this, SLOT(refrshUsbDriverList()));
@@ -188,8 +191,13 @@ void DWindowUI::start() {
 }
 
 void DWindowUI::confirmFormat() {
+    emit confirmFormatPrompt();
+}
+
+void DWindowUI::popConfirmFormatPrompt() {
     if (m_formatCheckBox->checked())
         m_formatCheckBox->setChecked(m_BootMaker->confirmFormatDlg());
+    m_formatCheckBox->repaint();
 }
 
 void DWindowUI::refrshUsbDriverList() {
