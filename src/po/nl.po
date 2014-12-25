@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-04 19:21+0000\n"
-"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-12-25 06:40+0000\n"
+"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/deepin-boot-maker/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,20 +110,20 @@ msgstr "Het geselecteerde bestand voor de schijfafbeelding, %1, bestaat niet. "
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
-msgid "<p style='font-weight:bold;'>Select USB drive</p>"
-msgstr "<p style='font-weight:bold;'>Selecteer USB-schijf</p>"
+msgid "Select USB drive"
+msgstr ""
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
-msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr "<p style='font-weight:bold;'>Selecteer schijfafbeelding</p>"
+msgid "Select disk image"
+msgstr ""
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "USB-schijf niet gedetecteerd"
 
-#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
+#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:212 ../ui/dwindowui.cpp:218
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
@@ -136,45 +136,43 @@ msgid ""
 "improved by formatting USB drive.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px;'>De slagingskans kan verhoogd worden door de USB-schijf te formatteren.</p>"
 
-#: ../ui/dwindowui.cpp:137
+#: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
-msgid ""
-"<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
-"or shutdown while file is writing.<a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Gelieve de USB-schijf NIET te verwijderen of de computer uit te schakelen tijdens het branden van de schijf.<a>"
+msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
+msgstr ""
 
-#: ../ui/dwindowui.cpp:147
+#: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
 msgid "Start"
 msgstr "Beginnen"
 
-#: ../ui/dwindowui.cpp:246
+#: ../ui/dwindowui.cpp:257
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
 msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Aanmaken geslaagd</p>"
 
-#: ../ui/dwindowui.cpp:247
+#: ../ui/dwindowui.cpp:258
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px'>Gelieve de USB-schijf te selecteren die opgestart dient te worden bij het installeren van Deepin OS.</p>"
 
-#: ../ui/dwindowui.cpp:251
+#: ../ui/dwindowui.cpp:262
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>Indien onsuccesvol, gelieve proberen de EFI-optie uit te schakelen.</a>"
 
-#: ../ui/dwindowui.cpp:269
+#: ../ui/dwindowui.cpp:280
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "Later opnieuw opstarten."
 
-#: ../ui/dwindowui.cpp:271
+#: ../ui/dwindowui.cpp:282
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Nu opnieuw opstarten"
