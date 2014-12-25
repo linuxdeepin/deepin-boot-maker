@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-11-26 15:41+0000\n"
+"PO-Revision-Date: 2014-12-23 09:11+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/deepin-boot-maker/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +139,7 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Die Erfolgsquote kann durch das Formatieren eines USB-Laufwerks gesteigert werden.</p>"
 
 #: ../ui/dwindowui.cpp:137
 msgctxt "DWindowUI|"
@@ -165,14 +165,14 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Bitte wählen Sie USB-Laufwerk zum Hochfahren, wenn Sie Deepin OS installieren.</p>"
 
 #: ../ui/dwindowui.cpp:251
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr ""
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Wenn es fehlgeschlagen ist, versuchen Sie es mit dem Deaktivieren der EFI-Option.</a>"
 
 #: ../ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
@@ -224,7 +224,7 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr ""
+msgstr "Die Datei %1 existiert bereits. Klicken Sie auf 'Yes to All', um diese zu überschreiben und nicht erneut zur Eingabe aufgefordert zu werden, 'Yes' um die Dateien einzeln zu überschreiben und 'No', um die bisherige Version zu behalten. Im Zweifelsfall klicken Sie auf 'Yes to All'."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"
