@@ -104,7 +104,7 @@ bool BootMaker::isISOImage(QString isoPath) {
 
 bool BootMaker::confirmFormatDlg() {
     QMessageBox msgbox(this);
-    msgbox.setIcon(QMessageBox::Critical);
+    msgbox.setIcon(QMessageBox::Warning);
     msgbox.setWindowTitle(tr("Format USB flash drive"));
     msgbox.setText(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
     msgbox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
