@@ -1,11 +1,12 @@
 # 
 # Translators:
 # Heimen Stoffels <motionshot@vivaldi.net>, 2014
+# Stefan van den Brink <stefan.vandenbrink@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-12-25 09:41+0000\n"
+"Last-Translator: Stefan van den Brink <stefan.vandenbrink@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/deepin-boot-maker/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,12 +112,12 @@ msgstr "Het geselecteerde bestand voor de schijfafbeelding, %1, bestaat niet. "
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "Selecteer een USB-schijf"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "Selecteer een Disk Image"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -139,7 +140,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>De slagingskans kan verhoogd w
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "Gelieve de USB-schijf NIET verwijderen of de computer uitschakelen tijdens het schrijven van het bestand."
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"

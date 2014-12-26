@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-12-26 04:51+0000\n"
+"Last-Translator: Carl Andersen <carl@manjaro.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/deepin-boot-maker/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,12 +112,12 @@ msgstr "Den angivne diskimage-fil %1 findes ikke."
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "Vælg USB drev"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "Vælg disk aftryk"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -140,7 +140,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>Duccesraten kan forbedres ved 
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "Fjern Venligst IKKE USB-stick eller luk for computeren, mens filen bliver skrvet til USB."
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
