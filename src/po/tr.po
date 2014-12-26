@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
+"PO-Revision-Date: 2014-12-29 07:01+0000\n"
 "Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/deepin-boot-maker/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -112,12 +112,12 @@ msgstr "Belirtilen disk imaj dosyası %1 mevcut değil."
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "USB sürücüsü seç"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "Disk görüntüsü seç"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -140,7 +140,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>Burdaki başarı oranı USB di
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "Lütfen USB sürücüsünü çıkarmayın veya dosya yazarken kapatmayın."
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"

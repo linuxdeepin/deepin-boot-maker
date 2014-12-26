@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
+"PO-Revision-Date: 2014-12-29 07:01+0000\n"
 "Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/deepin-boot-maker/language/ro/)\n"
 "MIME-Version: 1.0\n"
@@ -112,12 +112,12 @@ msgstr "Fişierul specificat %1 ce ar conţine imaginea discului, nu există"
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "Selectează drive-ul USB"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "Selectează imaginea discului"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -140,7 +140,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>Probabilitatea succesului, ar 
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "Te rog nu scoate drive-ul USB sau nu închide calculatorul cât timp se inscripționează fişierul."
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
