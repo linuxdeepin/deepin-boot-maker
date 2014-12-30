@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
+"PO-Revision-Date: 2014-12-29 18:41+0000\n"
 "Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/deepin-boot-maker/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -112,12 +112,12 @@ msgstr "Η συγκεκριμένη εικόνα δίσκου αρχείο %1 δ
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "Διαλέξτε θύρα USB"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "Διαλέξτε είδωλο δίσκου"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -140,7 +140,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>Ο ρυθμός επιτυχί
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "Παρακαλούμε ΜΗΝ αποσυνδέσετε το USB ή σβήσετε τον υπολογιστή όσο εγγράφεται το αρχείο."
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
