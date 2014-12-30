@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-11-16 12:23+0000\n"
+"PO-Revision-Date: 2014-12-28 11:51+0000\n"
 "Last-Translator: lexross <its4moi@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/deepin-boot-maker/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -113,20 +113,20 @@ msgstr "L'image disque %1 n'existe pas."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
-msgid "<p style='font-weight:bold;'>Select USB drive</p>"
-msgstr "<p style='font-weight:bold;'>Sélectionnez le périphérique USB</p>"
+msgid "Select USB drive"
+msgstr "Sélectionnez le périphérique USB"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
-msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr "<p style='font-weight:bold;'>Sélectionnez une image disque</p>"
+msgid "Select disk image"
+msgstr "Sélectionner une image disque"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "Périphérique USB non détecté"
 
-#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
+#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:212 ../ui/dwindowui.cpp:218
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
@@ -139,45 +139,43 @@ msgid ""
 "improved by formatting USB drive.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px;'>Les chances de réussite peuvent être améliorées en formatant le périphérique USB</p>"
 
-#: ../ui/dwindowui.cpp:137
+#: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
-msgid ""
-"<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
-"or shutdown while file is writing.<a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Ne PAS retirer le périphérique USB ou éteindre le système pendant l'écriture des fichiers.<a>"
+msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
+msgstr "Veuillez NE PAS retirer le périphérique USB pendant l'écriture des fichiers."
 
-#: ../ui/dwindowui.cpp:147
+#: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
 msgid "Start"
 msgstr "Démarrer"
 
-#: ../ui/dwindowui.cpp:246
+#: ../ui/dwindowui.cpp:257
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
 msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Créé avec succès</p>"
 
-#: ../ui/dwindowui.cpp:247
+#: ../ui/dwindowui.cpp:258
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
 msgstr "<p style='color:#b4b4b4; font-size:12px'>Veuillez sélectionner le périphérique USB à démarrer lors de l'installation de Deepin OS.</p>"
 
-#: ../ui/dwindowui.cpp:251
+#: ../ui/dwindowui.cpp:262
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
 msgstr "<a style='color:#b4b4b4; font-size:12px'>En cas d'échec, essayez de désactiver l'option EFI.</a>"
 
-#: ../ui/dwindowui.cpp:269
+#: ../ui/dwindowui.cpp:280
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "Redémarrer plus tard"
 
-#: ../ui/dwindowui.cpp:271
+#: ../ui/dwindowui.cpp:282
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Redémarrer maintenant"
@@ -197,7 +195,7 @@ msgstr "Chaque"
 #: ../unetbootin.cpp:257
 msgctxt "unetbootin|"
 msgid "LiveUSB persistence"
-msgstr "Persistance du LiveUSB"
+msgstr "Version USB portable"
 
 #: ../unetbootin.cpp:272
 msgctxt "unetbootin|"

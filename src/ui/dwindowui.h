@@ -46,13 +46,15 @@ private:
     void addProcessUI(QBoxLayout * top);
     void addOptionUI(QBoxLayout * top);
 
-
+signals:
+    void confirmFormatPrompt();
 
 private slots:
     void start();
     void refrshUsbDriverList();
     void checkProcess();
     void confirmFormat();
+    void popConfirmFormatPrompt();
     void switchToProcessUI();
     void switchToEndUI();
 

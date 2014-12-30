@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-11-26 15:41+0000\n"
+"PO-Revision-Date: 2014-12-26 04:51+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/deepin-boot-maker/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -115,20 +115,20 @@ msgstr "Die angegebene Festplattenabbilddatei %1 ist nicht vorhanden."
 
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
-msgid "<p style='font-weight:bold;'>Select USB drive</p>"
-msgstr "<p style='font-weight:bold;'>USB-Laufwerk auswählen</p>"
+msgid "Select USB drive"
+msgstr "USB-Laufwerk auswählen"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
-msgid "<p style='font-weight:bold;'>Select disk image</p>"
-msgstr "<p style='font-weight:bold;'>Festplattenabbild auswählen</p>"
+msgid "Select disk image"
+msgstr "Festplattenabbilddatei auswählen"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "USB-Laufwerk nicht erkannt"
 
-#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:202 ../ui/dwindowui.cpp:208
+#: ../ui/dwindowui.cpp:114 ../ui/dwindowui.cpp:212 ../ui/dwindowui.cpp:218
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
@@ -139,47 +139,45 @@ msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Die Erfolgsquote kann durch das Formatieren eines USB-Laufwerks gesteigert werden.</p>"
 
-#: ../ui/dwindowui.cpp:137
+#: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
-msgid ""
-"<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive "
-"or shutdown while file is writing.<a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Bitte entfernen Sie NICHT das USB-Laufwerk oder fahren Sie herunter während die Datei geschrieben wird.<a>"
+msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
+msgstr "Bitte entfernen Sie NICHT das USB-Laufwerk oder fahren Sie herunter während die Datei geschrieben wird."
 
-#: ../ui/dwindowui.cpp:147
+#: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
 msgid "Start"
 msgstr "Start"
 
-#: ../ui/dwindowui.cpp:246
+#: ../ui/dwindowui.cpp:257
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
 msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Erfolgreich durchgeführt</p>"
 
-#: ../ui/dwindowui.cpp:247
+#: ../ui/dwindowui.cpp:258
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr ""
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Bitte wählen Sie USB-Laufwerk zum Hochfahren, wenn Sie Deepin OS installieren.</p>"
 
-#: ../ui/dwindowui.cpp:251
+#: ../ui/dwindowui.cpp:262
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr ""
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Wenn es fehlgeschlagen ist, versuchen Sie es mit dem Deaktivieren der EFI-Option.</a>"
 
-#: ../ui/dwindowui.cpp:269
+#: ../ui/dwindowui.cpp:280
 msgctxt "DWindowUI|"
 msgid "Restart Later"
 msgstr "Später neu starten"
 
-#: ../ui/dwindowui.cpp:271
+#: ../ui/dwindowui.cpp:282
 msgctxt "DWindowUI|"
 msgid "Restart Now"
 msgstr "Jetzt neu starten"
@@ -224,7 +222,7 @@ msgid ""
 "The file %1 already exists. Press 'Yes to All' to overwrite it and not be "
 "prompted again, 'Yes' to overwrite files one by one, and 'No' to retain your"
 " existing version. If in doubt, press 'Yes to All'."
-msgstr ""
+msgstr "Die Datei %1 existiert bereits. Klicken Sie auf 'Yes to All', um diese zu überschreiben und nicht erneut zur Eingabe aufgefordert zu werden, 'Yes' um die Dateien einzeln zu überschreiben und 'No', um die bisherige Version zu behalten. Im Zweifelsfall klicken Sie auf 'Yes to All'."
 
 #: ../unetbootin.cpp:502 ../unetbootin.cpp:532 ../unetbootin.cpp:2674
 msgctxt "unetbootin|"
