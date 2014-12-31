@@ -26,6 +26,8 @@ DTips::DTips(QWidget *parent):
     this->setSizePolicy(QSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding));
     this->setWindowFlags(Qt::WindowStaysOnTopHint );
     m_active = false;
+    QFontMetrics fm(this->font());
+    this->setContentsMargins(0, 14 - fm.lineSpacing(),0,0);
     this->setFrameStyle(Qt::FramelessWindowHint);
 }
 

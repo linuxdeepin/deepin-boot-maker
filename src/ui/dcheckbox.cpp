@@ -4,7 +4,7 @@
 #include <QLabel>
 #include <QBoxLayout>
 #include <QPushButton>
-
+#include <QFontDatabase>
 DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
     QWidget(parent)
 {
@@ -57,6 +57,8 @@ DCheckBox::DCheckBox(const QString& text,QWidget *parent) :
 
     m_label = new QLabel(text);
     m_label->setWordWrap(true);
+    QFontMetrics fm(m_label->font());
+    m_label->setContentsMargins(0, 14 - fm.lineSpacing(),0,0);
     top->addWidget(m_label);
     top->setAlignment(m_label, Qt::AlignTop);
     top->addStretch();
@@ -83,11 +85,12 @@ void DCheckBox::click() {
 void DCheckBox::setChecked(bool checked){
     if (!checked) {
         m_checkBox->setStyleSheet(m_styleUnchecked);
-        setCheckState(Qt::Unchecked);
+        m_checkState = Qt::Unchecked;
     } else {
         m_checkBox->setStyleSheet(m_styleChecked);
-        setCheckState(Qt::Checked);
+        m_checkState = Qt::Checked;
     }
+    m_checkBox->repaint();
 }
 
 void DCheckBox::setDisabled(bool disable) {

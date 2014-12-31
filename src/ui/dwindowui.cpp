@@ -97,7 +97,7 @@ void DWindowUI::initUI() {
     logolayout->addWidget(logolabel);
     logolayout->setAlignment(logolabel, Qt::AlignCenter);
     logolayout->addSpacing(10);
-    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:bold;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle()));
+    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:600;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle()));
     logolayout->addWidget(versionlabel);
     logolayout->setAlignment(versionlabel, Qt::AlignCenter);
     logolayout->addStretch();
@@ -134,7 +134,9 @@ void DWindowUI::initUI() {
     m_optionLayout->setAlignment(m_formatCheckBox, Qt::AlignCenter);
     m_optionLayout->addSpacing(8);
 
-    m_processHints = new QLabel((tr("<a style='color:#b4b4b4; font-size:12px'>Please DO NOT remove the USB drive or shutdown while file is writing.<a>")));
+    m_processHints = new QLabel("<p style='color:#b4b4b4; font-size:12px'>"
+                                + tr("Please DO NOT remove the USB drive or shutdown while file is writing.")
+                                + "<a>");
     m_processHints->setFixedWidth(230);
     m_processHints->setFixedHeight(45);
     m_processHints->setAlignment(Qt::AlignCenter);
@@ -157,6 +159,9 @@ void DWindowUI::initUI() {
     QWidget *window = new QWidget(this);
     window->setLayout(m_topLayout);
     setCentralWidget(window);
+
+    connect(this, SIGNAL(confirmFormatPrompt()),
+            this, SLOT(popConfirmFormatPrompt()));
 
     m_usbRefreshTimer = new QTimer(this);
     m_usbRefreshTimer->setInterval(3000);
@@ -188,8 +193,13 @@ void DWindowUI::start() {
 }
 
 void DWindowUI::confirmFormat() {
+    emit confirmFormatPrompt();
+}
+
+void DWindowUI::popConfirmFormatPrompt() {
     if (m_formatCheckBox->checked())
         m_formatCheckBox->setChecked(m_BootMaker->confirmFormatDlg());
+    m_formatCheckBox->repaint();
 }
 
 void DWindowUI::refrshUsbDriverList() {

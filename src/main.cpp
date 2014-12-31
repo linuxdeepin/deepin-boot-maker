@@ -104,7 +104,7 @@ bool SwitchToRoot(QApplication &app) {
 #endif
 
 static QString g_LogPath;
-//#include <iostream>
+#include <iostream>
 void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
     QString txt;
@@ -128,7 +128,7 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
     QTextStream ts(&outFile);
     ts << txt << endl;
 
-//    std::wcout<<txt.toStdWString()<<std::endl;
+    //std::wcout<<txt.toStdWString()<<std::endl;
 }
 
 void installLogHandler() {
@@ -194,7 +194,7 @@ void loadTranslate(QApplication& app) {
 
 /*select the best font*/
 #include <QFontDatabase>
-void loadFonts(QApplication& app) {
+void loadFonts() {
     QFontDatabase database;
     QStringList fontlist = database.families();
 
@@ -203,13 +203,14 @@ void loadFonts(QApplication& app) {
     preferList.append("微软雅黑");
     preferList.append("SimSong");
     preferList.append("宋体");
-    preferList.append("WenQuanYi Micro Hei");
-    preferList.append("文泉驿微米黑");
+    preferList.append("思源黑体");
+    preferList.append("Source Han Sans SC");
 
     foreach (QString font, preferList) {
         if (fontlist.contains(font)) {
-            app.setFont(QFont(font));
-            qDebug()<<&app<<" set font: "<<font;
+            QFont newFont = QFont(font, 9, QFont::Normal);
+            QApplication::setFont(newFont);
+            qDebug()<<" set font: "<<newFont;
             return;
         }
     }
@@ -218,13 +219,8 @@ void loadFonts(QApplication& app) {
 int main(int argc, char **argv){
     QApplication app(argc, argv, true);
     installLogHandler();
-
-#ifdef Q_OS_WIN32
-    loadFonts(app);
-#endif
-
     loadTranslate(app);
-
+    loadFonts();
 #ifdef Q_OS_UNIX
     if(SwitchToRoot(app))
         exit(0);
