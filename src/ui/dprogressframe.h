@@ -12,6 +12,7 @@ class DDigitProgressMovie;
 class DUsbProgressMovie;
 class DImageIcon;
 class DDevIcon;
+class DProgress;
 
 class QLabel;
 class QParallelAnimationGroup;
@@ -71,7 +72,7 @@ protected:
     QWidget                 *m_FirstWidget;
     QWidget                 *m_SecondWidget;
     QVBoxLayout             *m_FirstLayout;
-    QLabel                  *m_ProcessLabel;
+    DProgress               *m_ProcessLabel;
     DImageIcon              *m_IsoLabel;
     DDevIcon                *m_UsbLabel;
     QParallelAnimationGroup *m_AnimGroup;

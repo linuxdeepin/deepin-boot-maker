@@ -8,6 +8,7 @@
 #include "dusbprogressmovie.h"
 #include "dimageicon.h"
 #include "ddevicon.h"
+#include "dprogress.h"
 
 #include <QDebug>
 #include <QLabel>
@@ -47,10 +48,7 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstLayout->setAlignment(m_IsoLabel, Qt::AlignCenter);
     connect(m_IsoLabel, SIGNAL(clicked()), this, SLOT(selectISO()));
 
-    m_ProcessLabel =new QLabel();
-    m_ProcessLabel->setPixmap(QPixmap(":/ui/images/process-inactive.png"));
-    m_ProcessLabel->setFixedSize(64, 64);
-    m_ProcessLabel->setAlignment(Qt::AlignCenter);
+    m_ProcessLabel =new DProgress();
     m_FirstLayout->addWidget(m_ProcessLabel);
     m_FirstLayout->setAlignment(m_ProcessLabel, Qt::AlignCenter);
 
@@ -105,10 +103,8 @@ void DProgressFrame::usbDevSelected(const QString & dev) {
 void DProgressFrame::switchProgress() {
     m_UsbLabel->setStatus(DDevIcon::Progress);
     m_IsoLabel->setStatus(DImageIcon::Progress);
+    m_ProcessLabel->setStatus(DProgress::Progress);
     m_IsoLabel->setDisabled(true);
-    QMovie *process = new QMovie(":/ui/images/process-active.gif");
-    m_ProcessLabel->setMovie(process);
-    process->start();
 }
 
 void DProgressFrame::switchShowStatus() {
@@ -133,7 +129,7 @@ void DProgressFrame::slideUsbSeclect() {
     }
     this->layout()->setEnabled(false);
     m_TopShadow->show();
-    m_ProcessLabel->setPixmap(QPixmap(""));
+    m_ProcessLabel->setStatus(DProgress::Empty);
     emit changedUsbSeclet();
 
     int offsetx=frameRect().width(); //inherited from mother
@@ -193,7 +189,7 @@ void DProgressFrame::slideProcess() {
     }
     this->layout()->setEnabled(true);
     m_TopShadow->show();
-    m_ProcessLabel->setPixmap(QPixmap(":/ui/images/process-inactive.png"));
+    m_ProcessLabel->setStatus(DProgress::UnProgress);
     emit changedProgress();
 
     int offsetx=frameRect().width(); //inherited from mother

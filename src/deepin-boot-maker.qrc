@@ -37,8 +37,6 @@
         <file>ui/images/iso-active.png</file>
         <file>ui/images/iso-inactive.png</file>
         <file>ui/images/logo.png</file>
-        <file>ui/images/process-active.gif</file>
-        <file>ui/images/process-inactive.png</file>
         <file>ui/images/usb-active.png</file>
         <file>ui/images/usb-finished.png</file>
         <file>ui/images/usb-inactive.png</file>
@@ -172,5 +170,39 @@
         <file>ui/images/iso/roate/8.png</file>
         <file>ui/images/iso/roate/9.png</file>
         <file>ui/images/success.png</file>
+        <file>ui/images/process/active/arrow_animation_32.png</file>
+        <file>ui/images/process/active/arrow_animation_31.png</file>
+        <file>ui/images/process/active/arrow_animation_30.png</file>
+        <file>ui/images/process/active/arrow_animation_29.png</file>
+        <file>ui/images/process/active/arrow_animation_28.png</file>
+        <file>ui/images/process/active/arrow_animation_27.png</file>
+        <file>ui/images/process/active/arrow_animation_26.png</file>
+        <file>ui/images/process/active/arrow_animation_25.png</file>
+        <file>ui/images/process/active/arrow_animation_24.png</file>
+        <file>ui/images/process/active/arrow_animation_23.png</file>
+        <file>ui/images/process/active/arrow_animation_22.png</file>
+        <file>ui/images/process/active/arrow_animation_21.png</file>
+        <file>ui/images/process/active/arrow_animation_20.png</file>
+        <file>ui/images/process/active/arrow_animation_19.png</file>
+        <file>ui/images/process/active/arrow_animation_18.png</file>
+        <file>ui/images/process/active/arrow_animation_17.png</file>
+        <file>ui/images/process/active/arrow_animation_16.png</file>
+        <file>ui/images/process/active/arrow_animation_15.png</file>
+        <file>ui/images/process/active/arrow_animation_14.png</file>
+        <file>ui/images/process/active/arrow_animation_13.png</file>
+        <file>ui/images/process/active/arrow_animation_12.png</file>
+        <file>ui/images/process/active/arrow_animation_11.png</file>
+        <file>ui/images/process/active/arrow_animation_10.png</file>
+        <file>ui/images/process/active/arrow_animation_9.png</file>
+        <file>ui/images/process/active/arrow_animation_8.png</file>
+        <file>ui/images/process/active/arrow_animation_7.png</file>
+        <file>ui/images/process/active/arrow_animation_6.png</file>
+        <file>ui/images/process/active/arrow_animation_5.png</file>
+        <file>ui/images/process/active/arrow_animation_4.png</file>
+        <file>ui/images/process/active/arrow_animation_3.png</file>
+        <file>ui/images/process/active/arrow_animation_2.png</file>
+        <file>ui/images/process/active/arrow_animation_1.png</file>
+        <file>ui/images/process/inactive/process-inactive.png</file>
+        <file>ui/images/process/empty/process-empty.png</file>
     </qresource>
 </RCC>

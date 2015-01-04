@@ -23,7 +23,8 @@ HEADERS += bootmaker.h \
     ui/drotemovie.h \
     ui/dimageicon.h \
     ui/ddevicon.h \
-    usbinstaller.h
+    usbinstaller.h \
+    ui/dprogress.h
 
 SOURCES += main.cpp \
     bootmaker.cpp \
@@ -45,7 +46,8 @@ SOURCES += main.cpp \
     ui/drotemovie.cpp \
     ui/dimageicon.cpp \
     ui/ddevicon.cpp \
-    usbinstaller.cpp
+    usbinstaller.cpp \
+    ui/dprogress.cpp
 
 
 QT += core gui widgets
