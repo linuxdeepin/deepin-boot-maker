@@ -9,7 +9,7 @@ BINARY=deepin-boot-maker
 
 override_dh_auto_build:
 	mkdir -p build
-	cd build && qmake ../src
+	cd build && qmake ../
 	cd build && make
 	
 override_dh_install:

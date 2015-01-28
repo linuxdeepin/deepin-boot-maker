@@ -60,8 +60,8 @@ struct ArchiveFileInfo {
 
 bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) {
 #ifdef Q_OS_WIN32
-    QString sevnz = XSys::InsertTmpFile(QString(":/sevnz.exe"));
-    QString sevnzdll = XSys::InsertTmpFile(QString(":/sevnz.dll"));
+    QString sevnz = XSys::InsertTmpFile(QString(":/bolbs/sevnz/sevnz.exe"));
+    QString sevnzdll = XSys::InsertTmpFile(QString(":/bolbs/sevnz/sevnz.dll"));
     QFileInfo szinfo (sevnzdll);
     QFile  szdll(sevnzdll);
     szdll.rename(szinfo.dir().absolutePath() + "/7z.dll");

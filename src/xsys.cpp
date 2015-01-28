@@ -155,12 +155,13 @@ QString XSys::RandString(const QString &str) {
 
 QString XSys::TmpFilePath(const QString &filename) {
     QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::TempLocation)[0];
-    QString ext =  + "." + filename.split(".").last();
-    if ("." == ext || !filename.contains(".") ) {
-        ext = "";
+    QFileInfo fi(filename);
+    QString ext = "";
+    if (!fi.suffix().isEmpty())  {
+        ext = "."+fi.suffix();
     }
     QString newFilename = RandString(filename);
-    qDebug()<<"New tmpFilename"<<newFilename;
+    qDebug()<<filename<<"New tmpFilename"<<newFilename<<"Ext: "<<ext;
     return QDir::toNativeSeparators(QString( tmpDir + "/dbmtmp/"
             + newFilename + ext));
 }

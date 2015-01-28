@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../blobs/syslinux/macosx/chain.c32</file>
+        <file>../blobs/syslinux/macosx/gfxboot.c32</file>
+        <file>../blobs/syslinux/macosx/menu.c32</file>
+        <file>../blobs/syslinux/macosx/vesamenu.c32</file>
+        <file>../blobs/syslinux/mbr.bin</file>
+        <file>../blobs/syslinux/chain.c32</file>
+        <file>../blobs/syslinux/gfxboot.c32</file>
+        <file>../blobs/syslinux/libcom32.c32</file>
+        <file>../blobs/syslinux/libutil.c32</file>
+        <file>../blobs/syslinux/menu.c32</file>
+        <file>../blobs/syslinux/vesamenu.c32</file>
+        <file>../blobs/syslinux/syslinux.cfg</file>
+        <file>../blobs/syslinux/syslinux.exe</file>
+        <file>../blobs/syslinux/syslinux</file>
+    </qresource>
+</RCC>

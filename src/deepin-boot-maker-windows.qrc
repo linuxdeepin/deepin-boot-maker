@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>sevnz.dll</file>
-        <file>sevnz.exe</file>
+        <file>../blobs/sevnz/sevnz.dll</file>
+        <file>../blobs/sevnz/sevnz.exe</file>
     </qresource>
 </RCC>

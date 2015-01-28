@@ -89,7 +89,7 @@ void UnlockDisk(HANDLE handle) {
 
 bool InstallSyslinux(const QString &targetDev) {
     //install syslinux
-    QString sysliuxPath = XSys::InsertTmpFile(QString(":/bootloader/syslinux/syslinux.exe"));
+    QString sysliuxPath = XSys::InsertTmpFile(QString(":/blobs/syslinux/syslinux.exe"));
     XSys::SynExec(sysliuxPath , QString(" -i -m -a %1").arg(targetDev));
     return true;
 }
@@ -101,15 +101,15 @@ QString InstallBootloader(const QString &targetDev) {
 
     //HANDLE handle = LockDisk(targetDev);
     //fbinst format
-    QString xfbinstPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/xfbinst.exe"));
+    QString xfbinstPath = XSys::InsertTmpFile(QString(":/blobs/xfbinst/xfbinst.exe"));
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
-    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
+    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/blobs/xfbinst/fb.cfg"));
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg \"%2\" ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
     //install syslinux
-    QString sysliuxPath = XSys::InsertTmpFile(QString(":/bootloader/syslinux/syslinux.exe"));
+    QString sysliuxPath = XSys::InsertTmpFile(QString(":/blobs/syslinux/syslinux.exe"));
     XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     //get pbr file ldlinux.bin
@@ -163,6 +163,7 @@ const QString MountPoint(const QString &targetDev) {
        /dev/disk2s1     3920616  2683872   1236744    69%       0         0  100%   /Volumes/DEEPINOS 1
        */
     QString ret = XSys::SynExec("df", "");
+    qDebug()<<ret;
     QStringList mounts = ret.split("\n").filter(targetDev);
     if (0 == mounts.size()) {
         return "";
@@ -198,14 +199,14 @@ bool CheckFormatFat32(const QString &targetDev) {
 bool InstallSyslinux(const QString &targetDev) {
     //install syslinux
     //UmountDisk(targetDev);
-    QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
+    QString sysliuxPath = XSys::InsertTmpFile(":/blobs/syslinux/syslinux");
     XSys::SynExec("chmod +x ", sysliuxPath);
     UmountDisk(targetDev);
     XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
     QString rawtargetDev = GetPartitionDisk(targetDev);
     //dd pbr file ldlinux.bin
-    QString tmpPbrPath = XSys::InsertTmpFile(":/bootloader/syslinux/mbr.bin");
+    QString tmpPbrPath = XSys::InsertTmpFile(":/blobs/syslinux/mbr.bin");
     XSys::SynExec("dd" , QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(rawtargetDev));
 
 
@@ -224,12 +225,12 @@ QString InstallBootloader(const QString &diskDev) {
 
     //fbinst format
     UmountDisk(diskDev);
-    QString xfbinstPath = XSys::InsertTmpFile(":/bootloader/xfbinst/xfbinst");
+    QString xfbinstPath = XSys::InsertTmpFile(":/blobs/xfbinst/xfbinst");
     XSys::SynExec("chmod +x ", xfbinstPath);
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
-    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
+    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/blobs/xfbinst/fb.cfg"));
     UmountDisk(diskDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
@@ -240,7 +241,7 @@ QString InstallBootloader(const QString &diskDev) {
     //install syslinux
     UmountDisk(diskDev);
     QString targetDev = diskDev + "1";
-    QString sysliuxPath = XSys::InsertTmpFile(":/bootloader/syslinux/syslinux");
+    QString sysliuxPath = XSys::InsertTmpFile(":/blobs/syslinux/syslinux");
     XSys::SynExec("chmod +x ", sysliuxPath);
     XSys::SynExec(sysliuxPath , QString(" -i %1").arg(targetDev));
 
@@ -304,7 +305,7 @@ bool InstallSyslinux(const QString &targetDev) {
 
     //dd pbr file ldlinux.bin
     UmountDisk(targetDev);
-    QString tmpPbrPath = XSys::InsertTmpFile(":/bootloader/syslinux/mbr.bin");
+    QString tmpPbrPath = XSys::InsertTmpFile(":/blobs/syslinux/mbr.bin");
     XSys::SynExec("dd" , QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(GetPartitionDisk(targetDev)));
 
     XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
@@ -322,7 +323,7 @@ QString InstallBootloader(const QString &diskDev) {
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     //install fg.cfg
-    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/bootloader/xfbinst/fb.cfg"));
+    QString tmpfgcfgPath = XSys::InsertTmpFile(QString(":/blobs/xfbinst/fb.cfg"));
     UmountDisk(targetDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
@@ -406,9 +407,9 @@ bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
     XSys::CpFile(isolinxCfgPath, syslinxCfgPath);
 
 
-    QString urlPrifx = ":/bootloader/syslinux/";
+    QString urlPrifx = ":/blobs/syslinux/";
 #ifdef Q_OS_MAC
-    urlPrifx = ":/bootloader/syslinux/macosx/";
+    urlPrifx = ":/blobs/syslinux/macosx/";
 #endif
 
     QStringList filelist;
@@ -428,7 +429,7 @@ bool DiskUnity::ConfigSyslinx(const QString &targetPath) {
     // bugfix
     // TODO: we change syslinux to 6.02, but gfxboot will not work
     // so use a syslinux.cfg will not use gfxboot and vesamenu
-    XSys::InsertFile(":/bootloader/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
+    XSys::InsertFile(":/blobs/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
 
     return true;
 }

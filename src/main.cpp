@@ -249,6 +249,11 @@ int main(int argc, char **argv) {
     mainWindow.setWindowTitle(AppTitle());
     mainWindow.show();
 
+//    QDirIterator it(":", QDirIterator::Subdirectories);
+//    while (it.hasNext()) {
+//        qDebug() << it.next();
+//    }
+
     app.exec();
     exit(0);
 }
