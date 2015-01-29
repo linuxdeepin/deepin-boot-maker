@@ -57,6 +57,8 @@ private slots:
     void popConfirmFormatPrompt();
     void switchToProcessUI();
     void switchToEndUI();
+    void switchToErrorUI();
+    void onLogLinkActivated(const QString &link);
 
 private:
     int     m_Margin;
@@ -77,6 +79,11 @@ private:
     DPushButton     *m_start;
     DProgressFrame  *m_progressFrame;
     QTimer          *m_ProcessTimer;
+
+    QWidget         *m_selectWidget;
+    QWidget         *m_processWidget;
+    QWidget         *m_finishWidget;
+    QWidget         *m_errorWidget;
 
     static DWindowUI* s_MainWindow;
 };

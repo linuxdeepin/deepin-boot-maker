@@ -111,14 +111,16 @@ bool SwitchToRoot(QApplication &app) {
 }
 #endif
 
-static QString g_LogPath;
+QString g_LogPath;
+QString g_LogDir;
 #include <iostream>
-void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QString & str) {
+
+void crashMessageOutput(QtMsgType type, const QMessageLogContext &c, const QString & str) {
     QString txt;
 
     switch(type) {
     case QtDebugMsg:
-        txt = QString("Debug: %1").arg(str);
+        txt = QString("Debug: %1:%2 %3").arg(c.function).arg(c.line).arg(str);
         break;
 
     case QtWarningMsg:
@@ -143,7 +145,10 @@ void crashMessageOutput(QtMsgType type, const QMessageLogContext &, const QStrin
 }
 
 void installLogHandler() {
-    g_LogPath = QDir::toNativeSeparators(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first() + "/" + "deepin-boot-maker.log");
+    QDir tmpDir(QStandardPaths::standardLocations(QStandardPaths::TempLocation).first());
+    tmpDir.mkdir("deepin-boot-maker");
+    g_LogDir = tmpDir.path() + "/deepin-boot-maker";
+    g_LogPath = QDir::toNativeSeparators(g_LogDir + "/deepin-boot-maker.log");
     qDebug() << "Install Log to " << g_LogPath;
     qInstallMessageHandler(crashMessageOutput);
 }
@@ -199,7 +204,7 @@ void loadTranslate(QApplication& app) {
         tranlateUrl = ":/en_US.qm";
     }
 
-    qDebug()<<"locate: "<<clangcode<<"\nload translate file: "<<tranlateUrl;
+    qDebug()<<&app<<"locate: "<<clangcode<<"\nload translate file: "<<tranlateUrl;
 
     if(translator->load(tranlateUrl)) {
         app.installTranslator(translator);
@@ -226,11 +231,15 @@ void loadFonts() {
         }
     }
 }
+
+#include <XSys>
+
 int main(int argc, char **argv) {
     QApplication app(argc, argv, true);
     installLogHandler();
     loadTranslate(app);
 
+    QString sevnzdll = XSys::FS::InsertTmpFile(":/blobs/sevnz/sevnz.dll");
 #ifdef Q_OS_WIN32
     loadFonts();
 #endif

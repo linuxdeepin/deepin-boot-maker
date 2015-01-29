@@ -4,8 +4,8 @@ minimum_perc = 80
 mode = developer
 
 [deepin-boot-maker.deepin-boot-makerpot]
-file_filter = src/po/<lang>.po
-source_file = src/po/deepin-boot-maker.pot
+file_filter = app/po/<lang>.po
+source_file = app/po/deepin-boot-maker.pot
 source_lang = en
 type = PO
 

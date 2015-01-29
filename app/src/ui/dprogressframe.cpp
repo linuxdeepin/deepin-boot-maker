@@ -39,7 +39,9 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstWidget = new QWidget();
 
     m_FirstLayout = new QVBoxLayout();
-    m_FirstLayout->setSpacing(0);
+#ifdef Q_OS_MAC
+    m_FirstLayout->setSpacing(10);
+#endif
     m_FirstLayout->addSpacing(25 + 250 / 20);
 
     m_IsoLabel = new DImageIcon(this);

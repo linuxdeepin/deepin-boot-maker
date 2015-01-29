@@ -1,7 +1,8 @@
 #include "bootmaker.h"
 
-#include "xsys.h"
-#include "diskunity.h"
+#include <XSys>
+
+#include "utils.h"
 #include "usbinstaller.h"
 #include "progressrate.h"
 
@@ -40,15 +41,13 @@ BootMaker::BootMaker(QWidget* parent) : QWidget(parent) {
     this->start();
 }
 
-int BootMaker::start(QString isoPath, QString usbDriver, bool formatDisk) {
+bool BootMaker::start(QString isoPath, QString usbDriver, bool formatDisk) {
     m_ImagePath = isoPath;
     m_DriverPath = usbDriver;
     m_FormatDisk = formatDisk;
 
     if(this->checkInstallPara()) {
-
-        if((!formatDisk) && (!DiskUnity::CheckInstallDisk(usbDriver))) {
-
+        if((!formatDisk) && (!Utils::CheckInstallDisk(usbDriver))) {
             QMessageBox msgbox;
             msgbox.setIcon(QMessageBox::Critical);
             msgbox.setWindowTitle(tr("Format error of USB flash drive"));
@@ -60,7 +59,7 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool formatDisk) {
             if(msgbox.exec() == QMessageBox::Ok) {
                 m_FormatDisk = true;
             } else {
-                return 1;
+                return false;
             }
         }
 
@@ -69,14 +68,33 @@ int BootMaker::start(QString isoPath, QString usbDriver, bool formatDisk) {
         QObject::connect(this, SIGNAL(process(QString, QString, bool)),
                          m_Installer, SLOT(installUSB(QString, QString, bool)));
 
+        connect(this->m_Installer, SIGNAL(error(QString)),
+                this, SLOT(error(QString)));
+        connect(this->m_Installer, SIGNAL(finish()),
+                this, SLOT(finish()));
+
         emit this->process(m_ImagePath, m_DriverPath, m_FormatDisk);
+        m_status = Processing;
         qDebug() << "BootMaker Return";
-        return 0;
+        return true;
     }
 
-    return 1;
+    return false;
 }
 
+
+void BootMaker::finish() {
+    m_status = Finish;
+}
+
+void BootMaker::error(const QString &errmsg) {
+    m_status = Failed;
+    m_error = errmsg;
+}
+
+QString BootMaker::errmsg() {
+    return m_error;
+}
 
 int BootMaker::processRate() {
     if(!(m_Installer->isFinsh_)) {
@@ -89,8 +107,9 @@ int BootMaker::processRate() {
     return m_Progress->rate();
 }
 
-bool BootMaker::isFinish() {
-    return m_Installer->isFinsh();
+BootMaker::ProcessStatus BootMaker::status() {
+    qDebug()<<m_status;
+    return m_status;
 }
 
 bool BootMaker::isISOImage(QString isoPath) {
@@ -156,74 +175,50 @@ bool BootMaker::checkInstallPara() {
         unotenoughinputmsgb.setText(tr("No USB flash drives were found. If you have already inserted a USB flash drive, try to reformat it as FAT32."));
         unotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
         unotenoughinputmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
-
-        switch(unotenoughinputmsgb.exec()) {
-        case QMessageBox::Ok:
-            break;
-
-        default:
-            break;
-        }
+        unotenoughinputmsgb.exec();
+        return false;
     }
 
 #ifdef Q_OS_MAC
-
-    if(XAPI::MountPoint(m_DriverPath) == "")
+    if(XSys::DiskUtil::MountPoint(m_DriverPath) == "")
         XSys::SynExec("diskutil", "mount " + m_DriverPath);
-
 #endif
+
 #ifdef Q_OS_LINUX
-    else if(XAPI::MountPoint(m_DriverPath) == "") {
+    // TODO: Mount it auto
+    if(XSys::DiskUtil::MountPoint(m_DriverPath) == "") {
         QMessageBox merrordevnotmountedmsgbx(this);
         merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
         merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
         merrordevnotmountedmsgbx.setText(QString(tr("You must firstly mount the USB flash drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB flash drive.")).arg(m_DriverPath));
         merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
         merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
-
-        switch(merrordevnotmountedmsgbx.exec()) {
-        case QMessageBox::Ok:
-            break;
-
-        default:
-            break;
-        }
+        merrordevnotmountedmsgbx.exec();
+        return false;
     }
-
 #endif
-    else if(m_ImagePath.isEmpty()) {
+
+    if(m_ImagePath.isEmpty()) {
         QMessageBox fnotenoughinputmsgb(this);
         fnotenoughinputmsgb.setIcon(QMessageBox::Information);
         fnotenoughinputmsgb.setWindowTitle(tr("Select a disk image file"));
         fnotenoughinputmsgb.setText(tr("You must select a disk image file to load."));
         fnotenoughinputmsgb.setStandardButtons(QMessageBox::Ok);
         fnotenoughinputmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
+        fnotenoughinputmsgb.exec();
+        return false;
+    }
 
-        switch(fnotenoughinputmsgb.exec()) {
-        case QMessageBox::Ok:
-            break;
-
-        default:
-            break;
-        }
-    } else if(!QFile::exists(m_ImagePath) && !m_ImagePath.startsWith("http://") && !m_ImagePath.startsWith("ftp://")) {
+    if(!QFile::exists(m_ImagePath)) {
         QMessageBox ffnotexistsmsgb(this);
         ffnotexistsmsgb.setIcon(QMessageBox::Information);
         ffnotexistsmsgb.setWindowTitle(tr("Disk image file not found"));
         ffnotexistsmsgb.setText(tr("The specified disk image file %1 does not exist.").arg(m_ImagePath));
         ffnotexistsmsgb.setStandardButtons(QMessageBox::Ok);
         ffnotexistsmsgb.setButtonText(QMessageBox::Ok, tr("Ok"));
-
-        switch(ffnotexistsmsgb.exec()) {
-        case QMessageBox::Ok:
-            break;
-
-        default:
-            break;
-        }
-    } else {
-        return true;
+        ffnotexistsmsgb.exec();
+        return false;
     }
 
-    return false;
+    return true;
 }

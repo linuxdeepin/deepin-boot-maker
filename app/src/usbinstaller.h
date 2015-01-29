@@ -16,8 +16,11 @@ public:
     ProcessRate *progress;
     QString installPath;
     bool isFinsh_;
+
 signals:
     void listUsbDevice(const QStringList& devicelist);
+    void error(const QString& errMsg);
+    void finish();
 
 public slots:
     void start();

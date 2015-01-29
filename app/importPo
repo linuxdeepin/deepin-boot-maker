@@ -8,7 +8,7 @@ qtlupdate=lupdate
 qtlrelease=lrelease
 qtlconvert=lconvert
 
-$qtlupdate deepin-boot-maker.pro
+$qtlupdate $1 
 
 tslist=`ls po/*.ts`
 for ts in $tslist
@@ -17,6 +17,6 @@ do
     $qtlconvert -i ${ts%.*}.po -if po -o $ts -of ts
 done
 
-$qtlrelease deepin-boot-maker.pro
+$qtlrelease $1
 
 

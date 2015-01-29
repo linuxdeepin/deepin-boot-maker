@@ -1,7 +1,8 @@
 #include "usbinstaller.h"
 
-#include "xsys.h"
-#include "diskunity.h"
+#include <XSys>
+
+#include "utils.h"
 
 #include <QStringList>
 #include <QDebug>
@@ -11,10 +12,39 @@
 #include <QTimer>
 #include <QStringList>
 
+class Error {
+public:
+    enum ErrorType {
+        SyscExecFailed,
+        USBFormatError,
+        USBSizeError,
+        USBMountFailed,
+        ExtractImgeFailed,
+    };
+    static const QString get(ErrorType et);
+};
+
+// TODO: Installation logs are stored in% 1, you can upload to forum to help us solve your problem.
+const QString Error::get(const ErrorType et) {
+    switch(et) {
+    case SyscExecFailed:
+        return QObject::tr("Failed to call the command %1.");
+    case USBFormatError:
+        return QObject::tr("Wrong USB flash drive format, please format to FAT32.");
+    case USBSizeError:
+        return QObject::tr("USB flash drive space is insufficient, ensure you have at least 1% free space.");
+    case USBMountFailed:
+        return QObject::tr("Failed to mount USB flash drive, please close other applications may use it and reinsert.");
+    case ExtractImgeFailed:
+        return QObject::tr("Failed to unzip the mirror file, please use the whole mirror file.");
+    default:
+        return "Internal Error";
+    }
+}
+
 UsbInstaller::UsbInstaller(QObject *parent) :
     QObject(parent) {
     isFinsh_ = false;
-
 }
 
 void UsbInstaller::start() {
@@ -27,7 +57,7 @@ void UsbInstaller::start() {
 
 void UsbInstaller::listUsbDrives() {
     m_refreshTimer->setInterval(8000);
-    QStringList list = ListUsbDrives();
+    QStringList list = Utils::ListUsbDrives();
     emit listUsbDevice(list);
 }
 
@@ -35,7 +65,7 @@ void UsbInstaller::finishInstall() {
     progress->setValue(this->progress->maximum() * 98 / 100);
     qDebug() << (tr("Installing syslinux to %1").arg(installPath));
 
-    DiskUnity::ConfigSyslinx(installPath);
+    XSys::Bootloader::Syslinux::ConfigSyslinx(installPath);
 
 #ifdef Q_OS_UNIX
     progress->setValue(progress->maximum() * 99 / 100);
@@ -46,7 +76,7 @@ void UsbInstaller::finishInstall() {
     progress->setValue(progress->maximum());
 
     isFinsh_ = true;
-    DiskUnity::EjectDisk(installPath);
+    XSys::DiskUtil::EjectDisk(installPath);
 }
 
 bool UsbInstaller::isFinsh() {
@@ -60,11 +90,12 @@ struct ArchiveFileInfo {
 
 bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) {
 #ifdef Q_OS_WIN32
-    QString sevnz = XSys::InsertTmpFile(QString(":/bolbs/sevnz/sevnz.exe"));
-    QString sevnzdll = XSys::InsertTmpFile(QString(":/bolbs/sevnz/sevnz.dll"));
-    QFileInfo szinfo (sevnzdll);
+    QString sevnz = XSys::FS::InsertTmpFile(":/blobs/sevnz/sevnz.exe");
+    QString sevnzdll = XSys::FS::InsertTmpFile(":/blobs/sevnz/sevnz.dll");
+    QFileInfo szinfo(sevnzdll);
     QFile  szdll(sevnzdll);
     szdll.rename(szinfo.dir().absolutePath() + "/7z.dll");
+    qDebug()<<sevnzdll<<szinfo.dir().absolutePath();
 #endif
 #ifdef Q_OS_MAC
     QDir resourceDir = QDir(QApplication::applicationDirPath());
@@ -76,8 +107,14 @@ bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) 
     QString sevnz = "7z";
 #endif
 
-    QString sevnzout = XSys::SynExec(sevnz, QString("-bd -slt l \"%1\"").arg(QFileInfo(isopath).absoluteFilePath()));
 
+    XSys::Result result = XSys::SynExec(sevnz, QString("-bd -slt l \"%1\"").arg(QFileInfo(isopath).absoluteFilePath()));
+
+    if(!result.isSuccess()) {
+        return false;
+    }
+
+    QString sevnzout = result.result();
     QList<ArchiveFileInfo> arfilelist;
 #ifdef Q_OS_WIN32
     QStringList itemlist = sevnzout.split("\r\n\r\n").filter("Folder = -");
@@ -111,13 +148,13 @@ bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) 
         arfilelist.push_back(arinfo);
     }
 
-    QList<ArchiveFileInfo>::iterator arfileitor = arfilelist.begin();
+    // TODO: make sure the iso is deepin iso
+    if (arfilelist.isEmpty()) {
+        qWarning()<<"Image file contains no files";
+        return false;
+    }
 
-//    for(; arfileitor != arfilelist.end(); ++arfileitor) {
-//        if (arfileitor->Path) {
-//            arfilelist.erase(arfileitor);
-//        }
-//    }
+    QList<ArchiveFileInfo>::iterator arfileitor = arfilelist.begin();
 
     //extract file in arfilelist
     QFileInfo isoinfo(isopath);
@@ -127,15 +164,20 @@ bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) 
     progress->setMinimum(0);
     progress->setValue(0);
 
-    qDebug() << "Archive file list size:"<<arfilelist.size();
+    qDebug() << "Archive file list size:" << arfilelist.size();
     int i = 0;
+
     for(arfileitor = arfilelist.begin(); arfileitor != arfilelist.end(); ++arfileitor) {
         i++;
         qDebug() << (tr("Extracted: %1/%2 rate: %3").arg(i).arg(arfilelist.size())).arg(progress->rate());
         progress->setValue(fileMonitor->FinishSize());
         qDebug() << arfileitor->Size << "\t" << arfileitor->Path;
         fileMonitor->ToNextFile(installdir + "/" + arfileitor->Path);
-        XSys::SynExec(sevnz, QString(" -bd -y -o\"%1\" x \"%2\"  \"%3\"").arg(installdir).arg(isopath).arg(arfileitor->Path));
+        result = XSys::SynExec(sevnz, QString(" -bd -y -o\"%1\" x \"%2\"  \"%3\"").arg(installdir).arg(isopath).arg(arfileitor->Path));
+
+        if(!result.isSuccess()) {
+            return false;
+        }
     }
 
     return true;
@@ -143,6 +185,7 @@ bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) 
 
 bool UsbInstaller::installUSB(const QString& isopath, const QString &target, bool format) {
     m_refreshTimer->stop();
+    qDebug()<<"UsbInstaller::installUSB start";
     QString targetDev = target;
     QString installDir = targetDev;
 #ifdef Q_OS_WIN32
@@ -164,23 +207,43 @@ bool UsbInstaller::installUSB(const QString& isopath, const QString &target, boo
 
     //install bootloader
     if(format) {
-        targetDev = DiskUnity::InstallBootloader(rawtargetDev);
+        XSys::Result result = XSys::Bootloader::InstallBootloader(rawtargetDev);
+        if(! result.isSuccess()) {
+            qDebug()<<result.errmsg();
+            emit error(Error::get(Error::SyscExecFailed).arg(result.errmsg()));
+            return false;
+        }
+        targetDev = result.result();
     } else {
-        DiskUnity::InstallSyslinux(targetDev);
+        XSys::Result result = XSys::Bootloader::Syslinux::InstallSyslinux(targetDev);
+        if(! result.isSuccess()) {
+            qDebug()<<result.errmsg();
+            emit error(Error::get(Error::SyscExecFailed) + " : " + result.errmsg());
+            return false;
+        }
     }
 
 #ifdef Q_OS_UNIX
-    installDir = XAPI::MountPoint(targetDev);
+    installDir = XSys::DiskUtil::MountPoint(targetDev);
 #endif
 
-    if (installDir.isEmpty()) {
+    if(installDir.isEmpty()) {
+        qDebug()<<"Error::get(Error::USBMountFailed)";
+        emit error(Error::get(Error::USBMountFailed));
         return false;
     }
+
     // Extract ISO
-    DiskUnity::ClearTargetDev(installDir);
-    extractISO(isopath, installDir);
+    Utils::ClearTargetDev(installDir);
+
+    if(!extractISO(isopath, installDir)) {
+        qDebug()<<"Error::get(Error::ExtractImgeFailed)";
+        emit error(Error::get(Error::ExtractImgeFailed));
+        return false;
+    }
 
     this->installPath = installDir;
     this->finishInstall();
+    emit finish();
     return true;
 }

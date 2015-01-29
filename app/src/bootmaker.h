@@ -15,17 +15,29 @@ class BootMaker : public QWidget {
 public:
     explicit BootMaker(QWidget* parent = 0);
 
-    Q_INVOKABLE int start(QString isoPath, QString usbDriver, bool formatDisk = false);
-    Q_INVOKABLE int processRate();
-    Q_INVOKABLE bool isFinish();
-    Q_INVOKABLE bool isISOImage(QString isoPath);
-    Q_INVOKABLE void exitRestart();
+    enum ProcessStatus{
+        Processing,
+        Finish,
+        Failed,
+    };
 
-    Q_INVOKABLE bool confirmFormatDlg();
-    Q_INVOKABLE bool checkInstallPara();
+    bool start(QString isoPath, QString usbDriver, bool formatDisk = false);
+
+    ProcessStatus status();
+
+    QString errmsg();
+    int processRate();
+
+    bool isISOImage(QString isoPath);
+    void exitRestart();
+
+    bool confirmFormatDlg();
+    bool checkInstallPara();
 
 public slots:
     void reboot();
+    void error(const QString &errmsg);
+    void finish();
 
 signals:
     void process(const QString&, const QString&, bool);
@@ -41,7 +53,8 @@ protected:
     ProcessRate         *m_Progress;
     UsbInstaller        *m_Installer;
 
-
+    ProcessStatus       m_status;
+    QString             m_error;
 };
 
 
