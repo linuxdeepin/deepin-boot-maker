@@ -346,7 +346,7 @@ void DWindowUI::switchToErrorUI() {
     m_FailedLayout->addWidget(failedHits);
     m_FailedLayout->setAlignment(failedHits, Qt::AlignHCenter);
 
-    QString log = "Installation logs are stored in <a href='#show_log'><span style='text-decoration: underline; color:#0000ff;'>HERE</span></a>, you can upload to forum to help us solve your problem.";
+    QString log = "Installation logs are stored in <a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>HERE</span></a>, you can upload to forum to help us solve your problem.";
     QLabel *logHits = new QLabel(hitsFormat.arg(log));
     logHits->setFixedWidth(240);
     logHits->setFixedHeight(50);
@@ -362,6 +362,7 @@ void DWindowUI::switchToErrorUI() {
     m_FailedLayout->addStretch();
     m_FailedLayout->addWidget(finish);
     m_FailedLayout->setAlignment(finish, Qt::AlignCenter);
+    connect(finish, SIGNAL(clicked()), this, SLOT(close()));
 
     m_FailedLayout->addSpacing(30);
 

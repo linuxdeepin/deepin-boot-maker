@@ -32,7 +32,7 @@ const QString Error::get(const ErrorType et) {
     case USBFormatError:
         return QObject::tr("Wrong USB flash drive format, please format to FAT32.");
     case USBSizeError:
-        return QObject::tr("USB flash drive space is insufficient, ensure you have at least 1% free space.");
+        return QObject::tr("USB flash drive space is insufficient, ensure you have at least %1 free space.");
     case USBMountFailed:
         return QObject::tr("Failed to mount USB flash drive, please close other applications may use it and reinsert.");
     case ExtractImgeFailed:
@@ -174,8 +174,13 @@ bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) 
         qDebug() << arfileitor->Size << "\t" << arfileitor->Path;
         fileMonitor->ToNextFile(installdir + "/" + arfileitor->Path);
         result = XSys::SynExec(sevnz, QString(" -bd -y -o\"%1\" x \"%2\"  \"%3\"").arg(installdir).arg(isopath).arg(arfileitor->Path));
-
         if(!result.isSuccess()) {
+            //check size
+            if (XSys::DiskUtil::GetPartitionFreeSpace(installdir) <= arfileitor->Size ) {
+                qWarning()<<"DiskFull";
+                throw Error::get(Error::USBSizeError);
+                return false;
+            }
             return false;
         }
     }
@@ -206,21 +211,18 @@ bool UsbInstaller::installUSB(const QString& isopath, const QString &target, boo
 #endif
 
     //install bootloader
+    XSys::Result result;
     if(format) {
-        XSys::Result result = XSys::Bootloader::InstallBootloader(rawtargetDev);
-        if(! result.isSuccess()) {
-            qDebug()<<result.errmsg();
-            emit error(Error::get(Error::SyscExecFailed).arg(result.errmsg()));
-            return false;
-        }
+        result = XSys::Bootloader::InstallBootloader(rawtargetDev);
         targetDev = result.result();
     } else {
-        XSys::Result result = XSys::Bootloader::Syslinux::InstallSyslinux(targetDev);
-        if(! result.isSuccess()) {
-            qDebug()<<result.errmsg();
-            emit error(Error::get(Error::SyscExecFailed) + " : " + result.errmsg());
-            return false;
-        }
+        result = XSys::Bootloader::Syslinux::InstallSyslinux(targetDev);
+    }
+
+    if(! result.isSuccess()) {
+        qWarning()<<result.errmsg();
+        emit error(Error::get(Error::SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
+        return false;
     }
 
 #ifdef Q_OS_UNIX
@@ -228,7 +230,7 @@ bool UsbInstaller::installUSB(const QString& isopath, const QString &target, boo
 #endif
 
     if(installDir.isEmpty()) {
-        qDebug()<<"Error::get(Error::USBMountFailed)";
+        qWarning()<<"Error::get(Error::USBMountFailed)";
         emit error(Error::get(Error::USBMountFailed));
         return false;
     }
@@ -236,9 +238,21 @@ bool UsbInstaller::installUSB(const QString& isopath, const QString &target, boo
     // Extract ISO
     Utils::ClearTargetDev(installDir);
 
-    if(!extractISO(isopath, installDir)) {
-        qDebug()<<"Error::get(Error::ExtractImgeFailed)";
-        emit error(Error::get(Error::ExtractImgeFailed));
+    try {
+        if(!extractISO(isopath, installDir)) {
+            qWarning()<<"Error::get(Error::ExtractImgeFailed)";
+            emit error(Error::get(Error::ExtractImgeFailed));
+            return false;
+        }
+    } catch(QString exception) {
+        if (exception == Error::get(Error::USBSizeError)) {
+            qWarning()<<exception;
+            QFileInfo isoinfo(isopath);
+            QString sizeM = QString("%1M").arg(isoinfo.size() / 1024 / 1024);
+            emit error(Error::get(Error::USBSizeError).arg(sizeM));
+            return false;
+        }
+        emit error(exception);
         return false;
     }
 

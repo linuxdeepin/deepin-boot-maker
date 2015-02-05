@@ -210,9 +210,10 @@ msgid "Wrong USB flash drive format, please format to FAT32."
 msgstr ""
 
 #: ../src/usbinstaller.cpp:35
+#, qt-format
 msgctxt "QObject|"
 msgid ""
-"USB flash drive space is insufficient, ensure you have at least 1% free "
+"USB flash drive space is insufficient, ensure you have at least %1 free "
 "space."
 msgstr ""
 

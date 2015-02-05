@@ -117,14 +117,13 @@ QString g_LogDir;
 
 void crashMessageOutput(QtMsgType type, const QMessageLogContext &c, const QString & str) {
     QString txt;
-
     switch(type) {
     case QtDebugMsg:
         txt = QString("Debug: %1:%2 %3").arg(c.function).arg(c.line).arg(str);
         break;
 
     case QtWarningMsg:
-        txt = QString("Warning: %1").arg(str);
+        txt = QString("Warning: %1:%2 %3").arg(c.function).arg(c.line).arg(str);
         break;
 
     case QtCriticalMsg:
@@ -239,7 +238,6 @@ int main(int argc, char **argv) {
     installLogHandler();
     loadTranslate(app);
 
-    QString sevnzdll = XSys::FS::InsertTmpFile(":/blobs/sevnz/sevnz.dll");
 #ifdef Q_OS_WIN32
     loadFonts();
 #endif
