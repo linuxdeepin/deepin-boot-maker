@@ -1,5 +1,7 @@
 #include "dusblist.h"
 
+#include "../utils.h"
+#include <QDebug>
 #include <QStandardItemModel>
 
 QString DUsbList::s_EmptyString;
@@ -29,6 +31,7 @@ void DUsbList::initList(){
 
 void DUsbList::selectDriver(QModelIndex index) {
     QStandardItem *selectItem = m_StandardItemModel->item(m_LastIndex.row(), m_LastIndex.column());
+    m_LastIndex = index;
     if (selectItem){
         selectItem->setIcon(QIcon(":/ui/images/unselect.png"));
     }
@@ -37,13 +40,13 @@ void DUsbList::selectDriver(QModelIndex index) {
     if (selectItem){
         selectItem->setIcon(QIcon(":/ui/images/unselect.png"));
     }
-    QString dev = index.data(Qt::DisplayRole).toString();
+    QString dev = selectItem->data().toString();
     if (!dev.isEmpty() && (dev != s_EmptyString)) {
         m_SelectedDev = dev;
         selectItem->setIcon(QIcon(":/ui/images/select.png"));
-        emit selectDev(dev);
+        emit selectDev(selectItem->data().toString());
     }
-    emit itemClick(dev);
+    emit itemClick(selectItem->data().toString());
 }
 
 void DUsbList::refreshDriverList(const QStringList & list) {
@@ -58,15 +61,15 @@ void DUsbList::refreshDriverList(const QStringList & list) {
     int rowIndex = 0;
 
     foreach(QString dev, list) {
-        QStandardItem *standItem = new QStandardItem(dev);
+        QStandardItem *standItem = new QStandardItem(Utils::UsbShowText(dev));
         if (dev == m_SelectedDev) {
             selectIndex = rowIndex;
         }
         standItem->setIcon(QIcon(":/ui/images/unselect.png"));
+        standItem->setData(QVariant(dev));
         rowIndex++;
         m_StandardItemModel->appendRow(standItem);
     }
-
     if (-1 == selectIndex) {
         emit selectDev("");
         return;

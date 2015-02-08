@@ -10,6 +10,25 @@
 #endif
 namespace Utils {
 
+QString UsbShowText(const QString &dev) {
+    QString showText;
+    if (!dev.isEmpty()) {
+        QString label = XSys::DiskUtil::GetPartitionLabel(dev);
+        if (label.isEmpty()) {
+            label = QObject::tr("Removable disk");
+        }
+#ifdef Q_OS_UNIX
+        QFileInfo devFile(dev);
+        showText = QString("%1: %2").arg(devFile.baseName()).arg(label);
+#endif
+#ifdef Q_OS_WIN32
+    showText = QString("(%1:) %2").arg(dev.at(0)).arg(label);
+#endif
+    }
+    return showText;
+}
+
+
 void ClearTargetDev(const QString& targetPath) {
     QStringList dirlist;
     dirlist.append("/boot/");

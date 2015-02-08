@@ -1,3 +1,0 @@
-[submodule "lib/libxsys"]
-	path = lib/libxsys
-    url = https://github.com/Iceyer/libxsys.git

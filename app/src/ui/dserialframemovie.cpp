@@ -4,7 +4,8 @@
 
 QString DSerialFrameMovie::s_QssTemplate =  "DSerialFrameMovie {"
         "background: url(%1);"
-        "border:0px;"
+        "background-position: center;"
+        "border: 2px;"
         "}";
 
 DSerialFrameMovie::DSerialFrameMovie(QWidget *parent):

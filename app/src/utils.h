@@ -3,6 +3,7 @@
 #include <QString>
 
 namespace Utils  {
+    QString UsbShowText(const QString &targetdev);
     void ClearTargetDev(const QString &targetPath);
     QStringList ListUsbDrives();
     bool CheckInstallDisk(const QString& targetDev);

@@ -10,6 +10,9 @@
 #include "ddevicon.h"
 #include "dprogress.h"
 
+#include <XSys>
+#include "../utils.h"
+
 #include <QDebug>
 #include <QLabel>
 #include <QBoxLayout>
@@ -31,18 +34,23 @@ QString TopShadowShow =
         "}";
 
 
+QString s_LabelFormat ="<p style='color:#585959; font-size:12px;'>%1</p>";
+
 DProgressFrame::DProgressFrame(QWidget *parent) :
     QStackedWidget(parent)
 {
-    int m_height = 235;
+    int m_height = 240;
     this->setFixedHeight(m_height);
     m_FirstWidget = new QWidget();
 
     m_FirstLayout = new QVBoxLayout();
 #ifdef Q_OS_MAC
-    m_FirstLayout->setSpacing(10);
+   m_FirstLayout->setSpacing(6);
 #endif
-    m_FirstLayout->addSpacing(25 + 250 / 20);
+    m_FirstLayout->addSpacing(12);
+    m_isoName = new QLabel(s_LabelFormat.arg(" "));
+    m_FirstLayout->addWidget(m_isoName);
+    m_FirstLayout->setAlignment(m_isoName, Qt::AlignCenter);
 
     m_IsoLabel = new DImageIcon(this);
     m_IsoLabel->setDTips("<p style='font-weight:normal;'>"+tr("Select disk image")+"</p>");
@@ -50,14 +58,26 @@ DProgressFrame::DProgressFrame(QWidget *parent) :
     m_FirstLayout->setAlignment(m_IsoLabel, Qt::AlignCenter);
     connect(m_IsoLabel, SIGNAL(clicked()), this, SLOT(selectISO()));
 
-    m_ProcessLabel =new DProgress();
+    m_ProcessLabel =new DProgress(this);
+    m_ProcessLabel->setStatus(DProgress::UnProgress);
+
+    m_FirstLayout->addSpacing(8);
+#ifdef Q_OS_MAC
+   // m_FirstLayout->addSpacing(2);
+#endif
     m_FirstLayout->addWidget(m_ProcessLabel);
     m_FirstLayout->setAlignment(m_ProcessLabel, Qt::AlignCenter);
 
     m_UsbLabel = new DDevIcon(this);
+    m_FirstLayout->addSpacing(2);
     m_FirstLayout->addWidget(m_UsbLabel);
     m_FirstLayout->setAlignment(m_UsbLabel, Qt::AlignCenter);
     connect(m_UsbLabel, SIGNAL(clicked()), this, SLOT(switchShowStatus()));
+
+    m_usbName = new QLabel(s_LabelFormat.arg(" "));
+    m_FirstLayout->addWidget(m_usbName);
+    m_FirstLayout->setAlignment(m_usbName, Qt::AlignCenter);
+
     m_FirstWidget->setLayout(m_FirstLayout);
     this->addWidget(m_FirstWidget);
 
@@ -93,7 +113,9 @@ void DProgressFrame::finishSelectDev(const QString &) {
 
 void DProgressFrame::usbDevSelected(const QString & dev) {
     if (dev.isEmpty()) {
+        m_usbName->setText(s_LabelFormat.arg(" "));
         m_UsbLabel->setStatus(DDevIcon::UnSelected);
+        m_FirstWidget->repaint();
         emit selectEmptyUsb(false);
     } else {
         m_UsbLabel->setStatus(DDevIcon::Selected);
@@ -103,10 +125,17 @@ void DProgressFrame::usbDevSelected(const QString & dev) {
 }
 
 void DProgressFrame::switchProgress() {
+    m_isoName->setText(s_LabelFormat.arg(" "));
+    m_usbName->setText(s_LabelFormat.arg(" "));
     m_UsbLabel->setStatus(DDevIcon::Progress);
     m_IsoLabel->setStatus(DImageIcon::Progress);
     m_ProcessLabel->setStatus(DProgress::Progress);
     m_IsoLabel->setDisabled(true);
+#ifdef Q_OS_MAC
+    m_isoName->hide();
+    m_usbName->hide();
+#endif
+    m_FirstWidget->repaint();
 }
 
 void DProgressFrame::switchShowStatus() {
@@ -129,6 +158,7 @@ void DProgressFrame::slideUsbSeclect() {
     else {
         m_Active=true;
     }
+    m_usbName->setText(s_LabelFormat.arg(" "));
     this->layout()->setEnabled(false);
     m_TopShadow->show();
     m_ProcessLabel->setStatus(DProgress::Empty);
@@ -231,10 +261,41 @@ void DProgressFrame::slideProcess() {
     m_AnimGroup->start();
 }
 
+#include <QThread>
+
+void DProgressFrame::showUsbName() {
+    QString showText = Utils::UsbShowText(m_UsbDev);
+
+    QPoint origin = m_usbName->pos();
+    int cx = origin.x() + m_usbName->width()/2;
+    int cy = origin.y() - m_usbName->height()/2;
+    m_usbName->setText(s_LabelFormat.arg(showText));
+    m_usbName->adjustSize();
+    QPoint end = QPoint(cx -  m_usbName->width()/2, cy+m_usbName->height()/2);
+    QPoint start = QPoint(end.x(), end.y()-12);
+    QPropertyAnimation *animnow = new QPropertyAnimation(m_usbName, "pos");
+    animnow->setDuration(500);
+    animnow->setEasingCurve(QEasingCurve::Linear);
+    animnow->setStartValue(start);
+    animnow->setEndValue(end);
+    QParallelAnimationGroup *animGroup = new QParallelAnimationGroup;
+    animGroup->addAnimation(animnow);
+    connect(animGroup, SIGNAL(finished()),this,SLOT(showUsbDone()));
+    animGroup->start();
+
+    disconnect(m_UsbLabel, SIGNAL(clicked()), this, SLOT(switchShowStatus()));
+}
+
+void DProgressFrame::showUsbDone(){
+    connect(m_UsbLabel, SIGNAL(clicked()), this, SLOT(switchShowStatus()));
+}
+
+
 void DProgressFrame::slideProgressDone(){
     m_TopShadow->hide();
     m_ShowStatus = ShowFirst;
     m_Active = false;
+    showUsbName();
 }
 
 void DProgressFrame::selectISO(){
@@ -248,6 +309,24 @@ void DProgressFrame::selectISO(){
         emit isoFileSelected(text);
         m_IsoLabel->setStatus(DImageIcon::Selected);
         connect(m_UsbLabel, SIGNAL(clicked()), this, SLOT(switchShowStatus()));
+        QFileInfo iso(text);
+        m_isoName->setText(s_LabelFormat.arg(iso.fileName().right(30)));
+
+        QPoint origin = m_isoName->pos();
+        int cx = origin.x() + m_isoName->width()/2;
+        int cy = origin.y() - m_isoName->height()/2;
+        m_isoName->adjustSize();
+
+        QPoint end = QPoint(cx -  m_isoName->width()/2, cy+m_isoName->height()/2);
+        QPoint start = QPoint(end.x(), end.y()+12);
+        QPropertyAnimation *animnow = new QPropertyAnimation(m_isoName, "pos");
+        animnow->setDuration(500);
+        animnow->setEasingCurve(QEasingCurve::Linear);
+        animnow->setStartValue(start);
+        animnow->setEndValue(end);
+        QParallelAnimationGroup *animGroup = new QParallelAnimationGroup;
+        animGroup->addAnimation(animnow);
+        animGroup->start();
     }
 }
 

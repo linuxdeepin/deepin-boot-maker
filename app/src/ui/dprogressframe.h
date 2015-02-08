@@ -36,6 +36,7 @@ signals:
     void isoFileSelected(const QString&);
     void changedUsbSeclet();
     void changedProgress();
+
     void selectEmptyUsb(bool);
 
 public slots:
@@ -57,8 +58,11 @@ protected slots:
     void selectISO();
     void refreshUsbDrivers(const QStringList&);
 
+    void showUsbName();
+    void showUsbDone();
 
 protected:
+
     enum ShowStatus{
         ShowFirst,
         ShowSecond,
@@ -73,8 +77,11 @@ protected:
     QWidget                 *m_SecondWidget;
     QVBoxLayout             *m_FirstLayout;
     DProgress               *m_ProcessLabel;
+
+    QLabel                  *m_isoName;
     DImageIcon              *m_IsoLabel;
     DDevIcon                *m_UsbLabel;
+    QLabel                  *m_usbName;
     QParallelAnimationGroup *m_AnimGroup;
     DUsbList                *m_UsbList;
     QString                 m_IsoFile;
