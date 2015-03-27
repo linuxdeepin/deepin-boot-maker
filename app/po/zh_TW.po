@@ -2,11 +2,12 @@
 # Translators:
 # freddy4212 <freddy4212@gmail.com>, 2014
 # JackieLiu <liuyun01@kylinos.com.cn>, 2014
+# szd_liufei <liufei@linuxdeepin.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-12-30 07:28+0000\n"
+"Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-boot-maker/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,12 +113,12 @@ msgstr "指定的磁碟片鏡像檔案 %1 不存在。"
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "選擇U盤"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "選擇光盤鏡像"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -140,7 +141,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>格式化 USB 隨身碟可以�
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "正在寫入文件，請不要移除U盤或者關機。"
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"

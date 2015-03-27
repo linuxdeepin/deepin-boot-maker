@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-26 04:51+0000\n"
+"PO-Revision-Date: 2015-01-05 15:02+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/deepin-boot-maker/language/pl/)\n"
 "MIME-Version: 1.0\n"

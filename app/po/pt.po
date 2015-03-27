@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2014-12-25 06:40+0000\n"
+"PO-Revision-Date: 2014-12-29 17:50+0000\n"
 "Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/deepin-boot-maker/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -112,12 +112,12 @@ msgstr "O ficheiro de imagem de disco %1 especificado não existe."
 #: ../ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr ""
+msgstr "Selecione entrada USB"
 
 #: ../ui/dprogressframe.cpp:45
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr ""
+msgstr "Selecione imagem do disco"
 
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
@@ -140,7 +140,7 @@ msgstr "<p style='color:#b4b4b4; font-size:12px;'>A taxa de sucesso de criação
 #: ../ui/dwindowui.cpp:138
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr ""
+msgstr "Por favor NÃO remova ou desligue a entrada USB enquanto estiver escrevendo o arquivo."
 
 #: ../ui/dwindowui.cpp:149
 msgctxt "DWindowUI|"
