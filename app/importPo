@@ -1,0 +1,22 @@
+#!/bin/bash
+
+qtPath=/opt/qt5-static/5.3/linuxg64
+qtPath=/opt/qtstatic/5.3/linuxg64
+qtBin=$qtPath/bin
+
+qtlupdate=lupdate
+qtlrelease=lrelease
+qtlconvert=lconvert
+
+$qtlupdate $1 
+
+tslist=`ls po/*.ts`
+for ts in $tslist
+do
+    rm $ts
+    $qtlconvert -i ${ts%.*}.po -if po -o $ts -of ts
+done
+
+$qtlrelease $1
+
+
