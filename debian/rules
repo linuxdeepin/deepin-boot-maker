@@ -9,12 +9,12 @@ BINARY=deepin-boot-maker
 
 override_dh_auto_build:
 	mkdir -p build
-	cd build && qmake ../src
+	cd build && qmake ../
 	cd build && make
 	
 override_dh_install:
 	dh_install
-	install -Dm755 build/$(BINARY) debian/deepin-boot-maker/opt/deepin-boot-maker/bin/deepin-boot-maker
+	install -Dm755 build/app/$(BINARY) debian/deepin-boot-maker/opt/deepin-boot-maker/bin/deepin-boot-maker
 
 override_dh_auto_clean:
 	rm -rf build
