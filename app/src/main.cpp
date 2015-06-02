@@ -48,29 +48,31 @@ bool SwitchToRoot(QApplication &app) {
         argsconc += "\"rootcheck=no\"";
         argsconcSingleQuote += "'rootcheck=no'";
 #ifdef Q_OS_LINUX
-        QString gksulocation = checkforgraphicalsu("gksu");
+        QString gksudolocation = checkforgraphicalsu("gksudo");
+        if(gksudolocation != "REQCNOTFOUND") {
+            QProcess::startDetached(QString("%1 %2 %3").arg(gksudolocation).arg(app.applicationFilePath()).arg(argsconc));
+            return true;
+        }
 
+        QString gksulocation = checkforgraphicalsu("gksu");
         if(gksulocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(gksulocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
 
         QString kdesulocation = checkforgraphicalsu("kdesu");
-
         if(kdesulocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(kdesulocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
 
         QString gnomesulocation = checkforgraphicalsu("gnomesu");
-
         if(gnomesulocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(gnomesulocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
         }
 
         QString kdesudolocation = checkforgraphicalsu("kdesudo");
-
         if(kdesudolocation != "REQCNOTFOUND") {
             QProcess::startDetached(QString("%1 %2 %3").arg(kdesudolocation).arg(app.applicationFilePath()).arg(argsconc));
             return true;
