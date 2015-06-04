@@ -286,7 +286,19 @@ XSys::Result InstallSyslinux(const QString& targetDev) {
     if (!ret.isSuccess()) return ret;
 
     // make active
-    ret = XSys::SynExec("sfdisk", QString("%1 -A%2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
+    QStringList path;
+    path.push_back("/sbin/");
+    path.push_back("/usr/sbin/");
+    path.push_back("/bin/");
+    path.push_back("/usr/bin/");
+    
+    for (int i = 0; i < path.length(); ++i ){
+        QFile sfdisk(path.at(i) + "sfdisk");
+        if (sfdisk.exists()) {
+            ret = XSys::SynExec(path.at(i) + "sfdisk", QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
+            break;
+        }
+    }
     if (!ret.isSuccess()) return ret;
 
     return ret;
