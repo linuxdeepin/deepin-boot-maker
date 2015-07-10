@@ -372,10 +372,12 @@ XSys::Result InstallBootloader(const QString& diskDev) {
 
     do {
         qDebug() << "Try mount the disk " << (6 - retryTimes) << " first time";
-        QThread::sleep(5);
         UmountDisk(diskDev);
+        QThread::sleep(5);
         XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
+        QThread::sleep(5);
         XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+        QThread::sleep(5);
         retryTimes--;
     } while((MountPoint(targetDev) == "") && retryTimes);
     // how ever, if mount failed, check before install.
