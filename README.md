@@ -1,65 +1,65 @@
+# Deepin Boot Maker
 
-**The backend is fork from unetbootin just now. however, it will rewrite sooner or later, maybe.**
+Deepin Boot Maker is a tool that helps user to create a bootable usb stick quick and easy, it is designed to support deepin install iso, but it works for all ubuntu live install iso too.
 
-Deepin Boot Maker is help for user to create a boot usb stick quick and easy, it designed to support only deepin install iso, but it can can work for all ubuntu live install iso too.
+![screenshot](https://cloud.githubusercontent.com/assets/1117694/5467718/d3fcf2f4-85fe-11e4-9c6a-e64c2198b9c4.png)
 
-深度启动器制作工具是用来帮助用户简单便捷的制作启动U盘的工具. 设计上只支持深度系统安装镜像,但实际上Ubuntu Live系列的镜像都是可以支持的.
+## Dependencies
 
-![duc](https://cloud.githubusercontent.com/assets/1117694/5467718/d3fcf2f4-85fe-11e4-9c6a-e64c2198b9c4.png)
+Deepin Boot Maker is designed to support Windows/Linux/Mac platforms. It has no external dependencies on Windows and Mac OS. On Linux, you need packages below:
 
-系统支持:
-====
-
-**Windows平台：**
-
-Windows 7/ Windows 8 /Windows XP
-
-**Linux平台：**
-
-Ubuntu12.04/Ubuntu14.04/Deepin 14.04
-
-非Deepin 2014.2以下版本以及其他Debian衍生发行版请安装以下软件包
-
-```
-sudo apt-get install p7zip mtools
+```bash
+#For release based on debian
+sudo apt-get install  p7zip-full mtools
 ```
 
-**Mac：**
+Official support platform:
 
-Mac OSX 10.9/Mac OSX 10.10
+- Deepin 2014/2015
 
-开发指南
-================
+- Mac OSX 10.10
 
-**Windows平台：**
+- Windows XP 32/64bit, Windows 7 32/64bit, Windows 8 32/64 bit.
 
-开发环境：
-Windows 7 64bit + msvc2010 + DirectX SDK + Qt5.4
+## Installation
 
-1. 编译参数：
-```
-set DXSDK_DIR="C:\Program Files (x86)\Windows Kits\8.0\Include\um"
-configure -prefix "C:\Qt\QtStatic\5.3\vs2010" -release -platform win32-msvc2010 \
--no-qml-debug -confirm-license -opensource -static -qt-pcre -no-icu -no-sql-sqlite \
--no-nis -no-cups -no-iconv -no-dbus -nomake examples -no-sql-odbc -no-compile-examples \
--skip qtwebkit -skip qtwebkit-examples -skip qtactiveqt -no-openssl -qt-zlib \
--qt-libpng -qt-freetype -qt-libjpeg -opengl es2 -angle
-```
+- Official binary release
 
-**Mac平台:**
+The only binary release is from Deepin OS iso for now. You can download iso from: http://www.deepin.org/download.html. You can find binary file on the root of iso.
 
-Macx 10.9 + Qt5.4
+- Repository Install
 
-1. 设置Qt路径
-```
-export QtInstallPath=/User/yourhome/Qt5.3/5.3/clang_64
-export PATH=$QtInstallPath/bin:$PATH
-```
-2.编译
-```
-cd src
-qmake -r deepin-boot-maker.pro
-make
-macdeployqt ../build/release/deepin-boot-maker.app
+If you are deepin user, you can install Deepin Boot Maker from repository:
+
+```bash
+sudo apt-get install deepin-boot-maker
 ```
 
+- Build and install
+
+See [INSTALL](INSTALL.md) for detail.
+
+## Getting help
+
+Any usage issues can ask for help via
+
+* [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
+* [IRC channel](https://webchat.freenode.net/?channels=deepin)
+* [Forum](https://bbs.deepin.org)
+* [WiKi](http://wiki.deepin.org/)
+
+## Getting involved
+
+We encourage you to report issues and contribute changes
+
+* [Contirubtion guide for
+users](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Users)
+* [Contribution guide for developers](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Developers).
+
+## License
+
+Deepin Boot Maker is licensed under [GPLv3](LICENSE).
+
+## Credits and references
+
+1. [UNetbootin](https://github.com/unetbootin/unetbootin): this projects is derived form unetbootin, but now there are big differences between them.
