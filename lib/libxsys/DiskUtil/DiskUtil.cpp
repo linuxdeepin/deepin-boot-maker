@@ -286,7 +286,19 @@ XSys::Result InstallSyslinux(const QString& targetDev) {
     if (!ret.isSuccess()) return ret;
 
     // make active
-    ret = XSys::SynExec("sfdisk", QString("%1 -A%2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
+    QStringList path;
+    path.push_back("/sbin/");
+    path.push_back("/usr/sbin/");
+    path.push_back("/bin/");
+    path.push_back("/usr/bin/");
+    
+    for (int i = 0; i < path.length(); ++i ){
+        QFile sfdisk(path.at(i) + "sfdisk");
+        if (sfdisk.exists()) {
+            ret = XSys::SynExec(path.at(i) + "sfdisk", QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
+            break;
+        }
+    }
     if (!ret.isSuccess()) return ret;
 
     return ret;
@@ -360,10 +372,12 @@ XSys::Result InstallBootloader(const QString& diskDev) {
 
     do {
         qDebug() << "Try mount the disk " << (6 - retryTimes) << " first time";
-        QThread::sleep(5);
         UmountDisk(diskDev);
+        QThread::sleep(5);
         XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
+        QThread::sleep(5);
         XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+        QThread::sleep(5);
         retryTimes--;
     } while((MountPoint(targetDev) == "") && retryTimes);
     // how ever, if mount failed, check before install.
