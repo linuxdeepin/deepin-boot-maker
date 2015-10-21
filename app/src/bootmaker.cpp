@@ -187,14 +187,18 @@ bool BootMaker::checkInstallPara() {
 #ifdef Q_OS_LINUX
     // TODO: Mount it auto
     if(XSys::DiskUtil::MountPoint(m_DriverPath) == "") {
-        QMessageBox merrordevnotmountedmsgbx(this);
-        merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
-        merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
-        merrordevnotmountedmsgbx.setText(QString(tr("You must firstly mount the USB flash drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB flash drive.")).arg(m_DriverPath));
-        merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
-        merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
-        merrordevnotmountedmsgbx.exec();
-        return false;
+        QString mountPoint = XSys::FS::TmpFilePath("");
+        bool ret = XSys::DiskUtil::Mount(m_DriverPath, mountPoint);
+        if (!ret) {
+            QMessageBox merrordevnotmountedmsgbx(this);
+            merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
+            merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
+            merrordevnotmountedmsgbx.setText(QString(tr("You must firstly mount the USB flash drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB flash drive.")).arg(m_DriverPath));
+            merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
+            merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
+            merrordevnotmountedmsgbx.exec();
+            return false;
+        }
     }
 #endif
 

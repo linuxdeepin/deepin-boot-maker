@@ -206,6 +206,10 @@ const QString MountPoint(const QString& targetDev) {
     return QString(targetDev).remove("/").remove("\\") + "/";
 }
 
+bool Mount(const QString& targetDev, const QString& path) {
+    return true;
+}
+
 #endif
 
 #ifdef Q_OS_UNIX
@@ -227,9 +231,19 @@ const QString MountPoint(const QString& targetDev) {
     mountinfo.remove(targetDev);
     return mountinfo.mid(mountinfo.indexOf('/'));
 }
+
+
+bool Mount(const QString& targetDev, const QString& path) {
+    QString mountCmd = "mount";
+    XSys::SynExec("mkdir", QString(" -p %1").arg(path));
+    XSys::Result ret = XSys::SynExec(mountCmd, QString(" %1 %2").arg(targetDev).arg(path));
+    return ret.isSuccess();
+}
+
 #endif
 
 #ifdef Q_OS_LINUX
+
 
 QString GetPartitionDisk(QString targetDev) {
     if(targetDev.contains(QRegExp("p\\d$")))
@@ -544,6 +558,10 @@ bool UmountDisk(const QString& disk) {
 
 QString MountPoint(const QString& targetDev) {
     return XAPI::MountPoint(targetDev);
+}
+
+bool Mount(const QString& targetDev, const QString& path) {
+    return XAPI::Mount(targetDev, path);
 }
 }
 
