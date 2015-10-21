@@ -169,7 +169,7 @@ bool UsbInstaller::extractISO(const QString& isopath, const QString installdir) 
 
     for(arfileitor = arfilelist.begin(); arfileitor != arfilelist.end(); ++arfileitor) {
         i++;
-        qDebug() << (tr("Extracted: %1/%2 rate: %3").arg(i).arg(arfilelist.size())).arg(progress->rate());
+        qDebug() << QString("Extracted: %1/%2 rate: %3").arg(i).arg(arfilelist.size()).arg(progress->rate());
         progress->setValue(fileMonitor->FinishSize());
         qDebug() << arfileitor->Size << "\t" << arfileitor->Path;
         fileMonitor->ToNextFile(installdir + "/" + arfileitor->Path);
