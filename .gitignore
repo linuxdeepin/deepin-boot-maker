@@ -1,5 +1,6 @@
 build
 bin
+osx
 *~
 *.pro.user
 *.pro.user.*
