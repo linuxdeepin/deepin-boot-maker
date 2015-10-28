@@ -20,6 +20,11 @@
 #pragma comment(lib, "advapi32.lib")
 #endif
 
+#ifdef Q_OS_LINUX
+#include <unistd.h>
+#include <sys/reboot.h>
+#endif
+
 const QString AppTitle() {
     return QObject::tr("Deepin Boot Maker");
 }
@@ -155,7 +160,8 @@ void BootMaker::reboot() {
     ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
 #endif
 #ifdef Q_OS_LINUX
-    XSys::SynExec("init", "6 &");
+    sync();
+    ::reboot(RB_AUTOBOOT);
 #endif
 #ifdef Q_OS_MAC
     XSys::SynExec("shutdown", "-r now &");
