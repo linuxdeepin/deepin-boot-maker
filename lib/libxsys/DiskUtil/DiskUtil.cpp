@@ -234,9 +234,8 @@ const QString MountPoint(const QString& targetDev) {
 
 
 bool Mount(const QString& targetDev, const QString& path) {
-    QString mountCmd = "mount";
     XSys::SynExec("mkdir", QString(" -p %1").arg(path));
-    XSys::Result ret = XSys::SynExec(mountCmd, QString(" %1 %2").arg(targetDev).arg(path));
+    XSys::Result ret = XSys::SynExec("mount", QString(" %1 %2").arg(targetDev).arg(path));
     return ret.isSuccess();
 }
 
@@ -257,7 +256,7 @@ XSys::Result UmountDisk(const QString& targetDev) {
 }
 
 bool CheckFormatFat32(const QString& targetDev) {
-    XSys::Result ret = XSys::SynExec("blkid -s TYPE ", targetDev);
+    XSys::Result ret = XSys::SynExec("blkid", "-s TYPE " + targetDev);
     if(ret.isSuccess() && ret.result().contains("vfat", Qt::CaseInsensitive)) {
         return true;
     }
@@ -265,7 +264,7 @@ bool CheckFormatFat32(const QString& targetDev) {
 }
 
 QString GetPartitionLabel(const QString &targetDev) {
-    XSys::Result ret = XSys::SynExec("blkid -s LABEL -o value ", targetDev);
+    XSys::Result ret = XSys::SynExec("blkid", "-s LABEL -o value " + targetDev);
     if (!ret.isSuccess()) {
         return 0;
     }
@@ -273,7 +272,7 @@ QString GetPartitionLabel(const QString &targetDev) {
 }
 
 qint64 GetPartitionFreeSpace(const QString &targetDev) {
-    XSys::Result ret = XSys::SynExec("df --output=avail ", targetDev);
+    XSys::Result ret = XSys::SynExec("df", "--output=avail " + targetDev);
     if (!ret.isSuccess()) {
         return 0;
     }
@@ -284,7 +283,7 @@ XSys::Result InstallSyslinux(const QString& targetDev) {
     // install syslinux
     // UmountDisk(targetDev);
     QString sysliuxPath = XSys::FS::InsertTmpFile(":blobs/syslinux/syslinux");
-    XSys::Result ret = XSys::SynExec("chmod +x ", sysliuxPath);
+    XSys::Result ret = XSys::SynExec("chmod",  " +x " + sysliuxPath);
     if (!ret.isSuccess()) return ret;
 
     //ret = UmountDisk(targetDev);
@@ -328,7 +327,7 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     // fbinst format
     UmountDisk(diskDev);
     QString xfbinstPath = XSys::FS::InsertTmpFile(":blobs/xfbinst/xfbinst");
-    XSys::SynExec("chmod +x ", xfbinstPath);
+    XSys::SynExec("chmod", " +x " + xfbinstPath);
     qDebug()<<ret.isSuccess()<<ret.errmsg();
     if(!ret.isSuccess()) return ret;
 
@@ -350,7 +349,7 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     ret = UmountDisk(diskDev);
     QString targetDev = diskDev + "1";
     QString sysliuxPath = XSys::FS::InsertTmpFile(":blobs/syslinux/syslinux");
-    ret = XSys::SynExec("chmod +x ", sysliuxPath);
+    ret = XSys::SynExec("chmod", " +x " + sysliuxPath);
     if(!ret.isSuccess()) return ret;
 
     ret = XSys::SynExec(sysliuxPath, QString(" -i %1").arg(targetDev));
@@ -375,12 +374,12 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
     if(!ret.isSuccess()) return ret;
 
-    ret = XSys::SynExec("chmod a+wrx ", mountPoint);
+    ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
     if(!ret.isSuccess()) return ret;
 
-    QString mountCmd = "mount -o "
+    QString mountCmd = "-o "
                        "flush,rw,nosuid,nodev,shortname=mixed,"
-                       "dmask=0077,utf8=1,showexec";
+                       "dmask=0077,utf8=1,showexec %1 %2";
     // the disk must be mount
     int retryTimes = 5;
 
@@ -390,7 +389,7 @@ XSys::Result InstallBootloader(const QString& diskDev) {
         QThread::sleep(5);
         XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
         QThread::sleep(5);
-        XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
+        XSys::SynExec("mount",  mountCmd.arg(newTargetDev).arg(mountPoint));
         QThread::sleep(5);
         retryTimes--;
     } while((MountPoint(targetDev) == "") && retryTimes);

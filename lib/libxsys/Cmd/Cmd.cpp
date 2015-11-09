@@ -19,7 +19,7 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
     app.setStandardInputFile(execPipeIn);
 //    app.setStandardOutputFile(outPipePath);
 //    app.setStandardErrorFile(outPipePath);
-    app.start(execPath + " " + execParam);
+    app.start("\""+execPath+"\"" + " " + execParam);
     if (!app.waitForStarted()) {
         qWarning()<<"Cmd Exec Failed:"<<app.errorString();
         return Result(Result::Faiiled, app.errorString(), "", app.program());
