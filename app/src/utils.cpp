@@ -83,8 +83,7 @@ bool CheckInstallDisk(const QString& targetDev) {
 
 bool isUsbDisk(const QString& dev) {
     QString out = XSys::FS::TmpFilePath("diskutil_isusb_out");
-    XSys::SynExec(
-        "bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
+    XSys::SynExec("bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
     QFile outfile(out);
     outfile.open(QIODevice::ReadOnly);
     QString info = outfile.readAll();
