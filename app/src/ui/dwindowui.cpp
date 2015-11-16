@@ -317,7 +317,7 @@ extern QString g_LogDir;
 
 void DWindowUI::onLogLinkActivated(const QString &link) {
     if(link == "#show_log") {
-        QDesktopServices::openUrl(QUrl(g_LogDir));
+        QDesktopServices::openUrl(QUrl::fromLocalFile(g_LogDir));
     }
 }
 
