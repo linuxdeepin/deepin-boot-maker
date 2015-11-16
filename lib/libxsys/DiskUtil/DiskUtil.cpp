@@ -389,11 +389,7 @@ XSys::Result InstallBootloader(const QString& diskDev) {
         QThread::sleep(5);
         XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
         QThread::sleep(5);
-<<<<<<< HEAD
-        XSys::SynExec(mountCmd, QString(" %1 %2").arg(newTargetDev).arg(mountPoint));
-=======
         XSys::SynExec("mount",  mountCmd.arg(newTargetDev).arg(mountPoint));
->>>>>>> release/1.1
         QThread::sleep(5);
         retryTimes--;
     } while((MountPoint(targetDev) == "") && retryTimes);
