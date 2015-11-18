@@ -2,6 +2,7 @@
 
 #include "../FileSystem/FileSystem.h"
 #include "../Cmd/Cmd.h"
+#include "Syslinux.h"
 
 #include <QtCore>
 #include <QString>
@@ -135,7 +136,8 @@ void UnlockDisk(HANDLE handle) {
 
 XSys::Result InstallSyslinux(const QString& targetDev) {
     // install syslinux
-    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blobs/syslinux/syslinux.exe"));
+    XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
+    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blobs/syslinux/win32/syslinux.exe"));
     return XSys::SynExec(sysliuxPath, QString(" -i -m -a %1").arg(targetDev));
 }
 
@@ -157,8 +159,10 @@ XSys::Result InstallBootloader(const QString& targetDev) {
                   .arg(xfbinstDiskName)
                   .arg(tmpfgcfgPath));
 
+    XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
+
     // install syslinux
-    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blobs/syslinux/syslinux.exe"));
+    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blobs/syslinux/win32/syslinux.exe"));
     XSys::SynExec(sysliuxPath, QString(" -i %1").arg(targetDev));
 
     // get pbr file ldlinux.bin
@@ -181,7 +185,6 @@ XSys::Result InstallBootloader(const QString& targetDev) {
                   .arg(xfbinstDiskName)
                   .arg(tmpPbrPath));
 
-    XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
 
     // UnlockDisk(handle);
     return XSys::Result(XSys::Result::Success, "", targetDev);
@@ -243,7 +246,6 @@ bool Mount(const QString& targetDev, const QString& path) {
 
 #ifdef Q_OS_LINUX
 
-
 QString GetPartitionDisk(QString targetDev) {
     if(targetDev.contains(QRegExp("p\\d$")))
         return QString(targetDev).remove(QRegExp("p\\d$"));
@@ -281,38 +283,19 @@ qint64 GetPartitionFreeSpace(const QString &targetDev) {
 
 XSys::Result InstallSyslinux(const QString& targetDev) {
     // install syslinux
-    // UmountDisk(targetDev);
-    QString sysliuxPath = XSys::FS::InsertTmpFile(":blobs/syslinux/syslinux");
-    XSys::Result ret = XSys::SynExec("chmod",  " +x " + sysliuxPath);
-    if (!ret.isSuccess()) return ret;
-
-    //ret = UmountDisk(targetDev);
-    //if (!ret.isSuccess()) return ret;
-
-    ret = XSys::SynExec(sysliuxPath, QString(" -i %1").arg(targetDev));
-    if (!ret.isSuccess()) return ret;
-
     QString rawtargetDev = GetPartitionDisk(targetDev);
-    // dd pbr file ldlinux.bin
-    QString tmpPbrPath = XSys::FS::InsertTmpFile(":blobs/syslinux/mbr.bin");
-    ret = XSys::SynExec("dd", QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(rawtargetDev));
-    if (!ret.isSuccess()) return ret;
+    XSys::Result ret = XSys::Syslinux::InstallBootloader(targetDev);
+    if(!ret.isSuccess()) return ret;
+    ret = XSys::Syslinux::InstallMbr(rawtargetDev);
+    if(!ret.isSuccess()) return ret;
 
     // make active
-    QStringList path;
-    path.push_back("/sbin/");
-    path.push_back("/usr/sbin/");
-    path.push_back("/bin/");
-    path.push_back("/usr/bin/");
-    
-    for (int i = 0; i < path.length(); ++i ){
-        QFile sfdisk(path.at(i) + "sfdisk");
-        if (sfdisk.exists()) {
-            ret = XSys::SynExec(path.at(i) + "sfdisk", QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
-            break;
-        }
-    }
-    if (!ret.isSuccess()) return ret;
+    ret = XSys::SynExec(XSys::FS::SearchBin("sfdisk"),
+                                     QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
+    if(!ret.isSuccess()) return ret;
+
+    // rename label
+    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
 
     return ret;
 }
@@ -324,17 +307,16 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     QString newTargetDev = diskDev + "1";
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() - 1].toLatin1() - 'a');
 
-    // fbinst format
+    // fbinst: format
     UmountDisk(diskDev);
     QString xfbinstPath = XSys::FS::InsertTmpFile(":blobs/xfbinst/xfbinst");
-    XSys::SynExec("chmod", " +x " + xfbinstPath);
-    qDebug()<<ret.isSuccess()<<ret.errmsg();
+    ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
     if(!ret.isSuccess()) return ret;
 
     ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
     if(!ret.isSuccess()) return ret;
 
-    // install fg.cfg
+    // fbinst: install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":blobs/xfbinst/fb.cfg"));
     UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
@@ -345,28 +327,21 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     ret = XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
     if(!ret.isSuccess()) return ret;
 
-    // install syslinux
-    ret = UmountDisk(diskDev);
-    QString targetDev = diskDev + "1";
-    QString sysliuxPath = XSys::FS::InsertTmpFile(":blobs/syslinux/syslinux");
-    ret = XSys::SynExec("chmod", " +x " + sysliuxPath);
+    // rename label
+    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
     if(!ret.isSuccess()) return ret;
 
-    ret = XSys::SynExec(sysliuxPath, QString(" -i %1").arg(targetDev));
-    if(!ret.isSuccess()) return ret;
+    // install syslinux
+    XSys::Syslinux::InstallBootloader(newTargetDev);
 
     // dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::FS::TmpFilePath("ldlinux.bin");
-    ret = XSys::SynExec("dd", QString(" if=%1 of=%2 count=1").arg(targetDev).arg(tmpPbrPath));
+    ret = XSys::SynExec("dd", QString(" if=%1 of=%2 bs=512 count=1").arg(newTargetDev).arg(tmpPbrPath));
     if(!ret.isSuccess()) return ret;
 
-    // add pbr file ldlinux.bin
+    // fbinst: add pbr file ldlinux.bin
     ret = UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
-    if(!ret.isSuccess()) return ret;
-
-    // rename label
-    ret = XSys::SynExec("fatlabel", QString(" %1 DEEPINOS").arg(newTargetDev));
     if(!ret.isSuccess()) return ret;
 
     // mount
@@ -392,7 +367,7 @@ XSys::Result InstallBootloader(const QString& diskDev) {
         XSys::SynExec("mount",  mountCmd.arg(newTargetDev).arg(mountPoint));
         QThread::sleep(5);
         retryTimes--;
-    } while((MountPoint(targetDev) == "") && retryTimes);
+    } while((MountPoint(newTargetDev) == "") && retryTimes);
     // how ever, if mount failed, check before install.
     return XSys::Result(XSys::Result::Success, "", newTargetDev);
 }
@@ -421,7 +396,7 @@ QString removAroundSpace(QString raw) {
 
 
 QString GetPartitionLabel(const QString &targetDev) {
-    XSys::Result ret = XSys::SynExec("diskutil info", targetDev);
+    XSys::Result ret = XSys::SynExec("diskutil",  "info " + targetDev);
     if (!ret.isSuccess()) {
         qDebug()<<"Call df Failed";
         return "";
@@ -449,7 +424,7 @@ XSys::Result UmountDisk(const QString& targetDev) {
 }
 
 bool CheckFormatFat32(const QString& targetDev) {
-    XSys::Result ret = XSys::SynExec("diskutil info ", targetDev);
+    XSys::Result ret = XSys::SynExec("diskutil", "info " + targetDev);
     QString partitionType = ret.result().split("\n").filter("Partition Type:").first();
 
     if(partitionType.contains(QRegExp("_FAT_32"))) {
@@ -468,6 +443,9 @@ QString Resource(const QString& name) {
 }
 
 XSys::Result InstallSyslinux(const QString& targetDev) {
+    // rename to DEEPINOS
+    XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
+
     // install syslinux
     UmountDisk(targetDev);
     QString sysliuxPath = Resource("syslinux-mac");
@@ -475,10 +453,10 @@ XSys::Result InstallSyslinux(const QString& targetDev) {
 
     // dd pbr file ldlinux.bin
     UmountDisk(targetDev);
-    QString tmpPbrPath = XSys::FS::InsertTmpFile(":blobs/syslinux/mbr.bin");
+    QString tmpPbrPath = XSys::FS::InsertTmpFile(Resource("mbr.bin"));
     XSys::SynExec("dd", QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(
                       GetPartitionDisk(targetDev)));
-
+    UmountDisk(targetDev);
     return XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
 }
 
@@ -496,6 +474,11 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     UmountDisk(targetDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
+
+    // rename to DEEPINOS
+    XSys::SynExec("diskutil", QString("mountDisk %1").arg(diskDev));
+    XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
+
     // install syslinux
     UmountDisk(targetDev);
 
@@ -506,16 +489,13 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     // dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::FS::TmpFilePath("ldlinux.bin");
     UmountDisk(targetDev);
-    XSys::SynExec("dd", QString(" if=%1 of=%2 count=1").arg(targetDev).arg(tmpPbrPath));
+    XSys::SynExec("dd", QString(" if=%1 of=%2 bs=512 count=1").arg(targetDev).arg(tmpPbrPath));
 
     // add pbr file ldlinux.bin
     UmountDisk(targetDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
 
     XSys::SynExec("diskutil", QString("mountDisk %1").arg(diskDev));
-
-    // rename to DEEPINOS
-    XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
 
     return XSys::Result(XSys::Result::Success, "", targetDev);
 }
@@ -583,7 +563,6 @@ Result ConfigSyslinx(const QString& targetPath) {
         return Result(Result::Faiiled, "Remove Dir Failed: " + syslinxDir);
     }
 
-
     QString isolinxDir = QString("%1/isolinux/").arg(targetPath);
     if (!XSys::FS::MoveDir(isolinxDir, syslinxDir)) {
         return Result(Result::Faiiled, "Move Dir Failed: " + isolinxDir + " to " + syslinxDir);
@@ -602,26 +581,8 @@ Result ConfigSyslinx(const QString& targetPath) {
         return Result(Result::Faiiled, "Copy File Failed: " + isolinxCfgPath + " to " + syslinxCfgPath);
     }
 
-    QString urlPrifx = ":blobs/syslinux/";
-#ifdef Q_OS_MAC
-    urlPrifx = ":blobs/syslinux/macosx/";
-#endif
-
-    QStringList filelist;
-    filelist.append("gfxboot.c32");
-    filelist.append("chain.c32");
-    filelist.append("menu.c32");
-    filelist.append("vesamenu.c32");
-#ifndef Q_OS_MAC
-    filelist.append("libcom32.c32");
-    filelist.append("libutil.c32");
-#endif
-
-    foreach(QString filename, filelist) {
-        if (!XSys::FS::InsertFile(urlPrifx + filename, QDir::toNativeSeparators(syslinxDir + filename))) {
-            return Result(Result::Faiiled, "Insert Config File Failed: " + urlPrifx + filename + " to " + QDir::toNativeSeparators(syslinxDir + filename));
-        }
-    }
+    qDebug() << "InstallModule to"<<syslinxDir;
+    XSys::Syslinux::InstallModule(syslinxDir);
 
     // bugfix
     // TODO: we change syslinux to 6.02, but gfxboot will not work

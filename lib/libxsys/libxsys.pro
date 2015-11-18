@@ -30,13 +30,15 @@ CONFIG(debug, debug|release) {
 SOURCES += DiskUtil/DiskUtil.cpp \
     Common/Result.cpp \
     Cmd/Cmd.cpp \
-    FileSystem/FileSystem.cpp
+    FileSystem/FileSystem.cpp \
+    DiskUtil/Syslinux.cpp
 
 HEADERS +=     XSys \
     DiskUtil/DiskUtil.h \
     Common/Result.h \
     Cmd/Cmd.h \
-    FileSystem/FileSystem.h
+    FileSystem/FileSystem.h \
+    DiskUtil/Syslinux.h
 
 unix {
     target.path = /usr/lib
