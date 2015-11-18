@@ -98,7 +98,7 @@ void DWindowUI::initUI() {
     logolayout->addWidget(logolabel);
     logolayout->setAlignment(logolabel, Qt::AlignCenter);
     logolayout->addSpacing(10);
-    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:600;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle()));
+    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:600;'>%1 </a> <a style='color:white; font-size:8px;'>v1.1</a>").arg(AppTitle()));
     logolayout->addWidget(versionlabel);
     logolayout->setAlignment(versionlabel, Qt::AlignCenter);
 
