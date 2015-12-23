@@ -155,6 +155,10 @@ void installLogHandler() {
 }
 
 void loadTranslate(QApplication& app) {
+    QTranslator *qtTranslator = new QTranslator;
+    qtTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(qtTranslator);
+
     QTranslator *translator = new QTranslator();
     QString tnapplang;
     QString tnappcoun;
