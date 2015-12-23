@@ -303,6 +303,7 @@ void DProgressFrame::selectISO(){
     fileDlg.setViewMode(QFileDialog::Detail);
     fileDlg.setFileMode(QFileDialog::ExistingFile);
     fileDlg.setNameFilter("ISO (*.iso);;");
+    fileDlg.setLabelText(QFileDialog::Reject,  tr("Cancel"));
     if (QFileDialog::Accepted == fileDlg.exec()) {
         QString text = fileDlg.selectedFiles().first();
         setIsoFile(text);
