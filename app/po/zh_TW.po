@@ -120,6 +120,12 @@ msgctxt "DProgressFrame|"
 msgid "Select disk image"
 msgstr "選擇光盤鏡像"
 
+#: ../src/ui/dprogressframe.cpp:306
+msgctxt "DProgressFrame|"
+msgid "Cancel"
+msgstr "取消"
+
+#: ../src/ui/dusblist.cpp:12
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
