@@ -121,6 +121,13 @@ msgid "Select disk image"
 msgstr "選擇光碟映像檔"
 
 #: ../src/ui/dusblist.cpp:12
+#: ../src/ui/dprogressframe.cpp:306
+msgctxt "DProgressFrame|"
+msgid "Cancel"
+msgstr "取消"
+
+#: ../src/ui/dusblist.cpp:12
+#: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "沒有偵測到 USB 隨身碟"

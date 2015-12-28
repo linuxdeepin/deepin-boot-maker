@@ -120,6 +120,13 @@ msgid "Select disk image"
 msgstr "Vyberte obraz disku"
 
 #: ../src/ui/dusblist.cpp:12
+#: ../src/ui/dprogressframe.cpp:306
+msgctxt "DProgressFrame|"
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: ../src/ui/dusblist.cpp:12
+#: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "Ukládací jednotka USB nezjištěna"
