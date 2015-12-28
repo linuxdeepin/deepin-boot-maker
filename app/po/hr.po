@@ -38,6 +38,11 @@ msgctxt "BootMaker|"
 msgid "Cancel"
 msgstr "Poništi"
 
+#: ../src/ui/dprogressframe.cpp:306
+msgctxt "DProgressFrame|"
+msgid "Cancel"
+msgstr "Poništi"
+
 #: ../bootmaker.cpp:98 ../bootmaker.cpp:99
 msgctxt "BootMaker|"
 msgid "Please select an iso image"

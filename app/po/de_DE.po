@@ -120,6 +120,12 @@ msgctxt "DProgressFrame|"
 msgid "<p style='font-weight:bold;'>Select disk image</p>"
 msgstr "<p style='font-weight:bold;'>Festplattenabbild auswählen</p>"
 
+#: ../src/ui/dprogressframe.cpp:306
+msgctxt "DProgressFrame|"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../src/ui/dusblist.cpp:12
 #: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
