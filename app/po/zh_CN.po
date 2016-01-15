@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2015-10-27 08:24+0000\n"
+"PO-Revision-Date: 2015-12-21 01:00+0000\n"
 "Last-Translator: szd_liufei <liufei@linuxdeepin.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/linuxdeepin/deepin-boot-maker/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -119,12 +119,6 @@ msgctxt "DProgressFrame|"
 msgid "Select disk image"
 msgstr "选择光盘镜像"
 
-#: ../src/ui/dprogressframe.cpp:306
-msgctxt "DProgressFrame|"
-msgid "Cancel"
-msgstr "取消"
-
-#: ../src/ui/dusblist.cpp:12
 #: ../src/ui/dusblist.cpp:12
 msgctxt "DUsbList|"
 msgid "USB drive not detected"

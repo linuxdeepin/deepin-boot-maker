@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2015-10-26 07:30+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2015-12-22 07:38+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/linuxdeepin/deepin-boot-maker/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -186,7 +186,7 @@ msgstr "Jetzt neu starten"
 #: ../src/ui/dwindowui.cpp:335
 msgctxt "DWindowUI|"
 msgid "Failed to make"
-msgstr ""
+msgstr "Aktion fehlgeschlagen"
 
 #: ../src/ui/dwindowui.cpp:351
 #, qt-format
@@ -194,12 +194,12 @@ msgctxt "DWindowUI|"
 msgid ""
 "Installation logs are stored in %1HERE%2, you can upload to forum to help us"
 " solve your problem."
-msgstr ""
+msgstr "Installations-Logs werden unter %1HERE%2 gespeichert, Sie können sie ins Forum hochladen, um uns bei der Lösung Ihres Problems zu helfen."
 
 #: ../src/ui/dwindowui.cpp:362
 msgctxt "DWindowUI|"
 msgid "Finish"
-msgstr ""
+msgstr "Beenden"
 
 #: ../src/bootmaker.cpp:24
 msgctxt "QObject|"
@@ -217,7 +217,7 @@ msgctxt "QObject|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>"
-msgstr ""
+msgstr "%2 muss als root ausgeführt werden. Schließen und erneut starten unter Verwendung von entweder: <br/><b>sudo %1</b><br/> starten"
 
 #: ../src/usbinstaller.cpp:31
 #, qt-format
@@ -236,24 +236,24 @@ msgctxt "QObject|"
 msgid ""
 "USB flash drive space is insufficient, ensure you have at least %1 free "
 "space."
-msgstr ""
+msgstr "Größe des USB-Flash-Laufwerks reicht nicht aus. Bitte stellen Sie sicher, mindestens %1 freien Speicherplatz zu haben."
 
 #: ../src/usbinstaller.cpp:37
 msgctxt "QObject|"
 msgid ""
 "Failed to mount USB flash drive, please close other applications may use it "
 "and reinsert."
-msgstr ""
+msgstr "Mounten des USB-Laufwerks fehlgeschlagen, bitte schließen Sie andere Anwendungen, die eventuell darauf zugreifen, und stecken sie es erneut ein."
 
 #: ../src/usbinstaller.cpp:39
 msgctxt "QObject|"
 msgid "Failed to unzip the mirror file, please use the whole mirror file."
-msgstr ""
+msgstr "Mirrorfile konnte nicht entpackt werden. Bitte benutzen Sie das ganze Mirrorfile."
 
 #: ../src/utils.cpp:18
 msgctxt "QObject|"
 msgid "Removable disk"
-msgstr ""
+msgstr "Wechselplatte"
 
 #: ../src/usbinstaller.cpp:66
 #, qt-format

@@ -1,59 +1,57 @@
 # 
 # Translators:
-# Microtus <hrabosmartin@gmail.com>, 2014
-# Marek Bujko <marek.bujko@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2015-10-27 23:39+0000\n"
-"Last-Translator: Marek Bujko <marek.bujko@gmail.com>\n"
-"Language-Team: Slovak (http://www.transifex.com/linuxdeepin/deepin-boot-maker/language/sk/)\n"
+"PO-Revision-Date: 2015-12-24 06:01+0000\n"
+"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/linuxdeepin/deepin-boot-maker/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sk\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/bootmaker.cpp:53
 msgctxt "BootMaker|"
 msgid "Format error of USB flash drive"
-msgstr "Chyba pri formátovaní USB flash jednotky"
+msgstr "USB-muistitikun alustusvirhe"
 
 #: ../src/bootmaker.cpp:54
 msgctxt "BootMaker|"
 msgid ""
 "Only FAT32 USB flash drive supported. Need to format? All partitions and "
 "data will be lost during formatting, please back up the data in advance."
-msgstr "Podporované sú iba FAT32 USB flash zariadenia. Chcete formátovať? Všetky partície a dáta budú stratené počas formátovania, prosím zálohujte si ich. "
+msgstr "Vain FAT32-USB-muistitikkuja tuetaan. Haluatko alustaa? Kaikki osiot ja tiedot menetetään alustamisen aikana. Ole hyvä ja varmuuskopioi tiedot etukäteen."
 
 #: ../src/bootmaker.cpp:56
 msgctxt "BootMaker|"
 msgid "Format"
-msgstr "Formátovať"
+msgstr "Tiedostomuoto"
 
 #: ../src/bootmaker.cpp:57 ../src/bootmaker.cpp:137
 msgctxt "BootMaker|"
 msgid "Cancel"
-msgstr "Zrušiť"
+msgstr "Peruutus"
 
 #: ../src/bootmaker.cpp:123 ../src/bootmaker.cpp:124
 msgctxt "BootMaker|"
 msgid "Please select an iso image"
-msgstr "Prosím zvoľte iso obraz. "
+msgstr "Valitse iso-kuva"
 
 #: ../src/bootmaker.cpp:133
 msgctxt "BootMaker|"
 msgid "Format USB flash drive"
-msgstr "Formátovať USB flash jednotku"
+msgstr "Alusta USB-levy"
 
 #: ../src/bootmaker.cpp:134
 msgctxt "BootMaker|"
 msgid ""
 "All data will be lost during formatting, please back up in advance and then "
 "press OK button."
-msgstr "Všetky dáta budú stratené počas formátovania, prosím zálohujte si ich a stlačte tlačidlo OK."
+msgstr "Formatoidessa kaikki tiedot menetetään. Ole hyvä ja varmuuskopioi etukäteen, ja paina sitten OK-painiketta. "
 
 #: ../src/bootmaker.cpp:136 ../src/bootmaker.cpp:177 ../src/bootmaker.cpp:198
 #: ../src/bootmaker.cpp:211 ../src/bootmaker.cpp:222
@@ -64,20 +62,20 @@ msgstr "Ok"
 #: ../src/bootmaker.cpp:174
 msgctxt "BootMaker|"
 msgid "Insert a USB flash drive"
-msgstr "Vložte USB flash zariadenie"
+msgstr "Aseta USB-muistitikku"
 
 #: ../src/bootmaker.cpp:175
 msgctxt "BootMaker|"
 msgid ""
 "No USB flash drives were found. If you have already inserted a USB flash "
 "drive, try to reformat it as FAT32."
-msgstr "Neboli nájdené žiadne USB flash zariadenia. Ak ste už vložili USB flash jednotku, skúste je preformátovať na FAT32."
+msgstr "USB-muistiasemia ei löytynyt. Jos olet jo asentanut USB-muistiaseman, niin kokeile muuttaa se FAT32-muotoon."
 
 #: ../src/bootmaker.cpp:195
 #, qt-format
 msgctxt "BootMaker|"
 msgid "%1 not mounted"
-msgstr "%1 nie je pripojené"
+msgstr "%1 ei ole ripustettu"
 
 #: ../src/bootmaker.cpp:196
 #, qt-format
@@ -86,103 +84,103 @@ msgid ""
 "You must firstly mount the USB flash drive %1 to a mountpoint. Most "
 "distributions will do this automatically after you remove and reinsert the "
 "USB flash drive."
-msgstr "Najskôr musíte pripojiť USB flash jednotku %1 k prípojnému bodu. Väčšina distribúcií to urobí automaticky po odstránení a znovu-vložení USB flash jednotky. "
+msgstr "Sinun on ensin asetettava USB-muistitikku %1 liittimeensä. Jakoprosessi alkaa useimmiten automaattisesti poistettuasi ja asetettuasi USB-muistitikun uudestaan."
 
 #: ../src/bootmaker.cpp:208
 msgctxt "BootMaker|"
 msgid "Select a disk image file"
-msgstr "Zvoľte súbor s obrazom disku"
+msgstr "Valitse levyn kuvatiedosto"
 
 #: ../src/bootmaker.cpp:209
 msgctxt "BootMaker|"
 msgid "You must select a disk image file to load."
-msgstr "Musíte zvoliť obraz disku na načítanie. "
+msgstr "Sinun on valittava ladattava levykuvatiedosto."
 
 #: ../src/bootmaker.cpp:219
 msgctxt "BootMaker|"
 msgid "Disk image file not found"
-msgstr "Obraz disku nebol nájdený"
+msgstr "Levykuvatiedostoa ei löytynyt"
 
 #: ../src/bootmaker.cpp:220
 #, qt-format
 msgctxt "BootMaker|"
 msgid "The specified disk image file %1 does not exist."
-msgstr "Daný súbor s obrazom disku %1 neexistuje. "
+msgstr "Määritetty levykuvatiedosto %1 ei ole olemassa."
 
 #: ../src/ui/ddevicon.cpp:20
 msgctxt "DDevIcon|"
 msgid "Select USB drive"
-msgstr "Zvoľte USB jednotku"
+msgstr "Valitse USB-levy"
 
 #: ../src/ui/dprogressframe.cpp:56
 msgctxt "DProgressFrame|"
 msgid "Select disk image"
-msgstr "Zvoľte obraz disku"
+msgstr "Valitse levykuva"
 
 #: ../src/ui/dusblist.cpp:12
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
-msgstr "Nebola detekovaná USB jednotka"
+msgstr "USB-ajuria ei löytynyt"
 
 #: ../src/ui/dwindowui.cpp:124 ../src/ui/dwindowui.cpp:216
 #: ../src/ui/dwindowui.cpp:219
 #, qt-format
 msgctxt "DWindowUI|"
 msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
-msgstr "<p style='color:white; font-size:12px;'>%1% bolo dokončené</p>"
+msgstr "<p style='color:white; font-size:12px;'>%1% on valmiina</p>"
 
 #: ../src/ui/dwindowui.cpp:131
 msgctxt "DWindowUI|"
 msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
-msgstr "Prosím NEODSTRAŇUJTE USB jednotku ani nevypínajte počítač počas zápisu súboru. "
+msgstr "ÄLÄ sammuta tai poista USB-levyä tiedoston tallennuksen aikana."
 
 #: ../src/ui/dwindowui.cpp:142
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
 "improved by formatting USB drive.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px;'>Úspešnosť vytvárania môže byť zlepšená formátovaním USB jednotky.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>Onnistumisen todennäköisyyttä voidaan parantaa USB-muistin alustamisella.</p>"
 
 #: ../src/ui/dwindowui.cpp:153
 msgctxt "DWindowUI|"
 msgid "Start"
-msgstr "Spustiť"
+msgstr "Aloita"
 
 #: ../src/ui/dwindowui.cpp:268
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
 "successfully</p>"
-msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Úspešne vytvorené</p>"
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>Onnistui</p>"
 
 #: ../src/ui/dwindowui.cpp:269
 msgctxt "DWindowUI|"
 msgid ""
 "<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
 "when installing Deepin OS.</p>"
-msgstr "<p style='color:#b4b4b4; font-size:12px'>Prosím zvoľte USB jednotku na bootovanie na inštaláciu Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>Valitse käynnistettävä USB-asema, jota käytetään Deepin OS:n asennuksen yhteydessä.</p>"
 
 #: ../src/ui/dwindowui.cpp:273
 msgctxt "DWindowUI|"
 msgid ""
 "<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
 "EFI option.</a>"
-msgstr "<a style='color:#b4b4b4; font-size:12px'>Pri zlyhaní prosím skúste deaktivovať voľbu EFI.</a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>Kokeile EFI-vaihtoehdon poistamista, jos tämä ei onnistu.</a>"
 
 #: ../src/ui/dwindowui.cpp:291
 msgctxt "DWindowUI|"
 msgid "Restart Later"
-msgstr "Reštartovať neskôr"
+msgstr "Käynnistä myöhemmin uudelleen"
 
 #: ../src/ui/dwindowui.cpp:293
 msgctxt "DWindowUI|"
 msgid "Restart Now"
-msgstr "Reštartovať teraz"
+msgstr "Käynnistä uudelleen nyt"
 
 #: ../src/ui/dwindowui.cpp:335
 msgctxt "DWindowUI|"
 msgid "Failed to make"
-msgstr "Chyba pri vytváraní"
+msgstr "Luominen epäonnistui"
 
 #: ../src/ui/dwindowui.cpp:351
 #, qt-format
@@ -190,12 +188,12 @@ msgctxt "DWindowUI|"
 msgid ""
 "Installation logs are stored in %1HERE%2, you can upload to forum to help us"
 " solve your problem."
-msgstr "Protokoly pre inštaláciu sú uložené v %1HERE%2, môžete ich nahrať na fórum, aby nám pomohli vyriešiť váš problém."
+msgstr "Asennuslokit varastoidaan kohteeseen %1HERE%2. Voit ladata ne halutessasi foorumillemme tarvitessasi apua."
 
 #: ../src/ui/dwindowui.cpp:362
 msgctxt "DWindowUI|"
 msgid "Finish"
-msgstr "Koniec"
+msgstr "Valmis"
 
 #: ../src/bootmaker.cpp:24
 msgctxt "QObject|"
@@ -205,7 +203,7 @@ msgstr "Deepin Boot Maker"
 #: ../src/main.cpp:83
 msgctxt "QObject|"
 msgid "Must run as root"
-msgstr "Musí bežať ako root. "
+msgstr "Täytyy suorittaa roottina "
 
 #: ../src/main.cpp:85
 #, qt-format
@@ -213,18 +211,18 @@ msgctxt "QObject|"
 msgid ""
 "%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
 "%1</b><br/>"
-msgstr "%2 musí bežať ako root. Zavrite a spuste to znova:<br/><b>sudo %1</b><br/>"
+msgstr "%2 täytyy olla juuritiedostona. Sulje ja käynnistä se uudelleen käyttäen jompaakumpaa seuraavista:<br/><b>sudo %1</b><br/>"
 
 #: ../src/usbinstaller.cpp:31
 #, qt-format
 msgctxt "QObject|"
 msgid "Failed to call the command %1."
-msgstr "Chyba pri volaní príkazu %1."
+msgstr "Komennon %1 kutsu epäonnistui."
 
 #: ../src/usbinstaller.cpp:33
 msgctxt "QObject|"
 msgid "Wrong USB flash drive format, please format to FAT32."
-msgstr "Chybný USB flash formát, prosím formátujte na FAT32."
+msgstr "USB-muistin formaatti on väärä. Ole hyvä ja vaihda formaatti FAT32:een. "
 
 #: ../src/usbinstaller.cpp:35
 #, qt-format
@@ -232,27 +230,27 @@ msgctxt "QObject|"
 msgid ""
 "USB flash drive space is insufficient, ensure you have at least %1 free "
 "space."
-msgstr "Miesto na USB flash disku je nedostatočné. Skontrolujte, či máte aspoň %1 voľného miesta."
+msgstr "USB-muistin levytilaa ei ole tarpeeksi. Varmista, että sinulla on vähintään %1 vapaata levytilaa."
 
 #: ../src/usbinstaller.cpp:37
 msgctxt "QObject|"
 msgid ""
 "Failed to mount USB flash drive, please close other applications may use it "
 "and reinsert."
-msgstr "Nepodarilo sa pripojiť USB flash disk, prosím zatvorte iné aplikácie a potom ho vložte znova."
+msgstr "USB-muistin asennus epäonnistui, sulje muut sitä mahdollisesti käyttävät sovellukset ja asenna uudelleen."
 
 #: ../src/usbinstaller.cpp:39
 msgctxt "QObject|"
 msgid "Failed to unzip the mirror file, please use the whole mirror file."
-msgstr "Nepodarilo sa rozbaliť zrkadlový súbor, použite prosím celý zrkadlový súbor."
+msgstr "Peilitiedoston purkaminen epäonnistui. Ole hyvä ja käytä koko peilitiedostoa."
 
 #: ../src/utils.cpp:18
 msgctxt "QObject|"
 msgid "Removable disk"
-msgstr "Vymeniteľný disk"
+msgstr "Poistettava levy"
 
 #: ../src/usbinstaller.cpp:66
 #, qt-format
 msgctxt "UsbInstaller|"
 msgid "Installing syslinux to %1"
-msgstr "Inštalácia syslinux do %1"
+msgstr "Asennetaan syslinux kohteelle %1"

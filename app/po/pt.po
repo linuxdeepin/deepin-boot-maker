@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Boot Maker\n"
-"PO-Revision-Date: 2015-10-26 07:30+0000\n"
-"Last-Translator: deepin_transifex <xiabin@linuxdeepin.com>\n"
+"PO-Revision-Date: 2015-12-18 16:35+0000\n"
+"Last-Translator: Ricardo Simões <xmcorporation@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/linuxdeepin/deepin-boot-maker/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -190,7 +190,7 @@ msgctxt "DWindowUI|"
 msgid ""
 "Installation logs are stored in %1HERE%2, you can upload to forum to help us"
 " solve your problem."
-msgstr ""
+msgstr "Históricos de instalação são guardados em %1HERE%2, pode enviar para o fórum para ajudar-nos a resolver o seu problema."
 
 #: ../src/ui/dwindowui.cpp:362
 msgctxt "DWindowUI|"
@@ -249,7 +249,7 @@ msgstr "Falha ao descomprimir o ficheiro mirror, por favor use o ficheiro mirror
 #: ../src/utils.cpp:18
 msgctxt "QObject|"
 msgid "Removable disk"
-msgstr ""
+msgstr "Disco removível"
 
 #: ../src/usbinstaller.cpp:66
 #, qt-format
