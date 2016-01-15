@@ -128,7 +128,6 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: ../src/ui/dusblist.cpp:12
-#: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "Périphérique USB non détecté"

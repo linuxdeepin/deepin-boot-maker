@@ -130,7 +130,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/ui/dusblist.cpp:12
-#: ../ui/dusblist.cpp:10
 msgctxt "DUsbList|"
 msgid "USB drive not detected"
 msgstr "Unidad USB no detectada"
