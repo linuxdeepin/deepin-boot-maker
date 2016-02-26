@@ -1,3 +1,12 @@
+/**
+ * Copyright (C) 2015 Deepin Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ **/
+
 #include "utils.h"
 
 #include <XSys>
@@ -83,8 +92,7 @@ bool CheckInstallDisk(const QString& targetDev) {
 
 bool isUsbDisk(const QString& dev) {
     QString out = XSys::FS::TmpFilePath("diskutil_isusb_out");
-    XSys::SynExec(
-        "bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
+    XSys::SynExec("bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
     QFile outfile(out);
     outfile.open(QIODevice::ReadOnly);
     QString info = outfile.readAll();

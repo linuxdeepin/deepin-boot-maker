@@ -4,20 +4,18 @@
         <file>blobs/syslinux/macosx/gfxboot.c32</file>
         <file>blobs/syslinux/macosx/menu.c32</file>
         <file>blobs/syslinux/macosx/vesamenu.c32</file>
-        <file>blobs/syslinux/mbr.bin</file>
-        <file>blobs/syslinux/chain.c32</file>
-        <file>blobs/syslinux/gfxboot.c32</file>
-        <file>blobs/syslinux/libcom32.c32</file>
-        <file>blobs/syslinux/libutil.c32</file>
-        <file>blobs/syslinux/menu.c32</file>
-        <file>blobs/syslinux/vesamenu.c32</file>
         <file>blobs/syslinux/syslinux.cfg</file>
-        <file>blobs/syslinux/syslinux.exe</file>
-        <file>blobs/syslinux/syslinux</file>
         <file>blobs/xfbinst/fb.cfg</file>
         <file>blobs/xfbinst/xfbinst</file>
         <file>blobs/xfbinst/xfbinst.exe</file>
         <file>blobs/sevnz/sevnz.dll</file>
         <file>blobs/sevnz/sevnz.exe</file>
+        <file>blobs/syslinux/win32/vesamenu.c32</file>
+        <file>blobs/syslinux/win32/chain.c32</file>
+        <file>blobs/syslinux/win32/gfxboot.c32</file>
+        <file>blobs/syslinux/win32/libcom32.c32</file>
+        <file>blobs/syslinux/win32/libutil.c32</file>
+        <file>blobs/syslinux/win32/menu.c32</file>
+        <file>blobs/syslinux/win32/syslinux.exe</file>
     </qresource>
 </RCC>

@@ -1,3 +1,12 @@
+/**
+ * Copyright (C) 2015 Deepin Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ **/
+
 #include "bootmaker.h"
 
 #include <XSys>
@@ -18,6 +27,11 @@
 #include <shellapi.h>
 #pragma comment(lib, "shell32.lib")
 #pragma comment(lib, "advapi32.lib")
+#endif
+
+#ifdef Q_OS_LINUX
+#include <unistd.h>
+#include <sys/reboot.h>
 #endif
 
 const QString AppTitle() {
@@ -155,7 +169,8 @@ void BootMaker::reboot() {
     ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
 #endif
 #ifdef Q_OS_LINUX
-    XSys::SynExec("init", "6 &");
+    sync();
+    ::reboot(RB_AUTOBOOT);
 #endif
 #ifdef Q_OS_MAC
     XSys::SynExec("shutdown", "-r now &");
@@ -187,14 +202,18 @@ bool BootMaker::checkInstallPara() {
 #ifdef Q_OS_LINUX
     // TODO: Mount it auto
     if(XSys::DiskUtil::MountPoint(m_DriverPath) == "") {
-        QMessageBox merrordevnotmountedmsgbx(this);
-        merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
-        merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
-        merrordevnotmountedmsgbx.setText(QString(tr("You must firstly mount the USB flash drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB flash drive.")).arg(m_DriverPath));
-        merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
-        merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
-        merrordevnotmountedmsgbx.exec();
-        return false;
+        QString mountPoint = XSys::FS::TmpFilePath("");
+        bool ret = XSys::DiskUtil::Mount(m_DriverPath, mountPoint);
+        if (!ret) {
+            QMessageBox merrordevnotmountedmsgbx(this);
+            merrordevnotmountedmsgbx.setIcon(QMessageBox::Warning);
+            merrordevnotmountedmsgbx.setWindowTitle(QString(tr("%1 not mounted")).arg(m_DriverPath));
+            merrordevnotmountedmsgbx.setText(QString(tr("You must firstly mount the USB flash drive %1 to a mountpoint. Most distributions will do this automatically after you remove and reinsert the USB flash drive.")).arg(m_DriverPath));
+            merrordevnotmountedmsgbx.setStandardButtons(QMessageBox::Ok);
+            merrordevnotmountedmsgbx.setButtonText(QMessageBox::Ok, tr("Ok"));
+            merrordevnotmountedmsgbx.exec();
+            return false;
+        }
     }
 #endif
 

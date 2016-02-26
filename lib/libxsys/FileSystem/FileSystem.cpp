@@ -1,3 +1,12 @@
+/**
+ * Copyright (C) 2015 Deepin Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ **/
+
 #include "FileSystem.h"
 
 #include <QDebug>
@@ -138,6 +147,27 @@ bool MoveDir(const QString &oldName, const QString &newName) {
 #ifdef Q_OS_UNIX
     //SynExec("sync", "");
 #endif
+}
+
+QString PathSearch(const QString& filename, const QStringList& pathlist) {
+    for (int i = 0; i < pathlist.length(); ++i ){
+        QDir path(pathlist.at(i));
+        QFile file(path.absoluteFilePath(filename));
+        if (file.exists()) {
+            return file.fileName();
+        }
+    }
+    return "";
+}
+
+QString SearchBin(const QString& binName) {
+    QStringList paths;
+    paths.push_back("/sbin/");
+    paths.push_back("/usr/sbin/");
+    paths.push_back("/bin/");
+    paths.push_back("/usr/bin/");
+    paths.push_back("/usr/local/bin/");
+    return PathSearch(binName, paths);
 }
 
 }

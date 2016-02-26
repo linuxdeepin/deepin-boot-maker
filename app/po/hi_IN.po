@@ -1,0 +1,258 @@
+# 
+# Translators:
+# AnandVivek, 2015
+# e2f_in_c3 <e2f_in_c3@outlook.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Deepin Boot Maker\n"
+"PO-Revision-Date: 2015-12-24 12:53+0000\n"
+"Last-Translator: e2f_in_c3 <e2f_in_c3@outlook.com>\n"
+"Language-Team: Hindi (India) (http://www.transifex.com/linuxdeepin/deepin-boot-maker/language/hi_IN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Qt-Contexts: true\n"
+
+#: ../src/bootmaker.cpp:53
+msgctxt "BootMaker|"
+msgid "Format error of USB flash drive"
+msgstr "USB फ्लैश ड्राइव की त्रुटि को फॉर्मैट करें। "
+
+#: ../src/bootmaker.cpp:54
+msgctxt "BootMaker|"
+msgid ""
+"Only FAT32 USB flash drive supported. Need to format? All partitions and "
+"data will be lost during formatting, please back up the data in advance."
+msgstr "केवल FAT32 USB फ्लैश ड्राइव को सपोर्ट किया गया। फॉर्मैट करने की जरूरत है? फॉर्मैटिंग के दौरान सभी पार्टिशन और डेटा खत्म हो जाएंगे, कृपया पहले ही डेटा का बैक-अप तैयार कर लें। "
+
+#: ../src/bootmaker.cpp:56
+msgctxt "BootMaker|"
+msgid "Format"
+msgstr "प्रारूप"
+
+#: ../src/bootmaker.cpp:57 ../src/bootmaker.cpp:137
+msgctxt "BootMaker|"
+msgid "Cancel"
+msgstr "रद्द करो"
+
+#: ../src/bootmaker.cpp:123 ../src/bootmaker.cpp:124
+msgctxt "BootMaker|"
+msgid "Please select an iso image"
+msgstr "कृपया एक iso इमेज चुनें। "
+
+#: ../src/bootmaker.cpp:133
+msgctxt "BootMaker|"
+msgid "Format USB flash drive"
+msgstr "USB फ्लैश ड्राइव को फॉर्मैट करें।"
+
+#: ../src/bootmaker.cpp:134
+msgctxt "BootMaker|"
+msgid ""
+"All data will be lost during formatting, please back up in advance and then "
+"press OK button."
+msgstr "फॉर्मैटिंग के दौरान सभी डेटा खत्म हो जाएंगे, कृपया पहले ही डेटा का बैक-अप तैयार कर लें और 'ओके' बटन पर क्लिक करें।  "
+
+#: ../src/bootmaker.cpp:136 ../src/bootmaker.cpp:177 ../src/bootmaker.cpp:198
+#: ../src/bootmaker.cpp:211 ../src/bootmaker.cpp:222
+msgctxt "BootMaker|"
+msgid "Ok"
+msgstr "ठीक है"
+
+#: ../src/bootmaker.cpp:174
+msgctxt "BootMaker|"
+msgid "Insert a USB flash drive"
+msgstr "एक USB फ्लैश ड्राइव इंसर्ट करें। "
+
+#: ../src/bootmaker.cpp:175
+msgctxt "BootMaker|"
+msgid ""
+"No USB flash drives were found. If you have already inserted a USB flash "
+"drive, try to reformat it as FAT32."
+msgstr "कोई USB फ्लैश ड्राइव्स नहीं मिला। यदि आपने पहले ही कोई USB फ्लैश ड्राइव इंसर्ट किया है, तो कृपया FAT32 रूप में फॉर्मैट करने का प्रयास करें। "
+
+#: ../src/bootmaker.cpp:195
+#, qt-format
+msgctxt "BootMaker|"
+msgid "%1 not mounted"
+msgstr "%1 नहीं उभरा"
+
+#: ../src/bootmaker.cpp:196
+#, qt-format
+msgctxt "BootMaker|"
+msgid ""
+"You must firstly mount the USB flash drive %1 to a mountpoint. Most "
+"distributions will do this automatically after you remove and reinsert the "
+"USB flash drive."
+msgstr "आपको अंतिम रूप से एक माउंट प्वाइंट पर USB फ्लैश ड्राइव %1 माउंट करना चाहिए। ज्यादातर वितरक आपके द्वारा USB हटाकर और फिर से इंसर्ट करने के बाद यह स्वचालित रूप से करेंगे। "
+
+#: ../src/bootmaker.cpp:208
+msgctxt "BootMaker|"
+msgid "Select a disk image file"
+msgstr "एक डिस्क इमेज फ़ाइल का चयन करें। "
+
+#: ../src/bootmaker.cpp:209
+msgctxt "BootMaker|"
+msgid "You must select a disk image file to load."
+msgstr "आपको लोड करने के लिए एक डिस्क इमेज फाइल चुनना होगा।  "
+
+#: ../src/bootmaker.cpp:219
+msgctxt "BootMaker|"
+msgid "Disk image file not found"
+msgstr "डिस्क इमेज फाइल नहीं मिला "
+
+#: ../src/bootmaker.cpp:220
+#, qt-format
+msgctxt "BootMaker|"
+msgid "The specified disk image file %1 does not exist."
+msgstr "वर्णित डिस्क इमेज फ़ाइल %1 मौजूद नहीं है। "
+
+#: ../src/ui/ddevicon.cpp:20
+msgctxt "DDevIcon|"
+msgid "Select USB drive"
+msgstr "USB ड्राइव चुनें।  "
+
+#: ../src/ui/dprogressframe.cpp:56
+msgctxt "DProgressFrame|"
+msgid "Select disk image"
+msgstr "डिस्क इमेज चुनें। "
+
+#: ../src/ui/dusblist.cpp:12
+msgctxt "DUsbList|"
+msgid "USB drive not detected"
+msgstr "USB ड्राइव नहीं मिला। "
+
+#: ../src/ui/dwindowui.cpp:124 ../src/ui/dwindowui.cpp:216
+#: ../src/ui/dwindowui.cpp:219
+#, qt-format
+msgctxt "DWindowUI|"
+msgid "<p style='color:white; font-size:12px;'>%1% has been completed</p>"
+msgstr "<p style='color:white; font-size:12px;'>%1% पूर्ण हुआ</p>"
+
+#: ../src/ui/dwindowui.cpp:131
+msgctxt "DWindowUI|"
+msgid "Please DO NOT remove the USB drive or shutdown while file is writing."
+msgstr "कृपया सम्पादन के समय कोई यूएसबी न निकालें या बंद न करें।"
+
+#: ../src/ui/dwindowui.cpp:142
+msgctxt "DWindowUI|"
+msgid ""
+"<p style='color:#b4b4b4; font-size:12px;'>The making success rate can be "
+"improved by formatting USB drive.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px;'>सफलता की दर यूएसबी ड्राइव को प्रारूपित करने से बढ़ता है।</p>"
+
+#: ../src/ui/dwindowui.cpp:153
+msgctxt "DWindowUI|"
+msgid "Start"
+msgstr "शुरू"
+
+#: ../src/ui/dwindowui.cpp:268
+msgctxt "DWindowUI|"
+msgid ""
+"<p style='color:#ffffff; font-weight:blod; font-size:18px'>Made "
+"successfully</p>"
+msgstr "<p style='color:#ffffff; font-weight:blod; font-size:18px'>सफलतापूर्वक हुआ</p>"
+
+#: ../src/ui/dwindowui.cpp:269
+msgctxt "DWindowUI|"
+msgid ""
+"<p style='color:#b4b4b4; font-size:12px'>Please select USB drive to boot "
+"when installing Deepin OS.</p>"
+msgstr "<p style='color:#b4b4b4; font-size:12px'>डीपिन OS को इंस्टॉल करते समय कृपया USB ड्राइव के बूट किए जाने का चयन करें।</p>"
+
+#: ../src/ui/dwindowui.cpp:273
+msgctxt "DWindowUI|"
+msgid ""
+"<a style='color:#b4b4b4; font-size:12px'>If failed, please try to disable "
+"EFI option.</a>"
+msgstr "<a style='color:#b4b4b4; font-size:12px'>विफल होने पर, लृपया EFI विकल्प को निष्क्रिय करने का प्रयास करें।</a>"
+
+#: ../src/ui/dwindowui.cpp:291
+msgctxt "DWindowUI|"
+msgid "Restart Later"
+msgstr "बाद में पुनः आरंभ करें"
+
+#: ../src/ui/dwindowui.cpp:293
+msgctxt "DWindowUI|"
+msgid "Restart Now"
+msgstr "अभी पुनः आरंभ करें"
+
+#: ../src/ui/dwindowui.cpp:335
+msgctxt "DWindowUI|"
+msgid "Failed to make"
+msgstr "बनाने में विफल "
+
+#: ../src/ui/dwindowui.cpp:351
+#, qt-format
+msgctxt "DWindowUI|"
+msgid ""
+"Installation logs are stored in %1HERE%2, you can upload to forum to help us"
+" solve your problem."
+msgstr "इंटॉलेशन लॉग्स %1HERE%2 में भंडारित है, आप अपनी समस्या के समाधान के लिए हमारी मदद हेतु फोरम पर अपलोड कर सकते हैं। "
+
+#: ../src/ui/dwindowui.cpp:362
+msgctxt "DWindowUI|"
+msgid "Finish"
+msgstr "समाप्त "
+
+#: ../src/bootmaker.cpp:24
+msgctxt "QObject|"
+msgid "Deepin Boot Maker"
+msgstr "डीपिन बूट निर्माता"
+
+#: ../src/main.cpp:83
+msgctxt "QObject|"
+msgid "Must run as root"
+msgstr "रूट के रूप में चलाना"
+
+#: ../src/main.cpp:85
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"%2 must be run as root. Close it, and re-run using either:<br/><b>sudo "
+"%1</b><br/>"
+msgstr "%2 रूट के रूप में रन करना चाहिए। इसे बंद करें और इसे इनकीमदद से फिर से रन करवाएं:<br/><b>sudo %1</b><br/>"
+
+#: ../src/usbinstaller.cpp:31
+#, qt-format
+msgctxt "QObject|"
+msgid "Failed to call the command %1."
+msgstr "कमांड %1 को कॉल करने में विफल रहा। "
+
+#: ../src/usbinstaller.cpp:33
+msgctxt "QObject|"
+msgid "Wrong USB flash drive format, please format to FAT32."
+msgstr "गलत USB फ्लैश ड्राइव फॉर्मैट, कृपया FAT32 के अनुरूप फॉर्मैट करें। "
+
+#: ../src/usbinstaller.cpp:35
+#, qt-format
+msgctxt "QObject|"
+msgid ""
+"USB flash drive space is insufficient, ensure you have at least %1 free "
+"space."
+msgstr "USB फ्लैश ड्राइव स्पेस अपर्याप्त है, ध्यान रखें कि आपके पास कम से कम %1 फ्री स्पेस होना चाहिए।"
+
+#: ../src/usbinstaller.cpp:37
+msgctxt "QObject|"
+msgid ""
+"Failed to mount USB flash drive, please close other applications may use it "
+"and reinsert."
+msgstr "USB फ्लैश ड्राइव को माउंट करने में विफल रहा, कृपया अन्य ऐप्लिकेशनों को बंद कर दें जो इसका इस्तेमाल कर सकते हैं और फिर इसे इंसर्ट करें।  "
+
+#: ../src/usbinstaller.cpp:39
+msgctxt "QObject|"
+msgid "Failed to unzip the mirror file, please use the whole mirror file."
+msgstr "मिरर फाइल को अनजिप करना विफल रहा, कृपया संपूर्ण मिरर फ़ाइल का इस्तेमाल करें।  "
+
+#: ../src/utils.cpp:18
+msgctxt "QObject|"
+msgid "Removable disk"
+msgstr "हटाए जाने योग्य डिस्क "
+
+#: ../src/usbinstaller.cpp:66
+#, qt-format
+msgctxt "UsbInstaller|"
+msgid "Installing syslinux to %1"
+msgstr "सिसलाइनक्स %1 पर इंस्टॉक हो रहा है। "

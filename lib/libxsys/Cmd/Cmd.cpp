@@ -1,3 +1,12 @@
+/**
+ * Copyright (C) 2015 Deepin Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ **/
+
 #include "Cmd.h"
 
 #include "../Common/Result.h"
@@ -19,7 +28,7 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
     app.setStandardInputFile(execPipeIn);
 //    app.setStandardOutputFile(outPipePath);
 //    app.setStandardErrorFile(outPipePath);
-    app.start(execPath + " " + execParam);
+    app.start("\""+execPath+"\"" + " " + execParam);
     if (!app.waitForStarted()) {
         qWarning()<<"Cmd Exec Failed:"<<app.errorString();
         return Result(Result::Faiiled, app.errorString(), "", app.program());

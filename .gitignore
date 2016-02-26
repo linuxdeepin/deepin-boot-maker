@@ -1,5 +1,6 @@
 build
 bin
+osx
 *~
 *.pro.user
 *.pro.user.*
@@ -7,3 +8,4 @@ bin
 *.ts
 *.qm
 .DS_Store
+debian

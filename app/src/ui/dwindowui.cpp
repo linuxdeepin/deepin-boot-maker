@@ -1,3 +1,12 @@
+/**
+ * Copyright (C) 2015 Deepin Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ **/
+
 #include "dwindowui.h"
 
 #include "dcombobox.h"
@@ -98,7 +107,7 @@ void DWindowUI::initUI() {
     logolayout->addWidget(logolabel);
     logolayout->setAlignment(logolabel, Qt::AlignCenter);
     logolayout->addSpacing(10);
-    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:600;'>%1 </a> <a style='color:white; font-size:8px;'>v1.0</a>").arg(AppTitle()));
+    QLabel *versionlabel = new QLabel(QString("<a style='color:white; font-size:14px;font-weight:600;'>%1 </a> <a style='color:white; font-size:8px;'>v1.1</a>").arg(AppTitle()));
     logolayout->addWidget(versionlabel);
     logolayout->setAlignment(versionlabel, Qt::AlignCenter);
 
@@ -317,7 +326,7 @@ extern QString g_LogDir;
 
 void DWindowUI::onLogLinkActivated(const QString &link) {
     if(link == "#show_log") {
-        QDesktopServices::openUrl(QUrl(g_LogDir));
+        QDesktopServices::openUrl(QUrl::fromLocalFile(g_LogDir));
     }
 }
 
@@ -346,8 +355,10 @@ void DWindowUI::switchToErrorUI() {
     m_FailedLayout->addWidget(failedHits);
     m_FailedLayout->setAlignment(failedHits, Qt::AlignHCenter);
 
-    QString log = "Installation logs are stored in <a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>HERE</span></a>, you can upload to forum to help us solve your problem.";
-    QLabel *logHits = new QLabel(hitsFormat.arg(log));
+    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
+    QString tagEnd = "</span></a>";
+    QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
+    QLabel *logHits = new QLabel(hitsFormat.arg(log.arg(tagBegin).arg(tagEnd)));
     logHits->setFixedWidth(240);
     logHits->setFixedHeight(50);
     logHits->setWordWrap(true);
