@@ -1,0 +1,16 @@
+Dtk--Widget--DLineEdit {
+    color: black;
+    border-radius: 3;
+    background-color: rgba(255, 255, 255, 26);/*use as outside border*/
+}
+
+Dtk--Widget--DLineEdit[alert="true"] QFrame#LineEditInsideFrame{
+    border-color: #FF8F00;
+}
+
+QFrame#LineEditInsideFrame {/*outside frame*/
+    background-color: rgba(255, 255, 255, 20%);
+    border: 1px solid;
+    border-radius: 3;
+    border-color: rgba(0, 0, 0, 20%);
+}

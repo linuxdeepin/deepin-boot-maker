@@ -1,0 +1,44 @@
+QAbstractSpinBox {
+    min-height: 22px;
+    color: #fff;
+    border-radius: 3;
+    padding-right: 53px;
+    background-color: rgba(255, 255, 255, 26);/*use as outside border*/
+}
+
+QFrame#SpinBoxInsideFrame {/*outside frame*/
+    background-color: rgba(0, 0, 0, 50);
+    border: 1px solid black;
+    border-radius: 3;
+}
+
+#SpinBox_ImageButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                    stop: 0 #50333333,
+                    stop: 1.0 #50000000);
+    border-left: 1px solid #AA111111;
+}
+
+QAbstractSpinBox[alert="true"] QFrame#SpinBoxInsideFrame{
+    border-color: #FF8F00;
+}
+
+QAbstractSpinBox::up-button {
+    border: none;
+    background: transparent;
+}
+
+QAbstractSpinBox::up-arrow {
+    border: none;
+    background: transparent;
+}
+
+QAbstractSpinBox::down-button {
+    border: none;
+    background: transparent;
+}
+
+QAbstractSpinBox::down-arrow {
+    border: none;
+    background: transparent;
+}

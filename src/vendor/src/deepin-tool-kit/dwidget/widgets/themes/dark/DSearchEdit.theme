@@ -1,0 +1,39 @@
+Dtk--Widget--DSearchEdit {
+    border-radius: 3;
+    background-color: rgba(255, 255, 255, 26);/*use as outside border*/
+}
+
+Dtk--Widget--DSearchEdit #SearchIcon {
+    background-color:transparent;
+    qproperty-normalPic:url(:/images/dark/images/search_normal.png);
+    qproperty-hoverPic:url(:/images/dark/images/search_hover.png);
+    qproperty-pressPic:url(:/images/dark/images/search_press.png);
+}
+
+Dtk--Widget--DSearchEdit #ClearIcon {
+    background-color:transparent;
+    qproperty-normalPic:url(:/images/dark/images/clear_content_normal.png);
+    qproperty-hoverPic:url(:/images/dark/images/clear_content_hover.png);
+    qproperty-pressPic:url(:/images/dark/images/clear_content_press.png);
+}
+
+Dtk--Widget--DSearchEdit #Edit {
+    background-color:transparent;
+    border-radius:0;
+    color:#fff;
+    border:none;
+    padding-right:15px;
+}
+
+Dtk--Widget--DSearchEdit QFrame#DEditInsideFrame {
+    background-color: rgba(0, 0, 0, 50);
+    border: 1px solid;
+    border-radius: 3;
+    border-color: black;
+}
+
+Dtk--Widget--DSearchEdit #PlaceHolder {
+    color:#525252;
+    margin:0 0 0 3px;
+    font-size:12px;
+}

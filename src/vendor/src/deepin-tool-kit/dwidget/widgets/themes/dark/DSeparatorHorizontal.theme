@@ -1,0 +1,11 @@
+Dtk--Widget--DSeparatorHorizontal QWidget#DSeparatorTopRec {
+    background-color: #99000000;
+    min-height: 1;
+    max-height: 1;
+}
+
+Dtk--Widget--DSeparatorHorizontal QWidget#DSeparatorBottomRec {
+    background-color: #0cffffff;
+    min-height: 1;
+    max-height: 1;
+}

@@ -1,0 +1,11 @@
+QWidget#DSeparatorTopRec {
+    background-color: #19000000;
+    min-height: 1;
+    max-height: 1;
+}
+
+QWidget#DSeparatorBottomRec {
+    background-color: #19000000;
+    min-height: 0;
+    max-height: 0;
+}

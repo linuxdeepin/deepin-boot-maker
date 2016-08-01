@@ -1,0 +1,112 @@
+Dtk--Widget--DComboBox {
+    border: 1px solid;
+    border-color: black;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+    color: #b4b4b4;
+    font-size: 12px;
+
+    qproperty-insensitiveTickImg: url(:/images/dark/images/tick_insensitive.png);
+    qproperty-hoverTickImg: url(:/images/dark/images/tick_hover.png);
+    qproperty-normalTickImg: url(:/images/dark/images/tick_normal.png);
+}
+
+Dtk--Widget--DComboBox:!editable, DComboBox::drop-down:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #272727,
+                                 stop: 1.0 #191919);
+    /*combobox-popup: 0;*/
+}
+
+/* DComboBox gets the "on" state when the popup is open */
+Dtk--Widget--DComboBox:!editable:on, DComboBox::drop-down:editable:on {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #181818,
+                                stop: 1.0 #282828);
+}
+
+QAbstractItemView#DComboBoxItemView {
+     border: 1px solid;
+     border-color: rgba(0,0,0,0.2);
+     selection-background-color: rgba(0,0,0,0.4);
+     background: #191919;
+     margin: 0;
+     font-size: 12pt;
+}
+
+QAbstractItemView#DComboBoxItemView::item {
+    min-height: 24;
+    color: #b4b4b4;
+}
+
+Dtk--Widget--DComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    width: 16px;
+
+    margin-right: 3;
+    border-top-right-radius: 3px; /* same radius as the DComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+Dtk--Widget--DComboBox::down-arrow {
+    image: url(:/images/dark/images/arrow_down_normal.png);
+}
+
+Dtk--Widget--DComboBox::down-arrow:hover {
+    image: url(:/images/dark/images/arrow_down_hover.png);
+}
+
+Dtk--Widget--FontDelegateItem, Dtk--Widget--ColorDelegateItem, Dtk--Widget--SimpleDelegateItem {
+    color: #b4b4b4;
+    font-size: 12px;
+
+    margin-left: 24;
+    margin-bottom: 3;
+}
+
+QFrame#DComboxInsideFrame {
+    background-color: transparent;
+    /*
+    border-top-width: 1px;
+    border-style: solid;
+    border-radius: 3;
+    border-top-color: rgba(255, 255, 255, 26);
+    */
+
+    border: 1px solid;
+    border-radius: 3px;
+    border-top-color: rgba(255,255,255,26);
+    border-left-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                        stop: 0 rgba(255,255,255,26),
+                                        stop: 1.0 rgba(255,255,255,5));
+
+    border-right-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                        stop: 0 rgba(255,255,255,26),
+                                        stop: 1.0 rgba(255,255,255,5));
+    border-bottom-color: rgba(255, 255, 255, 5);
+}
+
+Dtk--Widget--DComboBox:editable{
+    border: 2px solid transparent;
+    border-bottom: 1px solid #15FFFFFF;
+    padding: 0px 0px 1px 0px;
+    min-height: 21px;
+    background-color: rgba(255, 255, 255, 26);
+}
+
+QLineEdit {
+    background: transparent;
+    border-right: 1px solid rgba(255, 255, 255, 50);
+    margin-right: 3px;
+}
+
+Dtk--Widget--DComboBox[editable="true"] QFrame#DComboxInsideFrame {/*outside frame*/
+    background-color: rgba(0, 0, 0, 50);
+    border: 1px solid black;
+}
+
+Dtk--Widget--DComboBox[alert="true"] QFrame#DComboxInsideFrame{
+    border-color: #FF8F00;
+}

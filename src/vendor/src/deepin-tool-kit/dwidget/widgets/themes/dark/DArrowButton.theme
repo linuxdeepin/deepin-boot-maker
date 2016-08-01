@@ -1,0 +1,49 @@
+Dtk--Widget--ArrowButtonIcon {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+QLabel#ArrowButtonIconNormal[arrowButtonDirection="0"] {
+    background-image: url(:/images/dark/images/arrow_up_normal.png);
+}
+QLabel#ArrowButtonIconNormal[arrowButtonDirection="1"] {
+    background-image: url(:/images/dark/images/arrow_down_normal.png);
+}
+QLabel#ArrowButtonIconNormal[arrowButtonDirection="2"] {
+    background-image: url(:/images/dark/images/arrow_left_normal.png);
+}
+QLabel#ArrowButtonIconNormal[arrowButtonDirection="3"] {
+    background-image: url(:/images/dark/images/arrow_right_normal.png);
+}
+
+QLabel#ArrowButtonIconHover[arrowButtonDirection="0"] {
+    background-image: url(:/images/dark/images/arrow_up_hover.png);
+}
+
+QLabel#ArrowButtonIconHover[arrowButtonDirection="1"] {
+    background-image: url(:/images/dark/images/arrow_down_hover.png);
+}
+
+QLabel#ArrowButtonIconHover[arrowButtonDirection="2"] {
+    background-image: url(:/images/dark/images/arrow_left_hover.png);
+}
+
+QLabel#ArrowButtonIconHover[arrowButtonDirection="3"] {
+    background-image: url(:/images/dark/images/arrow_right_hover.png);
+}
+
+QLabel#ArrowButtonIconPress[arrowButtonDirection="0"] {
+    background-image: url(:/images/dark/images/arrow_up_press.png);
+}
+
+QLabel#ArrowButtonIconPress[arrowButtonDirection="1"] {
+    background-image: url(:/images/dark/images/arrow_down_press.png);
+}
+
+QLabel#ArrowButtonIconPress[arrowButtonDirection="2"] {
+    background-image: url(:/images/dark/images/arrow_left_press.png);
+}
+
+QLabel#ArrowButtonIconPress[arrowButtonDirection="3"] {
+    background-image: url(:/images/dark/images/arrow_right_press.png);
+}

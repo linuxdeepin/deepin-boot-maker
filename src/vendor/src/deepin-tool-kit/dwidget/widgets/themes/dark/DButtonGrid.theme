@@ -1,0 +1,57 @@
+Dtk--Widget--DButtonGrid {
+    background-color: transparent;
+    border: none;
+}
+
+Dtk--Widget--DButtonGrid QFrame{
+    background-color: transparent;
+}
+
+Dtk--Widget--DButtonGrid QFrame QPushButton{
+    background-color: rgba(0, 0, 0, 0);
+    color: #b4b4b4;
+    border: none;
+    font-size: 12px;
+}
+
+Dtk--Widget--DButtonGrid QFrame QPushButton:hover{
+    color: white;
+}
+
+Dtk--Widget--DButtonGrid QFrame QPushButton:pressed{
+    color: white;
+}
+
+Dtk--Widget--DButtonGrid QFrame QPushButton:checked{
+    color: #19A9F9;
+    background-color: #66000000;
+    border-radius: 3px;
+    border: none;
+}
+
+QLabel#IconLabel[state = "normal"]{
+    border: 1px solid #b4b4b4;
+}
+
+
+QLabel#IconLabel[state = "hover"]{
+     border: 1px solid #FFFFFF;
+}
+
+QLabel#IconLabel[state = "checked"]{
+    border: 1px solid #01BDFF;
+}
+
+
+QLabel#TextLabel[state = "normal"]{
+    color: #b4b4b4;
+}
+
+
+QLabel#TextLabel[state = "hover"]{
+     color: #FFFFFF;
+}
+
+QLabel#TextLabel[state = "checked"]{
+    color: #01BDFF;
+}

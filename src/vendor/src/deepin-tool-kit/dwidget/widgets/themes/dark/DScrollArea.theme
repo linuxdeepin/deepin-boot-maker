@@ -1,0 +1,8 @@
+Dtk--Widget--DScrollArea{
+    border: none;
+    background: transparent;
+}
+
+Dtk--Widget--DScrollArea::corner{
+    background-color: transparent;
+}

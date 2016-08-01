@@ -1,0 +1,143 @@
+Dtk--Widget--DDialog{
+    qproperty-backgroundColor: white;
+    qproperty-borderColor: rgba(0, 0, 0, 0.2);
+}
+
+QFrame#ButtonFrame{
+    border:1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+QPushButton#MinimizeButton{
+    border-image: url(":/images/light/dialogs/images/light_minimise_small_normal.png")
+}
+
+QPushButton#MinimizeButton:hover{
+    border-image: url(":/images/light/dialogs/images/light_minimise_small_hover.png")
+}
+
+
+QPushButton#MinimizeButton:pressed{
+    border-image: url(":/images/light/dialogs/images/light_minimise_small_press.png")
+}
+
+QPushButton#CloseButton{
+    border-image: url(":/images/light/images/window_close_normal.png")
+}
+
+QPushButton#CloseButton:hover{
+    border-image: url(":/images/light/images/window_close_hover.png")
+}
+
+
+QPushButton#CloseButton:pressed{
+    border-image: url(":/images/light/images/window_close_press.png")
+}
+
+QPushButton#NormalButton{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    color: white;
+    text-align: center;
+}
+
+QPushButton#NormalButton:hover{
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+QPushButton#NormalButton:pressed{
+    background-color: transparent;
+    color: #01bdff;
+}
+
+QPushButton#ActionButton{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    color: #303030;
+    text-align: center;
+}
+
+QPushButton#ActionButton:hover{
+    background-color: rgba(0, 0, 0, 0.01);
+    color: #000000;
+}
+
+QPushButton#ActionButton:pressed{
+    background-color: rgba(0, 0, 0, 0.03);;
+    color: #2ca7f8;
+}
+
+QPushButton#ConflictButton{
+    background-color: transparent;
+    border:none;
+    color: white;
+    text-align: center;
+}
+
+QPushButton#ConflictButton:checked{
+    background-color: #ff9327;
+}
+
+
+QLabel#VLine{
+    background-color:rgba(0, 0, 0, 0.1);
+}
+
+QCheckBox{
+  color: white;
+}
+
+QCheckBox::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/images/light/dialogs/images/light_check.png);
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/images/light/dialogs/images/check_focus.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/images/light/dialogs/images/light_check_checked.png);
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/images/light/dialogs/images/light_check_checked_hover.png);
+}
+
+QLabel#TitleLabel{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #000000;
+}
+
+QLabel#MessageLabel{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #e96d00;
+    font-size: 12px;
+}
+
+QLabel#TaskTitleLabel{
+   padding-top: 2px;
+   padding-bottom: 2px;
+   font-size: 10px;
+   color: #b4b4b4;
+}
+
+QLabel#titleLable{
+  color: white;
+  font-size: 12px;
+}
+
+QListWidget{
+    background-color: transparent;
+}

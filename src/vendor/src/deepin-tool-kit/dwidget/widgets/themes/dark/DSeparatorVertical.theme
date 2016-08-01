@@ -1,0 +1,11 @@
+Dtk--Widget--DSeparatorVertical QWidget#DSeparatorLeftRec {
+    background-color: #99000000;
+    min-width: 1;
+    max-width: 1;
+}
+
+Dtk--Widget--DSeparatorVertical QWidget#DSeparatorRightRec {
+    background-color: #0cffffff;
+    min-width: 1;
+    max-width: 1;
+}

@@ -1,0 +1,28 @@
+Dtk--Widget--DBaseButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                            stop: 0 #272727,
+                            stop: 1.0 #191919);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3;
+    border-color: rgba(0, 0, 0, 255);
+}
+
+Dtk--Widget--DBaseButton:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                        stop: 0 #181818,
+                        stop: 1.0 #282828);
+}
+
+Dtk--Widget--DBaseButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+
+QFrame#ButtonInsideFrame {
+    background-color: transparent;
+    border-top-width: 1px;
+    border-style: solid;
+    border-radius: 3;
+    border-top-color: rgba(255, 255, 255, 26);
+}

@@ -1,0 +1,15 @@
+#DIpv4LineEdit_Edit{
+    border: none;
+    background: transparent;
+    color: #fff;
+}
+
+#DIpv4LineEdit_Label{
+    color: #fff;
+}
+
+Dtk--Widget--DIpv4LineEdit{
+    color: transparent;
+    selection-background-color: transparent;
+    selection-color: transparent;
+}

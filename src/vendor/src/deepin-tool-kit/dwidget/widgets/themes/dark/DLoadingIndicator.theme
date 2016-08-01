@@ -1,0 +1,5 @@
+Dtk--Widget--DLoadingIndicator {
+    background: transparent;
+    qproperty-backgroundColor: transparent;
+    border: none;
+}

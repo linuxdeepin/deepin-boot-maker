@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/arrow_right_white.png</file>
+        <file>images/arrow_right_press.png</file>
+        <file>images/arrow_right_normal.png</file>
+        <file>images/arrow_right_hover.png</file>
+        <file>images/arrow_left_white.png</file>
+        <file>images/arrow_left_press.png</file>
+        <file>images/arrow_left_normal.png</file>
+        <file>images/arrow_left_hover.png</file>
+        <file>images/deepin-logo.png</file>
+    </qresource>
+</RCC>

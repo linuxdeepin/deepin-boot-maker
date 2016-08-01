@@ -1,0 +1,4 @@
+QLabel#DHeaderLineTitle {
+    color: #474747;
+    font-size: 12px
+}

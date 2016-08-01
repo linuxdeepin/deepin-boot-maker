@@ -1,0 +1,210 @@
+Dtk--Widget--DDialog{
+    qproperty-backgroundColor: rgba(0, 0, 0, 0.8);
+    qproperty-borderColor: rgba(255, 255, 255, 0.2);
+}
+
+QFrame#ButtonFrame{
+    border:1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+QPushButton#MinimizeButton{
+    border-image: url(":/images/dark/dialogs/images/dark_minimise_small_normal.png")
+}
+
+QPushButton#MinimizeButton:hover{
+    border-image: url(":/images/dark/dialogs/images/dark_minimise_small_hover.png")
+}
+
+
+QPushButton#MinimizeButton:pressed{
+    border-image: url(":/images/dark/dialogs/images/dark_minimise_small_press.png")
+}
+
+QPushButton#CloseButton{
+    border-image: url(":/images/dark/dialogs/images/dark_close_small_normal.png")
+}
+
+QPushButton#CloseButton:hover{
+    border-image: url(":/images/dark/dialogs/images/dark_close_small_hover.png")
+}
+
+
+QPushButton#CloseButton:pressed{
+    border-image: url(":/images/dark/dialogs/images/dark_close_small_press.png")
+}
+
+QPushButton#NormalButton{
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    color: white;
+    text-align: center;
+}
+
+QPushButton#NormalButton:hover{
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+QPushButton#NormalButton:pressed{
+    background-color: transparent;
+    color: #01bdff;
+}
+
+QPushButton#ActionButton{
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    color: white;
+    text-align: center;
+}
+
+QPushButton#ActionButton:hover{
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+QPushButton#ActionButton:pressed{
+    background-color: transparent;
+    color: #01bdff;
+}
+
+QPushButton#ConflictButton{
+    background-color: transparent;
+    border:none;
+    color: white;
+    text-align: center;
+}
+
+QPushButton#ConflictButton:checked{
+    background-color: #ff9327;
+}
+
+
+QLabel#VLine{
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
+QCheckBox{
+  color: white;
+}
+
+QCheckBox::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/images/dark/dialogs/images/dark_check.png);
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/images/dark/dialogs/images/check_focus.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/images/dark/dialogs/images/dark_check_checked.png);
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/images/dark/dialogs/images/dark_check_checked_hover.png);
+}
+
+QLabel#TitleLabel{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
+}
+
+QLabel#MessageLabel{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #ffa530;
+}
+
+QLabel#TaskTitleLabel{
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 10px;
+  color: #b4b4b4;
+}
+
+QLabel#titleLable{
+  color: white;
+  font-size: 12px;
+}
+
+QListWidget{
+    background-color: transparent;
+}
+
+/*******************QScrollBar*****************************/
+QScrollBar:vertical {
+    border: none;
+    width: 5px;
+    margin: 0px 0px 0px 0px;
+    background: transparent;
+}
+QScrollBar::handle:vertical {
+    background: rgba(255, 255, 255, 0.5);
+    min-height: 5px;
+}
+
+QScrollBar::add-line:vertical {
+    background: #252A31;
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    background: #252A31;
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+/*QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    width: 3px;
+    height: 3px;
+    background: #31394E;
+}*/
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+
+QScrollBar:horizontal {
+    border: none;
+    background: transparent;
+    height: 5px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:horizontal {
+    background: rgba(255, 255, 255, 0.5);
+    min-width: 5px;
+}
+QScrollBar::add-line:horizontal {
+    background: #252A31;
+    width: 0px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    background: #252A31;
+    width: 0px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+/*QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    width: 3px;
+    height: 3px;
+    background: #31394E;
+}*/
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}

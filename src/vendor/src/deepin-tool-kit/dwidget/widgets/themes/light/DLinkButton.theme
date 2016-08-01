@@ -1,0 +1,12 @@
+Dtk--Widget--DLinkButton {
+    background-color:transparent;
+    border:none;
+    color:#b4b4b4;
+}
+
+Dtk--Widget--DLinkButton:hover {
+    color:#01BDFF;
+}
+
+Dtk--Widget--DLinkButton:pressed {
+}

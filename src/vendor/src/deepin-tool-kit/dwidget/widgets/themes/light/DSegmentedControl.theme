@@ -1,0 +1,31 @@
+Dtk--Widget--DSegmentedControl#DSegmentedControl{
+    border: 1px double black;
+    border-radius: 3px;
+    border-bottom-color: #22FFFFFF;
+
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                    stop: 0 #191919, stop: 0.2 #1e1e1e, stop: 1 #1e1e1e);
+    min-height: 24px;
+    max-height: 24px;
+}
+
+Dtk--Widget--DSegmentedControl  Dtk--Widget--DSegmentedHighlight#Highlight{
+    background-color: #101010;
+}
+
+Dtk--Widget--DSegmentedControl QToolButton#Segmented:enabled{
+    color: #C0C0C0;
+    padding-bottom: 2px;
+}
+
+Dtk--Widget--DSegmentedControl QToolButton#Segmented:hover{
+    color: white;
+}
+
+Dtk--Widget--DSegmentedControl QToolButton#Segmented{
+    background: transparent;
+    color: #19A9F9;
+    font-size: 12px;
+    border: none;
+    padding-bottom: 2px;
+}

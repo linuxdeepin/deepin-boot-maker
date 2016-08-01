@@ -1,0 +1,61 @@
+Dtk--Widget--DSlider {
+    qproperty-tipColor: #505050;
+    qproperty-scaleColor: #505050;
+    qproperty-hoverValueColor: #B4B4B4;
+}
+
+/*************************************For Round Handle***************************************/
+Dtk--Widget--DSlider::groove[handleType="1"] {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-width: 0px 2px 1px 2px;
+    border-image: url(:/images/dark/images/slider_bg.png)  0 2 1 2 stretch;
+    height: 8px;
+}
+
+Dtk--Widget--DSlider::handle[handleType="1"] {
+    background: url(:/images/dark/images/slider_handle.svg);
+    width: 18px;
+    height: 18px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 6px;
+}
+
+Dtk--Widget--DSlider::add-page:horizontal[handleType="1"] {
+    border-width: 0px 2px 1px 2px;
+    border-image: url(:/images/dark/images/slider_bg.png)  0 2 1 2 stretch;
+    margin-right: 10px;
+    height: 8px;
+}
+
+Dtk--Widget--DSlider::sub-page[handleType="1"] {
+    border-width: 0px 2px 0px 2px;
+    border-image: url(:/images/dark/images/slider_bg_active.png)  0 2 0 2 stretch;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    margin-left: 10;
+    height: 6px;
+}
+
+/*************************************For Sharp Handle***************************************/
+Dtk--Widget--DSlider::groove[handleType="0"] {
+    margin-left: 9px;
+    margin-right: 9px;
+    border-width: 0px 2px 1px 2px;
+    border-image: url(:/images/dark/images/slider_bg.png)  0 2 1 2 stretch;
+    height: 8px;
+}
+
+Dtk--Widget--DSlider::handle[handleType="0"] {
+    background: url(:/images/dark/images/slider_balance.png);
+    width: 16px;
+    height: 20px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+    margin-left: -9px;
+    margin-right: -9px;
+}
+

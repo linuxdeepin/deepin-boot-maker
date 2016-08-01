@@ -1,0 +1,11 @@
+Dtk--Widget--DWindowMaxButton[isMaximized=true] {
+    qproperty-normalPic: url(:/images/light/images/window_unmax_normal.png);
+    qproperty-hoverPic: url(:/images/light/images/window_unmax_hover.png);
+    qproperty-pressPic: url(:/images/light/images/window_unmax_press.png);
+}
+
+Dtk--Widget--DWindowMaxButton[isMaximized=false] {
+    qproperty-normalPic: url(:/images/light/images/window_max_normal.png);
+    qproperty-hoverPic: url(:/images/light/images/window_max_hover.png);
+    qproperty-pressPic: url(:/images/light/images/window_max_press.png);
+}

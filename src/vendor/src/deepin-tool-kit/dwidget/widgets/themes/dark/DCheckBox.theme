@@ -1,0 +1,41 @@
+Dtk--Widget--DCheckBox {
+    spacing: 5px;
+    color: #CCCCCC;
+    font-size: 12px;
+}
+
+Dtk--Widget--DCheckBox:hover {
+    color: white;
+}
+
+Dtk--Widget--DCheckBox::indicator:unchecked {
+    image: url(:/images/dark/images/checkbox_unchecked.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:unchecked:hover {
+    image: url(:/images/dark/images/checkbox_unchecked_hover.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:unchecked:pressed {
+    image: url(:/images/dark/images/checkbox_unchecked_hover.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:unchecked:!enabled {
+    image: url(:/images/dark/images/checkbox_unchecked_insensitive.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:checked {
+    image: url(:/images/dark/images/checkbox_checked.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:checked:hover {
+    image: url(:/images/dark/images/checkbox_checked_hover.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:checked:pressed {
+    image: url(:/images/dark/images/checkbox_checked_hover.png);
+}
+
+Dtk--Widget--DCheckBox::indicator:checked:!enabled {
+    image: url(:/images/dark/images/checkbox_checked_insensitive.png);
+}

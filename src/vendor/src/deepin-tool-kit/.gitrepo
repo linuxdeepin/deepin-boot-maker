@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://cr.deepin.io/deepin-tool-kit
+	branch = master
+	commit = 585db3cf16df359912c37168917ed4ae67700a09
+	parent = 1ecf4252bbffef6f22333f7607e2c6b8ea592d06
+	cmdver = 0.3.0

@@ -1,0 +1,4 @@
+Dtk--Widget--DImageButton:disabled {
+    border: none;
+    background: transparent;
+}

@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>po/am.qm</file>
+        <file>po/cs.qm</file>
+        <file>po/de_DE.qm</file>
+        <file>po/en_US.qm</file>
+        <file>po/es.qm</file>
+        <file>po/es_CL.qm</file>
+        <file>po/es_MX.qm</file>
+        <file>po/fr.qm</file>
+        <file>po/it.qm</file>
+        <file>po/nb.qm</file>
+        <file>po/pt_BR.qm</file>
+        <file>po/pt_PT.qm</file>
+        <file>po/ru.qm</file>
+        <file>po/tr.qm</file>
+        <file>po/zh_CN.qm</file>
+        <file>po/zh_TW.qm</file>
+    </qresource>
+</RCC>

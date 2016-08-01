@@ -1,0 +1,4 @@
+Dtk--Widget--DLoadingIndicator {
+    qproperty-backgroundColor: #CCC;
+    border: 0px;
+}

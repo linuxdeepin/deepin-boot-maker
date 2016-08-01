@@ -1,0 +1,26 @@
+Dtk--Widget--DCalendar {
+    qproperty-backgroundColor:#242526;
+    qproperty-backgroundCircleColor:#00b1e9;
+    qproperty-defaultTextColor:#eee;
+    qproperty-defaultLunarColor:#00f2e9;
+    qproperty-weekendsTextColor:cyan;
+}
+
+Dtk--Widget--DCalendar QPushButton{
+    background-color:#242526;
+    color:white;
+}
+
+Dtk--Widget--DCalendar QLineEdit{
+    background-color:#242526;
+    color:white;
+}
+
+Dtk--Widget--DCalendar QLabel{
+    color:white;
+}
+
+Dtk--Widget--DCalendar QHeaderView::section{
+    background-color:#272829;
+    color:#eee;
+}

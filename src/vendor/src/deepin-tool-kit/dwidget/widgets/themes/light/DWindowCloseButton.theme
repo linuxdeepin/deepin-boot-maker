@@ -1,0 +1,5 @@
+Dtk--Widget--DWindowCloseButton {
+    qproperty-normalPic: url(:/images/light/images/window_close_normal.png);
+    qproperty-hoverPic: url(:/images/light/images/window_close_hover.png);
+    qproperty-pressPic: url(:/images/light/images/window_close_press.png);
+}

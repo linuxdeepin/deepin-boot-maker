@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -x
+
+pushd `dirname $0` > /dev/null
+SCRIPTPATH=$(pwd -P)
+popd > /dev/null
+
+WORK_PATH=${SCRIPTPATH}
+INCLUDE_PATH=${WORK_PATH}/include
+LIB_PATH=${WORK_PATH}/lib
+
+#build dtk
+mkdir ${WORK_PATH}/src/deepin-tool-kit/build || true
+cd ${WORK_PATH}/src/deepin-tool-kit/build
+qmake -r CONFIG+=staticlib LIB_INSTALL_DIR=${LIB_PATH} INCLUDE_INSTALL_DIR=${INCLUDE_PATH} ..
+make -j 4
+make install
+cd ${WORK_PATH}

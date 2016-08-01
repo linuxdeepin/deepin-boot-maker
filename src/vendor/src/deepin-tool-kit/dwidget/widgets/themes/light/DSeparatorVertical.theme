@@ -1,0 +1,11 @@
+QWidget#DSeparatorLeftRec {
+    background-color: #19000000;
+    min-width: 1;
+    max-width: 1;
+}
+
+QWidget#DSeparatorRightRec {
+    background-color: #19000000;
+    min-width: 0;
+    max-width: 0;
+}
