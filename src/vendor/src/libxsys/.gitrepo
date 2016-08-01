@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:Iceyer/libxsys.git
+	branch = master
+	commit = d67cd7b0a4a918a4b9705dc7fa67ef1d8c2e756e
+	parent = 6589ed1afe9ee45dcb6ba2a07d99fef4998914c5
+	cmdver = 0.3.0
