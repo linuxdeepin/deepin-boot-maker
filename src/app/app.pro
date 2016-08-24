@@ -7,12 +7,21 @@ TARGET = deepin-boot-maker
 QT += core gui widgets
 
 RESOURCES +=  \
-    blobs.qrc \
+    blob.qrc \
 #    tranlate.qrc \
 
+HEADERS += \
+    bmwindow.h \
+    backend/bootmaker.h \
+    view/isoselectview.h \
+    util/sevenzip.h
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    bmwindow.cpp \
+    backend/bootmaker.cpp \
+    view/isoselectview.cpp \
+    util/sevenzip.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
@@ -34,4 +43,5 @@ TRANSLATIONS += po/en_US.ts \
 #################################################
 #    Auto Lib Ref
 #################################################
+
 
