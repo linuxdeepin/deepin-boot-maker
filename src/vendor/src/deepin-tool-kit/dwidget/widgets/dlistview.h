@@ -24,8 +24,8 @@ class DVariantListModel : public QAbstractListModel
 public:
     explicit DVariantListModel(QObject *parent = 0);
 
-    int rowCount(const QModelIndex & parent = QModelIndex()) const Q_DECL_OVERRIDE;
-    QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
     bool setData(const QModelIndex &index, const QVariant &value, int role) Q_DECL_OVERRIDE;
 
     bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
@@ -61,7 +61,7 @@ public:
 
     Qt::Orientation orientation() const;
 
-    void setModel(QAbstractItemModel * model) Q_DECL_OVERRIDE;
+    void setModel(QAbstractItemModel *model) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     bool addItem(const QVariant &data);
@@ -82,7 +82,7 @@ public Q_SLOTS:
     void edit(const QModelIndex &index);
 
 Q_SIGNALS:
-    void countChanged(int count) Q_DECL_DEPRECATED;
+    Q_DECL_DEPRECATED void countChanged(int count);
     void rowCountChanged();
     void orientationChanged(Qt::Orientation orientation);
     void currentChanged(const QModelIndex &previous);
@@ -96,8 +96,8 @@ protected:
 #endif
 
     void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
-    void currentChanged(const QModelIndex & current, const QModelIndex & previous) Q_DECL_OVERRIDE;
-    bool edit(const QModelIndex & index, EditTrigger trigger, QEvent * event) Q_DECL_OVERRIDE;
+    void currentChanged(const QModelIndex &current, const QModelIndex &previous) Q_DECL_OVERRIDE;
+    bool edit(const QModelIndex &index, EditTrigger trigger, QEvent *event) Q_DECL_OVERRIDE;
 
 private:
     void setFlow(QListView::Flow flow);

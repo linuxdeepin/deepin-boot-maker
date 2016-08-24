@@ -12,7 +12,10 @@ unix{
     QT += x11extras dbus
     CONFIG += link_pkgconfig
 }
-DEFINES += STATIC_LIB
+
+win32* {
+    DEFINES += STATIC_LIB
+}
 
 SOURCES += main.cpp\
     mainwindow.cpp \
@@ -82,3 +85,7 @@ else:unix: LIBS += -L$$OUT_PWD/../../../dutil/ -ldtkutil
 INCLUDEPATH += $$PWD/../../../dutil
 INCLUDEPATH += $$PWD/../../../dutil/dlog
 DEPENDPATH += $$PWD/../../../dutil
+
+unix:QMAKE_RPATHDIR += $$OUT_PWD/../../../dbase/
+unix:QMAKE_RPATHDIR += $$OUT_PWD/../../../dutil/
+unix:QMAKE_RPATHDIR += $$OUT_PWD/../../../dwidget/

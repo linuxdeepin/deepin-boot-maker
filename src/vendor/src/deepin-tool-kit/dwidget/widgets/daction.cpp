@@ -56,22 +56,29 @@ DAction::~DAction()
 {
     D_D(DAction);
 
-    if(d->menu)
+    if (d->menu) {
         d->menu->deleteLater();
+    }
 }
 
 DMenu *DAction::menu() const
 {
+#ifdef Q_OS_LINUX
     D_DC(DAction);
-
     return d->menu;
+#else
+    return qobject_cast<DMenu *>(QAction::menu());
+#endif
 }
 
 void DAction::setMenu(DMenu *menu)
 {
+#ifdef Q_OS_LINUX
     D_D(DAction);
-
     d->menu = menu;
+#else
+    QAction::setMenu(menu);
+#endif
 }
 
 DWIDGET_END_NAMESPACE

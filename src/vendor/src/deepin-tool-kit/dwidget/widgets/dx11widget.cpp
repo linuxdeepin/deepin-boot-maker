@@ -7,13 +7,11 @@
 #include <QLayout>
 #include <QTemporaryFile>
 #include <QImage>
-
-
-#include <QGraphicsDropShadowEffect>
-#include <QGraphicsEffect>
+#include <QPainter>
+#include <QGuiApplication>
+#include <QWindow>
 
 #include <DObjectPrivate>
-#include <DGraphicsDropShadowEffect>
 #include <DTitlebar>
 
 #include "private/dwidget_p.h"
@@ -21,6 +19,8 @@
 #ifdef Q_OS_LINUX
 #include "../platforms/x11/xutil.h"
 #endif
+
+#include "dutility.h"
 
 DWIDGET_BEGIN_NAMESPACE
 
@@ -30,12 +30,15 @@ const int WindowBorder = 1;
 const int WindowHandleWidth = 10;
 
 const QColor BorderColor = QColor(0, 0, 0, 60);
-const QColor ShadowColor = QColor(0, 0, 0, 40);
 const QColor BackgroundTopColor = QColor(255, 255, 255);
 const QColor BackgroundBottonColor = QColor(255, 255, 255);
 
 const QColor TipsBorderColor = QColor(255, 255, 255, 255 * 0.2);
 const QColor TipsBackground = QColor(0, 0, 0);
+
+/// shadow
+#define SHADOW_COLOR_NORMAL QColor(0, 0, 0, 255 * 0.15)
+#define SHADOW_COLOR_ACTIVE QColor(0, 0, 0, 255 * 0.3)
 
 DX11WidgetPrivate::DX11WidgetPrivate(DX11Widget *q) : DObjectPrivate(q)
 {
@@ -52,19 +55,18 @@ void DX11WidgetPrivate::init()
                    Qt::WindowCloseButtonHint | Qt::WindowFullscreenButtonHint;
     m_NormalShadowWidth = WindowGlowRadius;
     m_ShadowWidth = WindowGlowRadius;
+    shadowColor = SHADOW_COLOR_ACTIVE;
+    shadowOffset = QPoint(0, 10);
     m_Radius = WindowRadius;
     m_Border = WindowBorder;
     m_ResizeHandleWidth = WindowHandleWidth;
     m_MousePressed = false;
-    m_Shadow = nullptr;
     m_backgroundColor = BackgroundTopColor;
 
     rootLayout = new QVBoxLayout(q);
-    rootLayout->setContentsMargins(WindowGlowRadius,
-                                   WindowGlowRadius + m_Border,
-                                   WindowGlowRadius,
-                                   WindowGlowRadius);
+
     rootLayout->setSpacing(0);
+    updateContentsMargins();
 
     windowWidget = new QWidget;
     QVBoxLayout *windowLayout = new QVBoxLayout(windowWidget);
@@ -80,34 +82,39 @@ void DX11WidgetPrivate::init()
     contentWidgetLayout->setMargin(0);
     contentWidget->setLayout(contentWidgetLayout);
     contentWidget->setContentsMargins(m_Border, 0, m_Border, m_Border);
+    contentWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
     windowLayout->addWidget(titlebar);
     windowLayout->addWidget(contentWidget);
-    windowLayout->setAlignment(contentWidget, Qt::AlignCenter);
 
     auto filter = new FilterMouseMove(windowWidget);
     windowWidget->installEventFilter(filter);
     filter->m_rootWidget = q;
 
-    q->connect(titlebar, &DTitlebar::closeClicked, q, &DX11Widget::close);
-    q->connect(titlebar, &DTitlebar::maximumClicked, q, &DX11Widget::showMaximized);
-    q->connect(titlebar, &DTitlebar::restoreClicked, q, &DX11Widget::showNormal);
-    q->connect(titlebar, &DTitlebar::minimumClicked, q, &DX11Widget::showMinimized);
     q->connect(titlebar, &DTitlebar::optionClicked, q, &DX11Widget::optionClicked);
     q->connect(titlebar, &DTitlebar::mouseMoving, q, &DX11Widget::moveWindow);
-    q->connect(titlebar, &DTitlebar::doubleClicked, q, &DX11Widget::showMaximized);
+
+    q->connect(titlebar, SIGNAL(mousePressed(Qt::MouseButtons)), q, SLOT(_q_onTitleBarMousePressed(Qt::MouseButtons)));
+
+    q->connect(qApp, &QGuiApplication::focusWindowChanged, q, [q] {
+        if (q->isActiveWindow())
+        {
+            q->setShadowColor(SHADOW_COLOR_ACTIVE);
+        } else {
+            q->setShadowColor(SHADOW_COLOR_NORMAL);
+        }
+    });
 }
 
 QSize DX11WidgetPrivate::externSize(const QSize &size) const
 {
-    D_QC(DX11Widget);
     return QSize(size.width() + (m_ShadowWidth + m_Border) * 2,
                  size.height() + (m_ShadowWidth + m_Border) * 2);
 }
 
 QMargins DX11WidgetPrivate::externMargins() const
 {
-    return QMargins(m_ShadowWidth + m_Border, m_ShadowWidth + m_Border,
-                    m_ShadowWidth + m_Border, m_ShadowWidth + m_Border);
+    return rootLayout->contentsMargins() + contentWidget->contentsMargins();
 }
 
 int DX11WidgetPrivate::externWidth() const
@@ -115,12 +122,32 @@ int DX11WidgetPrivate::externWidth() const
     return m_ShadowWidth + m_Border;
 }
 
+void DX11WidgetPrivate::updateContentsMargins()
+{
+    rootLayout->setContentsMargins(m_ShadowWidth - shadowOffset.x(),
+                                   m_ShadowWidth + m_Border - shadowOffset.y(),
+                                   m_ShadowWidth + shadowOffset.x(),
+                                   m_ShadowWidth + shadowOffset.y());
+}
+
+void DX11WidgetPrivate::_q_onTitleBarMousePressed(Qt::MouseButtons buttons) const
+{
+#ifdef Q_OS_LINUX
+    D_QC(DX11Widget);
+
+    if (buttons != Qt::LeftButton)
+        XUtils::CancelMoveWindow(q, Qt::LeftButton);
+#else
+    Q_UNUSED(buttons);
+#endif
+}
+
 DX11Widget::DX11Widget(QWidget *parent): DX11Widget(*new DX11WidgetPrivate(this), parent)
 {
 
 }
 
-DX11Widget::DX11Widget(DObjectPrivate &dd, QWidget *parent)
+DX11Widget::DX11Widget(DX11WidgetPrivate &dd, QWidget *parent)
     : QWidget(parent), DObject(dd)
 {
     D_D(DX11Widget);
@@ -132,7 +159,6 @@ DX11Widget::DX11Widget(DObjectPrivate &dd, QWidget *parent)
 
     setWindowFlags(windowFlags());
 
-    setShadow();
     DX11Widget::adjustSize();
 #ifdef Q_OS_LINUX
     XUtils::SetMouseTransparent(this, true);
@@ -151,13 +177,25 @@ void DX11Widget::leaveEvent(QEvent *e)
     return QWidget::leaveEvent(e);
 }
 
+void DX11Widget::changeEvent(QEvent *event)
+{
+    D_D(DX11Widget);
+
+    if (event->type() == QEvent::WindowStateChange) {
+        d->updateContentsMargins();
+    }
+
+    QWidget::changeEvent(event);
+}
+
 void DX11Widget::mouseMoveEvent(QMouseEvent *event)
 {
+#ifdef Q_OS_LINUX
     D_D(DX11Widget);
 
     const int x = event->x();
     const int y = event->y();
-#ifdef Q_OS_LINUX
+
     if (d->resizingCornerEdge == XUtils::CornerEdge::kInvalid && d->resizable) {
         XUtils::UpdateCursorShape(this, x, y, d->externMargins(), d->m_ResizeHandleWidth);
     }
@@ -168,27 +206,28 @@ void DX11Widget::mouseMoveEvent(QMouseEvent *event)
 
 void DX11Widget::mousePressEvent(QMouseEvent *event)
 {
+#ifdef Q_OS_LINUX
     D_D(DX11Widget);
 
     const int x = event->x();
     const int y = event->y();
     if (event->button() == Qt::LeftButton) {
-#ifdef Q_OS_LINUX
+
         const XUtils::CornerEdge ce = XUtils::GetCornerEdge(this, x, y, d->externMargins(), d->m_ResizeHandleWidth);
         if (ce != XUtils::CornerEdge::kInvalid) {
             d->resizingCornerEdge = ce;
             XUtils::StartResizing(this, QCursor::pos(), ce);
         }
-#endif
-    }
 
+    }
+#endif
     return QWidget::mousePressEvent(event);
 }
 
 void DX11Widget::mouseReleaseEvent(QMouseEvent *event)
 {
-    D_D(DX11Widget);
 #ifdef Q_OS_LINUX
+    D_D(DX11Widget);
     d->resizingCornerEdge = XUtils::CornerEdge::kInvalid;
 #endif
     return QWidget::mouseReleaseEvent(event);
@@ -204,8 +243,6 @@ void DX11Widget::showMinimized()
 
 void DX11Widget::showMaximized()
 {
-    D_D(DX11Widget);
-    d->m_ShadowWidth = 0;
 #ifdef Q_OS_LINUX
     XUtils::ShowMaximizedWindow(this);
 #endif
@@ -240,9 +277,6 @@ QMargins DX11Widget::contentsMargins() const
 
 void DX11Widget::showFullScreen()
 {
-    D_D(DX11Widget);
-    d->m_ShadowWidth = 0;
-
 #ifdef Q_OS_LINUX
     XUtils::ShowFullscreenWindow(this, true);
 #endif
@@ -251,10 +285,10 @@ void DX11Widget::showFullScreen()
     this->raise();
 }
 
-void DX11Widget::moveWindow()
+void DX11Widget::moveWindow(Qt::MouseButton botton)
 {
 #ifdef Q_OS_LINUX
-    XUtils::MoveWindow(this);
+    XUtils::MoveWindow(this, botton);
 #endif
 }
 
@@ -267,8 +301,6 @@ void DX11Widget::toggleMaximizedWindow()
 
 void DX11Widget::showNormal()
 {
-    D_D(DX11Widget);
-    d->m_ShadowWidth = d->m_NormalShadowWidth;
 #ifdef Q_OS_LINUX
     XUtils::ShowNormalWindow(this);
 #endif
@@ -322,6 +354,13 @@ void DX11Widget::setTitleIcon(const QPixmap &icon)
     d->titlebar->setIcon(icon);
 }
 
+DTitlebar *DX11Widget::titlebar() const
+{
+    D_DC(DX11Widget);
+
+    return d->titlebar;
+}
+
 void DX11Widget::setTitlebarMenu(DMenu *menu)
 {
     D_D(DX11Widget);
@@ -332,6 +371,12 @@ void DX11Widget::setTitlebarWidget(QWidget *w, bool fixCenterPos)
 {
     D_D(DX11Widget);
     d->titlebar->setCustomWidget(w, Qt::AlignCenter, fixCenterPos);
+}
+
+void DX11Widget::setTitlebarWidget(QWidget *w, Qt::AlignmentFlag wflag, bool fixCenterPos)
+{
+    D_D(DX11Widget);
+    d->titlebar->setCustomWidget(w, wflag, fixCenterPos);
 }
 
 // TODO: fix layout
@@ -376,7 +421,17 @@ int DX11Widget::shadowWidth() const
 void DX11Widget::setShadowWidth(int r)
 {
     D_D(DX11Widget);
+
+    if (d->m_ShadowWidth == r) {
+        return;
+    }
+
     d->m_Radius = r;
+    d->m_ShadowWidth = r;
+
+    d->updateContentsMargins();
+    drawShadowPixmap();
+    update();
 }
 
 QColor DX11Widget::backgroundColor() const
@@ -384,6 +439,20 @@ QColor DX11Widget::backgroundColor() const
     D_DC(DX11Widget);
 
     return d->m_backgroundColor;
+}
+
+QColor DX11Widget::shadowColor() const
+{
+    D_DC(DX11Widget);
+
+    return d->shadowColor;
+}
+
+QPoint DX11Widget::shadowOffset() const
+{
+    D_DC(DX11Widget);
+
+    return d->shadowOffset;
 }
 
 void DX11Widget::setBackgroundColor(QColor backgroundColor)
@@ -396,6 +465,49 @@ void DX11Widget::setBackgroundColor(QColor backgroundColor)
 
     d->m_backgroundColor = backgroundColor;
     emit backgroundColorChanged(backgroundColor);
+}
+
+void DX11Widget::setShadowColor(QColor shadowColor)
+{
+    D_D(DX11Widget);
+
+    if (d->shadowColor == shadowColor) {
+        return;
+    }
+
+    d->shadowColor = shadowColor;
+
+    drawShadowPixmap();
+    update();
+
+    emit shadowColorChanged(shadowColor);
+}
+
+void DX11Widget::setShadowOffset(QPoint shadowOffset)
+{
+    D_D(DX11Widget);
+
+    if (d->shadowOffset == shadowOffset) {
+        return;
+    }
+
+    d->shadowOffset = shadowOffset;
+
+    d->updateContentsMargins();
+    update();
+
+    emit shadowOffsetChanged(shadowOffset);
+}
+
+void DX11Widget::drawShadowPixmap()
+{
+    D_D(DX11Widget);
+
+    QPixmap pixmap(QWidget::size() - QSize(d->m_ShadowWidth * 2, d->m_ShadowWidth * 2));
+
+    pixmap.fill(Qt::black);
+
+    d->shadowPixmap = QPixmap::fromImage(DUtility::dropShadow(pixmap, d->m_ShadowWidth, d->shadowColor));
 }
 
 int DX11Widget::border() const
@@ -489,6 +601,11 @@ void DX11Widget::setFixedWidth(int w)
     d->titlebar->setFixedWidth(w);
     d->windowWidget->setFixedWidth(w);
     QWidget::setFixedWidth(w + d->m_ShadowWidth + d->m_Border);
+}
+
+void DX11Widget::resize(int width, int height)
+{
+    resize(QSize(width, height));
 }
 
 void DX11Widget::resize(const QSize &size)
@@ -610,33 +727,25 @@ QRegion DX11Widget::childrenRegion() const
 
 void DX11Widget::showEvent(QShowEvent *e)
 {
-    D_D(DX11Widget);
     QWidget::showEvent(e);
 }
 
 void DX11Widget::resizeEvent(QResizeEvent *e)
 {
+#ifdef Q_OS_LINUX
     D_D(DX11Widget);
     int resizeHandleWidth = d->resizable ? d->m_ResizeHandleWidth : 0;
-#ifdef Q_OS_LINUX
-    XUtils::SetWindowExtents(this, d->externWidth(), resizeHandleWidth);
+    XUtils::SetWindowExtents(this, d->externMargins(), resizeHandleWidth);
 #endif
+
+    drawShadowPixmap();
+
     QWidget::resizeEvent(e);
 }
 
 void DX11Widget::closeEvent(QCloseEvent *e)
 {
     QWidget::closeEvent(e);
-}
-
-void DX11Widget::setShadow()
-{
-    D_D(DX11Widget);
-    d->m_Shadow = new QGraphicsDropShadowEffect(this);
-    d->m_Shadow->setColor(ShadowColor);
-    d->m_Shadow->setOffset(0, 10);
-    d->m_Shadow->setBlurRadius(d->m_ShadowWidth);
-    this->setGraphicsEffect(d->m_Shadow);
 }
 
 void DX11Widget::paintEvent(QPaintEvent * /*e*/)
@@ -648,9 +757,14 @@ void DX11Widget::paintEvent(QPaintEvent * /*e*/)
     int contentExtern = d->m_ShadowWidth + d->m_Border;
 
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);
+
+    painter.drawPixmap(0, 0, d->shadowPixmap);
+
     QRect contentRect = QWidget::rect().marginsRemoved(QMargins(contentExtern, contentExtern, contentExtern, contentExtern));
     QRect windowRect = QWidget::rect().marginsRemoved(QMargins(windowExtern, windowExtern, windowExtern, windowExtern));
+
+    contentRect.moveTopLeft(contentRect.topLeft() - d->shadowOffset);
+    windowRect.moveTopLeft(windowRect.topLeft() - d->shadowOffset);
 
     if (! d->m_Background.isNull()) {
         painter.drawPixmap(contentRect, d->m_Background);
@@ -666,6 +780,8 @@ void DX11Widget::paintEvent(QPaintEvent * /*e*/)
         linearGradient.setColorAt(1.0, d->m_backgroundColor);
 
         QPen borderPen(BorderColor);
+
+        painter.setRenderHint(QPainter::Antialiasing);
         painter.setBrush(QBrush(linearGradient));
         painter.strokePath(border, borderPen);
         painter.fillPath(border, /*palette().background()*/QBrush(linearGradient));
@@ -703,3 +819,5 @@ bool FilterMouseMove::eventFilter(QObject *obj, QEvent *event)
 }
 
 DWIDGET_END_NAMESPACE
+
+#include "moc_dx11widget.cpp"

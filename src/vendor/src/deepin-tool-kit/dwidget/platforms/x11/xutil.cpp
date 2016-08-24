@@ -106,7 +106,7 @@ static XCursorType CornerEdge2XCursor(const CornerEdge &ce)
     }
 }
 
-void ChangeWindowMaximizedState(QWidget *widget, int wm_state)
+void ChangeWindowMaximizedState(const QWidget *widget, int wm_state)
 {
     const auto display = QX11Info::display();
     const auto screen = QX11Info::appScreen();
@@ -140,7 +140,7 @@ void ChangeWindowMaximizedState(QWidget *widget, int wm_state)
     XFlush(display);
 }
 
-CornerEdge GetCornerEdge(QWidget *widget, int x, int y, const QMargins &margins, int border_width)
+CornerEdge GetCornerEdge(const QWidget *widget, int x, int y, const QMargins &margins, int border_width)
 {
     QRect fullRect = widget->rect();
     fullRect = fullRect.marginsRemoved(margins);
@@ -164,10 +164,14 @@ CornerEdge GetCornerEdge(QWidget *widget, int x, int y, const QMargins &margins,
     return static_cast<CornerEdge>(ce);
 }
 
-void SendMoveResizeMessage(QWidget *widget, int action)
+void SendMoveResizeMessage(const QWidget *widget, Qt::MouseButton qbutton, int action)
 {
     const auto display = QX11Info::display();
     const auto screen = QX11Info::appScreen();
+
+    int xbtn = qbutton == Qt::LeftButton ? Button1 :
+               qbutton == Qt::RightButton ? Button3 :
+               AnyButton;
 
     XEvent xev;
     memset(&xev, 0, sizeof(xev));
@@ -182,7 +186,7 @@ void SendMoveResizeMessage(QWidget *widget, int action)
     xev.xclient.data.l[0] = global_position.x();
     xev.xclient.data.l[1] = global_position.y();
     xev.xclient.data.l[2] = action;
-    xev.xclient.data.l[3] = 0;
+    xev.xclient.data.l[3] = xbtn;
     xev.xclient.data.l[4] = 0;
     XUngrabPointer(display, QX11Info::appTime());
 
@@ -194,26 +198,26 @@ void SendMoveResizeMessage(QWidget *widget, int action)
     XFlush(display);
 }
 
-bool IsCornerEdget(QWidget *widget, int x, int y, const QMargins &margins, int border_width)
+bool IsCornerEdget(const QWidget *widget, int x, int y, const QMargins &margins, int border_width)
 {
     return GetCornerEdge(widget, x, y, margins, border_width) != CornerEdge::kInvalid;
 }
 
-void MoveWindow(QWidget *widget)
+void MoveWindow(const QWidget *widget, Qt::MouseButton qbutton)
 {
-    SendMoveResizeMessage(widget, _NET_WM_MOVERESIZE_MOVE);
+    SendMoveResizeMessage(widget, qbutton, _NET_WM_MOVERESIZE_MOVE);
 }
 
-void MoveResizeWindow(QWidget *widget, int x, int y, const QMargins &margins, int border_width)
+void MoveResizeWindow(const QWidget *widget, Qt::MouseButton qbutton, int x, int y, const QMargins &margins, int border_width)
 {
     const CornerEdge ce = GetCornerEdge(widget, x, y, margins, border_width);
     if (ce != CornerEdge::kInvalid) {
         const int action = CornerEdge2WmGravity(ce);
-        SendMoveResizeMessage(widget, action);
+        SendMoveResizeMessage(widget, qbutton, action);
     }
 }
 
-void ResetCursorShape(QWidget *widget)
+void ResetCursorShape(const QWidget *widget)
 {
     const auto display = QX11Info::display();
     const WId window_id = widget->winId();
@@ -221,7 +225,7 @@ void ResetCursorShape(QWidget *widget)
     XFlush(display);
 }
 
-bool SetCursorShape(QWidget *widget, int cursor_id)
+bool SetCursorShape(const QWidget *widget, int cursor_id)
 {
     const auto display = QX11Info::display();
     const WId window_id = widget->winId();
@@ -235,7 +239,7 @@ bool SetCursorShape(QWidget *widget, int cursor_id)
     return result == Success;
 }
 
-void ShowFullscreenWindow(QWidget *widget, bool is_fullscreen)
+void ShowFullscreenWindow(const QWidget *widget, bool is_fullscreen)
 {
     const auto display = QX11Info::display();
     const auto screen = QX11Info::appScreen();
@@ -268,12 +272,12 @@ void ShowFullscreenWindow(QWidget *widget, bool is_fullscreen)
     XFlush(display);
 }
 
-void ShowMaximizedWindow(QWidget *widget)
+void ShowMaximizedWindow(const QWidget *widget)
 {
     ChangeWindowMaximizedState(widget, _NET_WM_STATE_ADD);
 }
 
-void ShowMinimizedWindow(QWidget *widget, bool minimized)
+void ShowMinimizedWindow(const QWidget *widget, bool minimized)
 {
     const auto display = QX11Info::display();
     const auto screen = QX11Info::appScreen();
@@ -308,17 +312,17 @@ void ShowMinimizedWindow(QWidget *widget, bool minimized)
     XFlush(display);
 }
 
-void ShowNormalWindow(QWidget *widget)
+void ShowNormalWindow(const QWidget *widget)
 {
     ChangeWindowMaximizedState(widget, _NET_WM_STATE_REMOVE);
 }
 
-void ToggleMaximizedWindow(QWidget *widget)
+void ToggleMaximizedWindow(const QWidget *widget)
 {
     ChangeWindowMaximizedState(widget, _NET_WM_STATE_TOGGLE);
 }
 
-bool UpdateCursorShape(QWidget *widget, int x, int y, const QMargins &margins, int border_width)
+bool UpdateCursorShape(const QWidget *widget, int x, int y, const QMargins &margins, int border_width)
 {
     const CornerEdge ce = GetCornerEdge(widget, x, y, margins, border_width);
     const XCursorType x_cursor = CornerEdge2XCursor(ce);
@@ -330,7 +334,7 @@ bool UpdateCursorShape(QWidget *widget, int x, int y, const QMargins &margins, i
     }
 }
 
-void SkipTaskbarPager(QWidget *widget)
+void SkipTaskbarPager(const QWidget *widget)
 {
     Q_ASSERT(widget);
 
@@ -363,7 +367,7 @@ void SkipTaskbarPager(QWidget *widget)
     XFlush(display);
 }
 
-void SetStayOnTop(QWidget *widget, bool on)
+void SetStayOnTop(const QWidget *widget, bool on)
 {
     Q_ASSERT(widget);
 
@@ -398,7 +402,7 @@ void SetStayOnTop(QWidget *widget, bool on)
     XFlush(display);
 }
 
-void SetMouseTransparent(QWidget *widget, bool on)
+void SetMouseTransparent(const QWidget *widget, bool on)
 {
     Q_ASSERT(widget);
 
@@ -422,44 +426,13 @@ void SetMouseTransparent(QWidget *widget, bool on)
                             &XRect, nRects, ShapeSet, YXBanded);
 }
 
-void SetWindowExtents(QWidget *widget, unsigned long windowExtentWidth, const int resizeHandleWidth)
+void SetWindowExtents(const QWidget *widget, const QMargins &margins, const int resizeHandleWidth)
 {
-    Atom frameExtents;
-    unsigned long value[4] = {
-        windowExtentWidth,
-        windowExtentWidth,
-        windowExtentWidth,
-        windowExtentWidth
-    };
-    frameExtents = XInternAtom(QX11Info::display(), "_GTK_FRAME_EXTENTS", False);
-    if (frameExtents == None) {
-        qWarning() << "Failed to create atom with name DEEPIN_WINDOW_SHADOW";
-        return;
-    }
-    XChangeProperty(QX11Info::display(),
-                    widget->winId(),
-                    frameExtents,
-                    XA_CARDINAL,
-                    32,
-                    PropModeReplace,
-                    (unsigned char *)value,
-                    4);
-
-    XRectangle contentXRect;
-    contentXRect.x = 0;
-    contentXRect.y = 0;
-    contentXRect.width = widget->width() - windowExtentWidth * 2 + resizeHandleWidth * 2;
-    contentXRect.height = widget->height() - windowExtentWidth * 2 + resizeHandleWidth * 2;
-    XShapeCombineRectangles(QX11Info::display(),
-                            widget->winId(),
-                            ShapeInput,
-                            windowExtentWidth - resizeHandleWidth,
-                            windowExtentWidth - resizeHandleWidth,
-                            &contentXRect, 1, ShapeSet, YXBanded);
+    SetWindowExtents(widget->winId(), widget->rect(), margins, resizeHandleWidth);
 }
 
 
-void PropagateSizeHints(QWidget *w)
+void PropagateSizeHints(const QWidget *w)
 {
     const auto display = QX11Info::display();
     XSizeHints *sh = XAllocSizeHints();
@@ -478,7 +451,7 @@ void PropagateSizeHints(QWidget *w)
     XFree(sh);
 }
 
-void DisableResize(QWidget *w)
+void DisableResize(const QWidget *w)
 {
     Display *display = QX11Info::display();
     Atom mwmHintsProperty = XInternAtom(display, "_MOTIF_WM_HINTS", 0);
@@ -505,9 +478,10 @@ void DisableResize(QWidget *w)
 
     hints->flags |= MWM_HINTS_FUNCTIONS;
     if (hints->functions == MWM_FUNC_ALL) {
-        hints->functions = MWM_FUNC_MOVE | MWM_FUNC_MINIMIZE;
+        hints->functions = MWM_FUNC_MOVE | MWM_FUNC_MINIMIZE | MWM_FUNC_CLOSE;
     } else {
         hints->functions &= ~MWM_FUNC_RESIZE;
+        hints->functions |= MWM_FUNC_CLOSE;
     }
 
     if (hints->decorations == MWM_DECOR_ALL) {
@@ -528,7 +502,7 @@ void DisableResize(QWidget *w)
                     5);
 }
 
-void StartResizing(QWidget *w, const QPoint &globalPoint, const CornerEdge &ce)
+void StartResizing(const QWidget *w, const QPoint &globalPoint, const CornerEdge &ce)
 {
     const auto display = QX11Info::display();
     const auto winId = w->winId();
@@ -555,6 +529,51 @@ void StartResizing(QWidget *w, const QPoint &globalPoint, const CornerEdge &ce)
                SubstructureRedirectMask | SubstructureNotifyMask,
                &xev);
     XFlush(display);
+}
+
+void CancelMoveWindow(const QWidget *widget, Qt::MouseButton qbutton)
+{
+    SendMoveResizeMessage(widget, qbutton, _NET_WM_MOVERESIZE_CANCEL);
+}
+
+void SetWindowExtents(uint wid, const QRect &windowRect, const QMargins &margins, const int resizeHandleSize)
+{
+    Atom frameExtents;
+    unsigned long value[4] = {
+        (unsigned long)(margins.left()),
+        (unsigned long)(margins.right()),
+        (unsigned long)(margins.top()),
+        (unsigned long)(margins.bottom())
+    };
+    frameExtents = XInternAtom(QX11Info::display(), "_GTK_FRAME_EXTENTS", False);
+    if (frameExtents == None) {
+        qWarning() << "Failed to create atom with name DEEPIN_WINDOW_SHADOW";
+        return;
+    }
+    XChangeProperty(QX11Info::display(),
+                    wid,
+                    frameExtents,
+                    XA_CARDINAL,
+                    32,
+                    PropModeReplace,
+                    (unsigned char *)value,
+                    4);
+
+    QRect tmp_rect = windowRect;
+
+    tmp_rect -= margins;
+
+    XRectangle contentXRect;
+    contentXRect.x = 0;
+    contentXRect.y = 0;
+    contentXRect.width = tmp_rect.width() + resizeHandleSize * 2;
+    contentXRect.height = tmp_rect.height() + resizeHandleSize * 2;
+    XShapeCombineRectangles(QX11Info::display(),
+                            wid,
+                            ShapeInput,
+                            margins.left() - resizeHandleSize,
+                            margins.top() - resizeHandleSize,
+                            &contentXRect, 1, ShapeSet, YXBanded);
 }
 
 }

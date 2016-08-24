@@ -8,17 +8,21 @@ DUTIL_BEGIN_NAMESPACE
 
 RollingFileAppender::RollingFileAppender(const QString& fileName)
   : FileAppender(fileName),
-    m_logFilesLimit(0)
+    m_logFilesLimit(0),
+    m_logSizeLimit(1024*1024*20)
 {}
-
 
 void RollingFileAppender::append(const QDateTime& timeStamp, Logger::LogLevel logLevel, const char* file, int line,
     const char* function, const QString& category, const QString& message)
 {
+
   if (!m_rollOverTime.isNull() && QDateTime::currentDateTime() > m_rollOverTime)
     rollOver();
 
-  FileAppender::append(timeStamp, logLevel, file, line, function, category, message);
+  if (size()> m_logSizeLimit)
+    rollOver();
+
+   FileAppender::append(timeStamp, logLevel, file, line , function, category, message);
 }
 
 
@@ -38,30 +42,7 @@ QString RollingFileAppender::datePatternString() const
 
 void RollingFileAppender::setDatePattern(DatePattern datePattern)
 {
-  switch (datePattern)
-  {
-    case MinutelyRollover:
-      setDatePatternString(QLatin1String("'.'yyyy-MM-dd-hh-mm"));
-      break;
-    case HourlyRollover:
-      setDatePatternString(QLatin1String("'.'yyyy-MM-dd-hh"));
-      break;
-    case HalfDailyRollover:
-      setDatePatternString(QLatin1String("'.'yyyy-MM-dd-a"));
-      break;
-    case DailyRollover:
-      setDatePatternString(QLatin1String("'.'yyyy-MM-dd"));
-      break;
-    case WeeklyRollover:
-      setDatePatternString(QLatin1String("'.'yyyy-ww"));
-      break;
-    case MonthlyRollover:
-      setDatePatternString(QLatin1String("'.'yyyy-MM"));
-      break;
-    default:
-      Q_ASSERT_X(false, "DailyRollingFileAppender::setDatePattern()", "Invalid datePattern constant");
-      setDatePattern(DailyRollover);
-  };
+  setDatePatternString(QLatin1String("'.'yyyy-MM-dd-hh-mm-zzz"));
 
   QMutexLocker locker(&m_rollingMutex);
   m_frequency = datePattern;
@@ -154,13 +135,13 @@ void RollingFileAppender::computeRollOverTime()
   {
     case MinutelyRollover:
     {
-      start = QDateTime(nowDate, QTime(nowTime.hour(), nowTime.minute(), 0, 0));
+      start = QDateTime(nowDate, nowTime);
       m_rollOverTime = start.addSecs(60);
     }
     break;
     case HourlyRollover:
     {
-      start = QDateTime(nowDate, QTime(nowTime.hour(), 0, 0, 0));
+      start = QDateTime(nowDate, nowTime);
       m_rollOverTime = start.addSecs(60*60);
     }
     break;
@@ -171,13 +152,13 @@ void RollingFileAppender::computeRollOverTime()
         hour = 12;
       else
         hour = 0;
-      start = QDateTime(nowDate, QTime(hour, 0, 0, 0));
+      start = QDateTime(nowDate, nowTime);
       m_rollOverTime = start.addSecs(60*60*12);
     }
     break;
     case DailyRollover:
     {
-      start = QDateTime(nowDate, QTime(0, 0, 0, 0));
+      start = QDateTime(nowDate, nowTime);
       m_rollOverTime = start.addDays(1);
     }
     break;
@@ -188,13 +169,13 @@ void RollingFileAppender::computeRollOverTime()
       int day = nowDate.dayOfWeek();
       if (day == Qt::Sunday)
         day = 0;
-      start = QDateTime(nowDate, QTime(0, 0, 0, 0)).addDays(-1 * day);
+      start = QDateTime(nowDate, nowTime).addDays(-1 * day);
       m_rollOverTime = start.addDays(7);
     }
     break;
     case MonthlyRollover:
     {
-      start = QDateTime(QDate(nowDate.year(), nowDate.month(), 1), QTime(0, 0, 0, 0));
+      start = QDateTime(QDate(nowDate.year(), nowDate.month(), 1), nowTime);
       m_rollOverTime = start.addMonths(1);
     }
     break;

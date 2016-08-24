@@ -8,6 +8,7 @@
  **/
 
 #include <private/dobject_p.h>
+
 #include "dthememanager.h"
 #include "dwindowmaxbutton.h"
 
@@ -30,35 +31,30 @@ DWindowMaxButton::DWindowMaxButton(QWidget * parent) :
     DImageButton(parent),
     DObject(*new DWindowMaxButtonPrivate(this))
 {
-    D_THEME_INIT_WIDGET(DWindowMaxButton);
-    connect(this, &DWindowMaxButton::clicked, this, &DWindowMaxButton::tirgger);
+    D_THEME_INIT_WIDGET(DWindowMaxButton, isMaximized);
 }
 
 bool DWindowMaxButton::isMaximized() const
 {
     D_DC(DWindowMaxButton);
+
     return d->m_isMaximized;
-}
-
-void DWindowMaxButton::tirgger() {
-    D_D(DWindowMaxButton);
-    if (d->m_isMaximized) {
-        emit restore();
-    } else {
-        emit maximum();
-    }
-
-    d->m_isMaximized = !d->m_isMaximized;
-    style()->unpolish(this);
-    style()->polish(this);// force a stylesheet recomputation
 }
 
 void DWindowMaxButton::setWindowState(Qt::WindowState windowState)
 {
-        D_D(DWindowMaxButton);
-     d->m_isMaximized = windowState == Qt::WindowMaximized;
-     style()->unpolish(this);
-     style()->polish(this);// force a stylesheet recomputation
+    setMaximized(windowState == Qt::WindowMaximized);
+}
+
+void DWindowMaxButton::setMaximized(bool isMaximized)
+{
+    D_D(DWindowMaxButton);
+
+    if (d->m_isMaximized == isMaximized)
+        return;
+
+    d->m_isMaximized = isMaximized;
+    emit maximizedChanged(isMaximized);
 }
 
 DWIDGET_END_NAMESPACE

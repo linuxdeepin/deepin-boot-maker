@@ -15,6 +15,8 @@
 #include <QTranslator>
 #include <QLocalServer>
 
+#include <qpa/qplatformintegrationfactory_p.h>
+
 #include "dapplication.h"
 #include "dthememanager.h"
 #include "private/dthemehelper.h"
@@ -25,6 +27,8 @@
 #endif
 
 #include <DPathBuf>
+
+#define DXCB_PLUGIN_KEY "dxcb"
 
 DUTIL_USE_NAMESPACE
 
@@ -163,6 +167,21 @@ bool DApplication::loadTranslator(QList<QLocale> localeFallback)
     }
     qWarning() << "load translate failed" << "can not find qm files";
     return false;
+}
+
+bool DApplication::loadDXcbPlugin()
+{
+    Q_ASSERT_X(!qApp, "DApplication::loadDxcbPlugin", "Must call before QGuiApplication defined object");
+
+    if (!QPlatformIntegrationFactory::keys().contains(DXCB_PLUGIN_KEY))
+        return false;
+
+    return qputenv("QT_QPA_PLATFORM", DXCB_PLUGIN_KEY);
+}
+
+bool DApplication::isDXcbPlatform()
+{
+    return qApp && qApp->platformName() == "dxcb";
 }
 
 DWIDGET_END_NAMESPACE

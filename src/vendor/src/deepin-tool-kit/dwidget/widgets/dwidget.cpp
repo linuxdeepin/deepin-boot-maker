@@ -14,7 +14,7 @@ DWidget::DWidget(QWidget *parent): DWidget(*(new DWidgetPrivate(this)), parent)
 
 }
 
-DWidget::DWidget(DObjectPrivate &dd, QWidget *parent): DX11Widget(dd, parent)
+DWidget::DWidget(DWidgetPrivate &dd, QWidget *parent): DX11Widget(dd, parent)
 {
 }
 

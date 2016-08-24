@@ -56,6 +56,9 @@ class CUTELOGGERSHARED_EXPORT RollingFileAppender : public FileAppender
     void setLogFilesLimit(int limit);
     int logFilesLimit() const;
 
+    void setLogSizeLimit(int qint64);
+    qint64 logSizeLimit() const;
+
   protected:
     virtual void append(const QDateTime& timeStamp, Logger::LogLevel logLevel, const char* file, int line,
                         const char* function, const QString& category, const QString& message);
@@ -73,6 +76,7 @@ class CUTELOGGERSHARED_EXPORT RollingFileAppender : public FileAppender
     QDateTime m_rollOverTime;
     QString m_rollOverSuffix;
     int m_logFilesLimit;
+    qint64 m_logSizeLimit;
     mutable QMutex m_rollingMutex;
 };
 

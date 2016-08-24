@@ -104,6 +104,7 @@ public:
 };
 
 class AnchorsBasePrivate;
+class DEnhancedWidget;
 class AnchorsBase : public QObject
 {
     Q_OBJECT
@@ -141,6 +142,7 @@ public:
     };
 
     QWidget *target() const;
+    DEnhancedWidget *enhancedWidget() const;
     bool enabled() const;
     const AnchorsBase *anchors() const;
     const AnchorInfo *top() const;

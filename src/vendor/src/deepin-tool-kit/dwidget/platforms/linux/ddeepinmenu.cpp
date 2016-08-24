@@ -126,6 +126,44 @@ void DMenu::attatch(QWidget *w)
     this->setParent(w);
 }
 
+void DMenu::setDockMenu(const bool isDockMenu)
+{
+    D_D(DMenu);
+
+    d->menuVariant["isDockMenu"] = isDockMenu;
+}
+
+bool DMenu::isDockMenu() const
+{
+    D_DC(DMenu);
+
+    return d->menuVariant["isDockMenu"].toBool();
+}
+
+void DMenu::setDirection(const DMenu::Direction direction)
+{
+    D_D(DMenu);
+
+    switch (direction)
+    {
+    case Top:       d->menuVariant["direction"] = "top";        break;
+    case Left:      d->menuVariant["direction"] = "left";       break;
+    case Bottom:    d->menuVariant["direction"] = "bottom";     break;
+    case Right:     d->menuVariant["direction"] = "right";      break;
+    default:        Q_UNREACHABLE();
+    }
+}
+
+DMenu::Direction DMenu::direction() const
+{
+    D_DC(DMenu);
+
+    if (!d->menuVariant.contains("direction"))
+        return Bottom;
+
+    return Direction(d->menuVariant["direction"].toInt());
+}
+
 DMenu::DMenu(QObject *parent)
     : QObject(parent)
     , DObject(* new DMenuPrivate(this))

@@ -63,6 +63,11 @@ void FileAppender::setFileName(const QString& s)
   m_logFile.setFileName(s);
 }
 
+qint64 FileAppender::size() const
+{
+    return m_logFile.size();
+}
+
 
 bool FileAppender::openFile()
 {

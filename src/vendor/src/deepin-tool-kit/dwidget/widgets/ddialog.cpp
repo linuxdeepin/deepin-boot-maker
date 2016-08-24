@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2015 Deepin Technology Co., Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,8 @@
 #include <QDesktopWidget>
 #include <QScreen>
 #include <QAction>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 #include "private/ddialog_p.h"
 
@@ -31,6 +33,11 @@ DDialogPrivate::DDialogPrivate(DDialog *qq) :
     DAbstractDialogPrivate(qq)
 {
 
+}
+
+QBoxLayout *DDialogPrivate::getContentLayout()
+{
+    return contentLayout;
 }
 
 void DDialogPrivate::init()
@@ -132,6 +139,56 @@ const QScreen *DDialogPrivate::getScreen() const
     return screen;
 }
 
+QString DDialogPrivate::trimTag(QString origin) const
+{
+    return origin.replace(QRegularExpression("<.*?>"), "");
+}
+
+QMap<int, QString> DDialogPrivate::scanTags(QString origin) const
+{
+    QMap<int, QString> result;
+
+    QRegularExpression re("<.*?>");
+    QRegularExpressionMatch match;
+    int index = origin.indexOf(re, 0, &match);
+    int matchLength = 0;
+    while (index >= 0) {
+        result[index] = match.captured();
+        matchLength = match.captured().length();
+        index = origin.indexOf(re, index + matchLength, &match);
+    }
+
+    return result;
+}
+
+// It's not a perfect solution to elide rich text, but it should be sufficient
+// for working with rich text only change text token color.
+QString DDialogPrivate::elideString(QString str, const QFontMetrics &fm, int width) const
+{
+    QString trimmed = trimTag(str);
+    if (fm.width(trimmed) > width) {
+         QMap<int, QString> info = scanTags(str);
+         QString elided = fm.elidedText(trimmed, Qt::ElideMiddle, width);
+         int elideStart = elided.indexOf("…");
+         int elideLength = trimmed.length() - elided.length();
+         QList<int> indexes = info.keys();
+         std::sort(indexes.begin(), indexes.end());
+         for (int index : indexes) {
+             if (index <= elideStart) {
+                 elided.insert(index, info[index]);
+             } else if (elideStart < index && index <= elideStart + elideLength) {
+                 elided.insert(elideStart, info[index]);
+                 elideStart += 1;
+             } else {
+                 elided.insert(index - elideLength + 1, info[index]);
+             }
+         }
+         return elided;
+    } else {
+        return str;
+    }
+}
+
 void DDialogPrivate::_q_onButtonClicked()
 {
     D_Q(DDialog);
@@ -154,20 +211,10 @@ void DDialogPrivate::_q_updateLabelMaxWidth()
     int labelMaxWidth = q->maximumWidth() - titleLabel->x() - DIALOG::CLOSE_BUTTON_WIDTH;
 
     QFontMetrics fm = titleLabel->fontMetrics();
-
-    if (fm.width(title) > labelMaxWidth){
-        QString text = fm.elidedText(title, Qt::ElideMiddle, labelMaxWidth);
-
-        titleLabel->setText(text);
-    }
+    titleLabel->setText(elideString(title, fm, labelMaxWidth));
 
     fm = messageLabel->fontMetrics();
-
-    if (fm.width(message) > labelMaxWidth){
-        QString text = fm.elidedText(message, Qt::ElideMiddle, labelMaxWidth);
-
-        messageLabel->setText(text);
-    }
+    messageLabel->setText(elideString(message, fm, labelMaxWidth));
 }
 
 void DDialogPrivate::_q_defaultButtonTriggered()

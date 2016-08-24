@@ -31,6 +31,10 @@ public:
 
     bool setSingleInstance(const QString &key);
     bool loadTranslator(QList<QLocale> localeFallback = QList<QLocale>() << QLocale::system());
+
+    //! warning: Must call before QGuiApplication defined object
+    static bool loadDXcbPlugin();
+    static bool isDXcbPlatform();
 };
 
 DWIDGET_END_NAMESPACE

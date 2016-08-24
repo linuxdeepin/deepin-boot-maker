@@ -16,8 +16,22 @@ class LIBDTKWIDGETSHARED_EXPORT DMenu:  public QObject, public DObject
     Q_OBJECT
 
 public:
+    enum Direction
+    {
+        Top,
+        Left,
+        Bottom,
+        Right,
+    };
+
     explicit DMenu(QObject *parent = Q_NULLPTR);
     void attatch(QWidget *);
+
+    void setDockMenu(const bool isDockMenu);
+    bool isDockMenu() const;
+
+    void setDirection(const Direction direction);
+    Direction direction() const;
 
     DAction *addAction(const QString & text);
     DAction *addAction(const QIcon & icon, const QString & text);

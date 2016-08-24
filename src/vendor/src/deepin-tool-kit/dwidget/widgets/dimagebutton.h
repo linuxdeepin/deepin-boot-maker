@@ -62,13 +62,15 @@ signals:
     void stateChanged();
 
 protected:
-    void enterEvent(QEvent * event);
-    void leaveEvent(QEvent * event);
-    void mousePressEvent(QMouseEvent * event);
-    void mouseReleaseEvent(QMouseEvent * event);
+    void enterEvent(QEvent * event) Q_DECL_OVERRIDE;
+    void leaveEvent(QEvent * event) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent * event) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent * event) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    void changeState();
+    void updateIcon();
+    void setState(State state);
 
 private:
 

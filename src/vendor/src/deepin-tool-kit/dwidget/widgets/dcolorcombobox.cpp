@@ -23,7 +23,7 @@ public:
     QVariantMap data() const Q_DECL_OVERRIDE;
 
 protected:
-    void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
 
 private:
     QColor m_color;

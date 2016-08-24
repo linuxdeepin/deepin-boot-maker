@@ -3,10 +3,14 @@ VERSION = 1.0
 CONFIG += c++11 create_pc create_prl no_install_prl
 DEFINES += LIBDTK_LIBRARY
 
-win {
+DEFINES += QT_MESSAGELOGCONTEXT
+
+win32* {
+    DEFINES += STATIC_LIB
     CONFIG += staticlib
     LIB_DIR =
 }
+
 isEmpty(LIB_INSTALL_DIR) {
     target.path = /usr/lib
 } else {

@@ -11,23 +11,34 @@ class DPathBuf
 public:
     DPathBuf(const QString &path)
     {
-        m_path = path;
+        m_path = QDir(path).absolutePath();
     }
 
-    DPathBuf &operator/(const QString &p)
+    DPathBuf operator/(const QString &p) const
     {
-        m_path += "/" + p;
-        return *this;
+        return DPathBuf(m_path + "/" + p);
     }
 
-    DPathBuf &operator/(const char *p)
+    DPathBuf &operator/=(const QString &p)
+    {
+        return join(p);
+    }
+
+    DPathBuf operator/(const char *p) const
     {
         return operator /(QString(p));
     }
 
+    DPathBuf &operator/=(const char *p)
+    {
+        return operator /=(QString(p));
+    }
+
     DPathBuf &join(const QString &p)
     {
-        return operator /(p);
+        m_path += "/" + p;
+        m_path = QDir(m_path).absolutePath();
+        return *this;
     }
 
     QString toString() const

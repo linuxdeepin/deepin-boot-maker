@@ -35,6 +35,9 @@ public:
 public slots:
     void onLogLinkActivated(const QString &link);
 
+protected:
+    void keyPressEvent(QKeyEvent * event);
+
 private:
     static const QString websiteLinkTemplate;
 

@@ -102,7 +102,8 @@ bool DEnhancedWidget::eventFilter(QObject *o, QEvent *e)
     Q_D(DEnhancedWidget);
 
     if (o == d->target) {
-        if (e->type() == QEvent::Resize) {
+        switch (e->type()) {
+        case QEvent::Resize: {
             QResizeEvent *event = static_cast<QResizeEvent *>(e);
             if (event) {
                 QSize size = event->size();
@@ -121,7 +122,10 @@ bool DEnhancedWidget::eventFilter(QObject *o, QEvent *e)
 
                 d->old_size = size;
             }
-        } else if (e->type() == QEvent::Move) {
+
+            break;
+        }
+        case QEvent::Move: {
             QMoveEvent *event = static_cast<QMoveEvent *>(e);
 
             if (event) {
@@ -141,6 +145,16 @@ bool DEnhancedWidget::eventFilter(QObject *o, QEvent *e)
 
                 d->old_pos = pos;
             }
+
+            break;
+        }
+        case QEvent::Show: {
+            emit showed();
+
+            break;
+        }
+        default:
+            break;
         }
     }
 

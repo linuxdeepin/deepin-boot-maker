@@ -20,7 +20,7 @@ DImageButton::DImageButton(QWidget *parent)
     : QLabel(parent)
 {
     D_THEME_INIT_WIDGET(DImageButton);
-    changeState();
+    updateIcon();
 }
 
 DImageButton::DImageButton(const QString &normalPic, const QString &hoverPic, const QString &pressPic, QWidget *parent)
@@ -37,7 +37,7 @@ DImageButton::DImageButton(const QString &normalPic, const QString &hoverPic, co
 
     setCheckable(false);
 
-    changeState();
+    updateIcon();
 }
 
 DImageButton::DImageButton(const QString &normalPic, const QString &hoverPic,
@@ -57,7 +57,7 @@ DImageButton::DImageButton(const QString &normalPic, const QString &hoverPic,
 
     setCheckable(true);
 
-    changeState();
+    updateIcon();
 }
 
 DImageButton::~DImageButton()
@@ -69,8 +69,7 @@ void DImageButton::enterEvent(QEvent *event)
     setCursor(Qt::PointingHandCursor);
 
     if (!m_isChecked){
-        m_state = Hover;
-        changeState();
+        setState(Hover);
     }
 
     event->accept();
@@ -80,8 +79,7 @@ void DImageButton::enterEvent(QEvent *event)
 void DImageButton::leaveEvent(QEvent *event)
 {
     if (!m_isChecked){
-        m_state = Normal;
-        changeState();
+        setState(Normal);
     }
 
     event->accept();
@@ -90,8 +88,10 @@ void DImageButton::leaveEvent(QEvent *event)
 
 void DImageButton::mousePressEvent(QMouseEvent *event)
 {
-    m_state = Press;
-    changeState();
+    if (event->button() != Qt::LeftButton)
+        return;
+
+    setState(Press);
 
     event->accept();
     //QLabel::mousePressEvent(event);
@@ -99,26 +99,35 @@ void DImageButton::mousePressEvent(QMouseEvent *event)
 
 void DImageButton::mouseReleaseEvent(QMouseEvent *event)
 {
-    m_state = Hover;
-    changeState();
-
-    emit clicked();
+    if (!rect().contains(event->pos()))
+        return;
 
     if (m_isCheckable){
         m_isChecked = !m_isChecked;
         if (m_isChecked){
-            m_state = Checked;
+            setState(Checked);
         } else {
-            m_state = Normal;
+            setState(Normal);
         }
-        changeState();
+    } else {
+        setState(Hover);
     }
 
     event->accept();
     //QLabel::mouseReleaseEvent(event);
+
+    if (event->button() == Qt::LeftButton)
+        emit clicked();
 }
 
-void DImageButton::changeState()
+void DImageButton::mouseMoveEvent(QMouseEvent *event)
+{
+    if (!m_isCheckable && !rect().contains(event->pos())) {
+        setState(Normal);
+    }
+}
+
+void DImageButton::updateIcon()
 {
     switch (m_state) {
     case Hover:     if (!m_hoverPic.isEmpty()) setPixmap(QPixmap(m_hoverPic));      break;
@@ -130,13 +139,22 @@ void DImageButton::changeState()
     emit stateChanged();
 }
 
+void DImageButton::setState(DImageButton::State state)
+{
+    if (m_state == state)
+        return;
+
+    m_state = state;
+
+    updateIcon();
+}
+
 void DImageButton::setCheckable(bool flag)
 {
     m_isCheckable = flag;
 
     if (!m_isCheckable){
-        m_state = Normal;
-        changeState();
+        setState(Normal);
     }
 }
 
@@ -148,11 +166,10 @@ void DImageButton::setChecked(bool flag)
 
     m_isChecked = flag;
     if (m_isChecked){
-        m_state = Checked;        
+        setState(Checked);
     } else {
-        m_state = Normal;
+        setState(Normal);
     }
-    changeState();
 }
 
 bool DImageButton::isChecked()
@@ -168,25 +185,25 @@ bool DImageButton::isCheckable()
 void DImageButton::setNormalPic(const QString &normalPicPixmap)
 {
     m_normalPic = normalPicPixmap;
-    changeState();
+    updateIcon();
 }
 
 void DImageButton::setHoverPic(const QString &hoverPicPixmap)
 {
     m_hoverPic = hoverPicPixmap;
-    changeState();
+    updateIcon();
 }
 
 void DImageButton::setPressPic(const QString &pressPicPixmap)
 {
     m_pressPic = pressPicPixmap;
-    changeState();
+    updateIcon();
 }
 
 void DImageButton::setCheckedPic(const QString &checkedPicPixmap)
 {
     m_checkedPic = checkedPicPixmap;
-    changeState();
+    updateIcon();
 }
 
 DImageButton::State DImageButton::getState() const

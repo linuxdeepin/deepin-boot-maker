@@ -17,7 +17,7 @@ class LIBDTKWIDGETSHARED_EXPORT DWidget : public DX11Widget
     Q_OBJECT
 public:
     explicit DWidget(QWidget *parent = 0);
-    explicit DWidget(DObjectPrivate &dd, QWidget *parent = 0);
+    explicit DWidget(DWidgetPrivate &dd, QWidget *parent = 0);
 
 private:
     D_DECLARE_PRIVATE(DWidget)

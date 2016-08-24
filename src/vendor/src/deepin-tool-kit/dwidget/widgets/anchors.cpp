@@ -298,6 +298,13 @@ QWidget *AnchorsBase::target() const
     return d->extendWidget->target();
 }
 
+DEnhancedWidget *AnchorsBase::enhancedWidget() const
+{
+    Q_D(const AnchorsBase);
+
+    return d->extendWidget;
+}
+
 bool AnchorsBase::enabled() const
 {
     Q_D(const AnchorsBase);
@@ -583,10 +590,14 @@ bool AnchorsBase::setAnchor(const Qt::AnchorPoint &p, QWidget *target, const Qt:
             foreach(QString str, signalList){\
                 QByteArray arr = str.replace(" ", "").toLatin1();\
                 if(arr.right(1) != ")") arr += ")";\
-                if(tmp_w1)\
+                if(tmp_w1) {\
                     disconnect(tmp_w1, QByteArray("2"+arr).data(), d->q_func(), SLOT(slotName()));\
-                if(arr.size() != 13 || target()->parentWidget() != point->base->target())\
+                    disconnect(tmp_w1, SIGNAL(showed()), d->q_func(), SLOT(slotName()));\
+                }\
+                if(arr.size() != 13 || target()->parentWidget() != point->base->target()) {\
                     connect(tmp_w2, QByteArray("2"+arr).data(), d->q_func(), SLOT(slotName()));\
+                    connect(tmp_w2, SIGNAL(showed()), d->q_func(), SLOT(slotName()));\
+                }\
             }\
         }\
     }else{\
@@ -594,6 +605,7 @@ bool AnchorsBase::setAnchor(const Qt::AnchorPoint &p, QWidget *target, const Qt:
             QByteArray arr = str.replace(" ", "").toLatin1();\
             if(arr.right(1) != ")") arr += ")";\
             disconnect(tmp_w1, QByteArray("2"+arr).data(), d->q_func(), SLOT(slotName()));\
+            disconnect(tmp_w1, SIGNAL(showed()), d->q_func(), SLOT(slotName()));\
         }\
         *d->point = point;\
     }\
@@ -862,7 +874,7 @@ void AnchorsBase::setAlignWhenCentered(bool alignWhenCentered)
     ARect rect = target()->geometry();\
     rect.set##fun(arg, point);\
     target()->setMinimumSize(QSize(0,0));\
-    target()->setMaximumSize(QSize(16777215, 16777215));\
+    target()->setMaximumSize(QSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX));\
     target()->setGeometry(rect);\
 
 #define MOVE_POS(fun)\
@@ -1031,6 +1043,8 @@ AnchorsBase::AnchorsBase(QWidget *w, bool):
     connect(d->extendWidget, SIGNAL(enabledChanged(bool)), SIGNAL(enabledChanged(bool)));
     connect(d->fill, SIGNAL(sizeChanged(QSize)), SLOT(updateFill()));
     connect(d->centerIn, SIGNAL(sizeChanged(QSize)), SLOT(updateCenterIn()));
+    connect(d->fill, SIGNAL(showed()), SLOT(updateFill()));
+    connect(d->centerIn, SIGNAL(showed()), SLOT(updateCenterIn()));
 
     d->setWidgetAnchorsBase(w, this);
 }

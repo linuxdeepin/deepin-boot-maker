@@ -26,7 +26,7 @@
 
 #include <DWindow>
 
-class MainWindow : public Dtk::Widget::DWindow
+class MainWindow : public QWidget
 {
     Q_OBJECT
 

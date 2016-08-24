@@ -11,6 +11,7 @@
 #define DWINDOWMAXBUTTON_H
 
 #include <dobject.h>
+
 #include "dimagebutton.h"
 
 DWIDGET_BEGIN_NAMESPACE
@@ -23,17 +24,20 @@ class LIBDTKWIDGETSHARED_EXPORT DWindowMaxButton : public DImageButton, public D
 public:
     DWindowMaxButton(QWidget * parent = 0);
 
-    Q_PROPERTY(bool isMaximized READ isMaximized)
+    Q_PROPERTY(bool isMaximized READ isMaximized WRITE setMaximized NOTIFY maximizedChanged)
 
     bool isMaximized() const;
 
-    void setWindowState(Qt::WindowState windowState);
-signals:
-    void maximum();
-    void restore();
+    Q_DECL_DEPRECATED void setWindowState(Qt::WindowState windowState);
 
-protected slots:
-    void tirgger();
+public slots:
+    void setMaximized(bool isMaximized);
+
+signals:
+    Q_DECL_DEPRECATED void maximum();
+    Q_DECL_DEPRECATED void restore();
+
+    void maximizedChanged(bool isMaximized);
 
 private:
     D_DECLARE_PRIVATE(DWindowMaxButton)

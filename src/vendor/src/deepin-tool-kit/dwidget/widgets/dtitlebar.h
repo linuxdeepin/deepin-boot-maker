@@ -19,35 +19,46 @@ class LIBDTKWIDGETSHARED_EXPORT DTitlebar : public QWidget , public DObject
 public:
     explicit DTitlebar(QWidget *parent = 0);
 
+    DMenu *menu() const;
+    QWidget *customWidget() const;
+
     void setMenu(DMenu *);
     void setCustomWidget(QWidget *, bool fixCenterPos = false);
     void setCustomWidget(QWidget *, Qt::AlignmentFlag flag = Qt::AlignCenter, bool fixCenterPos = false);
     void setWindowFlags(Qt::WindowFlags type);
     int buttonAreaWidth() const;
 
-    void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-    void mouseDoubleClickEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void setVisible(bool visible) Q_DECL_OVERRIDE;
 
 signals:
-    void minimumClicked();
-    void maximumClicked();
-    void restoreClicked();
-    void closeClicked();
+    Q_DECL_DEPRECATED void minimumClicked();
+    Q_DECL_DEPRECATED void maximumClicked();
+    Q_DECL_DEPRECATED void restoreClicked();
+    Q_DECL_DEPRECATED void closeClicked();
     void optionClicked();
     void doubleClicked();
-    void mouseMoving();
+    void mousePressed(Qt::MouseButtons buttons);
+    void mouseMoving(Qt::MouseButton botton);
 
 public slots:
     void setFixedHeight(int h);
     void setTitle(const QString &title);
     void setIcon(const QPixmap &icon);
-    void setWindowState(Qt::WindowState windowState);
+    Q_DECL_DEPRECATED void setWindowState(Qt::WindowState windowState);
 
 private slots:
     void showMenu();
 
+protected:
+    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void mouseDoubleClickEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
+
 private:
     D_DECLARE_PRIVATE(DTitlebar)
+    D_PRIVATE_SLOT(void _q_toggleWindowState())
 };
 
 DWIDGET_END_NAMESPACE

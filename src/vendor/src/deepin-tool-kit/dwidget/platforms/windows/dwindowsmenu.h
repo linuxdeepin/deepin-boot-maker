@@ -1,48 +1,43 @@
 #pragma once
 
-#include <DObject>
-#include <DAction>
-#include <dwidget_global.h>
+#include <QMenu>
 
-#include <QObject>
+#include "dobject.h"
+#include "dwidget_global.h"
 
 DWIDGET_BEGIN_NAMESPACE
-
+class DAction;
 class DMenuPrivate;
-class DMenuItem;
 
-class LIBDTKWIDGETSHARED_EXPORT DMenu:  public QObject, public DObject
+class DMenu : public QMenu, public DObject
 {
     Q_OBJECT
 
 public:
-    explicit DMenu(QObject *parent = Q_NULLPTR);
-    void attatch(QWidget *);
+    explicit DMenu(QWidget *parent = 0);
 
-    DAction *addAction(const QString & text);
+    void attatch(QWidget *){/*  QMenu:: setParent(w);*/}
+
+    DAction *addAction(const QString &text);
     DAction *addAction(const QIcon & icon, const QString & text);
     void addAction(DAction *action);
 
     DAction *addMenu(DMenu *menu);
-    DMenu *addMenu(const QString & title);
+    DMenu *addMenu(const QString &title);
     DMenu *addMenu(const QIcon & icon, const QString & title);
     DAction *addSeparator();
 
-    DAction *actionAt(const QString &text) const;
-    DAction *actionAt(int index) const;
-    QList<DAction*> actionList() const;
-
-    DAction *exec();
-    DAction *exec(const QPoint & p, DAction *action = 0);
-    bool popup(const QPoint &pos, DAction *action = 0);
+//    DAction *actionAt(const QString &text) const;
+//    DAction *actionAt(int index) const;
 
 Q_SIGNALS:
-    void triggered(DAction * action);
+    void triggered(DAction *action);
 
 private:
     friend class DActionPrivate;
-    D_DECLARE_PRIVATE(DMenu)
+private:
     Q_DISABLE_COPY(DMenu)
+    D_DECLARE_PRIVATE(DMenu)
 };
 
 DWIDGET_END_NAMESPACE

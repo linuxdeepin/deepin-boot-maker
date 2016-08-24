@@ -20,11 +20,18 @@
 #   define DWIDGET_END_NAMESPACE }}
 #   define DWIDGET_USE_NAMESPACE using namespace DTK_WIDGET_NAMESPACE;
 
-
 namespace Dtk
 {
 namespace Widget
 {
+
+#if defined(STATIC_LIB)
+#define DWIDGET_INIT_RESOURCE() \
+    do { \
+        Q_INIT_RESOURCE(icons); \
+        Q_INIT_RESOURCE(dui_theme_dark); \
+        Q_INIT_RESOURCE(dui_theme_light); } while (0)
+#endif
 
 }
 }

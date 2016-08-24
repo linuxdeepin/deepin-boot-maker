@@ -57,7 +57,7 @@ void DLogManager::registerFileAppender() {
  * \sa registerFileAppender
  */
 QString DLogManager::getlogFilePath(){
-    return DLogManager::instance()->m_logPath;
+    return QDir::toNativeSeparators(DLogManager::instance()->m_logPath);
 }
 
 void DLogManager::setLogFormat(const QString &format)

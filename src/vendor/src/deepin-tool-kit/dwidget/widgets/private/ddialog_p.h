@@ -25,6 +25,8 @@ class DDialogPrivate : public DAbstractDialogPrivate
 protected:
     DDialogPrivate(DDialog *qq);
 
+    QBoxLayout *getContentLayout();
+
 private:
     bool onButtonClickedClose = true;
     QIcon icon;
@@ -51,6 +53,9 @@ private:
 
     void init();
     const QScreen *getScreen() const;
+    QString trimTag(QString origin) const;
+    QMap<int, QString> scanTags(const QString origin) const;
+    QString elideString(QString str, const QFontMetrics &fm, int width) const;
 
     void _q_onButtonClicked();
     void _q_updateLabelMaxWidth();

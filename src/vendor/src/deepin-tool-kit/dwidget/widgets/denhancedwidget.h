@@ -44,6 +44,7 @@ signals:
     void sizeChanged(const QSize &size);
     void targetChanged(QWidget *target);
     void enabledChanged(bool enabled);
+    void showed();
 
 protected:
     bool eventFilter(QObject *o, QEvent *e) Q_DECL_OVERRIDE;
