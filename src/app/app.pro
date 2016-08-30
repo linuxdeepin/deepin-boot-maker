@@ -4,24 +4,39 @@ TEMPLATE  = app
 
 TARGET = deepin-boot-maker
 
-QT += core gui widgets
+QT += core gui widgets concurrent
+
+DEFINES += QT_MESSAGELOGCONTEXT
 
 RESOURCES +=  \
     blob.qrc \
 #    tranlate.qrc \
+    view/resource/resource.qrc
 
 HEADERS += \
     bmwindow.h \
     backend/bootmaker.h \
     view/isoselectview.h \
-    util/sevenzip.h
+    util/sevenzip.h \
+    backend/syslinux.h \
+    backend/diskutil.h \
+    util/utils.h \
+    util/bmreporter.h \
+    view/setepindicatorbar.h \
+    view/suggestbutton.h
 
 SOURCES += \
     main.cpp \
     bmwindow.cpp \
     backend/bootmaker.cpp \
     view/isoselectview.cpp \
-    util/sevenzip.cpp
+    util/sevenzip.cpp \
+    backend/syslinux.cpp \
+    backend/diskutil.cpp \
+    util/utils.cpp \
+    util/bmreporter.cpp \
+    view/setepindicatorbar.cpp \
+    view/suggestbutton.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
@@ -43,5 +58,7 @@ TRANSLATIONS += po/en_US.ts \
 #################################################
 #    Auto Lib Ref
 #################################################
+
+
 
 

@@ -6,17 +6,21 @@
 #include <QTemporaryFile>
 #include <QThread>
 
-SevenZip::SevenZip(QObject *parent) : QThread(parent)
+SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
+    : QThread(parent)
 {
+    m_szpp = new SevenZipProcessParser("", &m_sevenz);
     m_sevenZip = "7z";
-    m_archiveFile = "/home/iceyer/Development/iso/atm-hengyin-amd64-2016-06-27.iso";
-    m_outputDir = "-o/media/iceyer/C817-1EF7";
+    m_archiveFile = image;
+    m_outputDir = "-o" + target;
+    //    connect(&m_szpp, &SevenZipProcessParser::progressChanged, this, &SevenZip::progressChanged);
+    //    connect(&m_sevenz, static_cast<void(QProcess::*)(int exitCode)>(&QProcess::finished),
+    //            this, &SevenZip::handleFinished);
 }
 
-void SevenZip::run()
+bool SevenZip::extract()
 {
-    QProcess sevenz;
-    sevenz.setProgram(m_sevenZip);
+    m_sevenz.setProgram(m_sevenZip);
 
     QTemporaryFile progress;
     progress.open();
@@ -27,22 +31,29 @@ void SevenZip::run()
          << m_archiveFile
          << m_outputDir
          << "-bsp2";
-    sevenz.setArguments(args);
-    sevenz.setStandardErrorFile(progress.fileName());
+    m_sevenz.setArguments(args);
+    m_sevenz.setStandardErrorFile(progress.fileName());
 
-    qDebug() << sevenz.program() << sevenz.arguments().join(" ");
-    sevenz.start();
-    sevenz.waitForStarted(-1);
+    qDebug() << m_sevenz.program() << m_sevenz.arguments().join(" ");
+    m_sevenz.start();
+    m_sevenz.waitForStarted(-1);
 
-    SevenZipProcessParser szpp(progress.fileName(), &sevenz);
-    connect(&szpp, &SevenZipProcessParser::progressChanged, this, &SevenZip::progressChanged);
-    szpp.start();
-
-    sevenz.waitForFinished(-1);
-    szpp.wait();
+    m_szpp->setProgressName(progress.fileName());
+    m_szpp->start();
+    m_sevenz.waitForFinished(-1);
+    m_szpp->wait();
 
     progress.close();
     progress.remove();
+
+    return (m_sevenz.exitStatus() == QProcess::NormalExit) &&
+           (0 == m_sevenz.exitCode());
+    return true;
+}
+
+void SevenZip::run()
+{
+    extract();
 }
 
 SevenZipProcessParser::SevenZipProcessParser(const QString &file, QProcess *process, QObject *parent): QThread(parent)
@@ -67,9 +78,9 @@ void SevenZipProcessParser::run()
         if (2 <= prgressInfoList.size()) {
             m_lastFilename = prgressInfoList.last().isEmpty() ? m_lastFilename : prgressInfoList.last();
         }
-        qDebug() << m_lastPencent << m_lastFilename;
+        /* qDebug() << "send signal" << m_lastPencent << m_lastFilename;*/
+        emit progressChanged(m_lastPencent, 100, m_lastFilename);
         QThread::sleep(1);
-        emit progressChanged(m_lastPencent);
     }
     qDebug() << "End Parse" << m_sevenZip->state();
     progress.close();

@@ -10,10 +10,20 @@ WORK_PATH=${SCRIPTPATH}
 INCLUDE_PATH=${WORK_PATH}/include
 LIB_PATH=${WORK_PATH}/lib
 
+function build_vendor {
+    vendor=$1
+    qmake_params=$2
+
+    mkdir ${WORK_PATH}/src/${vendor}/build || true
+    cd ${WORK_PATH}/src/${vendor}/build
+    qmake ${qmake_params}
+    make -j 4
+    INSTALL_ROOT=${WORK_PATH} make install
+    cd ${WORK_PATH}
+}
+
+
 #build dtk
-mkdir ${WORK_PATH}/src/deepin-tool-kit/build || true
-cd ${WORK_PATH}/src/deepin-tool-kit/build
-qmake -r CONFIG+=staticlib LIB_INSTALL_DIR=${LIB_PATH} INCLUDE_INSTALL_DIR=${INCLUDE_PATH} ..
-make -j 4
-make install
-cd ${WORK_PATH}
+build_vendor deepin-tool-kit "-r CONFIG+=staticlib .."
+build_vendor libxsys " -r .."
+build_vendor smipc " -r .."

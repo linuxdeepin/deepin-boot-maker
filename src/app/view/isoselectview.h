@@ -1,9 +1,9 @@
 #ifndef ISOSELECTVIEW_H
 #define ISOSELECTVIEW_H
 
-#include <QWidget>
+#include <QFrame>
 
-class ISOSelectView : public QWidget
+class ISOSelectView : public QFrame
 {
     Q_OBJECT
 public:

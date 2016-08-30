@@ -22,18 +22,20 @@
 #include <shellapi.h>
 #endif
 
-namespace XAPI {
+namespace XAPI
+{
 
 #ifdef Q_OS_WIN32
 
 
 BOOL GetStorageDeviceNumberByHandle(HANDLE handle,
-                                    const STORAGE_DEVICE_NUMBER* sdn) {
+                                    const STORAGE_DEVICE_NUMBER *sdn)
+{
     BOOL result = FALSE;
     DWORD count;
 
-    if(DeviceIoControl(handle, IOCTL_STORAGE_GET_DEVICE_NUMBER, NULL, 0,
-                       (LPVOID)sdn, sizeof(*sdn), &count, NULL)) {
+    if (DeviceIoControl(handle, IOCTL_STORAGE_GET_DEVICE_NUMBER, NULL, 0,
+                        (LPVOID)sdn, sizeof(*sdn), &count, NULL)) {
         result = TRUE;
 
     } else {
@@ -43,7 +45,8 @@ BOOL GetStorageDeviceNumberByHandle(HANDLE handle,
     return (result);
 }
 
-int GetPartitionDiskNum(QString targetDev) {
+int GetPartitionDiskNum(QString targetDev)
+{
     QString driverName = "\\\\.\\" + targetDev.remove('\\');
     WCHAR wdriverName[1024] = { 0 };
     driverName.toWCharArray(wdriverName);
@@ -51,14 +54,14 @@ int GetPartitionDiskNum(QString targetDev) {
                                FILE_SHARE_READ | FILE_SHARE_WRITE, NULL,
                                OPEN_EXISTING, 0, NULL);
 
-    if(handle == INVALID_HANDLE_VALUE) {
+    if (handle == INVALID_HANDLE_VALUE) {
         qWarning() << "Open Dev Failed: " << driverName << endl;
         return -1;
     }
 
     STORAGE_DEVICE_NUMBER sdn;
 
-    if(GetStorageDeviceNumberByHandle(handle, &sdn)) {
+    if (GetStorageDeviceNumberByHandle(handle, &sdn)) {
         CloseHandle(handle);
         return sdn.DeviceNumber;
     }
@@ -67,68 +70,74 @@ int GetPartitionDiskNum(QString targetDev) {
     return -1;
 }
 
-QString GetPartitionLabel(const QString &targetDev) {
+QString GetPartitionLabel(const QString &targetDev)
+{
     QString devname = QString("%1:\\").arg(targetDev.at(0));
     WCHAR wLabel[1024] = { 0 };
-    if (!GetVolumeInformation(LPWSTR(devname.utf16()), wLabel, 1023, NULL,NULL,NULL,NULL,0) ) {
+    if (!GetVolumeInformation(LPWSTR(devname.utf16()), wLabel, 1023, NULL, NULL, NULL, NULL, 0)) {
         return "";
     }
     return QString("").fromWCharArray(wLabel);
 }
 
-qint64 GetPartitionFreeSpace(const QString &targetDev) {
+qint64 GetPartitionFreeSpace(const QString &targetDev)
+{
     QString devname = QString("%1:\\").arg(targetDev.at(0));
-    ULARGE_INTEGER FreeAv,TotalBytes,FreeBytes;
-    if  (!GetDiskFreeSpaceEx(LPWSTR(devname.utf16()),&FreeAv,&TotalBytes,&FreeBytes)) {
+    ULARGE_INTEGER FreeAv, TotalBytes, FreeBytes;
+    if (!GetDiskFreeSpaceEx(LPWSTR(devname.utf16()), &FreeAv, &TotalBytes, &FreeBytes)) {
         return 0;
     }
     return FreeBytes.QuadPart;
 }
 
-BOOL GetPartitionByHandle(HANDLE handle, PARTITION_INFORMATION& partInfo){
-   DWORD count;
-   BOOL result = DeviceIoControl(
-     (HANDLE) handle,                 // handle to a partition
-     IOCTL_DISK_GET_PARTITION_INFO, // dwIoControlCode
-     NULL,                             // lpInBuffer
-     0,                                // nInBufferSize
-     (LPVOID) &partInfo,             // output buffer
-     (DWORD) sizeof(partInfo),           // size of output buffer
-     (LPDWORD) &count,        // number of bytes returned
-     (LPOVERLAPPED) NULL       // OVERLAPPED structure
-   );
-   if (FALSE == result) {
-       qWarning()<<"IOCTL_DISK_GET_PARTITION_INFO Failed"<<GetLastError ();
-   }
-   return result;
+BOOL GetPartitionByHandle(HANDLE handle, PARTITION_INFORMATION &partInfo)
+{
+    DWORD count;
+    BOOL result = DeviceIoControl(
+                      (HANDLE) handle,                 // handle to a partition
+                      IOCTL_DISK_GET_PARTITION_INFO, // dwIoControlCode
+                      NULL,                             // lpInBuffer
+                      0,                                // nInBufferSize
+                      (LPVOID) &partInfo,             // output buffer
+                      (DWORD) sizeof(partInfo),           // size of output buffer
+                      (LPDWORD) &count,        // number of bytes returned
+                      (LPOVERLAPPED) NULL       // OVERLAPPED structure
+                  );
+    if (FALSE == result) {
+        qWarning() << "IOCTL_DISK_GET_PARTITION_INFO Failed" << GetLastError();
+    }
+    return result;
 }
 
 
 /*
    return physic driver name like "\\\\.\\PHYSICALDRIVE1";
    */
-QString GetPartitionDisk(const QString& targetDev) {
+QString GetPartitionDisk(const QString &targetDev)
+{
     QString physicalDevName;
     int deviceNum = GetPartitionDiskNum(targetDev);
 
-    if(-1 != deviceNum) {
+    if (-1 != deviceNum) {
         physicalDevName = QString("\\\\.\\PHYSICALDRIVE%1").arg(deviceNum);
     }
 
     return physicalDevName;
 }
 
-HANDLE LockDisk(const QString& targetDev) {
+HANDLE LockDisk(const QString &targetDev)
+{
     QString phyName = GetPartitionDisk(targetDev);
     WCHAR wPhyName[1024] = { 0 };
     phyName.toWCharArray(wPhyName);
     HANDLE handle = CreateFile(wPhyName, GENERIC_READ | GENERIC_WRITE,
                                FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, 0);
 
-    if(handle == INVALID_HANDLE_VALUE)
+    if (handle == INVALID_HANDLE_VALUE) {
         return INVALID_HANDLE_VALUE;
+    }
 
-    if(!DeviceIoControl(handle, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, NULL, 0)) {
+    if (!DeviceIoControl(handle, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, NULL, 0)) {
         CloseHandle(handle);
         return INVALID_HANDLE_VALUE;
     }
@@ -136,21 +145,24 @@ HANDLE LockDisk(const QString& targetDev) {
     return handle;
 }
 
-void UnlockDisk(HANDLE handle) {
+void UnlockDisk(HANDLE handle)
+{
     DeviceIoControl(handle, IOCTL_DISK_UPDATE_PROPERTIES, NULL, 0, NULL, 0, NULL,
                     0);
     DeviceIoControl(handle, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, NULL, 0);
     CloseHandle(handle);
 }
 
-XSys::Result InstallSyslinux(const QString& targetDev) {
+XSys::Result InstallSyslinux(const QString &targetDev)
+{
     // install syslinux
     XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
     QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blobs/syslinux/win32/syslinux.exe"));
     return XSys::SynExec(sysliuxPath, QString(" -i -m -a %1").arg(targetDev));
 }
 
-XSys::Result InstallBootloader(const QString& targetDev) {
+XSys::Result InstallBootloader(const QString &targetDev)
+{
     qDebug() << "FixUsbDisk Begin!";
     int deviceNum = GetPartitionDiskNum(targetDev);
     QString xfbinstDiskName = QString("(hd%1)").arg(deviceNum);
@@ -158,9 +170,9 @@ XSys::Result InstallBootloader(const QString& targetDev) {
     // HANDLE handle = LockDisk(targetDev);
     // fbinst format
     QString xfbinstPath = XSys::FS::InsertTmpFile(QString(":blobs/xfbinst/xfbinst.exe"));
-    XSys::Result ret= XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force")
-                  .arg(xfbinstDiskName));
-    if (!ret.isSuccess()) return ret;
+    XSys::Result ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force")
+                                     .arg(xfbinstDiskName));
+    if (!ret.isSuccess()) { return ret; }
 
     // install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":blobs/xfbinst/fb.cfg"));
@@ -199,33 +211,38 @@ XSys::Result InstallBootloader(const QString& targetDev) {
     return XSys::Result(XSys::Result::Success, "", targetDev);
 }
 
-XSys::Result UmountDisk(const QString& targetDev) {
+XSys::Result UmountDisk(const QString &targetDev)
+{
     qDebug() << "In Win32 platform, Not UmountDisk " << targetDev;
     return XSys::Result(XSys::Result::Success, "");
 }
 
-bool CheckFormatFat32(const QString& targetDev) {
-    XSys::Result result = XSys::SynExec( "cmd",  QString("/C \"chcp 437 & fsutil fsinfo volumeinfo %1\" ").arg(targetDev));
+bool CheckFormatFat32(const QString &targetDev)
+{
+    XSys::Result result = XSys::SynExec("cmd",  QString("/C \"chcp 437 & fsutil fsinfo volumeinfo %1\" ").arg(targetDev));
 
-    if(result.result().contains("File System Name : FAT32", Qt::CaseInsensitive)) {
+    if (result.result().contains("File System Name : FAT32", Qt::CaseInsensitive)) {
         return true;
     }
 
     return false;
 }
 
-const QString MountPoint(const QString& targetDev) {
+const QString MountPoint(const QString &targetDev)
+{
     return QString(targetDev).remove("/").remove("\\") + "/";
 }
 
-bool Mount(const QString& targetDev, const QString& path) {
+bool Mount(const QString &targetDev, const QString &path)
+{
     return true;
 }
 
 #endif
 
 #ifdef Q_OS_UNIX
-const QString MountPoint(const QString& targetDev) {
+const QString MountPoint(const QString &targetDev)
+{
     /*
     Filesystem    512-blocks     Used Available Capacity iused     ifree %iused
     Mounted on
@@ -233,10 +250,11 @@ const QString MountPoint(const QString& targetDev) {
     /Volumes/DEEPINOS 1
     */
     XSys::Result ret = XSys::SynExec("df", "");
-    if(!ret.isSuccess())
+    if (!ret.isSuccess()) {
         return "";
+    }
     QStringList mounts = ret.result().split("\n").filter(targetDev);
-    if(0 == mounts.size()) {
+    if (0 == mounts.size()) {
         return "";
     }
     QString mountinfo = mounts.last();
@@ -245,7 +263,8 @@ const QString MountPoint(const QString& targetDev) {
 }
 
 
-bool Mount(const QString& targetDev, const QString& path) {
+bool Mount(const QString &targetDev, const QString &path)
+{
     XSys::SynExec("mkdir", QString(" -p %1").arg(path));
     XSys::Result ret = XSys::SynExec("mount", QString(" %1 %2").arg(targetDev).arg(path));
     return ret.isSuccess();
@@ -255,26 +274,31 @@ bool Mount(const QString& targetDev, const QString& path) {
 
 #ifdef Q_OS_LINUX
 
-QString GetPartitionDisk(QString targetDev) {
-    if(targetDev.contains(QRegExp("p\\d$")))
+QString GetPartitionDisk(QString targetDev)
+{
+    if (targetDev.contains(QRegExp("p\\d$"))) {
         return QString(targetDev).remove(QRegExp("p\\d$"));
-    else
+    } else {
         return QString(targetDev).remove(QRegExp("\\d$"));
+    }
 }
 
-XSys::Result UmountDisk(const QString& targetDev) {
+XSys::Result UmountDisk(const QString &targetDev)
+{
     return XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
 }
 
-bool CheckFormatFat32(const QString& targetDev) {
+bool CheckFormatFat32(const QString &targetDev)
+{
     XSys::Result ret = XSys::SynExec("blkid", "-s TYPE " + targetDev);
-    if(ret.isSuccess() && ret.result().contains("vfat", Qt::CaseInsensitive)) {
+    if (ret.isSuccess() && ret.result().contains("vfat", Qt::CaseInsensitive)) {
         return true;
     }
     return false;
 }
 
-QString GetPartitionLabel(const QString &targetDev) {
+QString GetPartitionLabel(const QString &targetDev)
+{
     XSys::Result ret = XSys::SynExec("blkid", "-s LABEL -o value " + targetDev);
     if (!ret.isSuccess()) {
         return 0;
@@ -282,7 +306,8 @@ QString GetPartitionLabel(const QString &targetDev) {
     return ret.result();
 }
 
-qint64 GetPartitionFreeSpace(const QString &targetDev) {
+qint64 GetPartitionFreeSpace(const QString &targetDev)
+{
     XSys::Result ret = XSys::SynExec("df", "--output=avail " + targetDev);
     if (!ret.isSuccess()) {
         return 0;
@@ -290,26 +315,53 @@ qint64 GetPartitionFreeSpace(const QString &targetDev) {
     return ret.result().split("\r").last().remove("\n").toLongLong();
 }
 
-XSys::Result InstallSyslinux(const QString& targetDev) {
+
+XSys::Result FixMountPartition(const QString &partition)
+{
+    QString mountPoint = XSys::DiskUtil::MountPoint(partition);
+    if (mountPoint.isEmpty()) {
+        mountPoint = QString("%1").arg(XSys::FS::TmpFilePath("deepin-boot-maker"));
+    }
+
+    XSys::Result ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
+    if (!ret.isSuccess()) { return ret; }
+
+    ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
+    if (!ret.isSuccess()) { return ret; }
+
+    QString mountCmd = "%1 %2";
+    QString remountCmd = "-o flush,rw,utf8=1,sync,nodev,nosuid, %1 %2";
+    XSys::DiskUtil::UmountDisk(partition);
+    QThread::sleep(3);
+    XSys::SynExec("mount",  mountCmd.arg(partition).arg(mountPoint));
+    QThread::sleep(3);
+    XSys::SynExec("mount",  remountCmd.arg(partition).arg(mountPoint));
+    return XSys::Result(XSys::Result::Success, "", mountPoint);
+}
+
+XSys::Result InstallSyslinux(const QString &targetDev)
+{
     // install syslinux
     QString rawtargetDev = GetPartitionDisk(targetDev);
     XSys::Result ret = XSys::Syslinux::InstallBootloader(targetDev);
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
     ret = XSys::Syslinux::InstallMbr(rawtargetDev);
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // make active
     ret = XSys::SynExec(XSys::FS::SearchBin("sfdisk"),
-                                     QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
-    if(!ret.isSuccess()) return ret;
+                        QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
+    if (!ret.isSuccess()) { return ret; }
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
 
+    FixMountPartition(targetDev);
+
     return ret;
 }
-
-XSys::Result InstallBootloader(const QString& diskDev) {
+XSys::Result InstallBootloader(const QString &diskDev)
+{
     XSys::Result ret = UmountDisk(diskDev);
 
     // pre format
@@ -320,25 +372,25 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     UmountDisk(diskDev);
     QString xfbinstPath = XSys::FS::InsertTmpFile(":blobs/xfbinst/xfbinst");
     ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // fbinst: install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":blobs/xfbinst/fb.cfg"));
     UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // after format, diskdev change to /dev/sd?1
     UmountDisk(diskDev);
     ret = XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // install syslinux
     XSys::Syslinux::InstallBootloader(newTargetDev);
@@ -346,38 +398,40 @@ XSys::Result InstallBootloader(const QString& diskDev) {
     // dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::FS::TmpFilePath("ldlinux.bin");
     ret = XSys::SynExec("dd", QString(" if=%1 of=%2 bs=512 count=1").arg(newTargetDev).arg(tmpPbrPath));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // fbinst: add pbr file ldlinux.bin
     ret = UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     // mount
     QString mountPoint = QString("/tmp/%1").arg(XSys::FS::TmpFilePath(""));
     ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
     ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
-    if(!ret.isSuccess()) return ret;
+    if (!ret.isSuccess()) { return ret; }
 
-    QString mountCmd = "-o "
-                       "flush,rw,nosuid,nodev,shortname=mixed,"
-                       "dmask=0077,utf8=1,showexec %1 %2";
+    FixMountPartition(newTargetDev);
+
+//    QString mountCmd = "-o "
+//                       "flush,rw,nosuid,nodev,shortname=mixed,"
+//                       "dmask=0077,utf8=1,showexec %1 %2";
     // the disk must be mount
-    int retryTimes = 5;
+//    int retryTimes = 5;
 
-    do {
-        qDebug() << "Try mount the disk " << (6 - retryTimes) << " first time";
-        UmountDisk(diskDev);
-        QThread::sleep(5);
-        XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
-        QThread::sleep(5);
-        XSys::SynExec("mount",  mountCmd.arg(newTargetDev).arg(mountPoint));
-        QThread::sleep(5);
-        retryTimes--;
-    } while((MountPoint(newTargetDev) == "") && retryTimes);
-    // how ever, if mount failed, check before install.
+//    do {
+//        qDebug() << "Try mount the disk " << (6 - retryTimes) << " first time";
+//        UmountDisk(diskDev);
+//        QThread::sleep(5);
+//        XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
+//        QThread::sleep(5);
+//        XSys::SynExec("mount",  mountCmd.arg(newTargetDev).arg(mountPoint));
+//        QThread::sleep(5);
+//        retryTimes--;
+//    } while((MountPoint(newTargetDev) == "") && retryTimes);
+//    // how ever, if mount failed, check before install.
     return XSys::Result(XSys::Result::Success, "", newTargetDev);
 }
 
@@ -385,18 +439,19 @@ XSys::Result InstallBootloader(const QString& diskDev) {
 
 
 #ifdef Q_OS_MAC
-QString removAroundSpace(QString raw) {
+QString removAroundSpace(QString raw)
+{
     QString out;
-    for (int i =0; i < raw.length(); ++i) {
+    for (int i = 0; i < raw.length(); ++i) {
         if (' ' != raw.at(i)) {
-            out = raw.right(raw.length()-i);
+            out = raw.right(raw.length() - i);
             break;
         }
     }
     raw = out;
-    for (int i =0; i < raw.length(); ++i) {
-        if (' ' != raw.at(raw.length()-i)) {
-            out = raw.left(raw.length()-i);
+    for (int i = 0; i < raw.length(); ++i) {
+        if (' ' != raw.at(raw.length() - i)) {
+            out = raw.left(raw.length() - i);
             break;
         }
     }
@@ -404,10 +459,11 @@ QString removAroundSpace(QString raw) {
 }
 
 
-QString GetPartitionLabel(const QString &targetDev) {
+QString GetPartitionLabel(const QString &targetDev)
+{
     XSys::Result ret = XSys::SynExec("diskutil",  "info " + targetDev);
     if (!ret.isSuccess()) {
-        qDebug()<<"Call df Failed";
+        qDebug() << "Call df Failed";
         return "";
     }
     QString r = ret.result().split("\n").filter("Volume Name:").first().remove("Volume Name:");
@@ -415,28 +471,32 @@ QString GetPartitionLabel(const QString &targetDev) {
     return removAroundSpace(r);
 }
 
-qint64 GetPartitionFreeSpace(const QString &targetDev) {
+qint64 GetPartitionFreeSpace(const QString &targetDev)
+{
     XSys::Result ret = XSys::SynExec("df", "-b");
     if (!ret.isSuccess()) {
-        qDebug()<<"Call df Failed";
+        qDebug() << "Call df Failed";
         return 0;
     }
-    return ret.result().split("\n").filter(targetDev).first().split(" ").filter(QRegExp("[^\\s]")).at(3).toLongLong()*512;
+    return ret.result().split("\n").filter(targetDev).first().split(" ").filter(QRegExp("[^\\s]")).at(3).toLongLong() * 512;
 }
 
-QString GetPartitionDisk(QString targetDev) {
+QString GetPartitionDisk(QString targetDev)
+{
     return QString(targetDev).remove(QRegExp("s\\d$"));
 }
 
-XSys::Result UmountDisk(const QString& targetDev) {
+XSys::Result UmountDisk(const QString &targetDev)
+{
     return XSys::SynExec("diskutil", QString("unmountDisk force %1").arg(GetPartitionDisk(targetDev)));
 }
 
-bool CheckFormatFat32(const QString& targetDev) {
+bool CheckFormatFat32(const QString &targetDev)
+{
     XSys::Result ret = XSys::SynExec("diskutil", "info " + targetDev);
     QString partitionType = ret.result().split("\n").filter("Partition Type:").first();
 
-    if(partitionType.contains(QRegExp("_FAT_32"))) {
+    if (partitionType.contains(QRegExp("_FAT_32"))) {
         return true;
     }
 
@@ -444,14 +504,16 @@ bool CheckFormatFat32(const QString& targetDev) {
 }
 
 
-QString Resource(const QString& name) {
+QString Resource(const QString &name)
+{
     QDir res = QDir(QCoreApplication::applicationDirPath());
     res.cdUp();
     res.cd("Resources");
     return res.absoluteFilePath(name);
 }
 
-XSys::Result InstallSyslinux(const QString& targetDev) {
+XSys::Result InstallSyslinux(const QString &targetDev)
+{
     // rename to DEEPINOS
     XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
 
@@ -469,7 +531,8 @@ XSys::Result InstallSyslinux(const QString& targetDev) {
     return XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
 }
 
-XSys::Result InstallBootloader(const QString& diskDev) {
+XSys::Result InstallBootloader(const QString &diskDev)
+{
     QString targetDev = diskDev + "s1";
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() - 1]);
     // format with xfbinst
@@ -514,58 +577,73 @@ XSys::Result InstallBootloader(const QString& diskDev) {
 
 // End XAPI
 // //////////////////////////////////////
-namespace XSys {
-namespace DiskUtil {
+namespace XSys
+{
+namespace DiskUtil
+{
 
-PartionFormat GetPartitionFormat(const QString& targetDev) {
-    if(XAPI::CheckFormatFat32(targetDev)) {
+PartionFormat GetPartitionFormat(const QString &targetDev)
+{
+    if (XAPI::CheckFormatFat32(targetDev)) {
         return PF_FAT32;
     }
     return PF_RAW;
 }
 
-QString GetPartitionLabel(const QString &targetDev) {
+QString GetPartitionLabel(const QString &targetDev)
+{
     return XAPI::GetPartitionLabel(targetDev);
 }
 
-qint64 GetPartitionFreeSpace(const QString &targetDev) {
+qint64 GetPartitionFreeSpace(const QString &targetDev)
+{
     return XAPI::GetPartitionFreeSpace(targetDev);
 }
 
-QString GetPartitionDisk(const QString& targetDev) {
+QString GetPartitionDisk(const QString &targetDev)
+{
     return XAPI::GetPartitionDisk(targetDev);
 }
 
-bool EjectDisk(const QString& targetDev) {
+bool EjectDisk(const QString &targetDev)
+{
     return UmountDisk(GetPartitionDisk(targetDev));
 }
 
-bool UmountDisk(const QString& disk) {
+bool UmountDisk(const QString &disk)
+{
     return XAPI::UmountDisk(disk).isSuccess();
 }
 
-QString MountPoint(const QString& targetDev) {
+QString MountPoint(const QString &targetDev)
+{
     return XAPI::MountPoint(targetDev);
 }
 
-bool Mount(const QString& targetDev, const QString& path) {
+bool Mount(const QString &targetDev, const QString &path)
+{
     return XAPI::Mount(targetDev, path);
 }
 }
 
-namespace Bootloader {
+namespace Bootloader
+{
 
-Result InstallBootloader(const QString& diskDev) {
+Result InstallBootloader(const QString &diskDev)
+{
     return XAPI::InstallBootloader(diskDev);
 }
 
-namespace Syslinux {
+namespace Syslinux
+{
 
-Result InstallSyslinux(const QString& diskDev) {
-     return XAPI::InstallSyslinux(diskDev);
+Result InstallSyslinux(const QString &diskDev)
+{
+    return XAPI::InstallSyslinux(diskDev);
 }
 
-Result ConfigSyslinx(const QString& targetPath) {
+Result ConfigSyslinx(const QString &targetPath)
+{
     // rename isolinux to syslinux
     QString syslinxDir = QString("%1/syslinux/").arg(targetPath);
     if (!XSys::FS::RmDir(syslinxDir)) {
@@ -590,7 +668,7 @@ Result ConfigSyslinx(const QString& targetPath) {
         return Result(Result::Faiiled, "Copy File Failed: " + isolinxCfgPath + " to " + syslinxCfgPath);
     }
 
-    qDebug() << "InstallModule to"<<syslinxDir;
+    qDebug() << "InstallModule to" << syslinxDir;
     XSys::Syslinux::InstallModule(syslinxDir);
 
     // bugfix

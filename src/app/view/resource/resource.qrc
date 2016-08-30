@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/">
+        <file>checkbox_checked_hover.png</file>
+        <file>checkbox_checked_hover@2x.png</file>
+        <file>checkbox_checked_press.png</file>
+        <file>checkbox_checked_press@2x.png</file>
+        <file>checkbox_checked.png</file>
+        <file>checkbox_checked@2x.png</file>
+        <file>checkbox_mixed_hover.png</file>
+        <file>checkbox_mixed_hover@2x.png</file>
+        <file>checkbox_mixed_press.png</file>
+        <file>checkbox_mixed_press@2x.png</file>
+        <file>checkbox_mixed.png</file>
+        <file>checkbox_mixed@2x.png</file>
+        <file>checkbox_unchecked_hover.png</file>
+        <file>checkbox_unchecked_hover@2x.png</file>
+        <file>checkbox_unchecked_press.png</file>
+        <file>checkbox_unchecked_press@2x.png</file>
+        <file>checkbox_unchecked.png</file>
+        <file>checkbox_unchecked@2x.png</file>
+        <file>checkbox-checked-insensitive.png</file>
+        <file>checkbox-checked-insensitive@2x.png</file>
+        <file>checkbox-mixed-insensitive.png</file>
+        <file>checkbox-mixed-insensitive@2x.png</file>
+        <file>checkbox-unchecked-insensitive.png</file>
+        <file>checkbox-unchecked-insensitive@2x.png</file>
+        <file>drive-harddisk-48px.png</file>
+        <file>drive-removable-media-48px.png</file>
+        <file>fail.png</file>
+        <file>indicator_active.png</file>
+        <file>indicator_inactive.png</file>
+        <file>media-optical-96px.png</file>
+        <file>select.png</file>
+        <file>success.png</file>
+        <file>suggest_button_disabled.png</file>
+        <file>suggest_button_hover.png</file>
+        <file>suggest_button_normal.png</file>
+        <file>suggest_button_press.png</file>
+    </qresource>
+</RCC>

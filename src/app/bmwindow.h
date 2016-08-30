@@ -3,16 +3,16 @@
 
 #include <DWindow>
 
+class BMLinsterner;
 class BMWindowData;
 class BMWindow: public DTK_WIDGET_NAMESPACE::DWindow
 {
     Q_OBJECT
 public:
-    BMWindow(QWidget* parent=nullptr);
-
+    BMWindow(QWidget *parent = nullptr);
+    ~BMWindow();
 private:
-    BMWindowData    *d = nullptr;
-
+    BMWindowData *d     = nullptr;
     Q_DISABLE_COPY(BMWindow)
 };
 
