@@ -22,6 +22,7 @@ int main(int argc, char **argv)
     app.setApplicationName("deepin-boot-maker");
     app.setApplicationDisplayName(DApplication::tr("Deepin Boot Maker"));
     app.setApplicationVersion("1.99.0");
+    app.setTheme("light");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("Deepin Boot Maker is a tool to help you make a startup usb disk.");

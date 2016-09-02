@@ -1,0 +1,19 @@
+SuggestButton{
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    color: #0699ff;
+    border: none;
+    background: transparent;
+    background-image: url(":/theme/light/image/suggest_button_normal.png")
+}
+SuggestButton:hover{
+    background-image: url(":/theme/light/image/suggest_button_hover.png")
+}
+SuggestButton:pressed{
+    background-image: url(":/theme/light/image/suggest_button_press.png")
+}
+SuggestButton:disabled{
+    background-image: url(":/theme/light/image/suggest_button_disabled.png")
+}

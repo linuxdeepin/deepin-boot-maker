@@ -11,12 +11,12 @@ unix{
     LIBS += -lxcb -lX11 -lXext
 }
 
-QMAKE_CXXFLAGS += $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --cflags dtkbase)
-LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkbase)
-QMAKE_CXXFLAGS += $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --cflags dtkutil)
-LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkutil)
-QMAKE_CXXFLAGS += $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --cflags dtkwidget)
-LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkwidget)
+#QMAKE_CXXFLAGS += $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --cflags dtkbase)
+#LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkbase)
+#QMAKE_CXXFLAGS += $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --cflags dtkutil)
+#LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkutil)
+#QMAKE_CXXFLAGS += $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --cflags dtkwidget)
+#LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkwidget)
 
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/usr/lib/release/ -lxsys

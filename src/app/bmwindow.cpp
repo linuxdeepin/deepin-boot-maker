@@ -7,7 +7,7 @@
 #include "util/bmreporter.h"
 #include "view/setepindicatorbar.h"
 #include "view/isoselectview.h"
-
+#include "view/usbselectview.h"
 
 const static QString debugQSS = "background-color: rgba(255, 0, 255, 20%);border: 1px solid;"
                                 " border-radius: 3; border-color: rgba(0, 255, 0, 20%);";
@@ -28,7 +28,6 @@ public:
     QWidget *isoWidget              = nullptr;
 };
 
-
 BMWindow::BMWindow(QWidget *parent): DWindow(parent)
 {
     setTitlebarFixedHeight(40);
@@ -40,18 +39,19 @@ BMWindow::BMWindow(QWidget *parent): DWindow(parent)
     this->setContentLayout(mainLayout);
 
     QHBoxLayout *actionsLayout = new QHBoxLayout;
-    d->isoWidget = new ISOSelectView;
-    d->isoWidget->setFixedHeight(474);
+//    d->isoWidget = new ISOSelectView;
+    d->isoWidget = new UsbSelectView;
+    d->isoWidget->setFixedHeight(476);
     actionsLayout->addWidget(d->isoWidget, 0, Qt::AlignCenter);
 
     mainLayout->addLayout(actionsLayout);
 
-    mainLayout->addSpacing(10);
+    mainLayout->addSpacing(8);
     auto wsib = new StepIndicatorBar(3);
     mainLayout->addWidget(wsib);
 
-    wsib->setStyleSheet(debugQSS);
-    d->isoWidget->setStyleSheet(debugQSS);
+//    wsib->setStyleSheet(debugQSS);
+//    d->isoWidget->setStyleSheet(debugQSS);
 
 
 

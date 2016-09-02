@@ -1,0 +1,9 @@
+#UsbSelectView{
+}
+
+#UsbDeviceListPanel{
+    background-color: rgba(255, 255, 255, 50%);
+    border: 1px solid;
+    border-radius: 1;
+    border-color: rgba(255, 0, 0, 50%);
+}

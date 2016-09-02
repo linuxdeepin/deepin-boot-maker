@@ -6,6 +6,10 @@ TARGET = deepin-boot-maker
 
 QT += core gui widgets concurrent
 
+CONFIG += c++11 link_pkgconfig
+
+PKGCONFIG += dtkbase dtkutil dtkwidget
+
 DEFINES += QT_MESSAGELOGCONTEXT
 
 RESOURCES +=  \
@@ -23,7 +27,10 @@ HEADERS += \
     util/utils.h \
     util/bmreporter.h \
     view/setepindicatorbar.h \
-    view/suggestbutton.h
+    view/suggestbutton.h \
+    view/widgetutil.h \
+    view/usbselectview.h \
+    view/deviceinfoitem.h
 
 SOURCES += \
     main.cpp \
@@ -36,7 +43,10 @@ SOURCES += \
     util/utils.cpp \
     util/bmreporter.cpp \
     view/setepindicatorbar.cpp \
-    view/suggestbutton.cpp
+    view/suggestbutton.cpp \
+    view/widgetutil.cpp \
+    view/usbselectview.cpp \
+    view/deviceinfoitem.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
@@ -55,9 +65,6 @@ TRANSLATIONS += po/en_US.ts \
     po/tr.ts \
     po/zh_TW.ts \
 
-#################################################
-#    Auto Lib Ref
-#################################################
 
 
 
