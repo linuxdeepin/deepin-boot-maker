@@ -9,11 +9,14 @@ SuggestButton{
     background-image: url(":/theme/light/image/suggest_button_normal.png")
 }
 SuggestButton:hover{
+    color: white;
     background-image: url(":/theme/light/image/suggest_button_hover.png")
 }
 SuggestButton:pressed{
+    color: white;
     background-image: url(":/theme/light/image/suggest_button_press.png")
 }
 SuggestButton:disabled{
+    color: grey;
     background-image: url(":/theme/light/image/suggest_button_disabled.png")
 }

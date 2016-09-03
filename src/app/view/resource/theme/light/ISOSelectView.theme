@@ -32,10 +32,7 @@
 }
 
 #IsoSpliter{
-    background-color: rgba(255, 255, 255, 50%);
-    border: 1px dashed ;
-    border-radius: 3;
-    border-color: rgba(0, 0, 0, 10%);
+    background-image: url(:/theme/light/image/dash_line.png);
 }
 
 #IsoFileSelect{

@@ -39,7 +39,6 @@ QString UsbShowText(const QString &dev)
     return showText;
 }
 
-
 void ClearTargetDev(const QString &targetPath)
 {
     QStringList dirlist;

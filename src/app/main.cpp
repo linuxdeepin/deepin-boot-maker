@@ -2,6 +2,7 @@
 
 #define STATIC_LIB
 
+#include <QDesktopWidget>
 #include <DLog>
 #include <DApplication>
 #include <DWindow>
@@ -12,6 +13,12 @@
 
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
+
+QRect PrimaryRect()
+{
+    QDesktopWidget *w = QApplication::desktop();
+    return w->screenGeometry(w->primaryScreen());
+}
 
 int main(int argc, char **argv)
 {
@@ -75,6 +82,7 @@ int main(int argc, char **argv)
 
     BMWindow w;
     w.setFixedSize(440, 550);
+    w.move(PrimaryRect().center() - w.geometry().center());
     w.show();
 
     return app.exec();

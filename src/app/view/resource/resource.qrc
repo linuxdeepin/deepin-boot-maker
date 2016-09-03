@@ -40,5 +40,13 @@
         <file>theme/light/SuggestButton.theme</file>
         <file>theme/light/UsbSelectView.theme</file>
         <file>theme/light/UCheckBox.theme</file>
+        <file>theme/light/image/drive-select.png</file>
+        <file>theme/light/DeviceInfoItem.theme</file>
+        <file>theme/light/DeviceListWidget.theme</file>
+        <file>theme/light/image/water_back.png</file>
+        <file>theme/light/image/water_front.png</file>
+        <file>theme/light/ProgressView.theme</file>
+        <file>theme/light/ResultView.theme</file>
+        <file>theme/light/image/dash_line.png</file>
     </qresource>
 </RCC>

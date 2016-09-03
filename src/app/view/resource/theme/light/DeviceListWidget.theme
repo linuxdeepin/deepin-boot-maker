@@ -1,0 +1,28 @@
+DeviceListWidget {
+    show-decoration-selected: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+DeviceListWidget::item:alternate{
+    border: none;
+    background: none;
+}
+
+DeviceListWidget::item:selected{
+    border: none;
+    background: none;
+}
+
+DeviceListWidget::item:selected:!active{
+}
+
+DeviceListWidget::item:selected:active{
+}
+
+DeviceListWidget::item:hover{
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.05);
+    border-radius: 6px;
+}

@@ -2,6 +2,7 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QFileDialog>
 #include <QDebug>
 
 #include "suggestbutton.h"
@@ -11,7 +12,7 @@ DWIDGET_USE_NAMESPACE
 
 const QString s_linkTemplate = "<a href='%1' style='text-decoration: none; color: #0066ec;'>%2</a>";
 
-ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
+ISOSelectView::ISOSelectView(QWidget *parent) : QWidget(parent)
 {
     setObjectName("ISOSelectView");
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
@@ -35,21 +36,21 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     m_fileLabel->setObjectName("IsoFileName");
     m_fileLabel->setFixedHeight(15);
 
-    m_hits = new QLabel(tr("Or"));
+    m_hits = new QLabel(tr("或者"));
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(15);
 
-    QWidget *spliter = new QWidget;
+    QLabel *spliter = new QLabel;
     spliter->setObjectName("IsoSpliter");
-    spliter->setFixedSize(220, 1);
+    spliter->setFixedSize(230, 1);
 
-    m_fileSelectButton = new QLabel();
-    m_fileSelectButton->setObjectName("IsoFileSelect");
-    m_fileSelectButton->setFixedHeight(15);
-    m_fileSelectButton->setOpenExternalLinks(false);
-    QString selectText = tr("Select File");
+    m_fileSelect = new QLabel();
+    m_fileSelect->setObjectName("IsoFileSelect");
+    m_fileSelect->setFixedHeight(15);
+    m_fileSelect->setOpenExternalLinks(false);
+    QString selectText = tr("选择文件");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
-    m_fileSelectButton->setText(linkText);
+    m_fileSelect->setText(linkText);
 
     isoPanelLayout->addSpacing(62);
     isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignCenter);
@@ -60,32 +61,49 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     isoPanelLayout->addSpacing(10);
     isoPanelLayout->addWidget(spliter, 0, Qt::AlignCenter);
     isoPanelLayout->addSpacing(12);
-    isoPanelLayout->addWidget(m_fileSelectButton, 0, Qt::AlignCenter);
+    isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignCenter);
     isoPanelLayout->addStretch();
 
-    SuggestButton *netSetp = new SuggestButton();
-    netSetp->setObjectName("NextStepButton");
-    netSetp->setText(tr("Next Setup"));
+    m_nextSetp = new SuggestButton();
+    m_nextSetp->setObjectName("NextStepButton");
+    m_nextSetp->setText(tr("Next Setup"));
+    m_nextSetp->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(24);
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
     mainLayout->addStretch();
-    mainLayout->addWidget(netSetp, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter);
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ISOSelectView.theme"));
 
-    connect(m_fileSelectButton, &QLabel::linkActivated, this, [=](const QString& link){
-        qDebug()<< link;
+    connect(m_fileSelect, &QLabel::linkActivated, this, [ = ](const QString & /*link*/) {
+        QFileDialog fileDlg(this);
+        fileDlg.setViewMode(QFileDialog::Detail);
+        fileDlg.setFileMode(QFileDialog::ExistingFile);
+        fileDlg.setNameFilter("ISO (*.iso);;");
+        if (QFileDialog::Accepted == fileDlg.exec()) {
+            QString text = fileDlg.selectedFiles().first();
+            onFileSelected(text);
+        }
     });
-        onFileSelected("aaaaa");
+
+    connect(m_nextSetp, &SuggestButton::clicked, this, &ISOSelectView::isoFileSelected);
 }
 
 void ISOSelectView::onFileSelected(const QString &file)
 {
-    m_fileLabel->setText(file);
-    m_hits->setText("error");
-    QString selectText = tr("Re Select File");
+    QFileInfo info(file);
+    m_fileLabel->setText(info.fileName());
+    m_hits->setText("");
+    QString selectText = tr("重新选择文件");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
-    m_fileSelectButton->setText(linkText);
+    m_fileSelect->setText(linkText);
+    m_nextSetp->setDisabled(false);
+}
+
+void ISOSelectView::onFileVerfiyFinished(bool ok)
+{
+    if (ok) {
+    }
 }

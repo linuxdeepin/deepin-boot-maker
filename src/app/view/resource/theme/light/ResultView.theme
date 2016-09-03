@@ -1,0 +1,12 @@
+#ResultView{
+}
+
+#ResulteHitsTitle{
+    width: 124px;
+    height: 22px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    color: #000000;
+}

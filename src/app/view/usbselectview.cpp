@@ -4,9 +4,13 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QCheckBox>
+#include <QListWidget>
 
 #include "suggestbutton.h"
 #include "widgetutil.h"
+#include "deviceinfoitem.h"
+#include "devicelistwidget.h"
+#include "dwaterprogress.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -28,23 +32,30 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     usbDeviceListPanel->setFixedSize(410, 320);
 
     QVBoxLayout *usbPanelLayout = new QVBoxLayout(usbDeviceListPanel);
-    usbPanelLayout->setContentsMargins(15,0,15,0);
+    usbPanelLayout->setContentsMargins(10, 0, 10, 0);
 
     QCheckBox *m_formatDiskCheck = new QCheckBox;
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
     m_formatDiskCheck->setText(tr("格式化U盘可提高制作成功率"));
     m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
-//    usbPanelLayout->addSpacing(62);
-//    usbPanelLayout->addWidget(isoIcon, 0, Qt::AlignCenter);
-//    usbPanelLayout->addSpacing(5);
-//    usbPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignCenter);
-//    usbPanelLayout->addSpacing(7);
-//    usbPanelLayout->addWidget(m_hits, 0, Qt::AlignCenter);
-//    usbPanelLayout->addSpacing(10);
-//    usbPanelLayout->addWidget(spliter, 0, Qt::AlignCenter);
-//    usbPanelLayout->addSpacing(12);
-    usbPanelLayout->addStretch();
+
+    DeviceListWidget *m_deviceList = new DeviceListWidget;
+    m_deviceList->setObjectName("UsbDeviceList");
+    m_deviceList->setFixedSize(390, 270);
+
+    setFocusPolicy(Qt::NoFocus);
+
+    for (int i = 0; i < 3; ++i) {
+        QListWidgetItem *testItem = new QListWidgetItem;
+        auto myItem = new DeviceInfoItem;
+        testItem->setSizeHint(myItem->size());
+        m_deviceList->addItem(testItem);
+        m_deviceList->setItemWidget(testItem, myItem);
+        myItem->setCheck(true);
+    }
+    usbPanelLayout->addWidget(m_deviceList, 0, Qt::AlignLeft);
+    usbPanelLayout->addSpacing(15);
     usbPanelLayout->addWidget(m_formatDiskCheck, 0, Qt::AlignLeft);
 
     SuggestButton *start = new SuggestButton();
@@ -58,5 +69,4 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
-
 }

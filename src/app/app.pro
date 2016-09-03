@@ -30,7 +30,11 @@ HEADERS += \
     view/suggestbutton.h \
     view/widgetutil.h \
     view/usbselectview.h \
-    view/deviceinfoitem.h
+    view/deviceinfoitem.h \
+    view/devicelistwidget.h \
+    view/dwaterprogress.h \
+    view/progressview.h \
+    view/resultview.h
 
 SOURCES += \
     main.cpp \
@@ -46,7 +50,11 @@ SOURCES += \
     view/suggestbutton.cpp \
     view/widgetutil.cpp \
     view/usbselectview.cpp \
-    view/deviceinfoitem.cpp
+    view/deviceinfoitem.cpp \
+    view/devicelistwidget.cpp \
+    view/dwaterprogress.cpp \
+    view/progressview.cpp \
+    view/resultview.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
