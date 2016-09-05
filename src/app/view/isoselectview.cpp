@@ -7,6 +7,7 @@
 
 #include "suggestbutton.h"
 #include "widgetutil.h"
+#include "dropframe.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -25,7 +26,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QWidget(parent)
     QLabel *isoIcon = new QLabel;
     isoIcon->setPixmap(QPixmap(":/theme/light/image/media-optical-96px.png"));
 
-    QFrame *isoPanel = new QFrame;
+    DropFrame *isoPanel = new DropFrame;
     isoPanel->setObjectName("IosPanel");
     isoPanel->setFixedSize(410, 320);
 
@@ -89,6 +90,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QWidget(parent)
     });
 
     connect(m_nextSetp, &SuggestButton::clicked, this, &ISOSelectView::isoFileSelected);
+    connect(isoPanel, &DropFrame::fileDrop, this, &ISOSelectView::onFileSelected);
 }
 
 void ISOSelectView::onFileSelected(const QString &file)

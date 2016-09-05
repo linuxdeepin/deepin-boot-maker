@@ -34,7 +34,8 @@ HEADERS += \
     view/devicelistwidget.h \
     view/dwaterprogress.h \
     view/progressview.h \
-    view/resultview.h
+    view/resultview.h \
+    view/dropframe.h
 
 SOURCES += \
     main.cpp \
@@ -54,7 +55,8 @@ SOURCES += \
     view/devicelistwidget.cpp \
     view/dwaterprogress.cpp \
     view/progressview.cpp \
-    view/resultview.cpp
+    view/resultview.cpp \
+    view/dropframe.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
