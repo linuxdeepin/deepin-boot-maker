@@ -23,6 +23,8 @@ public:
                                 QTextOption::WrapMode wordWrap,
                                 Qt::TextElideMode mode,
                                 int flags = 0);
+
+    static void moveToCenter(QWidget *w);
 };
 
 DWIDGET_END_NAMESPACE

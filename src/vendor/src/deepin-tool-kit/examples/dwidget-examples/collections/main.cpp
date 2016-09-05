@@ -14,6 +14,7 @@
 
 #include <QDebug>
 #include <DLog>
+#include <dutility.h>
 
 DWIDGET_USE_NAMESPACE
 
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     }
 
     MainWindow w;
-
+    DUtility::moveToCenter(&w);
     w.show();
 
     return a.exec();

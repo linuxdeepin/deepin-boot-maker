@@ -20,7 +20,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("请选择U盘"));
+    QLabel *m_title = new QLabel(tr("Please Select ISO File"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -37,7 +37,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QCheckBox *m_formatDiskCheck = new QCheckBox;
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
-    m_formatDiskCheck->setText(tr("格式化U盘可提高制作成功率"));
+    m_formatDiskCheck->setText(tr("Format to improve successful"));
     m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
 
     DeviceListWidget *m_deviceList = new DeviceListWidget;

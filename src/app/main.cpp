@@ -1,7 +1,5 @@
 #include <QDebug>
 
-#define STATIC_LIB
-
 #include <QDesktopWidget>
 #include <DLog>
 #include <DApplication>

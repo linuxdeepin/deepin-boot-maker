@@ -1,21 +1,17 @@
-#ifndef DPLATFORMWINDOWHANDLE_H
-#define DPLATFORMWINDOWHANDLE_H
+#ifndef DMAINWINDOW_H
+#define DMAINWINDOW_H
 
 #include "dwidget_global.h"
+#include "dobject.h"
 
-#include <QObject>
-#include <QPainterPath>
-#include <QColor>
-#include <QRegion>
-
-QT_BEGIN_NAMESPACE
-class QWindow;
-class QWidget;
-QT_END_NAMESPACE
+#include <QMainWindow>
 
 DWIDGET_BEGIN_NAMESPACE
 
-class DPlatformWindowHandle : public QObject
+class DMainWindowPrivate;
+class DTitlebar;
+
+class LIBDTKWIDGETSHARED_EXPORT DMainWindow : public QMainWindow, public DObject
 {
     Q_OBJECT
 
@@ -33,13 +29,11 @@ class DPlatformWindowHandle : public QObject
     Q_PROPERTY(bool enableSystemMove READ enableSystemMove WRITE setEnableSystemMove NOTIFY enableSystemMoveChanged)
 
 public:
-    explicit DPlatformWindowHandle(QWindow *window, QObject *parent = 0);
-    explicit DPlatformWindowHandle(QWidget *widget, QObject *parent = 0);
+    explicit DMainWindow(QWidget *parent = 0);
 
-    static void enableDXcbForWindow(QWidget *widget);
-    static void enableDXcbForWindow(QWindow *window);
-    static bool isEnabledDXcb(QWidget *widget);
-    static bool isEnabledDXcb(QWindow *window);
+    DTitlebar *titleBar() const;
+
+    bool isDXcbWindow() const;
 
     int windowRadius() const;
 
@@ -76,7 +70,6 @@ public slots:
     void setEnableSystemMove(bool enableSystemMove);
 
 signals:
-    void frameMarginsChanged();
     void windowRadiusChanged();
     void borderWidthChanged();
     void borderColorChanged();
@@ -85,21 +78,18 @@ signals:
     void shadowColorChanged();
     void clipPathChanged();
     void frameMaskChanged();
+    void frameMarginsChanged();
     void translucentBackgroundChanged();
     void enableSystemResizeChanged();
     void enableSystemMoveChanged();
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
+    DMainWindow(DMainWindowPrivate &dd, QWidget *parent = 0);
 
 private:
-    QWindow *m_window;
+    D_DECLARE_PRIVATE(DMainWindow)
 };
 
 DWIDGET_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QPainterPath)
-Q_DECLARE_METATYPE(QRegion)
-Q_DECLARE_METATYPE(QMargins)
-
-#endif // DPLATFORMWINDOWHANDLE_H
+#endif // DMAINWINDOW_H

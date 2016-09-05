@@ -124,10 +124,10 @@ int DX11WidgetPrivate::externWidth() const
 
 void DX11WidgetPrivate::updateContentsMargins()
 {
-    rootLayout->setContentsMargins(m_ShadowWidth - shadowOffset.x(),
+    rootLayout->setContentsMargins(m_ShadowWidth + m_Border - shadowOffset.x(),
                                    m_ShadowWidth + m_Border - shadowOffset.y(),
-                                   m_ShadowWidth + shadowOffset.x(),
-                                   m_ShadowWidth + shadowOffset.y());
+                                   m_ShadowWidth + m_Border + shadowOffset.x(),
+                                   m_ShadowWidth + m_Border + shadowOffset.y());
 }
 
 void DX11WidgetPrivate::_q_onTitleBarMousePressed(Qt::MouseButtons buttons) const
@@ -147,6 +147,24 @@ DX11Widget::DX11Widget(QWidget *parent): DX11Widget(*new DX11WidgetPrivate(this)
 
 }
 
+DX11Widget::DecorationFlags DX11Widget::decorationFlags()
+{
+    D_D(DX11Widget);
+    return d->decorationFlags;
+}
+
+void DX11Widget::setDecorationFlags(DX11Widget::DecorationFlags flags)
+{
+    D_D(DX11Widget);
+    d->decorationFlags = flags;
+
+    if (flags & ShowTitlebarSeparator) {
+        d->titlebar->setSeparatorVisible(true);
+    } else {
+        d->titlebar->setSeparatorVisible(false);
+    }
+}
+
 DX11Widget::DX11Widget(DX11WidgetPrivate &dd, QWidget *parent)
     : QWidget(parent), DObject(dd)
 {
@@ -158,6 +176,7 @@ DX11Widget::DX11Widget(DX11WidgetPrivate &dd, QWidget *parent)
     QWidget::setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
     setWindowFlags(windowFlags());
+    setDecorationFlags(decorationFlags());
 
     DX11Widget::adjustSize();
 #ifdef Q_OS_LINUX

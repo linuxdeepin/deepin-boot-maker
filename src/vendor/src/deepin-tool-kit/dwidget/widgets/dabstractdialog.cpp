@@ -20,6 +20,8 @@
 #include "dabstractdialog.h"
 #include "private/dabstractdialogprivate_p.h"
 #include "dthememanager.h"
+#include "dplatformwindowhandle.h"
+#include "dapplication.h"
 
 DWIDGET_BEGIN_NAMESPACE
 
@@ -32,6 +34,14 @@ DAbstractDialogPrivate::DAbstractDialogPrivate(DAbstractDialog *qq):
 void DAbstractDialogPrivate::init()
 {
     D_Q(DAbstractDialog);
+
+    if (qApp->isDXcbPlatform()) {
+        handle = new DPlatformWindowHandle(q, q);
+
+        handle->setTranslucentBackground(true);
+        handle->setEnableSystemMove(false);
+        handle->setEnableSystemResize(false);
+    }
 
     q->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     q->setAttribute(Qt::WA_TranslucentBackground);
@@ -124,7 +134,11 @@ void DAbstractDialog::setBorderColor(QColor borderColor)
 
     d->borderColor = borderColor;
 
-    update();
+    if (d->handle) {
+        d->handle->setBorderColor(d->borderColor);
+    } else {
+        update();
+    }
 }
 
 void DAbstractDialog::setDisplayPostion(DAbstractDialog::DisplayPostion displayPostion)
@@ -154,6 +168,11 @@ void DAbstractDialog::moveToCenterByRect(const QRect &rect)
 
 void DAbstractDialog::mousePressEvent(QMouseEvent *event)
 {
+    D_DC(DAbstractDialog);
+
+    if (d->handle)
+        return QDialog::mousePressEvent(event);
+
     if (event->button() == Qt::LeftButton) {
         D_D(DAbstractDialog);
 
@@ -168,6 +187,9 @@ void DAbstractDialog::mouseReleaseEvent(QMouseEvent *event)
 {
     D_D(DAbstractDialog);
 
+    if (d->handle)
+        return QDialog::mouseReleaseEvent(event);
+
     d->mousePressed = false;
 
     QDialog::mouseReleaseEvent(event);
@@ -176,6 +198,12 @@ void DAbstractDialog::mouseReleaseEvent(QMouseEvent *event)
 void DAbstractDialog::mouseMoveEvent(QMouseEvent *event)
 {
     D_D(DAbstractDialog);
+
+    if (d->handle) {
+        d->handle->setEnableSystemMove(true);
+
+        return QDialog::mouseMoveEvent(event);
+    }
 
     if(d->mousePressed) {
         move(event->globalPos() - d->dragPosition);
@@ -191,12 +219,16 @@ void DAbstractDialog::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
 
-    painter.setPen(QPen(d->borderColor, DIALOG::BORDER_SHADOW_WIDTH));
-    painter.setBrush(d->backgroundColor);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    QRectF r(DIALOG::BORDER_SHADOW_WIDTH / 2.0, DIALOG::BORDER_SHADOW_WIDTH / 2.0,
-            width() - DIALOG::BORDER_SHADOW_WIDTH, height() - DIALOG::BORDER_SHADOW_WIDTH);
-    painter.drawRoundedRect(r, DIALOG::BORDER_RADIUS, DIALOG::BORDER_RADIUS);
+    if (d->handle) {
+        painter.fillRect(event->rect(), d->backgroundColor);
+    } else {
+        painter.setPen(QPen(d->borderColor, DIALOG::BORDER_SHADOW_WIDTH));
+        painter.setBrush(d->backgroundColor);
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        QRectF r(DIALOG::BORDER_SHADOW_WIDTH / 2.0, DIALOG::BORDER_SHADOW_WIDTH / 2.0,
+                width() - DIALOG::BORDER_SHADOW_WIDTH, height() - DIALOG::BORDER_SHADOW_WIDTH);
+        painter.drawRoundedRect(r, DIALOG::BORDER_RADIUS, DIALOG::BORDER_RADIUS);
+    }
 
     QDialog::paintEvent(event);
 }

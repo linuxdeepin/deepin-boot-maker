@@ -25,6 +25,9 @@ public:
     explicit GraphicsEffectTab(QWidget *parent = 0);
     ~GraphicsEffectTab();
 
+
+    virtual void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
+
 };
 
 #endif // GRAPHICSEFFECTTAB_H

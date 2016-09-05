@@ -15,6 +15,12 @@ class LIBDTKWIDGETSHARED_EXPORT DX11Widget : public QWidget, public DObject
 {
     Q_OBJECT
 public:
+    enum DecorationFlag {
+        ShowTitlebarSeparator = 0x01
+    };
+    Q_DECLARE_FLAGS(DecorationFlags, DecorationFlag)
+    Q_FLAG(DecorationFlags)
+
     explicit DX11Widget(QWidget *parent = 0);
 
     Q_PROPERTY(int radius READ radius WRITE setRadius)
@@ -25,6 +31,9 @@ public:
     Q_PROPERTY(QColor backgroundColor READ backgroundColor WRITE setBackgroundColor NOTIFY backgroundColorChanged)
     Q_PROPERTY(QColor shadowColor READ shadowColor WRITE setShadowColor NOTIFY shadowColorChanged)
     Q_PROPERTY(QPoint shadowOffset READ shadowOffset WRITE setShadowOffset NOTIFY shadowOffsetChanged)
+
+    DecorationFlags decorationFlags();
+    void setDecorationFlags(DecorationFlags flags);
 
     Qt::WindowFlags windowFlags();
     void setWindowFlags(Qt::WindowFlags type);

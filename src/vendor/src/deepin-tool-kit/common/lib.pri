@@ -8,7 +8,7 @@ DEFINES += QT_MESSAGELOGCONTEXT
 win32* {
     DEFINES += STATIC_LIB
     CONFIG += staticlib
-    LIB_DIR =
+    LIB_DIR = D:\Develop\Library\zlib
 }
 
 isEmpty(LIB_INSTALL_DIR) {

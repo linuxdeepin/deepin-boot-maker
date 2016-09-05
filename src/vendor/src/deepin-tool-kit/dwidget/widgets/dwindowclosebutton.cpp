@@ -17,6 +17,8 @@ DWindowCloseButton::DWindowCloseButton(QWidget * parent) :
     DImageButton(parent)
 {
     D_THEME_INIT_WIDGET(DWindowCloseButton);
+
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
 DWIDGET_END_NAMESPACE

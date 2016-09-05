@@ -17,7 +17,14 @@
 
 DWIDGET_BEGIN_NAMESPACE
 
+class DApplication;
 class DApplicationPrivate;
+
+#if defined(qApp)
+#undef qApp
+#endif
+#define qApp (static_cast<DApplication *>(QCoreApplication::instance()))
+
 class LIBDTKWIDGETSHARED_EXPORT DApplication : public QApplication, public DObject
 {
     Q_OBJECT

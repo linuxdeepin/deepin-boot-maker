@@ -3,6 +3,8 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QTextLayout>
+#include <QApplication>
+#include <QDesktopWidget>
 
 QT_BEGIN_NAMESPACE
 //extern Q_WIDGETS_EXPORT void qt_blurImage(QImage &blurImage, qreal radius, bool quality, int transposed = 0);
@@ -13,8 +15,9 @@ DWIDGET_BEGIN_NAMESPACE
 
 QImage DUtility::dropShadow(const QPixmap &px, qreal radius, const QColor &color)
 {
-    if (px.isNull())
+    if (px.isNull()) {
         return QImage();
+    }
 
     QSize size = px.size();
 
@@ -32,8 +35,9 @@ QImage DUtility::dropShadow(const QPixmap &px, qreal radius, const QColor &color
     qt_blurImage(&blurPainter, tmp, radius, false, true);
     blurPainter.end();
 
-    if (color == QColor(Qt::black))
+    if (color == QColor(Qt::black)) {
         return blurred;
+    }
 
     tmp = blurred;
 
@@ -50,7 +54,7 @@ QStringList DUtility::wordWrapText(const QString &text, int width,
                                    QTextOption::WrapMode wrapMode, int *lineCount)
 {
     QTextLayout textLayout(text);
-    QTextOption &text_option = *const_cast<QTextOption*>(&textLayout.textOption());
+    QTextOption &text_option = *const_cast<QTextOption *>(&textLayout.textOption());
     text_option.setWrapMode(wrapMode);
 
     textLayout.beginLayout();
@@ -67,8 +71,9 @@ QStringList DUtility::wordWrapText(const QString &text, int width,
 
         list << tmp_str;
 
-        if (tmp_str.indexOf('\n') >= 0)
+        if (tmp_str.indexOf('\n') >= 0) {
             ++text_line_count;
+        }
 
         ++text_line_count;
 
@@ -77,8 +82,9 @@ QStringList DUtility::wordWrapText(const QString &text, int width,
 
     textLayout.endLayout();
 
-    if(lineCount)
+    if (lineCount) {
         *lineCount = text_line_count;
+    }
 
     return list;
 }
@@ -92,7 +98,7 @@ QStringList DUtility::elideText(const QString &text, const QSize &size, const QF
     QTextLayout textLayout(text);
     QStringList list;
 
-    const_cast<QTextOption*>(&textLayout.textOption())->setWrapMode(wordWrap);
+    const_cast<QTextOption *>(&textLayout.textOption())->setWrapMode(wordWrap);
 
     textLayout.beginLayout();
 
@@ -111,8 +117,9 @@ QStringList DUtility::elideText(const QString &text, const QSize &size, const QF
 
         const QString &tmp_str = text.mid(line.textStart(), line.textLength());
 
-        if (tmp_str.indexOf('\n'))
+        if (tmp_str.indexOf('\n')) {
             height += text_line_height;
+        }
 
         list << tmp_str;
 
@@ -122,6 +129,20 @@ QStringList DUtility::elideText(const QString &text, const QSize &size, const QF
     textLayout.endLayout();
 
     return list;
+}
+
+void DUtility::moveToCenter(QWidget *w)
+{
+    Q_ASSERT(w != nullptr);
+
+    QDesktopWidget *dw = QApplication::desktop();
+    QRect parentRect = dw->screenGeometry(dw->primaryScreen());
+
+    if (w->parentWidget()) {
+        parentRect = w->parentWidget()->geometry();
+    }
+
+    w->move(parentRect.center() - w->geometry().center());
 }
 
 DWIDGET_END_NAMESPACE

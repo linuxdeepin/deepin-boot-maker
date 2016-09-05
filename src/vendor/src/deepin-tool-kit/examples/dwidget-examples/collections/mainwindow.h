@@ -24,14 +24,20 @@
 #include "widgetstab.h"
 #include "comboboxtab.h"
 
-#include <DWindow>
+#include <DMainWindow>
 
-class MainWindow : public QWidget
+DWIDGET_USE_NAMESPACE
+
+DWIDGET_BEGIN_NAMESPACE
+class DAction;
+DWIDGET_END_NAMESPACE
+
+class MainWindow : public DMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(DWindow *parent = 0);
+    MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 protected slots:

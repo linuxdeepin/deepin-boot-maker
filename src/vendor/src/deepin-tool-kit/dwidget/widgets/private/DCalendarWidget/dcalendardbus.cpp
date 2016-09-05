@@ -137,8 +137,8 @@ QDBusArgument &operator<<(QDBusArgument &argument, const CaLunarMonthInfo &what)
 {
     argument.beginStructure();
     argument << what.mFirstDayWeek << what.mDays;
-    argument.endStructure();
     argument << what.mCaLunarDayInfo;
+    argument.endStructure();
 
     return argument;
 }
@@ -147,8 +147,8 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, CaLunarMonthInfo 
 {
     argument.beginStructure();
     argument >> what.mFirstDayWeek >> what.mDays;
-    argument.endStructure();
     argument >> what.mCaLunarDayInfo;
+    argument.endStructure();
 
     return argument;
 }
@@ -172,8 +172,8 @@ QDBusArgument &operator<<(QDBusArgument &argument, const CaSolarMonthInfo &what)
 {
     argument.beginStructure();
     argument << what.mFirstDayWeek << what.mDays;
-    argument.endStructure();
     argument << what.mCaYearInfo;
+    argument.endStructure();
 
     return argument;
 }
@@ -182,8 +182,8 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, CaSolarMonthInfo 
 {
     argument.beginStructure();
     argument >> what.mFirstDayWeek >> what.mDays;
-    argument.endStructure();
     argument >> what.mCaYearInfo;
+    argument.endStructure();
 
     return argument;
 }

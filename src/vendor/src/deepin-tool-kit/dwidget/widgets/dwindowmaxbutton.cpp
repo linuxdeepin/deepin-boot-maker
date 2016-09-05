@@ -32,6 +32,8 @@ DWindowMaxButton::DWindowMaxButton(QWidget * parent) :
     DObject(*new DWindowMaxButtonPrivate(this))
 {
     D_THEME_INIT_WIDGET(DWindowMaxButton, isMaximized);
+
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
 bool DWindowMaxButton::isMaximized() const

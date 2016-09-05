@@ -4,11 +4,9 @@ TEMPLATE  = app
 
 TARGET = deepin-boot-maker
 
-QT += core gui widgets concurrent
+QT += core gui widgets concurrent network
 
-CONFIG += c++11 link_pkgconfig
-
-PKGCONFIG += dtkbase dtkutil dtkwidget
+CONFIG += c++11
 
 DEFINES += QT_MESSAGELOGCONTEXT
 

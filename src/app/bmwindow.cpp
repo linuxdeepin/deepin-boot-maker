@@ -39,7 +39,7 @@ static void slideWidget(QWidget *left, QWidget *right)
 {
     right->show();
     left->show();
-    int delay = 5000;
+    int delay = 300;
     QRect leftStart = QRect(0, 0, left->width(), left->height());
     QRect leftEnd = leftStart;
     leftEnd.setX(-left->width());

@@ -48,6 +48,7 @@ public:
     bool                m_MousePressed;
     QPoint              m_LastMousePos;
     Qt::WindowFlags     dwindowFlags;
+    DWidget::DecorationFlags decorationFlags;
     QColor              m_backgroundColor;
     QColor              shadowColor;
     QPoint              shadowOffset;

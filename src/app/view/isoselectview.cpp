@@ -33,11 +33,11 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QWidget(parent)
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);
 
-    m_fileLabel = new QLabel(tr("拖拽镜像文件到此"));
+    m_fileLabel = new QLabel(tr("Drop ISO Here"));
     m_fileLabel->setObjectName("IsoFileName");
     m_fileLabel->setFixedHeight(15);
 
-    m_hits = new QLabel(tr("或者"));
+    m_hits = new QLabel(tr("Or"));
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(15);
 
@@ -49,7 +49,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QWidget(parent)
     m_fileSelect->setObjectName("IsoFileSelect");
     m_fileSelect->setFixedHeight(15);
     m_fileSelect->setOpenExternalLinks(false);
-    QString selectText = tr("选择文件");
+    QString selectText = tr("Select File");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
 

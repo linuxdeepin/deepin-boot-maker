@@ -18,20 +18,20 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("正在制作"));
+    QLabel *m_title = new QLabel(tr("Making"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
     auto waterProgress = new DWaterProgress;
 
-    QLabel *m_hitsTitle = new QLabel(tr("正在制作，请稍后..."));
+    QLabel *m_hitsTitle = new QLabel(tr("Making, pleas wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
-    QLabel *m_hits = new QLabel(tr("正在写入文件，请不要移除U盘或者关机"));
+    QLabel *m_hits = new QLabel(tr("Write Disk, Please Do not close or poweroff"));
     m_hits->setObjectName("ProgressHits");
 
     SuggestButton *start = new SuggestButton();
     start->setObjectName("StartMake");
-    start->setText(tr("取 消"));
+    start->setText(tr("Cancel"));
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(91);
