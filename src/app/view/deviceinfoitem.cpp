@@ -7,7 +7,9 @@
 
 #include "widgetutil.h"
 
-DeviceInfoItem::DeviceInfoItem(QWidget *parent) : QWidget(parent)
+DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
+                               const QString &cap, QWidget *parent)
+    : QWidget(parent)
 {
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setContentsMargins(12, 0, 12, 0);
@@ -19,15 +21,15 @@ DeviceInfoItem::DeviceInfoItem(QWidget *parent) : QWidget(parent)
 
     auto m_deviceLabel = new QLabel;
     m_deviceLabel->setObjectName("DeviceInfoLabel");
-    m_deviceLabel->setText("Remove Disk");
+    m_deviceLabel->setText(name);
 
     auto m_deviceDevName = new QLabel;
     m_deviceDevName->setObjectName("DeviceInfoDevName");
-    m_deviceDevName->setText("(sda1)");
+    m_deviceDevName->setText(QString("(%1)").arg(device));
 
     auto m_deviceCapacity = new QLabel;
     m_deviceCapacity->setObjectName("DeviceInfoCapacity");
-    m_deviceCapacity->setText("14/44G");
+    m_deviceCapacity->setText(cap);
 
     auto m_deviceCapacityBar = new QProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
@@ -48,6 +50,12 @@ DeviceInfoItem::DeviceInfoItem(QWidget *parent) : QWidget(parent)
     setFixedSize(390, 60);
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
+}
+
+DeviceInfoItem::DeviceInfoItem(QWidget *parent) :
+    DeviceInfoItem("Remove Device", "NULL", "0/0G", parent)
+{
+
 }
 
 void DeviceInfoItem::setCheck(bool flag)

@@ -23,7 +23,6 @@ HEADERS += \
     backend/syslinux.h \
     backend/diskutil.h \
     util/utils.h \
-    util/bmreporter.h \
     view/setepindicatorbar.h \
     view/suggestbutton.h \
     view/widgetutil.h \
@@ -33,7 +32,9 @@ HEADERS += \
     view/dwaterprogress.h \
     view/progressview.h \
     view/resultview.h \
-    view/dropframe.h
+    view/dropframe.h \
+    util/usbdevicemonitor.h \
+    util/bootmakeragent.h
 
 SOURCES += \
     main.cpp \
@@ -44,7 +45,6 @@ SOURCES += \
     backend/syslinux.cpp \
     backend/diskutil.cpp \
     util/utils.cpp \
-    util/bmreporter.cpp \
     view/setepindicatorbar.cpp \
     view/suggestbutton.cpp \
     view/widgetutil.cpp \
@@ -54,7 +54,9 @@ SOURCES += \
     view/dwaterprogress.cpp \
     view/progressview.cpp \
     view/resultview.cpp \
-    view/dropframe.cpp
+    view/dropframe.cpp \
+    util/usbdevicemonitor.cpp \
+    util/bootmakeragent.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \

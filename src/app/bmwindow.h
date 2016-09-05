@@ -3,8 +3,9 @@
 
 #include <DWindow>
 
-class BMLinsterner;
+class BootMakerAgent;
 class BMWindowData;
+
 class BMWindow: public DTK_WIDGET_NAMESPACE::DWindow
 {
     Q_OBJECT

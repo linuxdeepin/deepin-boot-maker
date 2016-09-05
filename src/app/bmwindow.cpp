@@ -6,7 +6,7 @@
 #include <QPropertyAnimation>
 #include <QStackedLayout>
 
-#include "util/bmreporter.h"
+#include "util/bootmakeragent.h"
 #include "view/setepindicatorbar.h"
 #include "view/isoselectview.h"
 #include "view/usbselectview.h"
@@ -24,7 +24,7 @@ public:
         q = parent;
     }
 
-    BMLinsterner *progressMonitor   = nullptr;
+//    BootMakerAgent *bmAgent         = nullptr;
 
     QWidget *q                      = nullptr;
     QLabel *m_title                 = nullptr;
@@ -108,12 +108,8 @@ BMWindow::BMWindow(QWidget *parent): DWindow(parent)
         slideWidget(d->isoWidget, d->usbWidget);
         wsib->setActiveStep(1);
     });
-
-//    bmr = new BMLinsterner(this);
-//    bmr->listen();
 }
 
 BMWindow::~BMWindow()
 {
-//    bmr->deleteLater();
 }

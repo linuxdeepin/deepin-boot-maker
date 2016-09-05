@@ -131,7 +131,7 @@ QStringList ListUsbDrives()
 
     for (int i = 0; i < usbfileinfoL.size(); ++i) {
         if (usbfileinfoL.at(i).fileName().contains(QRegExp("^usb-\\S{1,}$")) || usbfileinfoL.at(i).fileName().contains(QRegExp("^mmc-\\S{1,}$"))) {
-            XSys::Result ret = XSys::SynExec("blkid", QString("-s TYPE %2").arg(usbfileinfoL.at(i).canonicalFilePath()));
+            XSys::Result ret = XSys::SynExec("/sbin/blkid", QString("-s TYPE %2").arg(usbfileinfoL.at(i).canonicalFilePath()));
             QString tstrblk = ret.result();
             if (tstrblk.contains('=')) {
                 if (tstrblk.section('=', -1, -1).remove('"').contains(

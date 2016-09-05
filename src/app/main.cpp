@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QProcess>
 
 #include <QDesktopWidget>
 #include <DLog>
@@ -8,15 +9,30 @@
 #include "bmwindow.h"
 #include "backend/bootmaker.h"
 #include "util/sevenzip.h"
+#include "util/bootmakeragent.h"
 
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
 
-QRect PrimaryRect()
+static QRect PrimaryRect()
 {
     QDesktopWidget *w = QApplication::desktop();
     return w->screenGeometry(w->primaryScreen());
 }
+
+static QString rootCommand(QCoreApplication &app)
+{
+    return QString("gksu \"%1  -d -n\"").arg(app.applicationFilePath());
+}
+
+static QString startBackend(QCoreApplication &app)
+{
+    QProcess *gksu = new QProcess();
+    gksu->startDetached(rootCommand(app));
+//    gksu->waitForStarted(-1);
+    return "";
+}
+
 
 int main(int argc, char **argv)
 {
@@ -59,29 +75,29 @@ int main(int argc, char **argv)
 
     app.setTheme("light");
 
-    qDebug() << "Deepin Boot Maker started.";
-
     if (parser.isSet(optDaemon)) {
         qDebug() << parser.value(optDaemon)
                  << parser.value(optNoInteractive)
                  << parser.value(optImageFile)
                  << parser.value(optKey)
                  << parser.positionalArguments();
+
         BootMaker bm;
-        bm.install(parser.value(optImageFile),
-                   parser.positionalArguments().first(),
-                   parser.positionalArguments().first(),
-                   parser.isSet(optKey));
 
-        qDebug() << "Deepin Boot Maker end.";
+        qDebug() << "Deepin Boot Maker Backend Started";
 
-        return 0;
+        return app.exec();
     }
+
+    qDebug() << "Deepin Boot Maker UI started.";
+    startBackend(app);
+    BootMakerAgent::Init();
 
     BMWindow w;
     w.setFixedSize(440, 550);
     w.move(PrimaryRect().center() - w.geometry().center());
     w.show();
+
 
     return app.exec();
 }

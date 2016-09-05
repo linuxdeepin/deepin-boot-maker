@@ -1,12 +1,13 @@
 #include "bootmaker.h"
 
 #include <QDebug>
-
+#include <QtConcurrent>
 #include <XSys>
 
 #include "../util/sevenzip.h"
 #include "../util/utils.h"
-#include "../util/bmreporter.h"
+#include "../util/bootmakeragent.h"
+#include "../util/usbdevicemonitor.h"
 
 #include "diskutil.h"
 
@@ -45,12 +46,20 @@ const QString Error::get(const ErrorType et)
 
 BootMaker::BootMaker(QObject *parent) : QObject(parent)
 {
-    m_bmr = new BMReporter;
+    m_porgressReporter = new BootMakerBackend;
     QThread *reportWork = new QThread;
-    m_bmr->moveToThread(reportWork);
+    m_porgressReporter->moveToThread(reportWork);
+    connect(this, &BootMaker::reportProgress, m_porgressReporter, &BootMakerBackend::reportProgress);
     reportWork->start();
 
-    connect(this, &BootMaker::reportProgress, m_bmr, &BMReporter::reportProgress);
+    m_usbDeviceMonitor = new UsbDeviceMonitor;
+    QThread *monitorWork = new QThread;
+    m_usbDeviceMonitor->moveToThread(monitorWork);
+    connect(m_usbDeviceMonitor, &UsbDeviceMonitor::removePartitionsChanged,
+            m_porgressReporter, &BootMakerBackend::sendRemovePartitionsChangedNotify);
+    connect(monitorWork, &QThread::started,
+            m_usbDeviceMonitor, &UsbDeviceMonitor::run);
+    monitorWork->start();
 }
 
 bool BootMaker::install(const QString &image, const QString &device, const QString &partition, bool formatDevice)
@@ -93,7 +102,7 @@ bool BootMaker::install(const QString &image, const QString &device, const QStri
     this->reportProgress(9, 100, "extract files", "");
     qDebug() << "end";
     SevenZip sevenZip(image, installDir);
-    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged, m_bmr, &BMReporter::reportSevenZipProgress);
+    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged, m_porgressReporter, &BootMakerBackend::reportSevenZipProgress);
 
     if (!sevenZip.extract()) {
         qCritical() << "Error::get(Error::ExtractImgeFailed)";

@@ -10,6 +10,8 @@ TARGET = xsys
 TEMPLATE = lib
 CONFIG += staticlib
 
+DEFINES += QT_MESSAGELOGCONTEXT
+
 SOURCES += DiskUtil/DiskUtil.cpp \
     Common/Result.cpp \
     Cmd/Cmd.cpp \

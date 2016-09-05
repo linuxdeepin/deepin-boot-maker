@@ -26,4 +26,3 @@ function build_vendor {
 #build dtk
 build_vendor deepin-tool-kit "-r CONFIG+=staticlib .."
 build_vendor libxsys " -r .."
-build_vendor smipc " -r .."

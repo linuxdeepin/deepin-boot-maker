@@ -11,7 +11,6 @@
 #IsoFileName{
     width: 96px;
     height: 15px;
-    font-family: SourceHanSansCN-Normal;
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -22,7 +21,6 @@
 #IsoHits{
     width: 20px;
     height: 15px;
-    font-family: SourceHanSansCN-Normal;
     font-size: 10px;
     font-weight: normal;
     font-style: normal;
