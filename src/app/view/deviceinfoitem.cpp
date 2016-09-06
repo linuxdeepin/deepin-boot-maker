@@ -6,9 +6,9 @@
 #include <QPixmap>
 
 #include "widgetutil.h"
-
+#include <QDebug>
 DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
-                               const QString &cap, QWidget *parent)
+                               const QString &cap, int percent, QWidget *parent)
     : QWidget(parent)
 {
     auto mainLayout = new QHBoxLayout(this);
@@ -35,7 +35,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
     m_deviceCapacityBar->setTextVisible(false);
     m_deviceCapacityBar->setFixedSize(60, 6);
-    m_deviceCapacityBar->setValue(44);
+    m_deviceCapacityBar->setValue(percent);
 
     mainLayout->addWidget(m_deviceIcon, 0, Qt::AlignCenter);
     mainLayout->addSpacing(20);
@@ -53,7 +53,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 }
 
 DeviceInfoItem::DeviceInfoItem(QWidget *parent) :
-    DeviceInfoItem("Remove Device", "NULL", "0/0G", parent)
+    DeviceInfoItem("Remove Device", "NULL", "0/0G", 0, parent)
 {
 
 }

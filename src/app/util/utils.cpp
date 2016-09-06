@@ -14,6 +14,7 @@
 #include <QtCore>
 #include <QString>
 
+
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif
@@ -62,6 +63,52 @@ void ClearTargetDev(const QString &targetPath)
 #endif
 }
 
+#ifdef Q_OS_UNIX
+QMap<QString, DeviceInfo> CommandDfParse()
+{
+    XSys::Result ret = XSys::SynExec("bash", " -c \"df -k --output=source,used,avail\"");
+    QString dfout = ret.result();
+    QMap<QString, DeviceInfo> deviceInfos;
+    foreach(const QString infoline, dfout.split("\n")) {
+        QStringList infos = infoline.simplified().split(" ");
+        if (infos.size() != 3) {
+            continue;
+        }
+        DeviceInfo devInfo;
+        devInfo.path = infos.at(0);
+        if (!devInfo.path.contains("/dev/")) {
+            continue;
+        }
+        devInfo.used = static_cast<quint32>(infos.at(1).toInt() / 1024);
+        devInfo.total = static_cast<quint32>((infos.at(2).toInt() + infos.at(1).toInt()) / 1024) ;
+//        devInfo.target = infos.at(3);
+        deviceInfos.insert(devInfo.path, devInfo);
+//        qDebug() <<  devInfo.device << devInfo.used << devInfo.total << devInfo.target ;
+    }
+    return deviceInfos;
+}
+
+QMap<QString, DeviceInfo> CommandLsblkParse()
+{
+    XSys::Result ret = XSys::SynExec("bash", " -c \"lsblk -b -p -J -o name,mountpoint,label,size,uuid\"");
+    QString dfout = ret.result();
+    QMap<QString, DeviceInfo> deviceInfos;
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLatin1());
+    foreach(const QJsonValue & value, jsonDoc.object()["blockdevices"].toArray()) {
+        foreach(const QJsonValue & partiotion, value.toObject()["children"].toArray()) {
+            DeviceInfo info;
+            info.path = partiotion.toObject()["name"].toString();
+            info.uuid = partiotion.toObject()["uuid"].toString();
+            info.label = partiotion.toObject()["label"].toString();
+            deviceInfos.insert(info.path, info);
+        }
+    }
+    return deviceInfos;
+}
+#endif
+
+
 bool CheckInstallDisk(const QString &targetDev)
 {
     if (XSys::DiskUtil::PF_FAT32 != XSys::DiskUtil::GetPartitionFormat(targetDev)) {
@@ -106,10 +153,11 @@ bool isUsbDisk(const QString &dev)
     return info.contains(QRegExp("Protocol:\\s+USB"));
 }
 
-QStringList ListUsbDrives()
+QList<DeviceInfo> ListUsbDrives()
 {
     QStringList fulldrivelist;
 
+    QList<DeviceInfo> deviceList;
 #ifdef Q_OS_WIN32
     QFileInfoList extdrivesList = QDir::drives();
 
@@ -128,17 +176,22 @@ QStringList ListUsbDrives()
 #ifdef Q_OS_LINUX
     QDir devlstdir("/dev/disk/by-id/");
     QFileInfoList usbfileinfoL = devlstdir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files);
+    QMap<QString, DeviceInfo> dfDeviceInfos = CommandDfParse();
+    QMap<QString, DeviceInfo> lsblkDeviceInfos = CommandLsblkParse();
 
     for (int i = 0; i < usbfileinfoL.size(); ++i) {
         if (usbfileinfoL.at(i).fileName().contains(QRegExp("^usb-\\S{1,}$")) || usbfileinfoL.at(i).fileName().contains(QRegExp("^mmc-\\S{1,}$"))) {
-            XSys::Result ret = XSys::SynExec("/sbin/blkid", QString("-s TYPE %2").arg(usbfileinfoL.at(i).canonicalFilePath()));
-            QString tstrblk = ret.result();
-            if (tstrblk.contains('=')) {
-                if (tstrblk.section('=', -1, -1).remove('"').contains(
-                            QRegExp("(vfat|ext2|ext3|ext4)"))) {
-                    fulldrivelist.append(usbfileinfoL.at(i).canonicalFilePath());
-                }
+            QString path = usbfileinfoL.at(i).canonicalFilePath();
+//            qDebug() << path<<lsblkDeviceInfos.contains(path);
+            if (!lsblkDeviceInfos.contains(path)) {
+                continue;
             }
+            DeviceInfo info = lsblkDeviceInfos.value(path);
+            DeviceInfo dfinfo = dfDeviceInfos.value(path, info);
+            info.used = dfinfo.used;
+            info.total = dfinfo.total;
+            info.target = dfinfo.target;
+            deviceList.push_back(info);
         }
     }
 #endif
@@ -160,8 +213,7 @@ QStringList ListUsbDrives()
     outfile.close();
     outfile.remove();
 #endif
-
-    return fulldrivelist;
+    return deviceList;
 }
 
 }

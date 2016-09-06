@@ -17,6 +17,35 @@
 
 DWIDGET_USE_NAMESPACE
 
+static QString usageString(quint32 usage, quint32 total)
+{
+    if (total <= 0 || usage > total) {
+        return "0/0G";
+    }
+
+    if (total <= 1024) {
+        return QString("%1/%2M").arg(usage).arg(total);
+    }
+
+    return QString("%1/%2G")
+           .arg(QString::number(static_cast<double>(usage) / 1024, 'f', 2))
+           .arg(QString::number(static_cast<double>(total) / 1024, 'f', 2));
+}
+
+
+static int percent(quint32 usage, quint32 total)
+{
+    if (total <= 0) {
+        return 0;
+    }
+
+    if (usage > total) {
+        return 100;
+    }
+
+    return usage * 100 / total;
+}
+
 UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 {
     setObjectName("UsbSelectView");
@@ -74,21 +103,48 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     connect(BootMakerAgent::Instance(), &BootMakerAgent::notifyRemovePartitionsChanged,
     this, [ = ](const QList<DeviceInfo> &partitions) {
-        m_deviceList->clear();
         m_emptyHist->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
         m_formatDiskCheck->setEnabled(partitions.size());
         start->setDisabled(!partitions.size());
 
+        m_deviceList->clear();
         foreach(const DeviceInfo & partition, partitions) {
-            QListWidgetItem *testItem = new QListWidgetItem;
-            auto myItem = new DeviceInfoItem(partition.name, partition.device,
-                                             QString("%1/%2G").arg(partition.used).arg(partition.total));
-            testItem->setSizeHint(myItem->size());
-            m_deviceList->addItem(testItem);
-            m_deviceList->setItemWidget(testItem, myItem);
-            myItem->setCheck(true);
+            QListWidgetItem *listItem = new QListWidgetItem;
+            DeviceInfoItem *infoItem = new DeviceInfoItem(
+                partition.label,
+                partition.path,
+                usageString(partition.used, partition.total),
+                percent(partition.used, partition.total));
+            listItem->setSizeHint(infoItem->size());
+            m_deviceList->addItem(listItem);
+            m_deviceList->setItemWidget(listItem, infoItem);
+            infoItem->setProperty("path", partition.path);
+            if (partition.path == this->property("last_path").toString()) {
+                infoItem->setCheck(true);
+                m_deviceList->setCurrentItem(listItem);
+            }
+        }
+    });
+
+//    connect(m_deviceList, &DeviceListWidget::itemClicked,
+//    this, [ = ](QListWidgetItem * current) {
+//        DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
+//        if (infoItem) { infoItem->setCheck(true); }
+//        this->setProperty("last_path", infoItem->property("path").toString());
+//    });
+
+    connect(m_deviceList, &DeviceListWidget::currentItemChanged,
+    this, [ = ](QListWidgetItem * current, QListWidgetItem * previous) {
+        DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(previous));
+        if (infoItem) {
+            infoItem->setCheck(false);
         }
 
+        infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
+        if (infoItem) {
+            infoItem->setCheck(true);
+            this->setProperty("last_path", infoItem->property("path").toString());
+        }
     });
 }

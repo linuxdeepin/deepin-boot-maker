@@ -13,8 +13,8 @@ UsbDeviceMonitor::UsbDeviceMonitor(QObject *parent) : QObject(parent)
 void UsbDeviceMonitor::run()
 {
     while (true) {
-        QThread::sleep(5);
-        QList<DeviceInfo> list;
+        QThread::sleep(3);
+        QList<DeviceInfo> list = Utils::ListUsbDrives();
         emit removePartitionsChanged(list);
     }
 }
@@ -22,16 +22,16 @@ void UsbDeviceMonitor::run()
 
 QDataStream &operator<<(QDataStream &out, const DeviceInfo &msg)
 {
-    out << msg.used << msg.total << msg.name << msg.device;
+    out << msg.path << msg.used << msg.total <<  msg.label;
     return out;
 }
 QDataStream &operator>>(QDataStream &in, DeviceInfo &msg)
 {
+    QString path;
     quint32 used;
     quint32 total;
-    QString name;
-    QString device;
-    in >> used >> total >> name >> device;
-    msg = DeviceInfo(used, total, name, device);
+    QString label;
+    in >> path >> used >> total >> label;
+    msg = DeviceInfo(path, used, total, label);
     return in;
 }

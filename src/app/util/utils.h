@@ -11,10 +11,16 @@
 #include <QObject>
 #include <QString>
 
+#include "usbdevicemonitor.h"
+
 namespace Utils
 {
+
+QMap<QString, DeviceInfo> CommandDfParse();
+QMap<QString, DeviceInfo> CommandLsblkParse();
+
 QString UsbShowText(const QString &targetdev);
 void ClearTargetDev(const QString &targetPath);
-QStringList ListUsbDrives();
+QList<DeviceInfo>  ListUsbDrives();
 bool CheckInstallDisk(const QString &targetDev);
 }

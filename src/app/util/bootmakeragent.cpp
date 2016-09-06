@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QDataStream>
+#include <QCoreApplication>
 
 BootMakerAgent *BootMakerAgent::s_agent = nullptr;
 
@@ -39,8 +40,6 @@ QDataStream &operator>>(QDataStream &in, ProgressMsg &msg)
     return in;
 }
 
-
-
 BootMakerBackend::BootMakerBackend(QObject *parent) : QObject(parent)
 {
     qRegisterMetaType<QLocalSocket::LocalSocketError>();
@@ -60,7 +59,8 @@ BootMakerBackend::BootMakerBackend(QObject *parent) : QObject(parent)
         Q_UNUSED(socketError);
         socket->close();
         qCritical() << "Connect error" << socketError << socket->errorString();
-        qFatal("%s", socket->errorString().toStdString().c_str());
+        qApp->exit(111);
+//        qFatal("%s", socket->errorString().toStdString().c_str());
     });
 
     socket->connectToServer(s_localPathUI);
@@ -92,10 +92,9 @@ void BootMakerBackend::reportProgress(int current, int total, const QString &tit
 void BootMakerBackend::sendRemovePartitionsChangedNotify(const QList<DeviceInfo> &list)
 {
     QByteArray data;
-    QDataStream out(data);
+    QDataStream out(&data, QIODevice::ReadWrite);
     out.setVersion(QDataStream::Qt_5_4);
     out << list;
-    sendMessage(ProgressUpdated, data);
     sendMessage(RemovePartitionsChanged, data);
 }
 
@@ -105,13 +104,14 @@ void BootMakerBackend::sendMessage(MessageType t, const QByteArray &data)
         return;
     }
 
-    qDebug() << "Send Message " << t << data;
+    qDebug() << "Send Message type:" << t << "size:" << data.size();
+
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_4);
     out << static_cast<quint64>(t);
     out << static_cast<quint64>(data.size());
-    out << data.constData();
+    out << data;
     socket->write(block);
     socket->flush();
 }
@@ -124,7 +124,6 @@ BootMakerAgent::BootMakerAgent(QObject *parent): QObject(parent)
         qDebug() << "Unable to start the server: " << server->errorString();
         return;
     }
-    qDebug() << server->errorString();
     connect(server, &QLocalServer::newConnection,
             this, &BootMakerAgent::handleNewConnection);
 
@@ -154,8 +153,7 @@ void BootMakerAgent::handleNewConnection()
         in >> msgType;
         in >> blockSize;
         in >> data;
-        qDebug() << blockSize << data.size();
-        Q_ASSERT(data.size() == static_cast<int>(blockSize) + 1);
+        Q_ASSERT(data.size() == static_cast<int>(blockSize));
         processMessage(static_cast<MessageType>(msgType), data);
         /*Message msg = Message::formByteArray(data);
         qDebug() << msg.current << msg.total << msg.title << msg.description;*/
@@ -164,12 +162,13 @@ void BootMakerAgent::handleNewConnection()
 
 void BootMakerAgent::processMessage(MessageType t, QByteArray data)
 {
-    qDebug() << "Revice Message " << t << data;
+    qDebug() << "Revice Message type:" << t << "size:" << data.size();
     switch (t) {
     case RemovePartitionsChanged: {
-        QStringList partitions = QString::fromLatin1(data).split("#");
-        partitions.removeAll("");
         QList<DeviceInfo> list;
+        QDataStream in(data);
+        in.setVersion(QDataStream::Qt_5_4);
+        in >> list;
         emit notifyRemovePartitionsChanged(list);
         break;
     }

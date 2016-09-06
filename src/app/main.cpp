@@ -10,6 +10,9 @@
 #include "backend/bootmaker.h"
 #include "util/sevenzip.h"
 #include "util/bootmakeragent.h"
+#include "util/utils.h"
+#include "util/usbdevicemonitor.h"
+
 
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
@@ -36,6 +39,8 @@ static QString startBackend(QCoreApplication &app)
 
 int main(int argc, char **argv)
 {
+    qRegisterMetaType<QList<DeviceInfo> >();
+
     DWIDGET_INIT_RESOURCE();
 
     DApplication app(argc, argv);
@@ -68,6 +73,7 @@ int main(int argc, char **argv)
     parser.addPositionalArgument("device", DApplication::tr("USB Device"));
     parser.process(app);
 
+//    Utils::CommandDfParse();
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
     DLogManager::setLogFormat(m_format);
     DLogManager::registerConsoleAppender();
@@ -90,14 +96,13 @@ int main(int argc, char **argv)
     }
 
     qDebug() << "Deepin Boot Maker UI started.";
-    startBackend(app);
+//    startBackend(app);
     BootMakerAgent::Init();
 
     BMWindow w;
     w.setFixedSize(440, 550);
     w.move(PrimaryRect().center() - w.geometry().center());
     w.show();
-
 
     return app.exec();
 }
