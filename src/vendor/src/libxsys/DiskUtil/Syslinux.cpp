@@ -24,6 +24,7 @@ QString SearchMbr() {
     QStringList paths;
     paths.push_back("/usr/lib/syslinux/mbr/");
     paths.push_back("/usr/lib/SYSLINUX/"); // debian
+    paths.push_back("/usr/lib/syslinux/"); // ubuntu
     paths.push_back("/usr/lib/syslinux/bios/"); // arch
     return XSys::FS::PathSearch("mbr.bin", paths);
 }
@@ -33,6 +34,7 @@ QString SearchMoudle(const QString& moduleName) {
 #ifdef Q_OS_LINUX
     QStringList paths;
     paths.push_back("/usr/lib/syslinux/modules/bios/"); //debain
+    paths.push_back("/usr/lib/syslinux/"); //ubuntu
     paths.push_back("/usr/lib/syslinux/bios/"); //arch
     return XSys::FS::PathSearch(moduleName, paths);
 #endif
