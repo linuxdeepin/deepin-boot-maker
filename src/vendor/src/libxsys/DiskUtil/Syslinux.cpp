@@ -38,11 +38,11 @@ QString SearchMoudle(const QString& moduleName) {
 #endif
 
 #ifdef Q_OS_MAC
-    return ":blobs/syslinux/macosx/" + moduleName;
+    return ":blob/syslinux/macosx/" + moduleName;
 #endif
 
 #ifdef Q_OS_WIN32
-    return ":blobs/syslinux/win32/" + moduleName;
+    return ":blob/syslinux/win32/" + moduleName;
 #endif
 }
 

@@ -13,6 +13,7 @@
 #include "util/utils.h"
 #include "util/usbdevicemonitor.h"
 
+#include <QFile>
 
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
@@ -23,25 +24,18 @@ static QRect PrimaryRect()
     return w->screenGeometry(w->primaryScreen());
 }
 
-static QString rootCommand(QCoreApplication &app)
-{
-    return QString("gksu \"%1  -d -n\"").arg(app.applicationFilePath());
-}
-
-static QString startBackend(QCoreApplication &app)
-{
-    QProcess *gksu = new QProcess();
-    gksu->startDetached(rootCommand(app));
-//    gksu->waitForStarted(-1);
-    return "";
-}
-
 
 int main(int argc, char **argv)
 {
     qRegisterMetaType<QList<DeviceInfo> >();
 
     DWIDGET_INIT_RESOURCE();
+
+//    QFile xf(":/blob/xfbinst/xfbinst");
+//    qDebug() <<xf.open(QIODevice::ReadOnly)<< xf.isReadable();
+
+//    QFileInfo xfif(":/blob/xfbinst/xfbinst");
+//    qDebug() << xfif.size();
 
     DApplication app(argc, argv);
     app.setOrganizationName("deepin");
@@ -73,7 +67,6 @@ int main(int argc, char **argv)
     parser.addPositionalArgument("device", DApplication::tr("USB Device"));
     parser.process(app);
 
-//    Utils::CommandDfParse();
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
     DLogManager::setLogFormat(m_format);
     DLogManager::registerConsoleAppender();
@@ -87,22 +80,21 @@ int main(int argc, char **argv)
                  << parser.value(optImageFile)
                  << parser.value(optKey)
                  << parser.positionalArguments();
-
         BootMaker bm;
-
         qDebug() << "Deepin Boot Maker Backend Started";
 
         return app.exec();
     }
 
     qDebug() << "Deepin Boot Maker UI started.";
-//    startBackend(app);
     BootMakerAgent::Init();
 
     BMWindow w;
     w.setFixedSize(440, 550);
     w.move(PrimaryRect().center() - w.geometry().center());
     w.show();
+
+    w.waitAuth();
 
     return app.exec();
 }

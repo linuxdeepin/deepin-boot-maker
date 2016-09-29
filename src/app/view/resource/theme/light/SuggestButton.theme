@@ -8,6 +8,16 @@ SuggestButton{
     background: transparent;
     background-image: url(":/theme/light/image/suggest_button_normal.png")
 }
+SuggestButton[normal=true]{
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    color: black;
+    border: none;
+    background: transparent;
+    background-image: url(":/theme/light/image/button_normal.png")
+}
 SuggestButton:hover{
     color: white;
     background-image: url(":/theme/light/image/suggest_button_hover.png")

@@ -5,6 +5,10 @@
 #include <QVBoxLayout>
 #include <QCheckBox>
 #include <QListWidget>
+#include <QMessageBox>
+#include <QIcon>
+
+#include <ddialog.h>
 
 #include "suggestbutton.h"
 #include "widgetutil.h"
@@ -43,7 +47,7 @@ static int percent(quint32 usage, quint32 total)
         return 100;
     }
 
-    return usage * 100 / total;
+    return static_cast<int>(usage * 100 / total);
 }
 
 UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
@@ -101,12 +105,28 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
 
+    connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked = false) {
+        if (!checked) {
+            return;
+        }
+
+        DDialog msgbox(this);
+        msgbox.setFixedWidth(300);
+        msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
+        msgbox.setWindowTitle(tr("Format USB flash drive"));
+        msgbox.setTextFormat(Qt::AutoText);
+        msgbox.setMessage(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
+        msgbox.addButtons(QStringList() << tr("Ok") << tr("Cancel"));
+
+        m_formatDiskCheck->setChecked(0 == msgbox.exec());
+    });
+
     connect(BootMakerAgent::Instance(), &BootMakerAgent::notifyRemovePartitionsChanged,
     this, [ = ](const QList<DeviceInfo> &partitions) {
+        bool hasPartitionSelected = false;
         m_emptyHist->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
         m_formatDiskCheck->setEnabled(partitions.size());
-        start->setDisabled(!partitions.size());
 
         m_deviceList->clear();
         foreach(const DeviceInfo & partition, partitions) {
@@ -123,7 +143,14 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             if (partition.path == this->property("last_path").toString()) {
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
+                hasPartitionSelected = true;
             }
+        }
+
+        start->setDisabled(!hasPartitionSelected);
+
+        if (!hasPartitionSelected) {
+            this->setProperty("last_path", "");
         }
     });
 
@@ -145,6 +172,13 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         if (infoItem) {
             infoItem->setCheck(true);
             this->setProperty("last_path", infoItem->property("path").toString());
+            start->setDisabled(false);
         }
+    });
+
+    connect(start, &SuggestButton::clicked, this, [ = ] {
+        QString path = this->property("last_path").toString();
+        qDebug() << "Select usb device" << path;
+        emit this->deviceSelected(path, m_formatDiskCheck->isChecked());
     });
 }

@@ -48,5 +48,7 @@
         <file>theme/light/ProgressView.theme</file>
         <file>theme/light/ResultView.theme</file>
         <file>theme/light/image/dash_line.png</file>
+        <file>theme/light/image/button_normal.png</file>
+        <file>theme/light/image/water_shadow.png</file>
     </qresource>
 </RCC>

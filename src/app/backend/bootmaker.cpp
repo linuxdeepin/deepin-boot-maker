@@ -15,6 +15,7 @@ class Error
 {
 public:
     enum ErrorType {
+        NoError = 0,
         SyscExecFailed,
         USBFormatError,
         USBSizeError,
@@ -46,27 +47,38 @@ const QString Error::get(const ErrorType et)
 
 BootMaker::BootMaker(QObject *parent) : QObject(parent)
 {
-    m_porgressReporter = new BootMakerBackend;
+    m_porgressReporter = new BootMakerBackendDaemon(s_localPathUI, s_localPathBk);
+    m_porgressReporter->initSendConnect();
+
     QThread *reportWork = new QThread;
     m_porgressReporter->moveToThread(reportWork);
-    connect(this, &BootMaker::reportProgress, m_porgressReporter, &BootMakerBackend::reportProgress);
+    connect(this, &BootMaker::reportProgress, m_porgressReporter, &BootMakerBackendDaemon::reportProgress);
+    connect(m_porgressReporter, &BootMakerBackendDaemon::start, this, &BootMaker::install);
+
     reportWork->start();
 
     m_usbDeviceMonitor = new UsbDeviceMonitor;
     QThread *monitorWork = new QThread;
     m_usbDeviceMonitor->moveToThread(monitorWork);
     connect(m_usbDeviceMonitor, &UsbDeviceMonitor::removePartitionsChanged,
-            m_porgressReporter, &BootMakerBackend::sendRemovePartitionsChangedNotify);
+            m_porgressReporter, &BootMakerBackendDaemon::sendRemovePartitionsChangedNotify);
     connect(monitorWork, &QThread::started,
-            m_usbDeviceMonitor, &UsbDeviceMonitor::run);
+            m_usbDeviceMonitor, &UsbDeviceMonitor::startMonitor);
     monitorWork->start();
+
+    connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString &description) {
+        this->reportProgress(100, errcode, "install failed", description);
+    });
 }
 
-bool BootMaker::install(const QString &image, const QString &device, const QString &partition, bool formatDevice)
+bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
-    qDebug() << image << device << partition << formatDevice;
+    m_usbDeviceMonitor->pauseMonitor();
 
-    this->reportProgress(1, 100, "install bootloader", "");
+    qDebug() << image << unused_device << partition << formatDevice;
+
+    QString device = XSys::DiskUtil::GetPartitionDisk(partition);
+    this->reportProgress(1, Error::NoError, "install bootloader", "");
 
     QString targetPartition = partition;
     XSys::Result result;
@@ -83,7 +95,7 @@ bool BootMaker::install(const QString &image, const QString &device, const QStri
         return false;
     }
 
-    this->reportProgress(4, 100, "reload disk", "");
+    this->reportProgress(4, Error::NoError, "reload disk", "");
 
     QString installDir = partition;
 #ifdef Q_OS_UNIX
@@ -95,14 +107,14 @@ bool BootMaker::install(const QString &image, const QString &device, const QStri
     }
 #endif
 
-    this->reportProgress(7, 100, "ClearTargetDev", "");
+    this->reportProgress(7, Error::NoError, "ClearTargetDev", "");
     qDebug() << "ClearTargetDev";
     Utils::ClearTargetDev(installDir);
 
-    this->reportProgress(9, 100, "extract files", "");
+    this->reportProgress(9, Error::NoError, "extract files", "");
     qDebug() << "end";
     SevenZip sevenZip(image, installDir);
-    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged, m_porgressReporter, &BootMakerBackend::reportSevenZipProgress);
+    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged, m_porgressReporter, &BootMakerBackendDaemon::reportSevenZipProgress);
 
     if (!sevenZip.extract()) {
         qCritical() << "Error::get(Error::ExtractImgeFailed)";
@@ -110,7 +122,7 @@ bool BootMaker::install(const QString &image, const QString &device, const QStri
         return false;
     }
 
-    this->reportProgress(95, 100, "extract files", "");
+    this->reportProgress(95, Error::NoError, "extract files", "");
     XSys::Bootloader::Syslinux::ConfigSyslinx(installDir);
 
 #ifdef Q_OS_UNIX
@@ -118,7 +130,9 @@ bool BootMaker::install(const QString &image, const QString &device, const QStri
     XSys::SynExec("sync", "");
 #endif
 
-    this->reportProgress(99, 100, "extract files", "");
+    this->reportProgress(99, Error::NoError, "extract files", "");
     XSys::DiskUtil::EjectDisk(partition);
+
+    this->reportProgress(100, Error::NoError, "finish", "");
     return true;
 }

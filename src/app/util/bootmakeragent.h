@@ -3,49 +3,52 @@
 
 #include <QObject>
 
-#include <QLocalSocket>
-#include <QLocalServer>
-
+#include "localsocketmessager.h"
 #include "usbdevicemonitor.h"
 
-enum MessageType {
+enum DaemonMessageType {
     RemovePartitionsChanged = 0,
     ProgressUpdated
 };
 
-class BootMakerBackend : public QObject
+enum UIMessageType {
+    StartMake = 0
+};
+
+class BootMakerBackendDaemon : public LocalSocketMessager
 {
     Q_OBJECT
 public:
 
-    explicit BootMakerBackend(QObject *parent = 0);
+    explicit BootMakerBackendDaemon(const QString &uiPath,
+                                    const QString &daemonPath,
+                                    QObject *parent = 0);
+
+signals:
+    void start(const QString &image,
+               const QString &device,
+               const QString &partition,
+               bool  formatDevice);
 
 public slots:
-    void handleNewConnection();
-
     void reportSevenZipProgress(int current, int files, const QString &file);
     void reportProgress(int current, int total, const QString &title, const QString &description);
     void sendRemovePartitionsChangedNotify(const QList<DeviceInfo> &list);
 
-private:
-    void sendMessage(MessageType t, const QByteArray &data);
 
-    QLocalSocket *socket = nullptr;
-    QLocalServer *server = nullptr;
+    void handleProcessMessage(quint64 t, QByteArray data);
+
 };
 
-class BootMakerAgent : public QObject
+class BootMakerAgent : public LocalSocketMessager
 {
     Q_OBJECT
 public:
-    explicit BootMakerAgent(QObject *parent = 0);
+    explicit BootMakerAgent(const QString &uiPath,
+                            const QString &daemonPath,
+                            QObject *parent = 0);
 
-    static void Init()
-    {
-        if (!s_agent) {
-            s_agent =  new BootMakerAgent;
-        }
-    }
+    static void Init();
 
     static BootMakerAgent *Instance()
     {
@@ -54,26 +57,24 @@ public:
     }
 
 public slots:
-    void handleNewConnection();
+    void start(const QString &image,
+               const QString &device,
+               const QString &partition,
+               bool  formatDevice);
 
 signals:
-    void notifyProgress(int current, int total, const QString &title, const QString &description);
+    void notifyProgress(quint32 current, quint32 total, const QString &title, const QString &description);
     void notifyRemovePartitionsChanged(const QList<DeviceInfo> &list);
 
 private:
     Q_DISABLE_COPY(BootMakerAgent)
 
-    void processMessage(MessageType t, QByteArray data);
-
-    void initConnect();
-
-    QLocalServer *server = nullptr;
-    QLocalSocket *socket = nullptr;
-
+    void handleProcessMessage(quint64 t, QByteArray data);
     static BootMakerAgent *s_agent ;
 };
 
+extern QString s_localPathBk;
+extern QString s_localPathUI;
 
-Q_DECLARE_METATYPE(QLocalSocket::LocalSocketError)
 
 #endif // BMREPORTER_HH

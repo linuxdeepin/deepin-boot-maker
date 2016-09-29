@@ -34,7 +34,8 @@ HEADERS += \
     view/resultview.h \
     view/dropframe.h \
     util/usbdevicemonitor.h \
-    util/bootmakeragent.h
+    util/bootmakeragent.h \
+    util/localsocketmessager.h
 
 SOURCES += \
     main.cpp \
@@ -56,7 +57,8 @@ SOURCES += \
     view/resultview.cpp \
     view/dropframe.cpp \
     util/usbdevicemonitor.cpp \
-    util/bootmakeragent.cpp
+    util/bootmakeragent.cpp \
+    util/localsocketmessager.cpp
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \

@@ -15,7 +15,7 @@
     font-weight: normal;
     font-style: normal;
     line-height: 1.25;
-    color: #b1b1b1;
+    color: #303030;
 }
 
 #IsoHits{

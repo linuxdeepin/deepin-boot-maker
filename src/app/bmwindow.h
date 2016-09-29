@@ -2,6 +2,7 @@
 #define BMWINDOW_H
 
 #include <DWindow>
+#include <QScopedPointer>
 
 class BootMakerAgent;
 class BMWindowData;
@@ -12,8 +13,10 @@ class BMWindow: public DTK_WIDGET_NAMESPACE::DWindow
 public:
     BMWindow(QWidget *parent = nullptr);
     ~BMWindow();
+    void waitAuth();
+
 private:
-    BMWindowData *d     = nullptr;
+    QScopedPointer<BMWindowData> d;
     Q_DISABLE_COPY(BMWindow)
 };
 

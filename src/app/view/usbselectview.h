@@ -10,6 +10,7 @@ public:
     explicit UsbSelectView(QWidget *parent = 0);
 
 signals:
+    void deviceSelected(const QString &partition, bool format);
 
 public slots:
 };

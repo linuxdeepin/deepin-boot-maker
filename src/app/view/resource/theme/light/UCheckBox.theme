@@ -16,7 +16,7 @@ QCheckBox::indicator:unchecked:pressed {
 }
 
 QCheckBox::indicator:unchecked:!enabled {
-    image: url(:/theme/light/image/checkbox_unchecked_insensitive.png);
+    image: url(:/theme/light/image/checkbox-unchecked-insensitive.png);
 }
 
 QCheckBox::indicator:checked {
@@ -32,5 +32,5 @@ QCheckBox::indicator:checked:pressed {
 }
 
 QCheckBox::indicator:checked:!enabled {
-    image: url(:/theme/light/image/checkbox_checked_insensitive.png);
+    image: url(:/theme/light/image/checkbox-checked-insensitive.png);
 }

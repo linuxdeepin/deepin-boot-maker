@@ -2,6 +2,7 @@
 #define USBDEVICEMONITOR_H
 
 #include <QObject>
+#include <QTimer>
 
 class DeviceInfo
 {
@@ -29,11 +30,16 @@ class UsbDeviceMonitor : public QObject
 public:
     explicit UsbDeviceMonitor(QObject *parent = 0);
 
+    void pauseMonitor();
+
 signals:
     void removePartitionsChanged(const QList<DeviceInfo> &list);
 
 public slots:
-    void run();
+    void startMonitor();
+
+private:
+    QTimer *m_timer = nullptr;
 };
 
 Q_DECLARE_METATYPE(QList<DeviceInfo>);

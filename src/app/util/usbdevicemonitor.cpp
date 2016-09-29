@@ -7,18 +7,25 @@
 
 UsbDeviceMonitor::UsbDeviceMonitor(QObject *parent) : QObject(parent)
 {
+    m_timer = new QTimer(this);
 
-}
+    m_timer->setInterval(3000);
 
-void UsbDeviceMonitor::run()
-{
-    while (true) {
-        QThread::sleep(3);
+    connect(m_timer, &QTimer::timeout, this, [ = ] {
         QList<DeviceInfo> list = Utils::ListUsbDrives();
-        emit removePartitionsChanged(list);
-    }
+        emit this->removePartitionsChanged(list);
+    });
 }
 
+void UsbDeviceMonitor::pauseMonitor()
+{
+    m_timer->stop();
+}
+
+void UsbDeviceMonitor::startMonitor()
+{
+    m_timer->start();
+}
 
 QDataStream &operator<<(QDataStream &out, const DeviceInfo &msg)
 {

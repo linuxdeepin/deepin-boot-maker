@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-class BootMakerBackend;
+class BootMakerBackendDaemon;
 class UsbDeviceMonitor;
 
 class BootMaker : public QObject
@@ -24,7 +24,7 @@ public slots:
                  bool  formatDevice);
 
 private:
-    BootMakerBackend *m_porgressReporter = nullptr;
+    BootMakerBackendDaemon *m_porgressReporter = nullptr;
     UsbDeviceMonitor *m_usbDeviceMonitor = nullptr;
 
 };

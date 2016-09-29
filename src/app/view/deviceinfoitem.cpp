@@ -38,9 +38,9 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     m_deviceCapacityBar->setValue(percent);
 
     mainLayout->addWidget(m_deviceIcon, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(20);
+    mainLayout->addSpacing(14);
     mainLayout->addWidget(m_deviceLabel, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(6);
+    mainLayout->addSpacing(10);
     mainLayout->addWidget(m_deviceDevName, 0, Qt::AlignCenter);
     mainLayout->addStretch();
     mainLayout->addWidget(m_deviceCapacity, 0, Qt::AlignCenter);

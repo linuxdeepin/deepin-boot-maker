@@ -1,5 +1,6 @@
 #include "isoselectview.h"
 
+#include <QStyle>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QFileDialog>
@@ -102,6 +103,7 @@ void ISOSelectView::onFileSelected(const QString &file)
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     m_nextSetp->setDisabled(false);
+    m_isoFilePath = file;
 }
 
 void ISOSelectView::onFileVerfiyFinished(bool ok)

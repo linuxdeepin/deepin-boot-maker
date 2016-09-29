@@ -8,9 +8,10 @@
 #include <QtMath>
 
 DWaterProgress::DWaterProgress(QWidget *parent) :
-    QWidget(parent)
+    QWidget(parent),
+    m_shadow(new QImage(":/theme/light/image/water_shadow.png"))
 {
-    setFixedSize(100, 100);
+    setFixedSize(128, 128);
     this->setMask(QRegion(0, 0, this->width(), this->height(), QRegion::Ellipse));
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(updateProcess()));
@@ -42,9 +43,11 @@ DWaterProgress::DWaterProgress(QWidget *parent) :
 
 void DWaterProgress::setProgress(int p)
 {
+    int zeroY = 104;
+    int fullY = 8;
     m_Progresss = (p <= 100) ? p : 100;
     m_Progresss = (m_Progresss <= 0) ? 0 : m_Progresss;
-    m_YOffset = 90 - p;
+    m_YOffset = zeroY - p * (zeroY - fullY) / 100 ;
     setText(m_Progresss);
 }
 
@@ -65,26 +68,28 @@ void DWaterProgress::stop()
 
 void DWaterProgress::updateProcess()
 {
-    auto w = this->width();
+    auto wmax = 114;
+    auto wmin = 12;
+
     m_ForntXOffset1 += 2;
     m_ForntXOffset2 += 2;
-    if (m_ForntXOffset1 >= w) {
+    if (m_ForntXOffset1 >= wmax) {
         m_ForntXOffset1 = -m_FrontWidth;
     }
-    if (m_ForntXOffset2 >= w) {
+    if (m_ForntXOffset2 >= wmax) {
         m_ForntXOffset2 = -m_FrontWidth;
     }
 
     m_BackXOffset1 -= 3;
     m_BackXOffset2 -= 3;
     if (m_BackXOffset1 < -m_BackWidth) {
-        m_BackXOffset1 = w;
+        m_BackXOffset1 = wmax;
     }
     if (m_BackXOffset2 < -m_BackWidth) {
-        m_BackXOffset2 = w;
+        m_BackXOffset2 = wmax;
     }
 
-    if (m_YOffset < -12) {
+    if (m_YOffset < -wmin) {
         m_YOffset = 88;
     }
 
@@ -92,37 +97,39 @@ void DWaterProgress::updateProcess()
     if (m_Pop7YOffset < m_YOffset + 10) {
         m_Pop7YOffset = 100;
     }
-    m_Pop7XOffset = 35 + qSin((100 - m_Pop7YOffset) * 2 * 3.14 / 40) * 8;
+    m_Pop7XOffset = 35 + 14 + qSin((100 - m_Pop7YOffset) * 2 * 3.14 / 40) * 8;
 
     m_Pop8YOffset -= 1.2;
     if (m_Pop8YOffset < m_YOffset + 10) {
         m_Pop8YOffset = 100;
     }
-    m_Pop8XOffset = 45 + qCos((100 - m_Pop8YOffset) * 2 * 3.14 / 40) * 9
+    m_Pop8XOffset = 45 + 14 + qCos((100 - m_Pop8YOffset) * 2 * 3.14 / 40) * 9
                     * (100 - m_Pop8XOffset) / 60;
 
     m_Pop11YOffset -= 1.6;
     if (m_Pop11YOffset < m_YOffset + 10) {
         m_Pop11YOffset = 100;
     }
-    m_Pop11XOffset = 55 + qSin((100 - m_Pop11YOffset) * 2 * 3.14 / 50)
+    m_Pop11XOffset = 55 + 14 + qSin((100 - m_Pop11YOffset) * 2 * 3.14 / 50)
                      * 11 * (100 - m_Pop11YOffset) / 60;
 
     this->update();
 }
-
+//#include <QDebug>
 void DWaterProgress::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing);
 
     auto rect = this->rect();
-    auto w = rect.width();
-    auto h = rect.height();
+//    auto w = rect.width();
+//    auto h = rect.height();
+    auto w = 100;
+    auto h = 100;
 
     // draw backgroud
     QPainterPath outerPath;
-    outerPath.addEllipse(rect.center(), w, h);
+    outerPath.addEllipse(rect.center(), w / 2, h / 2);
     p.fillPath(outerPath, QBrush(qRgb(0xcb, 0xe0, 0xff)));
 
     // draw water
@@ -144,17 +151,25 @@ void DWaterProgress::paintEvent(QPaintEvent *)
     pop11.addEllipse(m_Pop11XOffset, m_Pop11YOffset, 11, 11);
     p.fillPath(pop11, QColor(77, 208, 255));
 
+    auto offset = 14;
     // draw boder
-    QPen borderPen1(QColor(0xff,0xff,0xff,0x80), 2);
+    QPen borderPenBk(QColor(0xff, 0xff, 0xff, 0xff), 16);
+    p.setPen(borderPenBk);
+    p.drawEllipse(offset - 8,  offset - 8, w + 16, h + 16);
+
+    // draw boder
+    QPen borderPen1(QColor(0xff, 0xff, 0xff, 0x80), 2);
     p.setPen(borderPen1);
-    p.drawEllipse(5, 5, w-10, h-10);
+    p.drawEllipse(5 + offset, 5 + offset, w - 10, h - 10);
 
     QPen borderPen(QColor(qRgb(43, 146, 255)), 2);
     p.setPen(borderPen);
-    p.drawEllipse(3, 3, w-6, h-6);
+    p.drawEllipse(3 + offset, 3 + offset, w - 6, h - 6);
 
     QPen smothBorderPen(Qt::white, 4);
     p.setPen(smothBorderPen);
-    p.drawEllipse(0, 0, w, h);
+    p.drawEllipse(offset, offset, w, h);
+
+    p.drawImage(0, 0, *m_shadow);
 
 }

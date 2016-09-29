@@ -2,6 +2,7 @@
 #define DWATERPROGRESS_H
 
 #include <QWidget>
+#include <memory>
 
 class QTimer;
 class QImage;
@@ -44,6 +45,8 @@ private:
 
     double m_Pop11YOffset;
     double m_Pop11XOffset;
+
+    std::unique_ptr<QImage> m_shadow;
 
     QImage *m_BackImage;
     QImage *m_FrontImage;

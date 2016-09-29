@@ -5,6 +5,10 @@
 #include <QLabel>
 #include <QPropertyAnimation>
 #include <QStackedLayout>
+#include <QMessageBox>
+#include <QApplication>
+#include <QProcess>
+#include <ddialog.h>
 
 #include "util/bootmakeragent.h"
 #include "view/setepindicatorbar.h"
@@ -24,15 +28,14 @@ public:
         q = parent;
     }
 
-//    BootMakerAgent *bmAgent         = nullptr;
-
     QWidget *q                      = nullptr;
     QLabel *m_title                 = nullptr;
     QWidget *actionWidgets          = nullptr;
     ISOSelectView *isoWidget        = nullptr;
-    QWidget *usbWidget              = nullptr;
-    QWidget *progressWidget         = nullptr;
-    QWidget *resultWidget           = nullptr;
+    UsbSelectView *usbWidget        = nullptr;
+    ProgressView *progressWidget    = nullptr;
+    ResultView *resultWidget        = nullptr;
+    Dtk::Widget::DDialog *warnDlg   = nullptr;
 };
 
 static void slideWidget(QWidget *left, QWidget *right)
@@ -50,7 +53,6 @@ static void slideWidget(QWidget *left, QWidget *right)
     animation->setEndValue(leftEnd);
     animation->start();
 
-
     QRect rightStart = QRect(left->width(), 0, right->width(), right->height());
     QRect rightEnd = leftStart;
     leftEnd.setX(0);
@@ -65,14 +67,15 @@ static void slideWidget(QWidget *left, QWidget *right)
                        animation, &QPropertyAnimation::deleteLater);
     animation2->connect(animation2, &QPropertyAnimation::finished,
                         animation2, &QPropertyAnimation::deleteLater);
+    animation2->connect(animation2, &QPropertyAnimation::finished,
+                        left, &QWidget::hide);
 
 }
 
-BMWindow::BMWindow(QWidget *parent): DWindow(parent)
+BMWindow::BMWindow(QWidget *parent)
+    : DWindow(parent), d(new BMWindowData(this))
 {
     setTitlebarFixedHeight(40);
-
-    d = new BMWindowData(this);
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
@@ -97,7 +100,7 @@ BMWindow::BMWindow(QWidget *parent): DWindow(parent)
     actionsLayout->addWidget(d->isoWidget);
     actionsLayout->addWidget(d->usbWidget);
     actionsLayout->addWidget(d->progressWidget);
-    actionsLayout->addWidget(d->progressWidget);
+    actionsLayout->addWidget(d->resultWidget);
     mainLayout->addLayout(actionsLayout);
 
     mainLayout->addSpacing(8);
@@ -106,10 +109,78 @@ BMWindow::BMWindow(QWidget *parent): DWindow(parent)
 
     connect(d->isoWidget, &ISOSelectView::isoFileSelected, this, [ = ] {
         slideWidget(d->isoWidget, d->usbWidget);
+        this->setProperty("bmISOFilePath", d->isoWidget->isoFilePath());
         wsib->setActiveStep(1);
+    });
+
+    connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
+        slideWidget(d->usbWidget, d->progressWidget);
+        wsib->setActiveStep(2);
+        BootMakerAgent::Instance()->initSendConnect();
+        qDebug() << this->property("bmISOFilePath").toString()
+                 << partition
+                 << format;
+//        BootMakerAgent::Instance()->start(this->property("bmISOFilePath").toString(), "", partition, format);
+    });
+
+    connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
+             d->resultWidget->updateResult(1, "title", "description");
+        slideWidget(d->progressWidget, d->resultWidget);
+        wsib->setActiveStep(3);
+    });
+
+    connect(d->progressWidget, &ProgressView::finish,
+    this, [ = ](quint32 error, const QString & title, const QString & description) {
+        d->resultWidget->updateResult(error, title, description);
+        slideWidget(d->progressWidget, d->resultWidget);
+        wsib->setActiveStep(3);
+    });
+
+    d->warnDlg = new Dtk::Widget::DDialog(this);
+    d->warnDlg->setWindowFlags(d->warnDlg->windowFlags() & ~Qt::WindowCloseButtonHint);
+    d->warnDlg->setFixedWidth(400);
+    d->warnDlg->setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
+    d->warnDlg->setWindowTitle(tr("Format USB flash drive"));
+    d->warnDlg->setTextFormat(Qt::AutoText);
+    d->warnDlg->setMessage(tr("Please input root password."));
+    d->warnDlg->addButtons(QStringList() << tr("Retry") << tr("exit"));
+
+    connect(BootMakerAgent::Instance(), &BootMakerAgent::newConnection,
+    this, [ = ]() {
+        d->warnDlg->close();
+        d->warnDlg->setResult(2);
+        QApplication::setOverrideCursor(Qt::ArrowCursor);
     });
 }
 
 BMWindow::~BMWindow()
 {
+
+}
+
+static QString rootCommand(QCoreApplication &app)
+{
+    return QString("gksu \"%1  -d -n\"").arg(app.applicationFilePath());
+}
+
+static QString startBackend(QCoreApplication &app)
+{
+    QProcess *gksu = new QProcess();
+    gksu->startDetached(rootCommand(app));
+    return "";
+}
+
+void BMWindow::waitAuth()
+{
+    startBackend(*qApp);
+    auto ret = d->warnDlg->exec();
+    qDebug() << ret;
+    if (0 == ret) {
+        this->waitAuth();
+    } else if  (1 == ret) {
+        qApp->closeAllWindows();
+        qApp->exit(0);
+    } else {
+        return;
+    }
 }
