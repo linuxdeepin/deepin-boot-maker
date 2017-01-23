@@ -21,16 +21,6 @@ unix{
     LIBS +=  $$system(env PKG_CONFIG_PATH=$$PWD/usr/lib/pkgconfig pkg-config --libs dtkwidget)
 }
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/usr/lib/libxsys.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/usr/lib/libxsysd.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/usr/lib/xsys.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/usr/lib/xsysd.lib
-else:unix: PRE_TARGETDEPS += $$PWD/usr/lib/libxsys.a
-
-INCLUDEPATH += $$PWD/src/libxsys
-DEPENDPATH += $$PWD/src/libxsys
-LIBS += -L$$PWD/usr/lib/ -lxsys
-
 win32{
 
     INCLUDEPATH += $$PWD/usr/include/libdtk-1.0/DWidget
