@@ -2,11 +2,10 @@
 }
 
 #ResulteHitsTitle{
-    width: 124px;
-    height: 22px;
     font-size: 14px;
     font-weight: normal;
     font-style: normal;
     text-align: center;
+    qproperty-alignment: AlignCenter;
     color: #000000;
 }

@@ -33,9 +33,10 @@ HEADERS += \
     view/progressview.h \
     view/resultview.h \
     view/dropframe.h \
-    util/usbdevicemonitor.h \
-    util/bootmakeragent.h \
-    util/localsocketmessager.h
+    util/deviceinfo.h \
+    bminterface.h \
+    util/devicemonitor.h \
+    backend/bmhandler.h
 
 SOURCES += \
     main.cpp \
@@ -56,9 +57,17 @@ SOURCES += \
     view/progressview.cpp \
     view/resultview.cpp \
     view/dropframe.cpp \
-    util/usbdevicemonitor.cpp \
-    util/bootmakeragent.cpp \
-    util/localsocketmessager.cpp
+    bminterface.cpp \
+    util/devicemonitor.cpp \
+
+unix {
+    HEADERS += \
+        backend/bmdbusinterface.h \
+        backend/bmdbushandler.h
+
+    SOURCES += \
+        backend/bmdbusnterface.cpp
+}
 
 TRANSLATIONS += po/en_US.ts \
     po/zh_CN.ts \
@@ -77,6 +86,15 @@ TRANSLATIONS += po/en_US.ts \
     po/tr.ts \
     po/zh_TW.ts \
 
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+binary.path = $${PREFIX}/bin
+binary.files = deepin-boot-maker
+
+INSTALLS += binary
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../vendor/src/libxsys/release/ -lxsys
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../vendor/src/libxsys/debug/ -lxsys

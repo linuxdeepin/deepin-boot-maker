@@ -1,13 +1,11 @@
 #include "bootmaker.h"
 
 #include <QDebug>
-#include <QtConcurrent>
 #include <XSys>
 
 #include "../util/sevenzip.h"
 #include "../util/utils.h"
-#include "../util/bootmakeragent.h"
-#include "../util/usbdevicemonitor.h"
+#include "../util/devicemonitor.h"
 
 #include "diskutil.h"
 
@@ -29,6 +27,8 @@ public:
 const QString Error::get(const ErrorType et)
 {
     switch (et) {
+    case NoError:
+        return "";
     case SyscExecFailed:
         return QObject::tr("Failed to call the command %1.");
     case USBFormatError:
@@ -39,47 +39,44 @@ const QString Error::get(const ErrorType et)
         return QObject::tr("Failed to mount USB flash drive, please close other applications may use it and reinsert.");
     case ExtractImgeFailed:
         return QObject::tr("Failed to unzip the mirror file, please use the whole mirror file.");
-    default:
-        return "Internal Error";
     }
+    return QObject::tr("Internal Error");
 }
 
-
-BootMaker::BootMaker(QObject *parent) : QObject(parent)
+BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
 {
-    m_porgressReporter = new BootMakerBackendDaemon(s_localPathUI, s_localPathBk);
-    m_porgressReporter->initSendConnect();
+    qRegisterMetaType<QList<DeviceInfo> >();
 
-    QThread *reportWork = new QThread;
-    m_porgressReporter->moveToThread(reportWork);
-    connect(this, &BootMaker::reportProgress, m_porgressReporter, &BootMakerBackendDaemon::reportProgress);
-    connect(m_porgressReporter, &BootMakerBackendDaemon::start, this, &BootMaker::install);
-
-    reportWork->start();
-
-    m_usbDeviceMonitor = new UsbDeviceMonitor;
+    m_usbDeviceMonitor = new DeviceMonitor;
     QThread *monitorWork = new QThread;
     m_usbDeviceMonitor->moveToThread(monitorWork);
-    connect(m_usbDeviceMonitor, &UsbDeviceMonitor::removePartitionsChanged,
-            m_porgressReporter, &BootMakerBackendDaemon::sendRemovePartitionsChangedNotify);
     connect(monitorWork, &QThread::started,
-            m_usbDeviceMonitor, &UsbDeviceMonitor::startMonitor);
+            m_usbDeviceMonitor, &DeviceMonitor::startMonitor);
+    connect(m_usbDeviceMonitor, &DeviceMonitor::removablePartitionsChanged,
+            this, &BootMaker::removablePartitionsChanged);
+
     monitorWork->start();
 
-    connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString &description) {
+    connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString & description) {
         this->reportProgress(100, errcode, "install failed", description);
     });
 }
 
+const QList<DeviceInfo> BootMaker::deviceList() const
+{
+    return m_usbDeviceMonitor->deviceList();
+}
+
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
-    m_usbDeviceMonitor->pauseMonitor();
+    emit m_usbDeviceMonitor->pauseMonitor();
 
     qDebug() << image << unused_device << partition << formatDevice;
 
     QString device = XSys::DiskUtil::GetPartitionDisk(partition);
-    this->reportProgress(1, Error::NoError, "install bootloader", "");
 
+    this->reportProgress(5, Error::NoError, "install bootloader", "");
+    qDebug() << "begin install bootloader";
     QString targetPartition = partition;
     XSys::Result result;
     if (formatDevice) {
@@ -88,14 +85,16 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     } else {
         result = XSys::Bootloader::Syslinux::InstallSyslinux(partition);
     }
+    qDebug() << "install bootloader finish: " << result.isSuccess();
 
     if (! result.isSuccess()) {
-        qCritical() << result.errmsg();
+        qCritical() << "install bootloader failed: "<< result.errmsg();
         emit finished(Error::SyscExecFailed, Error::get(Error::SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
         return false;
     }
 
-    this->reportProgress(4, Error::NoError, "reload disk", "");
+    this->reportProgress(10, Error::NoError, "begin reload disk", "");
+    qDebug() << "begin reload disk";
 
     QString installDir = partition;
 #ifdef Q_OS_UNIX
@@ -107,14 +106,18 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     }
 #endif
 
-    this->reportProgress(7, Error::NoError, "ClearTargetDev", "");
-    qDebug() << "ClearTargetDev";
+    this->reportProgress(15, Error::NoError, "clear target device files", "");
+    qDebug() << "begin clear target device files";
     Utils::ClearTargetDev(installDir);
 
-    this->reportProgress(9, Error::NoError, "extract files", "");
-    qDebug() << "end";
+    this->reportProgress(20, Error::NoError, "extract files", "");
+    qDebug() << "begin extract files";
     SevenZip sevenZip(image, installDir);
-    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged, m_porgressReporter, &BootMakerBackendDaemon::reportSevenZipProgress);
+    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged,
+    this, [ = ](int current, int total, const QString & fileName) {
+        qDebug() << current << total << fileName;
+        this->reportProgress(current, Error::NoError, "extract files", "");
+    });
 
     if (!sevenZip.extract()) {
         qCritical() << "Error::get(Error::ExtractImgeFailed)";

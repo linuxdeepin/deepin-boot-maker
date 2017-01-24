@@ -1,8 +1,16 @@
-#ifndef USBDEVICEMONITOR_H
-#define USBDEVICEMONITOR_H
+/**
+ * Copyright (C) 2016 Deepin Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ **/
+
+#pragma once
 
 #include <QObject>
-#include <QTimer>
+#include <QString>
 
 class DeviceInfo
 {
@@ -21,27 +29,10 @@ public:
     QString target  = "";
 };
 
+Q_DECLARE_METATYPE(QList<DeviceInfo>);
+
 QDataStream &operator<<(QDataStream &out, const DeviceInfo &msg);
 QDataStream &operator>>(QDataStream &in, DeviceInfo &msg);
 
-class UsbDeviceMonitor : public QObject
-{
-    Q_OBJECT
-public:
-    explicit UsbDeviceMonitor(QObject *parent = 0);
-
-    void pauseMonitor();
-
-signals:
-    void removePartitionsChanged(const QList<DeviceInfo> &list);
-
-public slots:
-    void startMonitor();
-
-private:
-    QTimer *m_timer = nullptr;
-};
-
-Q_DECLARE_METATYPE(QList<DeviceInfo>);
-
-#endif // USBDEVICEMONITOR_H
+QString deviceListToJson(QList<DeviceInfo> deviceList);
+QList<DeviceInfo> deviceListFromJson(QString json);

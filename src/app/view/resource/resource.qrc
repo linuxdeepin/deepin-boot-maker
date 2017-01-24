@@ -50,5 +50,7 @@
         <file>theme/light/image/dash_line.png</file>
         <file>theme/light/image/button_normal.png</file>
         <file>theme/light/image/water_shadow.png</file>
+        <file>theme/light/image/glow.png</file>
+        <file>theme/light/image/deepin-boot-maker.svg</file>
     </qresource>
 </RCC>

@@ -2,15 +2,16 @@
 }
 
 #IosPanel{
-    background-color: rgba(255, 255, 255, 50%);
-    border: 1px solid;
-    border-radius: 3;
-    border-color: rgba(0, 0, 0, 10%);
+    background-color: rgba(255, 255, 255, 5%);
+}
+
+#IosPanel[active=true] {
+    border: 1.0px dashed ;
+    border-radius: 4;
+    border-color: #2ca7f8;
 }
 
 #IsoFileName{
-    width: 96px;
-    height: 15px;
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -19,8 +20,6 @@
 }
 
 #IsoHits{
-    width: 20px;
-    height: 15px;
     font-size: 10px;
     font-weight: normal;
     font-style: normal;
@@ -34,8 +33,6 @@
 }
 
 #IsoFileSelect{
-    width: 48px;
-    height: 12px;
     font-family: SourceHanSansCN-Normal;
     font-size: 12px;
     font-weight: normal;

@@ -11,7 +11,7 @@
 #include <QObject>
 #include <QString>
 
-#include "usbdevicemonitor.h"
+#include "devicemonitor.h"
 
 namespace Utils
 {

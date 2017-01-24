@@ -16,8 +16,7 @@
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
 
-#include "util/bootmakeragent.h"
-
+#include "../bminterface.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -95,7 +94,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     SuggestButton *start = new SuggestButton();
     start->setObjectName("StartMake");
     start->setText(tr("Start Make"));
-    start->setDisabled(true);
+    start->setDisabled(false);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(24);
@@ -121,8 +120,10 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         m_formatDiskCheck->setChecked(0 == msgbox.exec());
     });
 
-    connect(BootMakerAgent::Instance(), &BootMakerAgent::notifyRemovePartitionsChanged,
+    connect(BMInterface::instance(), &BMInterface::deviceListChanged,
     this, [ = ](const QList<DeviceInfo> &partitions) {
+        qDebug() << partitions.length();
+
         bool hasPartitionSelected = false;
         m_emptyHist->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());

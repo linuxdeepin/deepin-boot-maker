@@ -1,41 +1,23 @@
 #include <QDebug>
 #include <QProcess>
 
-#include <QDesktopWidget>
 #include <DLog>
 #include <DApplication>
 #include <DWindow>
+#include <dutility.h>
 
 #include "bmwindow.h"
 #include "backend/bootmaker.h"
 #include "util/sevenzip.h"
-#include "util/bootmakeragent.h"
 #include "util/utils.h"
-#include "util/usbdevicemonitor.h"
-
-#include <QFile>
+#include "util/devicemonitor.h"
 
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
 
-static QRect PrimaryRect()
-{
-    QDesktopWidget *w = QApplication::desktop();
-    return w->screenGeometry(w->primaryScreen());
-}
-
-
 int main(int argc, char **argv)
 {
-    qRegisterMetaType<QList<DeviceInfo> >();
-
     DWIDGET_INIT_RESOURCE();
-
-//    QFile xf(":/blob/xfbinst/xfbinst");
-//    qDebug() <<xf.open(QIODevice::ReadOnly)<< xf.isReadable();
-
-//    QFileInfo xfif(":/blob/xfbinst/xfbinst");
-//    qDebug() << xfif.size();
 
     DApplication app(argc, argv);
     app.setOrganizationName("deepin");
@@ -87,14 +69,13 @@ int main(int argc, char **argv)
     }
 
     qDebug() << "Deepin Boot Maker UI started.";
-    BootMakerAgent::Init();
 
     BMWindow w;
     w.setFixedSize(440, 550);
-    w.move(PrimaryRect().center() - w.geometry().center());
+    DUtility::moveToCenter(&w);
     w.show();
 
-    w.waitAuth();
+//    w.waitAuth();
 
     return app.exec();
 }

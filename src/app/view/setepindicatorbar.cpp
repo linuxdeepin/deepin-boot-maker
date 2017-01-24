@@ -24,7 +24,6 @@ StepIndicatorBar::StepIndicatorBar(int stepCount, QWidget *parent) : QFrame(pare
 
     currentSetp = 0;
     labels[currentSetp]->setPixmap(s_indicator);
-
 }
 
 void StepIndicatorBar::setActiveStep(int n)

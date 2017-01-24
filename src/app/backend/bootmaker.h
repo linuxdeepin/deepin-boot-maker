@@ -1,32 +1,22 @@
-#ifndef BOOTMAKER_H
-#define BOOTMAKER_H
+#pragma once
 
-#include <QObject>
+#include "bmhandler.h"
 
-class BootMakerBackendDaemon;
-class UsbDeviceMonitor;
-
-class BootMaker : public QObject
+class DeviceMonitor;
+class BootMaker : public BMHandler
 {
     Q_OBJECT
 public:
     explicit BootMaker(QObject *parent = 0);
 
-signals:
-    void finished(int errcode, const QString &description);
-    void reportProgress(int current, int total, const QString &title, const QString &description);
-
-
 public slots:
+    const QList<DeviceInfo> deviceList() const;
     bool install(const QString &image,
                  const QString &device,
                  const QString &partition,
                  bool  formatDevice);
 
 private:
-    BootMakerBackendDaemon *m_porgressReporter = nullptr;
-    UsbDeviceMonitor *m_usbDeviceMonitor = nullptr;
-
+    DeviceMonitor        *m_usbDeviceMonitor = nullptr;
 };
 
-#endif // BOOTMAKER_H

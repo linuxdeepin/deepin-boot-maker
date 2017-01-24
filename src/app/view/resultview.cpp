@@ -7,14 +7,15 @@
 #include <QCheckBox>
 #include <QListWidget>
 #include <QDesktopServices>
+#include <QApplication>
+
+#include <DLog>
 
 #include "suggestbutton.h"
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
-
-#include <DLog>
 
 ResultView::ResultView(QWidget *parent) : QWidget(parent)
 {
@@ -70,6 +71,16 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->addWidget(m_rebootNow, 0, Qt::AlignCenter);
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ResultView.theme"));
+
+    connect(m_rebootLater, &SuggestButton::clicked,
+            this,[=](){
+        qApp->exit(0);
+    });
+
+    connect(m_rebootNow, &SuggestButton::clicked,
+            this,[=](){
+        // FIXME:
+    });
 }
 
 void ResultView::updateResult(quint32 error, const QString &title, const QString &description)

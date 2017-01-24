@@ -1,8 +1,7 @@
 SuggestButton{
     font-size: 14px;
-    font-weight: 500;
+    font-weight: normal;
     font-style: normal;
-    text-align: center;
     color: #0699ff;
     border: none;
     background: transparent;
@@ -10,9 +9,8 @@ SuggestButton{
 }
 SuggestButton[normal=true]{
     font-size: 14px;
-    font-weight: 500;
+    font-weight: normal;
     font-style: normal;
-    text-align: center;
     color: black;
     border: none;
     background: transparent;

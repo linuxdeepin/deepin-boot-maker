@@ -1,12 +1,13 @@
 #include "deviceinfoitem.h"
 
+#include <QDebug>
 #include <QHBoxLayout>
 #include <QProgressBar>
 #include <QLabel>
 #include <QPixmap>
 
 #include "widgetutil.h"
-#include <QDebug>
+
 DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
                                const QString &cap, int percent, QWidget *parent)
     : QWidget(parent)

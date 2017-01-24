@@ -12,7 +12,7 @@
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
 
-#include "util/bootmakeragent.h"
+#include "../bminterface.h"
 
 ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
 {
@@ -45,15 +45,14 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
-    waterProgress->setProgress(50);
-//     waterProgress->setProgress(50);
+    waterProgress->setProgress(10);
     waterProgress->start();
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
 
-    connect(start, &SuggestButton::clicked, this, &ProgressView::testCancel);
-//    start->hide();
-    connect(BootMakerAgent::Instance(), &BootMakerAgent::notifyProgress,
+//    connect(start, &SuggestButton::clicked, this, &ProgressView::testCancel);
+    start->hide();
+    connect(BMInterface::instance(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         waterProgress->setProgress(static_cast<int>(current));
         if (current >= 100) {

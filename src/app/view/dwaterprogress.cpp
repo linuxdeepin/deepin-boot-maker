@@ -71,6 +71,8 @@ void DWaterProgress::updateProcess()
     auto wmax = 114;
     auto wmin = 12;
 
+    double speed = 1.0 * m_Progresss / 100;
+
     m_ForntXOffset1 += 2;
     m_ForntXOffset2 += 2;
     if (m_ForntXOffset1 >= wmax) {
@@ -93,20 +95,20 @@ void DWaterProgress::updateProcess()
         m_YOffset = 88;
     }
 
-    m_Pop7YOffset -= 0.8;
+    m_Pop7YOffset -= 0.8 * speed;
     if (m_Pop7YOffset < m_YOffset + 10) {
         m_Pop7YOffset = 100;
     }
     m_Pop7XOffset = 35 + 14 + qSin((100 - m_Pop7YOffset) * 2 * 3.14 / 40) * 8;
 
-    m_Pop8YOffset -= 1.2;
+    m_Pop8YOffset -= 1.2 * speed;
     if (m_Pop8YOffset < m_YOffset + 10) {
         m_Pop8YOffset = 100;
     }
     m_Pop8XOffset = 45 + 14 + qCos((100 - m_Pop8YOffset) * 2 * 3.14 / 40) * 9
                     * (100 - m_Pop8XOffset) / 60;
 
-    m_Pop11YOffset -= 1.6;
+    m_Pop11YOffset -= 1.6 * speed;
     if (m_Pop11YOffset < m_YOffset + 10) {
         m_Pop11YOffset = 100;
     }
@@ -139,18 +141,20 @@ void DWaterProgress::paintEvent(QPaintEvent *)
     p.drawImage(m_ForntXOffset2, m_YOffset, *m_FrontImage);
 
     //drwa pop
-    QPainterPath pop7;
-    pop7.addEllipse(m_Pop7XOffset, m_Pop7YOffset, 7, 7);
-    p.fillPath(pop7, QColor(77, 208, 255));
 
-    QPainterPath pop8;
-    pop8.addEllipse(m_Pop8XOffset, m_Pop8YOffset, 8, 8);
-    p.fillPath(pop8, QColor(77, 208, 255));
+    if (m_Progresss > 25) {
+        QPainterPath pop7;
+        pop7.addEllipse(m_Pop7XOffset, m_Pop7YOffset, 7, 7);
+        p.fillPath(pop7, QColor(77, 208, 255));
 
-    QPainterPath pop11;
-    pop11.addEllipse(m_Pop11XOffset, m_Pop11YOffset, 11, 11);
-    p.fillPath(pop11, QColor(77, 208, 255));
+        QPainterPath pop8;
+        pop8.addEllipse(m_Pop8XOffset, m_Pop8YOffset, 8, 8);
+        p.fillPath(pop8, QColor(77, 208, 255));
 
+        QPainterPath pop11;
+        pop11.addEllipse(m_Pop11XOffset, m_Pop11YOffset, 11, 11);
+        p.fillPath(pop11, QColor(77, 208, 255));
+    }
     auto offset = 14;
     // draw boder
     QPen borderPenBk(QColor(0xff, 0xff, 0xff, 0xff), 16);

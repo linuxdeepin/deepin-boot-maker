@@ -29,6 +29,13 @@ void DropFrame::dragEnterEvent(QDragEnterEvent *event)
     if (!checkMimeData(mimeData)) { return; }
 
     event->acceptProposedAction();
+    emit fileAboutAccept();
+}
+
+void DropFrame::dragLeaveEvent(QDragLeaveEvent *event)
+{
+    QFrame::dragLeaveEvent(event);
+    emit fileCancel();
 }
 
 void DropFrame::dropEvent(QDropEvent *event)
@@ -37,4 +44,5 @@ void DropFrame::dropEvent(QDropEvent *event)
     if (!checkMimeData(mimeData)) { return; }
 
     emit fileDrop(mimeData->urls().first().toLocalFile());
+    emit fileCancel();
 }

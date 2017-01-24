@@ -80,7 +80,7 @@ void SevenZipProcessParser::run()
         if (2 <= prgressInfoList.size()) {
             m_lastFilename = prgressInfoList.last().isEmpty() ? m_lastFilename : prgressInfoList.last();
         }
-        /* qDebug() << "send signal" << m_lastPencent << m_lastFilename;*/
+        qDebug() << "send signal" << m_lastPencent << m_lastFilename;
         emit progressChanged(m_lastPencent, 100, m_lastFilename);
         QThread::sleep(1);
     }

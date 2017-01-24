@@ -1,23 +1,17 @@
-#ifndef BMWINDOW_H
-#define BMWINDOW_H
+#pragma once
 
 #include <DWindow>
 #include <QScopedPointer>
 
-class BootMakerAgent;
-class BMWindowData;
-
+class BMWindowPrivate;
 class BMWindow: public DTK_WIDGET_NAMESPACE::DWindow
 {
     Q_OBJECT
 public:
     BMWindow(QWidget *parent = nullptr);
     ~BMWindow();
-    void waitAuth();
 
 private:
-    QScopedPointer<BMWindowData> d;
-    Q_DISABLE_COPY(BMWindow)
+    QScopedPointer<BMWindowPrivate> d_ptr;
+    Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMWindow)
 };
-
-#endif // BMWINDOW_H
