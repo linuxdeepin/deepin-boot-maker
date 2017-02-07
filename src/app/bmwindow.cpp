@@ -70,7 +70,7 @@ public:
     UsbSelectView   *usbWidget      = nullptr;
     ProgressView    *progressWidget = nullptr;
     ResultView      *resultWidget   = nullptr;
-    DDialog         *warnDlg        = nullptr;
+//    DDialog         *warnDlg        = nullptr;
 
     BMInterface     *interface      = nullptr;
 
@@ -83,6 +83,8 @@ BMWindow::BMWindow(QWidget *parent)
 {
     Q_D(BMWindow);
 
+    setFixedSize(440, 550);
+
     d->interface = BMInterface::instance();
 
     setWindowFlags(windowFlags() & ~ Qt::WindowSystemMenuHint);
@@ -92,10 +94,11 @@ BMWindow::BMWindow(QWidget *parent)
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
-    setContentLayout(mainLayout);
 
+    setContentLayout(mainLayout);
     auto *actionsLayout = new QStackedLayout;
-    d->isoWidget = new ISOSelectView;
+    mainLayout->addLayout(actionsLayout);
+    d->isoWidget = new ISOSelectView();
     d->isoWidget->setFixedSize(440, 476);
 
     d->usbWidget = new UsbSelectView;
@@ -111,10 +114,10 @@ BMWindow::BMWindow(QWidget *parent)
     d->resultWidget->move(440, 0);
 
     actionsLayout->addWidget(d->isoWidget);
+
     actionsLayout->addWidget(d->usbWidget);
     actionsLayout->addWidget(d->progressWidget);
     actionsLayout->addWidget(d->resultWidget);
-    mainLayout->addLayout(actionsLayout);
 
     mainLayout->addSpacing(8);
     auto wsib = new StepIndicatorBar(3);
@@ -149,14 +152,14 @@ BMWindow::BMWindow(QWidget *parent)
         wsib->setActiveStep(2);
     });
 
-    d->warnDlg = new Dtk::Widget::DDialog(this);
-    d->warnDlg->setWindowFlags(d->warnDlg->windowFlags() & ~Qt::WindowCloseButtonHint);
-    d->warnDlg->setFixedWidth(400);
-    d->warnDlg->setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
-    d->warnDlg->setWindowTitle(tr("Format USB flash drive"));
-    d->warnDlg->setTextFormat(Qt::AutoText);
-    d->warnDlg->setMessage(tr("Please input root password."));
-    d->warnDlg->addButtons(QStringList() << tr("Retry") << tr("exit"));
+//    d->warnDlg = new Dtk::Widget::DDialog(this);
+//    d->warnDlg->setWindowFlags(d->warnDlg->windowFlags() & ~Qt::WindowCloseButtonHint);
+//    d->warnDlg->setFixedWidth(400);
+//    d->warnDlg->setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
+//    d->warnDlg->setWindowTitle(tr("Format USB flash drive"));
+//    d->warnDlg->setTextFormat(Qt::AutoText);
+//    d->warnDlg->setMessage(tr("Please input root password."));
+//    d->warnDlg->addButtons(QStringList() << tr("Retry") << tr("exit"));
 
 //    d->isoWidget->hide();
 //    emit d->isoWidget->isoFileSelected();
@@ -170,15 +173,13 @@ BMWindow::~BMWindow()
 
 }
 
-static QString rootCommand(QCoreApplication &app)
+ QString rootCommand()
 {
-    return QString("gksu \"%1  -d -n\"").arg(app.applicationFilePath());
+    return QString("gksu \"%1  -d -n\"").arg(qApp->applicationFilePath());
 }
 
-QString startBackend(QCoreApplication &app)
+void startBackend()
 {
-    QProcess *gksu = new QProcess();
-    gksu->startDetached(rootCommand(app));
-    return "";
+    QProcess::startDetached(rootCommand());
 }
 

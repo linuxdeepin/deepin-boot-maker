@@ -60,6 +60,9 @@ int main(int argc, char **argv)
         qDebug()<< "another deppin music has started";
         exit(0);
     }
+#ifdef Q_OS_WIN
+    Utils::loadFonts();
+#endif
 
 //    if (parser.isSet(optDaemon)) {
 //        qDebug() << parser.value(optDaemon)
@@ -76,7 +79,6 @@ int main(int argc, char **argv)
     qDebug() << "Deepin Boot Maker UI started.";
 
     BMWindow w;
-    w.setFixedSize(440, 550);
     DUtility::moveToCenter(&w);
     w.show();
 

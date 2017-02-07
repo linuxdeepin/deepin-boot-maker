@@ -8,11 +8,14 @@
  **/
 
 #include "bminterface.h"
+
+#include <QDebug>
+
 #include "backend/bmhandler.h"
 
 #ifdef Q_OS_LINUX
 #include "backend/bmdbushandler.h"
-#elif
+#else
 #include "backend/bootmaker.h"
 #endif
 
@@ -33,7 +36,7 @@ BMInterface::BMInterface(QObject *parent) :
     Q_D(BMInterface);
 #ifdef Q_OS_LINUX
     d->handler = new BMDbusHandler;
-#elif
+#else
     d->handler = new BootMaker;
 #endif
     connect(d->handler, &BMHandler::removablePartitionsChanged,

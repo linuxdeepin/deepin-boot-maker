@@ -22,16 +22,27 @@ unix{
 }
 
 win32{
+    DEFINES += STATIC_LIB
 
-    INCLUDEPATH += $$PWD/usr/include/libdtk-1.0/DWidget
-    DEPENDPATH += $$PWD/usr/include/libdtk-1.0/DWidget
-    LIBS += -L$$PWD/usr/lib/ -ldtkwidget
+    INCLUDEPATH += $$PWD
 
-    INCLUDEPATH += $$PWD/usr/include/libdtk-1.0/DUtil
-    DEPENDPATH += $$PWD/usr/include/libdtk-1.0/DUtil
-    LIBS += -L$$PWD/usr/lib/ -ldtkutil
+    # Deepin tool kit
+    DTK_INCLUDE = D:\Develop\Library\include\libdtk-1.0
+    DTK_DEPEND  = D:\Develop\Library\include\libdtk-1.0
+    DTK_LIBRARY = D:\Develop\Library\lib
 
-    INCLUDEPATH += $$PWD/usr/include/libdtk-1.0/DBase
-    DEPENDPATH += $$PWD/usr/include/libdtk-1.0/DBase
-    LIBS += -L$$PWD/usr/lib/ -ldtkbase
+    INCLUDEPATH += $$DTK_INCLUDE\DWidget
+    DEPENDPATH  += $$DTK_INCLUDE\DWidget
+
+    INCLUDEPATH += $$DTK_INCLUDE\DUtil
+    INCLUDEPATH += $$DTK_INCLUDE\DUtil
+    DEPENDPATH  += $$DTK_DEPEND\DUtil
+
+    INCLUDEPATH += $$DTK_INCLUDE\DBase
+    DEPENDPATH  += $$DTK_DEPEND\DBase
+
+    LIBS += -L$$DTK_LIBRARY -ldtkwidget
+    LIBS += -L$$DTK_LIBRARY -ldtkutil
+    LIBS += -L$$DTK_LIBRARY -ldtkbase
+
 }

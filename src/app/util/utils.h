@@ -18,7 +18,7 @@ namespace Utils
 
 QMap<QString, DeviceInfo> CommandDfParse();
 QMap<QString, DeviceInfo> CommandLsblkParse();
-
+void loadFonts();
 QString UsbShowText(const QString &targetdev);
 void ClearTargetDev(const QString &targetPath);
 QList<DeviceInfo>  ListUsbDrives();

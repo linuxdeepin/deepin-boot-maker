@@ -58,7 +58,7 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
 Result SynExec(const QString &exec, const QString &param, const QString &execPipeIn)
 {
     Result ret = runApp(exec, param, execPipeIn);
-    qDebug() << exec + "" + param
+    qDebug() << exec + " " + param
              << ret.isSuccess() << ret.errmsg()
              << execPipeIn ;
     return ret;

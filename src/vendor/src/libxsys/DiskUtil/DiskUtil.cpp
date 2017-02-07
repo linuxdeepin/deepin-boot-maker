@@ -156,9 +156,9 @@ void UnlockDisk(HANDLE handle)
 XSys::Result InstallSyslinux(const QString &targetDev)
 {
     // install syslinux
-    XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
+    XSys::SynExec("label", QString(" %1:DEEPINOS").arg(targetDev[0]));
     QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blob/syslinux/win32/syslinux.exe"));
-    return XSys::SynExec(sysliuxPath, QString(" -i -m -a %1").arg(targetDev));
+    return XSys::SynExec(sysliuxPath, QString(" -i -m -a %1:").arg(targetDev[0]));
 }
 
 XSys::Result InstallBootloader(const QString &targetDev)

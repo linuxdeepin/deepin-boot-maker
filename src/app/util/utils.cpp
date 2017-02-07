@@ -17,9 +17,35 @@
 
 #ifdef Q_OS_WIN32
 #include <Windows.h>
+#include <QFontDatabase>
+#include <QApplication>
 #endif
+
+
 namespace Utils
 {
+
+#ifdef Q_OS_WIN32
+void loadFonts() {
+    QFontDatabase database;
+    QStringList fontlist = database.families();
+
+    QStringList preferList;
+    preferList.append("Microsoft YaHei");
+    preferList.append("微软雅黑");
+    preferList.append("SimHei");
+    preferList.append("黑体");
+
+    foreach (QString font, preferList) {
+        if (fontlist.contains(font)) {
+            QFont newFont = QFont(font);
+            QApplication::setFont(newFont);
+            return;
+        }
+    }
+}
+#endif
+
 
 QString UsbShowText(const QString &dev)
 {
@@ -155,19 +181,21 @@ bool isUsbDisk(const QString &dev)
 
 QList<DeviceInfo> ListUsbDrives()
 {
-    QStringList fulldrivelist;
-
     QList<DeviceInfo> deviceList;
 #ifdef Q_OS_WIN32
     QFileInfoList extdrivesList = QDir::drives();
 
     for (int i = 0; i < extdrivesList.size(); ++i) {
-        if (QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper()) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper())
-                .contains("A:") && !QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper())
+        QString deviceLetter = extdrivesList.at(i).path().toUpper();
+        if (QDir::toNativeSeparators(deviceLetter) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(deviceLetter)
+                .contains("A:") && !QDir::toNativeSeparators(deviceLetter)
                 .contains("B:")) {
-            if (GetDriveType(LPWSTR(extdrivesList.at(i).path().toUpper().utf16())) == 2) {
-                fulldrivelist.append(
-                    QDir::toNativeSeparators(extdrivesList.at(i).path().toUpper()));
+//            qDebug() << GetDriveType(LPWSTR(deviceLetter.utf16())) << deviceLetter;
+            if (GetDriveType(LPWSTR(deviceLetter.utf16())) == 2) {
+
+                DeviceInfo info;
+                info.path = QDir::toNativeSeparators(deviceLetter);
+                deviceList.push_back(info);
             }
         }
     }

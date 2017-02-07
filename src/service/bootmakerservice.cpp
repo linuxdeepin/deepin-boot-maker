@@ -83,7 +83,6 @@ BootMakerService::BootMakerService(QObject *parent) :
 
     connect(d->bm, &BootMaker::removablePartitionsChanged,
     this, [ = ](const QList<DeviceInfo> &list) {
-        qDebug() << "seend ----------------------";
         emit DeviceListChanged(deviceListToJson(list));
     });
     connect(d->bm, &BootMaker::finished,

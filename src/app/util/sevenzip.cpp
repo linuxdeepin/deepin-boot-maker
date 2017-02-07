@@ -6,11 +6,28 @@
 #include <QTemporaryFile>
 #include <QThread>
 
+#include <XSys>
+
 SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     : QThread(parent)
 {
+#ifdef Q_OS_WIN32
+    QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
+    QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll");
+    qDebug()<<sevnz<<sevnzdll;
+#endif
+#ifdef Q_OS_MAC
+    QDir resourceDir = QDir(QApplication::applicationDirPath());
+    resourceDir.cdUp();
+    resourceDir.cd("Resources");
+    QString sevnz = resourceDir.absoluteFilePath("7z-mac");
+#endif
+#ifdef Q_OS_LINUX
+    QString sevnz = "7z";
+#endif
+
     m_szpp = new SevenZipProcessParser("", &m_sevenz);
-    m_sevenZip = "7z";
+    m_sevenZip = sevnz;
     m_archiveFile = image;
     m_outputDir = "-o" + target;
     //    connect(&m_szpp, &SevenZipProcessParser::progressChanged, this, &SevenZip::progressChanged);
