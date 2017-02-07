@@ -159,6 +159,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->warnDlg->addButtons(QStringList() << tr("Retry") << tr("exit"));
 
 //    d->isoWidget->hide();
+//    emit d->isoWidget->isoFileSelected();
 //    emit d->usbWidget->de/sviceSelected(",", false);
 //    emit d->progressWidget->testCancel();
     d->interface->start();

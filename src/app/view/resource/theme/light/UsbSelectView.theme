@@ -5,14 +5,19 @@
     background-color: rgba(255, 255, 255, 50%);
     border: 1px solid;
     border-radius: 3;
-    border-color: rgba(0, 0, 0, 10%);
+    border-color: rgba(0, 0, 0, 0%);
 }
 
-#EmptyHitsTitle{
+#WarningHint {
+    font-size: 11px;
+    qproperty-alignment: AlignCenter;
+    color: #ff5800;
+    border: 1px solid rgba(0, 0, 0, 0%);
+}
+
+#EmptyHintTitle{
     font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.5;
-    text-align: center;
+    qproperty-alignment: AlignCenter;
     color: #848484;
+    border: 1px solid rgba(0, 0, 0, 0%);
 }

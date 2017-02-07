@@ -53,6 +53,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 {
     setObjectName("UsbSelectView");
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Please Select ISO File"));
@@ -74,31 +75,35 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     m_formatDiskCheck->setFixedHeight(34);
     m_formatDiskCheck->setText(tr("Format to improve successful"));
     m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
-    m_formatDiskCheck->setDisabled(true);
+    m_formatDiskCheck->hide();
 
     DeviceListWidget *m_deviceList = new DeviceListWidget;
     m_deviceList->setObjectName("UsbDeviceList");
     m_deviceList->setFixedSize(390, 270);
     m_deviceList->hide();
 
-    QLabel *m_emptyHist = new  QLabel(tr("No Disk Found"));
-    m_emptyHist->setObjectName("EmptyHitsTitle");
+    QLabel *m_warningHint = new  QLabel("");
+    m_warningHint->setObjectName("WarningHint");
+
+    QLabel *m_emptyHint = new  QLabel(tr("No Disk Found"));
+    m_emptyHint->setObjectName("EmptyHintTitle");
 
     usbPanelLayout->addStretch();
-    usbPanelLayout->addWidget(m_emptyHist, 0, Qt::AlignCenter);
+    usbPanelLayout->addWidget(m_emptyHint, 0, Qt::AlignCenter);
     usbPanelLayout->addStretch();
     usbPanelLayout->addWidget(m_deviceList, 0, Qt::AlignLeft);
     usbPanelLayout->addSpacing(15);
-    usbPanelLayout->addWidget(m_formatDiskCheck, 0, Qt::AlignLeft);
+    usbPanelLayout->addWidget(m_formatDiskCheck, 0, Qt::AlignCenter);
 
     SuggestButton *start = new SuggestButton();
     start->setObjectName("StartMake");
     start->setText(tr("Start Make"));
-    start->setDisabled(false);
+    start->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(24);
     mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_warningHint, 0, Qt::AlignCenter);
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
@@ -106,8 +111,11 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked = false) {
         if (!checked) {
+            m_warningHint->setText("");
             return;
         }
+        m_warningHint->setText(tr("All data will be lost during formatting"));
+        return;
 
         DDialog msgbox(this);
         msgbox.setFixedWidth(300);
@@ -123,9 +131,10 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     connect(BMInterface::instance(), &BMInterface::deviceListChanged,
     this, [ = ](const QList<DeviceInfo> &partitions) {
         bool hasPartitionSelected = false;
-        m_emptyHist->setVisible(!partitions.size());
+        m_formatDiskCheck->setVisible(partitions.size());
+        m_emptyHint->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
-        m_formatDiskCheck->setEnabled(partitions.size());
+//        m_formatDiskCheck->setEnabled(partitions.size());
 
         m_deviceList->clear();
         foreach(const DeviceInfo & partition, partitions) {
