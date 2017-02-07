@@ -9,6 +9,18 @@
 
 #include "diskutil.h"
 
+#ifdef Q_OS_WIN32
+#include <windows.h>
+#include <shellapi.h>
+#pragma comment(lib, "shell32.lib")
+#pragma comment(lib, "advapi32.lib")
+#endif
+
+#ifdef Q_OS_LINUX
+#include <unistd.h>
+#include <sys/reboot.h>
+#endif
+
 class Error
 {
 public:
@@ -55,15 +67,37 @@ BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
     connect(m_usbDeviceMonitor, &DeviceMonitor::removablePartitionsChanged,
             this, &BootMaker::removablePartitionsChanged);
 
-    monitorWork->start();
+//    monitorWork->start();
 
     connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString & description) {
         this->reportProgress(100, errcode, "install failed", description);
     });
 }
 
+void BootMaker::reboot()
+{
+#ifdef Q_OS_WIN32
+    HANDLE hToken;
+    TOKEN_PRIVILEGES tkp;
+    OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
+    LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &tkp.Privileges[0].Luid);
+    tkp.PrivilegeCount = 1;
+    tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+    AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, (PTOKEN_PRIVILEGES) NULL, 0);
+    ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
+#endif
+#ifdef Q_OS_LINUX
+    sync();
+    ::reboot(RB_AUTOBOOT);
+#endif
+#ifdef Q_OS_MAC
+    XSys::SynExec("shutdown", "-r now &");
+#endif
+}
+
 void BootMaker::start()
 {
+//        monitorWork->start();
     emit m_usbDeviceMonitor->startMonitor();
 }
 

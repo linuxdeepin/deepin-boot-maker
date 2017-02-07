@@ -49,6 +49,12 @@ public Q_SLOTS: // METHODS
         return asyncCallWithArgumentList(QStringLiteral("Install"), argumentList);
     }
 
+    inline QDBusPendingReply<> Reboot()
+    {
+        QList<QVariant> argumentList;
+        return asyncCallWithArgumentList(QStringLiteral("Reboot"), argumentList);
+    }
+
     inline QDBusPendingReply<> Start()
     {
         QList<QVariant> argumentList;

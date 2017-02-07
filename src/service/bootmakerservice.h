@@ -29,6 +29,7 @@ signals:
     Q_SCRIPTABLE void ReportProgress(int current, int error, const QString &title, const QString &description);
 
 public slots:
+    Q_SCRIPTABLE void Reboot();
     Q_SCRIPTABLE void Start();
     Q_SCRIPTABLE void Stop();
     Q_SCRIPTABLE QString DeviceList();

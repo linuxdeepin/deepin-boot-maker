@@ -18,6 +18,8 @@
     <method name="DeviceList">
       <arg type="s" direction="out"/>
     </method>
+    <method name="Reboot">
+    </method>
     <method name="Start">
     </method>
     <method name="Stop">

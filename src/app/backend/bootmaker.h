@@ -10,6 +10,7 @@ public:
     explicit BootMaker(QObject *parent = 0);
 
 public slots:
+    void reboot();
     void start();
     void stop();
     const QList<DeviceInfo> deviceList() const;

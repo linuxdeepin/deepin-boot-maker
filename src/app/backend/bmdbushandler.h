@@ -39,6 +39,11 @@ public:
     }
 
 public slots:
+    void reboot()
+    {
+        m_dbus->Reboot();
+    }
+
     void start()
     {
         m_dbus->Start();

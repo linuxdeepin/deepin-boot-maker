@@ -24,6 +24,7 @@ signals:
     void reportProgress(int current, int error, const QString &title, const QString &description);
 
 public slots:
+    virtual void reboot() = 0;
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual const QList<DeviceInfo> deviceList() const = 0;
