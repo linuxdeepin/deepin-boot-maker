@@ -122,8 +122,6 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     connect(BMInterface::instance(), &BMInterface::deviceListChanged,
     this, [ = ](const QList<DeviceInfo> &partitions) {
-        qDebug() << partitions.length();
-
         bool hasPartitionSelected = false;
         m_emptyHist->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
