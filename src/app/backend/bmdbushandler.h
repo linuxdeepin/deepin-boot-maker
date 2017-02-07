@@ -39,6 +39,16 @@ public:
     }
 
 public slots:
+    void start()
+    {
+        m_dbus->Start();
+    }
+
+    void stop()
+    {
+        m_dbus->Stop();
+    }
+
     const QList<DeviceInfo> deviceList() const
     {
         return  deviceListFromJson(m_dbus->DeviceList());

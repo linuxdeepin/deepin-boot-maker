@@ -28,6 +28,8 @@ signals:
     void reportProgress(int current, int total, const QString &title, const QString &description);
 
 public slots:
+    void start();
+    void stop();
     QList<DeviceInfo> deviceList();
     bool install(const QString &image,
                  const QString &device,

@@ -24,13 +24,15 @@ public:
     ~BootMakerService();
 
 signals:
-    void DeviceListChanged(const QString deviceListJson);
-    void Finished(int errcode, const QString &description);
-    void ReportProgress(int current, int error, const QString &title, const QString &description);
+    Q_SCRIPTABLE void DeviceListChanged(const QString deviceListJson);
+    Q_SCRIPTABLE void Finished(int errcode, const QString &description);
+    Q_SCRIPTABLE void ReportProgress(int current, int error, const QString &title, const QString &description);
 
 public slots:
-    QString DeviceList();
-    bool Install(const QString &image,
+    Q_SCRIPTABLE void Start();
+    Q_SCRIPTABLE void Stop();
+    Q_SCRIPTABLE QString DeviceList();
+    Q_SCRIPTABLE bool Install(const QString &image,
                  const QString &device,
                  const QString &partition,
                  bool  formatDevice);

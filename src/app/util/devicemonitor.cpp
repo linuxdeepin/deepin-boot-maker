@@ -19,16 +19,14 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
     connect(this, &DeviceMonitor::pauseMonitor, this, [ = ]() {
         m_timer->stop();
     });
+    connect(this, &DeviceMonitor::startMonitor, this, [ = ]() {
+        m_timer->start();
+    });
 }
 
 const QList<DeviceInfo> DeviceMonitor::deviceList() const
 {
     return Utils::ListUsbDrives();
-}
-
-void DeviceMonitor::startMonitor()
-{
-    m_timer->start();
 }
 
 QString deviceListToJson(QList<DeviceInfo> deviceList)

@@ -11,6 +11,7 @@
 
 #include <QDebug>
 #include <QThread>
+#include <QCoreApplication>
 
 #include "../app/backend/bootmaker.h"
 
@@ -46,11 +47,28 @@ BootMakerService::BootMakerService(QObject *parent) :
 
     connect(this, &BootMakerService::startInstall,
             d->bm, &BootMaker::install);
+
+    connect(d->bm, &BootMaker::finished,
+            this, [=](int errcode, const QString &){
+        QThread::msleep(1000);
+        qApp->exit(errcode);
+    });
 }
 
 BootMakerService::~BootMakerService()
 {
 
+}
+
+void BootMakerService::Start()
+{
+    Q_D(BootMakerService);
+    d->bm->start();
+}
+
+void BootMakerService::Stop()
+{
+    qApp->exit(0);
 }
 
 //!

@@ -83,7 +83,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     });
 }
 
-void ResultView::updateResult(quint32 error, const QString &title, const QString &description)
+void ResultView::updateResult(quint32 error, const QString &/*title*/, const QString &description)
 {
     if (0 == error) {
         return;

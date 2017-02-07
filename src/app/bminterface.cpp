@@ -49,6 +49,18 @@ BMInterface::~BMInterface()
 
 }
 
+void BMInterface::start()
+{
+    Q_D(BMInterface);
+    return d->handler->start();
+}
+
+void BMInterface::stop()
+{
+    Q_D(BMInterface);
+    return d->handler->stop();
+}
+
 QList<DeviceInfo> BMInterface::deviceList()
 {
     Q_D(BMInterface);

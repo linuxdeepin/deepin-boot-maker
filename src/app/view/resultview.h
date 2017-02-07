@@ -17,7 +17,7 @@ signals:
 
 public slots:
     void onLogLinkActivated(const QString&);
-    void updateResult(quint32 error, const QString &title, const QString &description);
+    void updateResult(quint32 error, const QString &, const QString &description);
 
 private:
     QPointer<QLabel>  m_title;

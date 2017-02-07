@@ -66,7 +66,7 @@ unix {
         backend/bmdbushandler.h
 
     SOURCES += \
-        backend/bmdbusnterface.cpp
+        backend/bmdbusinterface.cpp
 }
 
 TRANSLATIONS += po/en_US.ts \
@@ -94,7 +94,10 @@ isEmpty(PREFIX) {
 binary.path = $${PREFIX}/bin
 binary.files = deepin-boot-maker
 
-INSTALLS += binary
+desktop.path = $${PREFIX}/share/applications
+desktop.files = deepin-boot-maker.desktop
+
+INSTALLS += binary desktop
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../vendor/src/libxsys/release/ -lxsys
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../vendor/src/libxsys/debug/ -lxsys

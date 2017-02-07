@@ -62,6 +62,16 @@ BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
     });
 }
 
+void BootMaker::start()
+{
+    emit m_usbDeviceMonitor->startMonitor();
+}
+
+void BootMaker::stop()
+{
+    emit m_usbDeviceMonitor->pauseMonitor();
+}
+
 const QList<DeviceInfo> BootMaker::deviceList() const
 {
     return m_usbDeviceMonitor->deviceList();

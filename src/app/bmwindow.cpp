@@ -160,6 +160,8 @@ BMWindow::BMWindow(QWidget *parent)
 
 //    d->isoWidget->hide();
 //    emit d->usbWidget->de/sviceSelected(",", false);
+//    emit d->progressWidget->testCancel();
+    d->interface->start();
 }
 
 BMWindow::~BMWindow()

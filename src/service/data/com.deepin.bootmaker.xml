@@ -18,6 +18,10 @@
     <method name="DeviceList">
       <arg type="s" direction="out"/>
     </method>
+    <method name="Start">
+    </method>
+    <method name="Stop">
+    </method>
     <method name="Install">
       <arg type="b" direction="out"/>
       <arg name="image" type="s" direction="in"/>

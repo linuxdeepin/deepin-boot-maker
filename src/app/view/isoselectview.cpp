@@ -39,7 +39,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 
     DropFrame *isoPanel = new DropFrame;
     isoPanel->setObjectName("IosPanel");
-    isoPanel->setFixedSize(410, 320);
+    isoPanel->setFixedSize(412, 322);
 
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);

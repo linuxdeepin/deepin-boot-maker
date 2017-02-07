@@ -6,9 +6,7 @@
 }
 
 #IosPanel[active=true] {
-    border: 1.0px dashed ;
-    border-radius: 4;
-    border-color: #2ca7f8;
+    border-image: url(:/theme/light/image/dash.png);
 }
 
 #IsoFileName{

@@ -10,6 +10,8 @@ public:
     explicit BootMaker(QObject *parent = 0);
 
 public slots:
+    void start();
+    void stop();
     const QList<DeviceInfo> deviceList() const;
     bool install(const QString &image,
                  const QString &device,
