@@ -13,7 +13,6 @@ signals:
     void finish(quint32 error, const QString &title, const QString &description);
     void testCancel();
 
-public slots:
 };
 
 #endif // PROGRESSVIEW_H

@@ -137,27 +137,29 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
+        setWindowFlags(windowFlags() & ~Qt::WindowCloseButtonHint);
         slideWidget(d->usbWidget, d->progressWidget);
         wsib->setActiveStep(2);
         auto isoFilePath = property("bmISOFilePath").toString();
-        qDebug() << isoFilePath
-                 << partition
-                 << format;
+        qDebug() << "call interface install" << isoFilePath << partition << format;
         d->interface->install(isoFilePath, "", partition, format);
     });
 
+    // TODO: TEST Function
     connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
 //        USBFormatError,
 //        USBSizeError,
 //        USBMountFailed,
 //        ExtractImgeFailed,
-        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
+        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
+        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setActiveStep(2);
     });
 
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
+        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setActiveStep(2);
@@ -174,7 +176,7 @@ BMWindow::BMWindow(QWidget *parent)
 
 //    d->isoWidget->hide();
 //    emit d->isoWidget->isoFileSelected();
-//    emit d->usbWidget->de/sviceSelected(",", false);
+//    emit d->usbWidget->deviceSelected(",", false);
 //    emit d->progressWidget->testCancel();
     d->interface->start();
 }

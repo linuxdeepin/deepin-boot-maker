@@ -2,22 +2,13 @@
 }
 
 #ProgressHitsTitle{
-    width: 124px;
-    height: 22px;
     font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    text-align: center;
+    qproperty-alignment: AlignCenter;
     color: #000000;
 }
 
 #ProgressHits{
-    width: 315px;
-    height: 20px;
     font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
     line-height: 1.67;
-    text-align: center;
     color: #424242;
 }

@@ -22,7 +22,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("请选择光盘文件"));
+    QLabel *m_title = new QLabel(tr("Please select an ISO image file"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -44,11 +44,11 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);
 
-    m_fileLabel = new QLabel(tr("Drop ISO Here"));
+    m_fileLabel = new QLabel(tr("Drag an ISO image file and drop it here"));
     m_fileLabel->setObjectName("IsoFileName");
-    m_fileLabel->setFixedHeight(18);
+//    m_fileLabel->setFixedHeight(18);
 
-    m_hits = new QLabel(tr("Or"));
+    m_hits = new QLabel(tr("OR"));
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(18);
 
@@ -58,9 +58,9 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 
     m_fileSelect = new QLabel();
     m_fileSelect->setObjectName("IsoFileSelect");
-    m_fileSelect->setFixedHeight(15);
+//    m_fileSelect->setFixedHeight(15);
     m_fileSelect->setOpenExternalLinks(false);
-    QString selectText = tr("Select File");
+    QString selectText = tr("Select an ISO image file");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
 
@@ -78,7 +78,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 
     m_nextSetp = new SuggestButton();
     m_nextSetp->setObjectName("NextStepButton");
-    m_nextSetp->setText(tr("Next Setup"));
+    m_nextSetp->setText(tr("Next"));
     m_nextSetp->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
@@ -131,7 +131,7 @@ void ISOSelectView::onFileSelected(const QString &file)
     QFileInfo info(file);
     m_fileLabel->setText(info.fileName());
     m_hits->setText("");
-    QString selectText = tr("重新选择文件");
+    QString selectText = tr("Reselect an ISO image file");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     m_nextSetp->setDisabled(false);

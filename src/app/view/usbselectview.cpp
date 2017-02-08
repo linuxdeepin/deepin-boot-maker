@@ -56,7 +56,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Please Select ISO File"));
+    QLabel *m_title = new QLabel(tr("Please select a disk"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -73,7 +73,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QCheckBox *m_formatDiskCheck = new QCheckBox;
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
-    m_formatDiskCheck->setText(tr("Format to improve successful"));
+    m_formatDiskCheck->setText(tr("Format disk can increase success rate of making disk"));
     m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
     m_formatDiskCheck->hide();
 
@@ -84,8 +84,10 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     QLabel *m_warningHint = new  QLabel("");
     m_warningHint->setObjectName("WarningHint");
+    m_warningHint->setFixedWidth(390);
+    m_warningHint->setWordWrap(true);
 
-    QLabel *m_emptyHint = new  QLabel(tr("No Disk Found"));
+    QLabel *m_emptyHint = new  QLabel(tr("No available disk found"));
     m_emptyHint->setObjectName("EmptyHintTitle");
 
     usbPanelLayout->addStretch();
@@ -97,7 +99,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     SuggestButton *start = new SuggestButton();
     start->setObjectName("StartMake");
-    start->setText(tr("Start Make"));
+    start->setText(tr("Start making"));
     start->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
@@ -114,18 +116,19 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             m_warningHint->setText("");
             return;
         }
-        m_warningHint->setText(tr("All data will be lost during formatting"));
+        m_warningHint->setText(tr("The format operation will completely delete the data of the disk, Please confirm and continue"));
+        this->adjustSize();
         return;
 
-        DDialog msgbox(this);
-        msgbox.setFixedWidth(300);
-        msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
-        msgbox.setWindowTitle(tr("Format USB flash drive"));
-        msgbox.setTextFormat(Qt::AutoText);
-        msgbox.setMessage(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
-        msgbox.addButtons(QStringList() << tr("Ok") << tr("Cancel"));
+//        DDialog msgbox(this);
+//        msgbox.setFixedWidth(300);
+//        msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
+//        msgbox.setWindowTitle(tr("Format USB flash drive"));
+//        msgbox.setTextFormat(Qt::AutoText);
+//        msgbox.setMessage(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
+//        msgbox.addButtons(QStringList() << tr("Ok") << tr("Cancel"));
 
-        m_formatDiskCheck->setChecked(0 == msgbox.exec());
+//        m_formatDiskCheck->setChecked(0 == msgbox.exec());
     });
 
     connect(BMInterface::instance(), &BMInterface::deviceListChanged,

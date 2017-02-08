@@ -28,7 +28,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
     mainLayout->setSpacing(0);
 
-    m_title = new QLabel(tr("制作成功"));
+    m_title = new QLabel(tr("Making successfully"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -36,7 +36,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_resultIcon->setObjectName("ResultIcon");
     m_resultIcon->setPixmap(QPixmap(":/theme/light/image/success.png"));
 
-    m_hitsTitle = new QLabel(tr("制作成功，请重启电脑"));
+    m_hitsTitle = new QLabel(tr("Making successfully, reboot to experience"));
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     m_hitsTitle->setFixedWidth(340);
 
@@ -54,14 +54,14 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     m_rebootLater = new SuggestButton();
     m_rebootLater->setObjectName("RebootLater");
-    m_rebootLater->setText(tr("稍后重启"));
+    m_rebootLater->setText(tr("Reboot later"));
     m_rebootLater->setProperty("normal", true);/*
     rebootLater->style()->unpolish(rebootLater);
     rebootLater->style()->polish(rebootLater);*/
 
     m_rebootNow = new SuggestButton();
     m_rebootNow->setObjectName("RebootLater");
-    m_rebootNow->setText(tr("立即重启"));
+    m_rebootNow->setText(tr("Reboot now"));
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(85);

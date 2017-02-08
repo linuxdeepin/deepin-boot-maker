@@ -26,13 +26,17 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
 
     auto waterProgress = new DWaterProgress;
 
-    QLabel *m_hitsTitle = new QLabel(tr("Making, pleas wait..."));
+    QLabel *m_hitsTitle = new QLabel(tr("Making the disk, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
-    QLabel *m_hits = new QLabel(tr("Write Disk, Please Do not close or poweroff"));
+
+    QLabel *m_hits = new QLabel(tr("Please do not remove the disk or shutdown the computer when making"));
     m_hits->setObjectName("ProgressHits");
+    m_hits->setFixedSize(390, 60);
+    m_hits->setWordWrap(true);
+    m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
 
     SuggestButton *start = new SuggestButton();
-    start->setObjectName("StartMake");
+    start->setObjectName("ProgressCancel");
     start->setText(tr("Cancel"));
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
@@ -45,7 +49,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
-    waterProgress->setProgress(10);
+    waterProgress->setProgress(0);
     waterProgress->start();
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
