@@ -131,7 +131,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     qDebug() << "install bootloader finish: " << result.isSuccess();
 
     if (! result.isSuccess()) {
-        qCritical() << "install bootloader failed: "<< result.errmsg();
+        qCritical() << "install bootloader failed: " << result.errmsg();
         emit finished(Error::SyscExecFailed, Error::get(Error::SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
         return false;
     }
@@ -154,29 +154,30 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     Utils::ClearTargetDev(installDir);
 
     this->reportProgress(20, Error::NoError, "extract files", "");
-    qDebug() << "begin extract files";
+    this->reportProgress(20, Error::NoError, "begin extract files", "");
     SevenZip sevenZip(image, installDir);
     connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged,
-    this, [ = ](int current, int total, const QString & fileName) {
-        qDebug() << current << total << fileName;
-        this->reportProgress(current, Error::NoError, "extract files", "");
-    });
+    m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
+//        qDebug() << current << total << fileName;
+        emit this->reportProgress(current * 60 / 100 + 20, Error::NoError, "extract", fileName);
+    }, Qt::QueuedConnection);
 
     if (!sevenZip.extract()) {
         qCritical() << "Error::get(Error::ExtractImgeFailed)";
         emit finished(Error::ExtractImgeFailed, Error::get(Error::ExtractImgeFailed));
         return false;
     }
-
-    this->reportProgress(95, Error::NoError, "extract files", "");
+    this->reportProgress(80, Error::NoError, "end extract files", "");
+    this->reportProgress(80, Error::NoError, "config syslinux", "");
     XSys::Bootloader::Syslinux::ConfigSyslinx(installDir);
 
 #ifdef Q_OS_UNIX
-    qDebug() << ("Syncing filesystems");
+    this->reportProgress(81, Error::NoError, "begin syncing filesystems", "");
     XSys::SynExec("sync", "");
+    this->reportProgress(94, Error::NoError, "begin syncing filesystems", "");
 #endif
 
-    this->reportProgress(99, Error::NoError, "extract files", "");
+    this->reportProgress(95, Error::NoError, "eject disk", "");
     XSys::DiskUtil::EjectDisk(partition);
 
     this->reportProgress(100, Error::NoError, "finish", "");

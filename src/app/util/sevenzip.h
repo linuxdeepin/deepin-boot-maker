@@ -26,7 +26,7 @@ private:
     QString     m_lastFilename;
 };
 
-class SevenZip : public QThread
+class SevenZip : public QObject
 {
     Q_OBJECT
 public:
@@ -41,9 +41,6 @@ public:
 
 signals:
     void progressChanged(int);
-
-public slots:
-    void run() Q_DECL_OVERRIDE;
 
 private:
     QProcess                m_sevenz;

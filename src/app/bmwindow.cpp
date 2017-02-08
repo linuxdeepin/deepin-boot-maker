@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QProcess>
+#include <QLabel>
 
 #include <ddialog.h>
 
@@ -88,8 +89,13 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
     setWindowFlags(windowFlags() & ~ Qt::WindowSystemMenuHint);
-    setTitle(tr("Deepin Boot Maker"));
-    setTitleIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
+//    setTitle(tr("Deepin Boot Maker"));
+//    setTitleIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
+    auto icon = new QLabel();
+    auto iconSize = 20;
+    icon->setContentsMargins(5,0,0,0);
+    icon->setPixmap(QPixmap(":/theme/light/image/deepin-boot-maker.svg").scaled(iconSize, iconSize));
+    setTitlebarWidget(icon, Qt::AlignLeft);
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
@@ -173,7 +179,7 @@ BMWindow::~BMWindow()
 
 }
 
- QString rootCommand()
+QString rootCommand()
 {
     return QString("gksu \"%1  -d -n\"").arg(qApp->applicationFilePath());
 }

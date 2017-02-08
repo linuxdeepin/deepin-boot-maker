@@ -26,7 +26,12 @@ int main(int argc, char *argv[])
     a.setApplicationName("deepin-boot-maker-service");
     BootMakerService service;
 
+    const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
+    Dtk::Util::DLogManager::setLogFormat(m_format);
     Dtk::Util::DLogManager::registerConsoleAppender();
+    Dtk::Util::DLogManager::registerFileAppender();
+
+    qDebug() << Dtk::Util::DLogManager::getlogFilePath();
 
     auto systemBus = QDBusConnection::systemBus();
     if (!systemBus.registerService(BootMakerServiceName)) {

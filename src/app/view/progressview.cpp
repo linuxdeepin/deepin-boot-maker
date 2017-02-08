@@ -54,6 +54,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     start->hide();
     connect(BMInterface::instance(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
+        qDebug() << error << current << title << description;
         waterProgress->setProgress(static_cast<int>(current));
         if (current >= 100) {
             emit finish(error, title, description);

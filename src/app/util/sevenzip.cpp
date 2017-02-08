@@ -9,7 +9,7 @@
 #include <XSys>
 
 SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
-    : QThread(parent)
+    : QObject(parent)
 {
 #ifdef Q_OS_WIN32
     QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
@@ -67,12 +67,6 @@ bool SevenZip::extract()
 
     return (m_sevenz.exitStatus() == QProcess::NormalExit) &&
            (0 == m_sevenz.exitCode());
-    return true;
-}
-
-void SevenZip::run()
-{
-    extract();
 }
 
 SevenZipProcessParser::SevenZipProcessParser(const QString &file, QProcess *process, QObject *parent): QThread(parent)
@@ -97,7 +91,7 @@ void SevenZipProcessParser::run()
         if (2 <= prgressInfoList.size()) {
             m_lastFilename = prgressInfoList.last().isEmpty() ? m_lastFilename : prgressInfoList.last();
         }
-        qDebug() << "send signal" << m_lastPencent << m_lastFilename;
+        qDebug() << "send SevenZip progress" << m_lastPencent << m_lastFilename;
         emit progressChanged(m_lastPencent, 100, m_lastFilename);
         QThread::sleep(1);
     }
