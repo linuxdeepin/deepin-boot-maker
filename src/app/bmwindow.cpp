@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QProcess>
+#include <QThread>
 #include <QLabel>
 
 #include <ddialog.h>
@@ -90,8 +91,6 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
     setWindowFlags(windowFlags() & ~ Qt::WindowSystemMenuHint);
-//    setTitle(tr("Deepin Boot Maker"));
-//    setTitleIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
     auto icon = new QLabel();
     auto iconSize = 20;
     icon->setContentsMargins(5, 0, 0, 0);
@@ -142,7 +141,7 @@ BMWindow::BMWindow(QWidget *parent)
         wsib->setActiveStep(2);
         auto isoFilePath = property("bmISOFilePath").toString();
         qDebug() << "call interface install" << isoFilePath << partition << format;
-        d->interface->install(isoFilePath, "", partition, format);
+        emit d->interface->startInstall(isoFilePath, "", partition, format);
     });
 
     // TODO: TEST Function
@@ -152,7 +151,7 @@ BMWindow::BMWindow(QWidget *parent)
 //        USBMountFailed,
 //        ExtractImgeFailed,
         setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
-        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
+        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setActiveStep(2);
     });

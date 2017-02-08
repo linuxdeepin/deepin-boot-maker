@@ -25,10 +25,14 @@ public:
         ExtractImgeFailed,
     };
 
-    explicit BMHandler(QObject *parent = 0): QObject(parent) {}
+    explicit BMHandler(QObject *parent = 0): QObject(parent) {
+        connect(this, &BMHandler::startInstall,
+                this, &BMHandler::install);
+    }
 
     static const QString errorString(ErrorType et);
 signals:
+    void startInstall(const QString &, const QString &, const QString &, bool);
     void removablePartitionsChanged(const QList<DeviceInfo> &list);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int error, const QString &title, const QString &description);
@@ -38,6 +42,8 @@ public slots:
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual const QList<DeviceInfo> deviceList() const = 0;
+
+protected:
     virtual bool install(const QString &image,
                          const QString &device,
                          const QString &partition,

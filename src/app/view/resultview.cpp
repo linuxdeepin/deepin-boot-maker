@@ -40,16 +40,17 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     m_hitsTitle->setFixedWidth(340);
 
-    QString hitsFormat = "<a style='color:#b4b4b4; font-size:11px'>%1</a>";
-    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
-    QString tagEnd = "</span></a>";
-    QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
-    m_logHits = new QLabel(hitsFormat.arg(log.arg(tagBegin).arg(tagEnd)));
+//    QString hitsFormat = "<a style='color:#b4b4b4; font-size:11px'>%1</a>";
+//    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
+//    QString tagEnd = "</span></a>";
+//    QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
+    m_logHits = new QLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
     m_logHits->setObjectName("ResultErrorDescription");
-    m_logHits->setFixedWidth(340);
     m_logHits->setWordWrap(true);
-    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
-    m_logHits->setOpenExternalLinks(false);
+    m_logHits->setFixedWidth(340);
+    m_logHits->setFixedHeight(100);
+//    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
+//    m_logHits->setOpenExternalLinks(false);
     m_logHits->hide();
 
     m_rebootLater = new SuggestButton();
@@ -98,6 +99,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
     case BMHandler::SyscExecFailed:
         m_logHits->setText(tr("The feedback will upload the error log automatically, our improvement cannot do without your feedback and support"));
         m_rebootLater->setText(tr("Feedback"));
+        m_logHits->adjustSize();
         m_rebootLater->disconnect();
         connect(m_rebootLater, &SuggestButton::clicked,
         this, [ = ]() {

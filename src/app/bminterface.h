@@ -26,18 +26,22 @@ signals:
     void deviceListChanged(const QList<DeviceInfo> &partitions);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int total, const QString &title, const QString &description);
-
+    void startInstall(const QString &image,
+                          const QString &device,
+                          const QString &partition,
+                          bool  formatDevice);
 public slots:
     void start();
     void stop();
     void reboot();
     QList<DeviceInfo> deviceList();
+
+private:
     bool install(const QString &image,
                  const QString &device,
                  const QString &partition,
                  bool  formatDevice);
 
-private:
     friend class Dtk::DSingleton<BMInterface>;
     QScopedPointer<BMInterfacePrivate> d_ptr;
     Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMInterface)

@@ -39,9 +39,6 @@ public slots:
                  const QString &partition,
                  bool  formatDevice);
 
-signals:
-    void startInstall(const QString &, const QString &, const QString &, bool);
-
 private:
     QScopedPointer<BootMakerServicePrivate> d_ptr;
     Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BootMakerService)

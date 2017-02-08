@@ -102,8 +102,8 @@ BootMakerService::BootMakerService(QObject *parent) :
     connect(d->bm, &BootMaker::reportProgress,
             this, &BootMakerService::ReportProgress);
 
-    connect(this, &BootMakerService::startInstall,
-            d->bm, &BootMaker::install);
+//    connect(this, &BootMakerService::startInstall,
+//            d->bm, &BootMaker::install);
 
     connect(d->bm, &BootMaker::finished,
     this, [ = ](int errcode, const QString &) {
@@ -166,7 +166,7 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
     if (!d->checkCaller()) {
         return false;
     }
-    emit startInstall(image, device, partition, formatDevice);
+    emit d->bm->startInstall(image, device, partition, formatDevice);
     return true;
 }
 

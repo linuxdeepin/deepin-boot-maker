@@ -56,8 +56,6 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
 
 BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
 {
-    qRegisterMetaType<QList<DeviceInfo> >();
-
     m_usbDeviceMonitor = new DeviceMonitor;
     QThread *monitorWork = new QThread;
     m_usbDeviceMonitor->moveToThread(monitorWork);
@@ -83,7 +81,7 @@ void BootMaker::reboot()
     tkp.PrivilegeCount = 1;
     tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
     AdjustTokenPrivileges(hToken, FALSE, &tkp, 0, (PTOKEN_PRIVILEGES) NULL, 0);
-    ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
+//    ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
 #endif
 #ifdef Q_OS_LINUX
     sync();

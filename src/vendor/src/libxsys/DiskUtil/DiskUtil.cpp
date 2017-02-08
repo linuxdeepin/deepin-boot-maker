@@ -233,7 +233,7 @@ const QString MountPoint(const QString &targetDev)
     return QString(targetDev).remove("/").remove("\\") + "/";
 }
 
-bool Mount(const QString &targetDev, const QString &path)
+bool Mount(const QString &/*targetDev*/, const QString &/*path*/)
 {
     return true;
 }

@@ -179,7 +179,7 @@
     <message>
         <location filename="../view/usbselectview.cpp" line="90"/>
         <source>No available disk found</source>
-        <translation>格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
+        <translation>未发现可用磁盘</translation>
     </message>
     <message>
         <location filename="../view/usbselectview.cpp" line="102"/>
