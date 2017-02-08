@@ -14,7 +14,7 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
     m_timer->setInterval(3000);
     connect(m_timer, &QTimer::timeout, this, [ = ] {
         QList<DeviceInfo> list = Utils::ListUsbDrives();
-//        qDebug() << "list" << list.length();
+        qDebug() << "list" << list.length();
         emit this->removablePartitionsChanged(list);
     });
 

@@ -62,12 +62,12 @@ BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
     m_usbDeviceMonitor = new DeviceMonitor;
     QThread *monitorWork = new QThread;
     m_usbDeviceMonitor->moveToThread(monitorWork);
-    connect(monitorWork, &QThread::started,
-            m_usbDeviceMonitor, &DeviceMonitor::startMonitor);
+//    connect(monitorWork, &QThread::started,
+//            m_usbDeviceMonitor, &DeviceMonitor::startMonitor);
     connect(m_usbDeviceMonitor, &DeviceMonitor::removablePartitionsChanged,
             this, &BootMaker::removablePartitionsChanged);
 
-//    monitorWork->start();
+    monitorWork->start();
 
     connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString & description) {
         this->reportProgress(100, errcode, "install failed", description);
@@ -97,7 +97,6 @@ void BootMaker::reboot()
 
 void BootMaker::start()
 {
-//        monitorWork->start();
     emit m_usbDeviceMonitor->startMonitor();
 }
 

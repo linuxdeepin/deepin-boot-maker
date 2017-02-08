@@ -28,7 +28,7 @@
 
 #include "../app/backend/bootmaker.h"
 
-static int getProcIdByExeName(std::string execName)
+int getProcIdByExeName(std::string execName)
 {
     int pid = -1;
 
@@ -57,6 +57,18 @@ static int getProcIdByExeName(std::string execName)
     closedir(dp);
 
     return pid;
+}
+
+static std::string getProcIdExe(int id)
+{
+    std::string execName;
+    if (id > 0) {
+        // Read contents of virtual /proc/{pid}/cmdline file
+        auto exeSymlinkPath = std::string("/proc/") + QString("%1").arg(id).toStdString() + "/exe";
+        char *actualpath = realpath(exeSymlinkPath.c_str(), NULL);
+        execName = std::string(actualpath);
+    }
+    return execName;
 }
 
 class BootMakerServicePrivate
@@ -163,11 +175,13 @@ bool BootMakerServicePrivate::checkCaller()
     Q_Q(BootMakerService);
 
     auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
-    auto dbmPid = getProcIdByExeName("/usr/bin/deepin-boot-maker");
+    auto callerExe = getProcIdExe(callerPid);
+    auto dbmExe = "/usr/bin/deepin-boot-maker";
+//    auto dbmPid = getProcIdByExeName();
 
-    qDebug() << "callerPid is: " << callerPid  << "dbmPid is:" << dbmPid ;
+    qDebug() << "callerPid is: " << callerPid  << "callerExe is:" << callerExe.c_str() ;
 
-    if (callerPid != dbmPid) {
+    if (callerExe != dbmExe) {
         qDebug() << QString("caller not authorized") ;
         return false;
     }
