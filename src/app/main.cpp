@@ -54,6 +54,8 @@ int main(int argc, char **argv)
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
 
+    qDebug() << DLogManager::getlogFilePath();
+
     app.setTheme("light");
 
     if (!app.setSingleInstance("deepinbootmaker")) {

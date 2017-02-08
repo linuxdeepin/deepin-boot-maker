@@ -3,9 +3,12 @@
 
 #ResulteHitsTitle{
     font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    text-align: center;
     qproperty-alignment: AlignCenter;
     color: #000000;
+}
+
+#ResultErrorDescription{
+    font-size: 12px;
+    qproperty-alignment: AlignCenter;
+    color: #424242;
 }

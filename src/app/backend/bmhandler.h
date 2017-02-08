@@ -16,8 +16,18 @@ class BMHandler : public QObject
 {
     Q_OBJECT
 public:
+    enum ErrorType {
+        NoError = 0,
+        SyscExecFailed,
+        USBFormatError,
+        USBSizeError,
+        USBMountFailed,
+        ExtractImgeFailed,
+    };
+
     explicit BMHandler(QObject *parent = 0): QObject(parent) {}
 
+    static const QString errorString(ErrorType et);
 signals:
     void removablePartitionsChanged(const QList<DeviceInfo> &list);
     void finished(int errcode, const QString &description);

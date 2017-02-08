@@ -32,28 +32,27 @@ public:
         USBMountFailed,
         ExtractImgeFailed,
     };
-    static const QString get(ErrorType et);
 };
 
-// TODO: Installation logs are stored in% 1, you can upload to forum to help us solve your problem.
-const QString Error::get(const ErrorType et)
+const QString BMHandler::errorString(BMHandler::ErrorType et)
 {
     switch (et) {
     case NoError:
         return "";
     case SyscExecFailed:
-        return QObject::tr("Failed to call the command %1.");
+        return BMHandler::tr("Failed to call the command %1.");
     case USBFormatError:
-        return QObject::tr("Wrong USB flash drive format, please format to FAT32.");
+        return BMHandler::tr("Disk Format Error: Please format the disk with FAT32");
     case USBSizeError:
-        return QObject::tr("USB flash drive space is insufficient, ensure you have at least %1 free space.");
+        return BMHandler::tr("Insufficient Disk Space: Please ensure that the disk has %1 free space");
     case USBMountFailed:
-        return QObject::tr("Failed to mount USB flash drive, please close other applications may use it and reinsert.");
+        return BMHandler::tr("Disk Mount Error: Please plug the disk again or reboot the system to retry");
     case ExtractImgeFailed:
-        return QObject::tr("Failed to unzip the mirror file, please use the whole mirror file.");
+        return BMHandler::tr("Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete");
     }
-    return QObject::tr("Internal Error");
+    return BMHandler::tr("Internal Error");
 }
+
 
 BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
 {
@@ -132,7 +131,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
     if (! result.isSuccess()) {
         qCritical() << "install bootloader failed: " << result.errmsg();
-        emit finished(Error::SyscExecFailed, Error::get(Error::SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
+        emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
         return false;
     }
 
@@ -144,7 +143,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     installDir = XSys::DiskUtil::MountPoint(partition);
     if (installDir.isEmpty()) {
         qCritical() << "Error::get(Error::USBMountFailed)";
-        emit finished(Error::USBMountFailed, Error::get(Error::USBMountFailed));
+        emit finished(USBMountFailed, errorString(USBMountFailed));
         return false;
     }
 #endif
@@ -164,7 +163,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
     if (!sevenZip.extract()) {
         qCritical() << "Error::get(Error::ExtractImgeFailed)";
-        emit finished(Error::ExtractImgeFailed, Error::get(Error::ExtractImgeFailed));
+        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
         return false;
     }
     this->reportProgress(80, Error::NoError, "end extract files", "");

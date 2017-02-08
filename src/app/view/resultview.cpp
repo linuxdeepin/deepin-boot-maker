@@ -5,6 +5,7 @@
 #include <QUrl>
 #include <QVBoxLayout>
 #include <QCheckBox>
+#include <QProcess>
 #include <QListWidget>
 #include <QDesktopServices>
 #include <QApplication>
@@ -18,6 +19,7 @@
 #include "dwaterprogress.h"
 
 #include "../bminterface.h"
+#include "../backend/bmhandler.h"
 
 ResultView::ResultView(QWidget *parent) : QWidget(parent)
 {
@@ -43,6 +45,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     QString tagEnd = "</span></a>";
     QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
     m_logHits = new QLabel(hitsFormat.arg(log.arg(tagBegin).arg(tagEnd)));
+    m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setFixedWidth(340);
     m_logHits->setWordWrap(true);
     connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
@@ -74,28 +77,48 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ResultView.theme"));
 
-    connect(m_rebootLater, &SuggestButton::clicked,
-            this,[=](){
-        qApp->exit(0);
-    });
 
     connect(m_rebootNow, &SuggestButton::clicked,
-            this,[=](){
+    this, [ = ]() {
         BMInterface::instance()->reboot();
     });
 }
 
-void ResultView::updateResult(quint32 error, const QString &/*title*/, const QString &description)
+void ResultView::updateResult(quint32 error, const QString &/*title*/, const QString &/*description*/)
 {
-    if (0 == error) {
+    auto errorType = static_cast<BMHandler::ErrorType>(error);
+
+    switch (errorType) {
+    case BMHandler::NoError:
         return;
+    case BMHandler::SyscExecFailed:
+        m_logHits->setText(tr("The feedback will upload the error log automatically, our improvement cannot do without your feedback and support"));
+        m_rebootLater->setText(tr("Feedback"));
+        m_rebootLater->disconnect();
+        connect(m_rebootLater, &SuggestButton::clicked,
+        this, [ = ]() {
+            // FIXME: call feedback
+            QProcess::startDetached("deepin-feedback");
+        });
+        break;
+    case BMHandler::USBFormatError:
+    case BMHandler::USBSizeError:
+    case BMHandler::USBMountFailed:
+    case BMHandler::ExtractImgeFailed:
+        m_logHits->setText(BMHandler::errorString(errorType));
+        m_rebootLater->setText(tr("Close"));
+        m_rebootLater->disconnect();
+        connect(m_rebootLater, &SuggestButton::clicked,
+        this, [ = ]() {
+            qApp->exit(0);
+        });
+        break;
     }
-    m_hitsTitle->setText(description);
+    m_hitsTitle->setText(tr("Sorry, making failed"));
+    m_title->setText(tr("Making failed"));
     m_resultIcon->setPixmap(QPixmap(":/theme/light/image/fail.png"));
     m_logHits->show();
     m_rebootNow->hide();
-    m_rebootLater->setText(tr("Failed"));
-    m_title->setText(tr("Make failed"));
 }
 
 void ResultView::onLogLinkActivated(const QString &link)

@@ -20,6 +20,7 @@
 #include "view/resultview.h"
 
 #include "bminterface.h"
+#include "backend/bmhandler.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -93,7 +94,7 @@ BMWindow::BMWindow(QWidget *parent)
 //    setTitleIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
     auto icon = new QLabel();
     auto iconSize = 20;
-    icon->setContentsMargins(5,0,0,0);
+    icon->setContentsMargins(5, 0, 0, 0);
     icon->setPixmap(QPixmap(":/theme/light/image/deepin-boot-maker.svg").scaled(iconSize, iconSize));
     setTitlebarWidget(icon, Qt::AlignLeft);
 
@@ -146,7 +147,11 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
-        d->resultWidget->updateResult(1, "title", "description");
+//        USBFormatError,
+//        USBSizeError,
+//        USBMountFailed,
+//        ExtractImgeFailed,
+        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setActiveStep(2);
     });
