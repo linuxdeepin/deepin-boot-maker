@@ -30,7 +30,7 @@ HEADERS += \
 
 unix{
     CONFIG += c++11 link_pkgconfig
-    PKGCONFIG += dtkbase dtkutil polkit-qt5-1
+    PKGCONFIG += dtkbase dtkutil
 }
 
 isEmpty(PREFIX) {

@@ -13,20 +13,22 @@
 #include <QThread>
 #include <QCoreApplication>
 
-#include "../app/backend/bootmaker.h"
+#include <QDBusContext>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
 
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h>
 #include <vector>
 #include <string>
-#include <iostream>
-#include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 
-int getProcIdByName(std::string procName)
+#include "../app/backend/bootmaker.h"
+
+static int getProcIdByExeName(std::string execName)
 {
     int pid = -1;
 
@@ -40,23 +42,11 @@ int getProcIdByName(std::string procName)
             int id = atoi(dirp->d_name);
             if (id > 0) {
                 // Read contents of virtual /proc/{pid}/cmdline file
-                auto cmdPath = std::string("/proc/") + dirp->d_name + "/cmdline";
-                std::ifstream cmdFile(cmdPath.c_str());
-                std::string cmdLine;
-                getline(cmdFile, cmdLine);
-                if (!cmdLine.empty()) {
-                    // Keep first cmdline item which contains the program path
-                    size_t pos = cmdLine.find('\0');
-                    if (pos != std::string::npos) {
-                        cmdLine = cmdLine.substr(0, pos);
-                    }
-                    // Keep program name only, removing the path
-                    pos = cmdLine.rfind('/');
-                    if (pos != std::string::npos) {
-                        cmdLine = cmdLine.substr(pos + 1);
-                    }
+                auto exeSymlinkPath = std::string("/proc/") + dirp->d_name + "/exe";
+                char *actualpath = realpath(exeSymlinkPath.c_str(), NULL);
+                if (actualpath) {
                     // Compare against requested process name
-                    if (procName == cmdLine) {
+                    if (execName == actualpath) {
                         pid = id;
                     }
                 }
@@ -73,6 +63,8 @@ class BootMakerServicePrivate
 {
 public:
     BootMakerServicePrivate(BootMakerService *parent) : q_ptr(parent) {}
+
+    bool checkCaller();
 
     BootMaker   *bm;
 
@@ -117,35 +109,30 @@ BootMakerService::~BootMakerService()
 void BootMakerService::Reboot()
 {
     Q_D(BootMakerService);
+    if (!d->checkCaller()) {
+        return;
+    }
     d->bm->reboot();
 }
-
-#include <PolkitQt1/Authority>
 
 void BootMakerService::Start()
 {
     Q_D(BootMakerService);
-
-    auto pid = getProcIdByName("deepin-boot-maker-gui");
-
-    qDebug() << pid;
-    PolkitQt1::Authority::Result result;
-    PolkitQt1::UnixProcessSubject process(21340);
-    result = PolkitQt1::Authority::instance()->checkAuthorizationSync("com.deepin.bootmaker",
-             process,
-             PolkitQt1::Authority::None);
-    if (result == PolkitQt1::Authority::Yes) {
-        qDebug() <<  QString("authorized");
-    } else {
-        qDebug() << QString("Not authorized") << result;
+    if (!d->checkCaller()) {
         return;
     }
 
-//    d->bm->start();
+    d->bm->start();
 }
 
 void BootMakerService::Stop()
 {
+    Q_D(BootMakerService);
+    if (!d->checkCaller()) {
+        return;
+    }
+
+    qDebug() << "service exit by call Stop";
     qApp->exit(0);
 }
 
@@ -156,11 +143,35 @@ void BootMakerService::Stop()
 QString BootMakerService::DeviceList()
 {
     Q_D(BootMakerService);
+    if (!d->checkCaller()) {
+        return "";
+    }
     return deviceListToJson(d->bm->deviceList());
 }
 
 bool BootMakerService::Install(const QString &image, const QString &device, const QString &partition, bool formatDevice)
 {
+    Q_D(BootMakerService);
+    if (!d->checkCaller()) {
+        return false;
+    }
     emit startInstall(image, device, partition, formatDevice);
+    return true;
+}
+
+bool BootMakerServicePrivate::checkCaller()
+{
+    Q_Q(BootMakerService);
+
+    auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
+    auto dbmPid = getProcIdByExeName("/usr/bin/deepin-boot-maker");
+
+    qDebug() << "callerPid is: " << callerPid  << "dbmPid is:" << dbmPid ;
+
+    if (callerPid != dbmPid) {
+        qDebug() << QString("caller not authorized") ;
+        return false;
+    }
+    qDebug() <<  QString("caller authorized");
     return true;
 }

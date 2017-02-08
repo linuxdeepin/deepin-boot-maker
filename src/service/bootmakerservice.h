@@ -10,18 +10,19 @@
 #pragma once
 
 #include <QObject>
-#include <QMap>
+#include <QDBusContext>
 #include <QScopedPointer>
 
 class BootMakerServicePrivate;
-class BootMakerService : public QObject
+class BootMakerService :  public QObject,
+        protected QDBusContext
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "com.deepin.bootmaker")
 
 public:
     explicit BootMakerService(QObject *parent = 0);
-    ~BootMakerService();
+    virtual ~BootMakerService();
 
 signals:
     Q_SCRIPTABLE void DeviceListChanged(const QString deviceListJson);

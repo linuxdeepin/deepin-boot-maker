@@ -56,6 +56,11 @@ int main(int argc, char **argv)
 
     app.setTheme("light");
 
+    if (!app.setSingleInstance("deepinbootmaker")) {
+        qDebug()<< "another deppin music has started";
+        exit(0);
+    }
+
 //    if (parser.isSet(optDaemon)) {
 //        qDebug() << parser.value(optDaemon)
 //                 << parser.value(optNoInteractive)
