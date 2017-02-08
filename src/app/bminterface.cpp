@@ -64,6 +64,12 @@ void BMInterface::stop()
     return d->handler->stop();
 }
 
+void BMInterface::reboot()
+{
+    Q_D(BMInterface);
+    return d->handler->reboot();
+}
+
 QList<DeviceInfo> BMInterface::deviceList()
 {
     Q_D(BMInterface);

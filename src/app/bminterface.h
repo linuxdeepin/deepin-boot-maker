@@ -30,6 +30,7 @@ signals:
 public slots:
     void start();
     void stop();
+    void reboot();
     QList<DeviceInfo> deviceList();
     bool install(const QString &image,
                  const QString &device,

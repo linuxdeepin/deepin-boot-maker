@@ -17,6 +17,8 @@
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
 
+#include "../bminterface.h"
+
 ResultView::ResultView(QWidget *parent) : QWidget(parent)
 {
     setObjectName("ResultView");
@@ -79,7 +81,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     connect(m_rebootNow, &SuggestButton::clicked,
             this,[=](){
-        // FIXME:
+        BMInterface::instance()->reboot();
     });
 }
 
