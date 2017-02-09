@@ -1,6 +1,11 @@
 TEMPLATE  = subdirs
 CONFIG   += ordered
-SUBDIRS  += vendor/src/libxsys \
+
+unix {
+    system($$PWD/translate_generation.sh)
+}
+
+SUBDIRS  += vendor/src/libxsys
 
 unix {
     SUBDIRS  += service

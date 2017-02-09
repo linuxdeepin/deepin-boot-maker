@@ -77,7 +77,6 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ResultView.theme"));
 
-
     connect(m_rebootNow, &SuggestButton::clicked,
     this, [ = ]() {
         BMInterface::instance()->reboot();
@@ -90,6 +89,11 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
 
     switch (errorType) {
     case BMHandler::NoError:
+        m_rebootLater->disconnect();
+        connect(m_rebootLater, &SuggestButton::clicked,
+        this, [ = ]() {
+            qApp->exit(0);
+        });
         return;
     case BMHandler::SyscExecFailed:
         m_logHits->setText(tr("The feedback will upload the error log automatically, our improvement cannot do without your feedback and support"));

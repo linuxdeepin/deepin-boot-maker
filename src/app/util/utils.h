@@ -16,11 +16,14 @@
 namespace Utils
 {
 
+void loadFonts();
+void loadTranslate();
+void ClearTargetDev(const QString &targetPath);
+bool CheckInstallDisk(const QString &targetDev);
+
 QMap<QString, DeviceInfo> CommandDfParse();
 QMap<QString, DeviceInfo> CommandLsblkParse();
-void loadFonts();
-QString UsbShowText(const QString &targetdev);
-void ClearTargetDev(const QString &targetPath);
 QList<DeviceInfo>  ListUsbDrives();
-bool CheckInstallDisk(const QString &targetDev);
+
+QString UsbShowText(const QString &targetdev);
 }

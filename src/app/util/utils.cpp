@@ -26,7 +26,8 @@ namespace Utils
 {
 
 #ifdef Q_OS_WIN32
-void loadFonts() {
+void loadFonts()
+{
     QFontDatabase database;
     QStringList fontlist = database.families();
 
@@ -36,16 +37,78 @@ void loadFonts() {
     preferList.append("SimHei");
     preferList.append("黑体");
 
-    foreach (QString font, preferList) {
+    foreach(QString font, preferList) {
         if (fontlist.contains(font)) {
             QFont newFont = QFont(font);
-            QApplication::setFont(newFont);
+            qApp->setFont(newFont);
             return;
         }
     }
 }
 #endif
 
+void loadTranslate()
+{
+    QTranslator *qtTranslator = new QTranslator;
+    qtTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qApp->installTranslator(qtTranslator);
+
+    QTranslator *translator = new QTranslator();
+    QString tnapplang;
+    QString tnappcoun;
+    QString clangcode = "";
+    QStringList allappargs =  qApp->arguments();
+    QList<QPair<QString, QString> > oppairs;
+
+    for (QList<QString>::const_iterator i = allappargs.constBegin(); i < allappargs.constEnd(); ++i) {
+        if (i->count('=') == 1) {
+            oppairs.append(QPair<QString, QString> (i->section('=', 0, 0).simplified(), i->section('=', 1, 1).simplified()));
+        }
+    }
+
+    for (QList<QPair<QString, QString> >::const_iterator i = oppairs.constBegin(); i < oppairs.constEnd(); ++i) {
+        if (i->first.contains("lang", Qt::CaseInsensitive)) {
+            clangcode = i->second;
+            tnapplang = clangcode.left(2);
+
+            if (clangcode.contains('_') && clangcode.size() == 5) {
+                tnappcoun = clangcode.section('_', -1, -1);
+            }
+
+            break;
+        }
+    }
+
+    if (clangcode.isEmpty()) {
+        clangcode = QLocale::system().name();
+        tnapplang = clangcode.left(2);
+
+        if (clangcode.contains('_') && clangcode.size() == 5) {
+            tnappcoun = clangcode.section('_', -1, -1);
+        }
+    }
+
+    QString tranlateUrl;
+
+    if (!tnappcoun.isEmpty()) {
+        tranlateUrl = QString(":/translations/deepin-boot-maker_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
+    }
+
+    if (!QFile::exists(tranlateUrl)) {
+        tranlateUrl = QString(":/translations/deepin-boot-maker_%1.qm").arg(tnapplang);
+    }
+
+
+    if (!QFile::exists(tranlateUrl)) {
+        tranlateUrl = ":/translations/deepin-boot-maker.qm";
+    }
+
+    qDebug() <<  qApp << "locate: " << clangcode << "\nload translate file: " << tranlateUrl;
+
+    if (translator->load(tranlateUrl)) {
+         qApp->installTranslator(translator);
+    }
+}
 
 QString UsbShowText(const QString &dev)
 {

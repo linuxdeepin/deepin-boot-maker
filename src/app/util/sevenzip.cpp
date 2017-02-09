@@ -14,7 +14,7 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
 #ifdef Q_OS_WIN32
     QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
     QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll");
-    qDebug()<<sevnz<<sevnzdll;
+    qDebug() << sevnz << sevnzdll;
 #endif
 #ifdef Q_OS_MAC
     QDir resourceDir = QDir(QApplication::applicationDirPath());
@@ -48,6 +48,10 @@ bool SevenZip::extract()
          << m_archiveFile
          << m_outputDir
          << "-bsp2";
+
+    QStringList env = QProcess::systemEnvironment();
+    env << "VDPAU_DRIVER=va_gl";
+
     m_sevenz.setArguments(args);
     m_sevenz.setStandardErrorFile(progress.fileName());
 

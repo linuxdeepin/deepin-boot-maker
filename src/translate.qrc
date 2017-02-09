@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>translations/deepin-boot-maker_zh_CN.qm</file>
+        <file>translations/deepin-boot-maker.qm</file>
+    </qresource>
+</RCC>

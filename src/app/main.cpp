@@ -65,6 +65,7 @@ int main(int argc, char **argv)
 #ifdef Q_OS_WIN
     Utils::loadFonts();
 #endif
+    Utils::loadTranslate();
 
 //    if (parser.isSet(optDaemon)) {
 //        qDebug() << parser.value(optDaemon)

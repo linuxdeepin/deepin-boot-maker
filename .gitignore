@@ -5,6 +5,5 @@ osx
 *.pro.user
 *.pro.user.*
 *.log
-*.ts
 *.qm
 .DS_Store
