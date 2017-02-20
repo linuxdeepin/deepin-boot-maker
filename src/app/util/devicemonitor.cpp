@@ -10,6 +10,8 @@
 
 DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
 {
+    qRegisterMetaType<QList<DeviceInfo>>();
+
     m_timer = new QTimer(this);
     m_timer->setInterval(3000);
     connect(m_timer, &QTimer::timeout, this, [ = ] {

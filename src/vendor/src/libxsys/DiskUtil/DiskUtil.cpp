@@ -384,7 +384,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
     // after format, diskdev change to /dev/sd?1
     UmountDisk(diskDev);
     ret = XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
-    if (!ret.isSuccess()) { return ret; }
+//    if (!ret.isSuccess()) { return ret; }
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
