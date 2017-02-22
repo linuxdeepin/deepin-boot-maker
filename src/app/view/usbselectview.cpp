@@ -111,7 +111,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
 
-    connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked = false) {
+    connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked) {
         if (!checked) {
             m_warningHint->setText("");
             return;

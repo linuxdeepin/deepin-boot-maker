@@ -1,9 +1,7 @@
 TEMPLATE  = subdirs
 CONFIG   += ordered
 
-unix {
-    system($$PWD/translate_generation.sh)
-}
+system(python $$PWD/translate_generation.py $$PWD)
 
 SUBDIRS  += vendor/src/libxsys
 

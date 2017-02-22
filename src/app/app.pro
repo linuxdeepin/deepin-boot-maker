@@ -70,7 +70,6 @@ unix {
 }
 
 
-
 TRANSLATIONS += $$PWD/../translations/$${TARGET}.ts \
                 $$PWD/../translations/$${TARGET}_zh_CN.ts
 
