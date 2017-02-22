@@ -1,8 +1,0 @@
-#include "CuteLogger_global.h"
-#include "RollingFileAppender.h"
-#include "Logger.h"
-#include "LogManager.h"
-#include "FileAppender.h"
-#include "ConsoleAppender.h"
-#include "AbstractStringAppender.h"
-#include "AbstractAppender.h"

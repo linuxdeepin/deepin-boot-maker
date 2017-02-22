@@ -1,9 +1,0 @@
-Dtk--Widget--DCircleProgress {
-    qproperty-backgroundColor:rgba(255, 255, 255, .2);
-    qproperty-chunkColor:#26aeed;
-}
-
-Dtk--Widget--DCircleProgress #DisplayLabel {
-    color:white;
-    font-size:10px;
-}

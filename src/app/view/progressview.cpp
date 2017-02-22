@@ -12,7 +12,7 @@
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
 
-#include "../bminterface.h"
+#include <bminterface.h>
 
 ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
 {

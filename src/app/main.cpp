@@ -1,23 +1,35 @@
+
+
 #include <QDebug>
+#include <QIcon>
 #include <QProcess>
+
+#ifdef Q_OS_WIN32
+#include <QFontDatabase>
+namespace Utils
+{
+void loadFonts();
+}
+#endif
 
 #include <DLog>
 #include <DApplication>
 #include <DWindow>
 #include <dutility.h>
 
+#include <bminterface.h>
+#include <util/utils.h>
+
 #include "bmwindow.h"
-#include "bminterface.h"
-#include "util/sevenzip.h"
-#include "util/utils.h"
-#include "util/devicemonitor.h"
 
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+#if defined(STATIC_LIB)
     DWIDGET_INIT_RESOURCE();
+#endif
 
     DApplication app(argc, argv);
     app.setOrganizationName("deepin");
@@ -26,58 +38,24 @@ int main(int argc, char **argv)
     app.setApplicationVersion("1.99.0");
     app.setTheme("light");
 
-//    QCommandLineParser parser;
-//    parser.setApplicationDescription("Deepin Boot Maker is a tool to help you make a startup usb disk.");
-//    parser.addHelpOption();
-//    parser.addVersionOption();
-
-//    QCommandLineOption optImageFile(QStringList() << "f" << "file",
-//                                    DApplication::tr("ISO image file"),
-//                                    "image-file");
-//    QCommandLineOption optKey(QStringList() << "k" << "key",
-//                              DApplication::tr("Communication key"),
-//                              "key");
-//    QCommandLineOption optDaemon(QStringList() << "d" << "daemon",
-//                                 DApplication::tr("Run in background"));
-//    QCommandLineOption optNoInteractive(QStringList() << "n" << "nointeractive",
-//                                        DApplication::tr("Do not run gui"));
-
-//    parser.addOption(optDaemon);
-//    parser.addOption(optNoInteractive);
-//    parser.addOption(optImageFile);
-//    parser.addOption(optKey);
-//    parser.addPositionalArgument("device", DApplication::tr("USB Device"));
-//    parser.process(app);
-
-    const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
+    const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-40} %{line:-4} %{threadid:-8} ] %{message}\n";
     DLogManager::setLogFormat(m_format);
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
+    qDebug() << "save log to:" << DLogManager::getlogFilePath();
 
-    qDebug() << DLogManager::getlogFilePath();
+    if (!app.setSingleInstance("deepinbootmaker")) {
+        qDebug() << "another deppin music has started";
+        exit(0);
+    }
 
     app.setTheme("light");
 
-    if (!app.setSingleInstance("deepinbootmaker")) {
-        qDebug()<< "another deppin music has started";
-        exit(0);
-    }
 #ifdef Q_OS_WIN
     Utils::loadFonts();
+    app.setWindowIcon(QIcon(":/theme/light/image/deepin-boot-maker.ico"));
 #endif
     Utils::loadTranslate();
-
-//    if (parser.isSet(optDaemon)) {
-//        qDebug() << parser.value(optDaemon)
-//                 << parser.value(optNoInteractive)
-//                 << parser.value(optImageFile)
-//                 << parser.value(optKey)
-//                 << parser.positionalArguments();
-//        BootMaker bm;
-//        qDebug() << "Deepin Boot Maker Backend Started";
-
-//        return app.exec();
-//    }
 
     qDebug() << "Deepin Boot Maker UI started.";
 
@@ -91,3 +69,29 @@ int main(int argc, char **argv)
     BMInterface::instance()->stop();
     return ret;
 }
+
+#ifdef Q_OS_WIN32
+namespace Utils
+{
+void loadFonts()
+{
+    QFontDatabase database;
+    QStringList fontlist = database.families();
+
+    QStringList preferList;
+    preferList.append("Microsoft YaHei");
+    preferList.append("微软雅黑");
+    preferList.append("SimHei");
+    preferList.append("黑体");
+
+    foreach(QString font, preferList) {
+        if (fontlist.contains(font)) {
+            QFont newFont = QFont(font);
+            qApp->setFont(newFont);
+            return;
+        }
+    }
+}
+}
+#endif
+

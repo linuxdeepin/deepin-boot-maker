@@ -16,7 +16,7 @@
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
 
-#include "../bminterface.h"
+#include <bminterface.h>
 
 DWIDGET_USE_NAMESPACE
 

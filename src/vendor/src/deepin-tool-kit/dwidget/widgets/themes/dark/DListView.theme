@@ -1,8 +1,0 @@
-QAbstractScrollArea{
-    border: none;
-    background: transparent;
-}
-
-QAbstractScrollArea::corner{
-    background-color: transparent;
-}

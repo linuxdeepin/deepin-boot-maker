@@ -1,4 +1,4 @@
-#ISOSelectView{
+﻿#ISOSelectView{
 }
 
 #IosPanel{
@@ -11,18 +11,11 @@
 
 #IsoFileName{
     font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.25;
     color: #303030;
 }
 
 #IsoHits{
     font-size: 10px;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.5;
-    text-align: center;
     color: #848484;
 }
 
@@ -31,10 +24,6 @@
 }
 
 #IsoFileSelect{
-    font-family: SourceHanSansCN-Normal;
     font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    text-align: right;
     color: #0066ec;
 }

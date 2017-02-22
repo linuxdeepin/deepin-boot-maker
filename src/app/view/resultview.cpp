@@ -18,8 +18,8 @@
 #include "devicelistwidget.h"
 #include "dwaterprogress.h"
 
-#include "../bminterface.h"
-#include "../backend/bmhandler.h"
+#include <bminterface.h>
+#include <backend/bmhandler.h>
 
 ResultView::ResultView(QWidget *parent) : QWidget(parent)
 {

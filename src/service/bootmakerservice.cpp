@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "../app/backend/bootmaker.h"
+#include <backend/bootmaker.h>
 
 int getProcIdByExeName(std::string execName)
 {

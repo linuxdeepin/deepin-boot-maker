@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (C) 2015 Deepin Technology Co., Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -49,6 +49,7 @@ QString SearchMoudle(const QString& moduleName) {
 
 Result InstallBootloader(const QString &device) {
 #ifdef Q_OS_WIN32
+    Q_UNUSED(device);
 #endif
 
 #ifdef Q_OS_LINUX
@@ -60,7 +61,7 @@ Result InstallBootloader(const QString &device) {
 
 Result InstallMbr(const QString &device) {
 #ifdef Q_OS_WIN32
-    //TODO
+    Q_UNUSED(device);
 #endif
 
 #ifdef Q_OS_LINUX
