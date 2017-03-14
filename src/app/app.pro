@@ -51,7 +51,11 @@ binary.files = deepin-boot-maker
 desktop.path = $${PREFIX}/share/applications
 desktop.files = $$PWD/platform/linux/deepin-boot-maker.desktop
 
-INSTALLS += binary desktop
+hicolor.path =  $${PREFIX}/share/icons/hicolor/scalable/apps
+hicolor.files = $$PWD/view/resource/theme/light/image/deepin-boot-maker.svg
+
+INSTALLS += binary desktop hicolor
+
 }
 
 win {
