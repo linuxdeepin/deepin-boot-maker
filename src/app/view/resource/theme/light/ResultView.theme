@@ -1,0 +1,14 @@
+#ResultView{
+}
+
+#ResulteHitsTitle{
+    font-size: 14px;
+    qproperty-alignment: AlignCenter;
+    color: #000000;
+}
+
+#ResultErrorDescription{
+    font-size: 12px;
+    qproperty-alignment: AlignCenter;
+    color: #424242;
+}

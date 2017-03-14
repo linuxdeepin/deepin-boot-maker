@@ -1,0 +1,29 @@
+﻿#ISOSelectView{
+}
+
+#IosPanel{
+    background-color: rgba(255, 255, 255, 5%);
+}
+
+#IosPanel[active=true] {
+    border-image: url(:/theme/light/image/dash.png);
+}
+
+#IsoFileName{
+    font-size: 12px;
+    color: #303030;
+}
+
+#IsoHits{
+    font-size: 10px;
+    color: #848484;
+}
+
+#IsoSpliter{
+    background-image: url(:/theme/light/image/dash_line.png);
+}
+
+#IsoFileSelect{
+    font-size: 12px;
+    color: #0066ec;
+}

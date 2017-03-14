@@ -1,0 +1,23 @@
+#UsbSelectView{
+}
+
+#UsbDeviceListPanel{
+    background-color: rgba(255, 255, 255, 50%);
+    border: 1px solid;
+    border-radius: 3;
+    border-color: rgba(0, 0, 0, 0%);
+}
+
+#WarningHint {
+    font-size: 11px;
+    qproperty-alignment: AlignCenter;
+    color: #ff5800;
+    border: 1px solid rgba(0, 0, 0, 0%);
+}
+
+#EmptyHintTitle{
+    font-size: 16px;
+    qproperty-alignment: AlignCenter;
+    color: #848484;
+    border: 1px solid rgba(0, 0, 0, 0%);
+}

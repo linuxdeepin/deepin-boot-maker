@@ -1,0 +1,14 @@
+#ProgressView{
+}
+
+#ProgressHitsTitle{
+    font-size: 14px;
+    qproperty-alignment: AlignCenter;
+    color: #000000;
+}
+
+#ProgressHits{
+    font-size: 12px;
+    line-height: 1.67;
+    color: #424242;
+}

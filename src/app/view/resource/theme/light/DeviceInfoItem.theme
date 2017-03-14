@@ -1,0 +1,33 @@
+#DeviceInfoLabel{
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    color: #000000;
+}
+
+#DeviceInfoDevName{
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    color: #797979;
+}
+
+#DeviceInfoCapacity{
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    color: #797979;
+}
+
+#DeviceInfoCapacityBar{
+    background-color: rgba(0, 0, 0, 0.05);
+    border: solid 1px rgba(0, 0, 0, 0.03);
+    border-radius: 3px;
+}
+
+#DeviceInfoCapacityBar::chunk{
+    background-color: #2ca7f8;
+    border-radius: 3px;
+}

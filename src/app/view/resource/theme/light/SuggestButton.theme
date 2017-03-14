@@ -1,0 +1,30 @@
+SuggestButton{
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    color: #0699ff;
+    border: none;
+    background: transparent;
+    background-image: url(":/theme/light/image/suggest_button_normal.png")
+}
+SuggestButton[normal=true]{
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    color: black;
+    border: none;
+    background: transparent;
+    background-image: url(":/theme/light/image/button_normal.png")
+}
+SuggestButton:hover{
+    color: white;
+    background-image: url(":/theme/light/image/suggest_button_hover.png")
+}
+SuggestButton:pressed{
+    color: white;
+    background-image: url(":/theme/light/image/suggest_button_press.png")
+}
+SuggestButton:disabled{
+    color: grey;
+    background-image: url(":/theme/light/image/suggest_button_disabled.png")
+}

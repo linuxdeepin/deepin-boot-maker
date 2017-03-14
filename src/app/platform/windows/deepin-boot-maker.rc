@@ -1,0 +1,29 @@
+#include <windows.h>
+
+IDI_APPICON ICON  "deepin-boot-maker.ico"
+
+VS_VERSION_INFO    VERSIONINFO
+FILEVERSION 1,9,0,1
+PRODUCTVERSION 1,9,0,1
+{
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "040904E4"
+		{
+			VALUE "CompanyName", "Deepin"
+			VALUE "FileVersion", "1.9.0.1"
+			VALUE "FileDescription", "Deepin Boot Maker"
+			VALUE "InternalName", "Deepin Boot Maker"
+			VALUE "LegalCopyright", "Copyright - Deepin - License - GNU GPL v3"
+			VALUE "LegalTrademarks", " "
+			VALUE "OriginalFilename", "deepin-boot-maker.exe"
+			VALUE "ProductName", "Deepin Boot Maker"
+			VALUE "ProductVersion", "1.9.0.1"
+		}
+	}
+
+	BLOCK "VarFileInfo"
+	{
+		VALUE "Translation", 1033, 1252
+	}
+}
