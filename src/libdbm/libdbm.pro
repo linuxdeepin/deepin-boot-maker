@@ -8,7 +8,6 @@ TEMPLATE = lib
 CONFIG += staticlib
 
 SOURCES += \
-    backend/backend.cpp \
     backend/bootmaker.cpp \
     backend/diskutil.cpp \
     backend/syslinux.cpp \

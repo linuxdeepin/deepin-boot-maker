@@ -73,6 +73,25 @@ bool SevenZip::extract()
            (0 == m_sevenz.exitCode());
 }
 
+bool SevenZip::check()
+{
+    m_sevenz.setProgram(m_sevenZip);
+
+    QStringList args;
+    args << "t" << m_archiveFile;
+
+    m_sevenz.setArguments(args);
+
+    m_sevenz.start();
+    m_sevenz.waitForStarted(-1);
+    m_sevenz.waitForFinished(-1);
+
+    qDebug() << "check iso result" << m_sevenz.exitStatus() << m_sevenz.exitCode();
+
+    return (m_sevenz.exitStatus() == QProcess::NormalExit) &&
+           (0 == m_sevenz.exitCode());
+}
+
 SevenZipProcessParser::SevenZipProcessParser(const QString &file, QProcess *process, QObject *parent): QThread(parent)
 {
     m_progressFilename = file;

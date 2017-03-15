@@ -113,6 +113,14 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
     qDebug() << image << unused_device << partition << formatDevice;
 
+    //check iso integrity
+    SevenZip sevenZipCheck(image, "");
+    if (!sevenZipCheck.check()) {
+        qCritical() << "Error::get(Error::ExtractImgeFailed)";
+        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
+        return false;
+    }
+
     QString device = XSys::DiskUtil::GetPartitionDisk(partition);
 
     this->reportProgress(5, Error::NoError, "install bootloader", "");

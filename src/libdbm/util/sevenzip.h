@@ -38,6 +38,7 @@ public:
     void setOutputDirectory(const QString &outputDir);
 
     bool extract();
+    bool check();
 
 signals:
     void progressChanged(int);
