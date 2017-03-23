@@ -46,7 +46,7 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
     case USBSizeError:
         return BMHandler::tr("Insufficient Disk Space: Please ensure that the disk has %1 free space");
     case USBMountFailed:
-        return BMHandler::tr("Disk Mount Error: Please plug the disk again or reboot the system to retry");
+        return BMHandler::tr("Disk Mount Error: Please plug in the disk again or reboot the system to retry");
     case ExtractImgeFailed:
         return BMHandler::tr("Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete");
     }

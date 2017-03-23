@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="49"/>
-        <source>Disk Mount Error: Please plug the disk again or reboot the system to retry</source>
+        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -37,7 +37,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="27"/>
+        <location filename="../app/main.cpp" line="37"/>
         <source>Deepin Boot Maker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -89,7 +89,7 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="32"/>
-        <source>Please do not remove the disk or shutdown the computer when making</source>
+        <source>Please do not remove the disk or shut down the computer when making</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -106,23 +106,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="120"/>
+        <location filename="../libdbm/util/utils.cpp" line="95"/>
         <source>Removable disk</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ResultView</name>
-    <message>
-        <location filename="../app/view/resultview.cpp" line="31"/>
-        <source>Making successfully</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Making successfully, reboot to experience</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="58"/>
         <source>Reboot later</source>
@@ -134,8 +124,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="31"/>
+        <source>Make Successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="39"/>
+        <source>Make successfully, reboot to experience</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="100"/>
-        <source>The feedback will upload the error log automatically, our improvement cannot do without your feedback and support</source>
+        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -168,7 +168,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="76"/>
-        <source>Format disk can increase success rate of making disk</source>
+        <source>Formating disk can increase the making success rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -183,7 +183,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="119"/>
-        <source>The format operation will completely delete the data of the disk, Please confirm and continue</source>
+        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

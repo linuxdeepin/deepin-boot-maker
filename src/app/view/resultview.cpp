@@ -28,7 +28,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
     mainLayout->setSpacing(0);
 
-    m_title = new QLabel(tr("Making successfully"));
+    m_title = new QLabel(tr("Make Successfully"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -36,7 +36,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_resultIcon->setObjectName("ResultIcon");
     m_resultIcon->setPixmap(QPixmap(":/theme/light/image/success.png"));
 
-    m_hitsTitle = new QLabel(tr("Making successfully, reboot to experience"));
+    m_hitsTitle = new QLabel(tr("Make successfully, reboot to experience"));
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     m_hitsTitle->setFixedWidth(340);
 
@@ -97,7 +97,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         });
         return;
     case BMHandler::SyscExecFailed:
-        m_logHits->setText(tr("The feedback will upload the error log automatically, our improvement cannot do without your feedback and support"));
+        m_logHits->setText(tr("The error log will be uploaded automatically with feedback. We can not improve without your feedback and support"));
         m_rebootLater->setText(tr("Feedback"));
         m_logHits->adjustSize();
         m_rebootLater->disconnect();

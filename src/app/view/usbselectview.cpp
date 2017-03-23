@@ -73,7 +73,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QCheckBox *m_formatDiskCheck = new QCheckBox;
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
-    m_formatDiskCheck->setText(tr("Format disk can increase success rate of making disk"));
+    m_formatDiskCheck->setText(tr("Formating disk can increase the making success rate"));
     m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
     m_formatDiskCheck->hide();
 
@@ -116,7 +116,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             m_warningHint->setText("");
             return;
         }
-        m_warningHint->setText(tr("The format operation will completely delete the data of the disk, Please confirm and continue"));
+        m_warningHint->setText(tr("The disk data will be completely  deleted by formating, please confirm and continue"));
         this->adjustSize();
         return;
 
