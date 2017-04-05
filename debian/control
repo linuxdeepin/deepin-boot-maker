@@ -3,6 +3,7 @@ Section: misc
 Priority: extra
 Maintainer: Deepin Sysdev <sysdev@linuxdeepin.com>
 Build-Depends: debhelper (>= 9),
+  python,
   qt5-default,
   qt5-qmake,
   qttools5-dev-tools,
