@@ -2,5 +2,45 @@
     <qresource prefix="/">
         <file>translations/deepin-boot-maker_zh_CN.qm</file>
         <file>translations/deepin-boot-maker.qm</file>
+        <file>translations/deepin-boot-maker_zh_TW.ts</file>
+        <file>translations/deepin-boot-maker_zh_TW.qm</file>
+        <file>translations/deepin-boot-maker_zh_CN.ts</file>
+        <file>translations/deepin-boot-maker_sl.ts</file>
+        <file>translations/deepin-boot-maker_sl.qm</file>
+        <file>translations/deepin-boot-maker_sk.ts</file>
+        <file>translations/deepin-boot-maker_sk.qm</file>
+        <file>translations/deepin-boot-maker_ru.ts</file>
+        <file>translations/deepin-boot-maker_ru.qm</file>
+        <file>translations/deepin-boot-maker_pt_BR.ts</file>
+        <file>translations/deepin-boot-maker_pt_BR.qm</file>
+        <file>translations/deepin-boot-maker_pt.ts</file>
+        <file>translations/deepin-boot-maker_pt.qm</file>
+        <file>translations/deepin-boot-maker_pl.ts</file>
+        <file>translations/deepin-boot-maker_pl.qm</file>
+        <file>translations/deepin-boot-maker_nl.ts</file>
+        <file>translations/deepin-boot-maker_nl.qm</file>
+        <file>translations/deepin-boot-maker_ms.ts</file>
+        <file>translations/deepin-boot-maker_ms.qm</file>
+        <file>translations/deepin-boot-maker_it.ts</file>
+        <file>translations/deepin-boot-maker_it.qm</file>
+        <file>translations/deepin-boot-maker_hu.ts</file>
+        <file>translations/deepin-boot-maker_hu.qm</file>
+        <file>translations/deepin-boot-maker_gl_ES.ts</file>
+        <file>translations/deepin-boot-maker_gl_ES.qm</file>
+        <file>translations/deepin-boot-maker_fr.ts</file>
+        <file>translations/deepin-boot-maker_fr.qm</file>
+        <file>translations/deepin-boot-maker_es_419.ts</file>
+        <file>translations/deepin-boot-maker_es_419.qm</file>
+        <file>translations/deepin-boot-maker_es.ts</file>
+        <file>translations/deepin-boot-maker_es.qm</file>
+        <file>translations/deepin-boot-maker_de.ts</file>
+        <file>translations/deepin-boot-maker_de.qm</file>
+        <file>translations/deepin-boot-maker_da.ts</file>
+        <file>translations/deepin-boot-maker_da.qm</file>
+        <file>translations/deepin-boot-maker_cs.ts</file>
+        <file>translations/deepin-boot-maker_cs.qm</file>
+        <file>translations/deepin-boot-maker_ar.ts</file>
+        <file>translations/deepin-boot-maker_ar.qm</file>
+        <file>translations/deepin-boot-maker.ts</file>
     </qresource>
 </RCC>

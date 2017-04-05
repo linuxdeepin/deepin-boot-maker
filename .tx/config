@@ -3,13 +3,13 @@ host = https://www.transifex.com
 minimum_perc = 80
 mode = developer
 
-[deepin-boot-maker.deepin-boot-makerpot]
-file_filter = app/po/<lang>.po
-source_file = app/po/deepin-boot-maker.pot
+[deepin-installer.deepin-boot-maker-v2-ts]
+file_filter = src/translations/deepin-boot-maker_<lang>.ts
+source_file = src/translations/deepin-boot-maker.ts
 source_lang = en
-type = PO
+type = QT
 
-[deepin-boot-maker.desktop]
-source_file = debian/deepin-boot-maker.desktop
+[deepin-installer.desktop]
+source_file = src/app/platform/linux/deepin-boot-maker.desktop
 source_lang = en
-type = DESKTOP 
+type = DESKTOP
