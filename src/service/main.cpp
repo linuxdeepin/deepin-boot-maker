@@ -21,6 +21,8 @@ const QString BootMakerPath = "/com/deepin/bootmaker";
 
 int main(int argc, char *argv[])
 {
+    Q_INIT_RESOURCE(blob);
+
     QCoreApplication a(argc, argv);
     a.setOrganizationName("deepin");
     a.setApplicationName("deepin-boot-maker-service");

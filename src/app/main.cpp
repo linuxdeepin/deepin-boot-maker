@@ -27,6 +27,7 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+    Q_INIT_RESOURCE(blob);
 #if defined(STATIC_LIB)
     DWIDGET_INIT_RESOURCE();
 #endif
@@ -45,7 +46,7 @@ int main(int argc, char **argv)
     qDebug() << "save log to:" << DLogManager::getlogFilePath();
 
     if (!app.setSingleInstance("deepinbootmaker")) {
-        qDebug() << "another deppin music has started";
+        qDebug() << "another deppin boot maker has started";
         exit(0);
     }
 
