@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="43"/>
         <source>Failed to call the command %1.</source>
-        <translation>無法調用 %1 命令。</translation>
+        <translation>無法使用 %1 命令。</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="45"/>
