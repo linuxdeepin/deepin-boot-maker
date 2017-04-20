@@ -55,7 +55,7 @@ int GetPartitionDiskNum(QString targetDev)
                                OPEN_EXISTING, 0, NULL);
 
     if (handle == INVALID_HANDLE_VALUE) {
-        qWarning() << "Open Dev Failed: " << driverName << endl;
+        qWarning() << "Open Dev Failed: " << driverName << GetLastError();
         return -1;
     }
 
@@ -163,7 +163,7 @@ XSys::Result InstallSyslinux(const QString &targetDev)
 
 XSys::Result InstallBootloader(const QString &targetDev)
 {
-    qDebug() << "FixUsbDisk Begin!";
+    qDebug() << "FixUsbDisk Begin! " << targetDev;
     int deviceNum = GetPartitionDiskNum(targetDev);
     QString xfbinstDiskName = QString("(hd%1)").arg(deviceNum);
 
@@ -192,7 +192,7 @@ XSys::Result InstallBootloader(const QString &targetDev)
     QFile pbr(tmpPbrPath);
     pbr.open(QIODevice::WriteOnly);
 
-    QString targetPhyName = "\\\\.\\" + targetDev;
+    QString targetPhyName = "\\\\.\\" + QString(targetDev).remove('\\');
     QFile targetPhy(targetPhyName);
     targetPhy.open(QIODevice::ReadOnly);
 

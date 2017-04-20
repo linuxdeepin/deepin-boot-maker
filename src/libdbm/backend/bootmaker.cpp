@@ -120,8 +120,11 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
         return false;
     }
-
+#ifdef Q_OS_UNIX
     QString device = XSys::DiskUtil::GetPartitionDisk(partition);
+#else
+    QString device = partition;
+#endif
 
     this->reportProgress(5, Error::NoError, "install bootloader", "");
     qDebug() << "begin install bootloader";
