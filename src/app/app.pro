@@ -1,7 +1,5 @@
 include($$PWD/vendor.pri)
 
-DEFINES += QT_MESSAGELOGCONTEXT
-
 TEMPLATE  = app
 
 TARGET = deepin-boot-maker
@@ -58,7 +56,8 @@ INSTALLS += binary desktop hicolor
 
 }
 
-win {
+win32{
+    message("add admin pri")
     QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
     RC_FILE += $$PWD/platform/windows/deepin-boot-maker.rc
 }

@@ -1,5 +1,7 @@
 CONFIG += link_pkgconfig
 
+DEFINES += QT_MESSAGELOGCONTEXT
+
 unix {
 isEmpty(PREFIX) {
     PREFIX = /usr
