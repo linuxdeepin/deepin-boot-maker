@@ -1,10 +1,11 @@
 #include "sevenzip.h"
 
-#include <QCoreApplication>
 #include <QDebug>
+#include <QDir>
+#include <QThread>
 #include <QProcess>
 #include <QTemporaryFile>
-#include <QThread>
+#include <QCoreApplication>
 
 #include <XSys>
 
@@ -16,12 +17,20 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll");
     qDebug() << sevnz << sevnzdll;
 #endif
+
+    qDebug() << "7777777777777";
 #ifdef Q_OS_MAC
-    QDir resourceDir = QDir(QApplication::applicationDirPath());
+    QDir resourceDir = QDir(QCoreApplication::applicationDirPath());
     resourceDir.cdUp();
     resourceDir.cd("Resources");
     QString sevnz = resourceDir.absoluteFilePath("7z-mac");
+    qDebug() << sevnz;
+
+    qDebug() << "+++++";
 #endif
+
+    qDebug() << "-------7777777777777";
+
 #ifdef Q_OS_LINUX
     QString sevnz = "7z";
 #endif
@@ -47,7 +56,11 @@ bool SevenZip::extract()
     args << "x" << "-y"
          << m_archiveFile
          << m_outputDir
+#ifndef Q_OS_MAC
          << "-bsp2";
+#else
+            ;
+#endif
 
     QStringList env = QProcess::systemEnvironment();
     env << "VDPAU_DRIVER=va_gl";

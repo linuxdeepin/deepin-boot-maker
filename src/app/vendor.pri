@@ -1,6 +1,13 @@
 include($$PWD/../vendor/env.pri)
 
+
 unix{
+    QT += dbus network
+    CONFIG += link_pkgconfig
+    PKGCONFIG += dtkbase dtkutil dtkwidget
+}
+
+linux{
     QT += x11extras dbus  network x11extras
     CONFIG += link_pkgconfig
     PKGCONFIG += dtkbase dtkutil dtkwidget

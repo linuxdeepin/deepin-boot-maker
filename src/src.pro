@@ -10,7 +10,7 @@ system(python $$PWD/tools/translate_generation.py $$PWD)
 SUBDIRS += vendor/src/libxsys \
     libdbm
 
-unix {
+linux {
     SUBDIRS += service
 }
 

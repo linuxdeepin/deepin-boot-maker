@@ -25,6 +25,35 @@ void loadFonts();
 DUTIL_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
 
+#ifdef Q_OS_MAC
+static bool switchToRoot(QApplication &app) {
+    QStringList allappargs = app.arguments();
+    QProcess whoamip;
+    whoamip.start("whoami");
+    whoamip.waitForFinished();
+
+    if(QString(whoamip.readAll()).remove("\r").remove("\n") != "root") {
+        QString argsconc = "";
+        QString argsconcSingleQuote = "";
+
+        for(int i = 1; i < allappargs.size(); ++i) {
+            argsconc += QString("\"%1\" ").arg(allappargs.at(i));
+            argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
+        }
+
+        argsconc += "\"rootcheck=no\"";
+        argsconcSingleQuote += "'rootcheck=no'";
+
+        QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
+        return true;
+
+    }
+
+    return false;
+}
+
+#endif
+
 int main(int argc, char **argv)
 {
     Q_INIT_RESOURCE(blob);
@@ -38,6 +67,11 @@ int main(int argc, char **argv)
     app.setApplicationDisplayName(DApplication::tr("Deepin Boot Maker"));
     app.setApplicationVersion("1.99.0");
     app.setTheme("light");
+
+#ifdef Q_OS_MAC
+    if(switchToRoot(app))
+        exit(0);
+#endif
 
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-40} %{line:-4} %{threadid:-8} ] %{message}\n";
     DLogManager::setLogFormat(m_format);

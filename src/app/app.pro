@@ -56,6 +56,14 @@ INSTALLS += binary desktop hicolor
 
 }
 
+mac{
+    ICON = $$PWD/platform/mac/deepin-boot-maker.icns
+
+    blob.files = $$PWD/platform/mac/Contents/Resources
+    blob.path = Contents
+    QMAKE_BUNDLE_DATA += blob
+}
+
 win32{
     message("add admin pri")
     QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"

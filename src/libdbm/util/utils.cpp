@@ -264,6 +264,7 @@ QList<DeviceInfo> ListUsbDrives()
 #endif
 
 #ifdef Q_OS_MAC
+    QStringList fulldrivelist;
     QString out = XSys::FS::TmpFilePath("diskutil_out");
     XSys::SynExec("bash", QString("-c \" diskutil list > \"%1\" \" ").arg(out));
     QFile outfile(out);
@@ -273,10 +274,16 @@ QList<DeviceInfo> ListUsbDrives()
 
     for (int i = 0; i < usbdevsL.size(); ++i) {
         if (isUsbDisk("/dev/" + usbdevsL.at(i))) {
-            fulldrivelist.append("/dev/" + usbdevsL.at(i));
+            auto path = "/dev/" + usbdevsL.at(i);
+            fulldrivelist.append(path);
+
+            DeviceInfo info;
+            info.path = path;
+            deviceList.push_back(info);
         }
     }
 
+    qDebug() << fulldrivelist;
     outfile.close();
     outfile.remove();
 #endif
