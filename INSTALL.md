@@ -11,7 +11,7 @@ If you want binary install, please see [README](README.md).
 ### Install Build Dependencies
 
 ```bash
-sudo apt-get install debhelper, qt5-default, qt5-qmake, qttools5-dev-tools
+sudo apt-get install debhelper qt5-default qt5-qmake qttools5-dev-tools
 ```
 
 ### Build Deepin Boot Maker
