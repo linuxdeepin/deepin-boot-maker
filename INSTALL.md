@@ -11,7 +11,7 @@ If you want binary install, please see [README](README.md).
 ### Install Build Dependencies
 
 ```bash
-sudo apt-get install debhelper qt5-default qt5-qmake qttools5-dev-tools
+sudo apt-get install debhelper python qt5-default qt5-qmake qttools5-dev-tools libdtkbase-dev libdtkutil-dev libdtkwidget-dev
 ```
 
 ### Build Deepin Boot Maker
@@ -19,7 +19,7 @@ sudo apt-get install debhelper qt5-default qt5-qmake qttools5-dev-tools
 ```
 mkdir build
 cd build
-qmake -r ../deepin-boot-maker.pro
+qmake -r ..
 make
 ```
 
@@ -27,28 +27,32 @@ make
 
 ### Development Environment
 
-- Windows 7 64bit
-- Microsoft Visual C++ 2010
-- DirectX SDK
-- Qt5.4
+- Windows 10 64bit
+- Microsoft Visual C++ 2017
+- Windows SDK
+- Qt5.8
+- Dtk
 
 ### Build Qt static
 
 ```
-set DXSDK_DIR="C:\Program Files (x86)\Windows Kits\8.0\Include\um"
-configure -prefix "C:\Qt\QtStatic\5.3\vs2010" -release -platform win32-msvc2010 \
+configure -prefix "C:\Qt\QtStatic\5.8\vs2017" -release -platform win32-msvc2010 \
 -no-qml-debug -confirm-license -opensource -static -qt-pcre -no-icu -no-sql-sqlite \
 -no-nis -no-cups -no-iconv -no-dbus -nomake examples -no-sql-odbc -no-compile-examples \
 -skip qtwebkit -skip qtwebkit-examples -skip qtactiveqt -no-openssl -qt-zlib \
 -qt-libpng -qt-freetype -qt-libjpeg -opengl es2 -angle
 ```
 
+### Build Dtk
+
+TODO
+
 ### Build Deepin Boot Maker
 
 ```
 mkdir build
 cd build
-qmake.exe -r ../deepin-boot-maker.pro
+qmake -r ..
 nmake
 ```
 
@@ -57,21 +61,25 @@ nmake
 
 ### Development Environment
 
-- Mac OS 10.11
-- Qt5.4
+- Mac OS 10.12
+- Qt5.8
 
 ### Set Qt PATH
 
 ```
-export QtInstallPath=/User/yourhome/Qt5.3/5.3/clang_64
+export QtInstallPath=/User/yourhome/Qt5.8/5.8/clang_64
 export PATH=$QtInstallPath/bin:$PATH
 ```
+### Build Dtk
+
+TODO
 
 ### Build Deepin Boot Maker
 
 ```
-cd osx
-qmake -r ../deepin-boot-maker.pro
+mkdir build
+cd build
+qmake -r ..
 make
-macdeployqt app/deepin-boot-maker.app
+macdeployqt src/app/deepin-boot-maker.app
 ```
