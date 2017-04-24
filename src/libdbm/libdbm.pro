@@ -5,7 +5,7 @@ QT       -= gui
 
 TARGET = libdbm
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += staticlib c++11
 
 SOURCES += \
     backend/bootmaker.cpp \
