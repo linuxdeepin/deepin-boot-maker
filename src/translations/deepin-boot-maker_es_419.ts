@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/main.cpp" line="37"/>
         <source>Deepin Boot Maker</source>
-        <translation>Creador de Arranque de Deepin</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>
