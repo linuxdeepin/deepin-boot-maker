@@ -35,7 +35,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="37"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>سازنده بوت لینوکس دیپین</translation>
     </message>
@@ -112,11 +112,6 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="58"/>
-        <source>Reboot later</source>
-        <translation>بعدا راه اندازی شود </translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
         <translation>هم اکنون راه اندازی مجدد شود</translation>
@@ -127,32 +122,32 @@
         <translation>تولید با موفقیت انجام شد </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully, reboot to experience</source>
-        <translation>تولید با موفقیت انجام شد ،برای تجربه کردن دوباره راه اندازی کنید</translation>
+        <location filename="../app/view/resultview.cpp" line="58"/>
+        <source>Done</source>
+        <translation>انجام شد</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="100"/>
+        <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
         <translation>لیست خطاها به همراه بازخورد ، خودکار آپلود خواهد شد . بدون حمایت و بازخورد شما ما نمی توانیم بهتر شویم </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="101"/>
+        <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
         <translation>بازخورد</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="115"/>
+        <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
         <translation>بستن</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="123"/>
+        <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
         <translation>افسوس ، تولید ناموفق بود </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="124"/>
+        <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
         <translation>فرایندتولید ناموفق بود</translation>
     </message>

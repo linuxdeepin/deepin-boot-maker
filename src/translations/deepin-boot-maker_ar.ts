@@ -35,7 +35,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="37"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>صانع إقلاع ديبين</translation>
     </message>
@@ -112,11 +112,6 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="58"/>
-        <source>Reboot later</source>
-        <translation>اعادة تشغيل لاحقا</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
         <translation>إعادة تشغيل اﻵن</translation>
@@ -127,32 +122,32 @@
         <translation>تم الصنع بنجاح</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully, reboot to experience</source>
-        <translation>تم الصنع بنجاح٫ اعد التشغيل للتجربة</translation>
+        <location filename="../app/view/resultview.cpp" line="58"/>
+        <source>Done</source>
+        <translation>تم</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="100"/>
+        <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
         <translation>الخطأ سيتم رفعه تلقائيا مع رد الفعل. لا نستطيع التحسن دون ردود الفعل وكذا الدعم</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="101"/>
+        <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
         <translation>رد الفعل</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="115"/>
+        <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
         <translation>إغلاق</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="123"/>
+        <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
         <translation>للاسف٫ فشل الصنع</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="124"/>
+        <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
         <translation>فشل الصنع</translation>
     </message>

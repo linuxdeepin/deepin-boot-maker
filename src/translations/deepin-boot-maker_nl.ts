@@ -35,7 +35,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="37"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>Deepin Opstartmediummaker</translation>
     </message>
@@ -112,11 +112,6 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="58"/>
-        <source>Reboot later</source>
-        <translation>Later herstarten</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
         <translation>Nu herstarten</translation>
@@ -127,32 +122,32 @@
         <translation>Procedure succesvol</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully, reboot to experience</source>
-        <translation>Procedure succesvol, herstart om uit te proberen</translation>
+        <location filename="../app/view/resultview.cpp" line="58"/>
+        <source>Done</source>
+        <translation>Gereed</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="100"/>
+        <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
         <translation>Het foutenrapport zal automatisch geüpload worden. We hebben uw feedback en steun nodig om te blijven innoveren.</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="101"/>
+        <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
         <translation>Feedback</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="115"/>
+        <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
         <translation>Sluiten</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="123"/>
+        <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
         <translation>Sorry, procedure mislukt</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="124"/>
+        <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
         <translation>Procedure mislukt</translation>
     </message>

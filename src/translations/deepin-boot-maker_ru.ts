@@ -35,7 +35,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="37"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>Deepin Boot Maker</translation>
     </message>
@@ -112,11 +112,6 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="58"/>
-        <source>Reboot later</source>
-        <translation>Перезагрузить позже</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
         <translation>Перезагрузить сейчас</translation>
@@ -127,32 +122,32 @@
         <translation>Успешно создано</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully, reboot to experience</source>
-        <translation>Успешно создано, перезагрузите для использования</translation>
+        <location filename="../app/view/resultview.cpp" line="58"/>
+        <source>Done</source>
+        <translation>Выполнено</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="100"/>
+        <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
         <translation>Журнал ошибок будет загружен автоматически для обратной связи. Мы не можем улучшить без ваших отзывов и поддержки</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="101"/>
+        <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
         <translation>Обратная связь</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="115"/>
+        <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="123"/>
+        <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
         <translation>Извините, не удалось</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="124"/>
+        <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
         <translation>Не удалось</translation>
     </message>

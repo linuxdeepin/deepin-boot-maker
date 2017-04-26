@@ -35,7 +35,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="37"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>Deepin Boot Maker</translation>
     </message>
@@ -112,11 +112,6 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="58"/>
-        <source>Reboot later</source>
-        <translation>Reštartovať neskôr</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
         <translation>Reštartovať teraz</translation>
@@ -127,32 +122,32 @@
         <translation>Vytvorenie úspešné</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully, reboot to experience</source>
-        <translation>Vytvorenie úspešné, reštartujte počítač pre otestovanie</translation>
+        <location filename="../app/view/resultview.cpp" line="58"/>
+        <source>Done</source>
+        <translation>Hotovo</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="100"/>
+        <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
         <translation>Protokol chýb sa automaticky nahráva so spätnou väzbou. Nemôžeme to zlepšiť bez vašej spätnej väzby a podpory</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="101"/>
+        <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
         <translation>Spätná väzba</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="115"/>
+        <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
         <translation>Zavrieť</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="123"/>
+        <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
         <translation>Prepáčte, ale vytvorenie zlyhalo</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="124"/>
+        <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
         <translation>Vytvorenie zlyhalo</translation>
     </message>

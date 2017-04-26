@@ -19,12 +19,12 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="49"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation type="unfinished"/>
+        <translation>Erro de montaxe no disco: volva conectar o disco ou reinicie o sistema para volvelo tentar</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="51"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation type="unfinished"/>
+        <translation>Erro ao descomprimir a imaxe: Comprobe a suma de comprobación md5 da imaxe e asegúrese de que a imaxe está completa</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="53"/>
@@ -35,7 +35,7 @@
 <context>
     <name>DApplication</name>
     <message>
-        <location filename="../app/main.cpp" line="37"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>Creador de arranque de Deepin</translation>
     </message>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="23"/>
         <source>Making</source>
-        <translation type="unfinished"/>
+        <translation>Facendo</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="29"/>
@@ -112,11 +112,6 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="58"/>
-        <source>Reboot later</source>
-        <translation>Reiniciar máis tarde</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
         <translation>Reiniciar agora</translation>
@@ -124,35 +119,35 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="31"/>
         <source>Make Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Realizado satisfactoriamente</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully, reboot to experience</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../app/view/resultview.cpp" line="100"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation type="unfinished"/>
+        <location filename="../app/view/resultview.cpp" line="58"/>
+        <source>Done</source>
+        <translation>Feito</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="101"/>
+        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
+        <translation>O rexistro de erros cargarase automáticamente con comentarios. Non podemos mellorar sen os seus comentarios e apoio</translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
         <translation>Comentario</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="115"/>
+        <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
         <translation>Pechar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="123"/>
+        <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
         <translation>Sentímolo, o proceso fallou</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="124"/>
+        <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
         <translation>Produciuse un erro durante o proceso.</translation>
     </message>

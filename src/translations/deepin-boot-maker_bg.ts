@@ -1,35 +1,35 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hu" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="bg" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="43"/>
         <source>Failed to call the command %1.</source>
-        <translation>%1 parancs hívása sikertelen. </translation>
+        <translation>Провалено повикване на команда %1.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="45"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Hiba lépett fel a lemez formázása közben: Formázzuk a lemezt FAT32 fájlrendszerrel.</translation>
+        <translation>Грешка при форматиране: Моля форматирайте диска с FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="47"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Nincs elegendő lemezterület: Ellenőrizzük a %1 lemezen van e elég szabad hely.</translation>
+        <translation>Недостиг на място: Моля уверете се, че диска има %1 свободно пространство</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="49"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Hiba lépett fel a lemez csatolása közben: Csatlakoztassuk újra a lemezt és indítsuk újra a rendszert.</translation>
+        <translation>Грешка при монтиране: Включете отново диска или рестартирайте системата</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="51"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Hiba lépett fel a lemezkép kicsomagolása közben: Ellenőrizzük a lemezkép md5 ellenörzőösszegét.</translation>
+        <translation>Грешка при декомпресиране: Моля проверете md5 сумата на образа и се уверете, че той е цял</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="53"/>
         <source>Internal Error</source>
-        <translation>Belső hiba</translation>
+        <translation>Вътрешна грешка</translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin rendszerindító készítő</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>
@@ -45,32 +45,32 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="25"/>
         <source>Please select an ISO image file</source>
-        <translation>Válasszuk ki az ISO képet</translation>
+        <translation>Изберете файл си ISO образ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="47"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Fogjuk az ISO lemezképet és dobjuk ide</translation>
+        <translation>Влачете файл с ISO образ и го пуснете тук</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="51"/>
         <source>OR</source>
-        <translation>VAGY</translation>
+        <translation>ИЛИ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="63"/>
         <source>Select an ISO image file</source>
-        <translation>ISO lemezkép kiválasztás</translation>
+        <translation>Изберете файл с ISO образ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="81"/>
         <source>Next</source>
-        <translation>Következő</translation>
+        <translation>Следващ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="135"/>
         <source>Reselect an ISO image file</source>
-        <translation>ISO lemezkép újra kiválasztás</translation>
+        <translation>Нов избор на файл с ISO образ</translation>
     </message>
 </context>
 <context>
@@ -78,22 +78,22 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="23"/>
         <source>Making</source>
-        <translation>Készítés</translation>
+        <translation>Прави се</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="29"/>
         <source>Making the disk, please wait...</source>
-        <translation>Lemez készítés, várjunk...</translation>
+        <translation>Прави се дискът, почакайте…</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="32"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Ne húzzuk ki az adathordozót és ne kapcsoljuk ki a számítógépet amíg a lemez készül</translation>
+        <translation>Моля не премахвайте диска или не спирайте системата при правенето</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="40"/>
         <source>Cancel</source>
-        <translation>Mégse</translation>
+        <translation>Отказ</translation>
     </message>
 </context>
 <context>
@@ -101,12 +101,12 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="27"/>
         <source>Removable Disk</source>
-        <translation>Eltávolítható lemez</translation>
+        <translation>Отстраняващ се диск</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="95"/>
         <source>Removable disk</source>
-        <translation>Eltávolítható lemez</translation>
+        <translation>Преносим диск</translation>
     </message>
 </context>
 <context>
@@ -114,42 +114,42 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
-        <translation>Újraindítás most</translation>
+        <translation>Рестартирай сега</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="31"/>
         <source>Make Successfully</source>
-        <translation>Sikeresen elkészült</translation>
+        <translation>Успешно завършване</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="58"/>
         <source>Done</source>
-        <translation>Kész</translation>
+        <translation>Готово</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>A hiba napló automatikusan feltölti a visszajelzést. Nem tudjuk kijavítani a hibákat és nem tudunk támogatást nyújtani ha nem kapunk visszajelzést.</translation>
+        <translation>Доклада с грешките ще се изпрати сам с отзива. Без вашата обратна връзка и подкрепа, не можем да станем по-добри.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
-        <translation>Visszajelzés</translation>
+        <translation>Отзив</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="116"/>
         <source>Close</source>
-        <translation>Bezárás</translation>
+        <translation>Затваряне</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
-        <translation>Sajnálom, a művelet sikertelen</translation>
+        <translation>Съжалявам, правенето се провали</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
-        <translation>A művelet sikertelen</translation>
+        <translation>Правеното се провали</translation>
     </message>
 </context>
 <context>
@@ -157,27 +157,27 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="59"/>
         <source>Please select a disk</source>
-        <translation>Válasszunk ki egy lemezt</translation>
+        <translation>Моля изберете диск</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="76"/>
         <source>Formating disk can increase the making success rate</source>
-        <translation>A lemez formázása növeli az elkészülés sikerességét</translation>
+        <translation>Форматирането на диска помага за успешно създаване</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="90"/>
         <source>No available disk found</source>
-        <translation>Nem található lemez</translation>
+        <translation>Не е намерен достъпен диск</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Start making</source>
-        <translation>Lemez készítés indítása</translation>
+        <translation>Започване</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="119"/>
         <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>A lemez formázásra kerül. Erősítsük meg a törlést majd mennyünk tovább</translation>
+        <translation>Диска ще бъде изтрит с форматиране, моля потвърдете и продължете</translation>
     </message>
 </context>
 </TS>
