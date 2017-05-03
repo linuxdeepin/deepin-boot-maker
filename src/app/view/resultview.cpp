@@ -36,7 +36,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_resultIcon->setObjectName("ResultIcon");
     m_resultIcon->setPixmap(QPixmap(":/theme/light/image/success.png"));
 
-    m_hitsTitle = new QLabel(tr("Make successfully, reboot to experience"));
+    m_hitsTitle = new QLabel();
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     m_hitsTitle->setFixedWidth(340);
 
@@ -55,7 +55,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     m_rebootLater = new SuggestButton();
     m_rebootLater->setObjectName("RebootLater");
-    m_rebootLater->setText(tr("Reboot later"));
+    m_rebootLater->setText(tr("Done"));
     m_rebootLater->setProperty("normal", true);/*
     rebootLater->style()->unpolish(rebootLater);
     rebootLater->style()->polish(rebootLater);*/
@@ -73,8 +73,9 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->addWidget(m_logHits, 0, Qt::AlignCenter);
     mainLayout->addStretch();
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(15);
-    mainLayout->addWidget(m_rebootNow, 0, Qt::AlignCenter);
+//    mainLayout->addSpacing(15);
+//    m_rebootNow->hide();
+//    mainLayout->addWidget(m_rebootNow, 0, Qt::AlignCenter);
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ResultView.theme"));
 

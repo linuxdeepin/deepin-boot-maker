@@ -152,6 +152,8 @@ BMWindow::BMWindow(QWidget *parent)
 //        ExtractImgeFailed,
         setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
         d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
+
+//        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setActiveStep(2);
     });
