@@ -124,11 +124,6 @@
         <translation>制作成功</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully</source>
-        <translation>制作成功</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="58"/>
         <source>Done</source>
         <translation>完成</translation>

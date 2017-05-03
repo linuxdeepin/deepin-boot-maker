@@ -124,11 +124,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="39"/>
-        <source>Make successfully</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="58"/>
         <source>Done</source>
         <translation type="unfinished"></translation>
