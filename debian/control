@@ -17,7 +17,9 @@ Homepage: http://www.linuxdeepin.com/
 
 Package: deepin-boot-maker
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools, syslinux, syslinux-common
+Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools,
+ syslinux [linux-amd64 linux-i386], 
+ syslinux-common [linux-amd64 linux-i386]
 Description: Deepin Boot Maker is help for user to create a boot usb stick quick and easy
  Deepin Boot Maker is help for user to create a boot usb stick quick and easy, it
  designed to support only deepin install iso, but it can can work for all ubuntu live install iso too.

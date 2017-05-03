@@ -18,7 +18,6 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     qDebug() << sevnz << sevnzdll;
 #endif
 
-    qDebug() << "7777777777777";
 #ifdef Q_OS_MAC
     QDir resourceDir = QDir(QCoreApplication::applicationDirPath());
     resourceDir.cdUp();
@@ -28,8 +27,6 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
 
     qDebug() << "+++++";
 #endif
-
-    qDebug() << "-------7777777777777";
 
 #ifdef Q_OS_LINUX
     QString sevnz = "7z";

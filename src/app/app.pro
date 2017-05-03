@@ -44,7 +44,7 @@ SOURCES += \
 linux {
 
 binary.path = $${PREFIX}/bin
-binary.files = deepin-boot-maker
+binary.files = $${OUT_PWD}/deepin-boot-maker
 
 desktop.path = $${PREFIX}/share/applications
 desktop.files = $$PWD/platform/linux/deepin-boot-maker.desktop

@@ -22,7 +22,7 @@ HEADERS += \
 
 unix{
 binary.path = $${PREFIX}/lib/deepin-daemon/
-binary.files = deepin-boot-maker-service
+binary.files = $${OUT_PWD}/deepin-boot-maker-service
 
 service.path = $${PREFIX}/share/dbus-1/system-services/
 service.files = $$PWD/data/com.deepin.bootmaker.service

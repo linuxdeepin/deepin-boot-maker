@@ -127,9 +127,25 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 #endif
 
     this->reportProgress(5, Error::NoError, "install bootloader", "");
-    qDebug() << "begin install bootloader";
+    qDebug() << "begin install bootloader on" << partition;
     QString targetPartition = partition;
     XSys::Result result;
+
+#ifdef DBM_NO_BOOTLOADER
+    if (formatDevice) {
+        auto mountPoint = XSys::DiskUtil::MountPoint(targetPartition);
+        XSys::SynExec("umount", targetPartition);
+
+        QStringList args;
+        args << "-n" << "DEEPINOS" << targetPartition;
+        XSys::SynExec("mkfs.fat", args.join(" "));
+
+        args = QStringList();
+        args << targetPartition << mountPoint;
+        XSys::SynExec("mount",  args.join(" "));
+    }
+    qDebug() << "format disk: " << result.isSuccess();
+#else
     if (formatDevice) {
         result = XSys::Bootloader::InstallBootloader(device);
         targetPartition = result.result();
@@ -137,7 +153,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         result = XSys::Bootloader::Syslinux::InstallSyslinux(partition);
     }
     qDebug() << "install bootloader finish: " << result.isSuccess();
-
+#endif
     if (! result.isSuccess()) {
         qCritical() << "install bootloader failed: " << result.errmsg();
         emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
