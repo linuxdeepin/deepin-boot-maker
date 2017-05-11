@@ -25,6 +25,6 @@ isEqual(ARCH, sw_64) | isEqual(ARCH, mips64) | isEqual(ARCH, mips32) {
     NO_BOOTLOADER=TRUE
 }
 
-isEqual(EDITION, RACCOON) {
+isEqual(NO_BOOTLOADER, TRUE) {
     DEFINES += DBM_NO_BOOTLOADER
 }
