@@ -13,6 +13,7 @@
 #include <QLabel>
 
 #include <ddialog.h>
+#include <DTitlebar>
 
 #include "view/setepindicatorbar.h"
 #include "view/isoselectview.h"
@@ -82,7 +83,7 @@ public:
 };
 
 BMWindow::BMWindow(QWidget *parent)
-    : DWindow(parent), d_ptr(new BMWindowPrivate(this))
+    : BMWindowBaseClass(parent), d_ptr(new BMWindowPrivate(this))
 {
     Q_D(BMWindow);
 
@@ -90,18 +91,30 @@ BMWindow::BMWindow(QWidget *parent)
 
     d->interface = BMInterface::instance();
 
-    setWindowFlags(windowFlags() & ~ Qt::WindowSystemMenuHint);
-    auto icon = new QLabel();
-    auto iconSize = 20;
-    icon->setContentsMargins(5, 0, 0, 0);
-    icon->setPixmap(QPixmap(":/theme/light/image/deepin-boot-maker.svg").scaled(iconSize, iconSize));
-    setTitlebarWidget(icon, Qt::AlignLeft);
+#ifdef Q_OS_LINUX
+    auto title = titleBar();
+#else
+    auto title = titlebar();
+#endif
+
+    auto flags = title->windowFlags() & ~Qt::WindowSystemMenuHint;
+    flags = flags & ~Qt::WindowMaximizeButtonHint;
+    title->setWindowFlags(flags);
+    title->setTitle("");
+    title->setIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
 
+#ifdef Q_OS_LINUX
+    auto centralWidget = new QWidget;
+    centralWidget->setLayout(mainLayout);
+    setCentralWidget(centralWidget);
+#else
     setContentLayout(mainLayout);
+#endif
+
     auto *actionsLayout = new QStackedLayout;
     mainLayout->addLayout(actionsLayout);
     d->isoWidget = new ISOSelectView();

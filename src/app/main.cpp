@@ -14,7 +14,6 @@ void loadFonts();
 
 #include <DLog>
 #include <DApplication>
-#include <DWindow>
 #include <dutility.h>
 
 #include <bminterface.h>
@@ -60,6 +59,8 @@ int main(int argc, char **argv)
 #if defined(STATIC_LIB)
     DWIDGET_INIT_RESOURCE();
 #endif
+
+    DApplication::loadDXcbPlugin();
 
     DApplication app(argc, argv);
     app.setOrganizationName("deepin");

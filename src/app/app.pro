@@ -23,8 +23,7 @@ HEADERS += \
     view/dwaterprogress.h \
     view/progressview.h \
     view/resultview.h \
-    view/dropframe.h \
-    bmwindow.h \
+    view/dropframe.h
 
 SOURCES += \
     view/isoselectview.cpp \
@@ -43,6 +42,9 @@ SOURCES += \
 
 linux {
 
+INCLUDEPATH += $$PWD/linux
+HEADERS += $$PWD/linux/bmwindow.h
+
 binary.path = $${PREFIX}/bin
 binary.files = $${OUT_PWD}/deepin-boot-maker
 
@@ -54,6 +56,11 @@ hicolor.files = $$PWD/view/resource/theme/light/image/deepin-boot-maker.svg
 
 INSTALLS += binary desktop hicolor
 
+}
+
+!linux {
+    INCLUDEPATH += $$PWD/other
+    HEADERS += $$PWD/other/bmwindow.h
 }
 
 mac{
