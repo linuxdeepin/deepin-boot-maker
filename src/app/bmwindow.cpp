@@ -149,7 +149,10 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
-        setWindowFlags(windowFlags() & ~Qt::WindowCloseButtonHint);
+        auto flags = titlebar()->windowFlags() & ~Qt::WindowCloseButtonHint;
+        flags &= ~Qt::WindowSystemMenuHint;
+        flags &= ~Qt::WindowMaximizeButtonHint;
+        titlebar()->setWindowFlags(flags);
         slideWidget(d->usbWidget, d->progressWidget);
         wsib->setActiveStep(2);
         auto isoFilePath = property("bmISOFilePath").toString();
@@ -158,22 +161,24 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     // TODO: TEST Function
-    connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
 //        USBFormatError,
 //        USBSizeError,
 //        USBMountFailed,
 //        ExtractImgeFailed,
-        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
-        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
-
-//        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
-        slideWidget(d->progressWidget, d->resultWidget);
-        wsib->setActiveStep(2);
-    });
+//    connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
+//        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
+//        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
+////        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
+//        slideWidget(d->progressWidget, d->resultWidget);
+//        wsib->setActiveStep(2);
+//    });
 
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
-        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
+        qDebug() << error << title << description;
+        auto flags = titlebar()->windowFlags() & ~Qt::WindowMaximizeButtonHint;
+        flags &= ~Qt::WindowSystemMenuHint;
+        titlebar()->setWindowFlags(flags);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setActiveStep(2);
@@ -192,6 +197,7 @@ BMWindow::BMWindow(QWidget *parent)
 //    emit d->isoWidget->isoFileSelected();
 //    emit d->usbWidget->deviceSelected(",", false);
 //    emit d->progressWidget->testCancel();
+//    emit d->progressWidget->finish(0, "aa", "ccc");
     d->interface->start();
 }
 

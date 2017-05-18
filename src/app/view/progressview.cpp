@@ -61,6 +61,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
         qDebug() << error << current << title << description;
         waterProgress->setProgress(static_cast<int>(current));
         if (current >= 100) {
+            qDebug() << "finish" << current << error;
             emit finish(error, title, description);
         }
     });
