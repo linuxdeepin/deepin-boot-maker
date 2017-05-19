@@ -92,7 +92,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
 #ifdef Q_OS_LINUX
-    auto title = titleBar();
+    auto title = titlebar();
 #else
     auto title = titlebar();
 #endif

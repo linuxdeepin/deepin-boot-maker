@@ -84,7 +84,8 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     QLabel *m_warningHint = new  QLabel("");
     m_warningHint->setObjectName("WarningHint");
-    m_warningHint->setFixedWidth(390);
+    m_warningHint->setFixedWidth(370);
+    m_warningHint->setFixedHeight(30);
     m_warningHint->setWordWrap(true);
 
     QLabel *m_emptyHint = new  QLabel(tr("No available disk found"));
