@@ -622,6 +622,15 @@ bool Mount(const QString &targetDev, const QString &path)
 {
     return XAPI::Mount(targetDev, path);
 }
+
+bool Mount(const QString &targetDev)
+{
+#ifdef Q_OS_LINUX
+    return XAPI::FixMountPartition(targetDev).isSuccess();
+#endif
+    return true;
+}
+
 }
 
 namespace Bootloader

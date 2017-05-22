@@ -26,6 +26,7 @@ namespace DiskUtil {
     bool UmountDisk(const QString &targetDev);
     bool EjectDisk(const QString &targetDev);
 
+    bool Mount(const QString& targetDev);
     bool Mount(const QString& targetDev, const QString& path);
     QString MountPoint(const QString& targetDev) ;
     PartionFormat GetPartitionFormat(const QString &targetDev);
