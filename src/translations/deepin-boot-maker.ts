@@ -35,14 +35,6 @@
     </message>
 </context>
 <context>
-    <name>DApplication</name>
-    <message>
-        <location filename="../app/main.cpp" line="67"/>
-        <source>Deepin Boot Maker</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ISOSelectView</name>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="25"/>
@@ -110,6 +102,12 @@
         <source>Removable disk</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../app/main.cpp" line="92"/>
+        <location filename="../app/main.cpp" line="93"/>
+        <source>Deepin Boot Maker</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ResultView</name>
@@ -167,17 +165,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="90"/>
+        <location filename="../app/view/usbselectview.cpp" line="91"/>
         <source>No available disk found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="102"/>
+        <location filename="../app/view/usbselectview.cpp" line="103"/>
         <source>Start making</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="119"/>
+        <location filename="../app/view/usbselectview.cpp" line="120"/>
         <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
         <translation type="unfinished"></translation>
     </message>
