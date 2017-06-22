@@ -14,6 +14,7 @@
 
 #include <ddialog.h>
 #include <DTitlebar>
+#include <DApplication>
 
 #include "view/setepindicatorbar.h"
 #include "view/isoselectview.h"
@@ -91,17 +92,23 @@ BMWindow::BMWindow(QWidget *parent)
 
     d->interface = BMInterface::instance();
 
-#ifdef Q_OS_LINUX
-    auto title = titlebar();
-#else
-    auto title = titlebar();
-#endif
+    // init about info
+    QString descriptionText = tr("Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It's easy to operate with simple interface.");
+    QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
+    qApp->setProductName(tr("Deepin Boot Maker"));
+    qApp->setApplicationAcknowledgementPage(acknowledgementLink);
+    qApp->setProductIcon(QPixmap(":/theme/light/image/deepin-boot-maker-96px.png").scaled(96, 96));
+    qApp->setApplicationDescription(descriptionText);
 
-    auto flags = title->windowFlags() & ~Qt::WindowSystemMenuHint;
-    flags = flags & ~Qt::WindowMaximizeButtonHint;
+    auto title = titlebar();
+    auto flags = title->windowFlags() & ~Qt::WindowMaximizeButtonHint;
+#ifndef Q_OS_LINUX
+    flags = flags & ~Qt::WindowSystemMenuHint;
+#endif
     title->setWindowFlags(flags);
     title->setTitle("");
     title->setIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
+
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
@@ -165,19 +172,21 @@ BMWindow::BMWindow(QWidget *parent)
 //        USBSizeError,
 //        USBMountFailed,
 //        ExtractImgeFailed,
-//    connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
-//        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
-//        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
-////        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
-//        slideWidget(d->progressWidget, d->resultWidget);
-//        wsib->setActiveStep(2);
-//    });
+    connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
+        setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
+        d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
+//        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
+        slideWidget(d->progressWidget, d->resultWidget);
+        wsib->setActiveStep(2);
+    });
 
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
         auto flags = titlebar()->windowFlags() & ~Qt::WindowMaximizeButtonHint;
-        flags &= ~Qt::WindowSystemMenuHint;
+#ifndef Q_OS_LINUX
+        flags = flags & ~Qt::WindowSystemMenuHint;
+#endif
         titlebar()->setWindowFlags(flags);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);

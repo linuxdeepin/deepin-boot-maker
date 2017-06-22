@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     DApplication app(argc, argv);
     app.setOrganizationName("deepin");
     app.setApplicationName("deepin-boot-maker");
-    app.setApplicationVersion("1.99.0");
+    app.setApplicationVersion("2.0.0");
     app.setTheme("light");
 
 #ifdef Q_OS_MAC
@@ -88,6 +88,7 @@ int main(int argc, char **argv)
     Utils::loadFonts();
     app.setWindowIcon(QIcon(":/theme/light/image/deepin-boot-maker.ico"));
 #endif
+    app.loadTranslator();
     Utils::loadTranslate();
     app.setApplicationDisplayName(QObject::tr("Deepin Boot Maker"));
 

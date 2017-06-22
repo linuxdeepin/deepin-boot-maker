@@ -35,6 +35,19 @@
     </message>
 </context>
 <context>
+    <name>BMWindow</name>
+    <message>
+        <location filename="../app/bmwindow.cpp" line="96"/>
+        <source>Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It&apos;s easy to operate with simple interface.</source>
+        <translation>深度启动盘制作工具是深度科技团队开发的一款系统启动盘制作工具，具有界面简洁，操作简单的特点，它可以帮助用户简单便捷地制作深度启动U盘。</translation>
+    </message>
+    <message>
+        <location filename="../app/bmwindow.cpp" line="98"/>
+        <source>Deepin Boot Maker</source>
+        <translation>启动盘制作工具</translation>
+    </message>
+</context>
+<context>
     <name>ISOSelectView</name>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="25"/>
@@ -103,7 +116,6 @@
         <translation>可移动磁盘</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="92"/>
         <location filename="../app/main.cpp" line="93"/>
         <source>Deepin Boot Maker</source>
         <translation>启动盘制作工具</translation>

@@ -35,6 +35,19 @@
     </message>
 </context>
 <context>
+    <name>BMWindow</name>
+    <message>
+        <location filename="../app/bmwindow.cpp" line="96"/>
+        <source>Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It&apos;s easy to operate with simple interface.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/bmwindow.cpp" line="98"/>
+        <source>Deepin Boot Maker</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ISOSelectView</name>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="25"/>
@@ -103,7 +116,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="92"/>
         <location filename="../app/main.cpp" line="93"/>
         <source>Deepin Boot Maker</source>
         <translation type="unfinished"></translation>
