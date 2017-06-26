@@ -12,6 +12,8 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
                                const QString &cap, int percent, QWidget *parent)
     : QWidget(parent)
 {
+    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
+
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setContentsMargins(12, 0, 12, 0);
     mainLayout->setSpacing(0);
@@ -50,7 +52,6 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     setFixedSize(390, 60);
 
-    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
 }
 
 DeviceInfoItem::DeviceInfoItem(QWidget *parent) :
