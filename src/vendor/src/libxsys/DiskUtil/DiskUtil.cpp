@@ -324,16 +324,20 @@ XSys::Result FixMountPartition(const QString &partition)
     XSys::Result ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
     if (!ret.isSuccess()) { return ret; }
 
-    ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
+    ret = XSys::SynExec("chmod", " a+wrx " + mountPoint);
     if (!ret.isSuccess()) { return ret; }
 
     QString mountCmd = "%1 %2";
-    QString remountCmd = "-o flush,rw,utf8=1,sync,nodev,nosuid, %1 %2";
-    XSys::DiskUtil::UmountDisk(partition);
-    QThread::sleep(3);
-    XSys::SynExec("mount",  mountCmd.arg(partition).arg(mountPoint));
-    QThread::sleep(3);
+    QString remountCmd = "-t vfat -o remountflush,rw,utf8=1,sync,nodev,nosuid %1 %2";
+
+    QString mp = MountPoint(partition);
+    if (mp.isEmpty()) {
+        XSys::SynExec("mount",  mountCmd.arg(partition).arg(mountPoint));
+        QThread::sleep(1);
+    }
     XSys::SynExec("mount",  remountCmd.arg(partition).arg(mountPoint));
+    QThread::sleep(1);
+
     return XSys::Result(XSys::Result::Success, "", mountPoint);
 }
 
@@ -681,9 +685,9 @@ Result ConfigSyslinx(const QString &targetPath)
     // bugfix
     // TODO: we change syslinux to 6.02, but gfxboot will not work
     // so use a syslinux.cfg will not use gfxboot and vesamenu
-    if (!XSys::FS::InsertFile(":blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
-        return Result(Result::Faiiled, "Insert Config File Failed: :blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
-    }
+//    if (!XSys::FS::InsertFile(":blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
+//        return Result(Result::Faiiled, "Insert Config File Failed: :blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
+//    }
 
     return Result(Result::Success, "");
 }

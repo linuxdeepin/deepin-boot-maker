@@ -12,7 +12,7 @@
 #include <QDBusConnection>
 #include <QDBusError>
 
-#include <DLog>
+#include "LogManager.h"
 
 #include "bootmakerservice.h"
 
@@ -21,6 +21,8 @@ const QString BootMakerPath = "/com/deepin/bootmaker";
 
 int main(int argc, char *argv[])
 {
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+
     Q_INIT_RESOURCE(blob);
 
     QCoreApplication a(argc, argv);
@@ -29,11 +31,12 @@ int main(int argc, char *argv[])
     BootMakerService service;
 
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
-    Dtk::Util::DLogManager::setLogFormat(m_format);
-    Dtk::Util::DLogManager::registerConsoleAppender();
-    Dtk::Util::DLogManager::registerFileAppender();
+    DBMLogManager::setSystemLog(true);
+    DBMLogManager::setLogFormat(m_format);
+    DBMLogManager::registerConsoleAppender();
+    DBMLogManager::registerFileAppender();
 
-    qDebug() << Dtk::Util::DLogManager::getlogFilePath();
+    qDebug() << "write log to" << DBMLogManager::getlogFilePath();
 
     auto systemBus = QDBusConnection::systemBus();
     if (!systemBus.registerService(BootMakerServiceName)) {

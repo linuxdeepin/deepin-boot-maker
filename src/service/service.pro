@@ -16,9 +16,11 @@ RESOURCES +=  \
 
 SOURCES += main.cpp \
     bootmakerservice.cpp \
+    LogManager.cpp
 
 HEADERS += \
     bootmakerservice.h \
+    LogManager.h
 
 unix{
 binary.path = $${PREFIX}/lib/deepin-daemon/
