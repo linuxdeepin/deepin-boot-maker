@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="da">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="da" version="2.1">
     <context>
         <name>desktop</name>
         <message>
             <location filename="Desktop Entry]Comment" line="0"/>
             <source>A tool to make boot disk for Deepin OS</source>
-            <translation>Livecd boot håndtering for Deepin</translation>
+            <translation>Et værktøj til at oprette bootdisk til Deepin OS</translation>
         </message>
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>Deepin Boot Håndtering</translation>
+            <translation>Deepin bootskaber</translation>
         </message>
     </context>
 </TS>

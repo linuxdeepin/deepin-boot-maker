@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nb" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ast" version="2.1">
     <context>
         <name>desktop</name>
         <message>
             <location filename="Desktop Entry]Comment" line="0"/>
             <source>A tool to make boot disk for Deepin OS</source>
-            <translation type="unfinished"/>
+            <translation>Una ferramienta pa facer discos d&apos;arranque de Deepin OS</translation>
         </message>
         <message>
             <location filename="Desktop Entry]Name" line="0"/>

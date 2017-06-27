@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
@@ -35,14 +33,9 @@
     </message>
 </context>
 <context>
-    <name>BMWindow</name>
+    <name>DApplication</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="96"/>
-        <source>Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It&apos;s easy to operate with simple interface.</source>
-        <translation>深度启动盘制作工具是深度科技团队开发的一款系统启动盘制作工具，具有界面简洁，操作简单的特点，它可以帮助用户简单便捷地制作深度启动U盘。</translation>
-    </message>
-    <message>
-        <location filename="../app/bmwindow.cpp" line="98"/>
+        <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
         <translation>启动盘制作工具</translation>
     </message>
@@ -115,11 +108,6 @@
         <source>Removable disk</source>
         <translation>可移动磁盘</translation>
     </message>
-    <message>
-        <location filename="../app/main.cpp" line="93"/>
-        <source>Deepin Boot Maker</source>
-        <translation>启动盘制作工具</translation>
-    </message>
 </context>
 <context>
     <name>ResultView</name>
@@ -177,17 +165,17 @@
         <translation>格式化磁盘可提高制作成功率</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="91"/>
+        <location filename="../app/view/usbselectview.cpp" line="90"/>
         <source>No available disk found</source>
         <translation>未发现可用磁盘</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="103"/>
+        <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Start making</source>
         <translation>开始制作</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="120"/>
+        <location filename="../app/view/usbselectview.cpp" line="119"/>
         <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
         <translation>格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
     </message>

@@ -9,7 +9,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="45"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>Fallu de formatu del discu: Formatia&apos;l discu con FAT32, por favor</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="47"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="53"/>
         <source>Internal Error</source>
-        <translation type="unfinished"/>
+        <translation>Fallu internu</translation>
     </message>
 </context>
 <context>
@@ -55,7 +55,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="51"/>
         <source>OR</source>
-        <translation type="unfinished"/>
+        <translation>Ó</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="63"/>

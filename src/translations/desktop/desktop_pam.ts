@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nb" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pam" version="2.1">
     <context>
         <name>desktop</name>
         <message>

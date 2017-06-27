@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nb" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="am_ET" version="2.1">
     <context>
         <name>desktop</name>
         <message>
@@ -9,7 +9,7 @@
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>Deepin Boot Maker</translation>
+            <translation>Deepin Boot መፍጠሪያ</translation>
         </message>
     </context>
 </TS>
