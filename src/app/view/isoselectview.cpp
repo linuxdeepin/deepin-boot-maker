@@ -114,8 +114,8 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
         fileDlg.setViewMode(QFileDialog::Detail);
         fileDlg.setFileMode(QFileDialog::ExistingFile);
         fileDlg.setDirectory(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
-        fileDlg.setNameFilter("ISO (*.iso);;");
-        fileDlg.selectNameFilter("ISO (*.iso);;");
+        fileDlg.setNameFilter("ISO (*.iso);");
+        fileDlg.selectNameFilter("ISO (*.iso);");
         if (QFileDialog::Accepted == fileDlg.exec()) {
             QString text = fileDlg.selectedFiles().first();
             onFileSelected(text);
