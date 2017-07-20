@@ -70,12 +70,28 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QVBoxLayout *usbPanelLayout = new QVBoxLayout(usbDeviceListPanel);
     usbPanelLayout->setContentsMargins(10, 0, 10, 0);
 
-    QCheckBox *m_formatDiskCheck = new QCheckBox;
+    QHBoxLayout *checkBoxLayout = new QHBoxLayout;
+    checkBoxLayout->setContentsMargins(0, 0, 0, 0);
+    checkBoxLayout->setSpacing(0);
+
+    QCheckBox *m_formatDiskCheck = new QCheckBox(this);
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
-    m_formatDiskCheck->setText(tr("Formating disk can increase the making success rate"));
     m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
     m_formatDiskCheck->hide();
+
+    QLabel *checkBoxHints = new QLabel(this);
+    checkBoxHints->setFixedHeight(34);
+    checkBoxHints->setWordWrap(true);
+    checkBoxHints->setText(tr("Formating disk can increase the making success rate"));
+    checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
+    checkBoxHints->setMinimumWidth(330);
+    checkBoxHints->hide();
+
+    checkBoxLayout->addStretch();
+    checkBoxLayout->addWidget(m_formatDiskCheck);
+    checkBoxLayout->addWidget(checkBoxHints);
+    checkBoxLayout->addStretch();
 
     DeviceListWidget *m_deviceList = new DeviceListWidget;
     m_deviceList->setObjectName("UsbDeviceList");
@@ -85,7 +101,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QLabel *m_warningHint = new  QLabel("");
     m_warningHint->setObjectName("WarningHint");
     m_warningHint->setFixedWidth(370);
-    m_warningHint->setFixedHeight(30);
+    m_warningHint->setMinimumHeight(30);
     m_warningHint->setWordWrap(true);
 
     QLabel *m_emptyHint = new  QLabel(tr("No available disk found"));
@@ -96,7 +112,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     usbPanelLayout->addStretch();
     usbPanelLayout->addWidget(m_deviceList, 0, Qt::AlignLeft);
     usbPanelLayout->addSpacing(15);
-    usbPanelLayout->addWidget(m_formatDiskCheck, 0, Qt::AlignCenter);
+    usbPanelLayout->addLayout(checkBoxLayout);
 
     SuggestButton *start = new SuggestButton();
     start->setObjectName("StartMake");
@@ -136,12 +152,13 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     this, [ = ](const QList<DeviceInfo> &partitions) {
         bool hasPartitionSelected = false;
         m_formatDiskCheck->setVisible(partitions.size());
+        checkBoxHints->setVisible(partitions.size());
         m_emptyHint->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
 //        m_formatDiskCheck->setEnabled(partitions.size());
 
         m_deviceList->clear();
-        foreach(const DeviceInfo & partition, partitions) {
+        foreach (const DeviceInfo &partition, partitions) {
             QListWidgetItem *listItem = new QListWidgetItem;
             DeviceInfoItem *infoItem = new DeviceInfoItem(
                 partition.label,

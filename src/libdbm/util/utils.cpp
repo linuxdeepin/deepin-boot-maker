@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright (C) 2015 Deepin Technology Co., Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -64,7 +64,8 @@ void loadTranslate()
     }
 
     QString tranlateUrl;
-
+//    tnapplang = "it";
+//    tnappcoun = "IT";
     if (!tnappcoun.isEmpty()) {
         tranlateUrl = QString(":/translations/deepin-boot-maker_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     }
@@ -82,7 +83,7 @@ void loadTranslate()
     qDebug() << "load:" << tranlateUrl;
 
     if (translator->load(tranlateUrl)) {
-         qApp->installTranslator(translator);
+        qApp->installTranslator(translator);
     }
 }
 
@@ -118,7 +119,7 @@ void ClearTargetDev(const QString &targetPath)
     dirlist.append("/preseed/");
     dirlist.append("/syslinux/");
 
-    foreach(QString dirname, dirlist) {
+    foreach (QString dirname, dirlist) {
         QString fullDir = targetPath + dirname;
         XSys::FS::RmDir(fullDir);
     }
@@ -134,7 +135,7 @@ QMap<QString, DeviceInfo> CommandDfParse()
     XSys::Result ret = XSys::SynExec("bash", " -c \"df -k --output=source,used,avail\"");
     QString dfout = ret.result();
     QMap<QString, DeviceInfo> deviceInfos;
-    foreach(const QString infoline, dfout.split("\n")) {
+    foreach (const QString infoline, dfout.split("\n")) {
         QStringList infos = infoline.simplified().split(" ");
         if (infos.size() != 3) {
             continue;
@@ -160,8 +161,8 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
     QMap<QString, DeviceInfo> deviceInfos;
 
     QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLatin1());
-    foreach(const QJsonValue & value, jsonDoc.object()["blockdevices"].toArray()) {
-        foreach(const QJsonValue & partiotion, value.toObject()["children"].toArray()) {
+    foreach (const QJsonValue &value, jsonDoc.object()["blockdevices"].toArray()) {
+        foreach (const QJsonValue &partiotion, value.toObject()["children"].toArray()) {
             DeviceInfo info;
             info.path = partiotion.toObject()["name"].toString();
             info.uuid = partiotion.toObject()["uuid"].toString();

@@ -122,22 +122,23 @@ BMWindow::BMWindow(QWidget *parent)
     setContentLayout(mainLayout);
 #endif
 
+    auto viewWidth = 440;
     auto *actionsLayout = new QStackedLayout;
     mainLayout->addLayout(actionsLayout);
     d->isoWidget = new ISOSelectView();
-    d->isoWidget->setFixedSize(440, 476);
+    d->isoWidget->setFixedSize(viewWidth, 476);
 
     d->usbWidget = new UsbSelectView;
-    d->usbWidget->setFixedSize(440, 476);
-    d->usbWidget->move(440, 0);
+    d->usbWidget->setFixedSize(viewWidth, 476);
+    d->usbWidget->move(viewWidth, 0);
 
     d->progressWidget = new ProgressView;
-    d->progressWidget->setFixedSize(440, 476);
-    d->progressWidget->move(440, 0);
+    d->progressWidget->setFixedSize(viewWidth, 476);
+    d->progressWidget->move(viewWidth, 0);
 
     d->resultWidget = new ResultView;
-    d->resultWidget->setFixedSize(440, 476);
-    d->resultWidget->move(440, 0);
+    d->resultWidget->setFixedSize(viewWidth, 476);
+    d->resultWidget->move(viewWidth, 0);
 
     actionsLayout->addWidget(d->isoWidget);
 
