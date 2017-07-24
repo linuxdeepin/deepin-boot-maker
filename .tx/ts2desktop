@@ -1,0 +1,5 @@
+DESKTOP_TEMP_FILE=dde-boot-maker.desktop.tmp
+DESKTOP_SOURCE_FILE=src/app/platform/linux/deepin-boot-maker.desktop
+DESKTOP_DEST_FILE=src/app/platform/linux/deepin-boot-maker.desktop
+DESKTOP_TS_DIR=src/translations/desktop
+
