@@ -4,13 +4,13 @@ include($$PWD/../vendor/env.pri)
 unix{
     QT += dbus network
     CONFIG += link_pkgconfig
-    PKGCONFIG += dtkbase dtkutil dtkwidget
+    PKGCONFIG += dtkwidget
 }
 
 linux{
     QT += x11extras dbus  network x11extras
     CONFIG += link_pkgconfig
-    PKGCONFIG += dtkbase dtkutil dtkwidget
+    PKGCONFIG += dtkwidget
     PKGCONFIG += xcb-util libstartup-notification-1.0
     LIBS += -lxcb -lX11 -lXext
 }
@@ -18,17 +18,11 @@ linux{
 win32{
     INCLUDEPATH += $$DTK_INCLUDE\DWidget
     DEPENDPATH  += $$DTK_INCLUDE\DWidget
-
-    INCLUDEPATH += $$DTK_INCLUDE\DUtil
-    INCLUDEPATH += $$DTK_INCLUDE\DUtil
-    DEPENDPATH  += $$DTK_DEPEND\DUtil
-
-    INCLUDEPATH += $$DTK_INCLUDE\DBase
-    DEPENDPATH  += $$DTK_DEPEND\DBase
-
     LIBS += -L$$DTK_LIBRARY -ldtkwidget
-    LIBS += -L$$DTK_LIBRARY -ldtkutil
-    LIBS += -L$$DTK_LIBRARY -ldtkbase
+
+    INCLUDEPATH += $$DTK_INCLUDE\DCore
+    DEPENDPATH  += $$DTK_DEPEND\DCore
+    LIBS += -L$$DTK_LIBRARY -ldtkcore
 }
 
 ##################################################################

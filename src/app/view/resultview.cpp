@@ -131,6 +131,6 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
 void ResultView::onLogLinkActivated(const QString &link)
 {
     if (link == "#show_log") {
-        QDesktopServices::openUrl(QUrl::fromLocalFile(Dtk::Util::DLogManager::getlogFilePath()));
+        QDesktopServices::openUrl(QUrl::fromLocalFile(Dtk::Core::DLogManager::getlogFilePath()));
     }
 }

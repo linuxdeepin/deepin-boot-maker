@@ -1,6 +1,6 @@
 #include "LogManager.h"
 
-DUTIL_USE_NAMESPACE
+DCORE_USE_NAMESPACE
 
 DBMLogManager::DBMLogManager()
 {

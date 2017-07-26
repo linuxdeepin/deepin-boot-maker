@@ -11,11 +11,11 @@
 
 #include <QObject>
 #include <QScopedPointer>
-#include <dsingleton.h>
+#include <DSingleton>
 #include "util/deviceinfo.h"
 
 class BMInterfacePrivate;
-class BMInterface : public QObject, public Dtk::DSingleton<BMInterface>
+class BMInterface : public QObject, public Dtk::Core::DSingleton<BMInterface>
 {
     Q_OBJECT
 public:
@@ -49,7 +49,7 @@ private:
                  const QString &partition,
                  bool  formatDevice);
 
-    friend class Dtk::DSingleton<BMInterface>;
+    friend class Dtk::Core::DSingleton<BMInterface>;
     QScopedPointer<BMInterfacePrivate> d_ptr;
     Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMInterface)
 };

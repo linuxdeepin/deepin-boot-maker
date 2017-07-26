@@ -23,8 +23,8 @@ private:
     bool systemLog = false;
     QString m_format;
     QString m_logPath;
-    Dtk::Util::ConsoleAppender* m_consoleAppender;
-    Dtk::Util::RollingFileAppender* m_rollingFileAppender;
+    Dtk::Core::ConsoleAppender* m_consoleAppender;
+    Dtk::Core::RollingFileAppender* m_rollingFileAppender;
 
     void initConsoleAppender();
     void initRollingFileAppender();

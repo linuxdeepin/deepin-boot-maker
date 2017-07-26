@@ -14,14 +14,14 @@ void loadFonts();
 
 #include <DLog>
 #include <DApplication>
-#include <dutility.h>
+#include <DWidgetUtil>
 
 #include <bminterface.h>
 #include <util/utils.h>
 
 #include "bmwindow.h"
 
-DUTIL_USE_NAMESPACE
+DCORE_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
 
 #ifdef Q_OS_MAC
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
     qDebug() << "Deepin Boot Maker UI started.";
 
     BMWindow w;
-    DUtility::moveToCenter(&w);
+    Dtk::Widget::moveToCenter(&w);
     w.show();
 
 //    w.waitAuth();

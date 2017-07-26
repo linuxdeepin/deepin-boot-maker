@@ -3,19 +3,13 @@ include($$PWD/../vendor/env.pri)
 unix{
     QT += dbus
     CONFIG += link_pkgconfig
-    PKGCONFIG += dtkbase dtkutil
+    PKGCONFIG += dtkcore
 }
 
 win32{
-    INCLUDEPATH += $$DTK_INCLUDE\DUtil
-    INCLUDEPATH += $$DTK_INCLUDE\DUtil
-    DEPENDPATH  += $$DTK_DEPEND\DUtil
-
-    INCLUDEPATH += $$DTK_INCLUDE\DBase
-    DEPENDPATH  += $$DTK_DEPEND\DBase
-
-    LIBS += -L$$DTK_LIBRARY -ldtkutil
-    LIBS += -L$$DTK_LIBRARY -ldtkbase
+    INCLUDEPATH += $$DTK_INCLUDE\DCore
+    DEPENDPATH  += $$DTK_DEPEND\DCore
+    LIBS += -L$$DTK_LIBRARY -ldtkcore
 }
 
 ##################################################################

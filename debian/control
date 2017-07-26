@@ -9,8 +9,6 @@ Build-Depends: debhelper (>= 9),
   qttools5-dev-tools,
   libxcb-util0-dev,
   libstartup-notification0-dev,
-  libdtkbase-dev,
-  libdtkutil-dev,
   libdtkwidget-dev
 Standards-Version: 3.9.5
 Homepage: http://www.linuxdeepin.com/
