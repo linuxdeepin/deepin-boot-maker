@@ -80,7 +80,7 @@ int main(int argc, char **argv)
     qDebug() << "save log to:" << DLogManager::getlogFilePath();
 
     if (!app.setSingleInstance("deepinbootmaker")) {
-        qDebug() << "another deppin boot maker has started";
+        qDebug() << "another deepin boot maker has started";
         exit(0);
     }
 
