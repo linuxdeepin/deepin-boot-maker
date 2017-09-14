@@ -20,7 +20,6 @@ HEADERS += \
     view/usbselectview.h \
     view/deviceinfoitem.h \
     view/devicelistwidget.h \
-    view/dwaterprogress.h \
     view/progressview.h \
     view/resultview.h \
     view/dropframe.h
@@ -33,7 +32,6 @@ SOURCES += \
     view/usbselectview.cpp \
     view/deviceinfoitem.cpp \
     view/devicelistwidget.cpp \
-    view/dwaterprogress.cpp \
     view/progressview.cpp \
     view/resultview.cpp \
     view/dropframe.cpp \

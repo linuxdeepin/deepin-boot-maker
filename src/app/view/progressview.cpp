@@ -5,12 +5,12 @@
 #include <QVBoxLayout>
 #include <QCheckBox>
 #include <QListWidget>
+#include <DWaterProgress>
 
 #include "suggestbutton.h"
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
 #include "devicelistwidget.h"
-#include "dwaterprogress.h"
 
 #include <bminterface.h>
 
@@ -24,7 +24,8 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
-    auto waterProgress = new DWaterProgress;
+    auto waterProgress = new Dtk::Widget::DWaterProgress;
+    waterProgress->setFixedSize(100, 100);
 
     QLabel *m_hitsTitle = new QLabel(tr("Making the disk, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
@@ -49,7 +50,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
-    waterProgress->setProgress(0);
+    waterProgress->setValue(40);
     waterProgress->start();
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
@@ -59,7 +60,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     connect(BMInterface::instance(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << current << title << description;
-        waterProgress->setProgress(static_cast<int>(current));
+        waterProgress->setValue(static_cast<int>(current));
         if (current >= 100) {
             qDebug() << "finish" << current << error;
             emit finish(error, title, description);
