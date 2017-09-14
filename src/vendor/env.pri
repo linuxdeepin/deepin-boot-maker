@@ -14,9 +14,9 @@ DEFINES += STATIC_LIB
 INCLUDEPATH += $$PWD
 
 # Deepin tool kit
-DTK_INCLUDE = D:\Develop\Library\include\libdtk-1.2
-DTK_DEPEND  = D:\Develop\Library\include\libdtk-1.2
-DTK_LIBRARY = D:\Develop\Library\lib
+DTK_INCLUDE = $${INCLUDE_INSTALL_DIR}\libdtk-2.0
+DTK_DEPEND  = $${INCLUDE_INSTALL_DIR}\libdtk-2.0
+DTK_LIBRARY = $${LIB_INSTALL_DIR}
 }
 
 NO_BOOTLOADER=FALSE

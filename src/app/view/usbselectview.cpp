@@ -14,7 +14,6 @@
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
 #include "devicelistwidget.h"
-#include "dwaterprogress.h"
 
 #include <bminterface.h>
 

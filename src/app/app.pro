@@ -4,7 +4,7 @@ TEMPLATE  = app
 
 TARGET = deepin-boot-maker
 
-QT += core gui widgets concurrent network
+QT += core gui widgets concurrent network svg
 
 CONFIG += c++11
 

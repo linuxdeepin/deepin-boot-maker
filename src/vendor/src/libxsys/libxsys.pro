@@ -12,13 +12,15 @@ CONFIG += staticlib
 
 DEFINES += QT_MESSAGELOGCONTEXT
 
-SOURCES += DiskUtil/DiskUtil.cpp \
+SOURCES += \
+    DiskUtil/DiskUtil.cpp \
     Common/Result.cpp \
     Cmd/Cmd.cpp \
     FileSystem/FileSystem.cpp \
     DiskUtil/Syslinux.cpp
 
-HEADERS +=     XSys \
+HEADERS += \
+    XSys \
     DiskUtil/DiskUtil.h \
     Common/Result.h \
     Cmd/Cmd.h \
@@ -26,7 +28,10 @@ HEADERS +=     XSys \
     DiskUtil/Syslinux.h
 
 unix {
-    target.path = /usr/lib
+isEmpty(PREFIX){
+    PREFIX = /usr
+}
+target.path = $${PREFIX}/lib/
 }
 
 
