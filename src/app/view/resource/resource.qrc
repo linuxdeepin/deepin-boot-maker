@@ -27,8 +27,6 @@
         <file>theme/light/image/drive-harddisk-48px.png</file>
         <file>theme/light/image/drive-removable-media-48px.png</file>
         <file>theme/light/image/fail.png</file>
-        <file>theme/light/image/indicator_active.png</file>
-        <file>theme/light/image/indicator_inactive.png</file>
         <file>theme/light/image/media-optical-96px.png</file>
         <file>theme/light/image/select.png</file>
         <file>theme/light/image/success.png</file>

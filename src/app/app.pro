@@ -14,7 +14,6 @@ RESOURCES +=  \
 
 HEADERS += \
     view/isoselectview.h \
-    view/setepindicatorbar.h \
     view/suggestbutton.h \
     view/widgetutil.h \
     view/usbselectview.h \
@@ -26,7 +25,6 @@ HEADERS += \
 
 SOURCES += \
     view/isoselectview.cpp \
-    view/setepindicatorbar.cpp \
     view/suggestbutton.cpp \
     view/widgetutil.cpp \
     view/usbselectview.cpp \

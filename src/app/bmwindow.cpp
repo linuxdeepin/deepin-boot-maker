@@ -14,9 +14,9 @@
 
 #include <ddialog.h>
 #include <DTitlebar>
+#include <DPageIndicator>
 #include <DApplication>
 
-#include "view/setepindicatorbar.h"
 #include "view/isoselectview.h"
 #include "view/usbselectview.h"
 #include "view/progressview.h"
@@ -147,13 +147,21 @@ BMWindow::BMWindow(QWidget *parent)
     actionsLayout->addWidget(d->resultWidget);
 
     mainLayout->addSpacing(8);
-    auto wsib = new StepIndicatorBar(3);
+    auto wsib = new DPageIndicator(this);
+    wsib->setPageCount(3);
+    wsib->setPointColor(QColor(44, 167, 248));
+    wsib->setSecondaryPointColor(QColor(234, 238, 242));
+    wsib->setCurrentPage(0);
+    wsib->setFixedHeight(26);
+    wsib->setPointRadius(3);
+    wsib->setSecondaryPointRadius(3);
+    wsib->setPointDistance(12);
     mainLayout->addWidget(wsib);
 
     connect(d->isoWidget, &ISOSelectView::isoFileSelected, this, [ = ] {
         slideWidget(d->isoWidget, d->usbWidget);
         setProperty("bmISOFilePath", d->isoWidget->isoFilePath());
-        wsib->setActiveStep(1);
+        wsib->setCurrentPage(1);
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
@@ -162,7 +170,7 @@ BMWindow::BMWindow(QWidget *parent)
         flags &= ~Qt::WindowMaximizeButtonHint;
         titlebar()->setWindowFlags(flags);
         slideWidget(d->usbWidget, d->progressWidget);
-        wsib->setActiveStep(2);
+        wsib->setCurrentPage(2);
         auto isoFilePath = property("bmISOFilePath").toString();
         qDebug() << "call interface install" << isoFilePath << partition << format;
         emit d->interface->startInstall(isoFilePath, "", partition, format);
@@ -178,7 +186,7 @@ BMWindow::BMWindow(QWidget *parent)
         d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
 //        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
-        wsib->setActiveStep(2);
+        wsib->setCurrentPage(2);
     });
 
     connect(d->progressWidget, &ProgressView::finish,
@@ -191,7 +199,7 @@ BMWindow::BMWindow(QWidget *parent)
         titlebar()->setWindowFlags(flags);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
-        wsib->setActiveStep(2);
+        wsib->setCurrentPage(2);
     });
 
 //    d->warnDlg = new Dtk::Widget::DDialog(this);
