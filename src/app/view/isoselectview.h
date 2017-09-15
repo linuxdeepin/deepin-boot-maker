@@ -19,8 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ISOSELECTVIEW_H
-#define ISOSELECTVIEW_H
+#pragma once
 
 #include <QFrame>
 
@@ -57,4 +56,3 @@ private:
 
 };
 
-#endif // ISOSELECTVIEW_H

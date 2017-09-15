@@ -19,8 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESULTVIEW_H
-#define RESULTVIEW_H
+#pragma once
 
 #include <QWidget>
 #include <QPointer>
@@ -34,10 +33,8 @@ class ResultView : public QWidget
 public:
     explicit ResultView(QWidget *parent = 0);
 
-signals:
-
 public slots:
-    void onLogLinkActivated(const QString&);
+    void onLogLinkActivated(const QString &);
     void updateResult(quint32 error, const QString &, const QString &description);
 
 private:
@@ -48,5 +45,3 @@ private:
     QPointer<SuggestButton> m_rebootLater;
     QPointer<SuggestButton> m_rebootNow;
 };
-
-#endif // RESULTVIEW_H

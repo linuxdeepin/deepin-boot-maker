@@ -97,11 +97,10 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QCheckBox *m_formatDiskCheck = new QCheckBox(this);
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
-    m_formatDiskCheck->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
     m_formatDiskCheck->hide();
 
     QLabel *checkBoxHints = new QLabel(this);
-    checkBoxHints->setFixedHeight(34);
+    checkBoxHints->setMinimumHeight(34);
     checkBoxHints->setWordWrap(true);
     checkBoxHints->setText(tr("Formating disk can increase the making success rate"));
     checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
@@ -110,6 +109,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     checkBoxLayout->addStretch();
     checkBoxLayout->addWidget(m_formatDiskCheck);
+    checkBoxLayout->addSpacing(4);
     checkBoxLayout->addWidget(checkBoxHints);
     checkBoxLayout->addStretch();
 

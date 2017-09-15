@@ -19,8 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DROPFRAME_H
-#define DROPFRAME_H
+#pragma once
 
 #include <QFrame>
 
@@ -37,8 +36,4 @@ signals:
     void fileAboutAccept();
     void fileCancel();
     void fileDrop(const QString file);
-
-public slots:
 };
-
-#endif // DROPFRAME_H

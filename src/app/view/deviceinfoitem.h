@@ -19,8 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEVICEINFOITEM_H
-#define DEVICEINFOITEM_H
+#pragma once
 
 #include <QWidget>
 
@@ -38,18 +37,12 @@ public:
 
     void setCheck(bool flag);
 
-signals:
-
-public slots:
 
 private:
     bool checked            = false;
     QLabel *m_deviceIcon    = nullptr;
 
-    const QPixmap s_removeDevice    = QPixmap(":/theme/light/image/drive-removable-media-48px.png");
-//    const QPixmap s_harddiskDevice  = QPixmap(":/theme/light/image/drive-harddisk-48px.png");
-    const QPixmap s_selectDevice    = QPixmap(":/theme/light/image/drive-select.png");
-
+    const QPixmap s_removeDevice = QPixmap(":/theme/light/image/drive-removable-media-48px.png");
+    const QPixmap s_selectDevice = QPixmap(":/theme/light/image/drive-select.png");
 };
 
-#endif // DEVICEINFOITEM_H

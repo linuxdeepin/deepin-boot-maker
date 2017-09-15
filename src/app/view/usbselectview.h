@@ -19,8 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USBSELECTVIEW_H
-#define USBSELECTVIEW_H
+#pragma once
 
 #include <QFrame>
 
@@ -32,8 +31,4 @@ public:
 
 signals:
     void deviceSelected(const QString &partition, bool format);
-
-public slots:
 };
-
-#endif // USBSELECTVIEW_H

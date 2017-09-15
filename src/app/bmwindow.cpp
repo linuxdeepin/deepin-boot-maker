@@ -130,7 +130,6 @@ BMWindow::BMWindow(QWidget *parent)
     title->setTitle("");
     title->setIcon(QPixmap(":/theme/light/image/deepin-boot-maker.svg"));
 
-
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);

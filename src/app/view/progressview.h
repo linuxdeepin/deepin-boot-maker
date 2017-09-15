@@ -19,8 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PROGRESSVIEW_H
-#define PROGRESSVIEW_H
+#pragma once
 
 #include <QWidget>
 
@@ -33,7 +32,5 @@ public:
 signals:
     void finish(quint32 error, const QString &title, const QString &description);
     void testCancel();
-
 };
 
-#endif // PROGRESSVIEW_H
