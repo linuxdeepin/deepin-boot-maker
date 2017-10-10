@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>drive-select</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="96.4132254%" id="linearGradient-1">
+            <stop stop-color="#FFD085" offset="0%"></stop>
+            <stop stop-color="#FF9023" offset="1.94161551%"></stop>
+            <stop stop-color="#FA751E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="drive-select">
+            <image id="Bitmap" x="5" y="3" width="38" height="44" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAsCAYAAAAJpsrIAAAAAXNSR0IArs4c6QAAAOhJREFUWAntmc0KAjEMhNv1D0EPvv9DehFEKepMNdLreDA9TGB2226gH5OcsrWUUiHGAsW6HyQ8nrjzwXsJQq0hHjYoM8hBnkaXqB03UHaQgSxLlG+TTTTcT5ZKMEa837vcZ2cJoOymH63oLAE2fphibTC1DHbMjqkOqPnuMTumOqDmu8fsmOqAmu8es2OqA2q+e8yOqQ6o+e4xO6Y6oOa7x+yY6oCa7x771TFOrGeJzhKl5Gz9MAHZEQzfOf8Kmz10ggjHWXtGcJR+gc7QlYNYijCcr28/+38Pi1k+6g7doBZgWM/1y+YFz5wWiu7WQhkAAAAASUVORK5CYII="></image>
+            <path d="M7,5.00973606 C7,4.45207423 7.45492426,4 7.99914214,4 L40.0008579,4 C40.5526688,4 41,4.44252932 41,5.00973606 L41,39 L7,39 L7,5.00973606 Z" id="Rectangle-1" fill="url(#linearGradient-1)"></path>
+            <path d="M7,34.990778 C7,34.4435864 7.45492426,34 7.99914214,34 L40.0008579,34 C40.5526688,34 41,34.4509752 41,34.990778 L41,40 L7,40 L7,34.990778 Z" id="Rectangle-3" fill="#FFFFFF"></path>
+            <rect id="Rectangle-1" fill="#DCDDDD" x="7" y="38" width="34" height="6" rx="1"></rect>
+            <g id="Group" transform="translate(26.000000, 39.000000)" fill="#FF8D23">
+                <rect id="Rectangle-path" x="10.987" y="0.996" width="1" height="2"></rect>
+                <rect id="Rectangle-path" x="8.987" y="0.996" width="1" height="2"></rect>
+                <rect id="Rectangle-path" x="6.987" y="0.996" width="1" height="2"></rect>
+                <rect id="Rectangle-path" x="4.987" y="0.996" width="1" height="2"></rect>
+                <rect id="Rectangle-path" x="2.987" y="0.996" width="1" height="2"></rect>
+                <rect id="Rectangle-path" x="0.987" y="0.996" width="1" height="2"></rect>
+            </g>
+            <circle id="Oval" fill="#FF8D23" cx="12" cy="41" r="1"></circle>
+            <g id="select" transform="translate(16.000000, 12.000000)">
+                <path d="M8,-5.32907052e-14 C3.6,-5.32907052e-14 0,3.59334258 0,7.98520574 C0,12.3770689 3.6,15.9704115 8,15.9704115 C12.4,15.9704115 16,12.3770689 16,7.98520574 C16,3.59334258 12.4,-5.32907052e-14 8,-5.32907052e-14 L8,-5.32907052e-14 Z" id="select_active-copy-24" fill="#FFFFFF" fill-rule="evenodd"></path>
+                <g transform="translate(4.000000, 4.000000)" id="Path-1112" stroke-width="1.2" stroke="#303030">
+                    <polyline points="0.601182426 4.06499815 3.2576281 6.88760344 8.63650463 0"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

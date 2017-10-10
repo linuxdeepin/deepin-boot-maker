@@ -22,9 +22,11 @@
 #pragma once
 
 #include <QString>
+#include <QWidget>
 
 namespace WidgetUtil
 {
     QString getQss(const QString &className);
+    QPixmap getDpiPixmap(const QString filename, QWidget *w = Q_NULLPTR);
 }
 

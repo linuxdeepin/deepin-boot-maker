@@ -42,7 +42,7 @@ private:
     bool checked            = false;
     QLabel *m_deviceIcon    = nullptr;
 
-    const QPixmap s_removeDevice = QPixmap(":/theme/light/image/drive-removable-media-48px.png");
-    const QPixmap s_selectDevice = QPixmap(":/theme/light/image/drive-select.png");
+    QPixmap s_removeDevice;
+    QPixmap s_selectDevice;
 };
 

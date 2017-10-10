@@ -80,9 +80,6 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
-    QLabel *isoIcon = new QLabel;
-    isoIcon->setPixmap(QPixmap(":/media-optical-96px.png"));
-
     QFrame *usbDeviceListPanel = new QFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
     usbDeviceListPanel->setFixedSize(410, 320);

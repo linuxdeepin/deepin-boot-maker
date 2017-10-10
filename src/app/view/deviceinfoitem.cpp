@@ -33,6 +33,9 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
                                const QString &cap, int percent, QWidget *parent)
     : QWidget(parent)
 {
+    s_removeDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive.svg", this);
+    s_selectDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive-select.svg", this);
+
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
 
     auto mainLayout = new QHBoxLayout(this);

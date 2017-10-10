@@ -49,12 +49,12 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 
     QLabel *isoIcon = new QLabel(this);
     isoIcon->setObjectName("ISOIcon");
-    isoIcon->setPixmap(QPixmap(":/theme/light/image/media-optical-96px.png"));
     isoIcon->setFixedSize(96, 96);
+    isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
 
     QLabel *growIcon = new QLabel(this);
     growIcon->setObjectName("GrowIcon");
-    growIcon->setPixmap(QPixmap(":/theme/light/image/glow.png"));
+    growIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/glow.svg", this));
     growIcon->setFixedSize(220, 220);
     growIcon->hide();
 

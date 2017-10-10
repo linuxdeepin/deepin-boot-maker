@@ -55,7 +55,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     m_resultIcon = new QLabel();
     m_resultIcon->setObjectName("ResultIcon");
-    m_resultIcon->setPixmap(QPixmap(":/theme/light/image/success.png"));
+    m_resultIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/success.svg", this));
 
     m_hitsTitle = new QLabel();
     m_hitsTitle->setObjectName("ResulteHitsTitle");
@@ -144,7 +144,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
     }
     m_hitsTitle->setText(tr("Sorry, making failed"));
     m_title->setText(tr("Making failed"));
-    m_resultIcon->setPixmap(QPixmap(":/theme/light/image/fail.png"));
+    m_resultIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/fail.svg", this));
     m_logHits->show();
     m_rebootNow->hide();
 }

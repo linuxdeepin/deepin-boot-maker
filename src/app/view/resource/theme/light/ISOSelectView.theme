@@ -1,4 +1,4 @@
-﻿#ISOSelectView{
+#ISOSelectView{
 }
 
 #IosPanel{
@@ -6,7 +6,7 @@
 }
 
 #IosPanel[active=true] {
-    border-image: url(:/theme/light/image/dash.png);
+    border-image: url(:/theme/light/image/dash.svg);
 }
 
 #IsoFileName{
@@ -20,7 +20,7 @@
 }
 
 #IsoSpliter{
-    background-image: url(:/theme/light/image/dash_line.png);
+    background-image: url(:/theme/light/image/dash_line.svg);
 }
 
 #IsoFileSelect{
