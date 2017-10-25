@@ -44,17 +44,18 @@ DCORE_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
 
 #ifdef Q_OS_MAC
-static bool switchToRoot(QApplication &app) {
+static bool switchToRoot(QApplication &app)
+{
     QStringList allappargs = app.arguments();
     QProcess whoamip;
     whoamip.start("whoami");
     whoamip.waitForFinished();
 
-    if(QString(whoamip.readAll()).remove("\r").remove("\n") != "root") {
+    if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root") {
         QString argsconc = "";
         QString argsconcSingleQuote = "";
 
-        for(int i = 1; i < allappargs.size(); ++i) {
+        for (int i = 1; i < allappargs.size(); ++i) {
             argsconc += QString("\"%1\" ").arg(allappargs.at(i));
             argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
         }
@@ -82,14 +83,17 @@ int main(int argc, char **argv)
     DApplication::loadDXcbPlugin();
 
     DApplication app(argc, argv);
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+    app.setAttribute(Qt::AA_EnableHighDpiScaling);
     app.setOrganizationName("deepin");
     app.setApplicationName("deepin-boot-maker");
     app.setApplicationVersion("2.0.0");
     app.setTheme("light");
 
 #ifdef Q_OS_MAC
-    if(switchToRoot(app))
+    if (switchToRoot(app)) {
         exit(0);
+    }
 #endif
 
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-40} %{line:-4} %{threadid:-8} ] %{message}\n";
@@ -138,7 +142,7 @@ void loadFonts()
     preferList.append("SimHei");
     preferList.append("黑体");
 
-    foreach(QString font, preferList) {
+    foreach (QString font, preferList) {
         if (fontlist.contains(font)) {
             QFont newFont = QFont(font);
             qApp->setFont(newFont);

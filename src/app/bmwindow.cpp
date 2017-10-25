@@ -118,7 +118,7 @@ BMWindow::BMWindow(QWidget *parent)
     QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
     qApp->setProductName(tr("Deepin Boot Maker"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
-    qApp->setProductIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg").pixmap(96, 96));
+    qApp->setProductIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
     qApp->setApplicationDescription(descriptionText);
 
     auto title = titlebar();

@@ -1,0 +1,5 @@
+[clog]
+repository = "https://github.com/linuxdeepin/deepin-boot-maker"
+from-latest-tag = true
+
+changelog = "CHANGELOG.md"
