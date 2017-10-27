@@ -9,7 +9,7 @@
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>Criador de Boot</translation>
+            <translation>Deepin Boot Maker</translation>
         </message>
     </context>
 </TS>

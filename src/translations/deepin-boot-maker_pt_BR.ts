@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
-        <translation>Criador de Boot</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>
@@ -45,12 +45,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="25"/>
         <source>Please select an ISO image file</source>
-        <translation>Por favor, selecione um arquivo de imagem ISO</translation>
+        <translation>Selecione uma imagem ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="47"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Arraste um arquivo de imagem ISO e solte-o aqui</translation>
+        <translation>Arraste o arquivo de imagem ISO e solte-o aqui</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="51"/>
@@ -60,7 +60,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="63"/>
         <source>Select an ISO image file</source>
-        <translation>Selecionar um arquivo de imagem ISO</translation>
+        <translation>Selecionar o arquivo de imagem ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="81"/>
@@ -70,7 +70,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="135"/>
         <source>Reselect an ISO image file</source>
-        <translation>Selecione novamente um arquivo de imagem ISO </translation>
+        <translation>Selecione novamente o arquivo de imagem ISO</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Reboot now</source>
-        <translation>Reiniciar Agora</translation>
+        <translation>Reiniciar agora</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="31"/>

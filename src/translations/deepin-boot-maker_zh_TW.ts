@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin 安裝媒體製作器</translation>
+        <translation>Deepin 開機碟製作器</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="32"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>製作中請勿移除磁碟機或關閉電腦</translation>
+        <translation>製作期間請勿移除磁碟機或關閉電腦</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="40"/>

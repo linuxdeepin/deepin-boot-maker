@@ -14,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="47"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>مساحة القرص غير كافية: الرجاء التأكد من أن القرص يحتوي على مساحة حرة٪ 1</translation>
+        <translation>مساحة القرص غير كافية: الرجاء التأكد من أن القرص يحتوي على %1 مساحة حرة</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="49"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="51"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>مشكل في فك ضغط الصورة: يرجى التحقق من المجموع الاختباري md5 للصورة وضمان اكتمال الصورة</translation>
+        <translation>مشكلة في فك ضغط عن الصورة: يرجى التحقق من عناصر المطابقة md5 للصورة وضمان اكتمال الصورة</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="53"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/main.cpp" line="67"/>
         <source>Deepin Boot Maker</source>
-        <translation>صانع إقلاع ديبين</translation>
+        <translation>منشئ إقلاع ديبين</translation>
     </message>
 </context>
 <context>
@@ -50,12 +50,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="47"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>اسحب صورة ISO واسقطها هنا</translation>
+        <translation>اسحب صورة ISO وأسقطها هنا</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="51"/>
         <source>OR</source>
-        <translation>او</translation>
+        <translation>أو</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="63"/>
@@ -78,17 +78,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="23"/>
         <source>Making</source>
-        <translation>قيد الصنع</translation>
+        <translation>قيد الإنشاء</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="29"/>
         <source>Making the disk, please wait...</source>
-        <translation>صنع القرص٫ رجاءا انتظر...</translation>
+        <translation>يجري إنشاء القرص٫ يرجى الانتظار ...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="32"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>الرجاء عدم إزالة القرص أو إيقافه أثناء الصنع.</translation>
+        <translation>الرجاء عدم إزالة القرص أو إيقافه أثناء الإنشاء .</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="40"/>
@@ -119,7 +119,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="31"/>
         <source>Make Successfully</source>
-        <translation>تم الصنع بنجاح</translation>
+        <translation>تم الإنشاء بنجاح</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="58"/>
@@ -129,12 +129,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="101"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>الخطأ سيتم رفعه تلقائيا مع رد الفعل. لا نستطيع التحسن دون ردود الفعل وكذا الدعم</translation>
+        <translation>الخطأ سيتم رفعه تلقائيا مع الانطباعات . لا يمكننا تحسين التجربة بدون الانطباعات وكذلك الدعم</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="102"/>
         <source>Feedback</source>
-        <translation>رد الفعل</translation>
+        <translation>الانطباعات</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="116"/>
@@ -144,12 +144,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="124"/>
         <source>Sorry, making failed</source>
-        <translation>للاسف٫ فشل الصنع</translation>
+        <translation>للأسف٫ فشل الإنشاء</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="125"/>
         <source>Making failed</source>
-        <translation>فشل الصنع</translation>
+        <translation>فشل الإنشاء</translation>
     </message>
 </context>
 <context>
@@ -157,12 +157,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="59"/>
         <source>Please select a disk</source>
-        <translation>من فضلك اختر القرص</translation>
+        <translation>الرجاء تحديد القرص</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="76"/>
         <source>Formating disk can increase the making success rate</source>
-        <translation>تهيئة القرص تستطيع رفع نسبة النجاح</translation>
+        <translation>تهيئة القرص  يمكنها رفع نسبة النجاح</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="90"/>
@@ -172,7 +172,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Start making</source>
-        <translation>بداية الصنع</translation>
+        <translation>يبدأ الإنشاء</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="119"/>

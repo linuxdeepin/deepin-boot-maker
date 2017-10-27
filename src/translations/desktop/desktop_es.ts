@@ -9,7 +9,7 @@
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>Deepin Boot Maker</translation>
+            <translation>Boteador Deepin</translation>
         </message>
     </context>
 </TS>

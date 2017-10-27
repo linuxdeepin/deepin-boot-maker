@@ -4,7 +4,7 @@
         <message>
             <location filename="Desktop Entry]Comment" line="0"/>
             <source>A tool to make boot disk for Deepin OS</source>
-            <translation>Egy eszköz a Deepin OS rendszerindító lemez készítéséhez</translation>
+            <translation>Ez egy eszköz Deepin OS rendszerindító-lemez készítéséhez</translation>
         </message>
         <message>
             <location filename="Desktop Entry]Name" line="0"/>

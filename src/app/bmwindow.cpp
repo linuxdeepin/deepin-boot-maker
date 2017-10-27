@@ -114,7 +114,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
     // init about info
-    QString descriptionText = tr("Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It's easy to operate with simple interface.");
+    QString descriptionText = tr("Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.");
     QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
     qApp->setProductName(tr("Deepin Boot Maker"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
@@ -126,7 +126,8 @@ BMWindow::BMWindow(QWidget *parent)
 #ifndef Q_OS_LINUX
     flags = flags & ~Qt::WindowSystemMenuHint;
 #endif
-    title->setWindowFlags(flags);
+    setWindowFlags(flags);
+
     title->setTitle("");
     title->setIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
 

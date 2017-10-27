@@ -9,7 +9,7 @@
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>صانع إقلاع ديبين</translation>
+            <translation>منشئ إقلاع ديبين</translation>
         </message>
     </context>
 </TS>
