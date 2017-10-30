@@ -186,10 +186,10 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
-        auto flags = titlebar()->windowFlags() & ~Qt::WindowCloseButtonHint;
-        flags &= ~Qt::WindowSystemMenuHint;
-        flags &= ~Qt::WindowMaximizeButtonHint;
-        titlebar()->setWindowFlags(flags);
+        Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
+        flags |= Qt::WindowSystemMenuHint;
+        flags |= Qt::WindowMinimizeButtonHint;
+        titlebar()->setDisableFlags(flags);
         slideWidget(d->usbWidget, d->progressWidget);
         wsib->setCurrentPage(2);
         auto isoFilePath = property("bmISOFilePath").toString();
@@ -213,11 +213,7 @@ BMWindow::BMWindow(QWidget *parent)
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
-        auto flags = titlebar()->windowFlags() & ~Qt::WindowMaximizeButtonHint;
-#ifndef Q_OS_LINUX
-        flags = flags & ~Qt::WindowSystemMenuHint;
-#endif
-        titlebar()->setWindowFlags(flags);
+        titlebar()->setDisableFlags(Qt::Widget);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setCurrentPage(2);
