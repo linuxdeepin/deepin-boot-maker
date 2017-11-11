@@ -110,6 +110,11 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ISOSelectView.theme"));
 
+#ifdef Q_OS_WIN
+    m_fileLabel->hide();
+    spliter->hide();
+    m_hits->hide();
+#endif
     connect(isoPanel, &DropFrame::fileAboutAccept, this, [ = ]() {
         growIcon->show();
         auto center = isoIcon->geometry().center();
@@ -152,6 +157,7 @@ void ISOSelectView::onFileSelected(const QString &file)
 {
     QFileInfo info(file);
     m_fileLabel->setText(info.fileName());
+    m_fileLabel->show();
     m_hits->setText("");
     QString selectText = tr("Reselect an ISO image file");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);

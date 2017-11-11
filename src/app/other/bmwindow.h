@@ -22,6 +22,7 @@
 #pragma once
 
 #include <DWindow>
+#include <DMainWindow>
 #include <QScopedPointer>
 
 #define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DWindow

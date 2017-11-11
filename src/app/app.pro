@@ -71,7 +71,6 @@ mac{
 }
 
 win32{
-    message("add admin pri")
     QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
     RC_FILE += $$PWD/platform/windows/deepin-boot-maker.rc
 }
