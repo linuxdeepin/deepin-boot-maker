@@ -1,3 +1,14 @@
+<a name="2.0.4.1"></a>
+## 2.0.4.1 (2017-11-23)
+
+
+#### Bug Fixes
+
+*   update windows svg ([c8cb32a0](https://github.com/linuxdeepin/deepin-boot-maker/commit/c8cb32a0e04220473cf395541bd9d74ed5d085f6))
+*   remove windows drag hints ([c784e892](https://github.com/linuxdeepin/deepin-boot-maker/commit/c784e89215a70546e27b9df70f2437f3c2d8789c))
+
+
+
 <a name="2.0.4"></a>
 ## 2.0.4 (2017-11-06)
 
