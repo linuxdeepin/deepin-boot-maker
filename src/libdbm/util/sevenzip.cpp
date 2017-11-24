@@ -35,7 +35,7 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
 {
 #ifdef Q_OS_WIN32
     QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
-    QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll");
+    QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll", "7z.dll");
     qDebug() << sevnz << sevnzdll;
 #endif
 
