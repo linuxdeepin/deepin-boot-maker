@@ -122,11 +122,20 @@ BMWindow::BMWindow(QWidget *parent)
     qApp->setApplicationDescription(descriptionText);
 
     auto title = titlebar();
-    auto flags = title->windowFlags() & ~Qt::WindowMaximizeButtonHint;
+    auto flags = windowFlags() & ~Qt::WindowMaximizeButtonHint;
 #ifndef Q_OS_LINUX
     flags = flags & ~Qt::WindowSystemMenuHint;
 #endif
     setWindowFlags(flags);
+    // TODO: read it from parent
+#ifdef Q_OS_MAC
+    titlebar()->setWindowFlags(flags);
+
+    QPalette pal(palette());
+    pal.setColor(QPalette::Background, Qt::white);
+    setAutoFillBackground(true);
+    setPalette(pal);
+#endif
 
     title->setTitle("");
     title->setIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
@@ -135,7 +144,7 @@ BMWindow::BMWindow(QWidget *parent)
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX) || defined(Q_OS_MAC)
     auto centralWidget = new QWidget;
     centralWidget->setLayout(mainLayout);
     setCentralWidget(centralWidget);

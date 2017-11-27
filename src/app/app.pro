@@ -36,10 +36,13 @@ SOURCES += \
     bmwindow.cpp \
     main.cpp
 
-linux {
-
+unix {
 INCLUDEPATH += $$PWD/linux
 HEADERS += $$PWD/linux/bmwindow.h
+}
+
+linux {
+
 
 binary.path = $${PREFIX}/bin
 binary.files = $${OUT_PWD}/deepin-boot-maker
@@ -57,7 +60,7 @@ INSTALLS += binary desktop hicolor dman
 
 }
 
-!linux {
+win {
     INCLUDEPATH += $$PWD/other
     HEADERS += $$PWD/other/bmwindow.h
 }
