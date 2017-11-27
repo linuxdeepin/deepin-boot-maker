@@ -63,11 +63,16 @@ INSTALLS += binary desktop hicolor dman
 }
 
 mac{
+    CONFIG += app_bundle
+
     ICON = $$PWD/platform/mac/deepin-boot-maker.icns
 
-    blob.files = $$PWD/platform/mac/Contents/Resources
-    blob.path = Contents
+    blob.files = $$files($$PWD/platform/mac/Contents/Resources/*)
+    blob.path = Contents/Resources
+
     QMAKE_BUNDLE_DATA += blob
+
+    QMAKE_POST_LINK = macdeployqt deepin-boot-maker.app/ -libpath=/Users/deepin/Development/ci/usr/lib
 }
 
 win32{

@@ -49,30 +49,31 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
     }
 
     if (!app.waitForFinished(-1)) {
-        qWarning() << "Cmd Exec Failed:" << app.errorString();
+        qWarning() << "waitForFinished Failed:" << app.errorString();
         return Result(Result::Faiiled, app.errorString(), "", app.program());
     }
 
+    auto standardError = app.readAllStandardError();
+
     if (QProcess::NormalExit != app.exitStatus()) {
-        qWarning() << "Cmd Exec Failed:" << app.readAllStandardError();
-        return Result(Result::Faiiled, app.readAllStandardError(), "", app.program());
+        qWarning() << "exitStatus error:" << app.exitStatus() << standardError << app.program();
+        return Result(Result::Faiiled, standardError, "", app.program());
     }
 
     if (0 != app.exitCode()) {
-        qWarning() << "Cmd Exec Failed:" << app.readAllStandardError() << app.program();
-        return Result(Result::Faiiled, app.readAllStandardError(), "", app.program());
+        qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
+        return Result(Result::Faiiled, standardError, "", app.program());
     }
 
-    Result rest(Result::Success, app.readAllStandardError(), app.readAllStandardOutput());
+    Result rest(Result::Success, standardError, app.readAllStandardOutput());
     return rest;
 }
 
 Result SynExec(const QString &exec, const QString &param, const QString &execPipeIn)
 {
     Result ret = runApp(exec, param, execPipeIn);
-    qDebug() << exec + " " + param
-             << ret.isSuccess() << ret.errmsg()
-             << execPipeIn ;
+    qDebug() << "call:" << exec + " " + param << "with:" << execPipeIn ;
+    qDebug() << "resut:" << ret.isSuccess() << ret.errmsg();
     return ret;
 }
 

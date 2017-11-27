@@ -53,9 +53,10 @@ QString TmpFilePath(const QString &filename, const QString &distFilename)
     if (newFilename.isEmpty()) {
         newFilename = randString(filename) + ext;
     }
-    qDebug() << "create tmp file" << filename << distFilename;
-    qDebug() << "tmp filename" << newFilename << "Ext: " << ext;
-    return QDir::toNativeSeparators(QString(tmpDir + "/xsys/" + newFilename));
+    qDebug() << "request create tmp file" << filename << distFilename;
+    auto tmppath = QDir::toNativeSeparators(QString(tmpDir + "/xsys/" + newFilename));
+    qDebug() << "create tmp file" << tmppath;
+    return tmppath;
 }
 
 bool InsertFileData(const QString &filename, const QByteArray &data)

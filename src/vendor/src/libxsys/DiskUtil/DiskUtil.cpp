@@ -542,6 +542,9 @@ XSys::Result InstallSyslinux(const QString &targetDev)
     XSys::SynExec("dd", QString(" if=%1 of=%2 ").arg(tmpPbrPath).arg(
                       GetPartitionDisk(targetDev)));
     UmountDisk(targetDev);
+
+    QThread::sleep(2);
+
     return XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
 }
 

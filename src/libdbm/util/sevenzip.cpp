@@ -45,8 +45,6 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     resourceDir.cd("Resources");
     QString sevnz = resourceDir.absoluteFilePath("7z-mac");
     qDebug() << sevnz;
-
-    qDebug() << "+++++";
 #endif
 
 #ifdef Q_OS_LINUX
