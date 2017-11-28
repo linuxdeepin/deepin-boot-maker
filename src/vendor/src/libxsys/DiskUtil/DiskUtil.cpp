@@ -169,7 +169,7 @@ XSys::Result InstallSyslinux(const QString &targetDev)
 {
     // install syslinux
     XSys::SynExec("label", QString(" %1:DEEPINOS").arg(targetDev[0]));
-    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blob/syslinux/win32/syslinux.exe"));
+    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":/blob/syslinux/win32/syslinux.exe"));
     return XSys::SynExec(sysliuxPath, QString(" -i -m -a %1:").arg(targetDev[0]));
 }
 
@@ -181,22 +181,23 @@ XSys::Result InstallBootloader(const QString &targetDev)
 
     // HANDLE handle = LockDisk(targetDev);
     // fbinst format
-    QString xfbinstPath = XSys::FS::InsertTmpFile(QString(":blob/xfbinst/xfbinst.exe"));
+    QString xfbinstPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/xfbinst.exe"));
     XSys::Result ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force")
                                      .arg(xfbinstDiskName));
     if (!ret.isSuccess()) { return ret; }
 
     // install fg.cfg
-    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":blob/xfbinst/fb.cfg"));
+    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg \"%2\" ")
                   .arg(xfbinstDiskName)
                   .arg(tmpfgcfgPath));
 
-    XSys::SynExec("label", QString("%1:DEEPINOS").arg(targetDev[0]));
+    QString driverLetter = QString("%1:").arg(targetDev[0]);
+    XSys::SynExec("label", QString("%1 DEEPINOS").arg(driverLetter));
 
     // install syslinux
-    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":blob/syslinux/win32/syslinux.exe"));
-    XSys::SynExec(sysliuxPath, QString(" -i %1").arg(targetDev));
+    QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":/blob/syslinux/win32/syslinux.exe"));
+    XSys::SynExec(sysliuxPath, QString(" -i %1").arg(driverLetter));
 
     // get pbr file ldlinux.bin
     qDebug() << "dump pbr begin";
@@ -384,7 +385,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     // fbinst: format
     UmountDisk(diskDev);
-    QString xfbinstPath = XSys::FS::InsertTmpFile(":blob/xfbinst/xfbinst");
+    QString xfbinstPath = XSys::FS::InsertTmpFile(":/blob/xfbinst/xfbinst");
     ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
     if (!ret.isSuccess()) { return ret; }
 
@@ -392,7 +393,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
     if (!ret.isSuccess()) { return ret; }
 
     // fbinst: install fg.cfg
-    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":blob/xfbinst/fb.cfg"));
+    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
     UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
     if (!ret.isSuccess()) { return ret; }
@@ -559,7 +560,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     // install fg.cfg
-    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":blob/xfbinst/fb.cfg"));
+    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
     UmountDisk(targetDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
@@ -700,8 +701,8 @@ Result ConfigSyslinx(const QString &targetPath)
     // bugfix
     // TODO: we change syslinux to 6.02, but gfxboot will not work
     // so use a syslinux.cfg will not use gfxboot and vesamenu
-//    if (!XSys::FS::InsertFile(":blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
-//        return Result(Result::Faiiled, "Insert Config File Failed: :blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
+//    if (!XSys::FS::InsertFile(":/blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
+//        return Result(Result::Faiiled, "Insert Config File Failed: :/blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
 //    }
 
     return Result(Result::Success, "");
