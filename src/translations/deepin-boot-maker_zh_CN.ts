@@ -88,7 +88,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation>正在制作，请稍后...</translation>
+        <translation>正在制作，请稍候...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>

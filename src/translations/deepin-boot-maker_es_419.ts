@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1.</source>
-        <translation>Error al llamar el comando %1.</translation>
+        <translation>Fallo al llamar al comando %1.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Falla al descomprimir imagen: Compruebe la suma de comprobación md5 de la imagen y asegúrese de que la imagen esté completar</translation>
+        <translation>Image Uncompress Error: Compruebe la suma de comprobación md5 de la imagen y asegúrese de que la imagen esté completa</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation type="unfinished"/>
+        <translation>El creador de unidades de arranque deepin es una herramienta sencilla que importa imágenes ISO a CD / DVD,  USB y otros medios de instalación.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Boteador Deepin</translation>
+        <translation>Creador de unidades de arranque deepin</translation>
     </message>
 </context>
 <context>
@@ -60,7 +60,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
-        <translation>O</translation>
+        <translation>OR</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
@@ -83,12 +83,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
         <source>Making</source>
-        <translation>Creando</translation>
+        <translation>Haciendo</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation>Creando el disco, por favor espere...</translation>
+        <translation>Haciendo el disco, por favor espere...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Boteador Deepin</translation>
+        <translation>Creador de unidades de arranque deepin</translation>
     </message>
 </context>
 <context>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
-        <translation>Listo</translation>
+        <translation>Hecho</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
