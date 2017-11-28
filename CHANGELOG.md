@@ -1,3 +1,19 @@
+<a name="2.0.4.2"></a>
+## 2.0.4.2 (2017-11-28)
+
+
+#### Features
+
+*   use native window on mac ([b940476b](https://github.com/linuxdeepin/deepin-boot-maker/commit/b940476b7ff3727a10f4f6f251de12457613580a))
+
+#### Bug Fixes
+
+*   resources file path error ([290fbaec](https://github.com/linuxdeepin/deepin-boot-maker/commit/290fbaec2d0988e5f712849e5da73d70621591ae))
+*   cannot import bundle when build ([4892ad17](https://github.com/linuxdeepin/deepin-boot-maker/commit/4892ad17acfeecf21e5c9e74fb2c51e21e56e33c))
+*   can not find 7z.dll on windows ([80acf911](https://github.com/linuxdeepin/deepin-boot-maker/commit/80acf911637cbeb83c791e3095a0b29540ddc042))
+
+
+
 <a name="2.0.4.1"></a>
 ## 2.0.4.1 (2017-11-23)
 

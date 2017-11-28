@@ -37,12 +37,13 @@ SOURCES += \
     main.cpp
 
 unix {
+
 INCLUDEPATH += $$PWD/linux
 HEADERS += $$PWD/linux/bmwindow.h
+
 }
 
 linux {
-
 
 binary.path = $${PREFIX}/bin
 binary.files = $${OUT_PWD}/deepin-boot-maker
@@ -60,12 +61,14 @@ INSTALLS += binary desktop hicolor dman
 
 }
 
-win {
+win* {
     INCLUDEPATH += $$PWD/other
     HEADERS += $$PWD/other/bmwindow.h
+    QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
+    RC_FILE += $$PWD/platform/windows/deepin-boot-maker.rc
 }
 
-mac{
+mac* {
     CONFIG += app_bundle
 
     ICON = $$PWD/platform/mac/deepin-boot-maker.icns
@@ -77,10 +80,4 @@ mac{
 
     QMAKE_POST_LINK = macdeployqt deepin-boot-maker.app/ -libpath=/Users/deepin/Development/ci/usr/lib
 }
-
-win32{
-    QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
-    RC_FILE += $$PWD/platform/windows/deepin-boot-maker.rc
-}
-
 

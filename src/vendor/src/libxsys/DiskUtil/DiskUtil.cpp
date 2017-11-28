@@ -549,6 +549,13 @@ XSys::Result InstallSyslinux(const QString &targetDev)
     return XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
 }
 
+static void SureUmount(const QString& targetDev) {
+    UmountDisk(targetDev);
+    QThread::sleep(1);
+    UmountDisk(targetDev);
+    QThread::sleep(1);
+}
+
 XSys::Result InstallBootloader(const QString &diskDev)
 {
     QString targetDev = diskDev + "s1";
@@ -556,12 +563,13 @@ XSys::Result InstallBootloader(const QString &diskDev)
     // format with xfbinst
     QString xfbinstPath = Resource("xfbinst");
 
-    UmountDisk(targetDev);
+    SureUmount(targetDev);
     XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
 
     // install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
-    UmountDisk(targetDev);
+
+    SureUmount(targetDev);
     XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
 
 
@@ -570,7 +578,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
     XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
 
     // install syslinux
-    UmountDisk(targetDev);
+    SureUmount(targetDev);
 
     QString sysliuxPath = Resource("syslinux-mac");
     UmountDisk(targetDev);
