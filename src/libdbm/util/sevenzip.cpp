@@ -66,7 +66,6 @@ bool SevenZip::extract()
 
     QTemporaryFile progress;
     progress.open();
-    qDebug() << progress.fileName();
 
     QStringList args;
     args << "x" << "-y"
@@ -75,7 +74,7 @@ bool SevenZip::extract()
 #ifndef Q_OS_MAC
          << "-bsp2";
 #else
-            ;
+         ;
 #endif
 
     QStringList env = QProcess::systemEnvironment();
@@ -87,6 +86,10 @@ bool SevenZip::extract()
     qDebug() << m_sevenz.program() << m_sevenz.arguments().join(" ");
     m_sevenz.start();
     m_sevenz.waitForStarted(-1);
+
+#ifdef Q_OS_LINUX
+    QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
+#endif
 
     m_szpp->setProgressName(progress.fileName());
     m_szpp->start();
@@ -113,6 +116,11 @@ bool SevenZip::check()
 
     m_sevenz.start();
     m_sevenz.waitForStarted(-1);
+
+#ifdef Q_OS_LINUX
+    QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
+#endif
+
     m_sevenz.waitForFinished(-1);
 
     qDebug() << "check iso result" << m_sevenz.exitStatus() << m_sevenz.exitCode();
