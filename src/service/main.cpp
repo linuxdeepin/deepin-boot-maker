@@ -26,6 +26,7 @@
 
 #include "LogManager.h"
 
+#include "util/utils.h"
 #include "bootmakerservice.h"
 
 const QString BootMakerServiceName = "com.deepin.bootmaker";
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
-    Q_INIT_RESOURCE(blob);
+    Utils::initResource();
 
     QCoreApplication a(argc, argv);
     a.setOrganizationName("deepin");

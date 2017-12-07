@@ -41,6 +41,8 @@ unix {
 #    INSTALLS += target
 }
 
-RESOURCES +=  \
-    blob.qrc \
-
+linux {
+    RESOURCES += blob_linux.qrc
+} else {
+    RESOURCES += blob.qrc
+}

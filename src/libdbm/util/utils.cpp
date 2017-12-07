@@ -30,6 +30,15 @@
 #include <Windows.h>
 #endif
 
+
+static void initQRC() {
+#ifdef Q_OS_LINUX
+    Q_INIT_RESOURCE(blob_linux);
+#else
+    Q_INIT_RESOURCE(blob);
+#endif
+}
+
 namespace Utils
 {
 
@@ -301,6 +310,11 @@ QList<DeviceInfo> ListUsbDrives()
     outfile.remove();
 #endif
     return deviceList;
+}
+
+void initResource()
+{
+    initQRC();
 }
 
 }

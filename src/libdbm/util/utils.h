@@ -28,6 +28,7 @@
 namespace Utils
 {
 
+void initResource();
 void loadTranslate();
 void ClearTargetDev(const QString &targetPath);
 bool CheckInstallDisk(const QString &targetDev);

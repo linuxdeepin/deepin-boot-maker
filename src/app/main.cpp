@@ -75,7 +75,7 @@ static bool switchToRoot(QApplication &app)
 
 int main(int argc, char **argv)
 {
-    Q_INIT_RESOURCE(blob);
+    Utils::initResource();
 #if defined(STATIC_LIB)
     DWIDGET_INIT_RESOURCE();
 #endif
