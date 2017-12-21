@@ -134,7 +134,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
-        <translation type="unfinished"/>
+        <translation>تامام</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>

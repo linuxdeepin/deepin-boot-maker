@@ -9,27 +9,27 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>የ ዲስክ አቀራረብ ስህተት: እባክዎን ዲስኩን በዚህ አቀራረብ ያሰናዱ FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation type="unfinished"/>
+        <translation>በቂ ነፃ የ ዲስክ ቦታ የለም: እባክዎን እርግጠኛ ይሁኑ %1 ነፃ የ ዲስክ ቦታ እንዳለ</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation type="unfinished"/>
+        <translation>የ ዲስክ መጫ ስህተት: እባክዎን ዲስኩን እንደገና ይሰኩ ወይንም ስርአቱን እንደገና ያስነሱ እና ይሞክሩ</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation type="unfinished"/>
+        <translation>የ ምስል ማረገፍ ስህተት: እባክዎን የ md5 ጠቅላላ ድምር ይመርምሩ: የ ምስል እና እርግጠኛ ይሁኑ ምስሉ ትክክለኛ መሆኑን</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Internal Error</source>
-        <translation type="unfinished"/>
+        <translation>የ ውስጥ ስህተት</translation>
     </message>
 </context>
 <context>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation type="unfinished"/>
+        <translation>ዲፕኢን የ Boot መፍጠሪያ ቀላል መሳሪያ ነው የ ስርአት ምስል ፋይል ወደ ሲዲ/ዲቪዲ ወይንም USB አካል ለ መፍጠር እና ለ መግጠም</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Boot መፍጠሪያ</translation>
+        <translation>ዲፕኢን Boot መፍጠሪያ</translation>
     </message>
 </context>
 <context>
@@ -50,22 +50,22 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>እባክዎን ይምረጡ የ ISO ምስል ፋይል</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation type="unfinished"/>
+        <translation>ይጎትቱ የ ISO ምስል ፋይል እና እዚህ ይጣሉት</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
-        <translation type="unfinished"/>
+        <translation>ወይንም</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>ይምረጡ የ ISO ምስል ፋይል</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="156"/>
         <source>Reselect an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>እንደገና ይምረጡ የ ISO ምስል ፋይል</translation>
     </message>
 </context>
 <context>
@@ -83,17 +83,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
         <source>Making</source>
-        <translation type="unfinished"/>
+        <translation>በ መስራት ላይ</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>እባክዎን ይቆዩ: ዲስኩን በ መስራት ላይ ነው...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation type="unfinished"/>
+        <translation>እባዎን ዲስኩን አያስወግዱ ወይንም የ USB አካል ወይንም ኮምፒዩተሩን አያጥፉ ፋይል በሚጻፍ ጊዜ</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="39"/>
         <source>Removable Disk</source>
-        <translation type="unfinished"/>
+        <translation>የሚወልቅ ዲስክ</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="108"/>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Boot መፍጠሪያ</translation>
+        <translation>ዲፕኢን Boot መፍጠሪያ</translation>
     </message>
 </context>
 <context>
@@ -124,12 +124,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="86"/>
         <source>Reboot now</source>
-        <translation type="unfinished"/>
+        <translation>አሁን እንደገና ማስነሻ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Make Successfully</source>
-        <translation type="unfinished"/>
+        <translation>ተሳክቶ ተፋጽሟል</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
@@ -139,12 +139,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation type="unfinished"/>
+        <translation>የ ስህተት መግቢያ ራሱ በራሱ ይጫናል በ መልስ ውስጥ: እኛ ችግሩን ማሻሻል አንችልም ያለ እርስዎ መልስ እርዳታ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Feedback</source>
-        <translation type="unfinished"/>
+        <translation>መልስ መስጫ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, making failed</source>
-        <translation type="unfinished"/>
+        <translation>አዝናለሁ መፍጠሩ አልተሳካም </translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
         <source>Making failed</source>
-        <translation type="unfinished"/>
+        <translation>መፍጠሩ አልተሳካም </translation>
     </message>
 </context>
 <context>
@@ -167,27 +167,27 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Please select a disk</source>
-        <translation type="unfinished"/>
+        <translation>እባክዎን ዲስክ ይምረጡ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formating disk can increase the making success rate</source>
-        <translation type="unfinished"/>
+        <translation>የ ዲስክ አቀራረብ ማሰናዳት ዲስኩን ስኬታማ ያደርገዋል</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk found</source>
-        <translation type="unfinished"/>
+        <translation>ዝግጁ ዲስክ አልተገኘም</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
         <source>Start making</source>
-        <translation type="unfinished"/>
+        <translation>መፍጠር ማስጀመሪያ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation type="unfinished"/>
+        <translation>በዚህ ዲስክ ላይ ሁሉም ዳታ ይጠፋል በ አቀራረብ ማሰናጃ: እባክዎን ያረጋግጡ እና ይቀጥሉ</translation>
     </message>
 </context>
 </TS>
