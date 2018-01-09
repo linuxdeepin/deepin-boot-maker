@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>O Criador de Arranque do Deepin é uma ferramenta simples para criar uma imagem de sistema num cd/DVD, Drive USB ou qualquer outro meio de instalação</translation>
+        <translation>O Deepin Boot Maker é uma ferramenta simples para criar uma imagem de sistema num cd/DVD, Drive USB ou qualquer outro meio de instalação</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Criador de Arranque do Deepin</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Criador de Arranque do Deepin</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>

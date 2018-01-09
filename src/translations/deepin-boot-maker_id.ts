@@ -19,7 +19,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation type="unfinished"/>
+        <translation>Kesalahan Pemuatan Disk: Silakan masukan lagi disk atau mulai ulang sistem untuk mencoba lagi</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation type="unfinished"/>
+        <translation>Pembuat Boot Deepin adalah alat sederhana untuk menulis berkas citra sistem kedalam CD/DVD, drive USB dan media instalasi lainnya.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>

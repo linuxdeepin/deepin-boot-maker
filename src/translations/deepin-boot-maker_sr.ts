@@ -50,12 +50,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation>Изаберите фајл ИСО одраза</translation>
+        <translation>Изаберите датотеку ИСО одраза</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Довуците фајл ИСО одраза и спустите га овде</translation>
+        <translation>Довуците датотеку ИСО одраза и спустите је овде</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>Изаберите фајл ИСО одраза</translation>
+        <translation>Изаберите датотеку ИСО одраза</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="156"/>
         <source>Reselect an ISO image file</source>
-        <translation>Поново изаберите фајл ИСО одраза</translation>
+        <translation>Поново изаберите датотеку ИСО одраза</translation>
     </message>
 </context>
 <context>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Дипинов бут стваралац</translation>
+        <translation>Дипинов творац диска за покретање</translation>
     </message>
 </context>
 <context>
