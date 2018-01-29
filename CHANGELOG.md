@@ -1,3 +1,19 @@
+<a name="2.0.4.3"></a>
+## 2.0.4.3 (2018-01-29)
+
+
+#### Features
+
+*   full support 64bit linux ([2caee62a](https://github.com/linuxdeepin/deepin-boot-maker/commit/2caee62ab95a554f576f2f75dd17d17548da2fb4))
+*   use ionice when extract on linux ([11dca452](https://github.com/linuxdeepin/deepin-boot-maker/commit/11dca452eb0c45556c327da2d0dc1115a1d34671))
+
+#### Bug Fixes
+
+*   make titlebar transparent ([4f2434cd](https://github.com/linuxdeepin/deepin-boot-maker/commit/4f2434cdbf29072d904565c5377859a2ab7b3daf))
+*   remove none linux binary ([9060c185](https://github.com/linuxdeepin/deepin-boot-maker/commit/9060c185896f34aebc67be199a727187da22901e))
+
+
+
 <a name="2.0.4.2"></a>
 ## 2.0.4.2 (2017-11-28)
 
