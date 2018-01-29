@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
     DBMLogManager::setSystemLog(true);
     DBMLogManager::setLogFormat(m_format);
-    DBMLogManager::registerConsoleAppender();
     DBMLogManager::registerFileAppender();
+    DBMLogManager::registerConsoleAppender();
 
     qDebug() << "write log to" << DBMLogManager::getlogFilePath();
 

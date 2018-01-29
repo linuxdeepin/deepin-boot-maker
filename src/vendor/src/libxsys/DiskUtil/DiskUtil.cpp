@@ -27,7 +27,7 @@
 
 #include <QtCore>
 #include <QString>
-
+#include <QSysInfo>
 
 #ifdef Q_OS_WIN32
 #include <windows.h>
@@ -385,7 +385,14 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     // fbinst: format
     UmountDisk(diskDev);
-    QString xfbinstPath = XSys::FS::InsertTmpFile(":/blob/xfbinst/xfbinst");
+
+    QString xfbinstResource = ":/blob/xfbinst/xfbinst_x32";
+    if (QSysInfo::buildCpuArchitecture() == "x86_64") {
+        xfbinstResource = ":/blob/xfbinst/xfbinst_x64";
+    }
+    QString xfbinstPath = XSys::FS::InsertTmpFile(xfbinstResource);
+
+    qDebug() << "load" << xfbinstResource << xfbinstPath;
     ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
     if (!ret.isSuccess()) { return ret; }
 
@@ -549,7 +556,8 @@ XSys::Result InstallSyslinux(const QString &targetDev)
     return XSys::SynExec("diskutil", QString("mount %1").arg(targetDev));
 }
 
-static void SureUmount(const QString& targetDev) {
+static void SureUmount(const QString &targetDev)
+{
     UmountDisk(targetDev);
     QThread::sleep(1);
     UmountDisk(targetDev);

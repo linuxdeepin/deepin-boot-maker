@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>blob/syslinux/syslinux.cfg</file>
         <file>blob/xfbinst/fb.cfg</file>
-        <file>blob/xfbinst/xfbinst</file>
+        <file>blob/xfbinst/xfbinst_x32</file>
+        <file>blob/xfbinst/xfbinst_x64</file>
     </qresource>
 </RCC>
