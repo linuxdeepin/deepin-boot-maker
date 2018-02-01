@@ -139,7 +139,7 @@ BMWindow::BMWindow(QWidget *parent)
 
     title->setTitle("");
     title->setIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
-    title->setStyleSheet(title->styleSheet() + "Dtk--Widget--DTitlebar{background:none;}");
+    title->setBackgroundTransparent(true);
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
