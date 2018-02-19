@@ -61,4 +61,4 @@ Deepin Boot Maker is licensed under [GPLv3](LICENSE).
 
 ## Credits and references
 
-1. [UNetbootin](https://github.com/unetbootin/unetbootin): this projects is derived form unetbootin, but now there are big differences between them.
+1. [UNetbootin](https://github.com/unetbootin/unetbootin): this project is derived form unetbootin, but now there are big differences between them.
