@@ -1,3 +1,13 @@
+<a name="2.0.4.4"></a>
+## 2.0.4.4 (2018-03-07)
+
+
+#### Bug Fixes
+
+*   set titlebar background transparent ([86e2bc35](https://github.com/linuxdeepin/deepin-boot-maker/commit/86e2bc3535281b989e205729e03161508a1c0cfd))
+
+
+
 <a name="2.0.4.3"></a>
 ## 2.0.4.3 (2018-01-29)
 
