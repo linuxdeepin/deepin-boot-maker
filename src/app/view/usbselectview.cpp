@@ -99,7 +99,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QLabel *checkBoxHints = new QLabel(this);
     checkBoxHints->setMinimumHeight(34);
     checkBoxHints->setWordWrap(true);
-    checkBoxHints->setText(tr("Formating disk can increase the making success rate"));
+    checkBoxHints->setText(tr("Formatting disk can increase the making success rate"));
     checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
     checkBoxHints->setMinimumWidth(330);
     checkBoxHints->hide();
@@ -150,7 +150,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             m_warningHint->setText("");
             return;
         }
-        m_warningHint->setText(tr("The disk data will be completely  deleted by formating, please confirm and continue"));
+        m_warningHint->setText(tr("The disk data will be completely deleted by formatting, please confirm and continue"));
         this->adjustSize();
         return;
 

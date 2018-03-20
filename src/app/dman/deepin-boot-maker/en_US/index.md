@@ -35,7 +35,7 @@ There are two ways to select the image file:
 Select the making disk and click on **Start making** to complete.
 
 
-> ![tips](icon/tips.svg): Please tick the box of **Formating disk can increase the making success rate**.
+> ![tips](icon/tips.svg): Please tick the box of **Formatting disk can increase the making success rate**.
 
 ![0|drive](png/drive.png)
 
