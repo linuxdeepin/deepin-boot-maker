@@ -76,7 +76,7 @@ static bool switchToRoot(QApplication &app)
 int main(int argc, char **argv)
 {
     Utils::initResource();
-#if defined(STATIC_LIB)
+#if defined(DTK_STATIC_LIB)
     DWIDGET_INIT_RESOURCE();
 #endif
 

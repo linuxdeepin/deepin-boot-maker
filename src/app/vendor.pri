@@ -16,13 +16,7 @@ linux{
 }
 
 win32{
-    INCLUDEPATH += $$DTK_INCLUDE\DWidget
-    DEPENDPATH  += $$DTK_INCLUDE\DWidget
-    LIBS += -L$$DTK_LIBRARY -ldtkwidget
-
-    INCLUDEPATH += $$DTK_INCLUDE\DCore
-    DEPENDPATH  += $$DTK_DEPEND\DCore
-    LIBS += -L$$DTK_LIBRARY -ldtkcore
+    QT += dtkwidget
 }
 
 ##################################################################
