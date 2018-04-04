@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation type="unfinished"/>
+        <translation>Deepin Boot Maker je jednoduchý nástroj pro vypálení Systému do obrazového souboru CD/DVD, USB disku a dalších instalačních médií.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>

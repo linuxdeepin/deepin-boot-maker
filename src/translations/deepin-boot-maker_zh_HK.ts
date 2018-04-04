@@ -9,7 +9,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>硬碟格式錯誤：請用FAT32格式對硬碟進行格式化</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>

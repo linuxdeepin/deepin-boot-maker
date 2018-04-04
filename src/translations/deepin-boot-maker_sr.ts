@@ -9,12 +9,12 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Грешка формата диска: форматирајте га као ФАТ32</translation>
+        <translation>Грешка формата диска: форматирајте га као FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Недовољно слободног простора: морате имати бар %1</translation>
+        <translation>Недовољно слободног простора: морате имати најмање %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation type="unfinished"/>
+        <translation>Дипин Креатор бутабилних уређаја је једноставна алатка којом се исписује снимак документа на ЦД/ДВД, УСБ преносиви уређај и друге инсталационе медије.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -50,12 +50,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation>Изаберите датотеку ИСО одраза</translation>
+        <translation>Изаберите датотеку ИСО снимак датотеке</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Довуците датотеку ИСО одраза и спустите је овде</translation>
+        <translation>Довуците  ИСО сникам датотеке и спустите је овде</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>Изаберите датотеку ИСО одраза</translation>
+        <translation>Изаберите ISO датотеку</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="156"/>
         <source>Reselect an ISO image file</source>
-        <translation>Поново изаберите датотеку ИСО одраза</translation>
+        <translation>Поново изаберите ISO снимак датотеке.</translation>
     </message>
 </context>
 <context>
