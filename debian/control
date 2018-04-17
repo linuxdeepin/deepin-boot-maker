@@ -9,6 +9,8 @@ Build-Depends: debhelper (>= 9),
   qttools5-dev-tools,
   qtbase5-private-dev,
   libxcb-util0-dev,
+  libmtdev-dev,
+  libegl1-mesa-dev,
   libstartup-notification0-dev,
   libdtkwidget-dev
 Standards-Version: 3.9.5
