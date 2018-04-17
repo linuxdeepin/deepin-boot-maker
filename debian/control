@@ -7,6 +7,7 @@ Build-Depends: debhelper (>= 9),
   qt5-default,
   qt5-qmake,
   qttools5-dev-tools,
+  qtbase5-private-dev,
   libxcb-util0-dev,
   libstartup-notification0-dev,
   libdtkwidget-dev
