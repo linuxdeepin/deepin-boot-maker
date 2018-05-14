@@ -75,7 +75,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -111,7 +111,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation type="unfinished"></translation>
     </message>
@@ -173,7 +173,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
+        <source>Formatting disk can increase the making success rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

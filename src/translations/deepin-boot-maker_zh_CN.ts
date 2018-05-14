@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>BMHandler</name>
     <message>
@@ -73,7 +75,7 @@
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>重新选择光盘镜像文件</translation>
     </message>
@@ -109,7 +111,7 @@
         <translation>可移动磁盘</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>可移动磁盘</translation>
     </message>
@@ -170,8 +172,12 @@
         <translation>请选择磁盘</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formating disk can increase the making success rate</source>
+        <translation type="vanished">格式化磁盘可提高制作成功率</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="102"/>
+        <source>Formatting disk can increase the making success rate</source>
         <translation>格式化磁盘可提高制作成功率</translation>
     </message>
     <message>
@@ -186,8 +192,12 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
+    </message>
+    <message>
+        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <translation type="vanished">格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
     </message>
 </context>
 </TS>
