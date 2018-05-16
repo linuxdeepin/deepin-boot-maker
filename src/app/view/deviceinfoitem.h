@@ -32,11 +32,12 @@ public:
     explicit DeviceInfoItem(const QString &name,
                             const QString &device,
                             const QString &cap,
-                            int percent, QWidget *parent = 0);
-    explicit DeviceInfoItem(QWidget *parent = 0);
+                            int percent, QWidget *parent = Q_NULLPTR);
+    explicit DeviceInfoItem(QWidget *parent = Q_NULLPTR);
 
     void setCheck(bool flag);
-
+    bool needFormat() const;
+    void setNeedFormat(bool format);
 
 private:
     bool checked            = false;

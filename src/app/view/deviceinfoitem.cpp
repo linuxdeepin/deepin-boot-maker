@@ -76,15 +76,26 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     setFixedSize(390, 60);
 
+    setProperty("needformat", false);
 }
 
 DeviceInfoItem::DeviceInfoItem(QWidget *parent) :
     DeviceInfoItem("Remove Device", "NULL", "0/0G", 0, parent)
 {
-
+    setProperty("needformat", false);
 }
 
 void DeviceInfoItem::setCheck(bool flag)
 {
     m_deviceIcon->setPixmap(flag ? s_selectDevice : s_removeDevice);
+}
+
+bool DeviceInfoItem::needFormat() const
+{
+    return property("needformat").toBool();
+}
+
+void DeviceInfoItem::setNeedFormat(bool format)
+{
+    setProperty("needformat", format);
 }

@@ -106,12 +106,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>可移动磁盘</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="117"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>可移动磁盘</translation>
     </message>
@@ -172,10 +172,6 @@
         <translation>请选择磁盘</translation>
     </message>
     <message>
-        <source>Formating disk can increase the making success rate</source>
-        <translation type="vanished">格式化磁盘可提高制作成功率</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
         <translation>格式化磁盘可提高制作成功率</translation>
@@ -196,8 +192,24 @@
         <translation>格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
     </message>
     <message>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation type="vanished">格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>格式化U盘</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>格式化U盘将丢失U盘上所有资料，请做好备份后点“确定”按钮。</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>确定</translation>
     </message>
 </context>
 </TS>

@@ -77,4 +77,47 @@ Result SynExec(const QString &exec, const QString &param, const QString &execPip
     return ret;
 }
 
+static Result runApp(const QString &execPath, const QStringList &args)
+{
+//   QString outPipePath = FS::TmpFilePath("pipeOut");
+    QProcess app;
+    app.setProgram(execPath);
+    app.setArguments(args);
+    app.start();
+
+    if (!app.waitForStarted()) {
+        qWarning() << "Cmd Exec Failed:" << app.errorString();
+        return Result(Result::Faiiled, app.errorString(), "", app.program());
+    }
+
+    if (!app.waitForFinished(-1)) {
+        qWarning() << "waitForFinished Failed:" << app.errorString();
+        return Result(Result::Faiiled, app.errorString(), "", app.program());
+    }
+
+    auto standardError = app.readAllStandardError();
+
+    if (QProcess::NormalExit != app.exitStatus()) {
+        qWarning() << "exitStatus error:" << app.exitStatus() << standardError << app.program();
+        return Result(Result::Faiiled, standardError, "", app.program());
+    }
+
+    if (0 != app.exitCode()) {
+        qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
+        return Result(Result::Faiiled, standardError, "", app.program());
+    }
+
+    Result rest(Result::Success, standardError, app.readAllStandardOutput());
+    return rest;
+}
+
+Result SynExec(const QString &exec, const QStringList &args)
+{
+    Result ret = runApp(exec, args);
+    qDebug() << "call:" << exec << args ;
+    qDebug() << "resut:" << ret.isSuccess() << ret.errmsg();
+    return ret;
+}
+
+
 }
