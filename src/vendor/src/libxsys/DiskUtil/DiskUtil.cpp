@@ -264,7 +264,7 @@ const QString MountPoint(const QString &targetDev)
     */
     XSys::Result ret = XSys::SynExec("df", "");
     if (!ret.isSuccess()) {
-        return "";
+        qWarning() << "call df failed" << ret.result();
     }
     QStringList mounts = ret.result().split("\n").filter(targetDev);
     if (0 == mounts.size()) {
