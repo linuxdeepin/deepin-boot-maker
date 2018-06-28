@@ -54,10 +54,7 @@ desktop.files = $$PWD/platform/linux/deepin-boot-maker.desktop
 hicolor.path =  $${PREFIX}/share/icons/hicolor/scalable/apps
 hicolor.files = $$PWD/view/resource/theme/light/image/deepin-boot-maker.svg
 
-dman.path = /usr/share/dman/
-dman.files = $$PWD/dman/*
-
-INSTALLS += binary desktop hicolor dman
+INSTALLS += binary desktop hicolor
 
 }
 
