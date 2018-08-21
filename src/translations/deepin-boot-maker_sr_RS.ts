@@ -73,7 +73,7 @@
         <translation>Даље.</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Одаберите поново ИСО снимак.</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Уклониви диск</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Уклониви диск</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Форматирање диска може да повећа успешност прављења.</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Форматирање диска може повећати проценат успешности</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Приликом форматирања диска комплетан садржај ће бити обрисан, молимо Вас да одобрите брисање и наставите даље</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Подаци на диску ће бити обрисани ако форматирате, молимо потврдите за наставак</translation>
     </message>
 </context>
 </TS>

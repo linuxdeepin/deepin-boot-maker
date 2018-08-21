@@ -9,7 +9,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Kelasahan Format Disk: Silahkan format disk dengan FAT32</translation>
+        <translation>Kesalahan Format Disk: Silahkan format disk dengan FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
@@ -73,7 +73,7 @@
         <translation>Selanjutnya</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Silakan pilih kembali sebuah berkas iso</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Disk yang dapat dilepas</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Penyimpanan removable</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Memformat disk dapat meningkatkan tingkat keberhasilan</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Data pada disk akan seluruhnya dihapus oleh pemformatan, silakan setujui dan lanjutkan</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Keseluruhan data dalam disk akan terformat, silakan konfirmasi dan lanjutkan</translation>
     </message>
 </context>
 </TS>

@@ -9,27 +9,27 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Disk Biçimi Hatası: Lütfen diski FAT32 ile formatlayın</translation>
+        <translation>Disk Biçimi Hatası: Lütfen diski FAT32 olarak biçimlendirin</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Yetersiz Disk Alanı: Lütfen diskte %1 boş alan olduğundan emin olunuz</translation>
+        <translation>Disk Alanı Yetersiz: Lütfen diskte %1 boş alan bulunduundan emin olun</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Disk Bağlama Hatası: Lütfen tekrar takınız veya yeniden denemek için sistemi yeniden başlatınız.</translation>
+        <translation>Disk Bağlama Hatası: Lütfen diski yeniden takın ya da yeniden denemek için sistemi yeniden başlatın.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Resim Sıkıştırma Hatası: Lütfen imajın md5 sağlamasını kontrol ediniz ve görüntünün tamamlandığından emin olunuz</translation>
+        <translation>Kalıp Sıkıştırma Hatası: Lütfen kalıbın md5 sağlamasını denetleyin ve kalıp dosyasının tam olarak indirilmiş olduğundan emin olun</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Internal Error</source>
-        <translation>İçsel Hata</translation>
+        <translation>İç Hata</translation>
     </message>
 </context>
 <context>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>Deepin Önyükleme Oluşturucu CD / DVD, USB sürücü ve diğer yükleme ortamlarına sistem görüntü dosyası yazmak için basit bir araçtır.</translation>
+        <translation>Deepin Ön Yükleme Oluşturucu, sistem kalıp dosyasını CD/DVD, USB sürücü ve diğer kurulum ortamlarına yazılmasını sağlayan basit bir araçtır.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Önyükleme Oluşturucu</translation>
+        <translation>Deepin Ön Yükleme Oluşturucu</translation>
     </message>
 </context>
 <context>
@@ -50,22 +50,22 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation>Lütfen bir ISO imajını seçiniz</translation>
+        <translation>Lütfen bir ISO kalıp dosyası seçin</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Bir ISO görüntü dosyasını sürükleyerek ve buraya bırakınız</translation>
+        <translation>Bir ISO kalıp dosyasını sürükleyip buraya bırakın</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
-        <translation>VEYA</translation>
+        <translation>YA DA</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>Bir ISO imajı seçiniz</translation>
+        <translation>Bir ISO kalıp dosyası seçin</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -73,9 +73,9 @@
         <translation>Sonraki</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
-        <translation>Bir ISO imajını yeniden seçiniz</translation>
+        <translation>Yeniden bir ISO kalıbı seçin</translation>
     </message>
 </context>
 <context>
@@ -88,17 +88,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation>Disk hazırlanırken, lütfen bekleyiniz...</translation>
+        <translation>Disk hazırlanıyor, lütfen bekleyin...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Lütfen diski çıkarmayın ya da yaparken bilgisayarı kapatmayınız.</translation>
+        <translation>Lütfen diski çıkarmayın ya da hazırlama işlemi sırasında bilgisayarı kapatmayın.</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Cancel</source>
-        <translation>İptal et</translation>
+        <translation>İptal</translation>
     </message>
 </context>
 <context>
@@ -109,14 +109,14 @@
         <translation>Çıkarılabilir disk</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Çıkarılabilir disk</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Önyükleme Yapıcı</translation>
+        <translation>Deepin Ön Yükleme Oluşturucu</translation>
     </message>
 </context>
 <context>
@@ -129,7 +129,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Make Successfully</source>
-        <translation>Başarıyla Yapıldı</translation>
+        <translation>Hazırlık</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
@@ -139,7 +139,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>Hata günlüğü geri bildirimle birlikte otomatik olarak yüklenecektir. Geri bildirim ve desteğiniz olmadan geliştiremeyiz.</translation>
+        <translation>Hata günlüğü geri bildirimle birlikte otomatik olarak yüklenecek. Geri bildirim ve desteğiniz olmadan ürünümüzü geliştiremeyiz.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, making failed</source>
-        <translation>Maalesef, başarısız</translation>
+        <translation>Maalesef, hazırlık tamamlanamadı</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
         <source>Making failed</source>
-        <translation>Yapma başarısız oldu</translation>
+        <translation>Hazırlık tamamlanamadı</translation>
     </message>
 </context>
 <context>
@@ -167,27 +167,27 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Please select a disk</source>
-        <translation>Lütfen bir disk seçiniz</translation>
+        <translation>Lütfen bir disk seçin</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Biçimlendirme diskin başarı oranını artırır</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Diski biçimlendirmek işlemin başarılı olma oranını arttırır.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk found</source>
-        <translation>Kullanılabilir disk bulunamadı</translation>
+        <translation>Kullanılabilecek bir disk bulunamadı</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
         <source>Start making</source>
-        <translation>Yapmaya başla</translation>
+        <translation>Hazırlığı başlat</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Disk verileri biçimlendirilerek tamamen silinecek, lütfen onaylayarak devam ediniz</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Biçimlendirme işlemi disk üzerindeki tüm verileri silecek, lütfen devam etmek için onaylayın</translation>
     </message>
 </context>
 </TS>

@@ -73,7 +73,7 @@
         <translation>Další</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Vybrat soubor s obrazem ISO znovu</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Vyměnitelný disk</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Vyměnitelný disk</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Zformátování disku může zvýšit míru úspěšnosti udělání</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Formátování disku může zvýšit úspěšnost</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Data na disku budou formátováním zcela smazána. Potvrďte, prosím, a pokračujte</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Data na disku budou zcela vymazána formátováním, potvrďte a pokračujte</translation>
     </message>
 </context>
 </TS>

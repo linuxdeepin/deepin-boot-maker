@@ -73,7 +73,7 @@
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>重新選擇 ISO 檔案</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>卸除式磁碟機</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>卸除式磁碟機</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>格式化磁碟機能提高製作成功率</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>格式化會清除磁碟機的所有資料，請確認後再繼續</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

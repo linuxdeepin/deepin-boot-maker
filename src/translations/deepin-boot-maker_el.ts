@@ -9,17 +9,17 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>Σφάλμα Διαμόρφωσης Δίσκου: Παρακαλώ διαμορφώστε το δίσκο με FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation type="unfinished"/>
+        <translation>Ανεπαρκής χώρος στο δίσκο: Παρακαλούμε βεβαιωθείτε ότι ο δίσκος έχει %1 ελεύθερο χώρο</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation type="unfinished"/>
+        <translation>Σφάλμα σύνδεσης δίσκου: Συνδέστε ξανά το δίσκο ή επανεκκινήστε το σύστημα για να προσπαθήσετε ξανά</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Internal Error</source>
-        <translation type="unfinished"/>
+        <translation>Εσωτερικό Σφάλμα</translation>
     </message>
 </context>
 <context>
@@ -50,22 +50,22 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>Παρακαλώ επιλέξτε ένα ISO αρχείο</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation type="unfinished"/>
+        <translation>Σύρετε ένα ISO αρχείο και ρίξτε το εδώ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
-        <translation type="unfinished"/>
+        <translation>OR</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>Επιλέξτε ένα ISO αρχείο</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -73,9 +73,9 @@
         <translation>Επόμενο</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>Επανεπιλέξτε ένα ISO αρχείο</translation>
     </message>
 </context>
 <context>
@@ -83,17 +83,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
         <source>Making</source>
-        <translation type="unfinished"/>
+        <translation>Δημιουργία</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>Δημιουργία του δίσκου, παρακαλώ περιμένετε...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation type="unfinished"/>
+        <translation>Παρακαλούμε μην αφαιρέσετε το δίσκο ή σβήσετε ον υπολογιστή όσο δημιουργεί</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -106,10 +106,10 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="39"/>
         <source>Removable Disk</source>
-        <translation type="unfinished"/>
+        <translation>Αφαιρούμενος δίσκος</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Αφαιρούμενος δίσκος</translation>
     </message>
@@ -124,12 +124,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="86"/>
         <source>Reboot now</source>
-        <translation type="unfinished"/>
+        <translation>Επανεκκίνηση Τώρα</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Make Successfully</source>
-        <translation type="unfinished"/>
+        <translation>Επιτυχής Δημιουργία</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, making failed</source>
-        <translation type="unfinished"/>
+        <translation>Λυπούμαστε, αποτυχία δημιουργίας</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
         <source>Making failed</source>
-        <translation type="unfinished"/>
+        <translation>Αποτυχία δημιουργίας</translation>
     </message>
 </context>
 <context>
@@ -167,26 +167,26 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Please select a disk</source>
-        <translation type="unfinished"/>
+        <translation>Παρακαλούμε επιλέξτε ένα δίσκο</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
+        <source>Formatting disk can increase the making success rate</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk found</source>
-        <translation type="unfinished"/>
+        <translation>Δεν βρέθηκε διαθέσιμος δίσκος</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
         <source>Start making</source>
-        <translation type="unfinished"/>
+        <translation>Εκκίνηση δημιουργίας</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation type="unfinished"/>
     </message>
 </context>

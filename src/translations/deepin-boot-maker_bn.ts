@@ -73,7 +73,7 @@
         <translation>পরবর্তী</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>পুনরায় একটি ISO ফাইল নির্বাচন করুন</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>অপসারণযোগ্য ডিস্ক</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>অপসারণযোগ্য ডিস্ক</translation>
     </message>
@@ -171,7 +171,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
+        <source>Formatting disk can increase the making success rate</source>
         <translation>ডিস্কটি ফরম্যাট করলে তৈরী করার সফলতার হার বাড়তে পারে</translation>
     </message>
     <message>
@@ -186,7 +186,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>ফরম্যাটের মাধ্যমে এই ডিস্কটির সকল ডাটা সম্পূর্ণ মুছে যাবে, দয়াকরে নিশ্চিত করুন এবং সামনে বাড়ান</translation>
     </message>
 </context>

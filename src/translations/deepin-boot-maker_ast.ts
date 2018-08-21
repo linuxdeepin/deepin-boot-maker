@@ -73,7 +73,7 @@
         <translation>Siguiente</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Volvi esbillar un ficheru d&apos;imaxe ISO</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Discu estrayible</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Discu estrayible</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Formatiar el discu pue aumentar les posibilidaes d&apos;ésitu</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Formatiar el discu pue aumentar la tasa d&apos;ésitu na creación</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Los datos del discu desaniciaránse dafechu pol formatéu. Confirma y sigui, por favor</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Formatiar el discu va desaniciar dafechu los datos nelli, confima y sigui</translation>
     </message>
 </context>
 </TS>

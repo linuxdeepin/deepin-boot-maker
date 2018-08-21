@@ -4,12 +4,12 @@
         <message>
             <location filename="Desktop Entry]Comment" line="0"/>
             <source>A tool to make boot disk for Deepin OS</source>
-            <translation>Алат за прављење диска за покретање Дипин ОС</translation>
+            <translation>Алат за прављење диска за покретање Дипин ОС-а</translation>
         </message>
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>Дипинов творац диска за покретање</translation>
+            <translation>Дипинов Творац Покретача</translation>
         </message>
     </context>
 </TS>

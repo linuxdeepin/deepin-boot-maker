@@ -4,12 +4,12 @@
         <message>
             <location filename="Desktop Entry]Comment" line="0"/>
             <source>A tool to make boot disk for Deepin OS</source>
-            <translation> Deepin OS&apos;u önyüklenebilir disk yapmak için bir araç </translation>
+            <translation>Deepin İşletim Sistemi için ön yükleme diski oluşturma aracı</translation>
         </message>
         <message>
             <location filename="Desktop Entry]Name" line="0"/>
             <source>Deepin Boot Maker</source>
-            <translation>Deepin Önyükleme Oluşturucu</translation>
+            <translation>Deepin Ön Yükleme Oluşturucu</translation>
         </message>
     </context>
 </TS>

@@ -73,7 +73,7 @@
         <translation>Kitas</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Iš naujo pasirinkti ISO atvaizdžio failą</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Keičiamasis diskas</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Keičiamasis diskas</translation>
     </message>
@@ -171,7 +171,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
+        <source>Formatting disk can increase the making success rate</source>
         <translation>Disko formatavimas gali padidinti sėkmingo kūrimo tikimybę</translation>
     </message>
     <message>
@@ -186,7 +186,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>Formatuojant, disko duomenys bus pilnai ištrinti, prašome patvirtinti ir tęsti</translation>
     </message>
 </context>

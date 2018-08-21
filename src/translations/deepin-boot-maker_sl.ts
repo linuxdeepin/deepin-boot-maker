@@ -73,7 +73,7 @@
         <translation>Naslednji</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Ponovno izberite slikovno datoteko ISO</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Izmenljivi pogon</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Izmenljivi pogon</translation>
     </message>
@@ -171,7 +171,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
+        <source>Formatting disk can increase the making success rate</source>
         <translation>Formatiranje diska lahko poveča uspešnost izdelave</translation>
     </message>
     <message>
@@ -186,7 +186,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>Formatiranje bo pobrisalo podatke na disku, prosim potrdite in nadaljujte</translation>
     </message>
 </context>

@@ -73,7 +73,7 @@
         <translation>Næste</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Vælg en ISO-aftryksfil igen</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Flytbar disk</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Flytbar disk</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Diskformating kan øge succesraten for oprettelsen</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Formatering af disk kan øge succesraten for skabelse</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Diskdataene vil blive fuldstændig slettet ved formatering, bekræft venligst og fortsæt</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Diskens data slettes fuldstændigt ved formatering. Bekræft venligst og fortsæt</translation>
     </message>
 </context>
 </TS>

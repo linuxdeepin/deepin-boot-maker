@@ -73,7 +73,7 @@
         <translation>Suivant</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Sélectionner une autre image ISO</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Périphérique amovible</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Périphérique amovible</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Formater la clé augmente le taux de réussite de la gravure </translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Le formatage du disque peut augmenter le taux de réussite de la gravure</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Les données du périphérique seront effacées par le formatage, veuillez confirmer afin de continuer</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Les données du disque seront complètement effacées par formatage, veuillez confirmer et continuer</translation>
     </message>
 </context>
 </TS>

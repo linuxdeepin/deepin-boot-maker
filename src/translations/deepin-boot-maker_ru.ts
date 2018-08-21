@@ -73,7 +73,7 @@
         <translation>Следующий</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Повторно выберите файл образа ISO</translation>
     </message>
@@ -109,7 +109,7 @@
         <translation>Съемный диск</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="117"/>
         <source>Removable disk</source>
         <translation>Съемный диск</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Форматирование диска может улучшить результат</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Форматирование диска может повысить вероятность успеха</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Данные диска будут полностью удалены форматированием, пожалуйста, подтвердите и продолжите</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Данные с диска будут полностью удалены форматированием, пожалуйста, подтвердите и продолжите</translation>
     </message>
 </context>
 </TS>
