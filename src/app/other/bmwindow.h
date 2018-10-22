@@ -21,14 +21,13 @@
 
 #pragma once
 
-#include <DWindow>
-#include <DMainWindow>
+#include <dborderlesswindow.h>
 #include <QScopedPointer>
 
-#define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DWindow
+#define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DBorderlessWindow
 
 class BMWindowPrivate;
-class BMWindow: public DTK_WIDGET_NAMESPACE::DWindow
+class BMWindow: public DTK_WIDGET_NAMESPACE::DBorderlessWindow
 {
     Q_OBJECT
 public:
