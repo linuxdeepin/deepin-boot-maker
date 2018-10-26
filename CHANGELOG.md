@@ -1,3 +1,17 @@
+<a name="2.0.4.6"></a>
+## 2.0.4.6 (2018-10-26)
+
+
+#### Bug Fixes
+
+*   df failed ([7db87883](https://github.com/linuxdeepin/deepin-boot-maker/commit/7db87883a501cf0f0ca515b95f972e24902868a6))
+
+#### Features
+
+*   support list disk ([d6a80d67](https://github.com/linuxdeepin/deepin-boot-maker/commit/d6a80d67f88bee2aaf17ef720761c9417a6057ec))
+
+
+
 <a name="2.0.4.4"></a>
 ## 2.0.4.5 (2018-03-07)
 ## 2.0.4.4 (2018-03-07)
