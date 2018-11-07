@@ -1,3 +1,13 @@
+<a name="2.0.4.7"></a>
+## 2.0.4.7 (2018-11-07)
+
+
+#### Bug Fixes
+
+*   error icon ([feda6f75](https://github.com/linuxdeepin/deepin-boot-maker/commit/feda6f75690bfe082975c088f3ef22fdbae0f2d3))
+
+
+
 <a name="2.0.4.6"></a>
 ## 2.0.4.6 (2018-10-26)
 
