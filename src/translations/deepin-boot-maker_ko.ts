@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="117"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>이동식 디스크</translation>
     </message>
@@ -188,6 +188,26 @@
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>USB 플래시 드라이브 포맷</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>포맷 시 모든 데이터가 삭제됩니다. 먼저 백업을 한 뒤 확인 버튼을 누르세요.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>취소</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>Ok</translation>
     </message>
 </context>
 </TS>

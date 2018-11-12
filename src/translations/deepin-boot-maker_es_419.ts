@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>Disco extraible</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="117"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Disco extraíble</translation>
     </message>
@@ -188,6 +188,26 @@
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>Formatear memoria USB</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>Toda su información se perderá durante la operación, por favor haga una copia de respaldo de sus datos antes de proceder y luego presione el botón Aceptar.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>Aceptar</translation>
     </message>
 </context>
 </TS>

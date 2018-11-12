@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>Eltávolítható lemez</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="117"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Eltávolítható lemez</translation>
     </message>
@@ -188,6 +188,26 @@
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>A lemez formázásra kerül. Erősítsük meg a törlést majd menjünk tovább</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>USB meghajtó formázása</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>A formázás során az összes adat megsemmisül, a folytatás előtt kérem mentse őket és kattintson az OK gombra.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>Mégse</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>Ok</translation>
     </message>
 </context>
 </TS>

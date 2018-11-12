@@ -105,12 +105,12 @@ Localizzazione italiana a cura di Massimo A. Carofano.</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>Disco rimobibile</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="117"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Disco rimobibile</translation>
     </message>
@@ -190,6 +190,26 @@ Non possiamo migliorarci senza le tue segnalazioni ed il tuo supporto</translati
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>I dati sul disco saranno eliminati dalla formattazione, conferma per continuare</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>Formatta unità USB</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>Tutti i dati saranno persi con la formattazione, fai un backup e poi premi OK.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>Annulla</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>Ok</translation>
     </message>
 </context>
 </TS>

@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>Izmenljivi pogon</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="117"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Izmenljivi pogon</translation>
     </message>
@@ -188,6 +188,26 @@
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
         <translation>Formatiranje bo pobrisalo podatke na disku, prosim potrdite in nadaljujte</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>Formatiraj pogon USB</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>Med formatiranjem bodo izbrisani vsi podatki, zato prosim, da najprej ustvarite varnostne kopije in šele potem pritisnete gumb &quot;V redu&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>Prekliči</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>V redu</translation>
     </message>
 </context>
 </TS>
