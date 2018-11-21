@@ -144,7 +144,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Feedback</source>
-        <translation type="unfinished"/>
+        <translation>フィードバック</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>

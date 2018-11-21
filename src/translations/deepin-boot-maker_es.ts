@@ -197,7 +197,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Todos los datos se perderán durante el formateo, por favor respalde sus datos y presione el botón OK</translation>
+        <translation>Todos los datos se perderán durante el formateo, por favor respaldelos presione, Aceptar</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
@@ -207,7 +207,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="235"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>Aceptar</translation>
     </message>
 </context>
 </TS>

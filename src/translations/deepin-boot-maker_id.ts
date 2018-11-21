@@ -172,7 +172,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation type="unfinished"/>
+        <translation>Memformat disk dapat meningkatkan keberhasilan</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>

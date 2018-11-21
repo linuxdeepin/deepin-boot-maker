@@ -197,7 +197,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Biçimlendirme sırasında tüm veriler kaybolacak, lütfen önceden yedekleyin ve ardından OK düğmesine basın.</translation>
+        <translation>Biçimlendirme sırasında sürücüdeki tüm veriler silinir. Veriler önemli ise bu işlemi başlatmadan önce USB flash sürücünün yedeğini alın ve ardından Tamam düğmesine basın.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

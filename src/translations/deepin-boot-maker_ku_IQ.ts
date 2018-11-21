@@ -70,7 +70,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
         <source>Next</source>
-        <translation type="unfinished"/>
+        <translation>Pêşve</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>

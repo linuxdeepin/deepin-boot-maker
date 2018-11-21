@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1.</source>
-        <translation>無法使用 %1 命令。</translation>
+        <translation>執行 %1 命令失敗。</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -139,12 +139,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>回報會自動上傳錯誤紀錄。沒有你的回饋與支持我們無法進步</translation>
+        <translation>意見回應將會自動上傳錯誤紀錄。沒有你的意見回應與支持，我們無法進步</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Feedback</source>
-        <translation>回報</translation>
+        <translation>意見回應</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -172,7 +172,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation type="unfinished"/>
+        <translation>格式化磁碟可以提高製作成功率</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -187,17 +187,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation type="unfinished"/>
+        <translation>格式化將完全刪除硬碟資料，請確認後繼續</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation>Format USB flash drive</translation>
+        <translation>格式化 USB 磁碟機</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>All data will be lost during formatting, please back up in advance and then press OK button.</translation>
+        <translation>格式化將會刪除所有資料，請提前備份並按下「確認」按鈕。</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
@@ -207,7 +207,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="235"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>確認</translation>
     </message>
 </context>
 </TS>

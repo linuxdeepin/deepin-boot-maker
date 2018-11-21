@@ -199,7 +199,7 @@ Non possiamo migliorarci senza le tue segnalazioni ed il tuo supporto</translati
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Tutti i dati saranno persi con la formattazione, fai un backup e poi premi OK.</translation>
+        <translation>Tutti i dati saranno persi con la formattazione, effettua un backup e poi premi OK.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

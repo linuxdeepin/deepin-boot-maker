@@ -192,12 +192,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation type="unfinished"/>
+        <translation>Formata la memòria USB</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation type="unfinished"/>
+        <translation>Durant la formatació se&apos;n perdran totes les dades. Si us plau, feu-ne una còpia de seguretat i després premeu el botó de D&apos;acord.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

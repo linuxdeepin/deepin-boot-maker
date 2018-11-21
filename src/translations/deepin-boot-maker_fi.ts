@@ -172,7 +172,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation type="unfinished"/>
+        <translation>Levyn alustaminen voi lisätä onnistumisprosenttia</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -187,7 +187,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation type="unfinished"/>
+        <translation>Alustaminen poistaa kaikki levyn tiedot, ole hyvä ja vahvista jatkaaksesi</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>

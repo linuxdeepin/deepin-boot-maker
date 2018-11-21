@@ -192,12 +192,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation type="unfinished"/>
+        <translation>Форматирај УСБ диск</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation type="unfinished"/>
+        <translation>Сви подаци ће бити изгубљени током форматирања, молимо унапред направите резерву па притисните &quot;У реду&quot;.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

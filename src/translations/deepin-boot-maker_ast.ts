@@ -4,27 +4,27 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1.</source>
-        <translation>Fallu al llamar al comandu %1</translation>
+        <translation>Fallu al llamar al comandu %1.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Fallu de formatu del discu: Formatia&apos;l discu con FAT32, por favor</translation>
+        <translation>Fallu del formatéu del discu: Formatia&apos;l discu con FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Espaciu insuficiente en discu: Asegúrate que&apos;l discu tien %1 d&apos;espaciu llibre</translation>
+        <translation>Nun hai abondu espaciu nel discu. Asegúrate que tenga %1 d&apos;espaciu llibre</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Fallu de montaxe del discu: Volvi enchufar el discu o reancia&apos;l sistema pa retentar</translation>
+        <translation>Fallu del montaxe del discu: Volvi enchufar el discu o reancia&apos;l sistema pa retentalo</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Fallu de descompresión d&apos;imaxe: Comprueba que la suma de verificación D5 de la imaxe y asegúrate de que la imaxe nun tea toyida</translation>
+        <translation>Fallu de la descompresión de la imaxe: Comprueba la suma de verificación MD5 de la imaxe y asegúrate que nun tea toyida</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>Deepin Boot Maker ye una ferramienta cenciella pa escribi fichero d&apos;imáxenes del sistema en CD/DVD, unidaes USB y otros medios d&apos;instalación.</translation>
+        <translation>Deepin Boot Maker ye una ferramienta cenciella pa escribir imáxenes de discu en unidaes d&apos;USB o CD/DVD, y otros medios d&apos;instalación.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -50,12 +50,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation>Esbilla un fichero d&apos;imaxe ISO, por favor</translation>
+        <translation>Esbilla d&apos;un ficheru n&apos;ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Arrastra una imaxe ISO y suéltala equí</translation>
+        <translation>Arrastra un ficheru n&apos;ISO y suéltalu equí</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
@@ -65,7 +65,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>Esbilla un ficheru d&apos;imaxe ISO</translation>
+        <translation>Esbilla un ficheru n&apos;ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
-        <translation>Volvi esbillar un ficheru d&apos;imaxe ISO</translation>
+        <translation>Esbillar otru ficheru n&apos;ISO</translation>
     </message>
 </context>
 <context>
@@ -83,17 +83,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
         <source>Making</source>
-        <translation>Creando</translation>
+        <translation>Creación</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation>Creando&apos;l discu, espera por favor...</translation>
+        <translation>Creando&apos;l discu, espera...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Nun estraigas el discu o apgaues l&apos;ordenador na creación</translation>
+        <translation>Nun estrayas el discu o apagues l&apos;ordenador na creación</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -129,7 +129,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Make Successfully</source>
-        <translation>Creación completada</translation>
+        <translation>La creación tuvo ésitu</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
@@ -139,12 +139,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>El rexistru de fallos anovóse col to feedback. Nun podemos ameyorar ensin los tos comentarios y sofitu</translation>
+        <translation>El rexistru de fallos va unviase automáticamente xunto colos comentarios. Nun podemos ameyorar ensin les suxerencies y el sofitu de to</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Feedback</source>
-        <translation>Feedback</translation>
+        <translation>Comentarios</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -154,7 +154,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, making failed</source>
-        <translation>Perdón, falló la creación</translation>
+        <translation>Perdona pero falló la creación</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
@@ -167,37 +167,37 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Please select a disk</source>
-        <translation>Esbilla un discu, por favor</translation>
+        <translation>Esbilla d&apos;un discu</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation>Formatiar el discu pue aumentar la tasa d&apos;ésitu na creación</translation>
+        <translation>Formatiar el discu (pue aumentar la tasa d&apos;ésitu na creación)</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk found</source>
-        <translation>Nun s&apos;alcontró un discu disponible</translation>
+        <translation>Nun s&apos;alcontraron discos disponibles</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
         <source>Start making</source>
-        <translation>Aniciar creación</translation>
+        <translation>Aniciar la creación</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation>Formatiar el discu va desaniciar dafechu los datos nelli, confima y sigui</translation>
+        <translation>El formatéu va desaniciar dafechu los datos del discu, confirma y sigui</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation>Formatiar unidá USB</translation>
+        <translation>Formatéu del discu USB</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Perderánse tolos datos nel formatéu, por favor respalda los datos enantes y primi&apos;l botón Aceutar.</translation>
+        <translation>Van perdese tolos datos nel formatéu, fai una copia de seguranza enantes de primir el botón Aceutar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

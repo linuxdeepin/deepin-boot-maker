@@ -197,7 +197,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Alle gegevens zullen verloren gaan tijdens het formatteren, gelieve eerst een back-up te maken en dan op de knop OK te klikken. </translation>
+        <translation>Tijdens het formatteren gaan alle gegevens verloren. Maak eerst een back-up en druk dan op Oké.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
