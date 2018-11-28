@@ -8,6 +8,8 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Version=1.0
+GenericName=Boot Maker
+X-Deepin-Vendor=deepin
 
 # Translations:
 # Do not manually modify!
