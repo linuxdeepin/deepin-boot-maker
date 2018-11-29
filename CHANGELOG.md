@@ -1,3 +1,13 @@
+<a name=""></a>
+##  2.0.4.9 (2018-11-29)
+
+
+#### Features
+
+*   add genericName ([5fd1dd0e](https://github.com/linuxdeepin/deepin-boot-maker/commit/5fd1dd0ec1e739c16054833c2b8430fbb7306532))
+
+
+
 <a name="2.0.4.8"></a>
 ## 2.0.4.8 (2018-11-12)
 
