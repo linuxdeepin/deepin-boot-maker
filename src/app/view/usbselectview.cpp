@@ -240,6 +240,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             }
         }
 
+        start->setEnabled(false);
 
         QString path = this->property("last_path").toString();
         qDebug() << "Select usb device" << path;
