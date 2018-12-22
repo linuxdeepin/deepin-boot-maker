@@ -126,7 +126,10 @@ BMWindow::BMWindow(QWidget *parent)
 #ifndef Q_OS_LINUX
     flags = flags & ~Qt::WindowSystemMenuHint;
 #endif
-    setWindowFlags(flags);
+//    setWindowFlags(flags);
+    setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
+    titlebar()->setDisableFlags(Qt::WindowMaximizeButtonHint);
+    titlebar()->setWindowFlags(Qt::WindowCloseButtonHint);
     // TODO: read it from parent
 #ifdef Q_OS_MAC
     titlebar()->setWindowFlags(flags);
