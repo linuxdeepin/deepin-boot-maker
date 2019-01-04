@@ -1,3 +1,14 @@
+<a name="2.0.4.9"></a>
+## 2.0.4.9 (2019-01-04)
+
+
+#### Features
+
+*   disable button when start ([0ff3f118](https://github.com/linuxdeepin/deepin-boot-maker/commit/0ff3f1189a61355383c5231fa342c95e84d86e5d))
+*   add genericName ([5fd1dd0e](https://github.com/linuxdeepin/deepin-boot-maker/commit/5fd1dd0ec1e739c16054833c2b8430fbb7306532))
+
+
+
 <a name=""></a>
 ##  2.0.4.9 (2018-11-29)
 
