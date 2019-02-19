@@ -11,12 +11,13 @@ isEmpty(PREFIX) {
 win32{
     DEFINES += DTK_STATIC_LIB
 }
-NO_BOOTLOADER=FALSE
+NO_BOOTLOADER=TRUE
 ARCH = $$QMAKE_HOST.arch
-isEqual(ARCH, sw_64) | isEqual(ARCH, mips64) | isEqual(ARCH, mips32) {
-    NO_BOOTLOADER=TRUE
+isEqual(ARCH, i386) | isEqual(ARCH, x86_64) {
+    NO_BOOTLOADER=FALSE
 }
 
 isEqual(NO_BOOTLOADER, TRUE) {
     DEFINES += DBM_NO_BOOTLOADER
 }
+
