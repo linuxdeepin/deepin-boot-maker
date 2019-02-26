@@ -1,3 +1,13 @@
+<a name="2.0.4.10"></a>
+## 2.0.4.10 (2019-02-26)
+
+
+#### Features
+
+*   disable bootloader on other arch ([1e2d727b](https://github.com/linuxdeepin/deepin-boot-maker/commit/1e2d727b7620a641026eb05bfbc4f7c35077381b))
+
+
+
 <a name="2.0.4.9"></a>
 ## 2.0.4.9 (2019-01-04)
 
