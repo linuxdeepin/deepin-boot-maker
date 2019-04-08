@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=Utility;System;
-Comment=A tool to make boot disk for Deepin OS
+Comment=A tool to create boot media for Deepin OS
 Exec=deepin-boot-maker
 GenericName=Boot Maker
 Icon=deepin-boot-maker

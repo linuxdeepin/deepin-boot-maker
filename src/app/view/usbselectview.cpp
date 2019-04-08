@@ -76,7 +76,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Please select a disk"));
+    QLabel *m_title = new QLabel(tr("Select a disk"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -121,7 +121,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     m_warningHint->setMinimumHeight(30);
     m_warningHint->setWordWrap(true);
 
-    QLabel *m_emptyHint = new  QLabel(tr("No available disk found"));
+    QLabel *m_emptyHint = new  QLabel(tr("No available disk"));
     m_emptyHint->setObjectName("EmptyHintTitle");
 
     usbPanelLayout->addStretch();
@@ -150,7 +150,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             m_warningHint->setText("");
             return;
         }
-        m_warningHint->setText(tr("The disk data will be completely deleted by formatting, please confirm and continue"));
+        m_warningHint->setText(tr("Formatting will erase all data on the disk, please confirm and continue"));
         this->adjustSize();
     };
     connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked) {
@@ -230,7 +230,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
             msgbox.setTitle(tr("Format USB flash drive"));
             msgbox.setTextFormat(Qt::AutoText);
-            msgbox.setMessage(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
+            msgbox.setMessage(tr("Formatting the disk will overwrite all data, please have a backup before proceeding."));
             msgbox.insertButton(0, tr("Cancel"), true, DDialog::ButtonRecommend);
             msgbox.insertButton(1, tr("Ok"), false, DDialog::ButtonWarning);
 

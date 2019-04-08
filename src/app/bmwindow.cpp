@@ -114,7 +114,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
     // init about info
-    QString descriptionText = tr("Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.");
+    QString descriptionText = tr("Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other medias.");
     QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
     qApp->setProductName(tr("Deepin Boot Maker"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);

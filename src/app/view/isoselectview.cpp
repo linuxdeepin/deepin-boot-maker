@@ -43,7 +43,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Please select an ISO image file"));
+    QLabel *m_title = new QLabel(tr("Select an ISO image file"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 

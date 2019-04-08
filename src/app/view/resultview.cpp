@@ -49,7 +49,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
     mainLayout->setSpacing(0);
 
-    m_title = new QLabel(tr("Make Successfully"));
+    m_title = new QLabel(tr("Successful"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -119,8 +119,8 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         });
         return;
     case BMHandler::SyscExecFailed:
-        m_logHits->setText(tr("The error log will be uploaded automatically with feedback. We can not improve without your feedback and support"));
-        m_rebootLater->setText(tr("Feedback"));
+        m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
+        m_rebootLater->setText(tr("Submit Feedback"));
         m_logHits->adjustSize();
         m_rebootLater->disconnect();
         connect(m_rebootLater, &SuggestButton::clicked,
