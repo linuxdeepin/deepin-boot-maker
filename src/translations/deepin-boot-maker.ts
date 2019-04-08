@@ -38,7 +38,7 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other medias.</source>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
