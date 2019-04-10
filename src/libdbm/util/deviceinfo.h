@@ -23,11 +23,12 @@
 
 #include <QObject>
 #include <QString>
+#include <QMap>
 
 class DeviceInfo
 {
 public:
-    DeviceInfo(){}
+    DeviceInfo() {}
     DeviceInfo(const QString &path, quint32 used, quint32 total, const QString &label)
         : path(path),  used(used), total(total), label(label)
     {
@@ -38,7 +39,10 @@ public:
     quint32 total   = 0;
     QString label   = QObject::tr("Removable Disk");
     QString uuid    = "";
+    QString fstype  = "";
     QString target  = "";
+    bool needFormat = false;
+    QMap<QString, DeviceInfo> children;
 };
 
 Q_DECLARE_METATYPE(QList<DeviceInfo>);

@@ -3,13 +3,20 @@ Section: misc
 Priority: extra
 Maintainer: Deepin Sysdev <sysdev@linuxdeepin.com>
 Build-Depends: debhelper (>= 9),
-  python,
-  qt5-default,
-  qt5-qmake,
-  qttools5-dev-tools,
-  libxcb-util0-dev,
-  libstartup-notification0-dev,
-  libdtkwidget-dev
+ python,
+ qt5-default,
+ qt5-qmake,
+ qttools5-dev-tools,
+ qtbase5-private-dev,
+ qtbase5-dev,
+ libxcb-util0-dev,
+ libmtdev-dev,
+ libxrender-dev,
+ libglib2.0-dev,
+ libfontconfig-dev,
+ libegl1-mesa-dev,
+ libstartup-notification0-dev,
+ libdtkwidget-dev
 Standards-Version: 3.9.5
 Homepage: http://www.linuxdeepin.com/
 

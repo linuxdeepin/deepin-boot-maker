@@ -51,7 +51,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     QLabel *m_hitsTitle = new QLabel(tr("Making the disk, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
 
-    QLabel *m_hits = new QLabel(tr("Please do not remove the disk or shut down the computer when making"));
+    QLabel *m_hits = new QLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
     m_hits->setFixedSize(390, 60);
     m_hits->setWordWrap(true);

@@ -61,15 +61,15 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
     case NoError:
         return "";
     case SyscExecFailed:
-        return BMHandler::tr("Failed to call the command %1.");
+        return BMHandler::tr("Failed to call the command %1");
     case USBFormatError:
         return BMHandler::tr("Disk Format Error: Please format the disk with FAT32");
     case USBSizeError:
-        return BMHandler::tr("Insufficient Disk Space: Please ensure that the disk has %1 free space");
+        return BMHandler::tr("Insufficient Disk Space: Ensure the disk has %1 free space");
     case USBMountFailed:
-        return BMHandler::tr("Disk Mount Error: Please plug in the disk again or reboot the system to retry");
+        return BMHandler::tr("Disk Mount Error: Insert the disk again or reboot to retry");
     case ExtractImgeFailed:
-        return BMHandler::tr("Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete");
+        return BMHandler::tr("Image Decompression Error: Verify md5 checksum of the image to ensure its integrity");
     }
     return BMHandler::tr("Internal Error");
 }

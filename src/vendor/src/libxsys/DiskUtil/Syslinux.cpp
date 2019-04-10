@@ -62,28 +62,22 @@ QString SearchMoudle(const QString& moduleName) {
 
 
 Result InstallBootloader(const QString &device) {
-#ifdef Q_OS_WIN32
-    Q_UNUSED(device);
-#endif
-
 #ifdef Q_OS_LINUX
     return XSys::SynExec(XSys::FS::SearchBin("syslinux"), QString(" -i %1").arg(device));
-#endif
-
+#else
+    Q_UNUSED(device);
     return Result(Result::Success, "", "");
+#endif
 }
 
 Result InstallMbr(const QString &device) {
-#ifdef Q_OS_WIN32
-    Q_UNUSED(device);
-#endif
-
 #ifdef Q_OS_LINUX
     QString mbrPath = SearchMbr();
     return XSys::SynExec("dd", QString(" if=%1 of=%2 bs=440 count=1").arg(mbrPath).arg(device));
-#endif
-
+#else
+    Q_UNUSED(device);
     return Result(Result::Success, "", "");
+#endif
 }
 
 Result InstallModule(const QString& installDirectory) {

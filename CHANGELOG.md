@@ -1,3 +1,75 @@
+<a name="2.0.4.10"></a>
+## 2.0.4.10 (2019-02-26)
+
+
+#### Features
+
+*   disable bootloader on other arch ([1e2d727b](https://github.com/linuxdeepin/deepin-boot-maker/commit/1e2d727b7620a641026eb05bfbc4f7c35077381b))
+
+
+
+<a name="2.0.4.9"></a>
+## 2.0.4.9 (2019-01-04)
+
+
+#### Features
+
+*   disable button when start ([0ff3f118](https://github.com/linuxdeepin/deepin-boot-maker/commit/0ff3f1189a61355383c5231fa342c95e84d86e5d))
+*   add genericName ([5fd1dd0e](https://github.com/linuxdeepin/deepin-boot-maker/commit/5fd1dd0ec1e739c16054833c2b8430fbb7306532))
+
+
+
+<a name=""></a>
+##  2.0.4.9 (2018-11-29)
+
+
+#### Features
+
+*   add genericName ([5fd1dd0e](https://github.com/linuxdeepin/deepin-boot-maker/commit/5fd1dd0ec1e739c16054833c2b8430fbb7306532))
+
+
+
+<a name="2.0.4.8"></a>
+## 2.0.4.8 (2018-11-12)
+
+
+
+
+<a name="2.0.4.7"></a>
+## 2.0.4.7 (2018-11-07)
+
+
+#### Bug Fixes
+
+*   error icon ([feda6f75](https://github.com/linuxdeepin/deepin-boot-maker/commit/feda6f75690bfe082975c088f3ef22fdbae0f2d3))
+
+
+
+<a name="2.0.4.6"></a>
+## 2.0.4.6 (2018-10-26)
+
+
+#### Bug Fixes
+
+*   df failed ([7db87883](https://github.com/linuxdeepin/deepin-boot-maker/commit/7db87883a501cf0f0ca515b95f972e24902868a6))
+
+#### Features
+
+*   support list disk ([d6a80d67](https://github.com/linuxdeepin/deepin-boot-maker/commit/d6a80d67f88bee2aaf17ef720761c9417a6057ec))
+
+
+
+<a name="2.0.4.4"></a>
+## 2.0.4.5 (2018-03-07)
+## 2.0.4.4 (2018-03-07)
+
+
+#### Bug Fixes
+
+*   set titlebar background transparent ([86e2bc35](https://github.com/linuxdeepin/deepin-boot-maker/commit/86e2bc3535281b989e205729e03161508a1c0cfd))
+
+
+
 <a name="2.0.4.3"></a>
 ## 2.0.4.3 (2018-01-29)
 

@@ -114,7 +114,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
     // init about info
-    QString descriptionText = tr("Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.");
+    QString descriptionText = tr("Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.");
     QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
     qApp->setProductName(tr("Deepin Boot Maker"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
@@ -126,7 +126,10 @@ BMWindow::BMWindow(QWidget *parent)
 #ifndef Q_OS_LINUX
     flags = flags & ~Qt::WindowSystemMenuHint;
 #endif
-    setWindowFlags(flags);
+//    setWindowFlags(flags);
+    setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
+    titlebar()->setDisableFlags(Qt::WindowMaximizeButtonHint);
+    titlebar()->setWindowFlags(Qt::WindowCloseButtonHint);
     // TODO: read it from parent
 #ifdef Q_OS_MAC
     titlebar()->setWindowFlags(flags);

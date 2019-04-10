@@ -31,7 +31,8 @@
 #endif
 
 
-static void initQRC() {
+static void initQRC()
+{
 #ifdef Q_OS_LINUX
     Q_INIT_RESOURCE(blob_linux);
 #else
@@ -153,11 +154,17 @@ void ClearTargetDev(const QString &targetPath)
 #ifdef Q_OS_UNIX
 QMap<QString, DeviceInfo> CommandDfParse()
 {
-    XSys::Result ret = XSys::SynExec("bash", " -c \"df -k --output=source,used,avail\"");
-    QString dfout = ret.result();
+    QProcess df;
+    df.start("df", QStringList{"-k", "--output=source,used,avail"});
+    df.waitForStarted(-1);
+    df.waitForFinished(-1);
+
+    QString dfout = df.readAll();
+
     QMap<QString, DeviceInfo> deviceInfos;
     foreach (const QString infoline, dfout.split("\n")) {
         QStringList infos = infoline.simplified().split(" ");
+
         if (infos.size() != 3) {
             continue;
         }
@@ -177,19 +184,33 @@ QMap<QString, DeviceInfo> CommandDfParse()
 
 QMap<QString, DeviceInfo> CommandLsblkParse()
 {
-    XSys::Result ret = XSys::SynExec("bash", " -c \"lsblk -b -p -J -o name,mountpoint,label,size,uuid\"");
-    QString dfout = ret.result();
+    QProcess df;
+    df.start("lsblk", QStringList{"-b", "-p", "-J", "-o", "name,mountpoint,label,size,uuid,fstype"});
+    df.waitForStarted(-1);
+    df.waitForFinished(-1);
+    QString dfout = df.readAll();
+
     QMap<QString, DeviceInfo> deviceInfos;
 
     QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLatin1());
     foreach (const QJsonValue &value, jsonDoc.object()["blockdevices"].toArray()) {
+        QMap<QString, DeviceInfo> children;
         foreach (const QJsonValue &partiotion, value.toObject()["children"].toArray()) {
             DeviceInfo info;
             info.path = partiotion.toObject()["name"].toString();
             info.uuid = partiotion.toObject()["uuid"].toString();
             info.label = partiotion.toObject()["label"].toString();
-            deviceInfos.insert(info.path, info);
+            info.fstype = partiotion.toObject()["fstype"].toString();
+            children.insert(info.path, info);
         }
+        DeviceInfo info;
+        info.path = value.toObject()["name"].toString();
+        info.uuid = value.toObject()["uuid"].toString();
+        info.label = value.toObject()["label"].toString();
+        info.fstype = value.toObject()["fstype"].toString();
+        info.children = children;
+
+        deviceInfos.insert(info.path, info);
     }
     return deviceInfos;
 }
@@ -268,20 +289,44 @@ QList<DeviceInfo> ListUsbDrives()
     QMap<QString, DeviceInfo> dfDeviceInfos = CommandDfParse();
     QMap<QString, DeviceInfo> lsblkDeviceInfos = CommandLsblkParse();
 
+    QMap<QString, QString> removeDevice;
+
     for (int i = 0; i < usbfileinfoL.size(); ++i) {
         if (usbfileinfoL.at(i).fileName().contains(QRegExp("^usb-\\S{1,}$")) || usbfileinfoL.at(i).fileName().contains(QRegExp("^mmc-\\S{1,}$"))) {
             QString path = usbfileinfoL.at(i).canonicalFilePath();
-//            qDebug() << path<<lsblkDeviceInfos.contains(path);
-            if (!lsblkDeviceInfos.contains(path)) {
-                continue;
-            }
-            DeviceInfo info = lsblkDeviceInfos.value(path);
-            DeviceInfo dfinfo = dfDeviceInfos.value(path, info);
-            info.used = dfinfo.used;
-            info.total = dfinfo.total;
-            info.target = dfinfo.target;
-            deviceList.push_back(info);
+            removeDevice.insert(path, usbfileinfoL.at(i).fileName());
         }
+    }
+
+    for (auto devicePath : lsblkDeviceInfos.keys()) {
+        if (!removeDevice.contains(devicePath)) {
+            continue;
+        }
+        // find first partion
+        QString partionPath = devicePath;
+        DeviceInfo info = lsblkDeviceInfos.value(devicePath);
+        bool needformat = true;
+
+        if (!info.children.keys().isEmpty()) {
+            auto infoKey = info.children.keys().value(0);
+            info = info.children.value(infoKey);
+            partionPath = infoKey;
+            if (info.fstype != "vsfat") {
+                needformat = false;
+            }
+        }
+
+        DeviceInfo dfinfo = dfDeviceInfos.value(partionPath, info);
+        if (info.label.isEmpty()) {
+            info.label = info.path;
+        }
+        info.used = dfinfo.used;
+        info.total = dfinfo.total;
+        info.target = dfinfo.target;
+        info.needFormat = needformat;
+
+        deviceList.push_back(info);
+        qDebug() << info.path << info.used << info.total << info.target << info.needFormat;
     }
 #endif
 

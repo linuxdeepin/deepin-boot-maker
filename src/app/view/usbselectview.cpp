@@ -76,7 +76,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Please select a disk"));
+    QLabel *m_title = new QLabel(tr("Select a disk"));
     m_title->setFixedHeight(38);
     m_title->setStyleSheet("font-size: 26px;");
 
@@ -99,7 +99,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QLabel *checkBoxHints = new QLabel(this);
     checkBoxHints->setMinimumHeight(34);
     checkBoxHints->setWordWrap(true);
-    checkBoxHints->setText(tr("Formating disk can increase the making success rate"));
+    checkBoxHints->setText(tr("Formatting disk can increase the making success rate"));
     checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
     checkBoxHints->setMinimumWidth(330);
     checkBoxHints->hide();
@@ -121,7 +121,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     m_warningHint->setMinimumHeight(30);
     m_warningHint->setWordWrap(true);
 
-    QLabel *m_emptyHint = new  QLabel(tr("No available disk found"));
+    QLabel *m_emptyHint = new  QLabel(tr("No available disk"));
     m_emptyHint->setObjectName("EmptyHintTitle");
 
     usbPanelLayout->addStretch();
@@ -145,24 +145,17 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
 
-    connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked) {
+    auto handleFormat = [ = ](bool checked) {
         if (!checked) {
             m_warningHint->setText("");
             return;
         }
-        m_warningHint->setText(tr("The disk data will be completely  deleted by formating, please confirm and continue"));
+        m_warningHint->setText(tr("Formatting will erase all data on the disk, please confirm and continue"));
         this->adjustSize();
-        return;
-
-//        DDialog msgbox(this);
-//        msgbox.setFixedWidth(300);
-//        msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
-//        msgbox.setWindowTitle(tr("Format USB flash drive"));
-//        msgbox.setTextFormat(Qt::AutoText);
-//        msgbox.setMessage(tr("All data will be lost during formatting, please back up in advance and then press OK button."));
-//        msgbox.addButtons(QStringList() << tr("Ok") << tr("Cancel"));
-
-//        m_formatDiskCheck->setChecked(0 == msgbox.exec());
+    };
+    connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked) {
+        this->setProperty("user_format", checked);
+        handleFormat(checked);
     });
 
     connect(BMInterface::instance(), &BMInterface::deviceListChanged,
@@ -182,6 +175,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
                 partition.path,
                 usageString(partition.used, partition.total),
                 percent(partition.used, partition.total));
+            infoItem->setNeedFormat(partition.needFormat);
             listItem->setSizeHint(infoItem->size());
             m_deviceList->addItem(listItem);
             m_deviceList->setItemWidget(listItem, infoItem);
@@ -200,13 +194,6 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         }
     });
 
-//    connect(m_deviceList, &DeviceListWidget::itemClicked,
-//    this, [ = ](QListWidgetItem * current) {
-//        DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
-//        if (infoItem) { infoItem->setCheck(true); }
-//        this->setProperty("last_path", infoItem->property("path").toString());
-//    });
-
     connect(m_deviceList, &DeviceListWidget::currentItemChanged,
     this, [ = ](QListWidgetItem * current, QListWidgetItem * previous) {
         DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(previous));
@@ -216,6 +203,17 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
         infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
         if (infoItem) {
+            if (infoItem->needFormat()) {
+                m_formatDiskCheck->setChecked(true);
+                m_formatDiskCheck->setDisabled(true);
+                handleFormat(true);
+            } else {
+                auto format = this->property("user_format").toBool();
+                m_formatDiskCheck->setChecked(format);
+                m_formatDiskCheck->setDisabled(false);
+                handleFormat(format);
+            }
+
             infoItem->setCheck(true);
             this->setProperty("last_path", infoItem->property("path").toString());
             start->setDisabled(false);
@@ -223,6 +221,27 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     });
 
     connect(start, &SuggestButton::clicked, this, [ = ] {
+        auto format = m_formatDiskCheck->isChecked();
+
+        if (format)
+        {
+            DDialog msgbox(this);
+            msgbox.setFixedWidth(400);
+            msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
+            msgbox.setTitle(tr("Format USB flash drive"));
+            msgbox.setTextFormat(Qt::AutoText);
+            msgbox.setMessage(tr("Formatting the disk will overwrite all data, please have a backup before proceeding."));
+            msgbox.insertButton(0, tr("Cancel"), true, DDialog::ButtonRecommend);
+            msgbox.insertButton(1, tr("Ok"), false, DDialog::ButtonWarning);
+
+            auto ret = msgbox.exec();
+            if (ret != 1) {
+                return;
+            }
+        }
+
+        start->setEnabled(false);
+
         QString path = this->property("last_path").toString();
         qDebug() << "Select usb device" << path;
         emit this->deviceSelected(path, m_formatDiskCheck->isChecked());

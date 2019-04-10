@@ -73,7 +73,7 @@
         <translation>ይቀጥሉ</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>እንደገና ይምረጡ የ ISO ምስል ፋይል</translation>
     </message>
@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>የሚወልቅ ዲስክ</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>የሚወልቅ ዲስክ</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>የ ዲስክ አቀራረብ ማሰናዳት ዲስኩን ስኬታማ ያደርገዋል</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,28 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>በዚህ ዲስክ ላይ ሁሉም ዳታ ይጠፋል በ አቀራረብ ማሰናጃ: እባክዎን ያረጋግጡ እና ይቀጥሉ</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>የ USB flash አካል አቀራረብ ማሰናጃ</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>አቀራረብ በሚሰናዳ ጊዜ ሁሉም ዳታ ይጠፋል: እባክዎን በ ቅድሚያ ተተኪ ዳታ ያሰናዱ እና ከዛ ይጫኑ እሺ ቁልፍን</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>መሰረዣ</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>እሺ</translation>
     </message>
 </context>
 </TS>

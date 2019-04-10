@@ -73,7 +73,7 @@
         <translation>بعدی</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>لطفا دوباره یک فایل ISO انتخاب کنید</translation>
     </message>
@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>درایو جدا شونده</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>درایو جدا شونده</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>فرمت کردن دیسک می تواند احتمال موفقیت در فرایند تولید را افزایش دهد  </translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>فرمت کردن دیسک میتواند باعث افزایش سرعت و احتمال موفقیت بشود.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,28 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>اطلاعات دیسک تماما با فرمت کردن پاک خواهدشد،لطفا تصدیق کنید و ادامه دهید </translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>تمام اطلاعات، با فرمت کردن، پاک خواهند شد. لطفا تایید کنید و ادامه دهید.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>فرمت کردن درایو USB</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>در هنگام فرمت کردن تمام داده ها از بین خواهند رفت. لطفا از اطلاعات خود پشتیبان تهیه کنید سپس رو دکمه OK کلیلک کنید.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>انصراف</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>باشه</translation>
     </message>
 </context>
 </TS>

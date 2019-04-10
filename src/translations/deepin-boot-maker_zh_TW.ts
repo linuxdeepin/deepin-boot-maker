@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1.</source>
-        <translation>無法使用 %1 命令。</translation>
+        <translation>執行 %1 命令失敗。</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation type="unfinished"/>
+        <translation>Deepin 開機碟製作器是一個將系統映像檔寫入 CD/DVD、USB 碟、和其他安裝媒體的簡單工具。</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -73,7 +73,7 @@
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>重新選擇 ISO 檔案</translation>
     </message>
@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>卸除式磁碟機</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>卸除式磁碟機</translation>
     </message>
@@ -139,12 +139,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>回報會自動上傳錯誤紀錄。沒有你的回饋與支持我們無法進步</translation>
+        <translation>意見回應將會自動上傳錯誤紀錄。沒有你的意見回應與支持，我們無法進步</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Feedback</source>
-        <translation>回報</translation>
+        <translation>意見回應</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>格式化磁碟機能提高製作成功率</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>格式化磁碟可以提高製作成功率</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,28 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>格式化會清除磁碟機的所有資料，請確認後再繼續</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>格式化將完全刪除硬碟資料，請確認後繼續</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>格式化 USB 磁碟機</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>格式化將會刪除所有資料，請提前備份並按下「確認」按鈕。</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>確認</translation>
     </message>
 </context>
 </TS>

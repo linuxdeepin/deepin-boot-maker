@@ -264,7 +264,7 @@ const QString MountPoint(const QString &targetDev)
     */
     XSys::Result ret = XSys::SynExec("df", "");
     if (!ret.isSuccess()) {
-        return "";
+        qWarning() << "call df failed" << ret.result();
     }
     QStringList mounts = ret.result().split("\n").filter(targetDev);
     if (0 == mounts.size()) {
@@ -369,6 +369,7 @@ XSys::Result InstallSyslinux(const QString &targetDev)
     if (!ret.isSuccess()) { return ret; }
 
     // rename label
+    ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(targetDev));
     ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
 
     FixMountPartition(targetDev);
@@ -411,8 +412,8 @@ XSys::Result InstallBootloader(const QString &diskDev)
 //    if (!ret.isSuccess()) { return ret; }
 
     // rename label
+    ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(newTargetDev));
     ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
-    if (!ret.isSuccess()) { return ret; }
 
     // install syslinux
     XSys::Syslinux::InstallBootloader(newTargetDev);

@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>Der Deepin Bootmaker ist ein gutes Tool um Systemimages (ISO) auf CD/DVD, USB und weitere Medien zu schreiben.</translation>
+        <translation>Der Deepin Bootmaker ist ein simples Tool, um Systemimages (ISO) auf CD/DVD, USB und weitere Medien zu schreiben.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <source>Please select an ISO image file</source>
-        <translation>Bitte wöhlen Sie eine ISO-Datei</translation>
+        <translation>Bitte wählen Sie eine ISO-Datei</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
@@ -73,7 +73,7 @@
         <translation>Next</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="156"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Ein neues ISO-Abbild auswählen</translation>
     </message>
@@ -104,12 +104,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../libdbm/util/deviceinfo.h" line="39"/>
+        <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
         <translation>Wechseldatenträger</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="108"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Wechselplatte</translation>
     </message>
@@ -171,8 +171,8 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formating disk can increase the making success rate</source>
-        <translation>Das Formatieren des Datenträgers kann dabei helfen das Erstellen des Startmediums erfolgreich abzuschließen.</translation>
+        <source>Formatting disk can increase the making success rate</source>
+        <translation>Eine vorherige Formatierung des Datenträgers kann die Erfolgschance erhöhen</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
@@ -186,8 +186,28 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely  deleted by formating, please confirm and continue</source>
-        <translation>Die Daten auf dem Datenträger gehen durch das Formatieren des Datntrögers vollständig verlohren. Bitte bestätigen Sie den Vorgang um Fortzufahren</translation>
+        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
+        <translation>Daten werden durch die Formatierung vollständig gelöscht, bitte bestätigen und fortfahren.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <source>Format USB flash drive</source>
+        <translation>USB Massenspeicher formatieren</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
+        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <translation>Alle Daten gehen durch die Formatierung verloren. Bitte sichern Sie Ihre Daten im voraus und drücken Sie anschließend die Schaltfläche &quot;OK&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
+        <source>Cancel</source>
+        <translation>Abbrechen</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
+        <source>Ok</source>
+        <translation>OK</translation>
     </message>
 </context>
 </TS>
