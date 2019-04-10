@@ -3,8 +3,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
-        <source>Failed to call the command %1.</source>
-        <translation>%1 কম্যান্ড চালাতে বার্থ হয়েসে</translation>
+        <source>Failed to call the command %1</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -13,18 +13,18 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
-        <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>ডিস্কে অপর্যাপ্ত জায়গা: দয়াকরে নিশ্চিত করুন যে ডিস্কে %1 জায়গা খালি আছে</translation>
+        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
-        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>ডিস্ক মাউন্টে ত্রুটি: দয়াকরে ডিস্কটি পুনরায় লাগান অথবা আবার চেষ্টা করতে সিস্টেমটি রিবুট করুন</translation>
+        <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
-        <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>ইমেজ আনকম্প্রেসে ত্রুটি: দয়াকরে ইমেজের md5 checksum পরীক্ষা করুন এবং নিশ্চিত করুন যে ইমেজটি সম্পূর্ণ </translation>
+        <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -36,8 +36,8 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>ডিপিন বুট মেকার CD/DVD, USB ডিভাইস এবং অন্যান্য ইনস্টলেশন মিডিয়াতে ইমেজ ফাইল লেখার একটি সাধারণ টুল</translation>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -47,11 +47,6 @@
 </context>
 <context>
     <name>ISOSelectView</name>
-    <message>
-        <location filename="../app/view/isoselectview.cpp" line="46"/>
-        <source>Please select an ISO image file</source>
-        <translation>দয়াকরে একটা ISO ফাইল নির্বাচন করুন</translation>
-    </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
@@ -63,6 +58,7 @@
         <translation>অথবা</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
         <translation>একটি ISO ফাইল নির্বাচন করুন</translation>
@@ -92,8 +88,8 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
-        <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>দয়াকরে যখন ডিস্কটি তৈরী করা হচ্ছে তখন খুলে ফেলবেন না অথবা কম্পিউটারটি বন্ধ করবেন না</translation>
+        <source>Do not remove the disk or shut down the computer during the process</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -127,24 +123,24 @@
         <translation>এখনি রিবুট করুন</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="52"/>
-        <source>Make Successfully</source>
-        <translation>সফলভাবে তৈরী করা হয়েছে</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>শেষ</translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="52"/>
+        <source>Successful</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>এই এরর লগটি আপনা আপনিই ফিডব্যাক সহকারে আপলোড হবে।  আমরা আপনাদের ফিডব্যাক এবং সাপোর্ট ছাড়া উন্নত করতে পারবনা</translation>
+        <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
-        <source>Feedback</source>
-        <translation>ফিডব্যাক</translation>
+        <source>Submit Feedback</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -165,19 +161,9 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="79"/>
-        <source>Please select a disk</source>
-        <translation>দয়াকরে ডিস্কটি নির্বাচন করুন</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
         <translation>ডিস্কটি ফরম্যাট করলে তৈরী করার সফলতার হার বাড়তে পারে</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk found</source>
-        <translation>কোনো ডিস্ক পাওয়া যায় নি</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -185,18 +171,28 @@
         <translation> তৈরী করা শুরু করুন</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation>ফরম্যাটের মাধ্যমে এই ডিস্কটির সকল ডাটা সম্পূর্ণ মুছে যাবে, দয়াকরে নিশ্চিত করুন এবং সামনে বাড়ান</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
+        <source>Select a disk</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
+        <source>No available disk</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
+        <source>Formatting will erase all data on the disk, please confirm and continue</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
+        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
         <translation type="unfinished"/>
     </message>
     <message>

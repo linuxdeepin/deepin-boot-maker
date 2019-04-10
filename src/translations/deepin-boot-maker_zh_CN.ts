@@ -3,8 +3,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
-        <source>Failed to call the command %1.</source>
-        <translation>执行命令 %1 失败。</translation>
+        <source>Failed to call the command %1</source>
+        <translation>执行命令 %1 失败</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -13,17 +13,17 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
-        <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
+        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>磁盘空间不足：请确保至少有%1的剩余空间</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
-        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
+        <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>磁盘挂载错误：请重新插入磁盘或重启系统后重试</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
-        <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
+        <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>解压镜像失败：请检查镜像文件的md5, 确保镜像文件完整</translation>
     </message>
     <message>
@@ -36,7 +36,7 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation>深度启动盘制作工具是一款将系统映像文件写入光盘、U盘等安装介质的小工具。</translation>
     </message>
     <message>
@@ -48,11 +48,6 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="46"/>
-        <source>Please select an ISO image file</source>
-        <translation>请选择光盘镜像文件</translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
         <translation>拖拽光盘镜像文件到此</translation>
@@ -63,9 +58,10 @@
         <translation>或者</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>选择光盘镜像文件</translation>
+        <translation>请选择光盘镜像文件</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -92,7 +88,7 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
-        <source>Please do not remove the disk or shut down the computer when making</source>
+        <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>制作时请不要移除磁盘或关机</translation>
     </message>
     <message>
@@ -127,24 +123,24 @@
         <translation>立即重启</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="52"/>
-        <source>Make Successfully</source>
-        <translation>制作成功</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>完成</translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="52"/>
+        <source>Successful</source>
+        <translation>制作成功</translation>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
+        <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>反馈问题时会自动上传错误日志，我们的进步离不开您的反馈和支持</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
-        <source>Feedback</source>
-        <translation>反馈问题</translation>
+        <source>Submit Feedback</source>
+        <translation>提交反馈</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -165,19 +161,9 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="79"/>
-        <source>Please select a disk</source>
-        <translation>请选择磁盘</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
         <translation>格式化磁盘可提高制作成功率</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk found</source>
-        <translation>未发现可用磁盘</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -185,19 +171,29 @@
         <translation>开始制作</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation> 格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
         <translation>格式化U盘</translation>
     </message>
     <message>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
+        <source>Select a disk</source>
+        <translation>请选择磁盘</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
+        <source>No available disk</source>
+        <translation>未发现可用磁盘</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
+        <source>Formatting will erase all data on the disk, please confirm and continue</source>
+        <translation> 格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
+    </message>
+    <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>格式化U盘将丢失U盘上所有资料，请做好备份后点“确定”按钮。</translation>
+        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
+        <translation>格式化U盘将丢失U盘上的所有资料，请做好备份后继续。</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

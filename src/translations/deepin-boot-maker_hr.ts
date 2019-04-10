@@ -3,8 +3,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
-        <source>Failed to call the command %1.</source>
-        <translation>Neuspjelo pozivanje naredbe %1.</translation>
+        <source>Failed to call the command %1</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -13,17 +13,17 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
-        <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Nedovoljno diskovnog prostora: Molim osigurajte da disk ima %1 slobodnog prostora</translation>
+        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
-        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Greška montiranja diska: Molim uključite ponovno disk ili ponovno podignite sustav za ponovni pokušaj</translation>
+        <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
-        <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
+        <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -36,7 +36,7 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -48,11 +48,6 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="46"/>
-        <source>Please select an ISO image file</source>
-        <translation>Molim odaberite ISO slikovnu datoteku</translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
         <translation>Provucite ISO slikovnu datoteku i ispustite je ovdje</translation>
@@ -63,6 +58,7 @@
         <translation type="unfinished"/>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
         <translation>Odaberite ISO slikovnu datoteku</translation>
@@ -92,8 +88,8 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
-        <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Tijekom stvaranja nemojte uklanjati disk ili iskjlučivati računalo</translation>
+        <source>Do not remove the disk or shut down the computer during the process</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -127,24 +123,24 @@
         <translation>Ponovno podigni sustav sada </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="52"/>
-        <source>Make Successfully</source>
-        <translation>Uspješno stvoreno</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>Učinjeno</translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="52"/>
+        <source>Successful</source>
+        <translation>Uspješno</translation>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
+        <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
-        <source>Feedback</source>
-        <translation>Povratne informacije</translation>
+        <source>Submit Feedback</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -165,18 +161,8 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="79"/>
-        <source>Please select a disk</source>
-        <translation>Molim odaberite disk</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk found</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -185,19 +171,29 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
         <translation>Formatiraj USB flash pogon</translation>
     </message>
     <message>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
+        <source>Select a disk</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
+        <source>No available disk</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
+        <source>Formatting will erase all data on the disk, please confirm and continue</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Svi će podaci biti izgubljeni tijekom formatiranja, molim napravite sigurnosnu kopiju unaprijed i stisnite dugme U redu.</translation>
+        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
