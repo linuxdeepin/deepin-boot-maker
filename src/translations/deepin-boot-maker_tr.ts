@@ -3,8 +3,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
-        <source>Failed to call the command %1.</source>
-        <translation>%1 komutu çağrılamadı.</translation>
+        <source>Failed to call the command %1</source>
+        <translation>%1 komutu çağrılamadı</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -13,18 +13,18 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
-        <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Disk Alanı Yetersiz: Lütfen diskte %1 boş alan bulunduundan emin olun</translation>
+        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
+        <translation>Disk Alanı Yetersiz: Diskte %1 boş alan bulunduğundan emin olun</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
-        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Disk Bağlama Hatası: Lütfen diski yeniden takın ya da yeniden denemek için sistemi yeniden başlatın.</translation>
+        <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
+        <translation>Disk Bağlama Hatası: Lütfen diski yeniden takın ya da yeniden denemek için bilgisayarı yeniden başlatın</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
-        <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Kalıp Sıkıştırma Hatası: Lütfen kalıbın md5 sağlamasını denetleyin ve kalıp dosyasının tam olarak indirilmiş olduğundan emin olun</translation>
+        <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
+        <translation>Kalıp Ayıklama Hatası: Kalıbın bütünlüğünden emin olmak için md5 sağlamasını denetleyin</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -36,8 +36,8 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>Deepin Ön Yükleme Oluşturucu, sistem kalıp dosyasını CD/DVD, USB sürücü ve diğer kurulum ortamlarına yazılmasını sağlayan basit bir araçtır.</translation>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <translation>Deepin Ön Yükleme Oluşturucu, sistem kalıp dosyalarının CD/DVD, USB flash sürücü ve diğer kurulum ortamlarına yazılmasını sağlayan basit bir araçtır.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -47,11 +47,6 @@
 </context>
 <context>
     <name>ISOSelectView</name>
-    <message>
-        <location filename="../app/view/isoselectview.cpp" line="46"/>
-        <source>Please select an ISO image file</source>
-        <translation>Lütfen bir ISO kalıp dosyası seçin</translation>
-    </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
@@ -63,6 +58,7 @@
         <translation>YA DA</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
         <translation>Bir ISO kalıp dosyası seçin</translation>
@@ -92,8 +88,8 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
-        <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Lütfen diski çıkarmayın ya da hazırlama işlemi sırasında bilgisayarı kapatmayın.</translation>
+        <source>Do not remove the disk or shut down the computer during the process</source>
+        <translation>İşlem sürerken diski çıkarmayın ya da bilgisayarı kapatmayın</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -127,24 +123,24 @@
         <translation>Şimdi yeniden başlat</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="52"/>
-        <source>Make Successfully</source>
-        <translation>Hazırlık</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>Tamamlandı</translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="52"/>
+        <source>Successful</source>
+        <translation>Başarılı</translation>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>Hata günlüğü geri bildirimle birlikte otomatik olarak yüklenecek. Geri bildirim ve desteğiniz olmadan ürünümüzü geliştiremeyiz.</translation>
+        <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
+        <translation>Hata günlüğü geri bildirimle birlikte otomatik olarak yüklenecek. Geri bildirimleriniz olmadan gelişemeyiz</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
-        <source>Feedback</source>
-        <translation>Geri Bildirim</translation>
+        <source>Submit Feedback</source>
+        <translation>Geri Bildirim Gönder</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -165,19 +161,9 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="79"/>
-        <source>Please select a disk</source>
-        <translation>Lütfen bir disk seçin</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
         <translation>Diski biçimlendirmek işlemin başarılı olma oranını arttırır.</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk found</source>
-        <translation>Kullanılabilecek bir disk bulunamadı</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -185,19 +171,29 @@
         <translation>Hazırlığı başlat</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation>Biçimlendirme işlemi disk üzerindeki tüm verileri silecek, lütfen devam etmek için onaylayın</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
         <translation>USB flash sürücüyü biçimlendir</translation>
     </message>
     <message>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
+        <source>Select a disk</source>
+        <translation>Bir disk seçin</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
+        <source>No available disk</source>
+        <translation>Kullanılabilecek bir disk yok</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
+        <source>Formatting will erase all data on the disk, please confirm and continue</source>
+        <translation>Biçimlendirme işlemi disk üzerindeki tüm verileri siler, lütfen devam etmek için onaylayın</translation>
+    </message>
+    <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Biçimlendirme sırasında sürücüdeki tüm veriler silinir. Veriler önemli ise bu işlemi başlatmadan önce USB flash sürücünün yedeğini alın ve ardından Tamam düğmesine basın.</translation>
+        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
+        <translation>Biçimlendirme işlemi disk üzerindeki tüm verileri siler, lütfen devam etmeden önce yedek alın</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

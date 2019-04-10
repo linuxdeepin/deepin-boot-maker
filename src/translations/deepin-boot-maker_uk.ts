@@ -3,8 +3,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
-        <source>Failed to call the command %1.</source>
-        <translation>Не вдалося викликати команду %1.</translation>
+        <source>Failed to call the command %1</source>
+        <translation>Не вдалося викликати команду %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -13,18 +13,18 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
-        <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
+        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Недостатньо місця на диску: будь ласка, переконайтесь, що на диску є %1 вільного місця</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
-        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Помилка монтування диску: будь ласка, знову підключіть диск або перезавантажте систему, щоб повторити спробу</translation>
+        <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
+        <translation>Помилка монтування диску: Будь ласка, знову підключіть диск або перезавантажте систему, щоб повторити спробу</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
-        <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Помилка розпакування образу: Будь ласка, перевірте контрольну суму md5 образу та переконайтесь, що образ завершено</translation>
+        <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
+        <translation>Помилка розпакування образу: Будь ласка, перевірте контрольну суму md5 образу, щоб забезпечити його цілісність</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -36,8 +36,8 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>Deepin Boot Maker - це простий інструмент для запису системного файлу образу на CD/DVD, USB-диск та інші медіа-пристрої.</translation>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <translation>Deepin Boot Maker - це простий інструмент для запису системного файлу образу на CD/DVD, USB флеш-пам&apos;ять, та інші носії.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -47,11 +47,6 @@
 </context>
 <context>
     <name>ISOSelectView</name>
-    <message>
-        <location filename="../app/view/isoselectview.cpp" line="46"/>
-        <source>Please select an ISO image file</source>
-        <translation>Виберіть ISO-файл образу диску</translation>
-    </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
@@ -63,6 +58,7 @@
         <translation>АБО</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
         <translation>Виберіть ISO-файл образу диску</translation>
@@ -92,8 +88,8 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
-        <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Будь ласка, НЕ виймате зйомний диск та не вимикайте, доки файл записується. </translation>
+        <source>Do not remove the disk or shut down the computer during the process</source>
+        <translation>Не виймайте диск і не вимикайте комп&apos;ютер під час процесу.</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -127,24 +123,24 @@
         <translation>Перезавантажити зараз</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="52"/>
-        <source>Make Successfully</source>
-        <translation>Успішно виконано</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>Готово</translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="52"/>
+        <source>Successful</source>
+        <translation>Успішно</translation>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>Журнал помилок буде завантажено автоматично з відгуком. Ми не можемо покращити без вашого відгуку та підтримки</translation>
+        <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
+        <translation>Журнал помилок буде завантажено автоматично з відгуками. Ми не можемо покращити без вашого відгуку</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
-        <source>Feedback</source>
-        <translation>Відгук</translation>
+        <source>Submit Feedback</source>
+        <translation>Надіслати Відгук</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -165,19 +161,9 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="79"/>
-        <source>Please select a disk</source>
-        <translation>Будь ласка, виберіть диск</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
         <translation>Формування диска може збільшити рівень успішності</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk found</source>
-        <translation>Диск не знайдено</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -185,19 +171,29 @@
         <translation>Почати виконання</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation>Дані про диск буде повністю вилучено шляхом форматування, будь ласка, підтвердьте та продовжуйте</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
         <translation>Форматування флеш-диска USB</translation>
     </message>
     <message>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
+        <source>Select a disk</source>
+        <translation>Оберіть диск</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
+        <source>No available disk</source>
+        <translation>Немає доступного диску</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
+        <source>Formatting will erase all data on the disk, please confirm and continue</source>
+        <translation>Форматування знищить всі дані на диску, будь ласка, підтвердіть і продовжуйте</translation>
+    </message>
+    <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>У результаті форматування усіх дані з диска буде втрачено. Будь ласка, подбайте про створення резервних копій даних, а потім натисніть кнопку «Гаразд».</translation>
+        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
+        <translation>Форматування диску перезапише всі дані, будь ласка, зробіть резервну копію, перш ніж продовжити.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

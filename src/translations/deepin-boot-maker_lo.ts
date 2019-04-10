@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sl" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lo" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
@@ -9,7 +9,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Napaka v formatiranju diska: Prosim, formatirajte disk z FAT32</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Internal Error</source>
-        <translation>Notranja napaka</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Boot izdelovalec Deepin</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -50,28 +50,28 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Povlecite slikovno datoteko ISO in jo odložite sem</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
-        <translation>ALI</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>Izberite slikovno datoteko ISO</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
         <source>Next</source>
-        <translation>Naslednji</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
-        <translation>Ponovno izberite slikovno datoteko ISO</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -79,12 +79,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
         <source>Making</source>
-        <translation>Izdelujem</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Making the disk, please wait...</source>
-        <translation>Izdelujem disk, prosim počakajte...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -94,7 +94,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Cancel</source>
-        <translation>Prekliči</translation>
+        <translation>ຍົກເລີກ</translation>
     </message>
 </context>
 <context>
@@ -102,17 +102,17 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation>Izmenljivi pogon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
-        <translation>Izmenljivi pogon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Boot izdelovalec Deepin</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -120,17 +120,17 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="86"/>
         <source>Reboot now</source>
-        <translation>Ponovni zagon zdaj</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
-        <translation>Končano</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
-        <translation>Uspešno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
@@ -145,17 +145,17 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
         <source>Close</source>
-        <translation>Zapri</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, making failed</source>
-        <translation>Žal ustvarjanje ni uspelo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
         <source>Making failed</source>
-        <translation>Ustvarjanje ni uspelo</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -163,17 +163,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation>Formatiranje diska lahko poveča uspešnost izdelave</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
         <source>Start making</source>
-        <translation>Začni izdelovanje</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation>Formatiraj pogon USB</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
@@ -198,12 +198,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
         <source>Cancel</source>
-        <translation>Prekliči</translation>
+        <translation>ຍົກເລີກ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="235"/>
         <source>Ok</source>
-        <translation>V redu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

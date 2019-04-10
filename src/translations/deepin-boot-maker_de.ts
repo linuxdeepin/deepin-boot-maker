@@ -3,8 +3,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
-        <source>Failed to call the command %1.</source>
-        <translation>Fehler beim Aufruf des Befehls %1.</translation>
+        <source>Failed to call the command %1</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -13,18 +13,18 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
-        <source>Insufficient Disk Space: Please ensure that the disk has %1 free space</source>
-        <translation>Zu wenig freier Speicher. Bitte stellen Sie sicher, dass auf dem Datenträger mindestens 1% des gesamten Speicherplatzes zur Verfügung stehen.</translation>
+        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
-        <source>Disk Mount Error: Please plug in the disk again or reboot the system to retry</source>
-        <translation>Fehler beim Einhängen des Datenträgers: Bitte stecken Sie den Datenträger erneut ein oder starten Sie den Rechner neu.</translation>
+        <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
-        <source>Image Uncompress Error: Please check the md5 checksum of the image and ensure the image is complete</source>
-        <translation>Fehler beim Entpacken des Abbilds: Bitte prüfen Sie die MD5-Prüfsumme des Abbilds und stellen Sie sicher, dass das Abbild komplett ist.</translation>
+        <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -36,26 +36,21 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image file into CD/DVD, USB drive and other installation medias.</source>
-        <translation>Der Deepin Bootmaker ist ein simples Tool, um Systemimages (ISO) auf CD/DVD, USB und weitere Medien zu schreiben.</translation>
+        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Startmedium Ersteller</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="46"/>
-        <source>Please select an ISO image file</source>
-        <translation>Bitte wählen Sie eine ISO-Datei</translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Ein ISO-Abbild hier hin ziehen und ablegen.</translation>
+        <translation>Ein ISO-Abbild hier hinziehen und ablegen.</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
@@ -63,14 +58,15 @@
         <translation>oder</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>wählen Sie ein ISO-Abbild</translation>
+        <translation>ISO-Abbild auswählen</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
         <source>Next</source>
-        <translation>Next</translation>
+        <translation>Weiter</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
@@ -92,8 +88,8 @@
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
-        <source>Please do not remove the disk or shut down the computer when making</source>
-        <translation>Bitte schalten Sie den Rechner nicht aus und entfernen Sie den Datenträger nicht, bis die Erstellung des Startmediums abgeschlossen ist.</translation>
+        <source>Do not remove the disk or shut down the computer during the process</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -111,12 +107,12 @@
     <message>
         <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
-        <translation>Wechselplatte</translation>
+        <translation>Wechseldatenträger</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Startmedium Ersteller</translation>
+        <translation>Deepin Boot Maker</translation>
     </message>
 </context>
 <context>
@@ -127,24 +123,24 @@
         <translation>Jetzt neu starten</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="52"/>
-        <source>Make Successfully</source>
-        <translation>Erstellen erfolgreich abgeschlossen</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>Fertig</translation>
     </message>
     <message>
+        <location filename="../app/view/resultview.cpp" line="52"/>
+        <source>Successful</source>
+        <translation>Erfolgreich</translation>
+    </message>
+    <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
-        <source>The error log will be uploaded automatically with feedback. We can not improve without your feedback and support</source>
-        <translation>Das Fehlerprotokoll wird automatisch um Ihr Feedback ergänzt. Wir können deepin ohne Ihr Feedback und Ihre Unterstützung nicht verbessern.</translation>
+        <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
-        <source>Feedback</source>
-        <translation>Feedback</translation>
+        <source>Submit Feedback</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -159,25 +155,15 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
         <source>Making failed</source>
-        <translation>Erstellen fehlgeschlagen</translation>
+        <translation>Erstellen des Startmediums  fehlgeschlagen</translation>
     </message>
 </context>
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="79"/>
-        <source>Please select a disk</source>
-        <translation>Bitte wählen Sie einen Datenträger</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation>Eine vorherige Formatierung des Datenträgers kann die Erfolgschance erhöhen</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk found</source>
-        <translation>Es wurde kein verfügbarer Datenträger gefunden</translation>
+        <translation>Das Formatieren des Datenträgers kann dabei helfen das Erstellen des Startmediums erfolgreich abzuschließen.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -185,19 +171,29 @@
         <translation>Beginne mit dem Erstellen des Startmediums</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="153"/>
-        <source>The disk data will be completely deleted by formatting, please confirm and continue</source>
-        <translation>Daten werden durch die Formatierung vollständig gelöscht, bitte bestätigen und fortfahren.</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation>USB Massenspeicher formatieren</translation>
+        <translation>USB-Massenspeicher formatieren</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
+        <source>Select a disk</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
+        <source>No available disk</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
+        <source>Formatting will erase all data on the disk, please confirm and continue</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
-        <source>All data will be lost during formatting, please back up in advance and then press OK button.</source>
-        <translation>Alle Daten gehen durch die Formatierung verloren. Bitte sichern Sie Ihre Daten im voraus und drücken Sie anschließend die Schaltfläche &quot;OK&quot;.</translation>
+        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
