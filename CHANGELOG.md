@@ -1,3 +1,13 @@
+<a name="2.0.4.11"></a>
+## 2.0.4.11 (2019-04-10)
+
+
+#### Features
+
+*   support connan build ([e8cd151e](https://github.com/linuxdeepin/deepin-boot-maker/commit/e8cd151e85a72c347ace81d0456c56c0523e893b))
+
+
+
 <a name="2.0.4.10"></a>
 ## 2.0.4.10 (2019-02-26)
 
