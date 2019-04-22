@@ -29,7 +29,7 @@ class Result {
 public:
     enum Status{
         Success = 0,
-        Faiiled = 1,
+        Failed = 1,
     };
 
     Result();

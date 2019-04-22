@@ -123,13 +123,8 @@ BMWindow::BMWindow(QWidget *parent)
 
     auto title = titlebar();
     auto flags = windowFlags() & ~Qt::WindowMaximizeButtonHint;
-#ifndef Q_OS_LINUX
-    flags = flags & ~Qt::WindowSystemMenuHint;
-#endif
-//    setWindowFlags(flags);
-    setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
-    titlebar()->setDisableFlags(Qt::WindowMaximizeButtonHint);
-    titlebar()->setWindowFlags(Qt::WindowCloseButtonHint);
+    setWindowFlags(flags);
+    title->setMenuVisible(false);
     // TODO: read it from parent
 #ifdef Q_OS_MAC
     titlebar()->setWindowFlags(flags);
@@ -247,6 +242,8 @@ BMWindow::BMWindow(QWidget *parent)
 //    emit d->progressWidget->testCancel();
 //    emit d->progressWidget->finish(0, "aa", "ccc");
     d->interface->start();
+//    title->setWindowFlags(title->windowFlags() & ~Qt::Window &~ Qt::WindowMinMaxButtonsHint);
+//    title->setDisableFlags(Qt::WindowMinMaxButtonsHint);
 }
 
 BMWindow::~BMWindow()

@@ -94,7 +94,7 @@ Result InstallModule(const QString& installDirectory) {
     foreach(QString filename, modulelist) {
         qDebug()<<"Install Module"<<filename<<SearchMoudle(filename);
         if (!XSys::FS::InsertFile(SearchMoudle(filename), QDir::toNativeSeparators(installDirectory + filename))) {
-            return Result(Result::Faiiled, "Insert Module File Failed: " + SearchMoudle(filename) + " to " + QDir::toNativeSeparators(installDirectory + filename));
+            return Result(Result::Failed, "Insert Module File Failed: " + SearchMoudle(filename) + " to " + QDir::toNativeSeparators(installDirectory + filename));
         }
     }
 
