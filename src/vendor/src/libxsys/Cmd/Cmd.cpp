@@ -45,24 +45,24 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
     app.start("\"" + execPath + "\"" + " " + execParam);
     if (!app.waitForStarted()) {
         qWarning() << "Cmd Exec Failed:" << app.errorString();
-        return Result(Result::Faiiled, app.errorString(), "", app.program());
+        return Result(Result::Failed, app.errorString(), "", app.program());
     }
 
     if (!app.waitForFinished(-1)) {
         qWarning() << "waitForFinished Failed:" << app.errorString();
-        return Result(Result::Faiiled, app.errorString(), "", app.program());
+        return Result(Result::Failed, app.errorString(), "", app.program());
     }
 
     auto standardError = app.readAllStandardError();
 
     if (QProcess::NormalExit != app.exitStatus()) {
         qWarning() << "exitStatus error:" << app.exitStatus() << standardError << app.program();
-        return Result(Result::Faiiled, standardError, "", app.program());
+        return Result(Result::Failed, standardError, "", app.program());
     }
 
     if (0 != app.exitCode()) {
         qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
-        return Result(Result::Faiiled, standardError, "", app.program());
+        return Result(Result::Failed, standardError, "", app.program());
     }
 
     Result rest(Result::Success, standardError, app.readAllStandardOutput());
@@ -87,24 +87,24 @@ static Result runApp(const QString &execPath, const QStringList &args)
 
     if (!app.waitForStarted()) {
         qWarning() << "Cmd Exec Failed:" << app.errorString();
-        return Result(Result::Faiiled, app.errorString(), "", app.program());
+        return Result(Result::Failed, app.errorString(), "", app.program());
     }
 
     if (!app.waitForFinished(-1)) {
         qWarning() << "waitForFinished Failed:" << app.errorString();
-        return Result(Result::Faiiled, app.errorString(), "", app.program());
+        return Result(Result::Failed, app.errorString(), "", app.program());
     }
 
     auto standardError = app.readAllStandardError();
 
     if (QProcess::NormalExit != app.exitStatus()) {
         qWarning() << "exitStatus error:" << app.exitStatus() << standardError << app.program();
-        return Result(Result::Faiiled, standardError, "", app.program());
+        return Result(Result::Failed, standardError, "", app.program());
     }
 
     if (0 != app.exitCode()) {
         qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
-        return Result(Result::Faiiled, standardError, "", app.program());
+        return Result(Result::Failed, standardError, "", app.program());
     }
 
     Result rest(Result::Success, standardError, app.readAllStandardOutput());

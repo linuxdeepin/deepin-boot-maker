@@ -30,8 +30,10 @@
 #include <QSysInfo>
 
 #ifdef Q_OS_WIN32
-#include <windows.h>
+#include <Windows.h>
+#include <winioctl.h>
 #include <shellapi.h>
+
 #endif
 
 namespace XAPI
@@ -137,32 +139,107 @@ QString GetPartitionDisk(const QString &targetDev)
     return physicalDevName;
 }
 
-HANDLE LockDisk(const QString &targetDev)
+BOOL PreventRemovalOfDisk(HANDLE handle, BOOLEAN preventRemoval)
 {
-    QString phyName = GetPartitionDisk(targetDev);
-    WCHAR wPhyName[1024] = { 0 };
-    phyName.toWCharArray(wPhyName);
-    HANDLE handle = CreateFile(wPhyName, GENERIC_READ | GENERIC_WRITE,
-                               FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, 0);
+    DWORD dwBytesReturned;
+    PREVENT_MEDIA_REMOVAL PMRBuffer;
 
-    if (handle == INVALID_HANDLE_VALUE) {
-        return INVALID_HANDLE_VALUE;
-    }
+    PMRBuffer.PreventMediaRemoval = preventRemoval;
 
-    if (!DeviceIoControl(handle, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, NULL, 0)) {
-        CloseHandle(handle);
-        return INVALID_HANDLE_VALUE;
-    }
+    return DeviceIoControl(handle,
+                           IOCTL_STORAGE_MEDIA_REMOVAL,
+                           &PMRBuffer,
+                           sizeof(PREVENT_MEDIA_REMOVAL),
+                           NULL, 0,
+                           &dwBytesReturned,
+                           NULL);
+}
 
+BOOL AutoEjectDisk(HANDLE handle)
+{
+    DWORD dwBytesReturned;
+    return DeviceIoControl(handle,
+                           IOCTL_STORAGE_EJECT_MEDIA,
+                           NULL,
+                           0,
+                           NULL,
+                           0,
+                           &dwBytesReturned,
+                           NULL);
+}
+
+HANDLE OpenDisk(const QString &targetDev)
+{
+    HANDLE handle;
+    TCHAR szVolumeName[8];
+    TCHAR driveLetter[2];
+    targetDev.left(2).toWCharArray(driveLetter);
+
+    wsprintf(szVolumeName,  TEXT("\\\\.\\%c:"), driveLetter[0]);
+
+    handle = CreateFile(szVolumeName,
+                        GENERIC_READ | GENERIC_WRITE,
+                        FILE_SHARE_READ | FILE_SHARE_WRITE,
+                        NULL,
+                        OPEN_EXISTING,
+                        0,
+                        NULL);
     return handle;
+}
+
+BOOL CloseDisk(HANDLE handle)
+{
+    return CloseHandle(handle);
+}
+
+BOOL LockDisk(HANDLE handle)
+{
+    if (!DeviceIoControl(handle, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, NULL, 0)) {
+        CloseDisk(handle);
+        return FALSE;
+    }
+
+    return TRUE;
 }
 
 void UnlockDisk(HANDLE handle)
 {
-    DeviceIoControl(handle, IOCTL_DISK_UPDATE_PROPERTIES, NULL, 0, NULL, 0, NULL,
-                    0);
+    DeviceIoControl(handle, IOCTL_DISK_UPDATE_PROPERTIES, NULL, 0, NULL, 0, NULL, 0);
     DeviceIoControl(handle, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, NULL, 0);
-    CloseHandle(handle);
+}
+
+BOOL DismountDisk(HANDLE handle)
+{
+    DWORD dwBytesReturned;
+    return DeviceIoControl(handle,
+                           FSCTL_DISMOUNT_VOLUME,
+                           NULL,
+                           0,
+                           NULL,
+                           0,
+                           &dwBytesReturned,
+                           NULL);
+}
+
+BOOL EjectDisk(const QString &targetDev)
+{
+    HANDLE handle = OpenDisk(targetDev);
+    if (handle == INVALID_HANDLE_VALUE) {
+        return FALSE;
+    }
+
+    if (LockDisk(handle) && DismountDisk(handle)) {
+        // Set prevent removal to false and eject the volume.
+        if (PreventRemovalOfDisk(handle, FALSE) &&  AutoEjectDisk(handle)) {
+            qDebug() << "disk has been auto ejected";
+        }
+    }
+
+    if (!CloseDisk(handle)) {
+        return FALSE;
+    }
+
+    return TRUE;
 }
 
 XSys::Result InstallSyslinux(const QString &targetDev)
@@ -219,15 +296,21 @@ XSys::Result InstallBootloader(const QString &targetDev)
                   .arg(xfbinstDiskName)
                   .arg(tmpPbrPath));
 
-
-    // UnlockDisk(handle);
     return XSys::Result(XSys::Result::Success, "", targetDev);
 }
 
 XSys::Result UmountDisk(const QString &targetDev)
 {
-    qDebug() << "In Win32 platform, Not UmountDisk " << targetDev;
-    return XSys::Result(XSys::Result::Success, "");
+    if (targetDev.isEmpty()) {
+        return XSys::Result(XSys::Result::Failed, "empty target dev");
+    }
+
+    if (EjectDisk(targetDev)) {
+        return XSys::Result(XSys::Result::Success, "");
+    } else {
+        qDebug() << "UmountDisk failed" << targetDev;
+        return XSys::Result(XSys::Result::Failed, "Umount disk failed");
+    }
 }
 
 bool CheckFormatFat32(const QString &targetDev)
@@ -642,7 +725,7 @@ QString GetPartitionDisk(const QString &targetDev)
 
 bool EjectDisk(const QString &targetDev)
 {
-    return UmountDisk(GetPartitionDisk(targetDev));
+    return UmountDisk(targetDev);
 }
 
 bool UmountDisk(const QString &disk)
@@ -691,25 +774,25 @@ Result ConfigSyslinx(const QString &targetPath)
     // rename isolinux to syslinux
     QString syslinxDir = QString("%1/syslinux/").arg(targetPath);
     if (!XSys::FS::RmDir(syslinxDir)) {
-        return Result(Result::Faiiled, "Remove Dir Failed: " + syslinxDir);
+        return Result(Result::Failed, "Remove Dir Failed: " + syslinxDir);
     }
 
     QString isolinxDir = QString("%1/isolinux/").arg(targetPath);
     if (!XSys::FS::MoveDir(isolinxDir, syslinxDir)) {
-        return Result(Result::Faiiled, "Move Dir Failed: " + isolinxDir + " to " + syslinxDir);
+        return Result(Result::Failed, "Move Dir Failed: " + isolinxDir + " to " + syslinxDir);
     }
     qDebug() << "Move " << isolinxDir << " ot " << syslinxDir;
 
     QString syslinxCfgPath = QString("%1/syslinux/syslinux.cfg").arg(targetPath);
     if (!XSys::FS::RmFile(syslinxCfgPath)) {
-        return Result(Result::Faiiled, "Remove File Failed: " + syslinxCfgPath);
+        return Result(Result::Failed, "Remove File Failed: " + syslinxCfgPath);
     }
 
     QString isolinxCfgPath = QString("%1/syslinux/isolinux.cfg").arg(targetPath);
     qDebug() << "Rename " << isolinxCfgPath << " ot " << syslinxCfgPath;
 
     if (!XSys::FS::CpFile(isolinxCfgPath, syslinxCfgPath)) {
-        return Result(Result::Faiiled, "Copy File Failed: " + isolinxCfgPath + " to " + syslinxCfgPath);
+        return Result(Result::Failed, "Copy File Failed: " + isolinxCfgPath + " to " + syslinxCfgPath);
     }
 
     qDebug() << "InstallModule to" << syslinxDir;
@@ -719,7 +802,7 @@ Result ConfigSyslinx(const QString &targetPath)
     // TODO: we change syslinux to 6.02, but gfxboot will not work
     // so use a syslinux.cfg will not use gfxboot and vesamenu
 //    if (!XSys::FS::InsertFile(":/blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
-//        return Result(Result::Faiiled, "Insert Config File Failed: :/blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
+//        return Result(Result::Failed, "Insert Config File Failed: :/blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
 //    }
 
     return Result(Result::Success, "");

@@ -109,7 +109,7 @@ int main(int argc, char **argv)
 
 #ifdef Q_OS_WIN
     Utils::loadFonts();
-    app.setWindowIcon(QIcon(":/theme/light/image/deepin-boot-maker.ico"));
+    app.setWindowIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
 #endif
     app.loadTranslator();
     Utils::loadTranslate();
