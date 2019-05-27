@@ -155,15 +155,28 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 #ifdef DBM_NO_BOOTLOADER
     qWarning() << "make disk with no bootloader mode";
     if (formatDevice) {
-        XSys::SynExec("umount", targetPartition);
+        result = XSys::SynExec("umount", targetPartition);
+        qDebug() << "umount disk: " << result.isSuccess();
+
+        auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
+
+        result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
+        qDebug() << "format mklabel: " << result.isSuccess();
+        result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary 1MiB 3500Mib").arg(targetDisk));
+        qDebug() << "format mkpart: " << result.isSuccess();
+        targetPartition = targetDisk + "1";
+
+        XSys::SynExec("partprobe", "");
+
+        XSys::SynExec("partprobe", "");
 
         QStringList args;
         args << "-n" << "DEEPINOS" << targetPartition;
         XSys::SynExec("mkfs.fat", args.join(" "));
+        qDebug() << "format partation: " << targetPartition << result.isSuccess();
 
         XSys::DiskUtil::Mount(targetPartition);
     }
-    qDebug() << "format disk: " << result.isSuccess();
 #else
     if (formatDevice) {
         result = XSys::Bootloader::InstallBootloader(device);
