@@ -1,3 +1,14 @@
+<a name="2.0.4.12"></a>
+## 2.0.4.12 (2019-05-27)
+
+
+#### Features
+
+*   fix format partition failed ([124adcdc](https://github.com/linuxdeepin/deepin-boot-maker/commit/124adcdc7faf10c07801a16c8be7ef2c5b25e9c6))
+*   support reject usb storage ([88159a3a](https://github.com/linuxdeepin/deepin-boot-maker/commit/88159a3abcf5b38425459db776b9df8130c7b296))
+
+
+
 <a name="2.0.4.11"></a>
 ## 2.0.4.11 (2019-04-10)
 
