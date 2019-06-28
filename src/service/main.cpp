@@ -34,6 +34,11 @@ const QString BootMakerPath = "/com/deepin/bootmaker";
 
 int main(int argc, char *argv[])
 {
+    QString PATH = qgetenv("PATH");
+    PATH += ";/usr/sbin";
+    PATH += ";/sbin";
+    qputenv("PATH", PATH.toLatin1());
+
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
     Utils::initResource();
@@ -50,6 +55,7 @@ int main(int argc, char *argv[])
     DBMLogManager::registerConsoleAppender();
 
     qDebug() << "write log to" << DBMLogManager::getlogFilePath();
+    qDebug() << PATH;
 
     auto systemBus = QDBusConnection::systemBus();
     if (!systemBus.registerService(BootMakerServiceName)) {
