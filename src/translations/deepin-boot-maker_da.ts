@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1</source>
-        <translation type="unfinished"/>
+        <translation>Kunne ikke kalde kommandoen %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -14,12 +14,12 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation type="unfinished"/>
+        <translation>For lidt diskplads: Sørg for at disken har %1 ledig plads</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"/>
+        <translation>Diskmonteringsfejl: Sæt disken i igen eller genstart, for at prøve igen</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Deepin bootskaber er et simpelt værktøj til at skrive systemaftryksfiler på CD/DVD, USB-flashdrev og andre installationsmedier.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -140,7 +140,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"/>
+        <translation>Indsend feedback</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -178,12 +178,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
-        <translation type="unfinished"/>
+        <translation>Vælg en disk</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk</source>
-        <translation type="unfinished"/>
+        <translation>Ingen tilgængelig disk</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>

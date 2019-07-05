@@ -9,27 +9,27 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Erro ao formatar o disco: Por favor, formate o disco como FAT32</translation>
+        <translation>Erro ao Formatar o Disco: Formate o disco em FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation>Espaço em Disco Insuficiente: Assegure-se que tenha %1 de espaço livre</translation>
+        <translation>Espaço Insuficiente no Disco: Verifique que tenha %1 de espaço livre em disco</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Erro de Montagem de Disco: Insira o disco novamente ou reinicie para retentar</translation>
+        <translation>Erro de Montagem do Disco: Insira novamente o disco ou reinicie para tentar novamente</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Erro de Descompactação de Imagem: Verifique a soma md5 da imagem para garantir sua integridade</translation>
+        <translation>Erro de Descompactação da Imagem: Verifique o md5 da imagem para garantir a sua integridade</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Internal Error</source>
-        <translation>Erro interno</translation>
+        <translation>Erro Interno</translation>
     </message>
 </context>
 <context>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>O Deepin Boot Maker é uma ferramenta simples para gravar imagens do sistema em CD/DVD, pendrive USB e outras mídias.</translation>
+        <translation>O Deepin Criador de Inicialização é uma ferramenta simples para gravar imagens do sistema em CD/DVD, Pendrive e outras mídias.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Boot Maker</translation>
+        <translation>Deepin Criador de Inicialização</translation>
     </message>
 </context>
 <context>
@@ -50,18 +50,18 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Arraste o arquivo de imagem ISO e solte-o aqui</translation>
+        <translation>Arraste a imagem ISO e solte-o aqui</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
-        <translation>OR</translation>
+        <translation>OU</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>Selecionar o arquivo de imagem ISO</translation>
+        <translation>Selecione a imagem ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -71,7 +71,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
-        <translation>Selecione novamente o arquivo de imagem ISO</translation>
+        <translation>Selecione novamente a imagem ISO</translation>
     </message>
 </context>
 <context>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Não remova o disco ou desligue o computador durante o processo</translation>
+        <translation>Não remova o disco ou desligue o computador durante este processo</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -102,7 +102,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation>Disco removível</translation>
+        <translation>Disco Removível</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="118"/>
@@ -112,7 +112,7 @@
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Boot Maker</translation>
+        <translation>Deepin Criador de Inicialização</translation>
     </message>
 </context>
 <context>
@@ -125,7 +125,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
-        <translation>Feito</translation>
+        <translation>Concluído</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>O log de erros será enviado automaticamente com o feedback. Não podemos melhorar sem o seu feedback</translation>
+        <translation>O log de erros será enviado junto com o feedback. Não podemos melhorar sem o seu feedback</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation>A Formatação de disco pode aumentar a taxa de sucesso na criação do boot</translation>
+        <translation>A formatação do disco pode aumentar a taxa de sucesso</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -173,7 +173,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
-        <translation>Formatar dispositivo USB</translation>
+        <translation>Formatar pendrive</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
@@ -188,12 +188,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation>A formatação irá apagar todos os dados do disco. Confirme e continue</translation>
+        <translation>A formatação irá apagar todos os dados do disco. Por favor, confirme para continuar</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatar o disco irá sobrescrever todos os dados. Tenha um backup antes de prosseguir.</translation>
+        <translation>A formatação do disco irá sobrescrever todos os dados. Por favor, faça um backup antes de prosseguir.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1</source>
-        <translation type="unfinished"/>
+        <translation>Nepodařilo se zavolat příkaz %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -14,17 +14,17 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation type="unfinished"/>
+        <translation>Nedostatek místa na disku: Zajistěte, prosím, aby na disku bylo %1 volného místa</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"/>
+        <translation>Chyba při připojování disku: Zastrčte, prosím, disk znovu nebo systém restartujte a zkuste to znovu</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"/>
+        <translation>Chyba při rozbalování obrazu: Zkontrolujte, prosím, kontrolní součet md5 obrazu a ujistěte se, že je obraz úplný</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Deepin Boot Maker je jednoduchý nástroj pro vypálení Systému do obrazového souboru CD/DVD, USB disku a dalších instalačních médií.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation type="unfinished"/>
+        <translation>Neodstraňujte, prosím, disk a nevypínejte počítač v době, kdy je disk dělán.</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -135,12 +135,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"/>
+        <translation>Protokol chyb se automaticky nahraje se zpětnou vazbou. Nemůžeme to opravit bez vaší zpětné vazby a podpory</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelská zpětná odezva</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -178,22 +178,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
-        <translation type="unfinished"/>
+        <translation>Vyberte, prosím, disk</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk</source>
-        <translation type="unfinished"/>
+        <translation>Nenalezen žádný dostupný disk</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation type="unfinished"/>
+        <translation>Data na disku budou zcela vymazána formátováním, potvrďte a pokračujte</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>Formátování disku přepíše všechna data. Před pokračováním prověďte zálohu.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1</source>
-        <translation type="unfinished"/>
+        <translation>Fallo al llamar al comando %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -14,17 +14,17 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation type="unfinished"/>
+        <translation>Espacio en disco insuficiente: Asegúrese de que el disco tenga %1 espacio libre</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"/>
+        <translation>Error al montar el disco: vuelva a conectar el disco o reinicie el sistema para volver a intentarlo</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"/>
+        <translation>Error al descomprimir la imagen: Compruebe la suma de verificación md5 de la imagen y asegúrese de que esté correcta</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"/>
+        <translation>El creador de unidades de arranque deepin es una herramienta sencilla que importa imágenes ISO, CD / DVD a USB y otros medios de instalación.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation type="unfinished"/>
+        <translation>Por favor, no retire el disco ni apague el ordenador durante el proceso</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -135,12 +135,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"/>
+        <translation>El registro de errores se cargará automáticamente con sus comentarios. No podemos mejorar sin su apoyo</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"/>
+        <translation>Enviar comentarios</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -178,22 +178,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
-        <translation type="unfinished"/>
+        <translation>Selecciona un disco</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk</source>
-        <translation type="unfinished"/>
+        <translation>No hay disco disponible</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation type="unfinished"/>
+        <translation>El formateo borrará todos los datos del disco, confirme y continúe</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>El formateo del disco sobrescribirá todos los datos, por favor haga una copia de seguridad antes de continuar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

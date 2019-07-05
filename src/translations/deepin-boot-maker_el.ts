@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1</source>
-        <translation type="unfinished"/>
+        <translation>Αποτυχία κλήσης εντολής %1.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -14,17 +14,17 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation type="unfinished"/>
+        <translation>Ανεπαρκής χώρος στο δίσκο: Παρακαλούμε βεβαιωθείτε ότι ο δίσκος έχει %1 ελεύθερο χώρο</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"/>
+        <translation>Σφάλμα προσάρτησης δίσκου: Συνδέστε τον δίσκο ξανά ή επανεκκινήστε τον υπολογιστή για να προσπαθήσετε ξανά</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"/>
+        <translation>Λάθος κατά την αποσυμπίεση της εικόνας: Ελέγξτε το md5 συνάθροισμα της εικόνας για να εξασφαλιστεί η ακεραιότητα της</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Ο δημιουργός εκκίνησης του Deepin είναι ένα απλό εργαλείο για να δημιουργήσετε αρχεία ειδώλου του συστήματος σε CD/DVD, USB δίσκους και άλλα μέσα εγγραφής.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation type="unfinished"/>
+        <translation>Μην αφαιρείται τον δίσκο ή κάνετε τερματισμό του υπολογιστή κατά την διάρκεια της διαδικασίας</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -135,12 +135,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"/>
+        <translation>Το αρχείο καταγραφής θα ανεβεί αυτόματα μαζί με την αναφορά. Δεν μπορούμε να το βελτιώσουμε χωρίς τις αναφορές σας.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"/>
+        <translation>Υποβάλλεται αναφορά</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation type="unfinished"/>
+        <translation>Η διαμόρφωση του δίσκου μπορεί να αυξήσει το ποσοστό επιτυχίας</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -178,22 +178,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
-        <translation type="unfinished"/>
+        <translation>Επιλέξτε ένα δίσκο</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No available disk</source>
-        <translation type="unfinished"/>
+        <translation>Δεν βρέθηκε διαθέσιμος δίσκος</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation type="unfinished"/>
+        <translation>Η διαμόρφωση θα σβήσει όλα τα δεδομένα από τον δίσκο, παρακαλώ επιβεβαιώστε και συνεχίστε</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>Η διαμόρφωση του δίσκου θα σβήσει όλα τα δεδομένα, παρακαλώ δημιουργείστε ένα αντίγραφο ασφαλείας πριν προχωρήσετε.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>
