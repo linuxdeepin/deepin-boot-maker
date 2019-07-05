@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>Deepin Opstartmediummaker is een eenvoudig hulpmiddel om een beeldbestand van een systeem naar een CD/DVD, een USB-station en andere installatiemedia te schrijven.</translation>
+        <translation>Deepin Opstartmediummaker is een eenvoudig hulpmiddel om installatiemedia van een systeem naar een CD/DVD, USB-station en andere installatiemedia te schrijven.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>Versleep een ISO-imagebestand hierheen</translation>
+        <translation>Sleep een ISO-imagebestand hierheen</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Het foutrapport zal automatisch worden geüpload. We hebben je feedback en steun nodig om te blijven innoveren.</translation>
+        <translation>Het foutrapport zal automatisch worden geüpload. We hebben je feedback nodig om te blijven innoveren.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Formatting disk can increase the making success rate</source>
-        <translation>Het formatteren van de schijf kan de kans dat het lukt verhogen</translation>
+        <translation>Het formatteren van de schijf verhoogt de kans dat het lukt</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
@@ -193,7 +193,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>De schijfgegevens worden volledig verwijderd tijdens het formatteren. Zorg ervoor dat je beschikt over een back-up.</translation>
+        <translation>De schijfgegevens worden volledig verwijderd tijdens het formatteren. Maak een back-up voordat je verder gaat.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="234"/>

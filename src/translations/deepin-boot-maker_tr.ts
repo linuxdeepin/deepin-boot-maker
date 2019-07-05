@@ -42,7 +42,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Ön Yükleme Oluşturucu</translation>
+        <translation>Deepin Önyükleme Oluşturucu</translation>
     </message>
 </context>
 <context>
@@ -102,7 +102,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation>Çıkarılabilir disk</translation>
+        <translation>Çıkarılabilir Disk</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="118"/>
@@ -112,7 +112,7 @@
     <message>
         <location filename="../app/main.cpp" line="116"/>
         <source>Deepin Boot Maker</source>
-        <translation>Deepin Ön Yükleme Oluşturucu</translation>
+        <translation>Deepin Önyükleme Oluşturucu</translation>
     </message>
 </context>
 <context>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
-        <translation>Bir disk seçin</translation>
+        <translation>Bir disk seç</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>

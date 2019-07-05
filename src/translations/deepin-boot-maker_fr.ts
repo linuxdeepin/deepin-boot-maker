@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1</source>
-        <translation>Échec de l&apos;appel de la commande %1.</translation>
+        <translation>Échec de l&apos;appel de la commande %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
@@ -130,7 +130,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
-        <translation>Avec succès</translation>
+        <translation>Réussi </translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="122"/>
