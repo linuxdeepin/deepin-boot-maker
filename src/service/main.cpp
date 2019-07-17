@@ -35,8 +35,12 @@ const QString BootMakerPath = "/com/deepin/bootmaker";
 int main(int argc, char *argv[])
 {
     QString PATH = qgetenv("PATH");
-    PATH += ";/usr/sbin";
-    PATH += ";/sbin";
+
+    if (PATH.isEmpty()) {
+        PATH = "/usr/bin";
+    }
+    PATH += ":/usr/sbin";
+    PATH += ":/sbin";
     qputenv("PATH", PATH.toLatin1());
 
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
