@@ -2,7 +2,7 @@
     font-size: 14px;
     font-weight: normal;
     font-style: normal;
-    color: #000000;
+    color: #ff0000;
 }
 
 #DeviceInfoDevName{

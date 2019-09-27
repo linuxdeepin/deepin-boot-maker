@@ -64,7 +64,7 @@ BMInterface::BMInterface(QObject *parent) :
             this, &BMInterface::deviceListChanged);
     connect(d->handler, &BMHandler::finished,
             this, &BMInterface::finished);
-    connect(d->handler, &BMHandler::reportProgress ,
+    connect(d->handler, &BMHandler::reportProgress,
             this, &BMInterface::reportProgress);
 
     connect(            this, &BMInterface::startInstall,
@@ -96,8 +96,15 @@ void BMInterface::reboot()
 
 QList<DeviceInfo> BMInterface::deviceList()
 {
+    qDebug() << "BMInterface deviceList";
     Q_D(BMInterface);
     return d->handler->deviceList();
+}
+
+bool BMInterface::checkfile(const QString &filepath)
+{
+    Q_D(BMInterface);
+    return d->handler->checkfile(filepath);
 }
 
 //bool BMInterface::install(const QString &image, const QString &device, const QString &partition, bool formatDevice)

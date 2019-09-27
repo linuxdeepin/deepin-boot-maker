@@ -115,6 +115,8 @@ void BootMaker::reboot()
 
 void BootMaker::start()
 {
+
+    qDebug() << "BootMaker start";
     emit m_usbDeviceMonitor->startMonitor();
 }
 
@@ -125,9 +127,20 @@ void BootMaker::stop()
 
 const QList<DeviceInfo> BootMaker::deviceList() const
 {
+    qDebug() << "BootMaker deviceList";
     return m_usbDeviceMonitor->deviceList();
 }
-
+bool BootMaker::checkfile(const QString &filepath)
+{
+    qDebug() << "CheckFile:" << filepath;
+    //check iso integrity
+    SevenZip sevenZipCheck(filepath, "");
+    if (!sevenZipCheck.check()) {
+        qCritical() << "Error::file check error";
+        return false;
+    }
+    return true;
+}
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
     emit m_usbDeviceMonitor->pauseMonitor();

@@ -27,7 +27,7 @@
 
 class BootMakerServicePrivate;
 class BootMakerService :  public QObject,
-        protected QDBusContext
+    protected QDBusContext
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "com.deepin.bootmaker")
@@ -47,9 +47,10 @@ public slots:
     Q_SCRIPTABLE void Stop();
     Q_SCRIPTABLE QString DeviceList();
     Q_SCRIPTABLE bool Install(const QString &image,
-                 const QString &device,
-                 const QString &partition,
-                 bool  formatDevice);
+                              const QString &device,
+                              const QString &partition,
+                              bool  formatDevice);
+    Q_SCRIPTABLE bool CheckFile(const QString &filepath);
 
 private:
     QScopedPointer<BootMakerServicePrivate> d_ptr;

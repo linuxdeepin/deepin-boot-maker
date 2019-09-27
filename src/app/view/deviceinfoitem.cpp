@@ -36,7 +36,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     s_removeDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive.svg", this);
     s_selectDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive-select.svg", this);
 
-    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
+//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
 
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setContentsMargins(12, 0, 12, 0);
@@ -49,20 +49,40 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto m_deviceLabel = new QLabel;
     m_deviceLabel->setObjectName("DeviceInfoLabel");
     m_deviceLabel->setText(name);
+    QFont qf = m_deviceLabel->font();
+    qf.setPointSize(14);
+    m_deviceLabel->setFont(qf);
+    QPalette pa;
+    pa.setColor(QPalette::Text, QColor("#000000"));
+    m_deviceLabel->setPalette(pa);
 
     auto m_deviceDevName = new QLabel;
     m_deviceDevName->setObjectName("DeviceInfoDevName");
     m_deviceDevName->setText(QString("(%1)").arg(device));
+    qf = m_deviceDevName->font();
+    qf.setPointSize(10);
+    m_deviceDevName->setFont(qf);
+    m_deviceDevName->setAlignment(Qt::AlignCenter);
+    pa.setColor(QPalette::Text, QColor("#797979"));
+    m_deviceDevName->setPalette(pa);
 
     auto m_deviceCapacity = new QLabel;
     m_deviceCapacity->setObjectName("DeviceInfoCapacity");
     m_deviceCapacity->setText(cap);
+    qf = m_deviceCapacity->font();
+    qf.setPointSize(10);
+    m_deviceCapacity->setFont(qf);
+    m_deviceCapacity->setAlignment(Qt::AlignCenter);
+    pa.setColor(QPalette::Text, QColor("#797979"));
+    m_deviceCapacity->setPalette(pa);
 
     auto m_deviceCapacityBar = new QProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
     m_deviceCapacityBar->setTextVisible(false);
     m_deviceCapacityBar->setFixedSize(60, 6);
     m_deviceCapacityBar->setValue(percent);
+    m_deviceCapacityBar->setStyleSheet(".QProgressBar{background - color: rgba(0, 0, 0, 0.05);border: solid 1px rgba(0, 0, 0, 0.03);border - radius: 3px;}"
+                                       ".QProgressBar::chunk{background - color:#2ca7f8;border - radius: 3px;}");
 
     mainLayout->addWidget(m_deviceIcon, 0, Qt::AlignCenter);
     mainLayout->addSpacing(14);

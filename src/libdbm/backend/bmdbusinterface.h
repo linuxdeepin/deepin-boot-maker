@@ -28,7 +28,9 @@ class BMDBusInterface: public QDBusAbstractInterface
     Q_OBJECT
 public:
     static inline const char *staticInterfaceName()
-    { return "com.deepin.bootmaker"; }
+    {
+        return "com.deepin.bootmaker";
+    }
 
 public:
     BMDBusInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);
@@ -47,6 +49,13 @@ public Q_SLOTS: // METHODS
         QList<QVariant> argumentList;
         argumentList << QVariant::fromValue(image) << QVariant::fromValue(device) << QVariant::fromValue(partition) << QVariant::fromValue(formatDevice);
         return asyncCallWithArgumentList(QStringLiteral("Install"), argumentList);
+    }
+
+    inline QDBusPendingReply<bool> CheckFile(const QString &filepath)
+    {
+        QList<QVariant> argumentList;
+        argumentList << QVariant::fromValue(filepath);
+        return asyncCallWithArgumentList(QStringLiteral("CheckFile"), argumentList);
     }
 
     inline QDBusPendingReply<> Reboot()
@@ -74,8 +83,8 @@ Q_SIGNALS: // SIGNALS
 };
 
 namespace com {
-  namespace deepin {
-    typedef ::BMDBusInterface bootmaker;
-  }
+namespace deepin {
+typedef ::BMDBusInterface bootmaker;
+}
 }
 #endif

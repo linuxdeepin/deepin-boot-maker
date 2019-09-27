@@ -51,7 +51,10 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     m_title = new QLabel(tr("Successful"));
     m_title->setFixedHeight(38);
-    m_title->setStyleSheet("font-size: 26px;");
+    QFont ft = m_title->font();
+    ft.setPointSize(26);
+    m_title->setFont(ft);
+//    m_title->setStyleSheet("font-size: 26px;");
 
     m_resultIcon = new QLabel();
     m_resultIcon->setObjectName("ResultIcon");
@@ -60,6 +63,15 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_hitsTitle = new QLabel();
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     m_hitsTitle->setFixedWidth(340);
+
+    QFont qf;
+    qf = m_hitsTitle->font();
+    qf.setPointSize(14);
+    m_hitsTitle->setFont(qf);
+    QPalette pa;
+    pa.setColor(QPalette::Text, QColor("#000000"));
+    m_hitsTitle->setPalette(pa);
+    m_hitsTitle->setAlignment(Qt::AlignCenter);
 
 //    QString hitsFormat = "<a style='color:#b4b4b4; font-size:11px'>%1</a>";
 //    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
@@ -73,6 +85,12 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 //    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
 //    m_logHits->setOpenExternalLinks(false);
     m_logHits->hide();
+    qf = m_logHits->font();
+    qf.setPointSize(12);
+    m_logHits->setFont(qf);
+    pa.setColor(QPalette::Text, QColor("#424242"));
+    m_logHits->setPalette(pa);
+    m_logHits->setAlignment(Qt::AlignCenter);
 
     m_rebootLater = new SuggestButton();
     m_rebootLater->setObjectName("RebootLater");
@@ -98,7 +116,7 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 //    m_rebootNow->hide();
 //    mainLayout->addWidget(m_rebootNow, 0, Qt::AlignCenter);
 
-    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ResultView.theme"));
+//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ResultView.theme"));
 
     connect(m_rebootNow, &SuggestButton::clicked,
     this, [ = ]() {

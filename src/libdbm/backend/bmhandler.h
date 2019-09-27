@@ -37,7 +37,8 @@ public:
         ExtractImgeFailed,
     };
 
-    explicit BMHandler(QObject *parent = 0): QObject(parent) {
+    explicit BMHandler(QObject *parent = 0): QObject(parent)
+    {
         connect(this, &BMHandler::startInstall,
                 this, &BMHandler::install);
     }
@@ -54,6 +55,7 @@ public slots:
     virtual void start() = 0;
     virtual void stop() = 0;
     virtual const QList<DeviceInfo> deviceList() const = 0;
+    virtual bool checkfile(const QString &filepath) = 0;
 
 protected:
     virtual bool install(const QString &image,

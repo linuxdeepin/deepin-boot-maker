@@ -21,12 +21,18 @@
 
 #pragma once
 
-#include <dbasebutton.h>
+//#include <dbasebutton.h>
+#include <DWidget>
+#include <DPushButton>
+#include <DGuiApplicationHelper>
 
-class SuggestButton : public DTK_WIDGET_NAMESPACE::DBaseButton
+DWIDGET_USE_NAMESPACE
+DGUI_USE_NAMESPACE
+
+class SuggestButton : public DPushButton
 {
     Q_OBJECT
 public:
-    explicit SuggestButton(QWidget *parent = 0);
+    explicit SuggestButton(DWidget *parent = 0);
 };
 

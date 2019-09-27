@@ -124,7 +124,7 @@ BMWindow::BMWindow(QWidget *parent)
     auto title = titlebar();
     auto flags = windowFlags() & ~Qt::WindowMaximizeButtonHint;
     setWindowFlags(flags);
-    title->setMenuVisible(false);
+//    title->setMenuVisible(false);
     // TODO: read it from parent
 #ifdef Q_OS_MAC
     titlebar()->setWindowFlags(flags);
@@ -191,6 +191,7 @@ BMWindow::BMWindow(QWidget *parent)
         slideWidget(d->isoWidget, d->usbWidget);
         setProperty("bmISOFilePath", d->isoWidget->isoFilePath());
         wsib->setCurrentPage(1);
+        qDebug() << "iso path:" << d->isoWidget->isoFilePath();
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
@@ -217,7 +218,6 @@ BMWindow::BMWindow(QWidget *parent)
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setCurrentPage(2);
     });
-
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
