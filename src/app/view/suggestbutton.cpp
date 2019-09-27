@@ -23,7 +23,8 @@
 
 #include "widgetutil.h"
 
-SuggestButton::SuggestButton(QWidget *parent) : DBaseButton(parent)
+SuggestButton::SuggestButton(DWidget *parent) :
+    DPushButton(parent)
 {
     this->setStyleSheet(WidgetUtil::getQss(":/theme/light/SuggestButton.theme"));
     this->setFixedSize(QPixmap(":/theme/light/image/suggest_button_hover.svg").size());

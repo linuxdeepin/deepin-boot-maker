@@ -54,6 +54,7 @@ public slots:
     void stop();
     void reboot();
     QList<DeviceInfo> deviceList();
+    bool checkfile(const QString &filepath);
 
 private:
     bool install(const QString &image,

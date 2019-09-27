@@ -39,14 +39,18 @@ public:
                                      "/com/deepin/bootmaker",
                                      QDBusConnection::systemBus(),
                                      this);
-
+        if (!m_dbus->isValid()) {
+            qDebug() << "m_dbus isValid false error:" << m_dbus->lastError();
+        }
+        qDebug() << "m_dbus isValid true";
         connect(m_dbus, &BMDBusInterface::DeviceListChanged,
         this, [ = ](const QString & deviceListJson) {
+            qDebug() << "DeviceListChanged,";
             emit removablePartitionsChanged(deviceListFromJson(deviceListJson));
         });
         connect(m_dbus, &BMDBusInterface::Finished,
                 this, &BMDbusHandler::finished);
-        connect(m_dbus, &BMDBusInterface::ReportProgress ,
+        connect(m_dbus, &BMDBusInterface::ReportProgress,
                 this, &BMDbusHandler::reportProgress);
     }
 
@@ -58,7 +62,9 @@ public slots:
 
     void start()
     {
+        qDebug() << "start";
         m_dbus->Start();
+        qDebug() << "m_dbus Start error:" << m_dbus->lastError();
     }
 
     void stop()
@@ -68,6 +74,7 @@ public slots:
 
     const QList<DeviceInfo> deviceList() const
     {
+        qDebug() << "deviceList";
         return  deviceListFromJson(m_dbus->DeviceList());
     }
 
@@ -76,7 +83,14 @@ public slots:
                  const QString &partition,
                  bool  formatDevice)
     {
+        qDebug() << "install";
         return m_dbus->Install(image, device, partition, formatDevice);
+    }
+
+    bool checkfile(const QString &filepath)
+    {
+        qDebug() << "checkfile";
+        return m_dbus->CheckFile(filepath);
     }
 
 private:

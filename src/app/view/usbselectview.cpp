@@ -78,7 +78,10 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     QLabel *m_title = new QLabel(tr("Select a disk"));
     m_title->setFixedHeight(38);
-    m_title->setStyleSheet("font-size: 26px;");
+    QFont ft = m_title->font();
+    ft.setPointSize(26);
+    m_title->setFont(ft);
+//    m_title->setStyleSheet("font-size: 26px;");
 
     QFrame *usbDeviceListPanel = new QFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");

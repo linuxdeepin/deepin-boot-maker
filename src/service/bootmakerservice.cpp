@@ -165,6 +165,7 @@ void BootMakerService::Stop()
 //! return json of devicelist
 QString BootMakerService::DeviceList()
 {
+    qDebug() << "BootMakerService DeviceList";
     Q_D(BootMakerService);
     if (!d->checkCaller()) {
         return "";
@@ -178,8 +179,19 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
     if (!d->checkCaller()) {
         return false;
     }
+    qDebug() << "---install  image:" << image << " device:" << device << " partition:" << partition;
     emit d->bm->startInstall(image, device, partition, formatDevice);
     return true;
+}
+
+bool BootMakerService::CheckFile(const QString &filepath)
+{
+    Q_D(BootMakerService);
+    if (!d->checkCaller()) {
+        return false;
+    }
+//    emit d->bm->startInstall(image, device, partition, formatDevice);
+    return d->bm->checkfile(filepath);
 }
 
 bool BootMakerServicePrivate::checkCaller()

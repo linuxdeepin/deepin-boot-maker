@@ -27,7 +27,10 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QString>
 #include "utils.h"
+
+//#pragma execution_character_set("utf-8")
 
 DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
 {
@@ -37,7 +40,11 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
     m_timer->setInterval(3000);
     connect(m_timer, &QTimer::timeout, this, [ = ] {
         QList<DeviceInfo> list = Utils::ListUsbDrives();
-        qDebug() << "list" << list.length();
+        qDebug() << "list length:" << list.length();
+        for (int i = 0; i < list.size(); i++)
+        {
+            qDebug() << "list i:" << i << " path:" << list.at(i).path << " label:" << list.at(i).label;
+        }
         emit this->removablePartitionsChanged(list);
     });
 

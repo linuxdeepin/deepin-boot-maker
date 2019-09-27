@@ -30,7 +30,6 @@
 #include <Windows.h>
 #endif
 
-
 static void initQRC()
 {
 #ifdef Q_OS_LINUX
@@ -40,8 +39,7 @@ static void initQRC()
 #endif
 }
 
-namespace Utils
-{
+namespace Utils {
 
 
 void loadTranslate()
@@ -189,10 +187,12 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
     df.waitForStarted(-1);
     df.waitForFinished(-1);
     QString dfout = df.readAll();
+    qDebug() << "CommandLsblkParse dfout:" << dfout;
 
     QMap<QString, DeviceInfo> deviceInfos;
 
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLatin1());
+//    QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLatin1());
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLocal8Bit());
     foreach (const QJsonValue &value, jsonDoc.object()["blockdevices"].toArray()) {
         QMap<QString, DeviceInfo> children;
         foreach (const QJsonValue &partiotion, value.toObject()["children"].toArray()) {
@@ -200,6 +200,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             info.path = partiotion.toObject()["name"].toString();
             info.uuid = partiotion.toObject()["uuid"].toString();
             info.label = partiotion.toObject()["label"].toString();
+//            info.label = QString::fromLocal8Bit(partiotion.toObject()["label"].toString().toLocal8Bit().data());
             info.fstype = partiotion.toObject()["fstype"].toString();
             children.insert(info.path, info);
         }
@@ -219,6 +220,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
 
 bool CheckInstallDisk(const QString &targetDev)
 {
+    qDebug() << "CheckInstallDisk";
     if (XSys::DiskUtil::PF_FAT32 != XSys::DiskUtil::GetPartitionFormat(targetDev)) {
         qDebug() << "disk format error " << targetDev;
         return false;
@@ -263,6 +265,7 @@ bool isUsbDisk(const QString &dev)
 
 QList<DeviceInfo> ListUsbDrives()
 {
+    qDebug() << "ListUsbDrives";
     QList<DeviceInfo> deviceList;
 #ifdef Q_OS_WIN32
     QFileInfoList extdrivesList = QDir::drives();

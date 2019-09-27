@@ -39,6 +39,7 @@ public slots:
                  const QString &device,
                  const QString &partition,
                  bool  formatDevice);
+    bool checkfile(const QString &filepath);
 
 private:
     DeviceMonitor        *m_usbDeviceMonitor = nullptr;

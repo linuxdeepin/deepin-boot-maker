@@ -43,13 +43,24 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
 
     QLabel *m_title = new QLabel(tr("Making"));
     m_title->setFixedHeight(38);
-    m_title->setStyleSheet("font-size: 26px;");
+    QFont ft = m_title->font();
+    ft.setPointSize(26);
+    m_title->setFont(ft);
+//    m_title->setStyleSheet("font-size: 26px;");
 
     auto waterProgress = new Dtk::Widget::DWaterProgress;
     waterProgress->setFixedSize(100, 100);
 
     QLabel *m_hitsTitle = new QLabel(tr("Making the disk, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
+    QFont qf;
+    qf = m_hitsTitle->font();
+    qf.setPointSize(14);
+    m_hitsTitle->setFont(qf);
+    QPalette pa;
+    pa.setColor(QPalette::Text, QColor("#000000"));
+    m_hitsTitle->setPalette(pa);
+    m_hitsTitle->setAlignment(Qt::AlignCenter);
 
     QLabel *m_hits = new QLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
@@ -74,7 +85,8 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     waterProgress->setValue(0);
     waterProgress->start();
 
-    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
+//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
+    this->setStyleSheet("#ProgressHits{line-height: 1.67;}");
 
 //    connect(start, &SuggestButton::clicked, this, &ProgressView::testCancel);
     start->hide();

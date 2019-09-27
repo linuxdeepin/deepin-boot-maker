@@ -6,7 +6,8 @@ QT -= gui
 CONFIG += c++11
 
 TARGET = deepin-boot-maker-service
-CONFIG += console
+CONFIG += console link_pkgconfig
+PKGCONFIG += dtkwidget
 CONFIG -= app_bundle
 
 TEMPLATE = app
