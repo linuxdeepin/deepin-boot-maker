@@ -25,8 +25,7 @@
 
 #ifdef Q_OS_WIN32
 #include <QFontDatabase>
-namespace Utils
-{
+namespace Utils {
 void loadFonts();
 }
 #endif
@@ -88,7 +87,7 @@ int main(int argc, char **argv)
     app.setOrganizationName("deepin");
     app.setApplicationName("deepin-boot-maker");
     app.setApplicationVersion("2.0.0");
-    app.setTheme("light");
+//    app.setTheme("light");
 
 #ifdef Q_OS_MAC
     if (switchToRoot(app)) {
@@ -129,8 +128,7 @@ int main(int argc, char **argv)
 }
 
 #ifdef Q_OS_WIN32
-namespace Utils
-{
+namespace Utils {
 void loadFonts()
 {
     QFontDatabase database;

@@ -244,6 +244,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface->start();
 //    title->setWindowFlags(title->windowFlags() & ~Qt::Window &~ Qt::WindowMinMaxButtonsHint);
 //    title->setDisableFlags(Qt::WindowMinMaxButtonsHint);
+
 }
 
 BMWindow::~BMWindow()

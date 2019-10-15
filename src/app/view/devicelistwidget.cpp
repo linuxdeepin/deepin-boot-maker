@@ -31,6 +31,7 @@ DeviceListWidget::DeviceListWidget(QWidget *parent) : QListWidget(parent)
     setFlow(QListView::TopToBottom);
     setMovement(QListView::Static);
     setViewMode(QListView::ListMode);
+    setFrameShape(QListWidget::NoFrame);
 
-    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceListWidget.theme"));
+//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceListWidget.theme"));
 }

@@ -28,6 +28,9 @@
 #include <QListWidget>
 #include <QMessageBox>
 #include <QIcon>
+#include <QPalette>
+
+#include <DCheckBox>
 
 #include <ddialog.h>
 
@@ -77,15 +80,19 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Select a disk"));
-    m_title->setFixedHeight(38);
+    m_title->setFixedHeight(18);
     QFont ft = m_title->font();
-    ft.setPointSize(26);
+    ft.setPointSize(10);
     m_title->setFont(ft);
 //    m_title->setStyleSheet("font-size: 26px;");
 
     QFrame *usbDeviceListPanel = new QFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
     usbDeviceListPanel->setFixedSize(410, 320);
+    usbDeviceListPanel->setAutoFillBackground(true);
+    QPalette pa = usbDeviceListPanel->palette();
+    pa.setColor(QPalette::Background, QColor(255, 255, 255, 128));
+    usbDeviceListPanel->setPalette(pa);
 
     QVBoxLayout *usbPanelLayout = new QVBoxLayout(usbDeviceListPanel);
     usbPanelLayout->setContentsMargins(10, 0, 10, 0);
@@ -94,38 +101,64 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     checkBoxLayout->setContentsMargins(0, 0, 0, 0);
     checkBoxLayout->setSpacing(0);
 
-    QCheckBox *m_formatDiskCheck = new QCheckBox(this);
+    DCheckBox *m_formatDiskCheck = new DCheckBox(this);
+    m_formatDiskCheck->setText(tr("Formatting disk can increase the making success rate"));
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
+    m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
     m_formatDiskCheck->hide();
+    ft = m_formatDiskCheck->font();
+    ft.setPointSize(10);
+    m_formatDiskCheck->setFont(ft);
 
-    QLabel *checkBoxHints = new QLabel(this);
-    checkBoxHints->setMinimumHeight(34);
-    checkBoxHints->setWordWrap(true);
-    checkBoxHints->setText(tr("Formatting disk can increase the making success rate"));
-    checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
-    checkBoxHints->setMinimumWidth(330);
-    checkBoxHints->hide();
+//    QLabel *checkBoxHints = new QLabel(this);
+//    checkBoxHints->setMinimumHeight(34);
+//    checkBoxHints->setWordWrap(true);
+//    checkBoxHints->setText(tr("Formatting disk can increase the making success rate"));
+////    checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
+////    checkBoxHints->setMinimumWidth(this->width());
+//    ft = checkBoxHints->font();
+//    ft.setPointSize(10);
+//    checkBoxHints->setFont(ft);
+//    checkBoxHints->hide();
 
     checkBoxLayout->addStretch();
     checkBoxLayout->addWidget(m_formatDiskCheck);
-    checkBoxLayout->addSpacing(4);
-    checkBoxLayout->addWidget(checkBoxHints);
+//    checkBoxLayout->addSpacing(4);
+//    checkBoxLayout->addWidget(checkBoxHints);
     checkBoxLayout->addStretch();
+    checkBoxLayout->setAlignment(Qt::AlignCenter);
 
     DeviceListWidget *m_deviceList = new DeviceListWidget;
     m_deviceList->setObjectName("UsbDeviceList");
     m_deviceList->setFixedSize(390, 270);
     m_deviceList->hide();
 
+    DeviceDelegate *m_devicedelegate = new DeviceDelegate(m_deviceList);
+    m_deviceList->setItemDelegate(m_devicedelegate);
+
     QLabel *m_warningHint = new  QLabel("");
     m_warningHint->setObjectName("WarningHint");
     m_warningHint->setFixedWidth(370);
     m_warningHint->setMinimumHeight(30);
     m_warningHint->setWordWrap(true);
+    ft = m_warningHint->font();
+    ft.setPointSize(9);
+    m_warningHint->setFont(ft);
+    m_warningHint->setAlignment(Qt::AlignCenter);
+    pa = m_warningHint->palette();
+    pa.setColor(QPalette::WindowText, QColor("#ff5800"));
+    m_warningHint->setPalette(pa);
 
     QLabel *m_emptyHint = new  QLabel(tr("No available disk"));
     m_emptyHint->setObjectName("EmptyHintTitle");
+    m_emptyHint->setAlignment(Qt::AlignCenter);
+    ft = m_emptyHint->font();
+    ft.setPointSize(10);
+    m_emptyHint->setFont(ft);
+    pa = m_emptyHint->palette();
+    pa.setColor(QPalette::WindowText, QColor("#848484"));
+    m_emptyHint->setPalette(pa);
 
     usbPanelLayout->addStretch();
     usbPanelLayout->addWidget(m_emptyHint, 0, Qt::AlignCenter);
@@ -140,14 +173,13 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     start->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(24);
+    mainLayout->addSpacing(50);
     mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignCenter);
     mainLayout->addWidget(m_warningHint, 0, Qt::AlignCenter);
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
-    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
-
+//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
     auto handleFormat = [ = ](bool checked) {
         if (!checked) {
             m_warningHint->setText("");
@@ -165,7 +197,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     this, [ = ](const QList<DeviceInfo> &partitions) {
         bool hasPartitionSelected = false;
         m_formatDiskCheck->setVisible(partitions.size());
-        checkBoxHints->setVisible(partitions.size());
+//        checkBoxHints->setVisible(partitions.size());
         m_emptyHint->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
 //        m_formatDiskCheck->setEnabled(partitions.size());
@@ -179,7 +211,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
                 usageString(partition.used, partition.total),
                 percent(partition.used, partition.total));
             infoItem->setNeedFormat(partition.needFormat);
-            listItem->setSizeHint(infoItem->size());
+            listItem->setSizeHint(QSize(infoItem->size().width(), infoItem->size().height() + 10));
             m_deviceList->addItem(listItem);
             m_deviceList->setItemWidget(listItem, infoItem);
             infoItem->setProperty("path", partition.path);

@@ -25,16 +25,23 @@
 #include <QMimeData>
 #include <QFileInfo>
 #include <QDebug>
+#include <QPainter>
 
 static bool checkMimeData(const QMimeData *mimeData)
 {
-    if (!mimeData->hasUrls()) { return false; }
+    if (!mimeData->hasUrls()) {
+        return false;
+    }
 
     QList<QUrl> urlList = mimeData->urls();
-    if (1 != urlList.size()) { return false;}
+    if (1 != urlList.size()) {
+        return false;
+    }
 
     QFileInfo info(urlList.first().toLocalFile());
-    if ("iso" != info.suffix().toLower()) { return false; }
+    if ("iso" != info.suffix().toLower()) {
+        return false;
+    }
 
     return true;
 }
@@ -47,7 +54,9 @@ DropFrame::DropFrame(QWidget *parent) : QFrame(parent)
 void DropFrame::dragEnterEvent(QDragEnterEvent *event)
 {
     const QMimeData *mimeData = event->mimeData();
-    if (!checkMimeData(mimeData)) { return; }
+    if (!checkMimeData(mimeData)) {
+        return;
+    }
 
     event->acceptProposedAction();
     emit fileAboutAccept();
@@ -62,8 +71,21 @@ void DropFrame::dragLeaveEvent(QDragLeaveEvent *event)
 void DropFrame::dropEvent(QDropEvent *event)
 {
     const QMimeData *mimeData = event->mimeData();
-    if (!checkMimeData(mimeData)) { return; }
+    if (!checkMimeData(mimeData)) {
+        return;
+    }
 
     emit fileDrop(mimeData->urls().first().toLocalFile());
     emit fileCancel();
+}
+
+
+void DropFrame::paintEvent(QPaintEvent *e)
+{
+    if (this->property("active").toBool()) {
+        QPixmap pixmap = QPixmap(":/theme/light/image/dash.svg").scaled(this->size());
+        QPainter painter(this);
+        painter.drawPixmap(this->rect(), pixmap);
+    }
+    QFrame::paintEvent(e);
 }

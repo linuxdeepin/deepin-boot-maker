@@ -22,9 +22,20 @@
 #pragma once
 
 #include <QWidget>
+#include <QRadioButton>
+#include <QListWidget>
+#include <QItemDelegate>
 
 class QLabel;
+class DeviceDelegate : public QItemDelegate
+{
+    Q_OBJECT
 
+public:
+
+    DeviceDelegate(QObject *parent = 0);
+    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+};
 class DeviceInfoItem : public QWidget
 {
     Q_OBJECT
@@ -39,11 +50,15 @@ public:
     bool needFormat() const;
     void setNeedFormat(bool format);
 
+protected:
+    void paintEvent(QPaintEvent *event) override;
 private:
     bool checked            = false;
     QLabel *m_deviceIcon    = nullptr;
+    QRadioButton *m_radiobutton = nullptr;
+    QLabel *m_fillingposition    = nullptr;
 
     QPixmap s_removeDevice;
-    QPixmap s_selectDevice;
+//    QPixmap s_selectDevice;
 };
 
