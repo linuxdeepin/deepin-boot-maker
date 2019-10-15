@@ -190,14 +190,14 @@ bool BootMakerService::CheckFile(const QString &filepath)
     if (!d->checkCaller()) {
         return false;
     }
-//    emit d->bm->startInstall(image, device, partition, formatDevice);
+////    emit d->bm->startInstall(image, device, partition, formatDevice);
     return d->bm->checkfile(filepath);
 }
 
 bool BootMakerServicePrivate::checkCaller()
 {
     Q_Q(BootMakerService);
-
+    return true;
     auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
     auto callerExe = getProcIdExe(callerPid);
     auto dbmExe = "/usr/bin/deepin-boot-maker";

@@ -36,4 +36,6 @@ signals:
     void fileAboutAccept();
     void fileCancel();
     void fileDrop(const QString file);
+private:
+    void paintEvent(QPaintEvent *) override;
 };

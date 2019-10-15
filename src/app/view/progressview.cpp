@@ -42,9 +42,9 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Making"));
-    m_title->setFixedHeight(38);
+    m_title->setFixedHeight(16);
     QFont ft = m_title->font();
-    ft.setPointSize(26);
+    ft.setPointSize(10);
     m_title->setFont(ft);
 //    m_title->setStyleSheet("font-size: 26px;");
 
@@ -55,10 +55,10 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     m_hitsTitle->setObjectName("ProgressHitsTitle");
     QFont qf;
     qf = m_hitsTitle->font();
-    qf.setPointSize(14);
+    qf.setPointSize(10);
     m_hitsTitle->setFont(qf);
     QPalette pa;
-    pa.setColor(QPalette::Text, QColor("#000000"));
+    pa.setColor(QPalette::WindowText, QColor("#000000"));
     m_hitsTitle->setPalette(pa);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
@@ -66,7 +66,13 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     m_hits->setObjectName("ProgressHits");
     m_hits->setFixedSize(390, 60);
     m_hits->setWordWrap(true);
+    qf = m_hits->font();
+    qf.setPointSize(10);
+    m_hits->setFont(qf);
     m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+    pa = m_hits->palette();
+    pa.setColor(QPalette::WindowText, QColor("#808080"));
+    m_hits->setPalette(pa);
 
     SuggestButton *start = new SuggestButton();
     start->setObjectName("ProgressCancel");
@@ -86,7 +92,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     waterProgress->start();
 
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
-    this->setStyleSheet("#ProgressHits{line-height: 1.67;}");
+//    this->setStyleSheet("#ProgressHits{line-height: 1.67;}");
 
 //    connect(start, &SuggestButton::clicked, this, &ProgressView::testCancel);
     start->hide();

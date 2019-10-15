@@ -72,7 +72,12 @@
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
-        <source>Reselect an ISO image file</source>
+        <source>Reselect an ISO image file</source>Illegal ISO file
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/isoselectview.cpp" line="197"/>
+        <source>Illegal ISO file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -142,6 +147,11 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Submit Feedback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="133"/>
+        <source>Restart the computer from the U disk boot can experienc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

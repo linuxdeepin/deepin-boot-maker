@@ -50,9 +50,9 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->setSpacing(0);
 
     m_title = new QLabel(tr("Successful"));
-    m_title->setFixedHeight(38);
+    m_title->setFixedHeight(16);
     QFont ft = m_title->font();
-    ft.setPointSize(26);
+    ft.setPointSize(10);
     m_title->setFont(ft);
 //    m_title->setStyleSheet("font-size: 26px;");
 
@@ -66,10 +66,10 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 
     QFont qf;
     qf = m_hitsTitle->font();
-    qf.setPointSize(14);
+    qf.setPointSize(10);
     m_hitsTitle->setFont(qf);
     QPalette pa;
-    pa.setColor(QPalette::Text, QColor("#000000"));
+    pa.setColor(QPalette::WindowText, QColor("#000000"));
     m_hitsTitle->setPalette(pa);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
@@ -86,9 +86,9 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
 //    m_logHits->setOpenExternalLinks(false);
     m_logHits->hide();
     qf = m_logHits->font();
-    qf.setPointSize(12);
+    qf.setPointSize(10);
     m_logHits->setFont(qf);
-    pa.setColor(QPalette::Text, QColor("#424242"));
+    pa.setColor(QPalette::WindowText, QColor("#424242"));
     m_logHits->setPalette(pa);
     m_logHits->setAlignment(Qt::AlignCenter);
 
@@ -130,6 +130,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
 
     switch (errorType) {
     case BMHandler::NoError:
+        m_hitsTitle->setText(tr("Restart the computer from the U disk boot can experienc"));
         m_rebootLater->disconnect();
         connect(m_rebootLater, &SuggestButton::clicked,
         this, [ = ]() {

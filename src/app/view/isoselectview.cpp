@@ -46,9 +46,9 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Select an ISO image file"));
-    m_title->setFixedHeight(38);
+    m_title->setFixedHeight(18);
     QFont qf = m_title->font();
-    qf.setPointSize(26);
+    qf.setPointSize(10);
     m_title->setFont(qf);
 //    m_title->setStyleSheet("font-size: 26px;");
 
@@ -67,8 +67,8 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     isoPanel->setObjectName("IosPanel");
     isoPanel->setFixedSize(412, 322);
     QPalette pa;
-//    pa.setColor(QPalette::Background, QColor(255, 255, 255, 13));
-//    isoPanel->setPalette(pa);
+    pa.setColor(QPalette::Background, QColor(255, 255, 255, 13));
+    isoPanel->setPalette(pa);
 
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);
@@ -76,13 +76,16 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     m_fileLabel = new QLabel(tr("Drag an ISO image file and drop it here"));
     m_fileLabel->setObjectName("IsoFileName");
     qf = m_fileLabel->font();
-    qf.setPointSize(12);
+    qf.setPointSize(10);
     m_fileLabel->setFont(qf);
-    pa.setColor(QPalette::Text, QColor("#303030"));
+    pa.setColor(QPalette::WindowText, Qt::gray);
     m_fileLabel->setPalette(pa);
 //    m_fileLabel->setFixedHeight(18);
 
     m_stateLabel = new QLabel();
+    qf = m_stateLabel->font();
+    qf.setPointSize(10);
+    m_stateLabel->setFont(qf);
     m_stateLabel->hide();
 
     m_hits = new QLabel(tr("OR"));
@@ -91,12 +94,16 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     qf = m_hits->font();
     qf.setPointSize(10);
     m_hits->setFont(qf);
-    pa.setColor(QPalette::Text, QColor("#848484"));
-    m_hits->setPalette(pa);
+//    pa.setColor(QPalette::WindowText, QColor("#848484"));
+//    m_hits->setPalette(pa);
 
     QLabel *spliter = new QLabel;
     spliter->setObjectName("IsoSpliter");
     spliter->setFixedSize(230, 1);
+    spliter->setAutoFillBackground(true);
+    QPixmap pixmap(":/theme/light/image/dash_line.svg");
+    pa.setBrush(QPalette::Background, QBrush(pixmap));
+    spliter->setPalette(pa);
 
     m_fileSelect = new QLabel();
     m_fileSelect->setObjectName("IsoFileSelect");
@@ -106,7 +113,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     qf = m_fileSelect->font();
-    qf.setPointSize(12);
+    qf.setPointSize(10);
     m_fileSelect->setFont(qf);
     pa.setColor(QPalette::Text, QColor("#0066ec"));
     m_fileSelect->setPalette(pa);
@@ -135,11 +142,11 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
     mainLayout->addStretch();
     mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter);
-
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ISOSelectView.theme"));
-    this->setStyleSheet("#IosPanel{background-color: rgba(255, 255, 255, 5%);}"
-                        "#IosPanel[active=true] {border-image: url(:/theme/light/image/dash.svg);}"
-                        "#IsoSpliter{background-image: url(:/theme/light/image/dash_line.svg);}");
+//    this->setStyleSheet(
+////                "#IosPanel{background-color: rgba(255, 255, 255, 5%);}"
+////                        "#IosPanel[active=true] {border-image: url(:/theme/light/image/dash.svg);}"
+//        "#IsoSpliter{background-image: url(:/theme/light/image/dash_line.svg);}");
 
 #ifdef Q_OS_WIN
     m_fileLabel->hide();
@@ -156,14 +163,16 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
         topleft.setY(topleft.y() - offset / 2);
         growIcon->move(topleft);
         isoPanel->setProperty("active", true);
-        this->style()->unpolish(isoPanel);
-        this->style()->polish(isoPanel);
+        isoPanel->update();
+//        this->style()->unpolish(isoPanel);
+//        this->style()->polish(isoPanel);
     });
     connect(isoPanel, &DropFrame::fileCancel, this, [ = ]() {
         growIcon->hide();
         isoPanel->setProperty("active", false);
-        this->style()->unpolish(isoPanel);
-        this->style()->polish(isoPanel);
+        isoPanel->update();
+//        this->style()->unpolish(isoPanel);
+//        this->style()->polish(isoPanel);
     });
 
     connect(m_fileSelect, &QLabel::linkActivated, this, [ = ](const QString & /*link*/) {
