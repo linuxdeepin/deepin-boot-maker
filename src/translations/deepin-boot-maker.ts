@@ -72,12 +72,12 @@
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
-        <source>Reselect an ISO image file</source>Illegal ISO file
+        <source>Reselect an ISO image file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="197"/>
-        <source>Illegal ISO file</source>
+        <source>Illegal ISO image file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -85,12 +85,12 @@
     <name>ProgressView</name>
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
-        <source>Making</source>
+        <source>Burning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
-        <source>Making the disk, please wait...</source>
+        <source>Burning, please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -161,12 +161,12 @@
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
-        <source>Sorry, making failed</source>
+        <source>Sorry, process failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
-        <source>Making failed</source>
+        <source>Process failed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -174,12 +174,12 @@
     <name>UsbSelectView</name>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formatting disk can increase the making success rate</source>
+        <source>Format the disk to increase the burning success rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
-        <source>Start making</source>
+        <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -194,7 +194,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk</source>
+        <source>No disk available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

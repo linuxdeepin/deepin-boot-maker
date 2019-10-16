@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>深度启动盘制作工具是深度操作系统中专门用于快速制作系统盘的小工具，方便深度用户可以 方便易用的制作系统安装启动盘。</translation>
+        <translation>深度启动盘制作工具是一款将系统映像文件写入光盘、U盘等安装介质的小工具。</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Deepin Boot Maker</source>
-        <translation>深度启动盘制作工具</translation>
+        <translation>启动盘制作工具</translation>
     </message>
 </context>
 <context>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file and drop it here</source>
-        <translation>拖拽镜像文件到此</translation>
+        <translation>拖拽光盘镜像文件到此</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="72"/>
@@ -61,7 +61,7 @@
         <location filename="../app/view/isoselectview.cpp" line="46"/>
         <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
-        <translation>选择光盘镜像文件</translation>
+        <translation>请选择光盘镜像文件</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="102"/>
@@ -71,11 +71,11 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
-        <translation>重新选择文件</translation>
+        <translation>重新选择光盘镜像文件</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="197"/>
-        <source>Illegal ISO file</source>
+        <source>Illegal ISO image file</source>
         <translation>非法ISO文件</translation>
     </message>
 </context>
@@ -83,18 +83,18 @@
     <name>ProgressView</name>
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
-        <source>Making</source>
+        <source>Burning</source>
         <translation>正在制作</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
-        <source>Making the disk, please wait...</source>
+        <source>Burning, please wait...</source>
         <translation>正在制作，请稍候...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>正在写入文件，制作时请不要移除U盘或关机</translation>
+        <translation>制作时请不要移除磁盘或关机</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
@@ -159,12 +159,12 @@
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
-        <source>Sorry, making failed</source>
+        <source>Sorry, process failed</source>
         <translation>抱歉，制作失败</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
-        <source>Making failed</source>
+        <source>Process failed</source>
         <translation>制作失败</translation>
     </message>
 </context>
@@ -172,12 +172,12 @@
     <name>UsbSelectView</name>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formatting disk can increase the making success rate</source>
-        <translation>格式化U盘可提高制作成功率</translation>
+        <source>Format the disk to increase the burning success rate</source>
+        <translation>格式化磁盘可提高制作成功率</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
-        <source>Start making</source>
+        <source>Start</source>
         <translation>开始制作</translation>
     </message>
     <message>
@@ -188,17 +188,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
-        <translation>请选择U盘</translation>
+        <translation>请选择磁盘</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk</source>
+        <source>No disk available</source>
         <translation>未发现可用磁盘</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation> 格式化将彻底删除该磁盘上所有数据，请您确认后继续</translation>
+        <translation> 格式化将彻底删除磁盘上的数据，请您确认后继续</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="233"/>

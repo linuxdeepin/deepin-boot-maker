@@ -41,7 +41,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Making"));
+    QLabel *m_title = new QLabel(tr("Burning"));
     m_title->setFixedHeight(16);
     QFont ft = m_title->font();
     ft.setPointSize(10);
@@ -51,7 +51,7 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     auto waterProgress = new Dtk::Widget::DWaterProgress;
     waterProgress->setFixedSize(100, 100);
 
-    QLabel *m_hitsTitle = new QLabel(tr("Making the disk, please wait..."));
+    QLabel *m_hitsTitle = new QLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
     QFont qf;
     qf = m_hitsTitle->font();

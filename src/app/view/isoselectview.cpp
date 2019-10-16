@@ -203,7 +203,7 @@ void ISOSelectView::onFileSelected(const QString &file)
     QString selectText = tr("Reselect an ISO image file");
     QString stateText = "";
     if (!checkok)
-        stateText = tr("Illegal ISO file");
+        stateText = tr("Illegal ISO image file");
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     m_nextSetp->setDisabled(false);

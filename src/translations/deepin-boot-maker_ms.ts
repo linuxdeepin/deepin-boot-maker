@@ -78,12 +78,12 @@
     <name>ProgressView</name>
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
-        <source>Making</source>
+        <source>Burning</source>
         <translation>Sedang Menyediakan</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
-        <source>Making the disk, please wait...</source>
+        <source>Burning, please wait...</source>
         <translation>Menyediakan cakera, tunggu sebentar...</translation>
     </message>
     <message>
@@ -149,12 +149,12 @@
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
-        <source>Sorry, making failed</source>
+        <source>Sorry, process failed</source>
         <translation>Maaf, penyediaan gagal</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
-        <source>Making failed</source>
+        <source>Process failed</source>
         <translation>Penyediaan gagal</translation>
     </message>
 </context>
@@ -162,12 +162,12 @@
     <name>UsbSelectView</name>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formatting disk can increase the making success rate</source>
+        <source>Format the disk to increase the burning success rate</source>
         <translation>Memformat cakera boleh meningkatkan kadar kejayaan pembuatannya</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
-        <source>Start making</source>
+        <source>Start</source>
         <translation>Mula membuat</translation>
     </message>
     <message>
@@ -182,7 +182,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk</source>
+        <source>No disk available</source>
         <translation>Tiada cakera tersedia</translation>
     </message>
     <message>
