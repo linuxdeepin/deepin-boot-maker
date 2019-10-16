@@ -102,7 +102,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     checkBoxLayout->setSpacing(0);
 
     DCheckBox *m_formatDiskCheck = new DCheckBox(this);
-    m_formatDiskCheck->setText(tr("Formatting disk can increase the making success rate"));
+    m_formatDiskCheck->setText(tr("Format the disk to increase the burning success rate"));
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(34);
     m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
@@ -114,7 +114,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 //    QLabel *checkBoxHints = new QLabel(this);
 //    checkBoxHints->setMinimumHeight(34);
 //    checkBoxHints->setWordWrap(true);
-//    checkBoxHints->setText(tr("Formatting disk can increase the making success rate"));
+//    checkBoxHints->setText(tr("Format the disk to increase the burning success rate"));
 ////    checkBoxHints->setStyleSheet(WidgetUtil::getQss(":/theme/light/UCheckBox.theme"));
 ////    checkBoxHints->setMinimumWidth(this->width());
 //    ft = checkBoxHints->font();
@@ -150,7 +150,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     pa.setColor(QPalette::WindowText, QColor("#ff5800"));
     m_warningHint->setPalette(pa);
 
-    QLabel *m_emptyHint = new  QLabel(tr("No available disk"));
+    QLabel *m_emptyHint = new  QLabel(tr("No disk available"));
     m_emptyHint->setObjectName("EmptyHintTitle");
     m_emptyHint->setAlignment(Qt::AlignCenter);
     ft = m_emptyHint->font();
@@ -169,7 +169,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
     SuggestButton *start = new SuggestButton();
     start->setObjectName("StartMake");
-    start->setText(tr("Start making"));
+    start->setText(tr("Start"));
     start->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);

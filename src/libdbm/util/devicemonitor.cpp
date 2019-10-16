@@ -75,14 +75,14 @@ QString deviceListToJson(QList<DeviceInfo> deviceList)
         array.push_back(obj);
     }
 
-    QJsonObject obj;
-    obj.insert("path", "Utest");
-    obj.insert("label", "U盘test");
-    obj.insert("used", 10000);
-    obj.insert("total", 100000);
-    obj.insert("needformat", false);
+//    QJsonObject obj;
+//    obj.insert("path", "Utest");
+//    obj.insert("label", "U盘test");
+//    obj.insert("used", 10000);
+//    obj.insert("total", 100000);
+//    obj.insert("needformat", false);
 
-    array.push_back(obj);
+//    array.push_back(obj);
     QJsonDocument doc;
     doc.setArray(array);
     return QString::fromUtf8(doc.toJson());

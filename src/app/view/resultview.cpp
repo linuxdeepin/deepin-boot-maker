@@ -161,8 +161,8 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         });
         break;
     }
-    m_hitsTitle->setText(tr("Sorry, making failed"));
-    m_title->setText(tr("Making failed"));
+    m_hitsTitle->setText(tr("Sorry, process failed"));
+    m_title->setText(tr("Process failed"));
     m_resultIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/fail.svg", this));
     m_logHits->show();
     m_rebootNow->hide();

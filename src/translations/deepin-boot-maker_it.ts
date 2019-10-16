@@ -79,12 +79,12 @@ Localizzazione italiana a cura di Massimo A. Carofano.</translation>
     <name>ProgressView</name>
     <message>
         <location filename="../app/view/progressview.cpp" line="44"/>
-        <source>Making</source>
+        <source>Burning</source>
         <translation>Creazione</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
-        <source>Making the disk, please wait...</source>
+        <source>Burning, please wait...</source>
         <translation>Creazione disco, attendere...</translation>
     </message>
     <message>
@@ -150,12 +150,12 @@ Localizzazione italiana a cura di Massimo A. Carofano.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
-        <source>Sorry, making failed</source>
+        <source>Sorry, process failed</source>
         <translation>Ops, creazione fallita</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>
-        <source>Making failed</source>
+        <source>Process failed</source>
         <translation>Creazione fallita</translation>
     </message>
 </context>
@@ -163,12 +163,12 @@ Localizzazione italiana a cura di Massimo A. Carofano.</translation>
     <name>UsbSelectView</name>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="102"/>
-        <source>Formatting disk can increase the making success rate</source>
+        <source>Format the disk to increase the burning success rate</source>
         <translation>Formattando il disco si aumentano le possibilità di successo</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="136"/>
-        <source>Start making</source>
+        <source>Start</source>
         <translation>Inizia la creazione</translation>
     </message>
     <message>
@@ -183,7 +183,7 @@ Localizzazione italiana a cura di Massimo A. Carofano.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="124"/>
-        <source>No available disk</source>
+        <source>No disk available</source>
         <translation>Nessun disco disponibile</translation>
     </message>
     <message>
