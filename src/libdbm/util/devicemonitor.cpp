@@ -70,6 +70,7 @@ QString deviceListToJson(QList<DeviceInfo> deviceList)
         obj.insert("label", device.label);
         obj.insert("used", static_cast<int>(device.used));
         obj.insert("total", static_cast<int>(device.total));
+        obj.insert("fstype", device.fstype);
         obj.insert("needformat", device.needFormat);
         qDebug() << device.needFormat;
         array.push_back(obj);
@@ -81,7 +82,6 @@ QString deviceListToJson(QList<DeviceInfo> deviceList)
 //    obj.insert("used", 10000);
 //    obj.insert("total", 100000);
 //    obj.insert("needformat", false);
-
 //    array.push_back(obj);
     QJsonDocument doc;
     doc.setArray(array);
@@ -99,6 +99,7 @@ QList<DeviceInfo> deviceListFromJson(QString json)
         device.label = obj.value("label").toString();
         device.used = static_cast<quint32>(obj.value("used").toInt());
         device.total = static_cast<quint32>(obj.value("total").toInt());
+        device.fstype = obj.value("fstype").toString();
         device.needFormat = obj.value("needformat").toBool();
         list.push_back(device);
     }

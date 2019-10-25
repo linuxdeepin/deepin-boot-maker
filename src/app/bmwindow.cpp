@@ -218,6 +218,15 @@ BMWindow::BMWindow(QWidget *parent)
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setCurrentPage(2);
     });
+    connect(d->usbWidget, &UsbSelectView::finish, this, [ = ](quint32 error, const QString & title, const QString & description) {
+        Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
+        flags |= Qt::WindowSystemMenuHint;
+        flags |= Qt::WindowMinimizeButtonHint;
+        titlebar()->setDisableFlags(flags);
+        slideWidget(d->usbWidget, d->progressWidget);
+        wsib->setCurrentPage(2);
+        emit d->progressWidget->finish(error, title, description);
+    });
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;

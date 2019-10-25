@@ -31,4 +31,5 @@ public:
 
 signals:
     void deviceSelected(const QString &partition, bool format);
+    void finish(quint32 error, const QString &title, const QString &description);
 };

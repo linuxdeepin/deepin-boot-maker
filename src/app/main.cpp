@@ -86,7 +86,8 @@ int main(int argc, char **argv)
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
     app.setOrganizationName("deepin");
     app.setApplicationName("deepin-boot-maker");
-    app.setApplicationVersion("2.0.0");
+    app.setApplicationVersion(DApplication::buildVersion("5.0.3"));
+//    app.setApplicationVersion(DApplication::buildVersion(VERSION));
 //    app.setTheme("light");
 
 #ifdef Q_OS_MAC

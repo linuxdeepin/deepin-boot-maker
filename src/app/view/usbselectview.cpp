@@ -215,6 +215,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
             m_deviceList->addItem(listItem);
             m_deviceList->setItemWidget(listItem, infoItem);
             infoItem->setProperty("path", partition.path);
+            infoItem->setProperty("fstype", partition.fstype);
             if (partition.path == this->property("last_path").toString()) {
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
@@ -251,6 +252,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 
             infoItem->setCheck(true);
             this->setProperty("last_path", infoItem->property("path").toString());
+            this->setProperty("last_fstype", infoItem->property("fstype").toString());
             start->setDisabled(false);
         }
     });
@@ -276,7 +278,11 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         }
 
         start->setEnabled(false);
-
+        if (!m_formatDiskCheck->isChecked() && "vfat" != this->property("last_fstype").toString())
+        {
+            emit finish(2, "install failed", tr("Disk Format Error: Please format the disk with FAT32"));
+            return;
+        }
         QString path = this->property("last_path").toString();
         qDebug() << "Select usb device" << path;
         emit this->deviceSelected(path, m_formatDiskCheck->isChecked());

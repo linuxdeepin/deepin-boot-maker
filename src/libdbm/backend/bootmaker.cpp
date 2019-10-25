@@ -164,7 +164,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     qDebug() << "begin install bootloader on" << partition;
     QString targetPartition = partition;
     XSys::Result result;
-
+//#define DBM_NO_BOOTLOADER
 #ifdef DBM_NO_BOOTLOADER
     qWarning() << "make disk with no bootloader mode";
     if (formatDevice) {
@@ -174,6 +174,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
 
         result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
+        qDebug() << "--------parted  -s -a optimal %1 mklabel msdos " << targetDisk;
         qDebug() << "format mklabel: " << result.isSuccess();
         result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary 1MiB 3500Mib").arg(targetDisk));
         qDebug() << "format mkpart: " << result.isSuccess();

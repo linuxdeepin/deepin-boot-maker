@@ -173,7 +173,7 @@ QString BootMakerService::DeviceList()
     return deviceListToJson(d->bm->deviceList());
 }
 
-bool BootMakerService::Install(const QString &image, const QString &device, const QString &partition, bool formatDevice)
+bool BootMakerService::Install(const QString &image, const QString &device, const QString &partition,  bool formatDevice)
 {
     Q_D(BootMakerService);
     if (!d->checkCaller()) {
@@ -197,7 +197,7 @@ bool BootMakerService::CheckFile(const QString &filepath)
 bool BootMakerServicePrivate::checkCaller()
 {
     Q_Q(BootMakerService);
-    return true;
+//    return true;
     auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
     auto callerExe = getProcIdExe(callerPid);
     auto dbmExe = "/usr/bin/deepin-boot-maker";
