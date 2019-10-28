@@ -86,7 +86,7 @@ int main(int argc, char **argv)
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
     app.setOrganizationName("deepin");
     app.setApplicationName("deepin-boot-maker");
-    app.setApplicationVersion(DApplication::buildVersion("5.0.3"));
+    app.setApplicationVersion(DApplication::buildVersion("20191028"));
 //    app.setApplicationVersion(DApplication::buildVersion(VERSION));
 //    app.setTheme("light");
 
@@ -120,7 +120,6 @@ int main(int argc, char **argv)
     BMWindow w;
     Dtk::Widget::moveToCenter(&w);
     w.show();
-
 //    w.waitAuth();
 
     auto ret =  app.exec();

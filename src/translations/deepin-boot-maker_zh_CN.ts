@@ -160,7 +160,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, process failed</source>
-        <translation>抱歉，制作失败</translation>
+        <translation>制作失败,非常抱歉</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="146"/>

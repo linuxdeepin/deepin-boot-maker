@@ -37,6 +37,7 @@
 #include <DTitlebar>
 #include <DPageIndicator>
 #include <DApplication>
+#include <DWindowManagerHelper>
 
 #include "view/isoselectview.h"
 #include "view/usbselectview.h"
@@ -199,6 +200,7 @@ BMWindow::BMWindow(QWidget *parent)
         flags |= Qt::WindowSystemMenuHint;
         flags |= Qt::WindowMinimizeButtonHint;
         titlebar()->setDisableFlags(flags);
+        titlebar()->setMenuDisabled(true);
         slideWidget(d->usbWidget, d->progressWidget);
         wsib->setCurrentPage(2);
         auto isoFilePath = property("bmISOFilePath").toString();
@@ -230,6 +232,7 @@ BMWindow::BMWindow(QWidget *parent)
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
+        titlebar()->setMenuDisabled(false);
         titlebar()->setDisableFlags(Qt::Widget);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
