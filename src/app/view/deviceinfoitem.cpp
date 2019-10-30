@@ -27,6 +27,7 @@
 #include <QLabel>
 #include <QPixmap>
 #include <QPainter>
+#include <QApplication>
 
 
 #include "widgetutil.h"
@@ -101,11 +102,11 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //                                       ".QProgressBar::chunk{background - color:#2ca7f8;border-radius: 1.5px;}");
 
 
-    m_radiobutton = new QRadioButton;
-    m_radiobutton->setFocusPolicy(Qt::NoFocus);
-    m_radiobutton->setChecked(false);
-    m_radiobutton->setFixedSize(20, 20);
-    m_radiobutton->hide();
+//    m_radiobutton = new QRadioButton;
+//    m_radiobutton->setFocusPolicy(Qt::NoFocus);
+//    m_radiobutton->setChecked(false);
+//    m_radiobutton->setFixedSize(20, 20);
+//    m_radiobutton->hide();
 
 
     m_fillingposition    = new QLabel;
@@ -137,7 +138,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //    mainLayout->addSpacing(10);
 //    mainLayout->addWidget(m_deviceCapacityBar, 0, Qt::AlignCenter);
     mainLayout->addSpacing(10);
-    mainLayout->addWidget(m_radiobutton, 0, Qt::AlignRight);
+//    mainLayout->addWidget(m_radiobutton, 0, Qt::AlignRight);
     mainLayout->addWidget(m_fillingposition, 0, Qt::AlignRight);
 
     setFixedSize(390, 60);
@@ -171,13 +172,17 @@ void DeviceInfoItem::paintEvent(QPaintEvent *event)
 void DeviceInfoItem::setCheck(bool flag)
 {
 //    m_deviceIcon->setPixmap(flag ? s_selectDevice : s_removeDevice);
-    m_radiobutton->setChecked(flag);
+//    m_radiobutton->setChecked(flag);
     if (flag) {
-        m_radiobutton->show();
-        m_fillingposition->hide();
+        QPixmap pixmap(":/theme/light/image/select_active.svg");
+        pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());
+        m_fillingposition->setPixmap(pixmap);
+//        m_radiobutton->show();
+//        m_fillingposition->hide();
     } else {
-        m_radiobutton->hide();
-        m_fillingposition->show();
+        m_fillingposition->clear();
+//        m_radiobutton->hide();
+//        m_fillingposition->show();
     }
 }
 

@@ -21,5 +21,6 @@
         <file>theme/light/image/glow.svg</file>
         <file>theme/light/image/deepin-boot-maker.svg</file>
         <file>theme/light/image/dash.svg</file>
+        <file>theme/light/image/select_active.svg</file>
     </qresource>
 </RCC>

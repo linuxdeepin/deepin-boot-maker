@@ -38,6 +38,10 @@
 ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
 {
     setObjectName("ProgressView");
+    setAutoFillBackground(true);
+    QPalette pa;
+    pa.setColor(QPalette::Background, QColor(255, 255, 255));
+    setPalette(pa);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
@@ -57,7 +61,6 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     qf = m_hitsTitle->font();
     qf.setPointSize(10);
     m_hitsTitle->setFont(qf);
-    QPalette pa;
     pa.setColor(QPalette::WindowText, QColor("#000000"));
     m_hitsTitle->setPalette(pa);
     m_hitsTitle->setAlignment(Qt::AlignCenter);

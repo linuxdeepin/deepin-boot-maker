@@ -42,6 +42,10 @@ const QString s_stateTemplate = "<a style='text-decoration: none; color: #d73119
 ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 {
     setObjectName("ISOSelectView");
+    setAutoFillBackground(true);
+    QPalette pa;
+    pa.setColor(QPalette::Background, QColor(255, 255, 255));
+    setPalette(pa);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
@@ -66,7 +70,6 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     DropFrame *isoPanel = new DropFrame;
     isoPanel->setObjectName("IosPanel");
     isoPanel->setFixedSize(412, 322);
-    QPalette pa;
     pa.setColor(QPalette::Background, QColor(255, 255, 255, 13));
     isoPanel->setPalette(pa);
 

@@ -55,7 +55,7 @@ protected:
 private:
     bool checked            = false;
     QLabel *m_deviceIcon    = nullptr;
-    QRadioButton *m_radiobutton = nullptr;
+//    QRadioButton *m_radiobutton = nullptr;
     QLabel *m_fillingposition    = nullptr;
 
     QPixmap s_removeDevice;

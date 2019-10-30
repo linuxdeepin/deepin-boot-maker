@@ -75,6 +75,10 @@ static int percent(quint32 usage, quint32 total)
 UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
 {
     setObjectName("UsbSelectView");
+    setAutoFillBackground(true);
+    QPalette pa;
+    pa.setColor(QPalette::Background, QColor(255, 255, 255));
+    setPalette(pa);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 9, 0, 0);
@@ -90,7 +94,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
     usbDeviceListPanel->setFixedSize(410, 320);
     usbDeviceListPanel->setAutoFillBackground(true);
-    QPalette pa = usbDeviceListPanel->palette();
+    pa = usbDeviceListPanel->palette();
     pa.setColor(QPalette::Background, QColor(255, 255, 255, 128));
     usbDeviceListPanel->setPalette(pa);
 
