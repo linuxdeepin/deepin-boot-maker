@@ -196,10 +196,11 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
-        Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
-        flags |= Qt::WindowSystemMenuHint;
-        flags |= Qt::WindowMinimizeButtonHint;
-        titlebar()->setDisableFlags(flags);
+//        Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
+//        flags |= Qt::WindowSystemMenuHint;
+//        flags |= Qt::WindowMinimizeButtonHint;
+//        titlebar()->setDisableFlags(flags);
+        DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
         titlebar()->setMenuDisabled(true);
         slideWidget(d->usbWidget, d->progressWidget);
         wsib->setCurrentPage(2);
@@ -233,7 +234,8 @@ BMWindow::BMWindow(QWidget *parent)
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
         titlebar()->setMenuDisabled(false);
-        titlebar()->setDisableFlags(Qt::Widget);
+//        titlebar()->setDisableFlags(Qt::Widget);
+        DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
         wsib->setCurrentPage(2);
