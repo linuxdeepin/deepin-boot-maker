@@ -54,10 +54,13 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     mainLayout->setSpacing(0);
 
     m_title = new QLabel(tr("Successful"));
-    m_title->setFixedHeight(16);
+    m_title->setFixedHeight(35);
     QFont ft = m_title->font();
-    ft.setPointSize(10);
+    ft.setPixelSize(24);
     m_title->setFont(ft);
+    pa = m_title->palette();
+    pa.setColor(QPalette::WindowText, QColor("#001A2E"));
+    m_title->setPalette(pa);
 //    m_title->setStyleSheet("font-size: 26px;");
 
     m_resultIcon = new QLabel();
@@ -67,12 +70,14 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_hitsTitle = new QLabel();
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     m_hitsTitle->setFixedWidth(340);
+    m_hitsTitle->setFixedHeight(25);
 
     QFont qf;
     qf = m_hitsTitle->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(17);
+    qf.setBold(true);
     m_hitsTitle->setFont(qf);
-    pa.setColor(QPalette::WindowText, QColor("#000000"));
+    pa.setColor(QPalette::WindowText, QColor("#001A2E"));
     m_hitsTitle->setPalette(pa);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
@@ -83,15 +88,15 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_logHits = new QLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setWordWrap(true);
-    m_logHits->setFixedWidth(340);
-    m_logHits->setFixedHeight(100);
+    m_logHits->setFixedWidth(400);
+    m_logHits->setFixedHeight(34);
 //    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
 //    m_logHits->setOpenExternalLinks(false);
     m_logHits->hide();
     qf = m_logHits->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(12);
     m_logHits->setFont(qf);
-    pa.setColor(QPalette::WindowText, QColor("#424242"));
+    pa.setColor(QPalette::WindowText, QColor("#526A7F"));
     m_logHits->setPalette(pa);
     m_logHits->setAlignment(Qt::AlignCenter);
 
@@ -107,13 +112,13 @@ ResultView::ResultView(QWidget *parent) : QWidget(parent)
     m_rebootNow->setText(tr("Reboot now"));
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(85);
+    mainLayout->addSpacing(87);
     mainLayout->addWidget(m_resultIcon, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(20);
+    mainLayout->addSpacing(11);
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(10);
+    mainLayout->addSpacing(8);
     mainLayout->addWidget(m_logHits, 0, Qt::AlignCenter);
-    mainLayout->addStretch();
+    mainLayout->addStretch(113);
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignCenter);
 //    mainLayout->addSpacing(15);
 //    m_rebootNow->hide();

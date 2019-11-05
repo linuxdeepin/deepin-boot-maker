@@ -37,7 +37,7 @@
 DWIDGET_USE_NAMESPACE
 
 const QString s_linkTemplate = "<a href='%1' style='text-decoration: none; color: #0066ec;'>%2</a>";
-const QString s_stateTemplate = "<a style='text-decoration: none; color: #d73119;'>%1</a>";
+const QString s_stateTemplate = "<a style='text-decoration: none; color: #FF5A5A;'>%1</a>";
 
 ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 {
@@ -50,10 +50,13 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Select an ISO image file"));
-    m_title->setFixedHeight(18);
+    m_title->setFixedHeight(35);
     QFont qf = m_title->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(24);
     m_title->setFont(qf);
+    pa = m_title->palette();
+    pa.setColor(QPalette::WindowText, QColor("#001A2E"));
+    m_title->setPalette(pa);
 //    m_title->setStyleSheet("font-size: 26px;");
 
     QLabel *isoIcon = new QLabel(this);
@@ -69,7 +72,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 
     DropFrame *isoPanel = new DropFrame;
     isoPanel->setObjectName("IosPanel");
-    isoPanel->setFixedSize(412, 322);
+    isoPanel->setFixedSize(410, 320);
     pa.setColor(QPalette::Background, QColor(255, 255, 255, 13));
     isoPanel->setPalette(pa);
 
@@ -79,23 +82,24 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     m_fileLabel = new QLabel(tr("Drag an ISO image file and drop it here"));
     m_fileLabel->setObjectName("IsoFileName");
     qf = m_fileLabel->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(12);
     m_fileLabel->setFont(qf);
     pa.setColor(QPalette::WindowText, Qt::gray);
     m_fileLabel->setPalette(pa);
 //    m_fileLabel->setFixedHeight(18);
 
-    m_stateLabel = new QLabel();
-    qf = m_stateLabel->font();
-    qf.setPointSize(10);
-    m_stateLabel->setFont(qf);
-    m_stateLabel->hide();
+//    m_stateLabel = new QLabel();
+//    qf = m_stateLabel->font();
+//    qf.setPixelSize(12);
+//    m_stateLabel->setFont(qf);
+//    m_stateLabel->setFixedHeight(38);
+//    m_stateLabel->hide();
 
     m_hits = new QLabel(tr("OR"));
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(18);
     qf = m_hits->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(12);
     m_hits->setFont(qf);
 //    pa.setColor(QPalette::WindowText, QColor("#848484"));
 //    m_hits->setPalette(pa);
@@ -116,7 +120,7 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     qf = m_fileSelect->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(12);
     m_fileSelect->setFont(qf);
     pa.setColor(QPalette::Text, QColor("#0066ec"));
     m_fileSelect->setPalette(pa);
@@ -125,13 +129,13 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignCenter);
     isoPanelLayout->addSpacing(5);
     isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignCenter);
-    isoPanelLayout->addSpacing(4);
-    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
+//    isoPanelLayout->addSpacing(4);
+//    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
     isoPanelLayout->addSpacing(4);
     isoPanelLayout->addWidget(m_hits, 0, Qt::AlignCenter);
-    isoPanelLayout->addSpacing(7);
+    isoPanelLayout->addSpacing(15);
     isoPanelLayout->addWidget(spliter, 0, Qt::AlignCenter);
-    isoPanelLayout->addSpacing(12);
+    isoPanelLayout->addSpacing(15);
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignCenter);
     isoPanelLayout->addStretch();
 
@@ -141,9 +145,9 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     m_nextSetp->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(24);
+    mainLayout->addSpacing(32);
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
-    mainLayout->addStretch();
+    mainLayout->addSpacing(37);
     mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter);
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ISOSelectView.theme"));
 //    this->setStyleSheet(
@@ -210,11 +214,12 @@ void ISOSelectView::onFileSelected(const QString &file)
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     m_nextSetp->setDisabled(false);
-    m_stateLabel->hide();
+//    m_stateLabel->hide();
     if ("" != stateText) {
         QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
-        m_stateLabel->setText(stateTemplateText);
-        m_stateLabel->show();
+//        m_stateLabel->setText(stateTemplateText);
+//        m_stateLabel->show();
+        m_hits->setText(stateTemplateText);
         m_nextSetp->setDisabled(true);
     }
     m_isoFilePath = file;

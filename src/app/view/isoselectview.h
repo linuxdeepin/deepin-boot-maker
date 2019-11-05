@@ -50,7 +50,7 @@ public slots:
 private:
     QLabel          *m_hits         = nullptr;
     QLabel          *m_fileLabel    = nullptr;
-    QLabel          *m_stateLabel    = nullptr;
+//    QLabel          *m_stateLabel    = nullptr;
     QLabel          *m_fileSelect   = nullptr;
     SuggestButton   *m_nextSetp     = nullptr;
     QString         m_isoFilePath;

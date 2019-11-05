@@ -119,13 +119,14 @@ BMWindow::BMWindow(QWidget *parent)
     QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
     qApp->setProductName(tr("Deepin Boot Maker"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
-    qApp->setProductIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
+//    qApp->setProductIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
+    qApp->setProductIcon(QIcon::fromTheme("deepin-boot-maker"));
     qApp->setApplicationDescription(descriptionText);
 
     auto title = titlebar();
     auto flags = windowFlags() & ~Qt::WindowMaximizeButtonHint;
     setWindowFlags(flags);
-//    title->setMenuVisible(false);
+    // title->setMenuVisible(false);
     // TODO: read it from parent
 #ifdef Q_OS_MAC
     titlebar()->setWindowFlags(flags);
@@ -178,6 +179,10 @@ BMWindow::BMWindow(QWidget *parent)
 
     mainLayout->addSpacing(8);
     auto wsib = new DPageIndicator(this);
+    wsib->setAutoFillBackground(true);
+    QPalette pa;
+    pa.setColor(QPalette::Background, QColor(255, 255, 255));
+    wsib->setPalette(pa);
     wsib->setPageCount(3);
     wsib->setPointColor(QColor(44, 167, 248));
     wsib->setSecondaryPointColor(QColor(234, 238, 242));
@@ -201,7 +206,7 @@ BMWindow::BMWindow(QWidget *parent)
 //        flags |= Qt::WindowMinimizeButtonHint;
 //        titlebar()->setDisableFlags(flags);
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
-        titlebar()->setMenuDisabled(true);
+        titlebar()->setQuitMenuDisabled(true);
         slideWidget(d->usbWidget, d->progressWidget);
         wsib->setCurrentPage(2);
         auto isoFilePath = property("bmISOFilePath").toString();
@@ -233,7 +238,7 @@ BMWindow::BMWindow(QWidget *parent)
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
-        titlebar()->setMenuDisabled(false);
+        titlebar()->setQuitMenuDisabled(false);
 //        titlebar()->setDisableFlags(Qt::Widget);
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
         d->resultWidget->updateResult(error, title, description);

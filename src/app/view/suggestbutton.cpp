@@ -31,8 +31,8 @@ SuggestButton::SuggestButton(DWidget *parent) :
 {
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/SuggestButton.theme"));
 //    this->setFixedSize(QPixmap(":/theme/light/image/suggest_button_hover.svg").size());
-    this->setFixedSize(312, 42);
-    m_filletradii = 15;
+    this->setFixedSize(310, 36);
+    m_filletradii = 8;
 }
 
 //void SuggestButton::mSetText(QString text)
@@ -45,10 +45,10 @@ void SuggestButton::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     if (!this->isEnabled()) {
-        painter.setBrush(QBrush(QColor("#DCDCDC")));
+        painter.setBrush(QBrush(QColor(0, 0, 0, 13)));
     } else {
         if (israised)
-            painter.setBrush(QBrush(QColor("#EEEEEE")));
+            painter.setBrush(QBrush(QColor("#E3E3E3")));
         else
             painter.setBrush(QBrush(QColor("#00BFFF")));
     }
@@ -58,11 +58,12 @@ void SuggestButton::paintEvent(QPaintEvent *event)
     rect.setHeight(rect.height() - 1);
     painter.drawRoundedRect(rect, m_filletradii, m_filletradii);
     QFont qf = font();
-    qf.setPointSize(10);
+    qf.setPixelSize(14);
     painter.setFont(qf);
-    painter.setPen(Qt::black);
+//    painter.setPen(Qt::black);
+    painter.setPen(QColor("#414D68"));
     painter.drawText(0, 0, this->width(), this->height(), Qt::AlignCenter, text());
-//    DPushButton::paintEvent(event);
+    //    DPushButton::paintEvent(event);
 }
 
 void SuggestButton::enterEvent(QEvent *e)

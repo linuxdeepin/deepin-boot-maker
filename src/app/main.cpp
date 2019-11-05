@@ -36,6 +36,7 @@ void loadFonts();
 
 #include <bminterface.h>
 #include <util/utils.h>
+#include <DApplicationSettings>
 
 #include "bmwindow.h"
 
@@ -80,7 +81,6 @@ int main(int argc, char **argv)
 #endif
 
     DApplication::loadDXcbPlugin();
-
     DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -117,6 +117,7 @@ int main(int argc, char **argv)
 
     qDebug() << "Deepin Boot Maker UI started.";
 
+    DApplicationSettings savetheme;
     BMWindow w;
     Dtk::Widget::moveToCenter(&w);
     w.show();

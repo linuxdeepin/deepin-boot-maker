@@ -84,9 +84,9 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Select a disk"));
-    m_title->setFixedHeight(18);
+    m_title->setFixedHeight(35);
     QFont ft = m_title->font();
-    ft.setPointSize(10);
+    ft.setPixelSize(24);
     m_title->setFont(ft);
 //    m_title->setStyleSheet("font-size: 26px;");
 
@@ -112,7 +112,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
     m_formatDiskCheck->hide();
     ft = m_formatDiskCheck->font();
-    ft.setPointSize(10);
+    ft.setPixelSize(14);
     m_formatDiskCheck->setFont(ft);
 
 //    QLabel *checkBoxHints = new QLabel(this);
@@ -144,24 +144,25 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     QLabel *m_warningHint = new  QLabel("");
     m_warningHint->setObjectName("WarningHint");
     m_warningHint->setFixedWidth(370);
-    m_warningHint->setMinimumHeight(30);
+    m_warningHint->setMinimumHeight(17);
     m_warningHint->setWordWrap(true);
     ft = m_warningHint->font();
-    ft.setPointSize(9);
+    ft.setPixelSize(11);
     m_warningHint->setFont(ft);
     m_warningHint->setAlignment(Qt::AlignCenter);
     pa = m_warningHint->palette();
-    pa.setColor(QPalette::WindowText, QColor("#ff5800"));
+    pa.setColor(QPalette::WindowText, QColor("#FF5800"));
     m_warningHint->setPalette(pa);
 
     QLabel *m_emptyHint = new  QLabel(tr("No disk available"));
     m_emptyHint->setObjectName("EmptyHintTitle");
+    m_emptyHint->setFixedHeight(29);
     m_emptyHint->setAlignment(Qt::AlignCenter);
     ft = m_emptyHint->font();
-    ft.setPointSize(10);
+    ft.setPixelSize(20);
     m_emptyHint->setFont(ft);
     pa = m_emptyHint->palette();
-    pa.setColor(QPalette::WindowText, QColor("#848484"));
+    pa.setColor(QPalette::WindowText, QColor(85, 85, 85, 102));
     m_emptyHint->setPalette(pa);
 
     usbPanelLayout->addStretch();
@@ -177,7 +178,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     start->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(50);
+    mainLayout->addSpacing(41);
     mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignCenter);
     mainLayout->addWidget(m_warningHint, 0, Qt::AlignCenter);
     mainLayout->addStretch();

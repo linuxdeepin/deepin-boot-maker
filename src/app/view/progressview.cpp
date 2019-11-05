@@ -46,10 +46,13 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
     QLabel *m_title = new QLabel(tr("Burning"));
-    m_title->setFixedHeight(16);
+    m_title->setFixedHeight(35);
     QFont ft = m_title->font();
-    ft.setPointSize(10);
+    ft.setPixelSize(24);
     m_title->setFont(ft);
+    pa = m_title->palette();
+    pa.setColor(QPalette::WindowText, QColor("#001A2E"));
+    m_title->setPalette(pa);
 //    m_title->setStyleSheet("font-size: 26px;");
 
     auto waterProgress = new Dtk::Widget::DWaterProgress;
@@ -57,24 +60,26 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
 
     QLabel *m_hitsTitle = new QLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
+    m_hitsTitle->setFixedHeight(25);
     QFont qf;
     qf = m_hitsTitle->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(17);
+    qf.setBold(true);
     m_hitsTitle->setFont(qf);
-    pa.setColor(QPalette::WindowText, QColor("#000000"));
+    pa.setColor(QPalette::WindowText, QColor("#001A2E"));
     m_hitsTitle->setPalette(pa);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
     QLabel *m_hits = new QLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
-    m_hits->setFixedSize(390, 60);
+    m_hits->setFixedSize(213, 17);
     m_hits->setWordWrap(true);
     qf = m_hits->font();
-    qf.setPointSize(10);
+    qf.setPixelSize(12);
     m_hits->setFont(qf);
     m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     pa = m_hits->palette();
-    pa.setColor(QPalette::WindowText, QColor("#808080"));
+    pa.setColor(QPalette::WindowText, QColor("#526A7F"));
     m_hits->setPalette(pa);
 
     SuggestButton *start = new SuggestButton();
@@ -82,11 +87,11 @@ ProgressView::ProgressView(QWidget *parent) : QWidget(parent)
     start->setText(tr("Cancel"));
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(91);
+    mainLayout->addSpacing(102);
     mainLayout->addWidget(waterProgress, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(28);
+    mainLayout->addSpacing(30);
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(4);
+    mainLayout->addSpacing(6);
     mainLayout->addWidget(m_hits, 0, Qt::AlignCenter);
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
