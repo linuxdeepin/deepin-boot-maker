@@ -22,13 +22,12 @@
 #include "widgetutil.h"
 
 #include <QFile>
-#include <QApplication>
 #include <QImageReader>
 #include <QIcon>
+#include <DApplication>
 
-namespace WidgetUtil
-{
-QString getQss(const QString & qssFilename)
+namespace WidgetUtil {
+QString getQss(const QString &qssFilename)
 {
     QString qss;
 
@@ -43,7 +42,7 @@ QString getQss(const QString & qssFilename)
     return qss;
 }
 
-QPixmap getDpiPixmap(const QString filename, QWidget *w)
+QPixmap getDpiPixmap(const QString filename, DWidget *w)
 {
     QPixmap pixmap;
     qreal devicePixelRatio = qApp->devicePixelRatio();

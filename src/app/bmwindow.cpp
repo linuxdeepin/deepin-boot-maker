@@ -37,6 +37,7 @@
 #include <DTitlebar>
 #include <DPageIndicator>
 #include <DApplication>
+#include <DApplicationHelper>
 #include <DWindowManagerHelper>
 
 #include "view/isoselectview.h"
@@ -52,7 +53,7 @@ DWIDGET_USE_NAMESPACE
 const static QString debugQSS = "background-color: rgba(255, 0, 255, 20%);border: 1px solid;"
                                 " border-radius: 3; border-color: rgba(0, 255, 0, 20%);";
 
-static void slideWidget(QWidget *left, QWidget *right)
+static void slideWidget(DWidget *left, DWidget *right)
 {
     right->show();
     left->show();
@@ -91,8 +92,8 @@ class BMWindowPrivate
 public:
     BMWindowPrivate(BMWindow *parent): q_ptr(parent) {}
 
-    QLabel          *m_title        = nullptr;
-    QWidget         *actionWidgets  = nullptr;
+    DLabel          *m_title        = nullptr;
+    DWidget         *actionWidgets  = nullptr;
     ISOSelectView   *isoWidget      = nullptr;
     UsbSelectView   *usbWidget      = nullptr;
     ProgressView    *progressWidget = nullptr;
@@ -100,6 +101,7 @@ public:
 //    DDialog         *warnDlg        = nullptr;
 
     BMInterface     *interface      = nullptr;
+    DPageIndicator  *wsib      = nullptr;
 
     BMWindow *q_ptr;
     Q_DECLARE_PUBLIC(BMWindow)
@@ -146,7 +148,7 @@ BMWindow::BMWindow(QWidget *parent)
     mainLayout->setSpacing(0);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_MAC)
-    auto centralWidget = new QWidget;
+    auto centralWidget = new DWidget;
     centralWidget->setLayout(mainLayout);
     setCentralWidget(centralWidget);
 #else
@@ -178,25 +180,23 @@ BMWindow::BMWindow(QWidget *parent)
     actionsLayout->addWidget(d->resultWidget);
 
     mainLayout->addSpacing(8);
-    auto wsib = new DPageIndicator(this);
-    wsib->setAutoFillBackground(true);
-    QPalette pa;
-    pa.setColor(QPalette::Background, QColor(255, 255, 255));
-    wsib->setPalette(pa);
-    wsib->setPageCount(3);
-    wsib->setPointColor(QColor(44, 167, 248));
-    wsib->setSecondaryPointColor(QColor(234, 238, 242));
-    wsib->setCurrentPage(0);
-    wsib->setFixedHeight(26);
-    wsib->setPointRadius(3);
-    wsib->setSecondaryPointRadius(3);
-    wsib->setPointDistance(12);
-    mainLayout->addWidget(wsib);
+    d->wsib = new DPageIndicator(this);
+    d->wsib->setAutoFillBackground(true);
+    d->wsib->setPageCount(3);
+    d->wsib->setCurrentPage(0);
+    d->wsib->setFixedHeight(26);
+    d->wsib->setPointRadius(3);
+    d->wsib->setSecondaryPointRadius(3);
+    d->wsib->setPointDistance(12);
+    mainLayout->addWidget(d->wsib);
 
+    slot_ThemeChange();
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &BMWindow :: slot_ThemeChange);
     connect(d->isoWidget, &ISOSelectView::isoFileSelected, this, [ = ] {
         slideWidget(d->isoWidget, d->usbWidget);
         setProperty("bmISOFilePath", d->isoWidget->isoFilePath());
-        wsib->setCurrentPage(1);
+        d->wsib->setCurrentPage(1);
         qDebug() << "iso path:" << d->isoWidget->isoFilePath();
     });
 
@@ -208,7 +208,7 @@ BMWindow::BMWindow(QWidget *parent)
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
         titlebar()->setQuitMenuDisabled(true);
         slideWidget(d->usbWidget, d->progressWidget);
-        wsib->setCurrentPage(2);
+        d->wsib->setCurrentPage(2);
         auto isoFilePath = property("bmISOFilePath").toString();
         qDebug() << "call interface install" << isoFilePath << partition << format;
         emit d->interface->startInstall(isoFilePath, "", partition, format);
@@ -224,7 +224,7 @@ BMWindow::BMWindow(QWidget *parent)
         d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
 //        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
-        wsib->setCurrentPage(2);
+        d->wsib->setCurrentPage(2);
     });
     connect(d->usbWidget, &UsbSelectView::finish, this, [ = ](quint32 error, const QString & title, const QString & description) {
         Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
@@ -232,7 +232,7 @@ BMWindow::BMWindow(QWidget *parent)
         flags |= Qt::WindowMinimizeButtonHint;
         titlebar()->setDisableFlags(flags);
         slideWidget(d->usbWidget, d->progressWidget);
-        wsib->setCurrentPage(2);
+        d->wsib->setCurrentPage(2);
         emit d->progressWidget->finish(error, title, description);
     });
     connect(d->progressWidget, &ProgressView::finish,
@@ -243,7 +243,7 @@ BMWindow::BMWindow(QWidget *parent)
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);
-        wsib->setCurrentPage(2);
+        d->wsib->setCurrentPage(2);
     });
 
 //    d->warnDlg = new Dtk::Widget::DDialog(this);
@@ -264,6 +264,26 @@ BMWindow::BMWindow(QWidget *parent)
 //    title->setWindowFlags(title->windowFlags() & ~Qt::Window &~ Qt::WindowMinMaxButtonsHint);
 //    title->setDisableFlags(Qt::WindowMinMaxButtonsHint);
 
+}
+
+void BMWindow :: slot_ThemeChange()
+{
+    Q_D(BMWindow);
+    DPalette pa;
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType) {
+        pa = d->wsib->palette();
+        pa.setColor(DPalette::Background, QColor(255, 255, 255));
+        d->wsib->setPalette(pa);
+        d->wsib->setPointColor(QColor("#2CA7F8"));
+        d->wsib->setSecondaryPointColor(QColor("#96ACBD"));
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        pa = d->wsib->palette();
+        pa.setColor(DPalette::Background, QColor("#252525"));
+        d->wsib->setPalette(pa);
+        d->wsib->setPointColor(QColor("#0082FA"));
+        d->wsib->setSecondaryPointColor(QColor("#555555"));
+    }
 }
 
 BMWindow::~BMWindow()

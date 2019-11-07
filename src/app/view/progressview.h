@@ -21,13 +21,14 @@
 
 #pragma once
 
-#include <QWidget>
+#include <DWidget>
+DWIDGET_USE_NAMESPACE
 
-class ProgressView : public QWidget
+class ProgressView : public DWidget
 {
     Q_OBJECT
 public:
-    explicit ProgressView(QWidget *parent = 0);
+    explicit ProgressView(DWidget *parent = 0);
 
 signals:
     void finish(quint32 error, const QString &title, const QString &description);

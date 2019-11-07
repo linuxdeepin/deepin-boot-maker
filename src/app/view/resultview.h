@@ -21,27 +21,33 @@
 
 #pragma once
 
-#include <QWidget>
 #include <QPointer>
+#include <DPushButton>
+#include <DWidget>
+#include <DLabel>
+#include <DPalette>
 
-class QLabel;
+DWIDGET_USE_NAMESPACE
 class SuggestButton;
 
-class ResultView : public QWidget
+class ResultView : public DWidget
 {
     Q_OBJECT
 public:
-    explicit ResultView(QWidget *parent = 0);
+    explicit ResultView(DWidget *parent = 0);
 
 public slots:
     void onLogLinkActivated(const QString &);
     void updateResult(quint32 error, const QString &, const QString &description);
 
 private:
-    QPointer<QLabel>  m_title;
-    QPointer<QLabel> m_hitsTitle;
-    QPointer<QLabel> m_resultIcon;
-    QPointer<QLabel> m_logHits;
-    QPointer<SuggestButton> m_rebootLater;
-    QPointer<SuggestButton> m_rebootNow;
+    QPointer<DLabel>  m_title;
+    QPointer<DLabel> m_hitsTitle;
+    QPointer<DLabel> m_resultIcon;
+    QPointer<DLabel> m_logHits;
+//    QPointer<SuggestButton> m_rebootLater;
+//    QPointer<SuggestButton> m_rebootNow;
+    QPointer<DPushButton> m_rebootLater;
+    QPointer<DPushButton> m_rebootNow;
+
 };

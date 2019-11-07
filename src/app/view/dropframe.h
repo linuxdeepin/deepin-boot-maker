@@ -21,13 +21,15 @@
 
 #pragma once
 
-#include <QFrame>
+#include <DFrame>
+#include <DWidget>
 
-class DropFrame : public QFrame
+DWIDGET_USE_NAMESPACE
+class DropFrame : public DFrame
 {
     Q_OBJECT
 public:
-    explicit DropFrame(QWidget *parent = 0);
+    explicit DropFrame(DWidget *parent = 0);
 
     virtual void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
     virtual void dragLeaveEvent(QDragLeaveEvent *event) Q_DECL_OVERRIDE;

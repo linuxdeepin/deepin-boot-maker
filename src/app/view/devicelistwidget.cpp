@@ -23,7 +23,7 @@
 
 #include "widgetutil.h"
 
-DeviceListWidget::DeviceListWidget(QWidget *parent) : QListWidget(parent)
+DeviceListWidget::DeviceListWidget(DWidget *parent) : DListWidget(parent)
 {
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

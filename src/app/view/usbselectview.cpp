@@ -22,26 +22,26 @@
 #include "usbselectview.h"
 
 #include <QDebug>
-#include <QLabel>
 #include <QVBoxLayout>
-#include <QCheckBox>
-#include <QListWidget>
 #include <QMessageBox>
 #include <QIcon>
-#include <QPalette>
 
+#include <DListWidget>
+#include <DLabel>
 #include <DCheckBox>
+#include <DPalette>
+#include <DCheckBox>
+#include <DPushButton>
+#include <DApplicationHelper>
 
 #include <ddialog.h>
 
-#include "suggestbutton.h"
+//#include "suggestbutton.h"
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
 #include "devicelistwidget.h"
 
 #include <bminterface.h>
-
-DWIDGET_USE_NAMESPACE
 
 static QString usageString(quint32 usage, quint32 total)
 {
@@ -72,31 +72,25 @@ static int percent(quint32 usage, quint32 total)
     return static_cast<int>(usage * 100 / total);
 }
 
-UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
+UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
 {
     setObjectName("UsbSelectView");
     setAutoFillBackground(true);
-    QPalette pa;
-    pa.setColor(QPalette::Background, QColor(255, 255, 255));
-    setPalette(pa);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Select a disk"));
+    DLabel *m_title = new DLabel(tr("Select a disk"));
     m_title->setFixedHeight(35);
     QFont ft = m_title->font();
+    ft.setFamily("SourceHanSansSC-Medium");
     ft.setPixelSize(24);
     m_title->setFont(ft);
-//    m_title->setStyleSheet("font-size: 26px;");
 
-    QFrame *usbDeviceListPanel = new QFrame;
+    DFrame *usbDeviceListPanel = new DFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
     usbDeviceListPanel->setFixedSize(410, 320);
     usbDeviceListPanel->setAutoFillBackground(true);
-    pa = usbDeviceListPanel->palette();
-    pa.setColor(QPalette::Background, QColor(255, 255, 255, 128));
-    usbDeviceListPanel->setPalette(pa);
 
     QVBoxLayout *usbPanelLayout = new QVBoxLayout(usbDeviceListPanel);
     usbPanelLayout->setContentsMargins(10, 0, 10, 0);
@@ -112,6 +106,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
     m_formatDiskCheck->hide();
     ft = m_formatDiskCheck->font();
+    ft.setFamily("SourceHanSansSC-Medium");
     ft.setPixelSize(14);
     m_formatDiskCheck->setFont(ft);
 
@@ -141,29 +136,25 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     DeviceDelegate *m_devicedelegate = new DeviceDelegate(m_deviceList);
     m_deviceList->setItemDelegate(m_devicedelegate);
 
-    QLabel *m_warningHint = new  QLabel("");
+    DLabel *m_warningHint = new  DLabel("");
     m_warningHint->setObjectName("WarningHint");
     m_warningHint->setFixedWidth(370);
     m_warningHint->setMinimumHeight(17);
     m_warningHint->setWordWrap(true);
     ft = m_warningHint->font();
+    ft.setFamily("SourceHanSansSC-Normal");
     ft.setPixelSize(11);
     m_warningHint->setFont(ft);
     m_warningHint->setAlignment(Qt::AlignCenter);
-    pa = m_warningHint->palette();
-    pa.setColor(QPalette::WindowText, QColor("#FF5800"));
-    m_warningHint->setPalette(pa);
 
-    QLabel *m_emptyHint = new  QLabel(tr("No disk available"));
+    DLabel *m_emptyHint = new  DLabel(tr("No disk available"));
     m_emptyHint->setObjectName("EmptyHintTitle");
     m_emptyHint->setFixedHeight(29);
     m_emptyHint->setAlignment(Qt::AlignCenter);
     ft = m_emptyHint->font();
+    ft.setFamily("SourceHanSansSC-Normal");
     ft.setPixelSize(20);
     m_emptyHint->setFont(ft);
-    pa = m_emptyHint->palette();
-    pa.setColor(QPalette::WindowText, QColor(85, 85, 85, 102));
-    m_emptyHint->setPalette(pa);
 
     usbPanelLayout->addStretch();
     usbPanelLayout->addWidget(m_emptyHint, 0, Qt::AlignCenter);
@@ -172,7 +163,9 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     usbPanelLayout->addSpacing(15);
     usbPanelLayout->addLayout(checkBoxLayout);
 
-    SuggestButton *start = new SuggestButton();
+    DPushButton *start = new DPushButton();
+    start->setFocusPolicy(Qt::NoFocus);
+    start->setFixedSize(310, 36);
     start->setObjectName("StartMake");
     start->setText(tr("Start"));
     start->setDisabled(true);
@@ -184,6 +177,50 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->addStretch();
     mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
+
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+    this, [ = ] {
+        DPalette pa;
+        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+        if (themeType == DGuiApplicationHelper::LightType)
+        {
+            pa = palette();
+            pa.setColor(DPalette::Background, QColor(255, 255, 255));
+            setPalette(pa);
+            pa = m_title->palette();
+            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
+            m_title->setPalette(pa);
+//            pa = usbDeviceListPanel->palette();
+//            pa.setColor(DPalette::Background, QColor(255, 255, 255, 128));
+//            usbDeviceListPanel->setPalette(pa);
+            pa = m_warningHint->palette();
+            pa.setColor(DPalette::Text, QColor("#FF5800"));
+            m_warningHint->setPalette(pa);
+            pa = m_emptyHint->palette();
+            pa.setColor(DPalette::WindowText, QColor(85, 85, 85, 102));
+            m_emptyHint->setPalette(pa);
+        } else if (themeType == DGuiApplicationHelper::DarkType)
+        {
+            pa = palette();
+            pa.setColor(DPalette::Background, QColor("#252525"));
+            setPalette(pa);
+            pa = m_title->palette();
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+            m_title->setPalette(pa);
+//            pa = usbDeviceListPanel->palette();
+//            pa.setColor(DPalette::Background, QColor(0, 0, 0, 128));
+//            usbDeviceListPanel->setPalette(pa);
+            pa = m_warningHint->palette();
+            pa.setColor(DPalette::Text, QColor("#9A2F2F"));
+            m_warningHint->setPalette(pa);
+            pa = m_emptyHint->palette();
+            pa.setColor(DPalette::WindowText, QColor(192, 198, 212, 102));
+            m_emptyHint->setPalette(pa);
+        }
+    });
+
+    emit DGuiApplicationHelper::instance()->themeTypeChanged(DGuiApplicationHelper::instance()->themeType());
+
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/UsbSelectView.theme"));
     auto handleFormat = [ = ](bool checked) {
         if (!checked) {
@@ -193,7 +230,7 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         m_warningHint->setText(tr("Formatting will erase all data on the disk, please confirm and continue"));
         this->adjustSize();
     };
-    connect(m_formatDiskCheck, &QCheckBox::clicked, this, [ = ](bool checked) {
+    connect(m_formatDiskCheck, &DCheckBox::clicked, this, [ = ](bool checked) {
         this->setProperty("user_format", checked);
         handleFormat(checked);
     });
@@ -262,14 +299,14 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         }
     });
 
-    connect(start, &SuggestButton::clicked, this, [ = ] {
+    connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
 
         if (format)
         {
             DDialog msgbox(this);
             msgbox.setFixedWidth(400);
-            msgbox.setIcon(QMessageBox::standardIcon(QMessageBox::Warning));
+            msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
             msgbox.setTitle(tr("Format USB flash drive"));
             msgbox.setTextFormat(Qt::AutoText);
             msgbox.setMessage(tr("Formatting the disk will overwrite all data, please have a backup before proceeding."));
@@ -293,3 +330,4 @@ UsbSelectView::UsbSelectView(QWidget *parent) : QFrame(parent)
         emit this->deviceSelected(path, m_formatDiskCheck->isChecked());
     });
 }
+

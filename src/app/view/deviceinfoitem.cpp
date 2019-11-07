@@ -23,12 +23,12 @@
 
 #include <QDebug>
 #include <QHBoxLayout>
-#include <QProgressBar>
-#include <QLabel>
 #include <QPixmap>
 #include <QPainter>
-#include <QApplication>
+#include <DApplication>
 
+#include <DProgressBar>
+#include <DApplicationHelper>
 
 #include "widgetutil.h"
 
@@ -47,8 +47,8 @@ void DeviceDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option
 
 
 DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
-                               const QString &cap, int percent, QWidget *parent)
-    : QWidget(parent)
+                               const QString &cap, int percent, DWidget *parent)
+    : DWidget(parent)
 {
     s_removeDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive.svg", this);
 //    s_selectDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive-select.svg", this);
@@ -59,22 +59,19 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     mainLayout->setContentsMargins(10, 0, 10, 0);
     mainLayout->setSpacing(0);
 
-    m_deviceIcon = new QLabel;
+    m_deviceIcon = new DLabel;
     m_deviceIcon->setObjectName("DeviceInfoIcon");
     m_deviceIcon->setPixmap(s_removeDevice);
 
-    auto m_deviceLabel = new QLabel;
+    auto m_deviceLabel = new DLabel;
     m_deviceLabel->setObjectName("DeviceInfoLabel");
     m_deviceLabel->setText(name);
     m_deviceLabel->setFixedHeight(20);
     QFont qf = m_deviceLabel->font();
     qf.setPixelSize(14);
     m_deviceLabel->setFont(qf);
-    QPalette pa;
-    pa.setColor(QPalette::WindowText, QColor("#414D68"));
-    m_deviceLabel->setPalette(pa);
 
-    auto m_deviceDevName = new QLabel;
+    auto m_deviceDevName = new DLabel;
     m_deviceDevName->setObjectName("DeviceInfoDevName");
     m_deviceDevName->setText(QString("%1").arg(device));
     m_deviceDevName->setFixedHeight(18);
@@ -82,10 +79,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     qf.setPixelSize(12);
     m_deviceDevName->setFont(qf);
     m_deviceDevName->setAlignment(Qt::AlignCenter);
-    pa.setColor(QPalette::Text, QColor("#526A7F"));
-    m_deviceDevName->setPalette(pa);
-
-    auto m_deviceCapacity = new QLabel;
+    auto m_deviceCapacity = new DLabel;
     m_deviceCapacity->setObjectName("DeviceInfoCapacity");
     m_deviceCapacity->setText(cap);
     m_deviceCapacity->setFixedHeight(18);
@@ -93,10 +87,8 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     qf.setPixelSize(10);
     m_deviceCapacity->setFont(qf);
     m_deviceCapacity->setAlignment(Qt::AlignCenter);
-    pa.setColor(QPalette::Text, QColor("#526A7F"));
-    m_deviceCapacity->setPalette(pa);
 
-    auto m_deviceCapacityBar = new QProgressBar;
+    auto m_deviceCapacityBar = new DProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
     m_deviceCapacityBar->setTextVisible(false);
     m_deviceCapacityBar->setFixedSize(292, 4);
@@ -112,13 +104,13 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //    m_radiobutton->hide();
 
 
-    m_fillingposition    = new QLabel;
+    m_fillingposition    = new DLabel;
     m_fillingposition->setFixedSize(20, 20);
 
-    auto m_bodywidget = new QWidget;
+    auto m_bodywidget = new DWidget;
     auto bodyLayout = new QVBoxLayout(m_bodywidget);
     bodyLayout->setMargin(0);
-    auto m_middlewidget = new QWidget;
+    auto m_middlewidget = new DWidget;
     m_middlewidget->setFixedWidth(270);
     auto middleLayout = new QHBoxLayout(m_middlewidget);
     middleLayout->setMargin(0);
@@ -153,9 +145,40 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //    this->setAutoFillBackground(true);
 //    pa.setColor(QPalette::Background, QColor(0, 0, 0, 13));
 //    this->setPalette(pa);
+
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+    this, [ = ] {
+        DPalette pa;
+        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+        if (themeType == DGuiApplicationHelper::LightType)
+        {
+            pa = m_deviceLabel->palette();
+            pa.setColor(DPalette::WindowText, QColor("#414D68"));
+            m_deviceLabel->setPalette(pa);
+            pa = m_deviceDevName->palette();
+            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
+            m_deviceDevName->setPalette(pa);
+            pa = m_deviceCapacity->palette();
+            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
+            m_deviceCapacity->setPalette(pa);
+        } else if (themeType == DGuiApplicationHelper::DarkType)
+        {
+            pa = m_deviceLabel->palette();
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+            m_deviceLabel->setPalette(pa);
+            pa = m_deviceDevName->palette();
+            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+            m_deviceDevName->setPalette(pa);
+            pa = m_deviceCapacity->palette();
+            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+            m_deviceCapacity->setPalette(pa);
+        }
+    });
+
+    emit DGuiApplicationHelper::instance()->themeTypeChanged(DGuiApplicationHelper::instance()->themeType());
 }
 
-DeviceInfoItem::DeviceInfoItem(QWidget *parent) :
+DeviceInfoItem::DeviceInfoItem(DWidget *parent) :
     DeviceInfoItem("Remove Device", "NULL", "0/0G", 0, parent)
 {
     setProperty("needformat", false);
@@ -163,15 +186,22 @@ DeviceInfoItem::DeviceInfoItem(QWidget *parent) :
 
 void DeviceInfoItem::paintEvent(QPaintEvent *event)
 {
+    QColor baccolor;
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType) {
+        baccolor = QColor(0, 0, 0, 8);
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        baccolor = QColor(255, 255, 255, 13);
+    }
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
-    painter.setBrush(QBrush(QColor(0, 0, 0, 13)));
+    painter.setBrush(QBrush(baccolor));
     painter.setPen(Qt::transparent);
     QRect rect = this->rect();
     rect.setWidth(rect.width() - 1);
     rect.setHeight(rect.height() - 1);
     painter.drawRoundedRect(rect, 15, 15);
-    QWidget::paintEvent(event);
+    DWidget::paintEvent(event);
 }
 
 void DeviceInfoItem::setCheck(bool flag)

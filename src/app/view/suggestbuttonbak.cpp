@@ -42,15 +42,28 @@ SuggestButton::SuggestButton(DWidget *parent) :
 
 void SuggestButton::paintEvent(QPaintEvent *event)
 {
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    QColor disablecolor, raisedcolor, disraisedcolor, textcolor;
+    if (themeType == DGuiApplicationHelper::LightType) {
+        disablecolor = QColor(0, 0, 0, 13);
+        raisedcolor = QColor("#E3E3E3");
+        disraisedcolor = QColor("#00BFFF");
+        textcolor = QColor("#414D68");
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        disablecolor = QColor(0, 0, 0, 13);
+        raisedcolor = QColor("#E3E3E3");
+        disraisedcolor = QColor("#00BFFF");
+        textcolor = QColor("#414D68");
+    }
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     if (!this->isEnabled()) {
-        painter.setBrush(QBrush(QColor(0, 0, 0, 13)));
+        painter.setBrush(QBrush(disablecolor));
     } else {
         if (israised)
-            painter.setBrush(QBrush(QColor("#E3E3E3")));
+            painter.setBrush(QBrush(raisedcolor));
         else
-            painter.setBrush(QBrush(QColor("#00BFFF")));
+            painter.setBrush(QBrush(disraisedcolor));
     }
     painter.setPen(Qt::transparent);
     QRect rect = this->rect();
@@ -61,7 +74,7 @@ void SuggestButton::paintEvent(QPaintEvent *event)
     qf.setPixelSize(14);
     painter.setFont(qf);
 //    painter.setPen(Qt::black);
-    painter.setPen(QColor("#414D68"));
+    painter.setPen(textcolor);
     painter.drawText(0, 0, this->width(), this->height(), Qt::AlignCenter, text());
     //    DPushButton::paintEvent(event);
 }

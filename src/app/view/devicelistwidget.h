@@ -21,11 +21,13 @@
 
 #pragma once
 
-#include <QListWidget>
+#include <DListWidget>
 
-class DeviceListWidget : public QListWidget
+DWIDGET_USE_NAMESPACE
+
+class DeviceListWidget : public DListWidget
 {
     Q_OBJECT
 public:
-    explicit DeviceListWidget(QWidget *parent = 0);
+    explicit DeviceListWidget(DWidget *parent = 0);
 };

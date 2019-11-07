@@ -14,7 +14,6 @@ RESOURCES +=  \
 
 HEADERS += \
     view/isoselectview.h \
-    view/suggestbutton.h \
     view/widgetutil.h \
     view/usbselectview.h \
     view/deviceinfoitem.h \
@@ -25,7 +24,6 @@ HEADERS += \
 
 SOURCES += \
     view/isoselectview.cpp \
-    view/suggestbutton.cpp \
     view/widgetutil.cpp \
     view/usbselectview.cpp \
     view/deviceinfoitem.cpp \

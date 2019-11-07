@@ -22,70 +22,61 @@
 #include "isoselectview.h"
 
 #include <QStyle>
-#include <QLabel>
 #include <QVBoxLayout>
-#include <QFileDialog>
 #include <QStandardPaths>
 #include <QDebug>
+#include <DLabel>
+#include <DFileDialog>
+#include <DApplicationHelper>
 
-#include "suggestbutton.h"
+//#include "suggestbutton.h"
 #include "widgetutil.h"
-#include "dropframe.h"
 #include "bminterface.h"
 
 #include <DUtil>
 DWIDGET_USE_NAMESPACE
 
-const QString s_linkTemplate = "<a href='%1' style='text-decoration: none; color: #0066ec;'>%2</a>";
+const QString s_linkTemplate = "<a href='%1' style='text-decoration: none; color: #0082FA;'>%2</a>";
 const QString s_stateTemplate = "<a style='text-decoration: none; color: #FF5A5A;'>%1</a>";
 
-ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
+ISOSelectView::ISOSelectView(DWidget *parent) : DFrame(parent)
 {
     setObjectName("ISOSelectView");
     setAutoFillBackground(true);
-    QPalette pa;
-    pa.setColor(QPalette::Background, QColor(255, 255, 255));
-    setPalette(pa);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 9, 0, 0);
 
-    QLabel *m_title = new QLabel(tr("Select an ISO image file"));
+    m_title = new DLabel(tr("Select an ISO image file"));
     m_title->setFixedHeight(35);
     QFont qf = m_title->font();
+    qf.setFamily("SourceHanSansSC-Medium");
     qf.setPixelSize(24);
     m_title->setFont(qf);
-    pa = m_title->palette();
-    pa.setColor(QPalette::WindowText, QColor("#001A2E"));
-    m_title->setPalette(pa);
-//    m_title->setStyleSheet("font-size: 26px;");
 
-    QLabel *isoIcon = new QLabel(this);
+    DLabel *isoIcon = new DLabel(this);
     isoIcon->setObjectName("ISOIcon");
     isoIcon->setFixedSize(96, 96);
     isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
 
-    QLabel *growIcon = new QLabel(this);
+    DLabel *growIcon = new DLabel(this);
     growIcon->setObjectName("GrowIcon");
     growIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/glow.svg", this));
     growIcon->setFixedSize(220, 220);
     growIcon->hide();
 
-    DropFrame *isoPanel = new DropFrame;
+    isoPanel = new DropFrame;
     isoPanel->setObjectName("IosPanel");
     isoPanel->setFixedSize(410, 320);
-    pa.setColor(QPalette::Background, QColor(255, 255, 255, 13));
-    isoPanel->setPalette(pa);
 
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);
 
-    m_fileLabel = new QLabel(tr("Drag an ISO image file and drop it here"));
+    m_fileLabel = new DLabel(tr("Drag an ISO image file and drop it here"));
     m_fileLabel->setObjectName("IsoFileName");
     qf = m_fileLabel->font();
+    qf.setFamily("SourceHanSansSC-Normal");
     qf.setPixelSize(12);
     m_fileLabel->setFont(qf);
-    pa.setColor(QPalette::WindowText, Qt::gray);
-    m_fileLabel->setPalette(pa);
 //    m_fileLabel->setFixedHeight(18);
 
 //    m_stateLabel = new QLabel();
@@ -95,24 +86,21 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 //    m_stateLabel->setFixedHeight(38);
 //    m_stateLabel->hide();
 
-    m_hits = new QLabel(tr("OR"));
+    m_hits = new DLabel(tr("OR"));
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(18);
     qf = m_hits->font();
+    qf.setFamily("SourceHanSansSC-Normal");
     qf.setPixelSize(12);
     m_hits->setFont(qf);
-//    pa.setColor(QPalette::WindowText, QColor("#848484"));
-//    m_hits->setPalette(pa);
 
-    QLabel *spliter = new QLabel;
+    spliter = new DLabel;
     spliter->setObjectName("IsoSpliter");
     spliter->setFixedSize(230, 1);
     spliter->setAutoFillBackground(true);
-    QPixmap pixmap(":/theme/light/image/dash_line.svg");
-    pa.setBrush(QPalette::Background, QBrush(pixmap));
-    spliter->setPalette(pa);
+//    spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/dash_line.svg", this));
 
-    m_fileSelect = new QLabel();
+    m_fileSelect = new DLabel();
     m_fileSelect->setObjectName("IsoFileSelect");
 //    m_fileSelect->setFixedHeight(15);
     m_fileSelect->setOpenExternalLinks(false);
@@ -120,10 +108,9 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     qf = m_fileSelect->font();
+    qf.setFamily("SourceHanSansSC-Medium");
     qf.setPixelSize(12);
     m_fileSelect->setFont(qf);
-    pa.setColor(QPalette::Text, QColor("#0066ec"));
-    m_fileSelect->setPalette(pa);
 
     isoPanelLayout->addSpacing(62);
     isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignCenter);
@@ -139,7 +126,10 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignCenter);
     isoPanelLayout->addStretch();
 
-    m_nextSetp = new SuggestButton();
+//    m_nextSetp = new SuggestButton();
+    m_nextSetp = new DPushButton();
+    m_nextSetp->setFocusPolicy(Qt::NoFocus);
+    m_nextSetp->setFixedSize(310, 36);
     m_nextSetp->setObjectName("NextStepButton");
     m_nextSetp->setText(tr("Next"));
     m_nextSetp->setDisabled(true);
@@ -149,11 +139,10 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
     mainLayout->addSpacing(37);
     mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter);
-//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ISOSelectView.theme"));
-//    this->setStyleSheet(
-////                "#IosPanel{background-color: rgba(255, 255, 255, 5%);}"
-////                        "#IosPanel[active=true] {border-image: url(:/theme/light/image/dash.svg);}"
-//        "#IsoSpliter{background-image: url(:/theme/light/image/dash_line.svg);}");
+
+    slot_ThemeChange();
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &ISOSelectView :: slot_ThemeChange);
 
 #ifdef Q_OS_WIN
     m_fileLabel->hide();
@@ -182,22 +171,67 @@ ISOSelectView::ISOSelectView(QWidget *parent) : QFrame(parent)
 //        this->style()->polish(isoPanel);
     });
 
-    connect(m_fileSelect, &QLabel::linkActivated, this, [ = ](const QString & /*link*/) {
-        QFileDialog fileDlg(this);
-        fileDlg.setViewMode(QFileDialog::Detail);
-        fileDlg.setFileMode(QFileDialog::ExistingFile);
+    connect(m_fileSelect, &DLabel::linkActivated, this, [ = ](const QString & /*link*/) {
+        DFileDialog fileDlg(this);
+        fileDlg.setViewMode(DFileDialog::Detail);
+        fileDlg.setFileMode(DFileDialog::ExistingFile);
         fileDlg.setDirectory(QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
         fileDlg.setNameFilter("ISO (*.iso)");
         fileDlg.selectNameFilter("ISO (*.iso)");
-        if (QFileDialog::Accepted == fileDlg.exec()) {
+        if (DFileDialog::Accepted == fileDlg.exec()) {
             QString text = fileDlg.selectedFiles().first();
             onFileSelected(text);
         }
     });
 
-    connect(m_nextSetp, &SuggestButton::clicked, this, &ISOSelectView::isoFileSelected);
+//    connect(m_nextSetp, &SuggestButton::clicked, this, &ISOSelectView::isoFileSelected);
+    connect(m_nextSetp, &DPushButton::clicked, this, &ISOSelectView::isoFileSelected);
     connect(isoPanel, &DropFrame::fileDrop, this, &ISOSelectView::onFileSelected);
 
+}
+
+void ISOSelectView :: slot_ThemeChange()
+{
+    DPalette pa;
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType) {
+        pa = palette();
+        pa.setColor(DPalette::Background, QColor(255, 255, 255));
+        setPalette(pa);
+        pa = m_title->palette();
+        pa.setColor(DPalette::Text, QColor("#001A2E"));
+        m_title->setPalette(pa);
+        pa = isoPanel->palette();
+        pa.setColor(DPalette::Background, QColor(255, 255, 255, 13));
+        isoPanel->setPalette(pa);
+        pa = m_fileLabel->palette();
+        pa.setColor(DPalette::Text, Qt::gray);
+        m_fileLabel->setPalette(pa);
+        pa = m_hits->palette();
+        pa.setColor(DPalette::Text, QColor("#424242"));
+        m_hits->setPalette(pa);
+        spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/dash_line.svg", this));
+        //        pa = m_fileSelect->palette();
+        //        pa.setColor(QPalette::WindowText, QColor("#0066EC"));
+        //        m_fileSelect->setPalette(pa);
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        pa = palette();
+        pa.setColor(DPalette::Background, QColor("#252525"));
+        setPalette(pa);
+        pa = m_title->palette();
+        pa.setColor(DPalette::Text, QColor("#C0C6D4"));
+        m_title->setPalette(pa);
+        pa = isoPanel->palette();
+        pa.setColor(DPalette::Background, QColor(0, 0, 0, 13));
+        isoPanel->setPalette(pa);
+        pa = m_fileLabel->palette();
+        pa.setColor(DPalette::Text, Qt::gray);
+        m_fileLabel->setPalette(pa);
+        pa = m_hits->palette();
+        pa.setColor(DPalette::Text, QColor("#E3E3E3"));
+        m_hits->setPalette(pa);
+        spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/dark/image/dash_line_dark.svg", this));
+    }
 }
 
 void ISOSelectView::onFileSelected(const QString &file)

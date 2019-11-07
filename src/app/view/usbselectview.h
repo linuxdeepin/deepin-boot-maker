@@ -21,13 +21,16 @@
 
 #pragma once
 
-#include <QFrame>
+#include <DFrame>
+#include <DLabel>
 
-class UsbSelectView : public QFrame
+DWIDGET_USE_NAMESPACE
+
+class UsbSelectView : public DFrame
 {
     Q_OBJECT
 public:
-    explicit UsbSelectView(QWidget *parent = 0);
+    explicit UsbSelectView(DWidget *parent = 0);
 
 signals:
     void deviceSelected(const QString &partition, bool format);

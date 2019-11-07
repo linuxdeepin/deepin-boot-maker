@@ -187,7 +187,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
     df.waitForStarted(-1);
     df.waitForFinished(-1);
     QString dfout = df.readAll();
-    qDebug() << "CommandLsblkParse dfout:" << dfout;
+    qDebug() << "CommandLsblkParse dfout:" << dfout.toLocal8Bit();
 
     QMap<QString, DeviceInfo> deviceInfos;
 

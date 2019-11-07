@@ -22,11 +22,11 @@
 #pragma once
 
 #include <QString>
-#include <QWidget>
+#include <DWidget>
 
-namespace WidgetUtil
-{
-    QString getQss(const QString &className);
-    QPixmap getDpiPixmap(const QString filename, QWidget *w = Q_NULLPTR);
+DWIDGET_USE_NAMESPACE
+namespace WidgetUtil {
+QString getQss(const QString &className);
+QPixmap getDpiPixmap(const QString filename, DWidget *w = Q_NULLPTR);
 }
 

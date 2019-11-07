@@ -46,7 +46,7 @@ static bool checkMimeData(const QMimeData *mimeData)
     return true;
 }
 
-DropFrame::DropFrame(QWidget *parent) : QFrame(parent)
+DropFrame::DropFrame(DWidget *parent) : DFrame(parent)
 {
     setAcceptDrops(true);
 }
@@ -64,7 +64,7 @@ void DropFrame::dragEnterEvent(QDragEnterEvent *event)
 
 void DropFrame::dragLeaveEvent(QDragLeaveEvent *event)
 {
-    QFrame::dragLeaveEvent(event);
+    DFrame::dragLeaveEvent(event);
     emit fileCancel();
 }
 
@@ -87,5 +87,5 @@ void DropFrame::paintEvent(QPaintEvent *e)
         QPainter painter(this);
         painter.drawPixmap(this->rect(), pixmap);
     }
-    QFrame::paintEvent(e);
+    DFrame::paintEvent(e);
 }
