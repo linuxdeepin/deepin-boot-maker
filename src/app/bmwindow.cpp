@@ -20,18 +20,12 @@
  */
 
 #include "bmwindow.h"
-
-#include <QDebug>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QPropertyAnimation>
-#include <QStackedLayout>
-#include <QMessageBox>
-#include <QApplication>
-#include <QProcess>
-#include <QThread>
-#include <QLabel>
+#include "view/isoselectview.h"
+#include "view/usbselectview.h"
+#include "view/progressview.h"
+#include "view/resultview.h"
+#include "bminterface.h"
+#include "backend/bmhandler.h"
 
 #include <ddialog.h>
 #include <DTitlebar>
@@ -40,13 +34,17 @@
 #include <DApplicationHelper>
 #include <DWindowManagerHelper>
 
-#include "view/isoselectview.h"
-#include "view/usbselectview.h"
-#include "view/progressview.h"
-#include "view/resultview.h"
+#include <QDebug>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPropertyAnimation>
+#include <QStackedLayout>
+#include <QMessageBox>
+#include <QApplication>
+#include <QProcess>
+#include <QThread>
 
-#include "bminterface.h"
-#include "backend/bmhandler.h"
+
 
 DWIDGET_USE_NAMESPACE
 

@@ -21,11 +21,10 @@
 
 #include "utils.h"
 
-#include <XSys>
-
 #include <QtCore>
 #include <QString>
 
+#include <XSys>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif

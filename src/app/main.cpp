@@ -29,16 +29,14 @@ namespace Utils {
 void loadFonts();
 }
 #endif
+#include "bmwindow.h"
+#include <bminterface.h>
+#include <util/utils.h>
 
 #include <DLog>
 #include <DApplication>
 #include <DWidgetUtil>
-
-#include <bminterface.h>
-#include <util/utils.h>
 #include <DApplicationSettings>
-
-#include "bmwindow.h"
 
 DCORE_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE

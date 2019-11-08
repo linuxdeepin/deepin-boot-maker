@@ -20,11 +20,10 @@
  */
 
 #pragma once
+#include "deviceinfo.h"
 
 #include <QObject>
 #include <QTimer>
-
-#include "deviceinfo.h"
 
 class DeviceMonitor : public QObject
 {

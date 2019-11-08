@@ -24,7 +24,6 @@
 #include <QDebug>
 #include <QThread>
 #include <QCoreApplication>
-
 #include <QDBusContext>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>

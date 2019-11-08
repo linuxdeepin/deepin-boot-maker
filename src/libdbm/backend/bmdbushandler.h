@@ -24,6 +24,7 @@
 #include "bmhandler.h"
 #include "bmdbusinterface.h"
 #include "../util/deviceinfo.h"
+
 #include <QDebug>
 #include <QDBusConnection>
 

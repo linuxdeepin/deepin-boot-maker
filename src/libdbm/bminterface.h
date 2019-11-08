@@ -20,11 +20,12 @@
  */
 
 #pragma once
+#include "util/deviceinfo.h"
+
+#include <DSingleton>
 
 #include <QObject>
 #include <QScopedPointer>
-#include <DSingleton>
-#include "util/deviceinfo.h"
 
 class BMInterfacePrivate;
 class BMInterface : public QObject, public Dtk::Core::DSingleton<BMInterface>

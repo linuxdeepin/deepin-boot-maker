@@ -20,20 +20,19 @@
  */
 
 #include "isoselectview.h"
+#include "widgetutil.h"
+#include "bminterface.h"
+
+#include <DLabel>
+#include <DFileDialog>
+#include <DApplicationHelper>
+#include <DUtil>
 
 #include <QStyle>
 #include <QVBoxLayout>
 #include <QStandardPaths>
 #include <QDebug>
-#include <DLabel>
-#include <DFileDialog>
-#include <DApplicationHelper>
 
-//#include "suggestbutton.h"
-#include "widgetutil.h"
-#include "bminterface.h"
-
-#include <DUtil>
 DWIDGET_USE_NAMESPACE
 
 const QString s_linkTemplate = "<a href='%1' style='text-decoration: none; color: #0082FA;'>%2</a>";

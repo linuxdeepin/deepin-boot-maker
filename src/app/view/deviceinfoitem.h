@@ -21,12 +21,13 @@
 
 #pragma once
 
-#include <QRadioButton>
-#include <QItemDelegate>
-
 #include <DListWidget>
 #include <DWidget>
 #include <DLabel>
+
+#include <QRadioButton>
+#include <QItemDelegate>
+
 DWIDGET_USE_NAMESPACE
 
 class DeviceDelegate : public QItemDelegate

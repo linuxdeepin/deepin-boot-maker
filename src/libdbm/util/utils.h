@@ -20,13 +20,13 @@
  */
 
 #pragma once
+#include "devicemonitor.h"
+
 #include <QObject>
 #include <QString>
 
-#include "devicemonitor.h"
 
-namespace Utils
-{
+namespace Utils {
 
 void initResource();
 void loadTranslate();

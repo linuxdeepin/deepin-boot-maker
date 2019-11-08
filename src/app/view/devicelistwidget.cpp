@@ -20,7 +20,6 @@
  */
 
 #include "devicelistwidget.h"
-
 #include "widgetutil.h"
 
 DeviceListWidget::DeviceListWidget(DWidget *parent) : DListWidget(parent)

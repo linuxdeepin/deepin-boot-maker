@@ -21,8 +21,9 @@
 
 #pragma once
 
-#include <QString>
 #include <DWidget>
+
+#include <QString>
 
 DWIDGET_USE_NAMESPACE
 namespace WidgetUtil {

@@ -20,27 +20,24 @@
  */
 
 #include "resultview.h"
+#include "widgetutil.h"
+#include "deviceinfoitem.h"
+#include "devicelistwidget.h"
+#include "dwaterprogress.h"
+#include <bminterface.h>
+#include <backend/bmhandler.h>
+
+#include <DListWidget>
+#include <DApplication>
+#include <DCheckBox>
+#include <DLog>
+#include <DApplicationHelper>
 
 #include <QDebug>
 #include <QUrl>
 #include <QVBoxLayout>
 #include <QProcess>
 #include <QDesktopServices>
-#include <DListWidget>
-#include <DApplication>
-
-#include <DCheckBox>
-#include <DLog>
-#include <DApplicationHelper>
-
-//#include "suggestbutton.h"
-#include "widgetutil.h"
-#include "deviceinfoitem.h"
-#include "devicelistwidget.h"
-#include "dwaterprogress.h"
-
-#include <bminterface.h>
-#include <backend/bmhandler.h>
 
 ResultView::ResultView(DWidget *parent) : DWidget(parent)
 {

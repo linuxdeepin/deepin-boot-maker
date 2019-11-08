@@ -36,8 +36,7 @@
 
 #endif
 
-namespace XAPI
-{
+namespace XAPI {
 
 #ifdef Q_OS_WIN32
 
@@ -261,7 +260,9 @@ XSys::Result InstallBootloader(const QString &targetDev)
     QString xfbinstPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/xfbinst.exe"));
     XSys::Result ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force")
                                      .arg(xfbinstDiskName));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
@@ -418,10 +419,14 @@ XSys::Result FixMountPartition(const QString &partition)
     mountPoint = QString("%1").arg(XSys::FS::TmpFilePath("deepin-boot-maker"));
 
     XSys::Result ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     ret = XSys::SynExec("chmod", " a+wrx " + mountPoint);
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     QString mountCmd = "%1 %2";
     QString remountCmd = "-t vfat -o remountflush,rw,utf8=1,sync,nodev,nosuid %1 %2";
@@ -442,14 +447,20 @@ XSys::Result InstallSyslinux(const QString &targetDev)
     // install syslinux
     QString rawtargetDev = GetPartitionDisk(targetDev);
     XSys::Result ret = XSys::Syslinux::InstallBootloader(targetDev);
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
     ret = XSys::Syslinux::InstallMbr(rawtargetDev);
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // make active
     ret = XSys::SynExec(XSys::FS::SearchBin("sfdisk"),
                         QString("%1 -A %2").arg(rawtargetDev, QString(targetDev).remove(rawtargetDev).remove("p")));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(targetDev));
@@ -478,16 +489,22 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     qDebug() << "load" << xfbinstResource << xfbinstPath;
     ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // fbinst: install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
     UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // after format, diskdev change to /dev/sd?1
     UmountDisk(diskDev);
@@ -504,20 +521,28 @@ XSys::Result InstallBootloader(const QString &diskDev)
     // dd pbr file ldlinux.bin
     QString tmpPbrPath = XSys::FS::TmpFilePath("ldlinux.bin");
     ret = XSys::SynExec("dd", QString(" if=%1 of=%2 bs=512 count=1").arg(newTargetDev).arg(tmpPbrPath));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // fbinst: add pbr file ldlinux.bin
     ret = UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     // mount
     QString mountPoint = QString("/tmp/%1").arg(XSys::FS::TmpFilePath(""));
     ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     FixMountPartition(newTargetDev);
 
@@ -695,10 +720,8 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
 // End XAPI
 // //////////////////////////////////////
-namespace XSys
-{
-namespace DiskUtil
-{
+namespace XSys {
+namespace DiskUtil {
 
 PartionFormat GetPartitionFormat(const QString &targetDev)
 {
@@ -753,16 +776,14 @@ bool Mount(const QString &targetDev)
 
 }
 
-namespace Bootloader
-{
+namespace Bootloader {
 
 Result InstallBootloader(const QString &diskDev)
 {
     return XAPI::InstallBootloader(diskDev);
 }
 
-namespace Syslinux
-{
+namespace Syslinux {
 
 Result InstallSyslinux(const QString &diskDev)
 {

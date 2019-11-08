@@ -21,14 +21,16 @@
 
 #include "bootmaker.h"
 
-#include <QDebug>
-#include <XSys>
-
 #include "../util/sevenzip.h"
 #include "../util/utils.h"
 #include "../util/devicemonitor.h"
-
 #include "diskutil.h"
+
+#include <QDebug>
+
+#include <XSys>
+
+
 
 #ifdef Q_OS_WIN32
 #include <windows.h>

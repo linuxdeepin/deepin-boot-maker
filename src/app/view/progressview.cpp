@@ -20,9 +20,11 @@
  */
 
 #include "progressview.h"
+#include "widgetutil.h"
+#include "deviceinfoitem.h"
+#include "devicelistwidget.h"
+#include <bminterface.h>
 
-#include <QDebug>
-#include <QVBoxLayout>
 #include <DCheckBox>
 #include <DLabel>
 #include <DListWidget>
@@ -30,12 +32,8 @@
 #include <DPushButton>
 #include <DApplicationHelper>
 
-//#include "suggestbutton.h"
-#include "widgetutil.h"
-#include "deviceinfoitem.h"
-#include "devicelistwidget.h"
-
-#include <bminterface.h>
+#include <QDebug>
+#include <QVBoxLayout>
 
 DWIDGET_USE_NAMESPACE
 

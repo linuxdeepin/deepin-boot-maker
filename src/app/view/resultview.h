@@ -21,11 +21,12 @@
 
 #pragma once
 
-#include <QPointer>
 #include <DPushButton>
 #include <DWidget>
 #include <DLabel>
 #include <DPalette>
+
+#include <QPointer>
 
 DWIDGET_USE_NAMESPACE
 class SuggestButton;

@@ -19,15 +19,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDebug>
-#include <QCoreApplication>
-#include <QDBusConnection>
-#include <QDBusError>
-
 #include "LogManager.h"
 
 #include "util/utils.h"
 #include "bootmakerservice.h"
+
+#include <QDebug>
+#include <QCoreApplication>
+#include <QDBusConnection>
+#include <QDBusError>
 
 const QString BootMakerServiceName = "com.deepin.bootmaker";
 const QString BootMakerPath = "/com/deepin/bootmaker";

@@ -21,6 +21,8 @@
 
 #include "devicemonitor.h"
 
+#include "utils.h"
+
 #include <QDebug>
 #include <QThread>
 #include <QDataStream>
@@ -28,7 +30,6 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QString>
-#include "utils.h"
 
 //#pragma execution_character_set("utf-8")
 

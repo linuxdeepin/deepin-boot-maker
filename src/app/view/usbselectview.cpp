@@ -20,11 +20,10 @@
  */
 
 #include "usbselectview.h"
-
-#include <QDebug>
-#include <QVBoxLayout>
-#include <QMessageBox>
-#include <QIcon>
+#include "widgetutil.h"
+#include "deviceinfoitem.h"
+#include "devicelistwidget.h"
+#include <bminterface.h>
 
 #include <DListWidget>
 #include <DLabel>
@@ -33,15 +32,12 @@
 #include <DCheckBox>
 #include <DPushButton>
 #include <DApplicationHelper>
-
 #include <ddialog.h>
 
-//#include "suggestbutton.h"
-#include "widgetutil.h"
-#include "deviceinfoitem.h"
-#include "devicelistwidget.h"
-
-#include <bminterface.h>
+#include <QDebug>
+#include <QVBoxLayout>
+#include <QMessageBox>
+#include <QIcon>
 
 static QString usageString(quint32 usage, quint32 total)
 {

@@ -20,18 +20,16 @@
  */
 
 #include "deviceinfoitem.h"
+#include "widgetutil.h"
+
+#include <DApplication>
+#include <DProgressBar>
+#include <DApplicationHelper>
 
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QPixmap>
 #include <QPainter>
-#include <DApplication>
-
-#include <DProgressBar>
-#include <DApplicationHelper>
-
-#include "widgetutil.h"
-
 
 DeviceDelegate::DeviceDelegate(QObject *parent)
     : QItemDelegate(parent)

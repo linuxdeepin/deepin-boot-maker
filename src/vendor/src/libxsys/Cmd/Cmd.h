@@ -20,14 +20,13 @@
  */
 
 #pragma once
+#include "../Common/Result.h"
 
 class QString;
 
-#include "../Common/Result.h"
-
 namespace XSys {
 
-Result SynExec(const QString &exec, const QString &param, const QString &execPipeIn="");
+Result SynExec(const QString &exec, const QString &param, const QString &execPipeIn = "");
 Result SynExec(const QString &exec, const QStringList &args);
 
 }

@@ -21,18 +21,19 @@
 
 #include "Syslinux.h"
 
-#include <QDebug>
-#include <QDir>
-
 #include "../FileSystem/FileSystem.h"
 #include "../Cmd/Cmd.h"
+
+#include <QDebug>
+#include <QDir>
 
 namespace XSys {
 
 namespace Syslinux {
 
 #ifdef Q_OS_LINUX
-QString SearchMbr() {
+QString SearchMbr()
+{
     QStringList paths;
     paths.push_back("/usr/lib/syslinux/mbr/");
     paths.push_back("/usr/lib/SYSLINUX/"); // debian
@@ -42,7 +43,8 @@ QString SearchMbr() {
 }
 #endif
 
-QString SearchMoudle(const QString& moduleName) {
+QString SearchMoudle(const QString &moduleName)
+{
 #ifdef Q_OS_LINUX
     QStringList paths;
     paths.push_back("/usr/lib/syslinux/modules/bios/"); //debain
@@ -61,7 +63,8 @@ QString SearchMoudle(const QString& moduleName) {
 }
 
 
-Result InstallBootloader(const QString &device) {
+Result InstallBootloader(const QString &device)
+{
 #ifdef Q_OS_LINUX
     return XSys::SynExec(XSys::FS::SearchBin("syslinux"), QString(" -i %1").arg(device));
 #else
@@ -70,7 +73,8 @@ Result InstallBootloader(const QString &device) {
 #endif
 }
 
-Result InstallMbr(const QString &device) {
+Result InstallMbr(const QString &device)
+{
 #ifdef Q_OS_LINUX
     QString mbrPath = SearchMbr();
     return XSys::SynExec("dd", QString(" if=%1 of=%2 bs=440 count=1").arg(mbrPath).arg(device));
@@ -80,7 +84,8 @@ Result InstallMbr(const QString &device) {
 #endif
 }
 
-Result InstallModule(const QString& installDirectory) {
+Result InstallModule(const QString &installDirectory)
+{
     QStringList modulelist;
     modulelist.append("gfxboot.c32");
     modulelist.append("chain.c32");
@@ -91,8 +96,8 @@ Result InstallModule(const QString& installDirectory) {
     modulelist.append("libutil.c32");
 #endif
 
-    foreach(QString filename, modulelist) {
-        qDebug()<<"Install Module"<<filename<<SearchMoudle(filename);
+    foreach (QString filename, modulelist) {
+        qDebug() << "Install Module" << filename << SearchMoudle(filename);
         if (!XSys::FS::InsertFile(SearchMoudle(filename), QDir::toNativeSeparators(installDirectory + filename))) {
             return Result(Result::Failed, "Insert Module File Failed: " + SearchMoudle(filename) + " to " + QDir::toNativeSeparators(installDirectory + filename));
         }

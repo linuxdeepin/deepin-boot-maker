@@ -20,9 +20,9 @@
  */
 
 #pragma once
+#include "../util/deviceinfo.h"
 
 #include <QObject>
-#include "../util/deviceinfo.h"
 
 class BMHandler : public QObject
 {

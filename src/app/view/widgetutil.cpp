@@ -21,10 +21,11 @@
 
 #include "widgetutil.h"
 
+#include <DApplication>
+
 #include <QFile>
 #include <QImageReader>
 #include <QIcon>
-#include <DApplication>
 
 namespace WidgetUtil {
 QString getQss(const QString &qssFilename)
