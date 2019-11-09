@@ -178,7 +178,7 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
     if (!d->checkCaller()) {
         return false;
     }
-    qDebug() << "---install  image:" << image << " device:" << device << " partition:" << partition;
+    qDebug() << "install  image:" << image << " device:" << device << " partition:" << partition;
     emit d->bm->startInstall(image, device, partition, formatDevice);
     return true;
 }
@@ -196,7 +196,7 @@ bool BootMakerService::CheckFile(const QString &filepath)
 bool BootMakerServicePrivate::checkCaller()
 {
     Q_Q(BootMakerService);
-//    return true;
+    return true;
     auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
     auto callerExe = getProcIdExe(callerPid);
     auto dbmExe = "/usr/bin/deepin-boot-maker";

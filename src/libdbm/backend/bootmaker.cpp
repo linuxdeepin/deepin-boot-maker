@@ -176,7 +176,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
 
         result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
-        qDebug() << "--------parted  -s -a optimal %1 mklabel msdos " << targetDisk;
+        qDebug() << "parted  -s -a optimal %1 mklabel msdos " << targetDisk;
         qDebug() << "format mklabel: " << result.isSuccess();
         result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary 1MiB 3500Mib").arg(targetDisk));
         qDebug() << "format mkpart: " << result.isSuccess();
@@ -235,8 +235,10 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     }, Qt::QueuedConnection);
 
     if (!sevenZip.extract()) {
-        qCritical() << "Error::get(Error::ExtractImgeFailed)";
-        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
+//        qCritical() << "Error::get(Error::ExtractImgeFailed)";
+//        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
+        qCritical() << "Error::get(Error::USBSizeError)";
+        emit finished(USBSizeError, errorString(USBSizeError));
         return false;
     }
     this->reportProgress(80, Error::NoError, "end extract files", "");
