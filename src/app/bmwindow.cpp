@@ -140,6 +140,8 @@ BMWindow::BMWindow(QWidget *parent)
     title->setTitle("");
     title->setIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
     title->setBackgroundTransparent(true);
+    title->setFixedHeight(50);
+    title->setFrameStyle(QFrame::NoFrame);
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
@@ -156,6 +158,7 @@ BMWindow::BMWindow(QWidget *parent)
     auto viewWidth = 440;
     auto *actionsLayout = new QStackedLayout;
     mainLayout->addLayout(actionsLayout);
+    actionsLayout->setMargin(0);
     d->isoWidget = new ISOSelectView();
     d->isoWidget->setFixedSize(viewWidth, 476);
 
@@ -273,12 +276,20 @@ void BMWindow :: slot_ThemeChange()
         pa = d->wsib->palette();
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
         d->wsib->setPalette(pa);
+//        auto title = titlebar();
+//        pa = title->palette();
+//        pa.setColor(DPalette::Background, QColor(255, 255, 255));
+//        title->setPalette(pa);
         d->wsib->setPointColor(QColor("#2CA7F8"));
         d->wsib->setSecondaryPointColor(QColor("#96ACBD"));
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = d->wsib->palette();
-        pa.setColor(DPalette::Background, QColor("#252525"));
+        pa.setColor(DPalette::Background, QColor("#292929"));
         d->wsib->setPalette(pa);
+//        auto title = titlebar();
+//        pa = title->palette();
+//        pa.setColor(DPalette::Background, QColor("#252525"));
+//        title->setPalette(pa);
         d->wsib->setPointColor(QColor("#0082FA"));
         d->wsib->setSecondaryPointColor(QColor("#555555"));
     }

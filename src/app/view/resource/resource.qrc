@@ -23,5 +23,7 @@
         <file>theme/light/image/dash.svg</file>
         <file>theme/light/image/select_active.svg</file>
         <file>theme/dark/image/dash_line_dark.svg</file>
+        <file>theme/SourceHanSansSC-Medium.otf</file>
+        <file>theme/SourceHanSansSC-Normal.otf</file>
     </qresource>
 </RCC>

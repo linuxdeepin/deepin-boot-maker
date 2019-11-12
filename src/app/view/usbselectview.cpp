@@ -38,6 +38,7 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QIcon>
+#include <QFontDatabase>
 
 static QString usageString(quint32 usage, quint32 total)
 {
@@ -68,24 +69,36 @@ static int percent(quint32 usage, quint32 total)
     return static_cast<int>(usage * 100 / total);
 }
 
-UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
+UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("UsbSelectView");
     setAutoFillBackground(true);
+    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.otf");
+    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Normal.otf");
+    QStringList m_fontList;
+    m_fontList.clear();
+    if (lcdFontId != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+    }
+    if (lcdFontId1 != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
+    }
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
-    mainLayout->setContentsMargins(0, 9, 0, 0);
+    mainLayout->setContentsMargins(0, 1, 0, 0);
 
     DLabel *m_title = new DLabel(tr("Select a disk"));
-    m_title->setFixedHeight(35);
+    m_title->setFixedHeight(36);
     QFont ft = m_title->font();
-    ft.setFamily("SourceHanSansSC-Medium");
+    if (m_fontList.size() > 0)
+        ft.setFamily(m_fontList.at(0));
     ft.setPixelSize(24);
     m_title->setFont(ft);
 
     DFrame *usbDeviceListPanel = new DFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
     usbDeviceListPanel->setFixedSize(410, 320);
+    usbDeviceListPanel->setFrameStyle(QFrame::NoFrame);
     usbDeviceListPanel->setAutoFillBackground(true);
 
     QVBoxLayout *usbPanelLayout = new QVBoxLayout(usbDeviceListPanel);
@@ -102,7 +115,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
     m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
     m_formatDiskCheck->hide();
     ft = m_formatDiskCheck->font();
-    ft.setFamily("SourceHanSansSC-Medium");
+    if (m_fontList.size() > 0)
+        ft.setFamily(m_fontList.at(0));
     ft.setPixelSize(14);
     m_formatDiskCheck->setFont(ft);
 
@@ -138,7 +152,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
     m_warningHint->setMinimumHeight(17);
     m_warningHint->setWordWrap(true);
     ft = m_warningHint->font();
-    ft.setFamily("SourceHanSansSC-Normal");
+    if (m_fontList.size() > 1)
+        ft.setFamily(m_fontList.at(1));
     ft.setPixelSize(11);
     m_warningHint->setFont(ft);
     m_warningHint->setAlignment(Qt::AlignCenter);
@@ -148,7 +163,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
     m_emptyHint->setFixedHeight(29);
     m_emptyHint->setAlignment(Qt::AlignCenter);
     ft = m_emptyHint->font();
-    ft.setFamily("SourceHanSansSC-Normal");
+    if (m_fontList.size() > 1)
+        ft.setFamily(m_fontList.at(1));
     ft.setPixelSize(20);
     m_emptyHint->setFont(ft);
 
@@ -164,6 +180,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
     start->setFixedSize(310, 36);
     start->setObjectName("StartMake");
     start->setText(tr("Start"));
+    ft = start->font();
+    if (m_fontList.size() > 0)
+        ft.setFamily(m_fontList.at(0));
+    ft.setPixelSize(14);
+    start->setFont(ft);
     start->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
@@ -190,7 +211,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
 //            pa.setColor(DPalette::Background, QColor(255, 255, 255, 128));
 //            usbDeviceListPanel->setPalette(pa);
             pa = m_warningHint->palette();
-            pa.setColor(DPalette::Text, QColor("#FF5800"));
+            pa.setColor(DPalette::WindowText, QColor("#FF5800"));
             m_warningHint->setPalette(pa);
             pa = m_emptyHint->palette();
             pa.setColor(DPalette::WindowText, QColor(85, 85, 85, 102));
@@ -198,7 +219,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = palette();
-            pa.setColor(DPalette::Background, QColor("#252525"));
+            pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
             pa = m_title->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
@@ -207,7 +228,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DFrame(parent)
 //            pa.setColor(DPalette::Background, QColor(0, 0, 0, 128));
 //            usbDeviceListPanel->setPalette(pa);
             pa = m_warningHint->palette();
-            pa.setColor(DPalette::Text, QColor("#9A2F2F"));
+            pa.setColor(DPalette::WindowText, QColor("#9A2F2F"));
             m_warningHint->setPalette(pa);
             pa = m_emptyHint->palette();
             pa.setColor(DPalette::WindowText, QColor(192, 198, 212, 102));

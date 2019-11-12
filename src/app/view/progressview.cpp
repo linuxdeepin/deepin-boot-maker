@@ -34,6 +34,7 @@
 
 #include <QDebug>
 #include <QVBoxLayout>
+#include <QFontDatabase>
 
 DWIDGET_USE_NAMESPACE
 
@@ -42,14 +43,26 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     setObjectName("ProgressView");
     setAutoFillBackground(true);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setContentsMargins(0, 9, 0, 0);
+    mainLayout->setContentsMargins(0, 1, 0, 0);
+
+    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.otf");
+    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Normal.otf");
+    QStringList m_fontList;
+    m_fontList.clear();
+    if (lcdFontId != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+    }
+    if (lcdFontId1 != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
+    }
 
     DLabel *m_title = new DLabel(tr("Burning"));
-    m_title->setFixedHeight(35);
-    QFont ft = m_title->font();
-    ft.setFamily("SourceHanSansSC-Medium");
-    ft.setPixelSize(24);
-    m_title->setFont(ft);
+    m_title->setFixedHeight(36);
+    QFont qf = m_title->font();
+    if (m_fontList.size() > 0)
+        qf.setFamily(m_fontList.at(0));
+    qf.setPixelSize(24);
+    m_title->setFont(qf);
 //    m_title->setStyleSheet("font-size: 26px;");
 
     auto waterProgress = new Dtk::Widget::DWaterProgress;
@@ -58,9 +71,9 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     DLabel *m_hitsTitle = new DLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
     m_hitsTitle->setFixedHeight(25);
-    QFont qf;
     qf = m_hitsTitle->font();
-    qf.setFamily("SourceHanSansSC-Bold");
+    if (m_fontList.size() > 1)
+        qf.setFamily(m_fontList.at(1));
     qf.setPixelSize(17);
     qf.setBold(true);
     m_hitsTitle->setFont(qf);
@@ -81,6 +94,11 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     start->setFixedSize(310, 36);
     start->setObjectName("ProgressCancel");
     start->setText(tr("Cancel"));
+    qf = start->font();
+    if (m_fontList.size() > 0)
+        qf.setFamily(m_fontList.at(0));
+    qf.setPixelSize(14);
+    start->setFont(qf);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(102);
@@ -123,7 +141,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = palette();
-            pa.setColor(DPalette::Background, QColor("#252525"));
+            pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
             pa = m_title->palette();
             pa.setColor(DPalette::Text, QColor("#C0C6D4"));

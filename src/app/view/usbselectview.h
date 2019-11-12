@@ -26,7 +26,7 @@
 
 DWIDGET_USE_NAMESPACE
 
-class UsbSelectView : public DFrame
+class UsbSelectView : public DWidget
 {
     Q_OBJECT
 public:

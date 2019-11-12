@@ -32,23 +32,37 @@
 #include <QVBoxLayout>
 #include <QStandardPaths>
 #include <QDebug>
+#include <QFontDatabase>
 
 DWIDGET_USE_NAMESPACE
 
 const QString s_linkTemplate = "<a href='%1' style='text-decoration: none; color: #0082FA;'>%2</a>";
 const QString s_stateTemplate = "<a style='text-decoration: none; color: #FF5A5A;'>%1</a>";
 
-ISOSelectView::ISOSelectView(DWidget *parent) : DFrame(parent)
+ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("ISOSelectView");
     setAutoFillBackground(true);
+//    setFrameStyle(QFrame::NoFrame);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setContentsMargins(0, 9, 0, 0);
+    mainLayout->setContentsMargins(0, 1, 0, 0);
+
+    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.otf");
+    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Normal.otf");
+    QStringList m_fontList;
+    m_fontList.clear();
+    if (lcdFontId != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+    }
+    if (lcdFontId1 != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
+    }
 
     m_title = new DLabel(tr("Select an ISO image file"));
-    m_title->setFixedHeight(35);
+    m_title->setFixedHeight(36);
     QFont qf = m_title->font();
-    qf.setFamily("SourceHanSansSC-Medium");
+    if (m_fontList.size() > 0)
+        qf.setFamily(m_fontList.at(0));
     qf.setPixelSize(24);
     m_title->setFont(qf);
 
@@ -73,7 +87,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DFrame(parent)
     m_fileLabel = new DLabel(tr("Drag an ISO image file and drop it here"));
     m_fileLabel->setObjectName("IsoFileName");
     qf = m_fileLabel->font();
-    qf.setFamily("SourceHanSansSC-Normal");
+    if (m_fontList.size() > 1)
+        qf.setFamily(m_fontList.at(1));
     qf.setPixelSize(12);
     m_fileLabel->setFont(qf);
 //    m_fileLabel->setFixedHeight(18);
@@ -89,7 +104,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DFrame(parent)
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(18);
     qf = m_hits->font();
-    qf.setFamily("SourceHanSansSC-Normal");
+    if (m_fontList.size() > 1)
+        qf.setFamily(m_fontList.at(1));
     qf.setPixelSize(12);
     m_hits->setFont(qf);
 
@@ -107,7 +123,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DFrame(parent)
     QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
     m_fileSelect->setText(linkText);
     qf = m_fileSelect->font();
-    qf.setFamily("SourceHanSansSC-Medium");
+    if (m_fontList.size() > 0)
+        qf.setFamily(m_fontList.at(0));
     qf.setPixelSize(12);
     m_fileSelect->setFont(qf);
 
@@ -131,6 +148,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DFrame(parent)
     m_nextSetp->setFixedSize(310, 36);
     m_nextSetp->setObjectName("NextStepButton");
     m_nextSetp->setText(tr("Next"));
+    qf = m_nextSetp->font();
+    if (m_fontList.size() > 0)
+        qf.setFamily(m_fontList.at(0));
+    qf.setPixelSize(14);
+    m_nextSetp->setFont(qf);
     m_nextSetp->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
@@ -204,7 +226,7 @@ void ISOSelectView :: slot_ThemeChange()
         pa.setColor(DPalette::Background, QColor(255, 255, 255, 13));
         isoPanel->setPalette(pa);
         pa = m_fileLabel->palette();
-        pa.setColor(DPalette::Text, Qt::gray);
+        pa.setColor(DPalette::Text, QColor("#B1B1B1"));
         m_fileLabel->setPalette(pa);
         pa = m_hits->palette();
         pa.setColor(DPalette::Text, QColor("#424242"));
@@ -215,7 +237,7 @@ void ISOSelectView :: slot_ThemeChange()
         //        m_fileSelect->setPalette(pa);
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = palette();
-        pa.setColor(DPalette::Background, QColor("#252525"));
+        pa.setColor(DPalette::Background, QColor("#292929"));
         setPalette(pa);
         pa = m_title->palette();
         pa.setColor(DPalette::Text, QColor("#C0C6D4"));
@@ -224,7 +246,7 @@ void ISOSelectView :: slot_ThemeChange()
         pa.setColor(DPalette::Background, QColor(0, 0, 0, 13));
         isoPanel->setPalette(pa);
         pa = m_fileLabel->palette();
-        pa.setColor(DPalette::Text, Qt::gray);
+        pa.setColor(DPalette::Text, QColor("#6D7C88"));
         m_fileLabel->setPalette(pa);
         pa = m_hits->palette();
         pa.setColor(DPalette::Text, QColor("#E3E3E3"));

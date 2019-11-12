@@ -49,6 +49,7 @@ static bool checkMimeData(const QMimeData *mimeData)
 DropFrame::DropFrame(DWidget *parent) : DFrame(parent)
 {
     setAcceptDrops(true);
+    setFrameStyle(QFrame::NoFrame);
 }
 
 void DropFrame::dragEnterEvent(QDragEnterEvent *event)

@@ -31,7 +31,7 @@ DWIDGET_USE_NAMESPACE
 //class QLabel;
 class SuggestButton;
 
-class ISOSelectView : public DFrame
+class ISOSelectView : public DWidget
 {
     Q_OBJECT
 
