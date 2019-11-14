@@ -73,15 +73,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("UsbSelectView");
     setAutoFillBackground(true);
-    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.otf");
-    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Normal.otf");
+    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
     QStringList m_fontList;
     m_fontList.clear();
     if (lcdFontId != -1) {
         m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-    }
-    if (lcdFontId1 != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
     }
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
@@ -97,7 +93,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     DFrame *usbDeviceListPanel = new DFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
-    usbDeviceListPanel->setFixedSize(410, 320);
+    usbDeviceListPanel->setFixedSize(410, 302);
     usbDeviceListPanel->setFrameStyle(QFrame::NoFrame);
     usbDeviceListPanel->setAutoFillBackground(true);
 
@@ -111,7 +107,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     DCheckBox *m_formatDiskCheck = new DCheckBox(this);
     m_formatDiskCheck->setText(tr("Format the disk to increase the burning success rate"));
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
-    m_formatDiskCheck->setFixedHeight(34);
+    m_formatDiskCheck->setFixedHeight(20);
     m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
     m_formatDiskCheck->hide();
     ft = m_formatDiskCheck->font();
@@ -152,8 +148,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     m_warningHint->setMinimumHeight(17);
     m_warningHint->setWordWrap(true);
     ft = m_warningHint->font();
-    if (m_fontList.size() > 1)
-        ft.setFamily(m_fontList.at(1));
     ft.setPixelSize(11);
     m_warningHint->setFont(ft);
     m_warningHint->setAlignment(Qt::AlignCenter);
@@ -163,8 +157,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     m_emptyHint->setFixedHeight(29);
     m_emptyHint->setAlignment(Qt::AlignCenter);
     ft = m_emptyHint->font();
-    if (m_fontList.size() > 1)
-        ft.setFamily(m_fontList.at(1));
     ft.setPixelSize(20);
     m_emptyHint->setFont(ft);
 
@@ -187,12 +179,14 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     start->setFont(ft);
     start->setDisabled(true);
 
-    mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(41);
-    mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignCenter);
-    mainLayout->addWidget(m_warningHint, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(40);
+    mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(10);
+    mainLayout->addWidget(m_warningHint, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(20);
+    mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
-    mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,

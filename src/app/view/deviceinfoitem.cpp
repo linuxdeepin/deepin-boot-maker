@@ -89,7 +89,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto m_deviceCapacityBar = new DProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
     m_deviceCapacityBar->setTextVisible(false);
-    m_deviceCapacityBar->setFixedSize(292, 4);
+    m_deviceCapacityBar->setFixedSize(280, 4);
     m_deviceCapacityBar->setValue(percent);
 //    m_deviceCapacityBar->setStyleSheet(".QProgressBar{background - color: rgba(0, 0, 0, 0.05);border: solid 1px rgba(0, 0, 0, 0.03);border-radius: 1.5px;}"
 //                                       ".QProgressBar::chunk{background - color:#2ca7f8;border-radius: 1.5px;}");
@@ -103,13 +103,13 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
 
     m_fillingposition    = new DLabel;
-    m_fillingposition->setFixedSize(20, 20);
+//    m_fillingposition->setFixedSize(30, 30);
 
     auto m_bodywidget = new DWidget;
     auto bodyLayout = new QVBoxLayout(m_bodywidget);
     bodyLayout->setMargin(0);
     auto m_middlewidget = new DWidget;
-    m_middlewidget->setFixedWidth(270);
+    m_middlewidget->setFixedWidth(280);
     auto middleLayout = new QHBoxLayout(m_middlewidget);
     middleLayout->setMargin(0);
 
@@ -151,24 +151,24 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
         if (themeType == DGuiApplicationHelper::LightType)
         {
             pa = m_deviceLabel->palette();
-            pa.setColor(DPalette::WindowText, QColor("#414D68"));
+            pa.setColor(DPalette::Text, QColor("#414D68"));
             m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
-            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
+            pa.setColor(DPalette::Text, QColor("#526A7F"));
             m_deviceDevName->setPalette(pa);
             pa = m_deviceCapacity->palette();
-            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
+            pa.setColor(DPalette::Text, QColor("#526A7F"));
             m_deviceCapacity->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = m_deviceLabel->palette();
-            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
             m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
-            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+            pa.setColor(DPalette::Text, QColor("#6D7C88"));
             m_deviceDevName->setPalette(pa);
             pa = m_deviceCapacity->palette();
-            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+            pa.setColor(DPalette::Text, QColor("#6D7C88"));
             m_deviceCapacity->setPalette(pa);
         }
     });
@@ -209,6 +209,7 @@ void DeviceInfoItem::setCheck(bool flag)
     if (flag) {
         QPixmap pixmap(":/theme/light/image/select_active.svg");
         pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());
+//        pixmap = pixmap.scaled(m_fillingposition->width(), m_fillingposition->height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         m_fillingposition->setPixmap(pixmap);
 //        m_radiobutton->show();
 //        m_fillingposition->hide();

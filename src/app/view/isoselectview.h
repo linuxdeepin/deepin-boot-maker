@@ -64,6 +64,7 @@ private:
     DropFrame       *isoPanel     = nullptr;
     DLabel          *spliter     = nullptr;
     QString         m_isoFilePath;
+    QString m_selectText;
 
 };
 

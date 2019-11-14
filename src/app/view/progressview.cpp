@@ -45,15 +45,11 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
-    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.otf");
-    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Normal.otf");
+    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
     QStringList m_fontList;
     m_fontList.clear();
     if (lcdFontId != -1) {
         m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-    }
-    if (lcdFontId1 != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
     }
 
     DLabel *m_title = new DLabel(tr("Burning"));
@@ -72,8 +68,6 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setObjectName("ProgressHitsTitle");
     m_hitsTitle->setFixedHeight(25);
     qf = m_hitsTitle->font();
-    if (m_fontList.size() > 1)
-        qf.setFamily(m_fontList.at(1));
     qf.setPixelSize(17);
     qf.setBold(true);
     m_hitsTitle->setFont(qf);
@@ -100,15 +94,16 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     qf.setPixelSize(14);
     start->setFont(qf);
 
-    mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(102);
-    mainLayout->addWidget(waterProgress, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(30);
-    mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(6);
-    mainLayout->addWidget(m_hits, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(95);
+    mainLayout->addWidget(waterProgress, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(26);
+    mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(1);
+    mainLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(20);
+    mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
-    mainLayout->addWidget(start, 0, Qt::AlignCenter);
 
     waterProgress->setValue(0);
     waterProgress->start();
@@ -130,13 +125,13 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
             setPalette(pa);
             pa = m_title->palette();
-            pa.setColor(DPalette::Text, QColor("#001A2E"));
+            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
-            pa.setColor(DPalette::Text, QColor("#001A2E"));
+            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);
             pa = m_hits->palette();
-            pa.setColor(DPalette::Text, QColor("#526A7F"));
+            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
             m_hits->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
@@ -144,13 +139,13 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
             pa = m_title->palette();
-            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
-            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);
             pa = m_hits->palette();
-            pa.setColor(DPalette::Text, QColor("#6D7C88"));
+            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
             m_hits->setPalette(pa);
         }
     });

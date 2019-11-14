@@ -49,15 +49,11 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->setSpacing(0);
 
 
-    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.otf");
-    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Normal.otf");
+    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
     QStringList m_fontList;
     m_fontList.clear();
     if (lcdFontId != -1) {
         m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-    }
-    if (lcdFontId1 != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
     }
 
     m_title = new DLabel(tr("Successful"));
@@ -78,8 +74,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setFixedHeight(25);
 
     qf = m_hitsTitle->font();
-    if (m_fontList.size() > 1)
-        qf.setFamily(m_fontList.at(1));
     qf.setPixelSize(17);
     qf.setBold(true);
     m_hitsTitle->setFont(qf);
@@ -96,7 +90,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_logHits->setFixedHeight(34);
 //    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
 //    m_logHits->setOpenExternalLinks(false);
-    m_logHits->hide();
+//    m_logHits->hide();
     qf = m_logHits->font();
     if (m_fontList.size() > 0)
         qf.setFamily(m_fontList.at(0));
@@ -131,15 +125,16 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     qf.setPixelSize(14);
     m_rebootNow->setFont(qf);
 
-    mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(87);
-    mainLayout->addWidget(m_resultIcon, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_resultIcon, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(11);
-    mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(8);
-    mainLayout->addWidget(m_logHits, 0, Qt::AlignCenter);
-    mainLayout->addStretch(113);
-    mainLayout->addWidget(m_rebootLater, 0, Qt::AlignCenter);
+    mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(1);
+    mainLayout->addWidget(m_logHits, 0, Qt::AlignHCenter);
+    mainLayout->addSpacing(100);
+    mainLayout->addWidget(m_rebootLater, 0, Qt::AlignHCenter);
+    mainLayout->addStretch();
 //    mainLayout->addSpacing(15);
 //    m_rebootNow->hide();
 //    mainLayout->addWidget(m_rebootNow, 0, Qt::AlignCenter);
@@ -160,13 +155,13 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
             setPalette(pa);
             pa = m_title->palette();
-            pa.setColor(DPalette::Text, QColor("#001A2E"));
+            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
-            pa.setColor(DPalette::Text, QColor("#001A2E"));
+            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);
             pa = m_logHits->palette();
-            pa.setColor(DPalette::Text, QColor("#526A7F"));
+            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
             m_logHits->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
@@ -174,13 +169,13 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
             pa = m_title->palette();
-            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
-            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);
             pa = m_logHits->palette();
-            pa.setColor(DPalette::Text, QColor("#6D7C88"));
+            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
             m_logHits->setPalette(pa);
         }
     });

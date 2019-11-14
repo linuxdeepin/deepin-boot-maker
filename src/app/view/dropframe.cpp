@@ -21,6 +21,8 @@
 
 #include "dropframe.h"
 
+#include <DApplicationHelper>
+
 #include <QDropEvent>
 #include <QMimeData>
 #include <QFileInfo>
@@ -80,11 +82,16 @@ void DropFrame::dropEvent(QDropEvent *event)
     emit fileCancel();
 }
 
-
 void DropFrame::paintEvent(QPaintEvent *e)
 {
     if (this->property("active").toBool()) {
-        QPixmap pixmap = QPixmap(":/theme/light/image/dash.svg").scaled(this->size());
+        QPixmap pixmap;
+        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+        if (themeType == DGuiApplicationHelper::LightType) {
+            pixmap = QPixmap(":/theme/light/image/dash.svg").scaled(this->size());
+        } else if (themeType == DGuiApplicationHelper::DarkType) {
+            pixmap = QPixmap(":/theme/dark/image/dash.svg").scaled(this->size());
+        }
         QPainter painter(this);
         painter.drawPixmap(this->rect(), pixmap);
     }

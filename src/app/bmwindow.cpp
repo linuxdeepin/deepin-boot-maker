@@ -276,22 +276,16 @@ void BMWindow :: slot_ThemeChange()
         pa = d->wsib->palette();
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
         d->wsib->setPalette(pa);
-//        auto title = titlebar();
-//        pa = title->palette();
-//        pa.setColor(DPalette::Background, QColor(255, 255, 255));
-//        title->setPalette(pa);
         d->wsib->setPointColor(QColor("#2CA7F8"));
-        d->wsib->setSecondaryPointColor(QColor("#96ACBD"));
+//        d->wsib->setSecondaryPointColor(QColor("#96ACBD"));
+        d->wsib->setSecondaryPointColor(QColor(150, 172, 189, 51));
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = d->wsib->palette();
         pa.setColor(DPalette::Background, QColor("#292929"));
         d->wsib->setPalette(pa);
-//        auto title = titlebar();
-//        pa = title->palette();
-//        pa.setColor(DPalette::Background, QColor("#252525"));
-//        title->setPalette(pa);
         d->wsib->setPointColor(QColor("#0082FA"));
-        d->wsib->setSecondaryPointColor(QColor("#555555"));
+//        d->wsib->setSecondaryPointColor(QColor("#555555"));
+        d->wsib->setSecondaryPointColor(QColor(85, 85, 85, 102));
     }
 }
 
