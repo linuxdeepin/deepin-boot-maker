@@ -89,7 +89,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto m_deviceCapacityBar = new DProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
     m_deviceCapacityBar->setTextVisible(false);
-    m_deviceCapacityBar->setFixedSize(280, 4);
+    m_deviceCapacityBar->setFixedSize(273, 4);
     m_deviceCapacityBar->setValue(percent);
 //    m_deviceCapacityBar->setStyleSheet(".QProgressBar{background - color: rgba(0, 0, 0, 0.05);border: solid 1px rgba(0, 0, 0, 0.03);border-radius: 1.5px;}"
 //                                       ".QProgressBar::chunk{background - color:#2ca7f8;border-radius: 1.5px;}");
@@ -109,7 +109,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto bodyLayout = new QVBoxLayout(m_bodywidget);
     bodyLayout->setMargin(0);
     auto m_middlewidget = new DWidget;
-    m_middlewidget->setFixedWidth(280);
+    m_middlewidget->setFixedWidth(273);
     auto middleLayout = new QHBoxLayout(m_middlewidget);
     middleLayout->setMargin(0);
 
@@ -198,8 +198,27 @@ void DeviceInfoItem::paintEvent(QPaintEvent *event)
     QRect rect = this->rect();
     rect.setWidth(rect.width() - 1);
     rect.setHeight(rect.height() - 1);
-    painter.drawRoundedRect(rect, 15, 15);
+    painter.drawRoundedRect(rect, 8, 8);
     DWidget::paintEvent(event);
+}
+
+QPixmap DeviceInfoItem::renderSVG(const QString &filePath, const QSize &size)
+{
+    QImageReader reader;
+    QPixmap pixmap;
+
+    reader.setFileName(filePath);
+
+    if (reader.canRead()) {
+        const qreal ratio = qApp->devicePixelRatio();
+        reader.setScaledSize(size * ratio);
+        pixmap = QPixmap::fromImage(reader.read());
+        pixmap.setDevicePixelRatio(ratio);
+    } else {
+        pixmap.load(filePath);
+    }
+
+    return pixmap;
 }
 
 void DeviceInfoItem::setCheck(bool flag)
@@ -207,9 +226,10 @@ void DeviceInfoItem::setCheck(bool flag)
 //    m_deviceIcon->setPixmap(flag ? s_selectDevice : s_removeDevice);
 //    m_radiobutton->setChecked(flag);
     if (flag) {
-        QPixmap pixmap(":/theme/light/image/select_active.svg");
-        pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());
-//        pixmap = pixmap.scaled(m_fillingposition->width(), m_fillingposition->height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        QPixmap pixmap = renderSVG(":/theme/light/image/select_active.svg", QSize(28, 28));
+//        pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());
+//        pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
+//        pixmap = pixmap.scaled(pixmap.width(), pixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         m_fillingposition->setPixmap(pixmap);
 //        m_radiobutton->show();
 //        m_fillingposition->hide();

@@ -31,6 +31,7 @@
 #include <DWaterProgress>
 #include <DPushButton>
 #include <DApplicationHelper>
+#include <DTipLabel>
 
 #include <QDebug>
 #include <QVBoxLayout>
@@ -46,10 +47,14 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
     int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
+    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
     QStringList m_fontList;
     m_fontList.clear();
     if (lcdFontId != -1) {
         m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+    }
+    if (lcdFontId != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
     }
 
     DLabel *m_title = new DLabel(tr("Burning"));
@@ -69,11 +74,13 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setFixedHeight(25);
     qf = m_hitsTitle->font();
     qf.setPixelSize(17);
-    qf.setBold(true);
+    if (m_fontList.size() > 1)
+        qf.setFamily(m_fontList.at(1));
+//    qf.setBold(true);
     m_hitsTitle->setFont(qf);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
-    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
+    DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
     m_hits->setFixedSize(213, 17);
     m_hits->setWordWrap(true);
@@ -130,9 +137,6 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);
-            pa = m_hits->palette();
-            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
-            m_hits->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = palette();
@@ -144,9 +148,6 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);
-            pa = m_hits->palette();
-            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
-            m_hits->setPalette(pa);
         }
     });
 

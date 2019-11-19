@@ -78,6 +78,11 @@
         <source>Illegal ISO image file</source>
         <translation>非法ISO文件</translation>
     </message>
+    <message>
+        <location filename="../app/view/isoselectview.cpp" line="293"/>
+        <source>Detecting ISO file, please wait...</source>
+        <translation>正在检测ISO文件，请稍后...</translation>
+    </message>
 </context>
 <context>
     <name>ProgressView</name>

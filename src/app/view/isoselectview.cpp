@@ -33,12 +33,40 @@
 #include <QStandardPaths>
 #include <QDebug>
 #include <QFontDatabase>
+#include <QtConcurrent>
 
 DWIDGET_USE_NAMESPACE
 
 const QString s_linkTemplatelight = "<a href='%1' style='text-decoration: none; color: #0066EC;'>%2</a>";
 const QString s_linkTemplatedark = "<a href='%1' style='text-decoration: none; color: #0082FA;'>%2</a>";
 const QString s_stateTemplate = "<a style='text-decoration: none; color: #FF5A5A;'>%1</a>";
+
+ThreadCheckFile::ThreadCheckFile()
+{
+    restart = false;
+    m_file = "";
+}
+
+void ThreadCheckFile::setFile(QString file)
+{
+    m_file = file;
+}
+
+void ThreadCheckFile::setRestart()
+{
+    restart = true;
+}
+
+void ThreadCheckFile::run()
+{
+    restart = true;
+    bool checkok = false;
+    while (restart) {
+        restart = false;
+        checkok = BMInterface::instance()->checkfile(m_file);
+    }
+    emit checkFileFinish(checkok);
+}
 
 ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 {
@@ -69,15 +97,15 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoIcon->setFixedSize(96, 96);
     isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
 
-    DLabel *growIcon = new DLabel(this);
+    growIcon = new DLabel(this);
     growIcon->setObjectName("GrowIcon");
-    growIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/glow.svg", this));
+//    growIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/glow.svg", this));
     growIcon->setFixedSize(220, 220);
     growIcon->hide();
 
     isoPanel = new DropFrame;
     isoPanel->setObjectName("IosPanel");
-    isoPanel->setFixedSize(410, 320);
+    isoPanel->setFixedSize(410, 300);
 
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);
@@ -143,6 +171,16 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
     isoPanelLayout->addStretch();
 
+
+
+    m_checkFile = new DLabel();
+    m_checkFile->setObjectName("IsoFileSelect");
+    m_checkFile->setFixedHeight(18);
+    qf = m_checkFile->font();
+    m_checkFile->setText("");
+    qf.setPixelSize(12);
+    m_checkFile->setFont(qf);
+
 //    m_nextSetp = new SuggestButton();
     m_nextSetp = new DPushButton();
     m_nextSetp->setFocusPolicy(Qt::NoFocus);
@@ -159,11 +197,27 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
     mainLayout->addSpacing(32);
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(34);
+    mainLayout->addSpacing(16);
+    mainLayout->addWidget(m_checkFile, 0, Qt::AlignCenter);
+    mainLayout->addSpacing(20);
     mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter);
     mainLayout->addStretch();
 
     slot_ThemeChange();
+    connect(&t_checkfile, &ThreadCheckFile::checkFileFinish,
+    this, [ = ](bool result) {
+        m_checkFile->setText("");
+        QString stateText = "";
+        if (!result)
+            stateText = tr("Illegal ISO image file");
+        m_nextSetp->setDisabled(false);
+        if ("" != stateText) {
+            QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
+            m_hits->setText(stateTemplateText);
+            m_nextSetp->setDisabled(true);
+        }
+        m_isoFilePath = "";
+    });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &ISOSelectView :: slot_ThemeChange);
 
@@ -219,6 +273,7 @@ void ISOSelectView :: slot_ThemeChange()
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType) {
         pa = palette();
+//      pa.setColor(DPalette::Background, QColor("#FFFFFF"));
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
         setPalette(pa);
         pa = m_title->palette();
@@ -233,9 +288,13 @@ void ISOSelectView :: slot_ThemeChange()
         pa = m_hits->palette();
         pa.setColor(DPalette::WindowText, QColor("#424242"));
         m_hits->setPalette(pa);
+        growIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/disk_big.svg", this));
         spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/dash_line.svg", this));
         QString linkText = QString(s_linkTemplatelight).arg(m_selectText).arg(m_selectText);
         m_fileSelect->setText(linkText);
+        pa = m_checkFile->palette();
+        pa.setColor(DPalette::WindowText, QColor("#414D68"));
+        m_checkFile->setPalette(pa);
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = palette();
         pa.setColor(DPalette::Background, QColor("#292929"));
@@ -252,41 +311,96 @@ void ISOSelectView :: slot_ThemeChange()
         pa = m_hits->palette();
         pa.setColor(DPalette::WindowText, QColor("#E3E3E3"));
         m_hits->setPalette(pa);
+        growIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/dark/image/disc_bg.png", this));
         spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/dark/image/dash_line_dark.svg", this));
         QString linkText = QString(s_linkTemplatedark).arg(m_selectText).arg(m_selectText);
         m_fileSelect->setText(linkText);
-//        pa = m_fileSelect->palette();
-//        pa.setColor(QPalette::Text, QColor("#0082FA"));
-//        m_fileSelect->setPalette(pa);
+        pa = m_checkFile->palette();
+        pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+        m_checkFile->setPalette(pa);
     }
 }
 
 void ISOSelectView::onFileSelected(const QString &file)
 {
-    bool checkok = BMInterface::instance()->checkfile(file);
+//    bool checkok = false;
+//    QEventLoop loop;
+//    connect(this, SIGNAL(checkFileFinish()), &loop, SLOT(quit()));
     QFileInfo info(file);
     m_fileLabel->setText(info.fileName());
     m_fileLabel->show();
     m_hits->setText("");
     m_selectText = tr("Reselect an ISO image file");
+    m_checkFile->setText(tr("Detecting ISO file, please wait..."));
     slot_ThemeChange();
-    QString stateText = "";
-    if (!checkok)
-        stateText = tr("Illegal ISO image file");
-//    QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
-//    m_fileSelect->setText(linkText);
-    m_nextSetp->setDisabled(false);
-//    m_stateLabel->hide();
-    if ("" != stateText) {
-        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
-//        m_stateLabel->setText(stateTemplateText);
-//        m_stateLabel->show();
-        m_hits->setText(stateTemplateText);
-        m_nextSetp->setDisabled(true);
-    }
+    m_nextSetp->setDisabled(true);
     m_isoFilePath = file;
+
+    t_checkfile.setFile(file);
+    if (t_checkfile.isRunning()) {
+        t_checkfile.setRestart();
+    } else {
+        t_checkfile.start();
+    }
+//    QtConcurrent::run([&](ISOSelectView * pthis) {
+//        checkok = BMInterface::instance()->checkfile(file);
+//        emit checkFileFinish();
+//    }, this);
+////    QtConcurrent::run([ = ]() {
+////        checkok = BMInterface::instance()->checkfile(file);
+//////        qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
+////    }, this);
+//    loop.exec();
+//    m_checkFile->setText("");
+//    QString stateText = "";
+//    if (!checkok)
+//        stateText = tr("Illegal ISO image file");
+////    QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
+////    m_fileSelect->setText(linkText);
+//    m_nextSetp->setDisabled(false);
+////    m_stateLabel->hide();
+//    if ("" != stateText) {
+//        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
+////        m_stateLabel->setText(stateTemplateText);
+////        m_stateLabel->show();
+//        m_hits->setText(stateTemplateText);
+//        m_nextSetp->setDisabled(true);
+//    }
+//    m_isoFilePath = file;
     qDebug() << "onFileSelected file:" << file;
 }
+
+//void ISOSelectView::onFileSelected(const QString &file)
+//{
+//    bool checkok = false;
+//    checkok = BMInterface::instance()->checkfile(file);
+//    QFileInfo info(file);
+//    m_fileLabel->setText(info.fileName());
+//    m_fileLabel->show();
+//    m_hits->setText("");
+//    m_selectText = tr("Reselect an ISO image file");
+//    m_checkFile->setText(tr("Detecting ISO file, please wait..."));
+//    slot_ThemeChange();
+//    m_nextSetp->setDisabled(true);
+//    m_checkFile->setText("");
+//    QString stateText = "";
+//    if (!checkok)
+//        stateText = tr("Illegal ISO image file");
+////    QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
+////    m_fileSelect->setText(linkText);
+//    m_nextSetp->setDisabled(false);
+////    m_stateLabel->hide();
+//    if ("" != stateText) {
+//        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
+////        m_stateLabel->setText(stateTemplateText);
+////        m_stateLabel->show();
+//        m_hits->setText(stateTemplateText);
+//        m_nextSetp->setDisabled(true);
+//    }
+//    m_isoFilePath = file;
+//    qDebug() << "onFileSelected file:" << file;
+//}
+
 
 void ISOSelectView::onFileVerfiyFinished(bool ok)
 {

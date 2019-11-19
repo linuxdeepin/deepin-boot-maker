@@ -25,11 +25,11 @@
 #include <DWidget>
 #include <DLabel>
 #include <DPalette>
+#include <DTipLabel>
 
 #include <QPointer>
 
 DWIDGET_USE_NAMESPACE
-class SuggestButton;
 
 class ResultView : public DWidget
 {

@@ -137,9 +137,10 @@ BMWindow::BMWindow(QWidget *parent)
     setPalette(pal);
 #endif
 
+    setTitlebarShadowEnabled(false);
     title->setTitle("");
     title->setIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
-    title->setBackgroundTransparent(true);
+//    title->setBackgroundTransparent(true);
     title->setFixedHeight(50);
     title->setFrameStyle(QFrame::NoFrame);
 
@@ -240,7 +241,6 @@ BMWindow::BMWindow(QWidget *parent)
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
         titlebar()->setQuitMenuDisabled(false);
-//        titlebar()->setDisableFlags(Qt::Widget);
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
         d->resultWidget->updateResult(error, title, description);
         slideWidget(d->progressWidget, d->resultWidget);

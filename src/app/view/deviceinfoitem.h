@@ -27,6 +27,7 @@
 
 #include <QRadioButton>
 #include <QItemDelegate>
+#include <QImageReader>
 
 DWIDGET_USE_NAMESPACE
 
@@ -57,6 +58,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override;
 private:
+    QPixmap renderSVG(const QString &filePath, const QSize &size);
     bool checked            = false;
     DLabel *m_deviceIcon    = nullptr;
 //    QRadioButton *m_radiobutton = nullptr;

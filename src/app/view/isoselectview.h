@@ -27,9 +27,25 @@
 #include <DLabel>
 #include <DPushButton>
 
+#include <QThread>
 DWIDGET_USE_NAMESPACE
-//class QLabel;
-class SuggestButton;
+
+class ThreadCheckFile : public QThread
+{
+    Q_OBJECT
+public:
+    ThreadCheckFile();
+    void setRestart();
+    void setFile(QString file);
+signals:
+    void checkFileFinish(bool);
+protected:
+    virtual void run();
+
+private:
+    bool restart;
+    QString m_file;
+};
 
 class ISOSelectView : public DWidget
 {
@@ -47,6 +63,7 @@ public:
 signals:
     void requestVerfiyISOFile(const QString &file);
     void isoFileSelected();
+//    void checkFileFinish();
 
 public slots:
     void onFileSelected(const QString &file);
@@ -65,6 +82,8 @@ private:
     DLabel          *spliter     = nullptr;
     QString         m_isoFilePath;
     QString m_selectText;
-
+    DLabel          *growIcon     = nullptr;
+    DLabel          *m_checkFile     = nullptr;
+    ThreadCheckFile t_checkfile;
 };
 

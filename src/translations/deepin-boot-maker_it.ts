@@ -74,6 +74,11 @@ Localizzazione italiana a cura di Massimo A. Carofano.</translation>
         <source>Reselect an ISO image file</source>
         <translation>Riseleziona un&apos;immagine ISO</translation>
     </message>
+    <message>
+        <location filename="../app/view/isoselectview.cpp" line="293"/>
+        <source>Detecting ISO file, please wait...</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>ProgressView</name>

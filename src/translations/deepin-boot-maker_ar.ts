@@ -73,6 +73,11 @@
         <source>Reselect an ISO image file</source>
         <translation>اعد تحديد ملف صورة القرص ISO</translation>
     </message>
+    <message>
+        <location filename="../app/view/isoselectview.cpp" line="293"/>
+        <source>Detecting ISO file, please wait...</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>ProgressView</name>

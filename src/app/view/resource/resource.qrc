@@ -27,5 +27,8 @@
         <file>theme/SourceHanSansSC-Medium.ttf</file>
         <file>theme/SourceHanSansSC-Normal.ttf</file>
         <file>theme/SourceHanSansSC-Bold.ttf</file>
+        <file>theme/light/image/disk_big.svg</file>
+        <file>theme/dark/image/disk_big_dark.svg</file>
+        <file>theme/dark/image/disc_bg.png</file>
     </qresource>
 </RCC>

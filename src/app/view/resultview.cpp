@@ -50,10 +50,14 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 
 
     int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
+    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
     QStringList m_fontList;
     m_fontList.clear();
     if (lcdFontId != -1) {
         m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+    }
+    if (lcdFontId != -1) {
+        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
     }
 
     m_title = new DLabel(tr("Successful"));
@@ -75,7 +79,9 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 
     qf = m_hitsTitle->font();
     qf.setPixelSize(17);
-    qf.setBold(true);
+    if (m_fontList.size() > 1)
+        qf.setFamily(m_fontList.at(1));
+//    qf.setBold(true);
     m_hitsTitle->setFont(qf);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
@@ -96,6 +102,10 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
         qf.setFamily(m_fontList.at(0));
     qf.setPixelSize(12);
     m_logHits->setFont(qf);
+    DPalette pa = DApplicationHelper::instance()->palette(m_logHits);
+    QBrush brush = DApplicationHelper::instance()->palette(m_logHits).textTips();
+    pa.setBrush(DPalette::WindowText, brush);
+    m_logHits->setPalette(pa);
     m_logHits->setAlignment(Qt::AlignCenter);
 
 //    m_rebootLater = new SuggestButton();
@@ -160,9 +170,9 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);
-            pa = m_logHits->palette();
-            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
-            m_logHits->setPalette(pa);
+//            pa = m_logHits->palette();
+//            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
+//            m_logHits->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = palette();
@@ -174,9 +184,9 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);
-            pa = m_logHits->palette();
-            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
-            m_logHits->setPalette(pa);
+//            pa = m_logHits->palette();
+//            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+//            m_logHits->setPalette(pa);
         }
     });
 
