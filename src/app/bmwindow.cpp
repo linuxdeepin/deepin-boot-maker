@@ -126,7 +126,9 @@ BMWindow::BMWindow(QWidget *parent)
     auto title = titlebar();
     auto flags = windowFlags() & ~Qt::WindowMaximizeButtonHint;
     setWindowFlags(flags);
-    // title->setMenuVisible(false);
+#ifdef Q_OS_WIN
+    title->setMenuVisible(false);
+#endif
     // TODO: read it from parent
 #ifdef Q_OS_MAC
     titlebar()->setWindowFlags(flags);
@@ -148,13 +150,13 @@ BMWindow::BMWindow(QWidget *parent)
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_MAC)
+//#if defined(Q_OS_LINUX) || defined(Q_OS_MAC)
     auto centralWidget = new DWidget;
     centralWidget->setLayout(mainLayout);
     setCentralWidget(centralWidget);
-#else
-    setContentLayout(mainLayout);
-#endif
+//#else
+//    setContentLayout(mainLayout);
+//#endif
 
     auto viewWidth = 440;
     auto *actionsLayout = new QStackedLayout;
@@ -181,12 +183,12 @@ BMWindow::BMWindow(QWidget *parent)
     actionsLayout->addWidget(d->progressWidget);
     actionsLayout->addWidget(d->resultWidget);
 
-    mainLayout->addSpacing(8);
+    mainLayout->addSpacing(0);
     d->wsib = new DPageIndicator(this);
     d->wsib->setAutoFillBackground(true);
     d->wsib->setPageCount(3);
     d->wsib->setCurrentPage(0);
-    d->wsib->setFixedHeight(26);
+    d->wsib->setFixedHeight(34);
     d->wsib->setPointRadius(3);
     d->wsib->setSecondaryPointRadius(3);
     d->wsib->setPointDistance(12);

@@ -4,21 +4,9 @@
         <file>theme/light/image/fail.svg</file>
         <file>theme/light/image/media-optical-96px.svg</file>
         <file>theme/light/image/success.svg</file>
-        <file>theme/light/image/suggest_button_disabled.svg</file>
-        <file>theme/light/image/suggest_button_hover.svg</file>
-        <file>theme/light/image/suggest_button_normal.svg</file>
-        <file>theme/light/image/suggest_button_press.svg</file>
-        <file>theme/light/ISOSelectView.theme</file>
-        <file>theme/light/SuggestButton.theme</file>
-        <file>theme/light/UsbSelectView.theme</file>
         <file>theme/light/image/drive-select.svg</file>
-        <file>theme/light/DeviceInfoItem.theme</file>
-        <file>theme/light/DeviceListWidget.theme</file>
-        <file>theme/light/ProgressView.theme</file>
-        <file>theme/light/ResultView.theme</file>
         <file>theme/light/image/dash_line.svg</file>
         <file>theme/light/image/button_normal.svg</file>
-        <file>theme/light/image/glow.svg</file>
         <file>theme/light/image/deepin-boot-maker.svg</file>
         <file>theme/light/image/dash.svg</file>
         <file>theme/light/image/select_active.svg</file>
@@ -28,7 +16,6 @@
         <file>theme/SourceHanSansSC-Normal.ttf</file>
         <file>theme/SourceHanSansSC-Bold.ttf</file>
         <file>theme/light/image/disk_big.svg</file>
-        <file>theme/dark/image/disk_big_dark.svg</file>
         <file>theme/dark/image/disc_bg.png</file>
     </qresource>
 </RCC>

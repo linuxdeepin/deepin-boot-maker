@@ -7,6 +7,7 @@ TARGET = deepin-boot-maker
 QT += core gui widgets concurrent network svg
 
 CONFIG += c++11 link_pkgconfig
+CONFIG   += resources_big
 
 RESOURCES +=  \
     ../translate.qrc \

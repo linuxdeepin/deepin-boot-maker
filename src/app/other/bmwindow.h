@@ -19,22 +19,45 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+//#pragma once
+
+//#include <dborderlesswindow.h>
+//#include <QScopedPointer>
+
+//#define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DBorderlessWindow
+
+//class BMWindowPrivate;
+//class BMWindow: public DTK_WIDGET_NAMESPACE::DBorderlessWindow
+//{
+//    Q_OBJECT
+//public:
+//    BMWindow(QWidget *parent = nullptr);
+//    ~BMWindow();
+
+//private:
+//    QScopedPointer<BMWindowPrivate> d_ptr;
+//    Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMWindow)
+//};
+
 #pragma once
 
-#include <dborderlesswindow.h>
+#include <DMainWindow>
+
 #include <QScopedPointer>
 
-#define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DBorderlessWindow
+#define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DMainWindow
 
 class BMWindowPrivate;
-class BMWindow: public DTK_WIDGET_NAMESPACE::DBorderlessWindow
+class BMWindow: public DTK_WIDGET_NAMESPACE::DMainWindow
 {
     Q_OBJECT
 public:
     BMWindow(QWidget *parent = nullptr);
     ~BMWindow();
-
+public slots:
+    void slot_ThemeChange();
 private:
     QScopedPointer<BMWindowPrivate> d_ptr;
     Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMWindow)
 };
+
