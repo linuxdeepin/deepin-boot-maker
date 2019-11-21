@@ -267,6 +267,22 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 
 }
 
+void ISOSelectView :: checkFileResult(bool result)
+{
+    m_checkFile->setText("");
+    QString stateText = "";
+    if (!result) {
+        stateText = tr("Illegal ISO image file");
+    }
+    m_nextSetp->setDisabled(false);
+    if ("" != stateText) {
+        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
+        m_hits->setText(stateTemplateText);
+        m_nextSetp->setDisabled(true);
+        m_isoFilePath = "";
+    }
+}
+
 void ISOSelectView :: slot_ThemeChange()
 {
     DPalette pa;
@@ -335,13 +351,15 @@ void ISOSelectView::onFileSelected(const QString &file)
     slot_ThemeChange();
     m_nextSetp->setDisabled(true);
     m_isoFilePath = file;
+    BMInterface::instance()->checkfile(file);
 
-    t_checkfile.setFile(file);
-    if (t_checkfile.isRunning()) {
-        t_checkfile.setRestart();
-    } else {
-        t_checkfile.start();
-    }
+//    t_checkfile.setFile(file);
+//    if (t_checkfile.isRunning()) {
+//        t_checkfile.setRestart();
+//    } else {
+//        t_checkfile.start();
+//    }
+
 //    QtConcurrent::run([&](ISOSelectView * pthis) {
 //        checkok = BMInterface::instance()->checkfile(file);
 //        emit checkFileFinish();
@@ -382,7 +400,7 @@ void ISOSelectView::onFileSelected(const QString &file)
 //    m_checkFile->setText(tr("Detecting ISO file, please wait..."));
 //    slot_ThemeChange();
 //    m_nextSetp->setDisabled(true);
-//    m_checkFile->setText("");
+////    m_checkFile->setText("");
 //    QString stateText = "";
 //    if (!checkok)
 //        stateText = tr("Illegal ISO image file");

@@ -53,6 +53,8 @@ public:
                 this, &BMDbusHandler::finished);
         connect(m_dbus, &BMDBusInterface::ReportProgress,
                 this, &BMDbusHandler::reportProgress);
+        connect(m_dbus, &BMDBusInterface::CheckFileResult,
+                this, &BMDbusHandler::checkFileResult);
     }
 
 public slots:

@@ -41,14 +41,18 @@ public:
     {
         connect(this, &BMHandler::startInstall,
                 this, &BMHandler::install);
+        connect(this, &BMHandler::startCheckfile,
+                this, &BMHandler::checkfile);
     }
 
     static const QString errorString(ErrorType et);
 signals:
     void startInstall(const QString &, const QString &, const QString &, bool);
+    void startCheckfile(const QString &filepath);
     void removablePartitionsChanged(const QList<DeviceInfo> &list);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int error, const QString &title, const QString &description);
+    void checkFileResult(bool result);
 
 public slots:
     virtual void reboot() = 0;

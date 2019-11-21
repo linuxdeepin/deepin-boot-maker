@@ -100,10 +100,10 @@ int main(int argc, char **argv)
     DLogManager::registerFileAppender();
     qDebug() << "save log to:" << DLogManager::getlogFilePath();
 
-//    if (!app.setSingleInstance("deepinbootmaker")) {
-//        qDebug() << "another deepin boot maker has started";
-//        exit(0);
-//    }
+    if (!app.setSingleInstance("deepinbootmaker")) {
+        qDebug() << "another deepin boot maker has started";
+        exit(0);
+    }
 
 #ifdef Q_OS_WIN
     Utils::loadFonts();

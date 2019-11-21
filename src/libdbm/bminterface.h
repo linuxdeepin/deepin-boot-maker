@@ -50,6 +50,7 @@ signals:
                       const QString &device,
                       const QString &partition,
                       bool  formatDevice);
+    void checkFileResult(bool result);
 public slots:
     void start();
     void stop();

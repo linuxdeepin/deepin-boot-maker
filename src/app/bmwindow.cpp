@@ -248,6 +248,12 @@ BMWindow::BMWindow(QWidget *parent)
         slideWidget(d->progressWidget, d->resultWidget);
         d->wsib->setCurrentPage(2);
     });
+    connect(d->interface, &BMInterface::checkFileResult,
+            d->isoWidget, &ISOSelectView:: checkFileResult);
+//    connect(d->interface, &BMInterface::checkFileResult,
+//    this, [ = ](bool result) {
+//        qDebug() << "1111111";
+//    });
 
 //    d->warnDlg = new Dtk::Widget::DDialog(this);
 //    d->warnDlg->setWindowFlags(d->warnDlg->windowFlags() & ~Qt::WindowCloseButtonHint);

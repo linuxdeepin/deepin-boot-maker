@@ -40,6 +40,7 @@ signals:
     Q_SCRIPTABLE void DeviceListChanged(const QString deviceListJson);
     Q_SCRIPTABLE void Finished(int errcode, const QString &description);
     Q_SCRIPTABLE void ReportProgress(int current, int error, const QString &title, const QString &description);
+    Q_SCRIPTABLE void CheckFileResult(bool result);
 
 public slots:
     Q_SCRIPTABLE void Reboot();

@@ -110,6 +110,8 @@ BootMakerService::BootMakerService(QObject *parent) :
     });
     connect(d->bm, &BootMaker::finished,
             this, &BootMakerService::Finished);
+    connect(d->bm, &BootMaker::checkFileResult,
+            this, &BootMakerService::CheckFileResult);
     connect(d->bm, &BootMaker::reportProgress,
             this, &BootMakerService::ReportProgress);
 
@@ -189,8 +191,9 @@ bool BootMakerService::CheckFile(const QString &filepath)
     if (!d->checkCaller()) {
         return false;
     }
-////    emit d->bm->startInstall(image, device, partition, formatDevice);
-    return d->bm->checkfile(filepath);
+//    return d->bm->checkfile(filepath);
+    emit d->bm->startCheckfile(filepath);
+    return true;
 }
 
 bool BootMakerServicePrivate::checkCaller()

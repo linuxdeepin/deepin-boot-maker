@@ -64,6 +64,8 @@ BMInterface::BMInterface(QObject *parent) :
             this, &BMInterface::deviceListChanged);
     connect(d->handler, &BMHandler::finished,
             this, &BMInterface::finished);
+    connect(d->handler, &BMHandler::checkFileResult,
+            this, &BMInterface::checkFileResult);
     connect(d->handler, &BMHandler::reportProgress,
             this, &BMInterface::reportProgress);
 

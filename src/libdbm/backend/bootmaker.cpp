@@ -139,8 +139,10 @@ bool BootMaker::checkfile(const QString &filepath)
     SevenZip sevenZipCheck(filepath, "");
     if (!sevenZipCheck.check()) {
         qCritical() << "Error::file check error";
+        emit checkFileResult(false);
         return false;
     }
+    emit checkFileResult(true);
     return true;
 }
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
