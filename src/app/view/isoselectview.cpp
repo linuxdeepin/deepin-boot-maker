@@ -215,8 +215,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
             QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
             m_hits->setText(stateTemplateText);
             m_nextSetp->setDisabled(true);
+            m_isoFilePath = "";
         }
-        m_isoFilePath = "";
     });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &ISOSelectView :: slot_ThemeChange);
