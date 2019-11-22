@@ -21,6 +21,7 @@
 
 #pragma once
 
+#include <DWidget>
 #include <DFrame>
 #include <DLabel>
 
