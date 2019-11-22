@@ -168,7 +168,6 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     qDebug() << "begin install bootloader on" << partition;
     QString targetPartition = partition;
     XSys::Result result;
-//#define DBM_NO_BOOTLOADER
 #ifdef DBM_NO_BOOTLOADER
     qWarning() << "make disk with no bootloader mode";
     if (formatDevice) {
@@ -254,7 +253,9 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 #endif
 
     this->reportProgress(95, Error::NoError, "eject disk", "");
+#ifndef Q_OS_WIN
     XSys::DiskUtil::EjectDisk(partition);
+#endif
 
     this->reportProgress(100, Error::NoError, "finish", "");
     return true;

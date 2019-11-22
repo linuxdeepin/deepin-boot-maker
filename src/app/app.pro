@@ -60,7 +60,7 @@ INSTALLS += binary desktop hicolor
 win* {
     INCLUDEPATH += $$PWD/other
     HEADERS += $$PWD/other/bmwindow.h
-    QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
+#    QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
     RC_FILE += $$PWD/platform/windows/deepin-boot-maker.rc
 }
 

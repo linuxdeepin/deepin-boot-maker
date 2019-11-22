@@ -351,41 +351,14 @@ void ISOSelectView::onFileSelected(const QString &file)
     slot_ThemeChange();
     m_nextSetp->setDisabled(true);
     m_isoFilePath = file;
-    BMInterface::instance()->checkfile(file);
+//    BMInterface::instance()->checkfile(file);
 
-//    t_checkfile.setFile(file);
-//    if (t_checkfile.isRunning()) {
-//        t_checkfile.setRestart();
-//    } else {
-//        t_checkfile.start();
-//    }
-
-//    QtConcurrent::run([&](ISOSelectView * pthis) {
-//        checkok = BMInterface::instance()->checkfile(file);
-//        emit checkFileFinish();
-//    }, this);
-////    QtConcurrent::run([ = ]() {
-////        checkok = BMInterface::instance()->checkfile(file);
-//////        qDebug() << __FUNCTION__  << QThread::currentThreadId() << QThread::currentThread();
-////    }, this);
-//    loop.exec();
-//    m_checkFile->setText("");
-//    QString stateText = "";
-//    if (!checkok)
-//        stateText = tr("Illegal ISO image file");
-////    QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
-////    m_fileSelect->setText(linkText);
-//    m_nextSetp->setDisabled(false);
-////    m_stateLabel->hide();
-//    if ("" != stateText) {
-//        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
-////        m_stateLabel->setText(stateTemplateText);
-////        m_stateLabel->show();
-//        m_hits->setText(stateTemplateText);
-//        m_nextSetp->setDisabled(true);
-//    }
-//    m_isoFilePath = file;
-    qDebug() << "onFileSelected file:" << file;
+    t_checkfile.setFile(file);
+    if (t_checkfile.isRunning()) {
+        t_checkfile.setRestart();
+    } else {
+        t_checkfile.start();
+    }
 }
 
 //void ISOSelectView::onFileSelected(const QString &file)

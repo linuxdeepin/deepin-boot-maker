@@ -1,22 +1,10 @@
 [Desktop Entry]
 Categories=Utility;System;
 Comment=A tool to create boot media for Deepin OS
-Exec=deepin-boot-maker
-GenericName=Boot Maker
-Icon=deepin-boot-maker
-Name=Deepin Boot Maker
-StartupNotify=true
-Terminal=false
-Type=Application
-Version=1.0
-X-Deepin-Vendor=deepin
-
-# Translations:
-# Do not manually modify!
 Comment[am]=Livecd boot maker for Deepin
-Comment[ar]= أداة لإنشاء قرص إقلاع لـ Deepin OS
+Comment[ar]=أداة لإنشاء قرص إقلاع لـ Deepin OS
 Comment[bg]=Инструмент за правене на стартиращ диск за  Deepin OS
-Comment[bn]=  ডিপিন ওস এর জন্য বুট মিডিয়া তৈরীর একটি টুল। 
+Comment[bn]=ডিপিন ওস এর জন্য বুট মিডিয়া তৈরীর একটি টুল।
 Comment[ca]=Una eina per crear mitjans d'arrencada per al Deepin OS
 Comment[cs]=Nástroj na udělání spouštěcího disku pro Deepin OS
 Comment[da]=Et værktøj til at oprette bootmedie til Deepin OS
@@ -52,6 +40,8 @@ Comment[tr]=Deepin İşletim Sistemi için önyükleme diski oluşturma aracı
 Comment[uk]=Інструмент для створення завантажувальних дисків для Deepin OS
 Comment[zh_CN]=深度操作系统启动盘的制作工具
 Comment[zh_TW]=用來製作 Deepin OS 開機媒體的工具
+Exec=deepin-boot-maker
+GenericName=Boot Maker
 GenericName[am_ET]=የ boot ዲስክ መፍጠሪያ
 GenericName[ar]=صانع إقلاع
 GenericName[bg]=Boot Maker
@@ -86,6 +76,8 @@ GenericName[tr]=Önyükleme Oluşturucu
 GenericName[uk]=Створення дисків
 GenericName[zh_CN]=启动盘制作工具
 GenericName[zh_TW]=開機碟製作器
+Icon=deepin-boot-maker
+Name=Deepin Boot Maker
 Name[af]=Deepin Selflaai Skepper
 Name[am]=Deepin Boot መፍጠሪያ
 Name[am_ET]=ዲፕኢን Boot መፍጠሪያ
@@ -143,7 +135,11 @@ Name[sv]=Deepin Boot Skapare
 Name[tr]=Deepin Önyükleme Oluşturucu
 Name[uk]=Засіб створення дисків з Deepin
 Name[vi]=Deepin Boot Maker
-Name[zh_CN]=深度启动盘制作工具
+Name[zh_CN]=启动盘制作工具
 Name[zh_HK]=Deepin 開機碟製作
 Name[zh_TW]=Deepin 開機碟製作器
-
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+X-Deepin-Vendor=user-custom

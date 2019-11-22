@@ -18,6 +18,6 @@ isEqual(ARCH, i386) | isEqual(ARCH, x86_64) {
 }
 
 isEqual(NO_BOOTLOADER, TRUE) {
-    DEFINES += DBM_NO_BOOTLOADER
+#    DEFINES += DBM_NO_BOOTLOADER
 }
 
