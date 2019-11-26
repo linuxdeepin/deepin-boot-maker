@@ -24,3 +24,7 @@ isEqual(NO_BOOTLOADER, TRUE) {
 win32{
     DEFINES -= DBM_NO_BOOTLOADER
 }
+
+mac* {
+    DEFINES += DBM_NO_BOOTLOADER
+}
