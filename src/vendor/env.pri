@@ -26,5 +26,5 @@ win32{
 }
 
 mac* {
-    DEFINES += DBM_NO_BOOTLOADER
+    DEFINES -= DBM_NO_BOOTLOADER
 }
