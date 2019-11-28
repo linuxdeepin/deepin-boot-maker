@@ -136,7 +136,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     DeviceListWidget *m_deviceList = new DeviceListWidget;
     m_deviceList->setObjectName("UsbDeviceList");
-    m_deviceList->setFixedSize(390, 270);
+    m_deviceList->setFixedSize(400, 270);
     m_deviceList->hide();
 
     DeviceDelegate *m_devicedelegate = new DeviceDelegate(m_deviceList);

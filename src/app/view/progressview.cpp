@@ -80,8 +80,8 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setFont(qf);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
-//    DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
-    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
+    DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
+//    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
     m_hits->setFixedSize(213, 17);
     m_hits->setWordWrap(true);
@@ -89,10 +89,10 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     qf.setPixelSize(12);
     m_hits->setFont(qf);
     m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
-    DPalette pa = DApplicationHelper::instance()->palette(m_hits);
-    QBrush brush = DApplicationHelper::instance()->palette(m_hits).textTips();
-    pa.setBrush(DPalette::WindowText, brush);
-    m_hits->setPalette(pa);
+//    DPalette pa = DApplicationHelper::instance()->palette(m_hits);
+//    QBrush brush = DApplicationHelper::instance()->palette(m_hits).textTips();
+//    pa.setBrush(DPalette::WindowText, brush);
+//    m_hits->setPalette(pa);
 
 //    SuggestButton *start = new SuggestButton();
     DPushButton *start = new DPushButton();

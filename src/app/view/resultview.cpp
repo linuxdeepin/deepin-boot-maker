@@ -89,7 +89,8 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 //    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
 //    QString tagEnd = "</span></a>";
 //    QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
-    m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
+//    m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
+    m_logHits = new DTipLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setWordWrap(true);
     m_logHits->setFixedWidth(400);
@@ -102,10 +103,10 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
         qf.setFamily(m_fontList.at(0));
     qf.setPixelSize(12);
     m_logHits->setFont(qf);
-    DPalette pa = DApplicationHelper::instance()->palette(m_logHits);
-    QBrush brush = DApplicationHelper::instance()->palette(m_logHits).textTips();
-    pa.setBrush(DPalette::WindowText, brush);
-    m_logHits->setPalette(pa);
+//    DPalette pa = DApplicationHelper::instance()->palette(m_logHits);
+//    QBrush brush = DApplicationHelper::instance()->palette(m_logHits).textTips();
+//    pa.setBrush(DPalette::WindowText, brush);
+//    m_logHits->setPalette(pa);
     m_logHits->setAlignment(Qt::AlignCenter);
 
 //    m_rebootLater = new SuggestButton();

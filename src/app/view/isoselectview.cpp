@@ -267,21 +267,21 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 
 }
 
-void ISOSelectView :: checkFileResult(bool result)
-{
-    m_checkFile->setText("");
-    QString stateText = "";
-    if (!result) {
-        stateText = tr("Illegal ISO image file");
-    }
-    m_nextSetp->setDisabled(false);
-    if ("" != stateText) {
-        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
-        m_hits->setText(stateTemplateText);
-        m_nextSetp->setDisabled(true);
-        m_isoFilePath = "";
-    }
-}
+//void ISOSelectView :: checkFileResult(bool result)
+//{
+//    m_checkFile->setText("");
+//    QString stateText = "";
+//    if (!result) {
+//        stateText = tr("Illegal ISO image file");
+//    }
+//    m_nextSetp->setDisabled(false);
+//    if ("" != stateText) {
+//        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
+//        m_hits->setText(stateTemplateText);
+//        m_nextSetp->setDisabled(true);
+//        m_isoFilePath = "";
+//    }
+//}
 
 void ISOSelectView :: slot_ThemeChange()
 {

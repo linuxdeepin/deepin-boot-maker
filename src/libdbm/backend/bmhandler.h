@@ -52,7 +52,7 @@ signals:
     void removablePartitionsChanged(const QList<DeviceInfo> &list);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int error, const QString &title, const QString &description);
-    void checkFileResult(bool result);
+//    void checkFileResult(bool result);
 
 public slots:
     virtual void reboot() = 0;

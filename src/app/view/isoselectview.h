@@ -69,7 +69,7 @@ public slots:
     void onFileSelected(const QString &file);
     void onFileVerfiyFinished(bool ok);
     void slot_ThemeChange();
-    void checkFileResult(bool result);
+//    void checkFileResult(bool result);
 
 private:
     DLabel          *m_hits         = nullptr;

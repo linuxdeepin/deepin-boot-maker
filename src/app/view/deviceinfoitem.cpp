@@ -54,7 +54,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
 
     auto mainLayout = new QHBoxLayout(this);
-    mainLayout->setContentsMargins(10, 0, 10, 0);
+    mainLayout->setContentsMargins(9, 0, 6, 0);
     mainLayout->setSpacing(0);
 
     m_deviceIcon = new DLabel;
@@ -89,7 +89,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto m_deviceCapacityBar = new DProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
     m_deviceCapacityBar->setTextVisible(false);
-    m_deviceCapacityBar->setFixedSize(273, 4);
+    m_deviceCapacityBar->setFixedSize(292, 4);
     m_deviceCapacityBar->setValue(percent);
 //    m_deviceCapacityBar->setStyleSheet(".QProgressBar{background - color: rgba(0, 0, 0, 0.05);border: solid 1px rgba(0, 0, 0, 0.03);border-radius: 1.5px;}"
 //                                       ".QProgressBar::chunk{background - color:#2ca7f8;border-radius: 1.5px;}");
@@ -109,7 +109,8 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto bodyLayout = new QVBoxLayout(m_bodywidget);
     bodyLayout->setMargin(0);
     auto m_middlewidget = new DWidget;
-    m_middlewidget->setFixedWidth(273);
+    m_middlewidget->setFixedWidth(292);
+    m_middlewidget->setFixedHeight(18);
     auto middleLayout = new QHBoxLayout(m_middlewidget);
     middleLayout->setMargin(0);
 
@@ -118,12 +119,14 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     bodyLayout->addSpacing(6);
     bodyLayout->addWidget(m_deviceLabel, 0, Qt::AlignLeft);
+    bodyLayout->addSpacing(0);
     bodyLayout->addWidget(m_middlewidget, 0, Qt::AlignLeft);
+    bodyLayout->addSpacing(5);
     bodyLayout->addWidget(m_deviceCapacityBar, 0, Qt::AlignCenter);
     bodyLayout->addSpacing(9);
 
     mainLayout->addWidget(m_deviceIcon, 0, Qt::AlignLeft);
-    mainLayout->addSpacing(10);
+    mainLayout->addSpacing(7);
     mainLayout->addWidget(m_bodywidget, 0, Qt::AlignLeft);
 //    mainLayout->addWidget(m_deviceLabel, 0, Qt::AlignCenter);
 //    mainLayout->addSpacing(10);
@@ -136,7 +139,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //    mainLayout->addWidget(m_radiobutton, 0, Qt::AlignRight);
     mainLayout->addWidget(m_fillingposition, 0, Qt::AlignRight);
 
-    setFixedSize(390, 60);
+    setFixedSize(400, 60);
 
     setProperty("needformat", false);
 
@@ -154,10 +157,10 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
             pa.setColor(DPalette::Text, QColor("#414D68"));
             m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
-            pa.setColor(DPalette::Text, QColor("#526A7F"));
+            pa.setColor(DPalette::Text, QColor("#8AA1B4"));
             m_deviceDevName->setPalette(pa);
             pa = m_deviceCapacity->palette();
-            pa.setColor(DPalette::Text, QColor("#526A7F"));
+            pa.setColor(DPalette::Text, QColor("#8AA1B4"));
             m_deviceCapacity->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
