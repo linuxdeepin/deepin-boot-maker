@@ -74,8 +74,10 @@ static bool switchToRoot(QApplication &app)
 int main(int argc, char **argv)
 {
     Utils::initResource();
+#ifndef Q_OS_WIN
 #if defined(DTK_STATIC_LIB)
     DWIDGET_INIT_RESOURCE();
+#endif
 #endif
 
     DApplication::loadDXcbPlugin();

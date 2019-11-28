@@ -221,11 +221,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &ISOSelectView :: slot_ThemeChange);
 
-#ifdef Q_OS_WIN
-    m_fileLabel->hide();
-    spliter->hide();
-    m_hits->hide();
-#endif
+//#ifdef Q_OS_WIN
+//    m_fileLabel->hide();
+//    spliter->hide();
+//    m_hits->hide();
+//#endif
     connect(isoPanel, &DropFrame::fileAboutAccept, this, [ = ]() {
         growIcon->show();
         auto center = isoIcon->geometry().center();
