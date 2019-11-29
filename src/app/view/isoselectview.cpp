@@ -110,7 +110,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
     isoPanelLayout->setMargin(0);
 
+#ifdef Q_OS_WIN
+    m_fileLabel = new DLabel("");
+#else
     m_fileLabel = new DLabel(tr("Drag an ISO image file and drop it here"));
+#endif
     m_fileLabel->setObjectName("IsoFileName");
     m_fileLabel->setFixedHeight(15);
     qf = m_fileLabel->font();
@@ -125,7 +129,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    m_stateLabel->setFixedHeight(38);
 //    m_stateLabel->hide();
 
+#ifdef Q_OS_WIN
+    m_hits = new DLabel("");
+#else
     m_hits = new DLabel(tr("OR"));
+#endif
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(20);
     qf = m_hits->font();
@@ -221,11 +229,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &ISOSelectView :: slot_ThemeChange);
 
-//#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN
 //    m_fileLabel->hide();
-//    spliter->hide();
+    spliter->hide();
 //    m_hits->hide();
-//#endif
+#endif
     connect(isoPanel, &DropFrame::fileAboutAccept, this, [ = ]() {
         growIcon->show();
         auto center = isoIcon->geometry().center();
