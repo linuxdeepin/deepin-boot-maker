@@ -331,11 +331,13 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
 
         start->setEnabled(false);
+#ifdef Q_OS_LINUX
         if (!m_formatDiskCheck->isChecked() && "vfat" != this->property("last_fstype").toString())
         {
             emit finish(2, "install failed", tr("Disk Format Error: Please format the disk with FAT32"));
             return;
         }
+#endif
         QString path = this->property("last_path").toString();
         qDebug() << "Select usb device" << path;
         emit this->deviceSelected(path, m_formatDiskCheck->isChecked());
