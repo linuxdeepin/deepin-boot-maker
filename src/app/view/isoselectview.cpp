@@ -85,6 +85,10 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     }
 
     m_title = new DLabel(tr("Select an ISO image file"));
+    DPalette pa = DApplicationHelper::instance()->palette(m_title);
+    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    pa.setBrush(DPalette::Text, brush);
+    m_title->setPalette(pa);
     m_title->setFixedHeight(35);
     QFont qf = m_title->font();
     if (m_fontList.size() > 0)
@@ -183,6 +187,9 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 
     m_checkFile = new DLabel();
     m_checkFile->setObjectName("IsoFileSelect");
+    pa = DApplicationHelper::instance()->palette(m_checkFile);
+    brush = DApplicationHelper::instance()->palette(m_checkFile).text();
+    pa.setBrush(DPalette::Text, brush);
     m_checkFile->setFixedHeight(18);
     qf = m_checkFile->font();
     m_checkFile->setText("");
@@ -300,9 +307,9 @@ void ISOSelectView :: slot_ThemeChange()
 //      pa.setColor(DPalette::Background, QColor("#FFFFFF"));
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
         setPalette(pa);
-        pa = m_title->palette();
-        pa.setColor(DPalette::WindowText, QColor("#001A2E"));
-        m_title->setPalette(pa);
+//        pa = m_title->palette();
+//        pa.setColor(DPalette::WindowText, QColor("#414D68"));
+//        m_title->setPalette(pa);
         pa = isoPanel->palette();
         pa.setColor(DPalette::Background, QColor(255, 255, 255, 13));
         isoPanel->setPalette(pa);
@@ -316,16 +323,16 @@ void ISOSelectView :: slot_ThemeChange()
         spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/dash_line.svg", this));
         QString linkText = QString(s_linkTemplatelight).arg(m_selectText).arg(m_selectText);
         m_fileSelect->setText(linkText);
-        pa = m_checkFile->palette();
-        pa.setColor(DPalette::WindowText, QColor("#414D68"));
-        m_checkFile->setPalette(pa);
+//        pa = m_checkFile->palette();
+//        pa.setColor(DPalette::WindowText, QColor("#414D68"));
+//        m_checkFile->setPalette(pa);
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = palette();
         pa.setColor(DPalette::Background, QColor("#292929"));
         setPalette(pa);
-        pa = m_title->palette();
-        pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
-        m_title->setPalette(pa);
+//        pa = m_title->palette();
+//        pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+//        m_title->setPalette(pa);
         pa = isoPanel->palette();
         pa.setColor(DPalette::Background, QColor(0, 0, 0, 13));
         isoPanel->setPalette(pa);
@@ -339,9 +346,9 @@ void ISOSelectView :: slot_ThemeChange()
         spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/dark/image/dash_line_dark.svg", this));
         QString linkText = QString(s_linkTemplatedark).arg(m_selectText).arg(m_selectText);
         m_fileSelect->setText(linkText);
-        pa = m_checkFile->palette();
-        pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
-        m_checkFile->setPalette(pa);
+//        pa = m_checkFile->palette();
+//        pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+//        m_checkFile->setPalette(pa);
     }
 }
 

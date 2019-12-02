@@ -58,6 +58,10 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     }
 
     DLabel *m_title = new DLabel(tr("Burning"));
+    DPalette pa = DApplicationHelper::instance()->palette(m_title);
+    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    pa.setBrush(DPalette::Text, brush);
+    m_title->setPalette(pa);
     m_title->setFixedHeight(36);
     QFont qf = m_title->font();
     if (m_fontList.size() > 0)
@@ -136,9 +140,9 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
             setPalette(pa);
-            pa = m_title->palette();
-            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
-            m_title->setPalette(pa);
+//            pa = m_title->palette();
+//            pa.setColor(DPalette::WindowText, QColor("#414D68"));
+//            m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);
@@ -147,9 +151,9 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
-            pa = m_title->palette();
-            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
-            m_title->setPalette(pa);
+//            pa = m_title->palette();
+//            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+//            m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);

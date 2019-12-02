@@ -84,6 +84,10 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
     DLabel *m_title = new DLabel(tr("Select a disk"));
+    DPalette pa = DApplicationHelper::instance()->palette(m_title);
+    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    pa.setBrush(DPalette::Text, brush);
+    m_title->setPalette(pa);
     m_title->setFixedHeight(36);
     QFont ft = m_title->font();
     if (m_fontList.size() > 0)
@@ -198,9 +202,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
             setPalette(pa);
-            pa = m_title->palette();
-            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
-            m_title->setPalette(pa);
+//            pa = m_title->palette();
+//            pa.setColor(DPalette::WindowText, QColor("#414D68"));
+//            m_title->setPalette(pa);
 //            pa = usbDeviceListPanel->palette();
 //            pa.setColor(DPalette::Background, QColor(255, 255, 255, 128));
 //            usbDeviceListPanel->setPalette(pa);
@@ -215,9 +219,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
-            pa = m_title->palette();
-            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
-            m_title->setPalette(pa);
+//            pa = m_title->palette();
+//            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+//            m_title->setPalette(pa);
 //            pa = usbDeviceListPanel->palette();
 //            pa.setColor(DPalette::Background, QColor(0, 0, 0, 128));
 //            usbDeviceListPanel->setPalette(pa);

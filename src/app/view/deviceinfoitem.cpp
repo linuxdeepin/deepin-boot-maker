@@ -63,6 +63,9 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     auto m_deviceLabel = new DLabel;
     m_deviceLabel->setObjectName("DeviceInfoLabel");
+    DPalette pa = DApplicationHelper::instance()->palette(m_deviceLabel);
+    QBrush brush = DApplicationHelper::instance()->palette(m_deviceLabel).text();
+    pa.setBrush(DPalette::Text, brush);
     m_deviceLabel->setText(name);
     m_deviceLabel->setFixedHeight(20);
     QFont qf = m_deviceLabel->font();
@@ -153,9 +156,9 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType)
         {
-            pa = m_deviceLabel->palette();
-            pa.setColor(DPalette::Text, QColor("#414D68"));
-            m_deviceLabel->setPalette(pa);
+//            pa = m_deviceLabel->palette();
+//            pa.setColor(DPalette::Text, QColor("#414D68"));
+//            m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
             pa.setColor(DPalette::Text, QColor("#8AA1B4"));
             m_deviceDevName->setPalette(pa);
@@ -164,9 +167,9 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
             m_deviceCapacity->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
-            pa = m_deviceLabel->palette();
-            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
-            m_deviceLabel->setPalette(pa);
+//            pa = m_deviceLabel->palette();
+//            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
+//            m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
             pa.setColor(DPalette::Text, QColor("#6D7C88"));
             m_deviceDevName->setPalette(pa);
