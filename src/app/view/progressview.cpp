@@ -32,6 +32,7 @@
 #include <DPushButton>
 #include <DApplicationHelper>
 #include <DTipLabel>
+#include <DFontSizeManager>
 
 #include <QDebug>
 #include <QVBoxLayout>
@@ -46,16 +47,16 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
-    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
-    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
-    QStringList m_fontList;
-    m_fontList.clear();
-    if (lcdFontId != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-    }
-    if (lcdFontId != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
-    }
+//    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
+//    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
+//    QStringList m_fontList;
+//    m_fontList.clear();
+//    if (lcdFontId != -1) {
+//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+//    }
+//    if (lcdFontId != -1) {
+//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
+//    }
 
     DLabel *m_title = new DLabel(tr("Burning"));
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
@@ -63,12 +64,12 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     m_title->setFixedHeight(36);
-    QFont qf = m_title->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(24);
-    m_title->setFont(qf);
-//    m_title->setStyleSheet("font-size: 26px;");
+    DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
+//    QFont qf = m_title->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(24);
+//    m_title->setFont(qf);
 
     auto waterProgress = new Dtk::Widget::DWaterProgress;
     waterProgress->setFixedSize(100, 100);
@@ -76,22 +77,25 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     DLabel *m_hitsTitle = new DLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
     m_hitsTitle->setFixedHeight(25);
-    qf = m_hitsTitle->font();
-    qf.setPixelSize(17);
-    if (m_fontList.size() > 1)
-        qf.setFamily(m_fontList.at(1));
-//    qf.setBold(true);
-    m_hitsTitle->setFont(qf);
+    DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
+//    qf = m_hitsTitle->font();
+//    qf.setPixelSize(17);
+//    if (m_fontList.size() > 1)
+//        qf.setFamily(m_fontList.at(1));
+////    qf.setBold(true);
+//    m_hitsTitle->setFont(qf);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
     DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
 //    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
-    m_hits->setFixedSize(213, 17);
+//    m_hits->setFixedSize(213, 17);
+    m_hits->setFixedSize(250, 22);
     m_hits->setWordWrap(true);
-    qf = m_hits->font();
-    qf.setPixelSize(12);
-    m_hits->setFont(qf);
+    DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
+//    qf = m_hits->font();
+//    qf.setPixelSize(12);
+//    m_hits->setFont(qf);
     m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
 //    DPalette pa = DApplicationHelper::instance()->palette(m_hits);
 //    QBrush brush = DApplicationHelper::instance()->palette(m_hits).textTips();
@@ -104,20 +108,21 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     start->setFixedSize(310, 36);
     start->setObjectName("ProgressCancel");
     start->setText(tr("Cancel"));
-    qf = start->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(14);
-    start->setFont(qf);
+    DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
+//    qf = start->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(14);
+//    start->setFont(qf);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(95);
     mainLayout->addWidget(waterProgress, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(26);
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(1);
+    mainLayout->addSpacing(0);
     mainLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(20);
+    mainLayout->addSpacing(17);
     mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
 

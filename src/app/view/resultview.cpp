@@ -32,6 +32,7 @@
 #include <DCheckBox>
 #include <DLog>
 #include <DApplicationHelper>
+#include <DFontSizeManager>
 
 #include <QDebug>
 #include <QUrl>
@@ -48,17 +49,16 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
     mainLayout->setSpacing(0);
 
-
-    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
-    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
-    QStringList m_fontList;
-    m_fontList.clear();
-    if (lcdFontId != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-    }
-    if (lcdFontId != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
-    }
+//    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
+//    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
+//    QStringList m_fontList;
+//    m_fontList.clear();
+//    if (lcdFontId != -1) {
+//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+//    }
+//    if (lcdFontId != -1) {
+//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
+//    }
 
     m_title = new DLabel(tr("Successful"));
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
@@ -66,11 +66,12 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     m_title->setFixedHeight(36);
-    QFont qf = m_title->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(24);
-    m_title->setFont(qf);
+    DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
+//    QFont qf = m_title->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(24);
+//    m_title->setFont(qf);
 
     m_resultIcon = new DLabel();
     m_resultIcon->setObjectName("ResultIcon");
@@ -81,16 +82,17 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     pa = DApplicationHelper::instance()->palette(m_hitsTitle);
     brush = DApplicationHelper::instance()->palette(m_hitsTitle).text();
     pa.setBrush(DPalette::Text, brush);
-    m_title->setPalette(pa);
+    m_hitsTitle->setPalette(pa);
     m_hitsTitle->setFixedWidth(340);
     m_hitsTitle->setFixedHeight(25);
 
-    qf = m_hitsTitle->font();
-    qf.setPixelSize(17);
-    if (m_fontList.size() > 1)
-        qf.setFamily(m_fontList.at(1));
-//    qf.setBold(true);
-    m_hitsTitle->setFont(qf);
+    DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
+//    qf = m_hitsTitle->font();
+//    qf.setPixelSize(17);
+//    if (m_fontList.size() > 1)
+//        qf.setFamily(m_fontList.at(1));
+////    qf.setBold(true);
+//    m_hitsTitle->setFont(qf);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
 
 //    QString hitsFormat = "<a style='color:#b4b4b4; font-size:11px'>%1</a>";
@@ -102,20 +104,22 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setWordWrap(true);
     m_logHits->setFixedWidth(400);
-    m_logHits->setFixedHeight(34);
+    m_logHits->setFixedHeight(100);
+    m_logHits->setMargin(11);
 //    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
 //    m_logHits->setOpenExternalLinks(false);
 //    m_logHits->hide();
-    qf = m_logHits->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(12);
-    m_logHits->setFont(qf);
+    DFontSizeManager::instance()->bind(m_logHits, DFontSizeManager::T8);
+//    qf = m_logHits->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(12);
+//    m_logHits->setFont(qf);
 //    DPalette pa = DApplicationHelper::instance()->palette(m_logHits);
 //    QBrush brush = DApplicationHelper::instance()->palette(m_logHits).textTips();
 //    pa.setBrush(DPalette::WindowText, brush);
 //    m_logHits->setPalette(pa);
-    m_logHits->setAlignment(Qt::AlignCenter);
+    m_logHits->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 
 //    m_rebootLater = new SuggestButton();
     m_rebootLater = new DPushButton();
@@ -124,11 +128,12 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_rebootLater->setObjectName("RebootLater");
     m_rebootLater->setText(tr("Done"));
     m_rebootLater->setProperty("normal", true);
-    qf = m_rebootLater->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(14);
-    m_rebootLater->setFont(qf);
+    DFontSizeManager::instance()->bind(m_rebootLater, DFontSizeManager::T6);
+//    qf = m_rebootLater->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(14);
+//    m_rebootLater->setFont(qf);
     /*
     rebootLater->style()->unpolish(rebootLater);
     rebootLater->style()->polish(rebootLater);*/
@@ -139,10 +144,11 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_rebootNow->setFixedSize(310, 36);
     m_rebootNow->setObjectName("RebootLater");
     m_rebootNow->setText(tr("Reboot now"));
-    qf = m_rebootNow->font();
-    qf.setFamily("SourceHanSansSC-Medium");
-    qf.setPixelSize(14);
-    m_rebootNow->setFont(qf);
+    DFontSizeManager::instance()->bind(m_rebootNow, DFontSizeManager::T6);
+//    qf = m_rebootNow->font();
+//    qf.setFamily("SourceHanSansSC-Medium");
+//    qf.setPixelSize(14);
+//    m_rebootNow->setFont(qf);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(87);

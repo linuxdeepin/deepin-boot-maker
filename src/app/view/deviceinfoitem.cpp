@@ -25,6 +25,7 @@
 #include <DApplication>
 #include <DProgressBar>
 #include <DApplicationHelper>
+#include <DFontSizeManager>
 
 #include <QDebug>
 #include <QHBoxLayout>
@@ -68,25 +69,28 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     pa.setBrush(DPalette::Text, brush);
     m_deviceLabel->setText(name);
     m_deviceLabel->setFixedHeight(20);
-    QFont qf = m_deviceLabel->font();
-    qf.setPixelSize(14);
-    m_deviceLabel->setFont(qf);
+    DFontSizeManager::instance()->bind(m_deviceLabel, DFontSizeManager::T6);
+//    QFont qf = m_deviceLabel->font();
+//    qf.setPixelSize(14);
+//    m_deviceLabel->setFont(qf);
 
     auto m_deviceDevName = new DLabel;
     m_deviceDevName->setObjectName("DeviceInfoDevName");
     m_deviceDevName->setText(QString("%1").arg(device));
     m_deviceDevName->setFixedHeight(18);
-    qf = m_deviceDevName->font();
-    qf.setPixelSize(12);
-    m_deviceDevName->setFont(qf);
+    DFontSizeManager::instance()->bind(m_deviceDevName, DFontSizeManager::T8);
+//    qf = m_deviceDevName->font();
+//    qf.setPixelSize(12);
+//    m_deviceDevName->setFont(qf);
     m_deviceDevName->setAlignment(Qt::AlignCenter);
     auto m_deviceCapacity = new DLabel;
     m_deviceCapacity->setObjectName("DeviceInfoCapacity");
     m_deviceCapacity->setText(cap);
     m_deviceCapacity->setFixedHeight(18);
-    qf = m_deviceCapacity->font();
-    qf.setPixelSize(10);
-    m_deviceCapacity->setFont(qf);
+    DFontSizeManager::instance()->bind(m_deviceCapacity, DFontSizeManager::T10);
+//    qf = m_deviceCapacity->font();
+//    qf.setPixelSize(10);
+//    m_deviceCapacity->setFont(qf);
     m_deviceCapacity->setAlignment(Qt::AlignCenter);
 
     auto m_deviceCapacityBar = new DProgressBar;

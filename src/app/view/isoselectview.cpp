@@ -27,6 +27,7 @@
 #include <DFileDialog>
 #include <DApplicationHelper>
 #include <DUtil>
+#include <DFontSizeManager>
 
 #include <QStyle>
 #include <QVBoxLayout>
@@ -77,12 +78,12 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
     mainLayout->setSpacing(0);
 
-    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
-    QStringList m_fontList;
-    m_fontList.clear();
-    if (lcdFontId != -1) {
-        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-    }
+//    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
+//    QStringList m_fontList;
+//    m_fontList.clear();
+//    if (lcdFontId != -1) {
+//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
+//    }
 
     m_title = new DLabel(tr("Select an ISO image file"));
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
@@ -90,11 +91,12 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     m_title->setFixedHeight(35);
-    QFont qf = m_title->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(24);
-    m_title->setFont(qf);
+    DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
+//    QFont qf = m_title->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(24);
+//    m_title->setFont(qf);
 
     DLabel *isoIcon = new DLabel(this);
     isoIcon->setObjectName("ISOIcon");
@@ -120,10 +122,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_fileLabel = new DLabel(tr("Drag an ISO image file and drop it here"));
 #endif
     m_fileLabel->setObjectName("IsoFileName");
-    m_fileLabel->setFixedHeight(15);
-    qf = m_fileLabel->font();
-    qf.setPixelSize(12);
-    m_fileLabel->setFont(qf);
+    m_fileLabel->setFixedHeight(19);
+    DFontSizeManager::instance()->bind(m_fileLabel, DFontSizeManager::T8);
+//    qf = m_fileLabel->font();
+//    qf.setPixelSize(12);
+//    m_fileLabel->setFont(qf);
 //    m_fileLabel->setFixedHeight(18);
 
 //    m_stateLabel = new QLabel();
@@ -140,9 +143,10 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 #endif
     m_hits->setObjectName("IsoHits");
     m_hits->setFixedHeight(20);
-    qf = m_hits->font();
-    qf.setPixelSize(12);
-    m_hits->setFont(qf);
+    DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
+//    qf = m_hits->font();
+//    qf.setPixelSize(12);
+//    m_hits->setFont(qf);
 
     spliter = new DLabel;
     spliter->setObjectName("IsoSpliter");
@@ -155,23 +159,25 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    m_fileSelect->setFixedHeight(15);
 //    m_fileSelect->setOpenExternalLinks(false);
     m_selectText = tr("Select an ISO image file");
-    m_fileSelect->setFixedHeight(18);
+    m_fileSelect->setFixedHeight(24);
 //    QString linkText = QString(s_linkTemplatelight).arg(m_selectText).arg(m_selectText);
 //    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
 //    if (themeType == DGuiApplicationHelper::DarkType) {
 //        linkText = QString(s_linkTemplatedark).arg(m_selectText).arg(m_selectText);
 //    }
 //    m_fileSelect->setText(linkText);
-    qf = m_fileSelect->font();
-//    if (m_fontList.size() > 1)
-//        qf.setFamily(m_fontList.at(1));
-    qf.setPixelSize(12);
-    qf.setBold(false);
-    m_fileSelect->setFont(qf);
+
+    DFontSizeManager::instance()->bind(m_fileSelect, DFontSizeManager::T8);
+//    qf = m_fileSelect->font();
+////    if (m_fontList.size() > 1)
+////        qf.setFamily(m_fontList.at(1));
+//    qf.setPixelSize(12);
+//    qf.setBold(false);
+//    m_fileSelect->setFont(qf);
 
     isoPanelLayout->addSpacing(63);
     isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
-    isoPanelLayout->addSpacing(5);
+    isoPanelLayout->addSpacing(3);
     isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
 //    isoPanelLayout->addSpacing(4);
 //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
@@ -179,7 +185,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
     isoPanelLayout->addSpacing(15);
     isoPanelLayout->addWidget(spliter, 0, Qt::AlignHCenter);
-    isoPanelLayout->addSpacing(10);
+    isoPanelLayout->addSpacing(7);
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
     isoPanelLayout->addStretch();
 
@@ -191,10 +197,11 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     brush = DApplicationHelper::instance()->palette(m_checkFile).text();
     pa.setBrush(DPalette::Text, brush);
     m_checkFile->setFixedHeight(18);
-    qf = m_checkFile->font();
-    m_checkFile->setText("");
-    qf.setPixelSize(12);
-    m_checkFile->setFont(qf);
+    DFontSizeManager::instance()->bind(m_checkFile, DFontSizeManager::T8);
+//    qf = m_checkFile->font();
+//    m_checkFile->setText("");
+//    qf.setPixelSize(12);
+//    m_checkFile->setFont(qf);
 
 //    m_nextSetp = new SuggestButton();
     m_nextSetp = new DPushButton();
@@ -202,11 +209,12 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_nextSetp->setFixedSize(310, 36);
     m_nextSetp->setObjectName("NextStepButton");
     m_nextSetp->setText(tr("Next"));
-    qf = m_nextSetp->font();
-    if (m_fontList.size() > 0)
-        qf.setFamily(m_fontList.at(0));
-    qf.setPixelSize(14);
-    m_nextSetp->setFont(qf);
+    DFontSizeManager::instance()->bind(m_nextSetp, DFontSizeManager::T8);
+//    qf = m_nextSetp->font();
+//    if (m_fontList.size() > 0)
+//        qf.setFamily(m_fontList.at(0));
+//    qf.setPixelSize(14);
+//    m_nextSetp->setFont(qf);
     m_nextSetp->setDisabled(true);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
