@@ -337,6 +337,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             auto ret = msgbox.exec();
             if (ret != 1) {
                 m_formatDiskCheck->setChecked(false);
+                this->setProperty("user_format", false);
+                handleFormat(false);
                 return;
             }
         }
