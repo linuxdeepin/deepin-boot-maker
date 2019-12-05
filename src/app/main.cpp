@@ -37,6 +37,7 @@ void loadFonts();
 #include <DApplication>
 #include <DWidgetUtil>
 #include <DApplicationSettings>
+#include <DGuiApplicationHelper>
 
 DCORE_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
@@ -103,10 +104,14 @@ int main(int argc, char **argv)
     qDebug() << "save log to:" << DLogManager::getlogFilePath();
 
 #ifndef Q_OS_MAC
-    if (!app.setSingleInstance("deepinbootmaker")) {
-        qDebug() << "another deepin boot maker has started";
+    qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");
+    if (!DGuiApplicationHelper::instance()->setSingleInstance(app.applicationName(), DGuiApplicationHelper::UserScope)) {
         exit(0);
     }
+//    if (!app.setSingleInstance("deepinbootmaker")) {
+//        qDebug() << "another deepin boot maker has started";
+//        exit(0);
+//    }
 #endif
 
 #ifdef Q_OS_WIN

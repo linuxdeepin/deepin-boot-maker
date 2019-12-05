@@ -142,7 +142,7 @@ BMWindow::BMWindow(QWidget *parent)
 
     setTitlebarShadowEnabled(false);
     title->setTitle("");
-    title->setIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
+    title->setIcon(QIcon::fromTheme("deepin-boot-maker")/*QIcon(":/theme/light/image/deepin-boot-maker.svg")*/);
 //    title->setBackgroundTransparent(true);
     title->setFixedHeight(50);
     title->setFrameStyle(QFrame::NoFrame);
@@ -196,6 +196,9 @@ BMWindow::BMWindow(QWidget *parent)
     mainLayout->addWidget(d->wsib);
 
     slot_ThemeChange();
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::newProcessInstance, this, [ = ] {
+        this->activateWindow();
+    });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &BMWindow :: slot_ThemeChange);
     connect(d->isoWidget, &ISOSelectView::isoFileSelected, this, [ = ] {

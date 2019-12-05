@@ -142,7 +142,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_hits = new DLabel(tr("OR"));
 #endif
     m_hits->setObjectName("IsoHits");
-    m_hits->setFixedHeight(20);
+    m_hits->setFixedHeight(22);
     DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
 //    qf = m_hits->font();
 //    qf.setPixelSize(12);
@@ -183,7 +183,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
     isoPanelLayout->addSpacing(0);
     isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
-    isoPanelLayout->addSpacing(15);
+    isoPanelLayout->addSpacing(14);
     isoPanelLayout->addWidget(spliter, 0, Qt::AlignHCenter);
     isoPanelLayout->addSpacing(7);
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
@@ -235,10 +235,53 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
             stateText = tr("Illegal ISO image file");
         m_nextSetp->setDisabled(false);
         if ("" != stateText) {
+            isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/disc_dark.svg", this));
             QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
             m_hits->setText(stateTemplateText);
             m_nextSetp->setDisabled(true);
             m_isoFilePath = "";
+            int itemCount = isoPanelLayout->count();
+            for (int i = (itemCount - 1); i >= 0; --i) { //从末尾开始是因为你删除会影响布局的顺序。例如你删掉第一个，后面的会往前移，第二就变成第一个，然后这时你要是++i的话，就是删掉原来布局里的第三个，这第二个被跳过了。
+                QLayoutItem *item = isoPanelLayout->takeAt(i);
+                if (item != 0) {
+                    isoPanelLayout->removeWidget(item->widget());
+                }
+            }
+            spliter->hide();
+            isoPanelLayout->addSpacing(63);
+            isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
+            isoPanelLayout->addSpacing(2);
+            isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
+            //    isoPanelLayout->addSpacing(4);
+            //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
+            isoPanelLayout->addSpacing(9);
+            isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
+            isoPanelLayout->addSpacing(19);
+            isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
+            isoPanelLayout->addStretch();
+        } else {
+            isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
+            int itemCount = isoPanelLayout->count();
+            for (int i = (itemCount - 1); i >= 0; --i) { //从末尾开始是因为你删除会影响布局的顺序。例如你删掉第一个，后面的会往前移，第二就变成第一个，然后这时你要是++i的话，就是删掉原来布局里的第三个，这第二个被跳过了。
+                QLayoutItem *item = isoPanelLayout->takeAt(i);
+                if (item != 0) {
+                    isoPanelLayout->removeWidget(item->widget());
+                }
+            }
+            spliter->show();
+            isoPanelLayout->addSpacing(63);
+            isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
+            isoPanelLayout->addSpacing(3);
+            isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
+            //    isoPanelLayout->addSpacing(4);
+            //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
+            isoPanelLayout->addSpacing(0);
+            isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
+            isoPanelLayout->addSpacing(14);
+            isoPanelLayout->addWidget(spliter, 0, Qt::AlignHCenter);
+            isoPanelLayout->addSpacing(7);
+            isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
+            isoPanelLayout->addStretch();
         }
     });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
@@ -251,6 +294,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 #endif
     connect(isoPanel, &DropFrame::fileAboutAccept, this, [ = ]() {
         growIcon->show();
+//        isoIcon->hide();
         auto center = isoIcon->geometry().center();
         growIcon->move(center);
         auto topleft = growIcon->mapFromGlobal(isoIcon->mapToGlobal(center));
@@ -258,12 +302,14 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
         topleft.setX(topleft.x() - offset / 2);
         topleft.setY(topleft.y() - offset / 2);
         growIcon->move(topleft);
+        growIcon->raise();
         isoPanel->setProperty("active", true);
         isoPanel->update();
 //        this->style()->unpolish(isoPanel);
 //        this->style()->polish(isoPanel);
     });
     connect(isoPanel, &DropFrame::fileCancel, this, [ = ]() {
+//        isoIcon->show();
         growIcon->hide();
         isoPanel->setProperty("active", false);
         isoPanel->update();

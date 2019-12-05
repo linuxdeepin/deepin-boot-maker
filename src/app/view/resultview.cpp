@@ -157,7 +157,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(1);
     mainLayout->addWidget(m_logHits, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(100);
+    mainLayout->addSpacing(34);
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
 //    mainLayout->addSpacing(15);

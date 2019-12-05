@@ -90,11 +90,12 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 //    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
 //    m_hits->setFixedSize(213, 17);
-    m_hits->setFixedSize(250, 22);
+    m_hits->setFixedSize(250, 50);
     m_hits->setWordWrap(true);
     DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
-//    qf = m_hits->font();
-//    qf.setPixelSize(12);
+//    QFont qf = m_hits->font();
+////    qf.setPixelSize(12);
+//    qf.setLetterSpacing(QFont::AbsoluteSpacing, 2);
 //    m_hits->setFont(qf);
     m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
 //    DPalette pa = DApplicationHelper::instance()->palette(m_hits);
@@ -122,7 +123,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(0);
     mainLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(17);
+    mainLayout->addSpacing(0);
     mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
 
