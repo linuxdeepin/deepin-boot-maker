@@ -86,5 +86,7 @@ private:
     DLabel          *growIcon     = nullptr;
     DLabel          *m_checkFile     = nullptr;
     ThreadCheckFile t_checkfile;
+    DLabel *isoIcon = nullptr;
+//    DLabel *isoIconDoNothing = nullptr;
 };
 

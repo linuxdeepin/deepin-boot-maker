@@ -98,7 +98,9 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    qf.setPixelSize(24);
 //    m_title->setFont(qf);
 
-    DLabel *isoIcon = new DLabel(this);
+//    isoIconDoNothing = new DLabel(this);
+//    isoIconDoNothing->setFixedSize(96, 96);
+    isoIcon = new DLabel(this);
     isoIcon->setObjectName("ISOIcon");
     isoIcon->setFixedSize(96, 96);
     isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
@@ -177,6 +179,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 
     isoPanelLayout->addSpacing(63);
     isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
+//    isoPanelLayout->addWidget(isoIconDoNothing, 0, Qt::AlignHCenter);
     isoPanelLayout->addSpacing(3);
     isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
 //    isoPanelLayout->addSpacing(4);
@@ -247,18 +250,18 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
                     isoPanelLayout->removeWidget(item->widget());
                 }
             }
-            spliter->hide();
-            isoPanelLayout->addSpacing(63);
-            isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
-            isoPanelLayout->addSpacing(2);
-            isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
-            //    isoPanelLayout->addSpacing(4);
-            //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
-            isoPanelLayout->addSpacing(9);
-            isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
-            isoPanelLayout->addSpacing(19);
-            isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
-            isoPanelLayout->addStretch();
+//            spliter->hide();
+//            isoPanelLayout->addSpacing(63);
+//            isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addSpacing(2);
+//            isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
+//            //    isoPanelLayout->addSpacing(4);
+//            //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
+//            isoPanelLayout->addSpacing(9);
+//            isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addSpacing(19);
+//            isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addStretch();
         } else {
             isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
             int itemCount = isoPanelLayout->count();
@@ -268,21 +271,35 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
                     isoPanelLayout->removeWidget(item->widget());
                 }
             }
-            spliter->show();
-            isoPanelLayout->addSpacing(63);
-            isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
-            isoPanelLayout->addSpacing(3);
-            isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
-            //    isoPanelLayout->addSpacing(4);
-            //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
-            isoPanelLayout->addSpacing(0);
-            isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
-            isoPanelLayout->addSpacing(14);
-            isoPanelLayout->addWidget(spliter, 0, Qt::AlignHCenter);
-            isoPanelLayout->addSpacing(7);
-            isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
-            isoPanelLayout->addStretch();
+//            spliter->show();
+//            isoPanelLayout->addSpacing(63);
+//            isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addSpacing(3);
+//            isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
+//            //    isoPanelLayout->addSpacing(4);
+//            //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
+//            isoPanelLayout->addSpacing(0);
+//            isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addSpacing(14);
+//            isoPanelLayout->addWidget(spliter, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addSpacing(7);
+//            isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
+//            isoPanelLayout->addStretch();
         }
+        spliter->hide();
+        isoPanelLayout->addSpacing(63);
+        isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
+        isoPanelLayout->addSpacing(2);
+        isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
+        //    isoPanelLayout->addSpacing(4);
+        //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
+        isoPanelLayout->addSpacing(9);
+        isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
+        isoPanelLayout->addSpacing(19);
+        isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
+        isoPanelLayout->addStretch();
+        m_selectText = tr("Reselect an ISO image file");
+        slot_ThemeChange();
     });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &ISOSelectView :: slot_ThemeChange);
@@ -302,7 +319,10 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
         topleft.setX(topleft.x() - offset / 2);
         topleft.setY(topleft.y() - offset / 2);
         growIcon->move(topleft);
-        growIcon->raise();
+        growIcon->setFocusPolicy(Qt::NoFocus);
+//        isoIconDoNothing->show();
+//        isoIcon->hide();
+//        growIcon->raise();
         isoPanel->setProperty("active", true);
         isoPanel->update();
 //        this->style()->unpolish(isoPanel);
@@ -310,6 +330,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     });
     connect(isoPanel, &DropFrame::fileCancel, this, [ = ]() {
 //        isoIcon->show();
+//        isoIcon->show();
+//        isoIconDoNothing->hide();
         growIcon->hide();
         isoPanel->setProperty("active", false);
         isoPanel->update();
@@ -377,9 +399,9 @@ void ISOSelectView :: slot_ThemeChange()
         spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/dash_line.svg", this));
         QString linkText = QString(s_linkTemplatelight).arg(m_selectText).arg(m_selectText);
         m_fileSelect->setText(linkText);
-//        pa = m_checkFile->palette();
-//        pa.setColor(DPalette::WindowText, QColor("#414D68"));
-//        m_checkFile->setPalette(pa);
+        pa = m_checkFile->palette();
+        pa.setColor(DPalette::WindowText, QColor("#414D68"));
+        m_checkFile->setPalette(pa);
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = palette();
         pa.setColor(DPalette::Background, QColor("#292929"));
@@ -400,9 +422,9 @@ void ISOSelectView :: slot_ThemeChange()
         spliter->setPixmap(WidgetUtil::getDpiPixmap(":/theme/dark/image/dash_line_dark.svg", this));
         QString linkText = QString(s_linkTemplatedark).arg(m_selectText).arg(m_selectText);
         m_fileSelect->setText(linkText);
-//        pa = m_checkFile->palette();
-//        pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
-//        m_checkFile->setPalette(pa);
+        pa = m_checkFile->palette();
+        pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+        m_checkFile->setPalette(pa);
     }
 }
 
@@ -415,13 +437,16 @@ void ISOSelectView::onFileSelected(const QString &file)
     m_fileLabel->setText(info.fileName());
     m_fileLabel->show();
     m_hits->setText("");
-    m_selectText = tr("Reselect an ISO image file");
+//    m_selectText = tr("Reselect an ISO image file");
+    m_selectText = "";
     m_checkFile->setText(tr("Detecting ISO file, please wait..."));
     slot_ThemeChange();
     m_nextSetp->setDisabled(true);
     m_isoFilePath = file;
 //    BMInterface::instance()->checkfile(file);
 
+    isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/disc_dark.svg", this));
+    spliter->hide();
     t_checkfile.setFile(file);
     if (t_checkfile.isRunning()) {
         t_checkfile.setRestart();
