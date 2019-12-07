@@ -218,7 +218,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             pa.setColor(DPalette::WindowText, QColor("#FF5800"));
             m_warningHint->setPalette(pa);
             pa = m_emptyHint->palette();
-            pa.setColor(DPalette::WindowText, QColor(85, 85, 85, 102));
+            pa.setColor(DPalette::Text, QColor(85, 85, 85, 102));
             m_emptyHint->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
@@ -235,7 +235,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             pa.setColor(DPalette::WindowText, QColor("#9A2F2F"));
             m_warningHint->setPalette(pa);
             pa = m_emptyHint->palette();
-            pa.setColor(DPalette::WindowText, QColor(192, 198, 212, 102));
+            pa.setColor(DPalette::Text, QColor(192, 198, 212, 102));
             m_emptyHint->setPalette(pa);
         }
     });
