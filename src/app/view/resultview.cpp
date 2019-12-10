@@ -105,7 +105,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_logHits->setWordWrap(true);
     m_logHits->setFixedWidth(400);
     m_logHits->setFixedHeight(100);
-    m_logHits->setMargin(11);
+    m_logHits->setMargin(9);
 //    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
 //    m_logHits->setOpenExternalLinks(false);
 //    m_logHits->hide();
