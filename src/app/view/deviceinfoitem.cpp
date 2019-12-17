@@ -92,6 +92,9 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 //    qf.setPixelSize(10);
 //    m_deviceCapacity->setFont(qf);
     m_deviceCapacity->setAlignment(Qt::AlignCenter);
+#if  defined(Q_OS_WIN32)||defined(Q_OS_MAC)
+    m_deviceCapacity->hide();
+#endif
 
     auto m_deviceCapacityBar = new DProgressBar;
     m_deviceCapacityBar->setObjectName("DeviceInfoCapacityBar");
