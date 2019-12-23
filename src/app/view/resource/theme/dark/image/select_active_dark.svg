@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>select_active_dark</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,0 C3.6,0 0,3.59334258 0,7.98520574 C0,12.3770689 3.6,15.9704115 8,15.9704115 C12.4,15.9704115 16,12.3770689 16,7.98520574 C16,3.59334258 12.4,0 8,0 L8,0 Z" id="path-1"></path>
+        <filter x="-68.8%" y="-43.8%" width="237.5%" height="237.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.164207909   0 0 0 0 0.686537591  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="启动盘_-选择U盘设备" transform="translate(-386.000000, -213.000000)">
+            <g id="Group-5" transform="translate(20.000000, 127.000000)">
+                <g id="Group-33">
+                    <g id="编组-4" transform="translate(0.000000, 70.000000)">
+                        <g id="disk_list">
+                            <g id="select_active-3" transform="translate(366.000000, 16.000000)">
+                                <g id="select_dark" transform="translate(6.000000, 6.000000)">
+                                    <g id="select_active-copy-24">
+                                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                        <use fill="#0059D2" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                    </g>
+                                    <g id="select" stroke-width="1" fill-rule="evenodd" transform="translate(4.000000, 4.000000)" stroke="#FFFFFF">
+                                        <polyline id="Path-1112" stroke-width="1.2" points="0.601182426 4.06499815 3.2576281 6.88760344 8.63650463 0"></polyline>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -14,5 +14,6 @@
         <file>theme/light/image/disk_big.svg</file>
         <file>theme/dark/image/disc_bg.png</file>
         <file>theme/light/image/disc_dark.svg</file>
+        <file>theme/dark/image/select_active_dark.svg</file>
     </qresource>
 </RCC>
