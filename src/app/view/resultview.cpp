@@ -99,8 +99,8 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 //    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
 //    QString tagEnd = "</span></a>";
 //    QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
-//    m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
-    m_logHits = new DTipLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
+  m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
+//    m_logHits = new DTipLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);   如果不注释这一行，Windows上无法编译
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setWordWrap(true);
     m_logHits->setFixedWidth(400);
