@@ -247,7 +247,7 @@ void DeviceInfoItem::setCheck(bool flag)
 //    m_radiobutton->setChecked(flag);
     flag1=flag;
     if (flag) {
-        QPixmap pixmap = renderSVG(":/theme/light/image/select_active.svg", QSize(28, 28));
+        QPixmap pixmap = renderSVG(m_filepath, QSize(28, 28));
 //        pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());
 //        pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
 //        pixmap = pixmap.scaled(pixmap.width(), pixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
