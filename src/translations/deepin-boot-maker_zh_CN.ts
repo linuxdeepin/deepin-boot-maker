@@ -36,12 +36,12 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation>启动盘制作工具是一款将系统映像文件写入光盘、U盘等安装介质的小工具。</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
-        <source>Deepin Boot Maker</source>
+        <source>Boot Maker</source>
         <translation>启动盘制作工具</translation>
     </message>
 </context>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <location filename="../app/main.cpp" line="116"/>
-        <source>Deepin Boot Maker</source>
+        <source>Boot Maker</source>
         <translation>启动盘制作工具</translation>
     </message>
 </context>
@@ -217,7 +217,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="235"/>
-        <source>Ok</source>
+        <source>OK</source>
         <translation>确定</translation>
     </message>
 </context>

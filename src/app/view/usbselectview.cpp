@@ -332,7 +332,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             msgbox.setTextFormat(Qt::AutoText);
             msgbox.setMessage(tr("Formatting the disk will overwrite all data, please have a backup before proceeding."));
             msgbox.insertButton(0, tr("Cancel"), true, DDialog::ButtonRecommend);
-            msgbox.insertButton(1, tr("Ok"), false, DDialog::ButtonWarning);
+            msgbox.insertButton(1, tr("OK"), false, DDialog::ButtonWarning);
 
             auto ret = msgbox.exec();
             if (ret != 1) {

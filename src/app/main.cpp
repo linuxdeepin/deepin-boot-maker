@@ -120,9 +120,9 @@ int main(int argc, char **argv)
 #endif
     app.loadTranslator();
     Utils::loadTranslate();
-    app.setApplicationDisplayName(QObject::tr("Deepin Boot Maker"));
+    app.setApplicationDisplayName(QObject::tr("Boot Maker"));
 
-    qDebug() << "Deepin Boot Maker UI started.";
+    qDebug() << "Boot Maker UI started.";
 
     DApplicationSettings savetheme;
     BMWindow w;

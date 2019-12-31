@@ -121,7 +121,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 #ifdef Q_OS_WIN
     m_fileLabel = new DLabel("");
 #else
-    m_fileLabel = new DLabel(tr("Drag an ISO image file and drop it here"));
+    m_fileLabel = new DLabel(tr("Drag an ISO image file here"));
 #endif
     m_fileLabel->setObjectName("IsoFileName");
     m_fileLabel->setFixedHeight(19);

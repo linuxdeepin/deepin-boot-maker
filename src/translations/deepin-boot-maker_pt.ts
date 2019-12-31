@@ -36,12 +36,12 @@
     <name>BMWindow</name>
     <message>
         <location filename="../app/bmwindow.cpp" line="117"/>
-        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation>O Deepin Boot Maker é uma ferramenta simples para criar uma imagem de sistema num CD/DVD, dispositivo USB ou qualquer outro meio de instalação.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
-        <source>Deepin Boot Maker</source>
+        <source>Boot Maker</source>
         <translation>Deepin Boot Maker</translation>
     </message>
 </context>
@@ -49,7 +49,7 @@
     <name>ISOSelectView</name>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
-        <source>Drag an ISO image file and drop it here</source>
+        <source>Drag an ISO image file here</source>
         <translation>Arraste uma imagem ISO e largue-a aqui</translation>
     </message>
     <message>
@@ -116,7 +116,7 @@
     </message>
     <message>
         <location filename="../app/main.cpp" line="116"/>
-        <source>Deepin Boot Maker</source>
+        <source>Boot Maker</source>
         <translation>Deepin Boot Maker</translation>
     </message>
 </context>
@@ -207,7 +207,7 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="235"/>
-        <source>Ok</source>
+        <source>OK</source>
         <translation>Ok</translation>
     </message>
 </context>
