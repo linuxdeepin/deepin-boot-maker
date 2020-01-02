@@ -49,7 +49,7 @@
     <name>ISOSelectView</name>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="68"/>
-        <source>Drag an ISO image file and drop it here</source>
+        <source>Drag an ISO image file here</source>
         <translation>拖拽光盘镜像文件到此</translation>
     </message>
     <message>

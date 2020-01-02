@@ -263,7 +263,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 //        checkBoxHints->setVisible(partitions.size());
         m_emptyHint->setVisible(!partitions.size());
         m_deviceList->setVisible(partitions.size());
-//        m_formatDiskCheck->setEnabled(partitions.size());
+        m_warningHint->setVisible(partitions.size());
+        //        m_formatDiskCheck->setEnabled(partitions.size());
 
         m_deviceList->clear();
         foreach (const DeviceInfo &partition, partitions) {
