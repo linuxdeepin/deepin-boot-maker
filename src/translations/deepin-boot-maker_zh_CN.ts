@@ -153,11 +153,6 @@
         <translation>提交反馈</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="133"/>
-        <source>Restart the computer from the U disk boot can experienc</source>
-        <translation>重启电脑从U盘启动就可以体验了</translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
         <source>Close</source>
         <translation>关闭</translation>

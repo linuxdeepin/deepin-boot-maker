@@ -155,11 +155,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="133"/>
-        <source>Restart the computer from the U disk boot can experienc</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/resultview.cpp" line="137"/>
         <source>Close</source>
         <translation type="unfinished"></translation>

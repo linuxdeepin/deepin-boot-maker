@@ -215,7 +215,6 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
 
     switch (errorType) {
     case BMHandler::NoError:
-//        m_hitsTitle->setText(tr("Restart the computer from the U disk boot can experienc"));
         m_rebootLater->disconnect();
         connect(m_rebootLater, &DPushButton::clicked,
         this, [ = ]() {
