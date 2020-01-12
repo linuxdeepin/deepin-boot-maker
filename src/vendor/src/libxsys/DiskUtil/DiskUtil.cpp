@@ -244,7 +244,7 @@ BOOL EjectDisk(const QString &targetDev)
 XSys::Result InstallSyslinux(const QString &targetDev)
 {
     // install syslinux
-    XSys::SynExec("label", QString(" %1:DEEPINOS").arg(targetDev[0]));
+    XSys::SynExec("label", QString(" %1:UOS").arg(targetDev[0]));
     QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":/blob/syslinux/win32/syslinux.exe"));
     return XSys::SynExec(sysliuxPath, QString(" -i -m -a %1:").arg(targetDev[0]));
 }
@@ -271,7 +271,7 @@ XSys::Result InstallBootloader(const QString &targetDev)
                   .arg(tmpfgcfgPath));
 
     QString driverLetter = QString("%1:").arg(targetDev[0]);
-    XSys::SynExec("label", QString("%1 DEEPINOS").arg(driverLetter));
+    XSys::SynExec("label", QString("%1 UOS").arg(driverLetter));
 
     // install syslinux
     QString sysliuxPath = XSys::FS::InsertTmpFile(QString(":/blob/syslinux/win32/syslinux.exe"));
@@ -464,7 +464,7 @@ XSys::Result InstallSyslinux(const QString &targetDev)
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(targetDev));
-    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
+    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
 
     FixMountPartition(targetDev);
 
@@ -513,7 +513,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(newTargetDev));
-    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
+    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
 
     // install syslinux
     XSys::Syslinux::InstallBootloader(newTargetDev);
@@ -646,7 +646,7 @@ QString Resource(const QString &name)
 XSys::Result InstallSyslinux(const QString &targetDev)
 {
     // rename to DEEPINOS
-    XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
+    XSys::SynExec("diskutil", QString("rename %1 UOS").arg(targetDev));
 
     // install syslinux
     UmountDisk(targetDev);
@@ -692,7 +692,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     // rename to DEEPINOS
     XSys::SynExec("diskutil", QString("mountDisk %1").arg(diskDev));
-    XSys::SynExec("diskutil", QString("rename %1 DEEPINOS").arg(targetDev));
+    XSys::SynExec("diskutil", QString("rename %1 UOS").arg(targetDev));
 
     // install syslinux
     SureUmount(targetDev);

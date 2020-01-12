@@ -227,24 +227,24 @@ bool CheckInstallDisk(const QString &targetDev)
 
     QString targetPath = XSys::DiskUtil::MountPoint(targetDev);
     qDebug() << "targetPath: " << targetPath;
-    QFile test(QDir::toNativeSeparators(targetPath + "/" + "deepinos"));
+    QFile test(QDir::toNativeSeparators(targetPath + "/" + "UOS"));
 
     if (!test.open(QIODevice::ReadWrite)) {
         qDebug() << "erro open file: " << test.fileName();
         return false;
     }
 
-    QFile deepinos(":src/deepinos");
-    deepinos.open(QIODevice::ReadOnly);
-    QByteArray data = deepinos.readAll();
+    QFile UOS(":src/UOS");
+    UOS.open(QIODevice::ReadOnly);
+    QByteArray data = UOS.readAll();
 
     if (data.length() != test.write(data)) {
-        qDebug() << "erro write file: " << deepinos.fileName();
+        qDebug() << "erro write file: " << UOS.fileName();
         return false;
     }
 
     test.close();
-    deepinos.close();
+    UOS.close();
     test.remove();
 
     return true;
