@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="64"/>
         <source>Failed to call the command %1</source>
         <translation>Nepavyko iškviesti komandą %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Disko formatavimo klaida: Prašome formatuoti savo diską, naudojant FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Neužtenka vietos diske: Įsitikinkite, kad diske yra %1 laisvos vietos</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Disko prijungimo klaida: Įdėkite diską dar kartą arba, norėdami bandyti vėl, paleiskite sistemą iš naujo</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Atvaizdžio išglaudinimo klaida: Patikrinkite atvaizdžio md5 kontrolinę sumą, kad užtikrintumėte atvaizdžio vientisumą</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Internal Error</source>
         <translation>Vidinė klaida</translation>
     </message>
@@ -35,12 +35,12 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="117"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Paleidimo kūrėjas yra paprastas įrankis, skirtas įrašyti sistemos atvaizdžio failus į CD/DVD, USB atmintuką ir kitas laikmenas.</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Boot Maker</source>
         <translation>Paleidimo kūrėjas</translation>
     </message>
@@ -48,61 +48,61 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="124"/>
+        <location filename="../app/view/isoselectview.cpp" line="68"/>
         <source>Drag an ISO image file here</source>
-        <translation type="unfinished"/>
+        <translation>Vilkite ISO atvaizdžio failą čia</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="144"/>
+        <location filename="../app/view/isoselectview.cpp" line="72"/>
         <source>OR</source>
         <translation>ARBA</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="88"/>
-        <location filename="../app/view/isoselectview.cpp" line="163"/>
+        <location filename="../app/view/isoselectview.cpp" line="46"/>
+        <location filename="../app/view/isoselectview.cpp" line="84"/>
         <source>Select an ISO image file</source>
         <translation>Pasirinkite ISO atvaizdžio failą</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="214"/>
+        <location filename="../app/view/isoselectview.cpp" line="102"/>
         <source>Next</source>
         <translation>Kitas</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="301"/>
+        <location filename="../app/view/isoselectview.cpp" line="162"/>
         <source>Reselect an ISO image file</source>
         <translation>Iš naujo pasirinkti ISO atvaizdžio failą</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <location filename="../app/view/isoselectview.cpp" line="197"/>
         <source>Illegal ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>Neleistinas ISO atvaizdžio failas</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="442"/>
+        <location filename="../app/view/isoselectview.cpp" line="293"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>Aptinkamas ISO failas, palaukite...</translation>
     </message>
 </context>
 <context>
     <name>ProgressView</name>
     <message>
-        <location filename="../app/view/progressview.cpp" line="61"/>
+        <location filename="../app/view/progressview.cpp" line="44"/>
         <source>Burning</source>
-        <translation type="unfinished"/>
+        <translation>Rašoma</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="77"/>
+        <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>Rašoma, palaukite...</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="89"/>
+        <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>Proceso metu nešalinkite disko ir neišjunkite kompiuterio</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="111"/>
+        <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
@@ -115,12 +115,12 @@
         <translation>Keičiamasis diskas</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Keičiamasis diskas</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="123"/>
+        <location filename="../app/main.cpp" line="116"/>
         <source>Boot Maker</source>
         <translation>Paleidimo kūrėjas</translation>
     </message>
@@ -128,42 +128,42 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="86"/>
         <source>Reboot now</source>
         <translation>Paleisti iš naujo dabar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <translation>Atlikta</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
         <translation>Sėkmingai</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="122"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Klaidos žurnalas bus automatiškai įkeltas kartu su atsiliepimu. Be jūsų atsiliepimo, mes negalime nieko patobulinti</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="123"/>
         <source>Submit Feedback</source>
         <translation>Pateikti atsiliepimą</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="137"/>
         <source>Close</source>
         <translation>Užverti</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="145"/>
         <source>Sorry, process failed</source>
         <translation>Atleiskite, procesas patyrė nesėkmę</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="146"/>
         <source>Process failed</source>
         <translation>Procesas patyrė nesėkmę</translation>
     </message>
@@ -171,54 +171,49 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="114"/>
+        <location filename="../app/view/usbselectview.cpp" line="102"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation type="unfinished"/>
+        <translation>Formatuokite diską norėdami padidinti sėkmingo rašymo tikimybę</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="183"/>
+        <location filename="../app/view/usbselectview.cpp" line="136"/>
         <source>Start</source>
         <translation>Pradėti</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="332"/>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Format USB flash drive</source>
         <translation>Formatuoti atmintuką</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="87"/>
+        <location filename="../app/view/usbselectview.cpp" line="79"/>
         <source>Select a disk</source>
         <translation>Pasirinkti diską</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="163"/>
+        <location filename="../app/view/usbselectview.cpp" line="124"/>
         <source>No disk available</source>
-        <translation type="unfinished"/>
+        <translation>Nėra prieinamų diskų</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="251"/>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
         <translation>Formatavimas ištrins visus diske esančius duomenis, prašome patvirtinti ir tęsti</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="334"/>
+        <location filename="../app/view/usbselectview.cpp" line="233"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
         <translation>Formatuojant diską bus perrašyti visi duomenys, prieš tęsdami susikurkite atsarginę duomenų kopiją.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="335"/>
+        <location filename="../app/view/usbselectview.cpp" line="234"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="336"/>
+        <location filename="../app/view/usbselectview.cpp" line="235"/>
         <source>OK</source>
         <translation>Gerai</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="351"/>
-        <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Disko formatavimo klaida: Prašome formatuoti savo diską, naudojant FAT32</translation>
     </message>
 </context>
 </TS>

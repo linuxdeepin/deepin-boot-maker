@@ -1,0 +1,12 @@
+Package: deepin-boot-maker-dbgsym
+Source: deepin-boot-maker
+Version: 1.9.0-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Deepin Sysdev <sysdev@linuxdeepin.com>
+Installed-Size: 7461
+Depends: deepin-boot-maker (= 1.9.0-1)
+Section: debug
+Priority: optional
+Description: debug symbols for deepin-boot-maker
+Build-Ids: 80bc299acdeedb33899b648096794fc6bbf95d53 919ffc74e82b8943a95d18e142052f89b03c8c38
