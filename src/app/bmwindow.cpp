@@ -209,10 +209,10 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
-//        Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
-//        flags |= Qt::WindowSystemMenuHint;
-//        flags |= Qt::WindowMinimizeButtonHint;
-//        titlebar()->setDisableFlags(flags);
+        #ifdef Q_OS_WIN
+        setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowMinimizeButtonHint);
+        this->setVisible(true);
+        #endif
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
         titlebar()->setQuitMenuDisabled(true);
         slideWidget(d->usbWidget, d->progressWidget);
