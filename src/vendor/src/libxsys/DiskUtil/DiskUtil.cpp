@@ -746,9 +746,10 @@ QString GetPartitionDisk(const QString &targetDev)
     return XAPI::GetPartitionDisk(targetDev);
 }
 
-bool EjectDisk(const QString &targetDev)
+XSys::Result EjectDisk(const QString &targetDev)
 {
-    return UmountDisk(targetDev);
+     UmountDisk(targetDev);
+     return XSys::SynExec("bash",QString("-c \"udisksctl power-off -b %1?*\"").arg(GetPartitionDisk(targetDev)));
 }
 
 bool UmountDisk(const QString &disk)

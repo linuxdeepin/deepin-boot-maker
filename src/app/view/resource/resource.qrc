@@ -15,5 +15,7 @@
         <file>theme/dark/image/disc_bg.png</file>
         <file>theme/light/image/disc_dark.svg</file>
         <file>theme/dark/image/select_active_dark.svg</file>
+        <file>theme/dark/image/drive-removable-media-48px.png</file>
+        <file>theme/dark/image/success.svg</file>
     </qresource>
 </RCC>

@@ -114,7 +114,8 @@ BootMakerService::BootMakerService(QObject *parent) :
 //            this, &BootMakerService::CheckFileResult);
     connect(d->bm, &BootMaker::reportProgress,
             this, &BootMakerService::ReportProgress);
-
+    connect(d->bm, &BootMaker::reportProgress1,
+            this, &BootMakerService::ReportProgress1);
 //    connect(this, &BootMakerService::startInstall,
 //            d->bm, &BootMaker::install);
 

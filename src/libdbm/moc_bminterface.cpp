@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_BMInterface_t {
-    QByteArrayData data[23];
-    char stringdata0[221];
+    QByteArrayData data[24];
+    char stringdata0[237];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,26 +44,27 @@ QT_MOC_LITERAL(8, 89, 14), // "reportProgress"
 QT_MOC_LITERAL(9, 104, 7), // "current"
 QT_MOC_LITERAL(10, 112, 5), // "total"
 QT_MOC_LITERAL(11, 118, 5), // "title"
-QT_MOC_LITERAL(12, 124, 12), // "startInstall"
-QT_MOC_LITERAL(13, 137, 5), // "image"
-QT_MOC_LITERAL(14, 143, 6), // "device"
-QT_MOC_LITERAL(15, 150, 9), // "partition"
-QT_MOC_LITERAL(16, 160, 12), // "formatDevice"
-QT_MOC_LITERAL(17, 173, 5), // "start"
-QT_MOC_LITERAL(18, 179, 4), // "stop"
-QT_MOC_LITERAL(19, 184, 6), // "reboot"
-QT_MOC_LITERAL(20, 191, 10), // "deviceList"
-QT_MOC_LITERAL(21, 202, 9), // "checkfile"
-QT_MOC_LITERAL(22, 212, 8) // "filepath"
+QT_MOC_LITERAL(12, 124, 15), // "reportProgress1"
+QT_MOC_LITERAL(13, 140, 12), // "startInstall"
+QT_MOC_LITERAL(14, 153, 5), // "image"
+QT_MOC_LITERAL(15, 159, 6), // "device"
+QT_MOC_LITERAL(16, 166, 9), // "partition"
+QT_MOC_LITERAL(17, 176, 12), // "formatDevice"
+QT_MOC_LITERAL(18, 189, 5), // "start"
+QT_MOC_LITERAL(19, 195, 4), // "stop"
+QT_MOC_LITERAL(20, 200, 6), // "reboot"
+QT_MOC_LITERAL(21, 207, 10), // "deviceList"
+QT_MOC_LITERAL(22, 218, 9), // "checkfile"
+QT_MOC_LITERAL(23, 228, 8) // "filepath"
 
     },
     "BMInterface\0deviceListChanged\0\0"
     "QList<DeviceInfo>\0partitions\0finished\0"
     "errcode\0description\0reportProgress\0"
-    "current\0total\0title\0startInstall\0image\0"
-    "device\0partition\0formatDevice\0start\0"
-    "stop\0reboot\0deviceList\0checkfile\0"
-    "filepath"
+    "current\0total\0title\0reportProgress1\0"
+    "startInstall\0image\0device\0partition\0"
+    "formatDevice\0start\0stop\0reboot\0"
+    "deviceList\0checkfile\0filepath"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,38 +74,40 @@ static const uint qt_meta_data_BMInterface[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       4,       // signalCount
+       5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x06 /* Public */,
-       5,    2,   62,    2, 0x06 /* Public */,
-       8,    4,   67,    2, 0x06 /* Public */,
-      12,    4,   76,    2, 0x06 /* Public */,
+       1,    1,   64,    2, 0x06 /* Public */,
+       5,    2,   67,    2, 0x06 /* Public */,
+       8,    4,   72,    2, 0x06 /* Public */,
+      12,    4,   81,    2, 0x06 /* Public */,
+      13,    4,   90,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      17,    0,   85,    2, 0x0a /* Public */,
-      18,    0,   86,    2, 0x0a /* Public */,
-      19,    0,   87,    2, 0x0a /* Public */,
-      20,    0,   88,    2, 0x0a /* Public */,
-      21,    1,   89,    2, 0x0a /* Public */,
+      18,    0,   99,    2, 0x0a /* Public */,
+      19,    0,  100,    2, 0x0a /* Public */,
+      20,    0,  101,    2, 0x0a /* Public */,
+      21,    0,  102,    2, 0x0a /* Public */,
+      22,    1,  103,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, QMetaType::Int, QMetaType::QString,    6,    7,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::QString,    9,   10,   11,    7,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   13,   14,   15,   16,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::QString,    9,   10,   11,    7,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   14,   15,   16,   17,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     0x80000000 | 3,
-    QMetaType::Bool, QMetaType::QString,   22,
+    QMetaType::Bool, QMetaType::QString,   23,
 
        0        // eod
 };
@@ -118,13 +121,14 @@ void BMInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 0: _t->deviceListChanged((*reinterpret_cast< const QList<DeviceInfo>(*)>(_a[1]))); break;
         case 1: _t->finished((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         case 2: _t->reportProgress((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4]))); break;
-        case 3: _t->startInstall((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
-        case 4: _t->start(); break;
-        case 5: _t->stop(); break;
-        case 6: _t->reboot(); break;
-        case 7: { QList<DeviceInfo> _r = _t->deviceList();
+        case 3: _t->reportProgress1((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4]))); break;
+        case 4: _t->startInstall((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
+        case 5: _t->start(); break;
+        case 6: _t->stop(); break;
+        case 7: _t->reboot(); break;
+        case 8: { QList<DeviceInfo> _r = _t->deviceList();
             if (_a[0]) *reinterpret_cast< QList<DeviceInfo>*>(_a[0]) = std::move(_r); }  break;
-        case 8: { bool _r = _t->checkfile((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 9: { bool _r = _t->checkfile((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -163,9 +167,16 @@ void BMInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
+            using _t = void (BMInterface::*)(int , int , const QString & , const QString & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&BMInterface::reportProgress1)) {
+                *result = 3;
+                return;
+            }
+        }
+        {
             using _t = void (BMInterface::*)(const QString & , const QString & , const QString & , bool );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&BMInterface::startInstall)) {
-                *result = 3;
+                *result = 4;
                 return;
             }
         }
@@ -199,13 +210,13 @@ int BMInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }
@@ -232,10 +243,17 @@ void BMInterface::reportProgress(int _t1, int _t2, const QString & _t3, const QS
 }
 
 // SIGNAL 3
-void BMInterface::startInstall(const QString & _t1, const QString & _t2, const QString & _t3, bool _t4)
+void BMInterface::reportProgress1(int _t1, int _t2, const QString & _t3, const QString & _t4)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void BMInterface::startInstall(const QString & _t1, const QString & _t2, const QString & _t3, bool _t4)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

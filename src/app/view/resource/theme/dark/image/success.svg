@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>success</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-8.3%" y="-7.1%" width="116.8%" height="114.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="102.549264%" y1="57.6822305%" x2="-2.65228894%" y2="57.6822305%" id="linearGradient-2">
+            <stop stop-color="#9B58FF" offset="0%"></stop>
+            <stop stop-color="#891EFF" offset="4.57146722%"></stop>
+            <stop stop-color="#A054FF" offset="11.7968023%"></stop>
+            <stop stop-color="#A664FF" offset="85.0953982%"></stop>
+            <stop stop-color="#8F36FB" offset="93.7925209%"></stop>
+            <stop stop-color="#9B58FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="56.4295561%" x2="0%" y2="56.4295561%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.9" offset="9.93588454%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.7" offset="52.3560063%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.9" offset="87.6484117%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="48.2392027%" cy="19.1031265%" fx="48.2392027%" fy="19.1031265%" r="78.6539217%" gradientTransform="translate(0.482392,0.191031),scale(0.205882,1.000000),rotate(90.000000),scale(1.000000,3.580713),translate(-0.482392,-0.191031)" id="radialGradient-4">
+            <stop stop-color="#E6B3FF" offset="0%"></stop>
+            <stop stop-color="#72A3FF" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#0174FF" offset="0%"></stop>
+            <stop stop-color="#01C2FF" offset="50.8499801%"></stop>
+            <stop stop-color="#0056FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="启动盘_-安全弹出U盘" transform="translate(-156.000000, -173.000000)">
+            <g id="Group-5" transform="translate(112.000000, 173.000000)">
+                <g id="drive-2" transform="translate(44.000000, 0.000000)">
+                    <g id="drive-removable-media-48px" transform="translate(9.000000, 9.000000)">
+                        <g id="drive-harddisk-48px" stroke-width="1" transform="translate(16.041667, 9.166667)">
+                            <g id="Group-2" filter="url(#filter-1)">
+                                <rect id="Rectangle-1" fill="url(#linearGradient-2)" x="0" y="0" width="77.9166667" height="84.7916667" rx="6"></rect>
+                                <path d="M77.4166667,83.7851142 L0.982723186,84.2884608 L0.500007324,68.1605932 C0.50195819,67.1968863 0.893530784,66.3245959 1.52500843,65.6926189 C2.15829715,65.0588295 3.03292369,64.6666667 3.99800175,64.6666667 L73.9186649,64.6666667 C74.8842407,64.6666667 75.7583737,65.0589572 76.3912803,65.6923642 C77.0247524,66.3263371 77.4166667,67.2018958 77.4166667,68.1678295 L77.4166667,83.7851142 Z" id="Rectangle-3" stroke-opacity="0.5" stroke="#FFFFFF" fill="url(#linearGradient-3)"></path>
+                                <path d="M74.4173809,91.1666667 L3.49928573,91.1666667 C2.67108644,91.1666667 1.92130172,90.8308167 1.37855674,90.2878695 C0.835732333,89.7448429 0.5,88.9946623 0.5,88.1660776 L0.5,79.1255891 C0.5,78.2978002 0.836853915,77.5484223 1.37947945,77.0055946 C1.92310236,76.4617692 2.67340337,76.125 3.49928573,76.125 L74.4173809,76.125 C75.2455802,76.125 75.9953649,76.46085 76.5381099,77.0037971 C77.0809343,77.5468237 77.4166667,78.2970044 77.4166667,79.1255891 L77.4166667,88.1660776 C77.4166667,88.9938664 77.0798128,89.7432444 76.5371872,90.286072 C75.9935643,90.8298974 75.2432633,91.1666667 74.4173809,91.1666667 Z" id="Rectangle-1" stroke-opacity="0.2" stroke="#003D9C" fill="url(#radialGradient-4)"></path>
+                                <g id="Group" transform="translate(44.687500, 80.208333)" fill="url(#linearGradient-5)">
+                                    <path d="M25.8455716,0 C26.1264609,0 26.3541667,0.228743553 26.3541667,0.494433045 L26.3541667,6.38056695 C26.3541667,6.65363479 26.1260547,6.875 25.8455716,6.875 L24.5710951,6.875 C24.2902058,6.875 24.0625,6.64625645 24.0625,6.38056695 L24.0625,0.494433045 C24.0625,0.221365215 24.2906119,0 24.5710951,0 L25.8455716,0 Z M21.2622382,0 C21.5431275,0 21.7708333,0.228743553 21.7708333,0.494433045 L21.7708333,6.38056695 C21.7708333,6.65363479 21.5427214,6.875 21.2622382,6.875 L19.9877618,6.875 C19.7068725,6.875 19.4791667,6.64625645 19.4791667,6.38056695 L19.4791667,0.494433045 C19.4791667,0.221365215 19.7072786,0 19.9877618,0 L21.2622382,0 Z M16.6789049,0 C16.9597942,0 17.1875,0.228743553 17.1875,0.494433045 L17.1875,6.38056695 C17.1875,6.65363479 16.9593881,6.875 16.6789049,6.875 L15.4044284,6.875 C15.1235391,6.875 14.8958333,6.64625645 14.8958333,6.38056695 L14.8958333,0.494433045 C14.8958333,0.221365215 15.1239453,0 15.4044284,0 L16.6789049,0 Z M12.0955716,0 C12.3764609,0 12.6041667,0.228743553 12.6041667,0.494433045 L12.6041667,6.38056695 C12.6041667,6.65363479 12.3760547,6.875 12.0955716,6.875 L10.8210951,6.875 C10.5402058,6.875 10.3125,6.64625645 10.3125,6.38056695 L10.3125,0.494433045 C10.3125,0.221365215 10.5406119,0 10.8210951,0 L12.0955716,0 Z M7.51223822,0 C7.79312755,0 8.02083333,0.228743553 8.02083333,0.494433045 L8.02083333,6.38056695 C8.02083333,6.65363479 7.79272139,6.875 7.51223822,6.875 L6.23776178,6.875 C5.95687245,6.875 5.72916667,6.64625645 5.72916667,6.38056695 L5.72916667,0.494433045 C5.72916667,0.221365215 5.95727861,0 6.23776178,0 L7.51223822,0 Z M2.92890489,0 C3.20979421,0 3.4375,0.228743553 3.4375,0.494433045 L3.4375,6.38056695 C3.4375,6.65363479 3.20938806,6.875 2.92890489,6.875 L1.65442844,6.875 C1.37353912,6.875 1.14583333,6.64625645 1.14583333,6.38056695 L1.14583333,0.494433045 C1.14583333,0.221365215 1.37394528,0 1.65442844,0 L2.92890489,0 Z" id="Combined-Shape"></path>
+                                </g>
+                                <path d="M6.22916667,83.6458333 C6.22916667,82.8346651 6.55795755,82.1002901 7.0895405,81.5687072 C7.62112344,81.0371242 8.35549844,80.7083333 9.16666667,80.7083333 C9.97783489,80.7083333 10.7122099,81.0371242 11.2437928,81.5687072 C11.7753758,82.1002901 12.1041667,82.8346651 12.1041667,83.6458333 C12.1041667,84.4570016 11.7753758,85.1913766 11.2437928,85.7229595 C10.7122099,86.2545424 9.97783489,86.5833333 9.16666667,86.5833333 C8.35549844,86.5833333 7.62112344,86.2545424 7.0895405,85.7229595 C6.55795755,85.1913766 6.22916667,84.4570016 6.22916667,83.6458333 Z" id="Oval" stroke="#A50AFF" fill="#F076FF"></path>
+                            </g>
+                        </g>
+                        <polygon id="Path-2" fill="#FFFFFF" points="38.9583333 48.125 55 27.5 71.0416667 48.125"></polygon>
+                        <rect id="Rectangle" fill="#FFFFFF" x="38.9583333" y="52.7083333" width="32.0833333" height="4.58333333"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

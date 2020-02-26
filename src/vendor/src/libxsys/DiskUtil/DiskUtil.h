@@ -35,8 +35,8 @@ enum PartionFormat {
 };
 
 bool UmountDisk(const QString &targetDev);
-bool EjectDisk(const QString &targetDev);
-
+XSys::Result EjectDisk(const QString &targetDev);
+void detach();
 bool Mount(const QString &targetDev);
 bool Mount(const QString &targetDev, const QString &path);
 QString MountPoint(const QString &targetDev) ;

@@ -175,6 +175,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
         if (current >= 100) {
             qDebug() << "finish" << current << error;
             emit finish(error, title, description);
+
         }
     });
 }

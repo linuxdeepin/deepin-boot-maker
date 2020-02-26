@@ -21,7 +21,8 @@ HEADERS += \
     view/devicelistwidget.h \
     view/progressview.h \
     view/resultview.h \
-    view/dropframe.h
+    view/dropframe.h \
+    view/unmountusbview.h
 
 SOURCES += \
     view/isoselectview.cpp \
@@ -33,7 +34,8 @@ SOURCES += \
     view/resultview.cpp \
     view/dropframe.cpp \
     bmwindow.cpp \
-    main.cpp
+    main.cpp \
+    view/unmountusbview.cpp
 
 unix {
 

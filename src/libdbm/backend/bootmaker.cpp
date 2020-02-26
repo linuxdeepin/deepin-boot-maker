@@ -247,17 +247,19 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     this->reportProgress(80, Error::NoError, "config syslinux", "");
     XSys::Bootloader::Syslinux::ConfigSyslinx(installDir);
 
-#ifdef Q_OS_UNIX
-    this->reportProgress(81, Error::NoError, "begin syncing filesystems", "");
-    XSys::SynExec("sync", "");
-    this->reportProgress(94, Error::NoError, "begin syncing filesystems", "");
-#endif
+//#ifdef Q_OS_UNIX
+//    this->reportProgress(81, Error::NoError, "begin syncing filesystems", "");
+//    XSys::SynExec("sync", "");
+//    this->reportProgress(94, Error::NoError, "begin syncing filesystems", "");
+//#endif
 
-    this->reportProgress(95, Error::NoError, "eject disk", "");
+//    this->reportProgress(95, Error::NoError, "eject disk", "");
+
+
+    this->reportProgress(100, Error::NoError, "finish", "");
 #ifndef Q_OS_WIN
     XSys::DiskUtil::EjectDisk(partition);
 #endif
-
-    this->reportProgress(100, Error::NoError, "finish", "");
+    this->reportProgress1(100,Error::NoError,"finish","");
     return true;
 }

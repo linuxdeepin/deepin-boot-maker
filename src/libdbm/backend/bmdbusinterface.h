@@ -80,7 +80,8 @@ Q_SIGNALS: // SIGNALS
     void DeviceListChanged(const QString &deviceListJson);
     void Finished(int errcode, const QString &description);
     void ReportProgress(int current, int total, const QString &title, const QString &description);
-//    void CheckFileResult(bool result);
+    void ReportProgress1(int current, int total, const QString &title, const QString &description);
+    //    void CheckFileResult(bool result);
 };
 
 namespace com {

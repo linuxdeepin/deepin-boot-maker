@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>translations/deepin-boot-maker_zh_CN.qm</file>
         <file>translations/deepin-boot-maker.qm</file>
         <file>translations/deepin-boot-maker_zh_TW.ts</file>
         <file>translations/deepin-boot-maker_zh_TW.qm</file>
@@ -42,5 +41,6 @@
         <file>translations/deepin-boot-maker_ar.ts</file>
         <file>translations/deepin-boot-maker_ar.qm</file>
         <file>translations/deepin-boot-maker.ts</file>
+        <file>translations/deepin-boot-maker_zh_CN.qm</file>
     </qresource>
 </RCC>

@@ -26,7 +26,7 @@
 #include "view/resultview.h"
 #include "bminterface.h"
 #include "backend/bmhandler.h"
-
+#include "view/unmountusbview.h"
 #include <ddialog.h>
 #include <DTitlebar>
 #include <DPageIndicator>
@@ -98,7 +98,7 @@ public:
     ProgressView    *progressWidget = nullptr;
     ResultView      *resultWidget   = nullptr;
 //    DDialog         *warnDlg        = nullptr;
-
+    UnmountUsbView  *unmountWidget  = nullptr;
     BMInterface     *interface      = nullptr;
     DPageIndicator  *wsib      = nullptr;
 
@@ -145,7 +145,7 @@ BMWindow::BMWindow(QWidget *parent)
     title->setIcon(QIcon::fromTheme("deepin-boot-maker")/*QIcon(":/theme/light/image/deepin-boot-maker.svg")*/);
 //    title->setBackgroundTransparent(true);
     title->setFixedHeight(50);
-    title->setFrameStyle(QFrame::NoFrame);
+//    title->setFrameStyle(QFrame::NoFrame);
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
@@ -174,6 +174,10 @@ BMWindow::BMWindow(QWidget *parent)
     d->progressWidget->setFixedSize(viewWidth, 476);
     d->progressWidget->move(viewWidth, 0);
 
+    d->unmountWidget = new UnmountUsbView;
+    d->unmountWidget->setFixedSize(viewWidth, 476);
+    d->unmountWidget->move(viewWidth, 0);
+
     d->resultWidget = new ResultView;
     d->resultWidget->setFixedSize(viewWidth, 476);
     d->resultWidget->move(viewWidth, 0);
@@ -182,12 +186,13 @@ BMWindow::BMWindow(QWidget *parent)
 
     actionsLayout->addWidget(d->usbWidget);
     actionsLayout->addWidget(d->progressWidget);
+    actionsLayout->addWidget(d->unmountWidget);
     actionsLayout->addWidget(d->resultWidget);
 
     mainLayout->addSpacing(0);
     d->wsib = new DPageIndicator(this);
     d->wsib->setAutoFillBackground(true);
-    d->wsib->setPageCount(3);
+    d->wsib->setPageCount(4);
     d->wsib->setCurrentPage(0);
     d->wsib->setFixedHeight(34);
     d->wsib->setPointRadius(3);
@@ -246,11 +251,25 @@ BMWindow::BMWindow(QWidget *parent)
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description;
-        titlebar()->setQuitMenuDisabled(false);
+        setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
+        titlebar()->setMenuVisible(false);
+        DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
+//        d->resultWidget->updateResult(error, title, description);
+        slideWidget(d->progressWidget, d->unmountWidget);
+        d->wsib->setCurrentPage(3);
+    });
+    connect(d->unmountWidget,&UnmountUsbView::finish,this,[=](quint32 error, const QString & title, const QString & description){
+//        setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
+        titlebar()->setMenuVisible(false);
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
-        d->resultWidget->updateResult(error, title, description);
-        slideWidget(d->progressWidget, d->resultWidget);
-        d->wsib->setCurrentPage(2);
+        d->resultWidget->updateResult(error,title,description);
+        slideWidget(d->unmountWidget,d->resultWidget);
+        d->wsib->setCurrentPage(3);
+
+
+
+
+
     });
 //    connect(d->interface, &BMInterface::checkFileResult,
 //            d->isoWidget, &ISOSelectView:: checkFileResult);

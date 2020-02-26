@@ -46,6 +46,7 @@ signals:
     void deviceListChanged(const QList<DeviceInfo> &partitions);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int total, const QString &title, const QString &description);
+    void reportProgress1(int current, int total, const QString &title, const QString &description);
     void startInstall(const QString &image,
                       const QString &device,
                       const QString &partition,
