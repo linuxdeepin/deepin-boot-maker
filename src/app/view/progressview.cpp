@@ -171,11 +171,13 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     connect(BMInterface::instance(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << current << title << description;
-        waterProgress->setValue(static_cast<int>(current));
+        if(current!=101){
+        waterProgress->setValue(static_cast<int>(current));}
         if (current >= 100) {
             qDebug() << "finish" << current << error;
-            emit finish(error, title, description);
+            emit finish(current,error, title, description);
 
         }
+
     });
 }

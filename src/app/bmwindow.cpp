@@ -246,31 +246,47 @@ BMWindow::BMWindow(QWidget *parent)
         titlebar()->setDisableFlags(flags);
         slideWidget(d->usbWidget, d->progressWidget);
         d->wsib->setCurrentPage(2);
-        emit d->progressWidget->finish(error, title, description);
+        emit d->progressWidget->finish(0,error, title, description);
     });
     connect(d->progressWidget, &ProgressView::finish,
-    this, [ = ](quint32 error, const QString & title, const QString & description) {
-        qDebug() << error << title << description;
-        setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
-        titlebar()->setMenuVisible(false);
-        DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
-//        d->resultWidget->updateResult(error, title, description);
-        slideWidget(d->progressWidget, d->unmountWidget);
-        d->wsib->setCurrentPage(3);
+    this, [ = ](quint32 current,quint32 error, const QString & title, const QString & description) {
+        qDebug() << error << title << description<<current;
+        if(error!=BMHandler::NoError){
+           titlebar()->setMenuVisible(false);
+           DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
+           d->resultWidget->updateResult(error,title,description);
+           slideWidget(d->progressWidget,d->resultWidget);
+           d->wsib->setCurrentPage(3);
+        }
+        if(error==BMHandler::NoError&&current!=101){
+           setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
+           titlebar()->setMenuVisible(false);
+           DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
+           slideWidget(d->progressWidget, d->unmountWidget);
+           d->wsib->setCurrentPage(3);
+
+        }
+        else{
+            titlebar()->setMenuVisible(false);
+            DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
+            d->resultWidget->updateResult(error,title,description);
+            slideWidget(d->unmountWidget,d->resultWidget);
+            d->wsib->setCurrentPage(3);
+        }
     });
-    connect(d->unmountWidget,&UnmountUsbView::finish,this,[=](quint32 error, const QString & title, const QString & description){
-//        setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
-        titlebar()->setMenuVisible(false);
-        DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
-        d->resultWidget->updateResult(error,title,description);
-        slideWidget(d->unmountWidget,d->resultWidget);
-        d->wsib->setCurrentPage(3);
+//    connect(d->unmountWidget,&UnmountUsbView::finish1,this,[=](quint32 error, const QString & title, const QString & description){
+//       setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
+//        titlebar()->setMenuVisible(false);
+//        DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
+//        d->resultWidget->updateResult(error,title,description);
+//        slideWidget(d->unmountWidget,d->resultWidget);
+//        d->wsib->setCurrentPage(3);
 
 
 
 
 
-    });
+//    });
 //    connect(d->interface, &BMInterface::checkFileResult,
 //            d->isoWidget, &ISOSelectView:: checkFileResult);
 

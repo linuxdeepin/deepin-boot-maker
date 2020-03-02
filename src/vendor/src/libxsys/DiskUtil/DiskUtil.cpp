@@ -382,6 +382,7 @@ QString GetPartitionDisk(QString targetDev)
 
 XSys::Result UmountDisk(const QString &targetDev)
 {
+    XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
     return XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
 }
 

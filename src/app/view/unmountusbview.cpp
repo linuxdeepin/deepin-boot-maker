@@ -27,9 +27,10 @@ UnmountUsbView::UnmountUsbView(DWidget *parent):DWidget (parent)
     pa=DApplicationHelper::instance()->palette(this);//    QBrush brush2=DApplicationHelper::instance()->palette(this).base();
     pa.setBrush(DPalette::Background,pa.color(DPalette::Base));
     this->setPalette(pa);
-    connect(BMInterface::instance(),&BMInterface::reportProgress1,this,
-            [=](int current,quint32 error, const QString & title, const QString & description){
-            emit finish(error,title,description);
-    });
+//    connect(BMInterface::instance(),&BMInterface::reportProgress,this,
+//            [=](int current,quint32 error, const QString & title, const QString & description){
+//            emit finish1(error,title,description);
+
+//        });
 
 }

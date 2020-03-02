@@ -25,7 +25,6 @@
 #include "../util/utils.h"
 #include "../util/devicemonitor.h"
 #include "diskutil.h"
-
 #include <QDebug>
 
 #include <XSys>
@@ -90,7 +89,7 @@ BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
     monitorWork->start();
 
     connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString & description) {
-        this->reportProgress(100, errcode, "install failed", description);
+        this->reportProgress(101, errcode, "install failed", description);
     });
 }
 
@@ -258,8 +257,13 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
     this->reportProgress(100, Error::NoError, "finish", "");
 #ifndef Q_OS_WIN
-    XSys::DiskUtil::EjectDisk(partition);
+    XSys::SynExec("sync", "");
+//    XSys::DiskUtil::EjectDisk(partition);
+    result= XSys::DiskUtil::EjectDisk(partition);
+    if(! result.isSuccess()){
+    emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
+    }
 #endif
-    this->reportProgress1(100,Error::NoError,"finish","");
+    this->reportProgress(101,Error::NoError,"finish","");
     return true;
 }

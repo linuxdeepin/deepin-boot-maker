@@ -31,7 +31,7 @@ public:
     explicit ProgressView(DWidget *parent = 0);
 
 signals:
-    void finish(quint32 error, const QString &title, const QString &description);
+    void finish(quint32 current,quint32 error, const QString &title, const QString &description);
     void testCancel();
 };
 

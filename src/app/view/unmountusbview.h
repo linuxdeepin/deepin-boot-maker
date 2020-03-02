@@ -22,7 +22,7 @@ private:
     QPointer<DLabel>m_hitTitle;
     QPointer<DLabel>m_ejectIcon;
 signals:
-     void finish(quint32 error, const QString &title, const QString &description);
+     void finish1(quint32 error, const QString &title, const QString &description);
 public slots:
 };
 

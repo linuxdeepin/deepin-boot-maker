@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_UnmountUsbView_t {
     QByteArrayData data[6];
-    char stringdata0[47];
+    char stringdata0[48];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,14 +32,14 @@ struct qt_meta_stringdata_UnmountUsbView_t {
 static const qt_meta_stringdata_UnmountUsbView_t qt_meta_stringdata_UnmountUsbView = {
     {
 QT_MOC_LITERAL(0, 0, 14), // "UnmountUsbView"
-QT_MOC_LITERAL(1, 15, 6), // "finish"
-QT_MOC_LITERAL(2, 22, 0), // ""
-QT_MOC_LITERAL(3, 23, 5), // "error"
-QT_MOC_LITERAL(4, 29, 5), // "title"
-QT_MOC_LITERAL(5, 35, 11) // "description"
+QT_MOC_LITERAL(1, 15, 7), // "finish1"
+QT_MOC_LITERAL(2, 23, 0), // ""
+QT_MOC_LITERAL(3, 24, 5), // "error"
+QT_MOC_LITERAL(4, 30, 5), // "title"
+QT_MOC_LITERAL(5, 36, 11) // "description"
 
     },
-    "UnmountUsbView\0finish\0\0error\0title\0"
+    "UnmountUsbView\0finish1\0\0error\0title\0"
     "description"
 };
 #undef QT_MOC_LITERAL
@@ -72,14 +72,14 @@ void UnmountUsbView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         UnmountUsbView *_t = static_cast<UnmountUsbView *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->finish((*reinterpret_cast< quint32(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3]))); break;
+        case 0: _t->finish1((*reinterpret_cast< quint32(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (UnmountUsbView::*)(quint32 , const QString & , const QString & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UnmountUsbView::finish)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&UnmountUsbView::finish1)) {
                 *result = 0;
                 return;
             }
@@ -124,7 +124,7 @@ int UnmountUsbView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void UnmountUsbView::finish(quint32 _t1, const QString & _t2, const QString & _t3)
+void UnmountUsbView::finish1(quint32 _t1, const QString & _t2, const QString & _t3)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
