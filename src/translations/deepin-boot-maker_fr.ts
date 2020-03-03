@@ -1,33 +1,35 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Échec de l&apos;appel de la commande %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Erreur Formatage Disque: veuillez formater le disque en FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Espace disque insuffisant : Le disque doit avoir au moins %1 d’espace disponible</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Erreur montage disque : Veuillez réinsérer le disque ou redémarrer le système</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Erreur décompression image : Vérifiez la somme de contrôle MD5 de l&apos;image et assurez-vous de son intégrité</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
         <translation>Erreur Interne</translation>
     </message>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation type="unfinished"/>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation>Vérification des données et retrait du support en toute sécurité, veuillez patienter...</translation>
     </message>
 </context>
 <context>

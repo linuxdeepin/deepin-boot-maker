@@ -4,32 +4,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Chyba pri volaní príkazu %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Formátovacia chyba disku: Prosím formátujte disk s FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Nedostatok miesta na disku: Uistite sa, že disk má %1 voľného miesta</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Chyba pripojenia disku: Prosím pripojte disk znovu alebo reštartujte systém a opakujte</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Chyba dekompresie obrazu: Skontrolujte kontrolný súčet MD5 obrazu a uistite sa, že obraz je kompletný</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
         <translation>Interná chyba</translation>
     </message>
@@ -174,7 +174,7 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
+        <source>Verifying data and safely removing the media, please wait...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

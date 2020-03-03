@@ -43,5 +43,6 @@ public slots:
 
 private:
     DeviceMonitor        *m_usbDeviceMonitor = nullptr;
+
 };
 

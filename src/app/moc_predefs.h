@@ -107,7 +107,6 @@
 #define __FLT64_MANT_DIG__ 53
 #define __GNUC__ 8
 #define __GXX_RTTI 1
-#define __pie__ 2
 #define __MMX__ 1
 #define __cpp_delegating_constructors 200604
 #define __FLT_HAS_DENORM__ 1
@@ -162,7 +161,6 @@
 #define __INT_FAST64_TYPE__ long int
 #define __FLT64_DENORM_MIN__ 4.94065645841246544176568792868221372e-324F64
 #define __DBL_MIN__ double(2.22507385850720138309023271733240406e-308L)
-#define __PIE__ 2
 #define __LP64__ 1
 #define __FLT32X_EPSILON__ 2.22044604925031308084726333618164062e-16F32x
 #define __DECIMAL_BID_FORMAT__ 1
@@ -268,7 +266,6 @@
 #define __UINT16_TYPE__ short unsigned int
 #define __WCHAR_TYPE__ int
 #define __SIZEOF_FLOAT__ 4
-#define __pic__ 2
 #define __UINTPTR_MAX__ 0xffffffffffffffffUL
 #define __INT_FAST64_WIDTH__ 64
 #define __DEC64_MIN_EXP__ (-382)
@@ -329,7 +326,6 @@
 #define __FLT_DENORM_MIN__ 1.40129846432481707092372958328991613e-45F
 #define __INT8_MAX__ 0x7f
 #define __LONG_WIDTH__ 64
-#define __PIC__ 2
 #define __UINT_FAST32_TYPE__ long unsigned int
 #define __CHAR32_TYPE__ unsigned int
 #define __FLT_MAX__ 3.40282346638528859811704183484516925e+38F

@@ -1,35 +1,37 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Falhou ao chamar o comando %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Falha ao Formatar: Formate o disco em FAT32</translation>
+        <translation>Erro ao Formatar: Formate o disco em FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Espaço Insuficiente: Verifique se tem %1 disponível em disco</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Falha na Montagem: Insira novamente o disco ou reinicie e tentar novamente</translation>
+        <translation>Erro ao Montar: Insira novamente o disco ou reinicie</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Erro de Descompactação da Imagem: Verifique o md5 da imagem para garantir a sua integridade</translation>
+        <translation>Erro de Descompressão da Imagem: Verifique a integridade da imagem (MD5)</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
-        <translation>Falha Interna</translation>
+        <translation>Erro Interno</translation>
     </message>
 </context>
 <context>
@@ -145,7 +147,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="225"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>O log de erros será enviado junto com o feedback. Não podemos melhorar sem o seu feedback</translation>
+        <translation>O log de erro será enviado com o feedback.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="226"/>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation type="unfinished"/>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation>Verificando os dados e removendo a mídia com segurança, aguarde...</translation>
     </message>
 </context>
 <context>
@@ -226,7 +228,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Falha ao Formatar: Formate o disco em FAT32</translation>
+        <translation>Erro ao Formatar: Formate o disco em FAT32</translation>
     </message>
 </context>
 </TS>

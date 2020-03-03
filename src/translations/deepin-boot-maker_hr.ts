@@ -1,35 +1,37 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hr" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="hr">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Neuspjelo pozivanje naredbe %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Greška formatiranja diska. Molim formatirajte disk sa FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Nedovoljno prostora na disku: Osigurajte da disk ima %1 slobodnog prostora</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Greška montiranja diska: Umetnite disk ponovno ili ponovno podignite sustave za ponovni pokušaj</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -37,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="119"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="121"/>
@@ -71,7 +73,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="238"/>
@@ -145,12 +147,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="225"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="226"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="240"/>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation type="unfinished"/>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

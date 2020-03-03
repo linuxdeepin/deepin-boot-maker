@@ -1,33 +1,35 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
-        <translation>Falha ao chamar o comando %1</translation>
+        <translation>Erro ao chamar o comando %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Erro ao formatar o disco: Formate o disco em FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Espaço insuficiente em disco: Certifique-se que o disco tem pelo menos %1 de espaço livre</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Erro ao montar o disco: Insira o disco de novo ou reinicie o sistema para tentar novamente</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Erro ao descomprimir a imagem: Por favor verifique o checksum md5 da imagem e certifique-se que esta está completa</translation>
+        <translation>Erro ao descomprimir a imagem: Verifique o checksum md5 da imagem para assegurar a sua integridade</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
         <translation>Erro Interno</translation>
     </message>
@@ -50,7 +52,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="124"/>
         <source>Drag an ISO image file here</source>
-        <translation>Arraste um ficheiro de imagem ISO aqui</translation>
+        <translation>Arraste um ficheiro ISO para aqui</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
@@ -71,12 +73,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
-        <translation>Volte a selecionar um ficheiro de imagem ISO</translation>
+        <translation>Volte a selecionar um ficheiro ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="238"/>
         <source>Illegal ISO image file</source>
-        <translation>Ficheiro de imagem ISO ilegal</translation>
+        <translation>Ficheiro ISO ilegal</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
@@ -99,7 +101,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Enquanto o disco estiver a ser criado por favor não o remova nem encerre o computador</translation>
+        <translation>Não remova o disco ou desligue o computador durante o processo</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="111"/>
@@ -145,7 +147,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="225"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>O histórico de erro será atualizado automaticamente com o comentário. Não podemos melhorar sem o seu apoio e comentário</translation>
+        <translation>O registo de erros será carregado automaticamente com o comentário. Não podemos melhorar sem o seu comentário</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="226"/>
@@ -160,7 +162,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="248"/>
         <source>Sorry, process failed</source>
-        <translation>Desculpe, o processo falhou</translation>
+        <translation>O processo falhou</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="249"/>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation type="unfinished"/>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation>A verificar os dados e a remover o dispositivo em segurança, aguarde...</translation>
     </message>
 </context>
 <context>
@@ -206,12 +208,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="251"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation>Os dados do disco serão completamente eliminados ao formatar; por favor confirme e continue</translation>
+        <translation>A formatação irá apagar todos os dados no disco, confirme e continue</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="334"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatar o disco irá sobrescrever todos os dados; por favor, faça uma cópia de segurança antes de prosseguir.</translation>
+        <translation>A formatação do disco irá sobrescrever todos os dados, tenha uma cópia de segurança antes de prosseguir.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
@@ -226,7 +228,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Erro ao formatar o disco: Formate o disco em FAT32</translation>
+        <translation>Erro de formato do disco: Formate o disco com FAT32</translation>
     </message>
 </context>
 </TS>

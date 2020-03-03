@@ -1,33 +1,35 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="de">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Fehler beim Aufruf des Befehls %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Formatierungsfehler: Bitte formatieren Sie den Datenträger im Format FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Zu wenig Platz auf dem Datenträger: Stellen Sie sicher, dass der Datenträger %1 freien Speicherplatz hat</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Fehler beim Einhängen des Datenträgers: Bitte überprüfen Sie, ob die Verbindung zum Datenträger korrekt ist oder der Datenträger korrekt in das Laufwerk eingelegt wurde. Starten Sie anschließend den Rechner neu.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Fehler beim Entpacken des Abbilds: Bitte prüfen Sie die MD5-Prüfsumme des Abbilds und stellen Sie sicher, dass es sich um ein vollständiges unbeschädigtes Abbild handelt.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
         <translation>Interner Fehler</translation>
     </message>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation type="unfinished"/>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation>Daten werden verifiziert und das Medium sicher ausgeworfen. Bitte warten...</translation>
     </message>
 </context>
 <context>

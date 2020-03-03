@@ -1,33 +1,35 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sr">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Неуспешно позивање команде %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Грешка формата диска: форматирајте га као FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Недовољно простора на диску. Осигурајте да диск има %1 слободног простора.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Грешка монтирања диска: прикључите поново диск или поновно покрените систем</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Грешка при распакивању одраза: верификујте МД5 суму одраза и проверите да ли је одраз комплетан</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
         <translation>Унутрашња грешка</translation>
     </message>
@@ -150,7 +152,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="226"/>
         <source>Submit Feedback</source>
-        <translation>Пошаљи повратне информације</translation>
+        <translation>Пошаљи информације</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="240"/>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation type="unfinished"/>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation>Провера пдатака и безбедно уклањање уређаја, молимо сачекајте...</translation>
     </message>
 </context>
 <context>
@@ -181,7 +183,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation>Форматирај диск да повећаш проценат успешности</translation>
+        <translation>Форматирај диск да повећаш стопу успешности</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>

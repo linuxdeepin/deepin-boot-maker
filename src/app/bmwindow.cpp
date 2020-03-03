@@ -259,15 +259,17 @@ BMWindow::BMWindow(QWidget *parent)
            d->wsib->setCurrentPage(3);
         }
         if(error==BMHandler::NoError&&current!=101){
+           emit d->unmountWidget->startSpinner();
            setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
-           titlebar()->setMenuVisible(false);
+           titlebar()->setMenuVisible(true);
            DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
            slideWidget(d->progressWidget, d->unmountWidget);
            d->wsib->setCurrentPage(3);
 
         }
         else{
-            titlebar()->setMenuVisible(false);
+           emit d->unmountWidget->pauseSpinner();
+            titlebar()->setMenuVisible(true);
             DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
             d->resultWidget->updateResult(error,title,description);
             slideWidget(d->unmountWidget,d->resultWidget);

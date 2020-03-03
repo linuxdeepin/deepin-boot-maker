@@ -1,33 +1,35 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="es">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
         <translation>Error al llamar el comando %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Error formato de disco: Formatee el disco con FAT32</translation>
+        <translation>Error con formato de disco: Formatee el disco con FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
         <translation>Espacio en disco insuficiente: Asegúrese de que el disco tenga %1 espacio libre</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Error al montar el disco: vuelva a conectar el disco o reinicie el sistema para volver a intentarlo</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Error al descomprimir la imagen: Compruebe la suma de verificación md5 de la imagen y asegúrese de que esté correcta</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
         <translation>Error interno</translation>
     </message>
@@ -42,7 +44,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker</source>
-        <translation>Creador de Arranque</translation>
+        <translation>Creador de arranque</translation>
     </message>
 </context>
 <context>
@@ -61,7 +63,7 @@
         <location filename="../app/view/isoselectview.cpp" line="88"/>
         <location filename="../app/view/isoselectview.cpp" line="163"/>
         <source>Select an ISO image file</source>
-        <translation>Selecciona una imagen ISO</translation>
+        <translation>Seleccione una imagen ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="214"/>
@@ -81,7 +83,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Detección de archivo ISO, por favor espere...</translation>
+        <translation>Detección de archivo ISO, por favor espere…</translation>
     </message>
 </context>
 <context>
@@ -94,12 +96,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>Grabando, por favor espere...</translation>
+        <translation>Grabando, por favor espere…</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Por favor, no retire el disco ni apague el ordenador durante el proceso</translation>
+        <translation>Por favor, no retire el disco ni apague el equipo durante el proceso</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="111"/>
@@ -122,7 +124,7 @@
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Creador de Arranque</translation>
+        <translation>Creador de arranque</translation>
     </message>
 </context>
 <context>
@@ -172,8 +174,8 @@
     <name>UnmountUsbView</name>
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
-        <source>Ejecting the USB flash drive, please wait ...</source>
-        <translation>Expulsando la unidad flash USB, por favor espere...</translation>
+        <source>Verifying data and safely removing the media, please wait...</source>
+        <translation>Verificando los datos y quitando el medio de manera segura, por favor espere…</translation>
     </message>
 </context>
 <context>
@@ -226,7 +228,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Error formato de disco: Formatee el disco con FAT32</translation>
+        <translation>Error con formato de disco: Formatee el disco con FAT32</translation>
     </message>
 </context>
 </TS>
