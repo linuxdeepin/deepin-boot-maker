@@ -252,18 +252,20 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 //    this->reportProgress(94, Error::NoError, "begin syncing filesystems", "");
 //#endif
 
-//    this->reportProgress(95, Error::NoError, "eject disk", "");
-
-
+    this->reportProgress(95, Error::NoError, "eject disk", "");
+#ifdef Q_OS_MAC
+    XSys::DiskUtil::EjectDisk(partition);
+#endif
     this->reportProgress(100, Error::NoError, "finish", "");
-#ifndef Q_OS_WIN
+#ifndef Q_OS_Win
+#ifndef Q_OS_MAC
     XSys::SynExec("sync", "");
-//    XSys::DiskUtil::EjectDisk(partition);
     result= XSys::DiskUtil::EjectDisk(partition);
     if(! result.isSuccess()){
     emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
     }
-#endif
     this->reportProgress(101,Error::NoError,"finish","");
+#endif
+#endif
     return true;
 }

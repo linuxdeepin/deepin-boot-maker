@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2017 ~ 2018 Wuhan Deepin Technology Co., Ltd.
  *
  * Author:     Iceyer <me@iceyer.net>
@@ -54,9 +54,11 @@ class BMWindow: public DTK_WIDGET_NAMESPACE::DMainWindow
 public:
     BMWindow(QWidget *parent = nullptr);
     ~BMWindow();
+     virtual void closeEvent(QCloseEvent *event);
 public slots:
     void slot_ThemeChange();
 private:
+    bool closeflags = true;
     QScopedPointer<BMWindowPrivate> d_ptr;
     Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMWindow)
 };
