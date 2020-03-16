@@ -43,7 +43,8 @@ unix {
 linux {
 
 binary.path = $${PREFIX}/bin
-binary.files = $$PWD/deepin-boot-maker/src/libdbm/blob/xfbinst
+binary.files = $$PWD/libdbm/blob/xfbinst/xfbinst_x64 \
+               $$PWD/libdbm/blob/xfbinst/xfbinst_x32
 
 INSTALLS += binary desktop hicolor
 
