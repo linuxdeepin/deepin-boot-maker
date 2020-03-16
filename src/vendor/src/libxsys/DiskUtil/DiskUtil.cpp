@@ -482,9 +482,9 @@ XSys::Result InstallBootloader(const QString &diskDev)
     // fbinst: format
     UmountDisk(diskDev);
 
-    QString xfbinstResource = ":/blob/xfbinst/xfbinst_x32";
+    QString xfbinstResource = "/usr/bin/xfbinst_x32";
     if (QSysInfo::buildCpuArchitecture() == "x86_64") {
-        xfbinstResource = ":/blob/xfbinst/xfbinst_x64";
+        xfbinstResource = "/usr/bin/xfbinst_x64";
     }
     QString xfbinstPath = XSys::FS::InsertTmpFile(xfbinstResource);
 
@@ -749,8 +749,8 @@ QString GetPartitionDisk(const QString &targetDev)
 
 XSys::Result EjectDisk(const QString &targetDev)
 {
-     UmountDisk(targetDev);
-     return XSys::SynExec("bash",QString("-c \"udisksctl power-off -b %1?*\"").arg(GetPartitionDisk(targetDev)));
+    UmountDisk(targetDev);
+    return XSys::SynExec("bash", QString("-c \"udisksctl power-off -b %1?*\"").arg(GetPartitionDisk(targetDev)));
 }
 
 bool UmountDisk(const QString &disk)

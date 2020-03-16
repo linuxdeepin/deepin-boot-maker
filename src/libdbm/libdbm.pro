@@ -40,7 +40,14 @@ unix {
     target.path = /usr/lib
 #    INSTALLS += target
 }
+linux {
 
+binary.path = $${PREFIX}/bin
+binary.files = $$PWD/deepin-boot-maker/src/libdbm/blob/xfbinst
+
+INSTALLS += binary desktop hicolor
+
+}
 linux {
     RESOURCES += blob_linux.qrc
 } else {
