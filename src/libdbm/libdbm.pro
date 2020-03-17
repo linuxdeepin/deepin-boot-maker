@@ -41,13 +41,10 @@ unix {
 #    INSTALLS += target
 }
 linux {
-
 binary.path = $${PREFIX}/bin
-binary.files = $$PWD/libdbm/blob/xfbinst/xfbinst_x64 \
-               $$PWD/libdbm/blob/xfbinst/xfbinst_x32
-
+binary.files = $$PWD/qrc/xfbinst_x64 \
+               $$PWD/qrc/xfbinst_x32
 INSTALLS += binary desktop hicolor
-
 }
 linux {
     RESOURCES += blob_linux.qrc
