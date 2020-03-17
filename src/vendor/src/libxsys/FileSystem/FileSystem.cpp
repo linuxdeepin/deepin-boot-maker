@@ -35,15 +35,15 @@ static QString randString(const QString &str)
     return QString("").append(QCryptographicHash::hash(seedStr.toLatin1(), QCryptographicHash::Md5).toHex());
 }
 
-namespace XSys
-{
-namespace FS
-{
+namespace XSys {
+namespace FS {
 
 QString TmpFilePath(const QString &filename, const QString &distFilename)
 {
-    QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::TempLocation).first();
-    static bool init = QDir(tmpDir).mkdir("xsys"); Q_UNUSED(init);
+//    QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::AppDataLocation).first();
+    QString tmpDir = "/usr/bin/";
+    static bool init = QDir(tmpDir).mkdir("xsys");
+    Q_UNUSED(init);
     QFileInfo fi(filename);
     QString ext = "";
     if (!fi.suffix().isEmpty())  {
@@ -53,9 +53,9 @@ QString TmpFilePath(const QString &filename, const QString &distFilename)
     if (newFilename.isEmpty()) {
         newFilename = randString(filename) + ext;
     }
-    qDebug() << "request create tmp file" << filename << distFilename;
+    qDebug() << "request create usr file" << filename << distFilename;
     auto tmppath = QDir::toNativeSeparators(QString(tmpDir + "/xsys/" + newFilename));
-    qDebug() << "create tmp file" << tmppath;
+    qDebug() << "create usr file" << tmppath;
     return tmppath;
 }
 
@@ -96,8 +96,12 @@ QString InsertTmpFile(const QString &fileurl, const QString &distFilename)
 bool InsertFile(const QString &fileurl, const QString &fullpath)
 {
     QFile file(fileurl);
-    if (!file.open(QIODevice::ReadOnly)) { return false; }
-    if (!InsertFileData(fullpath, file.readAll())) { return false; }
+    if (!file.open(QIODevice::ReadOnly)) {
+        return false;
+    }
+    if (!InsertFileData(fullpath, file.readAll())) {
+        return false;
+    }
     file.close();
     return true;
 }

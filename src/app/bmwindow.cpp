@@ -214,11 +214,11 @@ BMWindow::BMWindow(QWidget *parent)
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
-        #ifdef Q_OS_WIN
-        setWindowFlags(Qt::CustomizeWindowHint|Qt::WindowMinimizeButtonHint);
-        closeflags=false;
+#ifdef Q_OS_WIN
+        setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
+        closeflags = false;
         this->setVisible(true);
-        #endif
+#endif
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
         titlebar()->setQuitMenuDisabled(true);
         slideWidget(d->usbWidget, d->progressWidget);
@@ -247,63 +247,63 @@ BMWindow::BMWindow(QWidget *parent)
         titlebar()->setDisableFlags(flags);
         slideWidget(d->usbWidget, d->progressWidget);
         d->wsib->setCurrentPage(2);
-        emit d->progressWidget->finish(0,error, title, description);
+        emit d->progressWidget->finish(0, error, title, description);
     });
     connect(d->progressWidget, &ProgressView::finish,
-    this, [ = ](quint32 current,quint32 error, const QString & title, const QString & description) {
-        qDebug() << error << title << description<<current;
-        if(error!=BMHandler::NoError){
-           titlebar()->setMenuVisible(false);
-           titlebar()->setQuitMenuDisabled(false);
-           #ifdef Q_OS_Win
-           setWindowFlags(Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
-           closeflags=true;
-           this->setVisible(true);
-           #endif
-           #ifndef Q_OS_Win
-           DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
-           #endif
-           d->resultWidget->updateResult(error,title,description);
-           slideWidget(d->progressWidget,d->resultWidget);
-           d->wsib->setCurrentPage(3);
+    this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
+        qDebug() << error << title << description << current;
+        if (error != BMHandler::NoError) {
+            titlebar()->setMenuVisible(false);
+            titlebar()->setQuitMenuDisabled(false);
+#ifdef Q_OS_Win
+            setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
+            closeflags = true;
+            this->setVisible(true);
+#endif
+#ifndef Q_OS_Win
+            DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
+#endif
+            d->resultWidget->updateResult(error, title, description);
+            slideWidget(d->progressWidget, d->resultWidget);
+            d->wsib->setCurrentPage(3);
         }
-        #ifndef Q_OS_Win
-        #ifndef Q_OS_MAC
-        if(error==BMHandler::NoError&&current!=101){
-           emit d->unmountWidget->startSpinner();
-           setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
-           titlebar()->setMenuVisible(true);
-           DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
-           slideWidget(d->progressWidget, d->unmountWidget);
-           d->wsib->setCurrentPage(3);
+#ifndef Q_OS_Win
+#ifndef Q_OS_MAC
+        if (error == BMHandler::NoError && current != 101) {
+            emit d->unmountWidget->startSpinner();
+            setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
+            titlebar()->setMenuVisible(true);
+            DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
+            slideWidget(d->progressWidget, d->unmountWidget);
+            d->wsib->setCurrentPage(3);
 
         }
 
-        else{
+        else {
             emit d->unmountWidget->pauseSpinner();
             titlebar()->setMenuVisible(true);
             DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
-            d->resultWidget->updateResult(error,title,description);
-            slideWidget(d->unmountWidget,d->resultWidget);
+            d->resultWidget->updateResult(error, title, description);
+            slideWidget(d->unmountWidget, d->resultWidget);
             d->wsib->setCurrentPage(3);
         }
-       #endif
-       #endif
-       #if  defined  Q_OS_WIN || defined Q_OS_MAC
-        else{
-            #if defined Q_OS_Win
+#endif
+#endif
+#if  defined  Q_OS_WIN || defined Q_OS_MAC
+        else {
+#if defined Q_OS_Win
             titlebar()->setQuitMenuDisabled(false);
-            setWindowFlags(Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
-            closeflags=true;
+            setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
+            closeflags = true;
             this->setVisible(true);
             titlebar()->setMenuVisible(false);
-            #endif
-            d->resultWidget->updateResult(error,title,description);
-            slideWidget(d->progressWidget,d->resultWidget);
+#endif
+            d->resultWidget->updateResult(error, title, description);
+            slideWidget(d->progressWidget, d->resultWidget);
             d->wsib->setCurrentPage(3);
 
         }
-       #endif
+#endif
     });
 //    connect(d->unmountWidget,&UnmountUsbView::finish1,this,[=](quint32 error, const QString & title, const QString & description){
 //       setWindowFlags(windowFlags()|Qt::WindowCloseButtonHint);
@@ -381,10 +381,9 @@ void startBackend()
 #if defined(Q_OS_WIN)
 void BMWindow::closeEvent(QCloseEvent *event)
 {
-    if(closeflags==false){
+    if (closeflags == false) {
         event->ignore();
-    }
-    else{
+    } else {
         event->accept();
     }
 }

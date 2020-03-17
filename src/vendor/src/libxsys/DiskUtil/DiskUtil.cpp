@@ -534,7 +534,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
     }
 
     // mount
-    QString mountPoint = QString("/tmp/%1").arg(XSys::FS::TmpFilePath(""));
+    QString mountPoint = QString("/usr/bin/%1").arg(XSys::FS::TmpFilePath(""));
     ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
     if (!ret.isSuccess()) {
         return ret;

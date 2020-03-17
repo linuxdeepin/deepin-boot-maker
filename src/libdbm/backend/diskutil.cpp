@@ -25,8 +25,7 @@
 
 #include <XSys>
 
-namespace DiskUtil
-{
+namespace DiskUtil {
 XSys::Result MountPartition(const QString &partition)
 {
     // mount
@@ -37,10 +36,14 @@ XSys::Result MountPartition(const QString &partition)
     }
 
     XSys::Result ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
-    if (!ret.isSuccess()) { return ret; }
+    if (!ret.isSuccess()) {
+        return ret;
+    }
 
     QString mountCmd = "%1 %2";
     QString remountCmd = "-o flush,rw,utf8=1,sync,nodev,nosuid, %1 %2";

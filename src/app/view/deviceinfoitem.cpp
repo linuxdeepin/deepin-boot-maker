@@ -171,7 +171,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
             m_deviceDevName->setPalette(pa);
             pa = m_deviceCapacity->palette();
             pa.setColor(DPalette::Text, QColor("#8AA1B4"));
-            m_filepath=":/theme/light/image/select_active.svg";
+            m_filepath = ":/theme/light/image/select_active.svg";
             m_deviceCapacity->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
@@ -184,12 +184,13 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
             pa = m_deviceCapacity->palette();
             pa.setColor(DPalette::Text, QColor("#6D7C88"));
             m_deviceCapacity->setPalette(pa);
-            m_filepath=":/theme/dark/image/select_active_dark.svg";
+            m_filepath = ":/theme/dark/image/select_active_dark.svg";
         }
-        if(flag1){
+        if (flag1)
+        {
             QPixmap pixmap = renderSVG(m_filepath, QSize(28, 28));
             m_fillingposition->setPixmap(pixmap);
-            }
+        }
 
     });
 
@@ -245,7 +246,7 @@ void DeviceInfoItem::setCheck(bool flag)
 {
 //    m_deviceIcon->setPixmap(flag ? s_selectDevice : s_removeDevice);
 //    m_radiobutton->setChecked(flag);
-    flag1=flag;
+    flag1 = flag;
     if (flag) {
         QPixmap pixmap = renderSVG(m_filepath, QSize(28, 28));
 //        pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());

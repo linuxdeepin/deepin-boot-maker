@@ -30,8 +30,7 @@
 #include <QFile>
 #include <QProcess>
 
-namespace XSys
-{
+namespace XSys {
 
 
 static Result runApp(const QString &execPath, const QString &execParam, const QString &execPipeIn = "")
