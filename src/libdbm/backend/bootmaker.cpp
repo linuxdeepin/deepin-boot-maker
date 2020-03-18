@@ -188,6 +188,9 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
         QStringList args;
         args << "-n" << "UOS" << targetPartition;
+        XSys::SynExec("umount", targetPartition);
+        XSys::SynExec("umount", targetPartition);
+        XSys::SynExec("umount", targetPartition);
         XSys::SynExec("mkfs.fat", args.join(" "));
         qDebug() << "format partation: " << targetPartition << result.isSuccess();
 

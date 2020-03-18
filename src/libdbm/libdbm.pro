@@ -40,11 +40,14 @@ unix {
     target.path = /usr/lib
 #    INSTALLS += target
 }
+isEqual(ARCH, i386) | isEqual(ARCH, x86_64){
 linux {
 binary.path = $${PREFIX}/bin
 binary.files = $$PWD/qrc/xfbinst_x64 \
                $$PWD/qrc/xfbinst_x32
 INSTALLS += binary desktop hicolor
+}
+
 }
 linux {
     RESOURCES += blob_linux.qrc
