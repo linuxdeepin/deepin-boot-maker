@@ -172,26 +172,25 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     if (formatDevice) {
         result = XSys::SynExec("umount", targetPartition);
         qDebug() << "umount disk: " << result.isSuccess();
-
         auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
-
+        QStringList args;
+        args << "-n" << "UOS" << targetDisk << "-I" ;
+        XSys::SynExec("umount", targetDisk);
+        XSys::SynExec("mkfs.fat", args.join(" "));
         result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
         qDebug() << "parted  -s -a optimal %1 mklabel msdos " << targetDisk;
         qDebug() << "format mklabel: " << result.isSuccess();
         result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary 1MiB 3500Mib").arg(targetDisk));
         qDebug() << "format mkpart: " << result.isSuccess();
         targetPartition = targetDisk + "1";
-
         XSys::SynExec("partprobe", "");
-
         XSys::SynExec("partprobe", "");
-
-        QStringList args;
-        args << "-n" << "UOS" << targetPartition;
+        QStringList args1;
+        args1 << "-n" << "UOS" << targetPartition;
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
-        XSys::SynExec("mkfs.fat", args.join(" "));
+        XSys::SynExec("mkfs.fat", args1.join(" "));
         qDebug() << "format partation: " << targetPartition << result.isSuccess();
 
 //        XSys::DiskUtil::Mount(targetPartition);

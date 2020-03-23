@@ -477,7 +477,10 @@ XSys::Result InstallSyslinux(const QString &targetDev)
 XSys::Result InstallBootloader(const QString &diskDev)
 {
     XSys::Result ret = UmountDisk(diskDev);
-
+    QStringList args;
+    args << "-n" << "UOS" << diskDev << "-I" ;
+    UmountDisk(diskDev);
+    XSys::SynExec("mkfs.fat", args.join(" "));
     // pre format
     QString newTargetDev = diskDev + "1";
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() - 1].toLatin1() - 'a');
