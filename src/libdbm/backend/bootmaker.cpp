@@ -180,7 +180,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
         qDebug() << "parted  -s -a optimal %1 mklabel msdos " << targetDisk;
         qDebug() << "format mklabel: " << result.isSuccess();
-        result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary 1MiB 3500Mib").arg(targetDisk));
+        result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary fat32 0% 100%").arg(targetDisk));
         qDebug() << "format mkpart: " << result.isSuccess();
         targetPartition = targetDisk + "1";
         XSys::SynExec("partprobe", "");
@@ -192,7 +192,6 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("mkfs.fat", args1.join(" "));
         qDebug() << "format partation: " << targetPartition << result.isSuccess();
-
 //        XSys::DiskUtil::Mount(targetPartition);
     }
     XSys::DiskUtil::Mount(targetPartition);
@@ -247,13 +246,11 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     this->reportProgress(80, Error::NoError, "end extract files", "");
     this->reportProgress(80, Error::NoError, "config syslinux", "");
     XSys::Bootloader::Syslinux::ConfigSyslinx(installDir);
-
 //#ifdef Q_OS_UNIX
 //    this->reportProgress(81, Error::NoError, "begin syncing filesystems", "");
 //    XSys::SynExec("sync", "");
 //    this->reportProgress(94, Error::NoError, "begin syncing filesystems", "");
 //#endif
-
     this->reportProgress(95, Error::NoError, "eject disk", "");
 #ifdef Q_OS_MAC
     XSys::DiskUtil::EjectDisk(partition);
@@ -265,8 +262,9 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     result = XSys::DiskUtil::EjectDisk(partition);
     if (! result.isSuccess()) {
         emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
+    } else {
+        this->reportProgress(101, Error::NoError, "finish", "");
     }
-    this->reportProgress(101, Error::NoError, "finish", "");
 #endif
 #endif
     return true;
