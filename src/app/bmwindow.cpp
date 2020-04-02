@@ -52,6 +52,8 @@ DWIDGET_USE_NAMESPACE
 const static QString debugQSS = "background-color: rgba(255, 0, 255, 20%);border: 1px solid;"
                                 " border-radius: 3; border-color: rgba(0, 255, 0, 20%);";
 
+
+
 static void slideWidget(DWidget *left, DWidget *right)
 {
     right->show();
