@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
-        <source>Failed to call the command %1</source>
-        <translation>Kunne ikke kalde kommandoen %1</translation>
+        <source>Failed to call the command 1%</source>
+        <translation>Kunne ikke kalde kommandoen 1%</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -15,8 +15,8 @@
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
-        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation>For lidt diskplads: Sørg for at disken har %1 ledig plads</translation>
+        <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
+        <translation>For lidt diskplads: Sørg for at disken har 1% ledig plads</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>

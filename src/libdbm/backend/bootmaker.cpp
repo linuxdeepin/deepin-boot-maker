@@ -62,11 +62,11 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
     case NoError:
         return "";
     case SyscExecFailed:
-        return BMHandler::tr("Failed to call the command %1");
+        return BMHandler::tr("Failed to call the command 1%");
     case USBFormatError:
         return BMHandler::tr("Disk Format Error: Please format the disk with FAT32");
     case USBSizeError:
-        return BMHandler::tr("Insufficient Disk Space: Ensure the disk has %1 free space");
+        return BMHandler::tr("Insufficient Disk Space: Ensure the disk has 1% free space");
     case USBMountFailed:
         return BMHandler::tr("Disk Mount Error: Insert the disk again or reboot to retry");
     case ExtractImgeFailed:
@@ -215,7 +215,8 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
     QString installDir = partition;
 #ifdef Q_OS_UNIX
-    installDir = XSys::DiskUtil::MountPoint(partition);
+    device = device + "1";
+    installDir = XSys::DiskUtil::MountPoint(device);
     if (installDir.isEmpty()) {
         qCritical() << "Error::get(Error::USBMountFailed)";
         emit finished(USBMountFailed, errorString(USBMountFailed));

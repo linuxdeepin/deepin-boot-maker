@@ -479,14 +479,16 @@ XSys::Result InstallBootloader(const QString &diskDev)
     XSys::Result ret = UmountDisk(diskDev);
     QStringList args;
     args << "-n" << "UOS" << diskDev << "-I" ;
-    UmountDisk(diskDev);
+    XSys::SynExec("umount", diskDev);
+    XSys::SynExec("umount", diskDev);
     XSys::SynExec("mkfs.fat", args.join(" "));
     // pre format
     QString newTargetDev = diskDev + "1";
     QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() - 1].toLatin1() - 'a');
 
     // fbinst: format
-    UmountDisk(diskDev);
+    XSys::SynExec("umount", diskDev);
+    XSys::SynExec("umount", diskDev);
 
     QString xfbinstResource = "/usr/bin/xfbinst_x32";
     if (QSysInfo::buildCpuArchitecture() == "x86_64") {
@@ -507,7 +509,8 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     // fbinst: install fg.cfg
     QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
-    UmountDisk(diskDev);
+    XSys::SynExec("umount", diskDev);
+    XSys::SynExec("umount", diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
     if (!ret.isSuccess()) {
         return ret;
