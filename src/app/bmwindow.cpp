@@ -284,6 +284,7 @@ BMWindow::BMWindow(QWidget *parent)
         else {
             emit d->unmountWidget->pauseSpinner();
             titlebar()->setMenuVisible(true);
+            titlebar()->setQuitMenuDisabled(false);
             DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
             d->resultWidget->updateResult(error, title, description);
             slideWidget(d->unmountWidget, d->resultWidget);
