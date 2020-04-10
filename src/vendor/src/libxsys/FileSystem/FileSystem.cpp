@@ -40,8 +40,12 @@ namespace FS {
 
 QString TmpFilePath(const QString &filename, const QString &distFilename)
 {
-//    QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::AppDataLocation).first();
+#ifdef Q_OS_LINUX
     QString tmpDir = "/usr/bin/";
+#endif
+#ifndef Q_OS_LINUX
+    QString tmpDir = QStandardPaths::standardLocations(QStandardPaths::AppDataLocation).first();
+#endif
     static bool init = QDir(tmpDir).mkdir("xsys");
     Q_UNUSED(init);
     QFileInfo fi(filename);

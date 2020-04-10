@@ -215,7 +215,9 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
 
     QString installDir = partition;
 #ifdef Q_OS_UNIX
+#ifdef Q_OS_LINUX
     device = device + "1";
+#endif
     installDir = XSys::DiskUtil::MountPoint(device);
     if (installDir.isEmpty()) {
         qCritical() << "Error::get(Error::USBMountFailed)";
@@ -257,7 +259,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     XSys::DiskUtil::EjectDisk(partition);
 #endif
     this->reportProgress(100, Error::NoError, "finish", "");
-#ifndef Q_OS_Win
+#ifndef Q_OS_WIN
 #ifndef Q_OS_MAC
     XSys::SynExec("sync", "");
     result = XSys::DiskUtil::EjectDisk(partition);
