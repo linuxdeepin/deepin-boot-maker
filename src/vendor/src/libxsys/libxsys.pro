@@ -8,7 +8,8 @@ QT       -= gui
 
 TARGET = xsys
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += staticlib c++11 link_pkgconfig
+PKGCONFIG += dtkwidget
 
 DEFINES += QT_MESSAGELOGCONTEXT
 

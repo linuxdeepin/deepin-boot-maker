@@ -24,7 +24,9 @@
 #include <QtCore>
 #include <QString>
 
+
 #include <XSys>
+#include <DSysInfo>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif
@@ -227,29 +229,50 @@ bool CheckInstallDisk(const QString &targetDev)
 
     QString targetPath = XSys::DiskUtil::MountPoint(targetDev);
     qDebug() << "targetPath: " << targetPath;
-    QFile test(QDir::toNativeSeparators(targetPath + "/" + "UOS"));
+    QStringList  args;
+    if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+        args << targetPath + "/" + "DEEPINOS";
+    } else {
+        args << targetPath + "/" + "UOS";
+    }
+    QFile test(QDir::toNativeSeparators(args.join("")));
 
     if (!test.open(QIODevice::ReadWrite)) {
         qDebug() << "erro open file: " << test.fileName();
         return false;
     }
+    if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+        QFile DEEPINOS(":src/DEEPINOS");
+        DEEPINOS.open(QIODevice::ReadOnly);
+        QByteArray data = DEEPINOS.readAll();
 
-    QFile UOS(":src/UOS");
-    UOS.open(QIODevice::ReadOnly);
-    QByteArray data = UOS.readAll();
+        if (data.length() != test.write(data)) {
+            qDebug() << "erro write file: " << DEEPINOS.fileName();
+            return false;
+        }
 
-    if (data.length() != test.write(data)) {
-        qDebug() << "erro write file: " << UOS.fileName();
-        return false;
+        test.close();
+        DEEPINOS.close();
+        test.remove();
+
+        return true;
+    } else {
+        QFile UOS(":src/UOS");
+        UOS.open(QIODevice::ReadOnly);
+        QByteArray data = UOS.readAll();
+
+        if (data.length() != test.write(data)) {
+            qDebug() << "erro write file: " << UOS.fileName();
+            return false;
+        }
+
+        test.close();
+        UOS.close();
+        test.remove();
+
+        return true;
     }
-
-    test.close();
-    UOS.close();
-    test.remove();
-
-    return true;
 }
-
 bool isUsbDisk(const QString &dev)
 {
     QString out = XSys::FS::TmpFilePath("diskutil_isusb_out");

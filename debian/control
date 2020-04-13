@@ -22,7 +22,7 @@ Homepage: http://www.linuxdeepin.com/
 
 Package: deepin-boot-maker
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools,
+Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools, genisoimage, 
  syslinux [linux-amd64 linux-i386],
  syslinux-common [linux-amd64 linux-i386]
 Description: 

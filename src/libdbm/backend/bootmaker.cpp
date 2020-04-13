@@ -28,7 +28,7 @@
 #include <QDebug>
 
 #include <XSys>
-
+#include<DSysInfo>
 
 
 #ifdef Q_OS_WIN32
@@ -174,7 +174,19 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         qDebug() << "umount disk: " << result.isSuccess();
         auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
         QStringList args;
-        args << "-n" << "UOS" << targetDisk << "-I" ;
+        XSys::Result ret7 = XSys::SynExec("", QString("isoinfo -i %1 -d").arg(image));
+        if (!ret7.isSuccess()) {
+            qWarning() << "call df failed" << ret7.result();
+        }
+        QStringList volume = ret7.result().split("\n").filter("Volume id");
+        QString tmp = volume.takeAt(0);
+        if (tmp.contains("deepin", Qt::CaseInsensitive)) {
+            args << "-n" << "DEEPINOS" << targetDisk << "-I" ;
+        } else if (tmp.contains("uos", Qt::CaseInsensitive)) {
+            args << "-n" << "UOS" << targetDisk << "-I" ;
+        } else {
+            args << "-n" << "UNKNOWN" << targetDisk << "-I" ;
+        }
         XSys::SynExec("umount", targetDisk);
         XSys::SynExec("mkfs.fat", args.join(" "));
         result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
@@ -186,7 +198,14 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         XSys::SynExec("partprobe", "");
         XSys::SynExec("partprobe", "");
         QStringList args1;
-        args1 << "-n" << "UOS" << targetPartition;
+        if (tmp.contains("deepin", Qt::CaseInsensitive)) {
+            args1 << "-n" << "DEEPINOS" << targetPartition;
+        } else if (tmp.contains("uos", Qt::CaseInsensitive)) {
+            args1 << "-n" << "UOS" << targetPartition;
+        } else {
+            args1 << "-n" << "UNKNOWN" << targetPartition;
+        }
+
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
@@ -198,10 +217,10 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     XSys::DiskUtil::Mount(targetPartition);
 #else
     if (formatDevice) {
-        result = XSys::Bootloader::InstallBootloader(device);
+        result = XSys::Bootloader::InstallBootloader(device, image);
         targetPartition = result.result();
     } else {
-        result = XSys::Bootloader::Syslinux::InstallSyslinux(partition);
+        result = XSys::Bootloader::Syslinux::InstallSyslinux(partition, image);
     }
     qDebug() << "install bootloader finish: " << result.isSuccess();
 #endif

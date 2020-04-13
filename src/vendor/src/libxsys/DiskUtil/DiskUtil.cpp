@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 #include "DiskUtil.h"
 
 #include "../FileSystem/FileSystem.h"
@@ -28,6 +29,8 @@
 #include <QtCore>
 #include <QString>
 #include <QSysInfo>
+
+#include <DSysInfo>
 
 #ifdef Q_OS_WIN32
 #include <Windows.h>
@@ -446,7 +449,7 @@ XSys::Result FixMountPartition(const QString &partition)
     return XSys::Result(XSys::Result::Success, "", mountPoint);
 }
 
-XSys::Result InstallSyslinux(const QString &targetDev)
+XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
 {
     // install syslinux
     QString rawtargetDev = GetPartitionDisk(targetDev);
@@ -468,17 +471,54 @@ XSys::Result InstallSyslinux(const QString &targetDev)
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(targetDev));
-    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
 
+    XSys::Result ret4 = XSys::SynExec("", QString("isoinfo -i %1 -d").arg(images));
+    if (!ret4.isSuccess()) {
+        qWarning() << "call df failed" << ret4.result();
+    }
+    QStringList volume = ret4.result().split("\n").filter("Volume id");
+    QString tem1 = volume.takeAt(0);
+    qDebug() << volume << "1112222222---------";
+    if (tem1.contains("Volume id: deepin", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
+    } else if (tem1.contains("Volume id: uos", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
+    } else {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UNKONWN").arg(targetDev));
+    }
+//    if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+//        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
+//    } else {
+//        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
+//    }
     FixMountPartition(targetDev);
 
     return ret;
 }
-XSys::Result InstallBootloader(const QString &diskDev)
+XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
 {
     XSys::Result ret = UmountDisk(diskDev);
     QStringList args;
-    args << "-n" << "UOS" << diskDev << "-I" ;
+
+    XSys::Result ret3 = XSys::SynExec("", QString("isoinfo -i %1 -d").arg(images));
+    if (!ret3.isSuccess()) {
+        qWarning() << "call df failed" << ret3.result();
+    }
+    QStringList volume = ret3.result().split("\n").filter("Volume id");
+    QString tem = volume.takeAt(0);
+    if (tem.contains("Volume id: deepin", Qt::CaseInsensitive)) {
+        args << "-n" << "DEEPINOS" << diskDev << "-I" ;
+    } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
+        args << "-n" << "UOS" << diskDev << "-I" ;
+    } else {
+        args << "-n" << "UNKNOWN" << diskDev << "-I" ;
+    }
+
+//    if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+//        args << "-n" << "DEEPINOS" << diskDev << "-I" ;
+//    } else {
+//        args << "-n" << "UOS" << diskDev << "-I" ;
+//    }
     UmountDisk(diskDev);
     XSys::SynExec("mkfs.fat", args.join(" "));
     // pre format
@@ -520,8 +560,19 @@ XSys::Result InstallBootloader(const QString &diskDev)
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(newTargetDev));
-    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
+    if (tem.contains("deepin", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
+    } else if (tem.contains("uos", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
+    } else {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UNKONWN").arg(newTargetDev));
+    }
 
+//    if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+//        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
+//    } else {
+//        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
+//    }
     // install syslinux
     XSys::Syslinux::InstallBootloader(newTargetDev);
 
@@ -679,7 +730,7 @@ static void SureUmount(const QString &targetDev)
     UmountDisk(targetDev);
     QThread::sleep(1);
 }
-
+isoinfo
 XSys::Result InstallBootloader(const QString &diskDev)
 {
     QString targetDev = diskDev + "s1";
@@ -786,16 +837,16 @@ bool Mount(const QString &targetDev)
 
 namespace Bootloader {
 
-Result InstallBootloader(const QString &diskDev)
+Result InstallBootloader(const QString &diskDev, const QString &images)
 {
-    return XAPI::InstallBootloader(diskDev);
+    return XAPI::InstallBootloader(diskDev, images);
 }
 
 namespace Syslinux {
 
-Result InstallSyslinux(const QString &diskDev)
+Result InstallSyslinux(const QString &diskDev, const QString &images)
 {
-    return XAPI::InstallSyslinux(diskDev);
+    return XAPI::InstallSyslinux(diskDev, images);
 }
 
 Result ConfigSyslinx(const QString &targetPath)
