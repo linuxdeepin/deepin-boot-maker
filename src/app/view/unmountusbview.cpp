@@ -1,6 +1,6 @@
 #include "unmountusbview.h"
 #include <bminterface.h>
-UnmountUsbView::UnmountUsbView(DWidget *parent): DWidget (parent)
+UnmountUsbView::UnmountUsbView(DWidget *parent): DWidget(parent)
 {
     setObjectName("safeejectview");
     setAutoFillBackground(true);

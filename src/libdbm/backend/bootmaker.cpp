@@ -174,19 +174,32 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         qDebug() << "umount disk: " << result.isSuccess();
         auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
         QStringList args;
-        args << "-n" << "UOS" << targetDisk << "-I" ;
+        args << targetDisk << "-I" ;
         XSys::SynExec("umount", targetDisk);
         XSys::SynExec("mkfs.fat", args.join(" "));
         result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
         qDebug() << "parted  -s -a optimal %1 mklabel msdos " << targetDisk;
         qDebug() << "format mklabel: " << result.isSuccess();
+        //fix bug 18668 arm和龙芯制作格式化使u盘变小，现在格式化制作如实大小
         result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary fat32 0% 100%").arg(targetDisk));
         qDebug() << "format mkpart: " << result.isSuccess();
         targetPartition = targetDisk + "1";
         XSys::SynExec("partprobe", "");
         XSys::SynExec("partprobe", "");
         QStringList args1;
-        args1 << "-n" << "UOS" << targetPartition;
+        XSys::Result ret7 = XSys::SynExec("isoinfo", QString("-i %1 -d").arg(image));
+        if (!ret7.isSuccess()) {
+            qWarning() << "call isoinfo failed" << ret7.result();
+        }
+        QStringList volume = ret7.result().split("\n").filter("Volume id");
+        QString tmp = volume.takeAt(0);
+        if (tmp.contains("deepin", Qt::CaseInsensitive)) {
+            args << "-n" << "DEEPINOS" << targetPartition ;
+        } else if (tmp.contains("uos", Qt::CaseInsensitive)) {
+            args << "-n" << "UOS" << targetPartition ;
+        } else {
+            args << "-n" << "UNKNOWN" << targetPartition ;
+        }
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
@@ -197,10 +210,10 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     XSys::DiskUtil::Mount(targetPartition);
 #else
     if (formatDevice) {
-        result = XSys::Bootloader::InstallBootloader(device);
+        result = XSys::Bootloader::InstallBootloader(device, image);
         targetPartition = result.result();
     } else {
-        result = XSys::Bootloader::Syslinux::InstallSyslinux(partition);
+        result = XSys::Bootloader::Syslinux::InstallSyslinux(partition, image);
     }
     qDebug() << "install bootloader finish: " << result.isSuccess();
 #endif
@@ -214,6 +227,7 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     qDebug() << "begin reload disk";
 
     QString installDir = partition;
+//fix bug 18693 12288 如果u盘有多个分区挂载失败的问题
 #ifdef Q_OS_UNIX
 #ifdef Q_OS_LINUX
     device = device + "1";
@@ -259,8 +273,8 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     XSys::DiskUtil::EjectDisk(partition);
 #endif
     this->reportProgress(100, Error::NoError, "finish", "");
-#ifndef Q_OS_WIN
-#ifndef Q_OS_MAC
+//fix bug 12284 更改交互做断电处理，使得同步等待时间合理化
+#ifdef Q_OS_LINUX
     XSys::SynExec("sync", "");
     result = XSys::DiskUtil::EjectDisk(partition);
     if (! result.isSuccess()) {
@@ -268,7 +282,6 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     } else {
         this->reportProgress(101, Error::NoError, "finish", "");
     }
-#endif
 #endif
     return true;
 }

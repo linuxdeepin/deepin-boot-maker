@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="da">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="da" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation>Kunne ikke kalde kommandoen 1%</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -16,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>For lidt diskplads: Sørg for at disken har 1% ledig plads</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -37,12 +35,12 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation>Bootskaber er et simpelt værktøj til at skrive systemaftryksfiler på CD/DVD, USB-flashdrev og andre installationsmedier.</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
         <translation>Bootskaber</translation>
     </message>
@@ -130,42 +128,47 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>Genstart nu</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>Færdig</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>Vellykket</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Fejlloggen uploades automatisk med feedback. Vi kan ikke forbedre det uden din feedback og support</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>Indsend feedback</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>Luk</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
         <translation>Beklager, proces mislykkedes</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
         <translation>Proces mislykkedes</translation>
     </message>

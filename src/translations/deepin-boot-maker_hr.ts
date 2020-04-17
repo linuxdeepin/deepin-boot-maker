@@ -4,9 +4,8 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
-        <translation>Neuspjelo pozivanje naredbe %1</translation>
+        <translation type="vanished">Neuspjelo pozivanje naredbe %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -14,9 +13,18 @@
         <translation>Greška formatiranja diska. Molim formatirajte disk sa FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation>Nedovoljno prostora na disku: Osigurajte da disk ima %1 slobodnog prostora</translation>
+        <translation type="vanished">Nedovoljno prostora na disku: Osigurajte da disk ima %1 slobodnog prostora</translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <source>Failed to call the command 1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -37,12 +45,12 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
         <translation>Medij za podizanje sustava</translation>
     </message>
@@ -130,42 +138,47 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>Ponovno podigni sustav sada </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>Učinjeno</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>Uspješno</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>Zatvori</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
         <translation>Oprostite, proces nije uspio</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
         <translation>Proces nije uspio</translation>
     </message>

@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ms">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ms" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation>Gagal memanggil perintah 1%</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -16,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>Ruang Cakera Tidak Mencukupi: Pastikan cakera mempunyai sebanyak 1% ruang bebas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -37,14 +35,14 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>Pembuat But Deepin ialah sebuah alat ringkas yang dapat menulis fail imej sistem ke dalam CD/DVD, pemacu USB dan lain-lain media.</translation>
+        <translation>Pembuat But ialah sebuah alat ringkas yang dapat menulis fail-fail imej ke dalam CD/DVD, pemacu pena USB dan lain-lain media.</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Pembina But Deepin</translation>
+        <translation>Pembuat But</translation>
     </message>
 </context>
 <context>
@@ -52,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="124"/>
         <source>Drag an ISO image file here</source>
-        <translation>Seret fail imej ISO dan lepaskannya di sini</translation>
+        <translation>Seret satu fail imej ISO di sini</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
@@ -71,19 +69,19 @@
         <translation>Berikutnya</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
-        <source>Illegal ISO image file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
         <translation>Pilih semula satu fail imej ISO</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <source>Illegal ISO image file</source>
+        <translation>Fail imej ISO tidak sah</translation>
+    </message>
+    <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation></translation>
+        <translation>Mengesan fail ISO, tunggu sebentar...</translation>
     </message>
 </context>
 <context>
@@ -91,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning</source>
-        <translation>Sedang Menyediakan</translation>
+        <translation>Merakam</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>Menyediakan cakera, tunggu sebentar...</translation>
+        <translation>Merakam, tunggu sebentar...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
@@ -124,50 +122,55 @@
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Pembina But Deepin</translation>
+        <translation>Pembuat But</translation>
     </message>
 </context>
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>But semula sekarang</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>Selesai</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>Berjaya</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Log ralat akan dimuat naik secara automatik bersama-sama maklum balas. Kami tidak dapat menambahbaik tanpa maklum balas dan sokongan anda</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>Serah Maklumbalas&quot;</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>Tutup</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
-        <translation>Maaf, penyediaan gagal</translation>
+        <translation>Maaf, proses mengalamai kegagalan</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
-        <translation>Penyediaan gagal</translation>
+        <translation>Proses mengalami kegagalan</translation>
     </message>
 </context>
 <context>
@@ -175,7 +178,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mengesahkan data dan menanggalkan media secara selamat, tunggu sebentar...</translation>
     </message>
 </context>
 <context>
@@ -183,12 +186,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation>Memformat cakera boleh meningkatkan kadar kejayaan pembuatannya</translation>
+        <translation>Format cakera untuk meningkatkan kadar kejayaan rakaman</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
         <source>Start</source>
-        <translation>Mula membuat</translation>
+        <translation>Mula</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="332"/>
@@ -223,12 +226,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="336"/>
         <source>OK</source>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished">Ralat Format Cakera: Sila format cakera dengan FAT32</translation>
+        <translation>Ralat Format Cakera: Sila format cakera dengan FAT32</translation>
     </message>
 </context>
 </TS>

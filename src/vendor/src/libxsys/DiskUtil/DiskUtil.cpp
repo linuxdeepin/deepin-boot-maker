@@ -446,7 +446,7 @@ XSys::Result FixMountPartition(const QString &partition)
     return XSys::Result(XSys::Result::Success, "", mountPoint);
 }
 
-XSys::Result InstallSyslinux(const QString &targetDev)
+XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
 {
     // install syslinux
     QString rawtargetDev = GetPartitionDisk(targetDev);
@@ -468,17 +468,30 @@ XSys::Result InstallSyslinux(const QString &targetDev)
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(targetDev));
-    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
+    XSys::Result ret3 = XSys::SynExec("isoinfo", QString("-i %1 -d").arg(images));
+    if (!ret3.isSuccess()) {
+        qWarning() << "call df failed" << ret3.result();
+    }
+    QStringList volume = ret3.result().split("\n").filter("Volume id");
+    QString tem = volume.takeAt(0);
+    if (tem.contains("Volume id: deepin", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(targetDev));
+    } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
+    } else {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(targetDev));
+    }
 
     FixMountPartition(targetDev);
 
     return ret;
 }
-XSys::Result InstallBootloader(const QString &diskDev)
+XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
 {
+    //change the partoi
     XSys::Result ret = UmountDisk(diskDev);
     QStringList args;
-    args << "-n" << "UOS" << diskDev << "-I" ;
+    args << diskDev << "-I" ;
     XSys::SynExec("umount", diskDev);
     XSys::SynExec("umount", diskDev);
     XSys::SynExec("mkfs.fat", args.join(" "));
@@ -521,10 +534,21 @@ XSys::Result InstallBootloader(const QString &diskDev)
     ret = XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
 //    if (!ret.isSuccess()) { return ret; }
 
-    // rename label
+    // rename label  fix bug 20233 区分社区版专业版镜像设置U盘卷标名
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(newTargetDev));
-    ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
-
+    XSys::Result ret3 = XSys::SynExec("isoinfo", QString("-i %1 -d").arg(images));
+    if (!ret3.isSuccess()) {
+        qWarning() << "call df failed" << ret3.result();
+    }
+    QStringList volume = ret3.result().split("\n").filter("Volume id");
+    QString tem = volume.takeAt(0);
+    if (tem.contains("Volume id: deepin", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
+    } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
+    } else {
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(newTargetDev));
+    }
     // install syslinux
     XSys::Syslinux::InstallBootloader(newTargetDev);
 
@@ -568,7 +592,7 @@ XSys::Result InstallBootloader(const QString &diskDev)
 //        QThread::sleep(5);
 //        XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
 //        QThread::sleep(5);
-//        XSys::SynExec("mount",  mountCmd.arg(newTargetDev).arg(mountPoint));
+//        XSys::SynExec("mount", isoinfomountCmd.arg(newTargetDev).arg(mountPoint));
 //        QThread::sleep(5);
 //        retryTimes--;
 //    } while((MountPoint(newTargetDev) == "") && retryTimes);
@@ -789,16 +813,16 @@ bool Mount(const QString &targetDev)
 
 namespace Bootloader {
 
-Result InstallBootloader(const QString &diskDev)
+Result InstallBootloader(const QString &diskDev, const QString &images)
 {
-    return XAPI::InstallBootloader(diskDev);
+    return XAPI::InstallBootloader(diskDev, images);
 }
 
 namespace Syslinux {
 
-Result InstallSyslinux(const QString &diskDev)
+Result InstallSyslinux(const QString &diskDev, const QString &images)
 {
-    return XAPI::InstallSyslinux(diskDev);
+    return XAPI::InstallSyslinux(diskDev, images);
 }
 
 Result ConfigSyslinx(const QString &targetPath)

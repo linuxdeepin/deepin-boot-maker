@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation>Erro ao chamar o comando 1%</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Erro ao formatar o disco: Formate o disco em FAT32</translation>
+        <translation>Erro de formato do disco: Formatar o disco com FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>Espaço insuficiente em disco: Certifique-se que o disco tem pelo menos 1% de espaço livre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -31,20 +29,20 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
         <source>Internal Error</source>
-        <translation>Erro Interno</translation>
+        <translation>Erro interno</translation>
     </message>
 </context>
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>O Criador de Arranque é uma ferramenta simples para gravar ficheiros de imagem do sistema em CD/DVD, unidade flash USB e outros meios.</translation>
+        <translation>O Criador de disco de arranque é uma ferramenta simples para gravar ficheiros de imagem do sistema em CD/DVD, unidade flash USB e outros meios.</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Criador de Arranque</translation>
+        <translation>Criador de disco de arranque</translation>
     </message>
 </context>
 <context>
@@ -114,7 +112,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation>Disco Removível</translation>
+        <translation>Disco removível</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="115"/>
@@ -124,48 +122,53 @@
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Criador de Arranque</translation>
+        <translation>Criador de disco de arranque</translation>
     </message>
 </context>
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>Reiniciar agora</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>Concluído</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>Bem sucedido</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>O registo de erros será carregado automaticamente com o comentário. Não podemos melhorar sem o seu comentário</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
-        <translation>Submeter Comentário</translation>
+        <translation>Submeter comentário</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
         <translation>O processo falhou</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
         <translation>O processo falhou</translation>
     </message>
@@ -228,7 +231,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Erro de formato do disco: Formate o disco com FAT32</translation>
+        <translation>Erro de formato do disco: Formatar o disco com FAT32</translation>
     </message>
 </context>
 </TS>

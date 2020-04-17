@@ -40,7 +40,9 @@
 #include <QProcess>
 #include <QDesktopServices>
 #include <QFontDatabase>
-
+#include <DSysInfo>
+#include <QDBusInterface>
+#include <QDBusAbstractInterface>
 ResultView::ResultView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("ResultView");
@@ -222,16 +224,29 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         });
         return;
     case BMHandler::SyscExecFailed:
-        m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
-        m_rebootLater->setText(tr("Submit Feedback"));
-        m_logHits->adjustSize();
-        m_rebootLater->disconnect();
-        connect(m_rebootLater, &DPushButton::clicked,
-        this, [ = ]() {
-            // FIXME: call feedback
-            QProcess::startDetached("deepin-feedback");
-        });
-        break;
+        if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+            m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
+            m_rebootLater->setText(tr("Submit Feedback"));
+            m_logHits->adjustSize();
+            m_rebootLater->disconnect();
+            connect(m_rebootLater, &DPushButton::clicked,
+            this, [ = ]() {
+                // FIXME: call feedback 社区版保持链接进社区
+//                QProcess::startDetached("deepin-feedback");
+            });
+            break;
+        } else {
+            m_rebootLater->setText(tr("After-Sale Services"));
+            m_logHits->adjustSize();
+            m_rebootLater->disconnect();
+            connect(m_rebootLater, &DPushButton::clicked,
+            this, [ = ]() {
+                // FIXME: call service-support  fix bug 19711 专业版不再调用deepin-feedback链接进社区，而是调用服务与支持客户端
+                QDBusInterface syssupport("com.deepin.dde.ServiceAndSupport", "/com/deepin/dde/ServiceAndSupport", "com.deepin.dde.ServiceAndSupport");
+                syssupport.call("showWindow");
+            });
+            break;
+        }
     case BMHandler::USBFormatError:
     case BMHandler::USBSizeError:
     case BMHandler::USBMountFailed:

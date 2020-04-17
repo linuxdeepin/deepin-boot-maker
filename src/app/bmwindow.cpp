@@ -148,7 +148,6 @@ BMWindow::BMWindow(QWidget *parent)
 //    title->setBackgroundTransparent(true);
     title->setFixedHeight(50);
 //    title->setFrameStyle(QFrame::NoFrame);
-
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
@@ -229,16 +228,9 @@ BMWindow::BMWindow(QWidget *parent)
         qDebug() << "call interface install" << isoFilePath << partition << format;
         emit d->interface->startInstall(isoFilePath, "", partition, format);
     });
-
-    // TODO: TEST Function
-//        USBFormatError,
-//        USBSizeError,
-//        USBMountFailed,
-//        ExtractImgeFailed,
     connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
         setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
         d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
-//        d->resultWidget->updateResult(BMHandler::NoError, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
         d->wsib->setCurrentPage(2);
     });
@@ -251,6 +243,7 @@ BMWindow::BMWindow(QWidget *parent)
         d->wsib->setCurrentPage(2);
         emit d->progressWidget->finish(0, error, title, description);
     });
+    //diff mac，win，linux
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description << current;
@@ -278,8 +271,7 @@ BMWindow::BMWindow(QWidget *parent)
             slideWidget(d->progressWidget, d->unmountWidget);
             d->wsib->setCurrentPage(3);
 
-        }
-        else {
+        } else {
             emit d->unmountWidget->pauseSpinner();
             titlebar()->setMenuVisible(true);
             titlebar()->setQuitMenuDisabled(false);
@@ -291,15 +283,15 @@ BMWindow::BMWindow(QWidget *parent)
 #endif
 #ifndef Q_OS_LINUX
 #if defined Q_OS_Win
-            titlebar()->setQuitMenuDisabled(false);
-            setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
-            closeflags = true;
-            this->setVisible(true);
-            titlebar()->setMenuVisible(false);
+        titlebar()->setQuitMenuDisabled(false);
+        setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
+        closeflags = true;
+        this->setVisible(true);
+        titlebar()->setMenuVisible(false);
 #endif
-            d->resultWidget->updateResult(error, title, description);
-            slideWidget(d->progressWidget, d->resultWidget);
-            d->wsib->setCurrentPage(3);
+        d->resultWidget->updateResult(error, title, description);
+        slideWidget(d->progressWidget, d->resultWidget);
+        d->wsib->setCurrentPage(3);
 
 #endif
     });

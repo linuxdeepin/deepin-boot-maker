@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_TW" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation>無法呼叫 1% 指令</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -16,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>磁碟機空間不足：請確保磁碟還剩餘 1% 空間</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -37,14 +35,14 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>Deepin 開機碟製作器是一個將系統映像檔寫入 CD/DVD、USB 碟、和其他安裝媒體的簡單工具。</translation>
+        <translation>開機碟製作器是一個將系統映像檔寫入 CD/DVD、USB 碟、和其他安裝媒體的簡單工具。</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Deepin 開機碟製作器</translation>
+        <translation>開機碟製作器</translation>
     </message>
 </context>
 <context>
@@ -71,19 +69,19 @@
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
-        <source>Illegal ISO image file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
         <translation>重新選擇 ISO 檔案</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <source>Illegal ISO image file</source>
+        <translation>非法ISO文件</translation>
+    </message>
+    <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation></translation>
+        <translation>正在檢測ISO文件，請稍候...</translation>
     </message>
 </context>
 <context>
@@ -96,7 +94,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>正在製作，請稍候…</translation>
+        <translation>正在製作，請稍候...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
@@ -124,48 +122,53 @@
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Deepin 開機碟製作器</translation>
+        <translation>開機碟製作器</translation>
     </message>
 </context>
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>立刻重新啟動</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>製作成功</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>意見回應將會自動上傳錯誤紀錄。沒有你的意見回應與支持，我們無法進步</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>意見回應</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>離開</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
         <translation>抱歉，製作失敗</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
         <translation>製作失敗</translation>
     </message>
@@ -175,7 +178,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>同步資料和安全移除中，請稍候...</translation>
     </message>
 </context>
 <context>
@@ -188,7 +191,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
         <source>Start</source>
-        <translation>開始製作</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="332"/>
@@ -203,7 +206,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="163"/>
         <source>No disk available</source>
-        <translation>找不到磁碟機</translation>
+        <translation>未發現可用磁碟</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="251"/>
@@ -228,7 +231,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished">磁碟機格式化錯誤：請將磁碟機格式化為 FAT32</translation>
+        <translation>磁碟機格式化錯誤：請將磁碟機格式化為 FAT32</translation>
     </message>
 </context>
 </TS>

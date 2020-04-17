@@ -4,9 +4,8 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
-        <translation>%1 কম্যান্ড চালাতে বার্থ হয়েছে</translation>
+        <translation type="vanished">%1 কম্যান্ড চালাতে বার্থ হয়েছে</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -14,9 +13,18 @@
         <translation>ডিস্ক ফরম্যাটে ত্রুটি: দয়াকরে আপনার ডিস্কটি FAT32 দিয়ে ফরম্যাট দিন </translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation>ডিস্কে জায়গা অপর্যাপ্ত: নিশ্চিত করুন যে ডিস্কে %1 জায়গা খালি আছে</translation>
+        <translation type="vanished">ডিস্কে জায়গা অপর্যাপ্ত: নিশ্চিত করুন যে ডিস্কে %1 জায়গা খালি আছে</translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <source>Failed to call the command 1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -45,12 +53,12 @@
         <translation type="vanished">ডিপিন বুট মেকার</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -154,42 +162,47 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>এখনি পুনঃরায় চালু করুন</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>শেষ</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>সফল হয়েছে</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>এই ত্রুটির লগটি আপনা আপনিই প্রতিক্রিয়া সহকারে আপলোড হবে।  আমরা আপনাদের প্রতিক্রিয়া ছাড়া উন্নত করতে পারবনা</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>প্রতিক্রিয়া জমা দিন</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>বন্ধ</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
         <translation type="unfinished"></translation>
     </message>

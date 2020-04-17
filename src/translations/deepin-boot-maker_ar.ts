@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ar">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation>فشل في إستدعاء الأمر %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -16,12 +14,12 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>مساحة القرص غير كافية: المرجو التأكد من أن القرص يحتوي على %1 مساحة حرة</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>خطأ في تفعيل القرص: يرجى ادخال القرص مرة أخرى أو إعادة تشغيل النظام لإعادة المحاولة</translation>
+        <translation>خطأ في تفعيل القرص: يرجى إدخال القرص مرة أخرى أو إعادة تشغيل النظام لإعادة المحاولة</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
@@ -37,14 +35,14 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>منشئ إقلاع Deepin هو اداة بسيطة لكتابة صور اقراص النظام على الوسطاء CD/DVD، محرك الفلاش USB واًخرون.</translation>
+        <translation>1111</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>منشئ إقلاع ديبين</translation>
+        <translation>صانع إقلاع</translation>
     </message>
 </context>
 <context>
@@ -52,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="124"/>
         <source>Drag an ISO image file here</source>
-        <translation>اسحب صورة ISO وأسقطها هنا</translation>
+        <translation>1111</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
@@ -71,19 +69,19 @@
         <translation>التالي</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
-        <source>Illegal ISO image file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
         <translation>اعد تحديد ملف صورة القرص ISO</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <source>Illegal ISO image file</source>
+        <translation>1111</translation>
+    </message>
+    <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation></translation>
+        <translation>1111</translation>
     </message>
 </context>
 <context>
@@ -91,17 +89,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning</source>
-        <translation>قيد الإنشاء</translation>
+        <translation>يتم الآن الحرق</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>يجري إنشاء القرص يرجى الانتظار ...</translation>
+        <translation>يتم الآن الحرق، نرجوا الانتظار</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>لا  لإزالة القرص أو إيقاف تشغيل الحاسوب أثناء العملية</translation>
+        <translation>لا تقم بإزالة القرص أو إيقاف تشغيل الحاسوب أثناء العملية</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="111"/>
@@ -124,50 +122,55 @@
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>منشئ إقلاع Deepin</translation>
+        <translation>صانع إقلاع</translation>
     </message>
 </context>
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>إعادة تشغيل اﻵن</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>تم</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>تم بنجاح</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>سجل الخطأ سيتم رفعه تلقائيا مع الملاحظات . لا يمكننا التحسن بدون ملاحظاتكم</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
-        <translation>إرسال الملاحضات</translation>
+        <translation>إرسال الملاحظات</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>إغلاق</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
-        <translation>للأسف٫ فشل الإنشاء</translation>
+        <translation>نأسف، فشلت العملية</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
-        <translation>فشل الإنشاء</translation>
+        <translation>فشلت العملية</translation>
     </message>
 </context>
 <context>
@@ -175,7 +178,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>التحقق من البيانات وإزالة الوسائط بأمان، نرجوا الإنتظار...</translation>
     </message>
 </context>
 <context>
@@ -183,12 +186,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation>تهيئة القرص  يمكنها رفع نسبة نجاح الإنشاء</translation>
+        <translation>إعادة ضبط القرص لإعدادات المصنع لزيادة معدل الحرق</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
         <source>Start</source>
-        <translation>يبدأ الإنشاء</translation>
+        <translation>ابدأ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="332"/>
@@ -203,7 +206,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="163"/>
         <source>No disk available</source>
-        <translation>لا يوجد أقراص متاحة</translation>
+        <translation>1111</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="251"/>
@@ -213,7 +216,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="334"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>تهية القرص سوف تحذف كل البيانات , رجاءاً قم بعمل نسخة احتياطية قبل الإستمرار.</translation>
+        <translation>تهية القرص سوف تحذف كل البيانات , رجاءً قم بعمل نسخة احتياطية قبل الإستمرار.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
@@ -228,7 +231,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished">خطأ في تهيئة القرص: الرجاء تهيئة القرص باستخدام FAT32</translation>
+        <translation>خطأ في تهيئة القرص: الرجاء تهيئة القرص باستخدام FAT32</translation>
     </message>
 </context>
 </TS>

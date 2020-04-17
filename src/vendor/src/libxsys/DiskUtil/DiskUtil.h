@@ -49,10 +49,10 @@ QString GetPartitionLabel(const QString &targetDev);
 
 namespace Bootloader {
 
-Result InstallBootloader(const QString &diskDev);
+Result InstallBootloader(const QString &diskDev, const QString &images);
 
 namespace Syslinux {
-Result InstallSyslinux(const QString &diskDev);
+Result InstallSyslinux(const QString &diskDev, const QString &images);
 Result ConfigSyslinx(const QString &targetDev);
 }
 

@@ -4,9 +4,8 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command %1</source>
-        <translation>Nu s-a putut apela comanda %1</translation>
+        <translation type="vanished">Nu s-a putut apela comanda %1</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -14,9 +13,18 @@
         <translation>Eroare de formatare: Mediul de stocare trebuie să fie formatat în format FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation>Spaţiu insufucient pe disc: Asiguraţi-vă ca discul are %1 spaţiu liber</translation>
+        <translation type="vanished">Spaţiu insufucient pe disc: Asiguraţi-vă ca discul are %1 spaţiu liber</translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <source>Failed to call the command 1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -45,12 +53,12 @@
         <translation type="vanished">Deepin Boot Maker</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="119"/>
+        <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
+        <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -154,42 +162,47 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="146"/>
+        <location filename="../app/view/resultview.cpp" line="148"/>
         <source>Reboot now</source>
         <translation>Restartează acum</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="129"/>
+        <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
         <translation>Efectuat</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="63"/>
+        <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
         <translation>cu succes</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="225"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Jurnalul de erori va fi încărcat automat cu feedbackul. Nu putem să ne îmbunătățim fără feedback-ul dumneavoastră</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="226"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>Trimiteţi Feedback-ul dumneavoastră</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="240"/>
+        <location filename="../app/view/resultview.cpp" line="239"/>
+        <source>After-Sale Services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="255"/>
         <source>Close</source>
         <translation>Închidere</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="248"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Sorry, process failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="249"/>
+        <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
         <translation type="unfinished"></translation>
     </message>

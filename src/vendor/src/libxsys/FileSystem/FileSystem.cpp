@@ -40,6 +40,7 @@ namespace FS {
 
 QString TmpFilePath(const QString &filename, const QString &distFilename)
 {
+//fix bug 16574 非开发者模式第三方程序无法签名的问题，现将第三放程序写到/usr/bin下面，mac平台保持原样
 #ifdef Q_OS_LINUX
     QString tmpDir = "/usr/bin/";
 #endif
