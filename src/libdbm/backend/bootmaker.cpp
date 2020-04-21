@@ -194,11 +194,11 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         QStringList volume = ret7.result().split("\n").filter("Volume id");
         QString tmp = volume.takeAt(0);
         if (tmp.contains("deepin", Qt::CaseInsensitive)) {
-            args << "-n" << "DEEPINOS" << targetPartition ;
+            args1 << "-n" << "DEEPINOS" << targetPartition ;
         } else if (tmp.contains("uos", Qt::CaseInsensitive)) {
-            args << "-n" << "UOS" << targetPartition ;
+            args1 << "-n" << "UOS" << targetPartition ;
         } else {
-            args << "-n" << "UNKNOWN" << targetPartition ;
+            args1 << "-n" << "UNKNOWN" << targetPartition ;
         }
         XSys::SynExec("umount", targetPartition);
         XSys::SynExec("umount", targetPartition);
