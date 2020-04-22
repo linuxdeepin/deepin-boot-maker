@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation>执行命令 %1 失败</translation>
+        <translation>执行命令 1% 失败</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -14,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>磁盘空间不足：请确保至少有%1的剩余空间</translation>
+        <translation>磁盘空间不足：请确保至少有1%的剩余空间</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
