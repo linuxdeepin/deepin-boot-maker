@@ -25,6 +25,9 @@
 #include <QString>
 
 #include <XSys>
+#include <dirent.h>
+#include <QTextCodec>
+#include <QByteArray>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif
@@ -199,9 +202,71 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             info.path = partiotion.toObject()["name"].toString();
             info.uuid = partiotion.toObject()["uuid"].toString();
             info.label = partiotion.toObject()["label"].toString();
-//            info.label = QString::fromLocal8Bit(partiotion.toObject()["label"].toString().toLocal8Bit().data());
             info.fstype = partiotion.toObject()["fstype"].toString();
-            children.insert(info.path, info);
+            //fix 解决关于gbk中文乱码的问题，直接转utf8行不通，只能通过判断字节大小转换
+            DIR *pstdir = opendir("/dev/disk/by-label");
+            if (pstdir != 0) {
+                dirent *dp;
+                while (dp = readdir(pstdir)) {
+                    QTextCodec *utf8 = QTextCodec::codecForName("UTF-8");
+                    QTextCodec *gbk = QTextCodec::codecForName("");
+                    QString strtem("%1");
+                    strtem = strtem.arg(dp->d_name);
+                    qDebug() << dp->d_name;
+                    if (strtem.count("\\x") > 0) {
+                        QByteArray arr = dp->d_name;
+                        qDebug() << dp->d_name ;
+                        QByteArray ba = dp->d_name;
+                        QString link(ba);
+                        QByteArray t_destByteArray;
+                        QByteArray t_tmpByteArray;
+                        for (int i = 0; i < ba.size(); i++) {
+                            if (92 == ba.at(i)) {
+                                if (4 == t_tmpByteArray.size()) {
+                                    t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray));
+                                } else {
+                                    if (t_tmpByteArray.size() > 4) {
+                                        t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray.left(4)));
+                                        t_destByteArray.append(t_tmpByteArray.mid(4));
+                                    } else {
+                                        t_destByteArray.append(t_tmpByteArray);
+                                    }
+                                }
+                                t_tmpByteArray.clear();
+                                t_tmpByteArray.append(ba.at(i));
+                                continue;
+                            } else if (t_tmpByteArray.size() > 0) {
+                                t_tmpByteArray.append(ba.at(i));
+                                continue;
+                            } else {
+                                t_destByteArray.append(ba.at(i));
+                            }
+                        }
+
+                        if (4 == t_tmpByteArray.size()) {
+                            t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray));
+                        } else {
+                            if (t_tmpByteArray.size() > 4) {
+                                t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray.left(4)));
+                                t_destByteArray.append(t_tmpByteArray.mid(4));
+                            } else {
+                                t_destByteArray.append(t_tmpByteArray);
+                            }
+                        }
+
+                        link = QTextCodec::codecForName("GBK")->toUnicode(t_destByteArray);
+                        qDebug() << link;
+                        int idx = link.lastIndexOf("/", link.length() - 1);
+                        QString stres = link.mid(idx + 1);
+                        if (strtem.count("\\x") > 0) {
+                            info.label = stres;
+
+                            break;
+                        }
+                    }
+                }
+                children.insert(info.path, info);
+            }
         }
         DeviceInfo info;
         info.path = value.toObject()["name"].toString();
