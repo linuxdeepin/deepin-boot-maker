@@ -1,0 +1,6 @@
+   {
+       "type": "homebrew",
+       "3rdparty": [],
+       "ignore": [".tx/*","debian/*","docs/*"],
+       "license": ["GPLv3"]
+   }
