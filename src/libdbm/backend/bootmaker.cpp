@@ -254,10 +254,10 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     }, Qt::QueuedConnection);
 
     if (!sevenZip.extract()) {
-//        qCritical() << "Error::get(Error::ExtractImgeFailed)";
-//        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
-        qCritical() << "Error::get(Error::USBSizeError)";
-        emit finished(USBSizeError, errorString(USBSizeError));
+        qCritical() << "Error::get(Error::ExtractImgeFailed)";
+        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
+//        qCritical() << "Error::get(Error::USBSizeError)";
+//        emit finished(USBSizeError, errorString(USBSizeError));
         return false;
     }
     this->reportProgress(80, Error::NoError, "end extract files", "");
