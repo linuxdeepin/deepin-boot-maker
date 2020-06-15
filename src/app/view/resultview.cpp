@@ -232,7 +232,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
             connect(m_rebootLater, &DPushButton::clicked,
             this, [ = ]() {
                 // FIXME: call feedback 社区版保持链接进社区
-//                QProcess::startDetached("deepin-feedback");
+                QProcess::startDetached("deepin-feedback");
             });
             break;
         } else {
