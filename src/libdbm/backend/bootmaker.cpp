@@ -26,6 +26,7 @@
 #include "../util/devicemonitor.h"
 #include "diskutil.h"
 #include <QDebug>
+#include <QFileInfo>
 
 #include <XSys>
 
@@ -144,11 +145,32 @@ bool BootMaker::checkfile(const QString &filepath)
 //    emit checkFileResult(true);
     return true;
 }
+
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
     emit m_usbDeviceMonitor->pauseMonitor();
 
     qDebug() << image << unused_device << partition << formatDevice;
+    QFileInfo isoInfo(image);
+
+#define KBit 1024
+    if(formatDevice){
+        if(isoInfo.size() / KBit > XSys::DiskUtil::GetPartitionTotalSpace(partition))
+        {
+            qCritical() << "Error::get(Error::USBSizeError)";
+            emit finished(USBSizeError, errorString(USBSizeError));
+            return false;
+        }
+    }
+    else {
+        if(isoInfo.size() / KBit > XSys::DiskUtil::GetPartitionFreeSpace(partition))
+       {
+           qCritical() << "Error::get(Error::USBSizeError)";
+           emit finished(USBSizeError, errorString(USBSizeError));
+           return false;
+       }
+    }
+
 
     //check iso integrity
     SevenZip sevenZipCheck(image, "");
