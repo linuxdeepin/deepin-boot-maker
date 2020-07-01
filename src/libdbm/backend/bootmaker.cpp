@@ -276,6 +276,14 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     }, Qt::QueuedConnection);
 
     if (!sevenZip.extract()) {
+        //fix bug 32703,fix Unplug the USB flash disk
+        QFileInfo devFile(partition);
+        if(!devFile.exists())
+            {
+            qCritical() << "Error::get(Error::USBMountFailed)";
+            emit finished(USBMountFailed, errorString(USBMountFailed));
+            return false;
+            }
         qCritical() << "Error::get(Error::ExtractImgeFailed)";
         emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
 //        qCritical() << "Error::get(Error::USBSizeError)";
