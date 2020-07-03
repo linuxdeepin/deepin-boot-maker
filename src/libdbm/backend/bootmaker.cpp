@@ -153,9 +153,9 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     qDebug() << image << unused_device << partition << formatDevice;
     QFileInfo isoInfo(image);
 
-#define KBit 1024
-    if(formatDevice){
-        if(isoInfo.size() / KBit > XSys::DiskUtil::GetPartitionTotalSpace(partition))
+#define KByt 1024
+    if(formatDevice) {
+        if(isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionTotalSpace(partition))
         {
             qCritical() << "Error::get(Error::USBSizeError)";
             emit finished(USBSizeError, errorString(USBSizeError));
@@ -163,12 +163,12 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         }
     }
     else {
-        if(isoInfo.size() / KBit > XSys::DiskUtil::GetPartitionFreeSpace(partition))
-       {
-           qCritical() << "Error::get(Error::USBSizeError)";
-           emit finished(USBSizeError, errorString(USBSizeError));
-           return false;
-       }
+        if(isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionFreeSpace(partition))
+        {
+            qCritical() << "Error::get(Error::USBSizeError)";
+            emit finished(USBSizeError, errorString(USBSizeError));
+            return false;
+        }
     }
 
 
@@ -279,11 +279,11 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         //fix bug 32703,fix Unplug the USB flash disk
         QFileInfo devFile(partition);
         if(!devFile.exists())
-            {
+        {
             qCritical() << "Error::get(Error::USBMountFailed)";
             emit finished(USBMountFailed, errorString(USBMountFailed));
             return false;
-            }
+        }
         qCritical() << "Error::get(Error::ExtractImgeFailed)";
         emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
 //        qCritical() << "Error::get(Error::USBSizeError)";
