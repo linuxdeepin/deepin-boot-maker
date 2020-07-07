@@ -407,13 +407,26 @@ QString GetPartitionLabel(const QString &targetDev)
     return ret.result();
 }
 
+qint64 GetPartitionTotalSpace(const QString &targetDev)
+{
+    XSys::Result ret = XSys::SynExec("df", "--output=size " + targetDev);
+    if (!ret.isSuccess()) {
+        return 0;
+    }
+
+    qDebug() << "result" << ret.result().split("\n").at(ret.result().split("\n").count()-2);
+    return ret.result().split("\n").at(ret.result().split("\n").count()-2).toLongLong();
+}
+
 qint64 GetPartitionFreeSpace(const QString &targetDev)
 {
     XSys::Result ret = XSys::SynExec("df", "--output=avail " + targetDev);
     if (!ret.isSuccess()) {
         return 0;
     }
-    return ret.result().split("\r").last().remove("\n").toLongLong();
+
+    qDebug() << "result" << ret.result().split("\n").at(ret.result().split("\n").count()-2);
+    return ret.result().split("\n").at(ret.result().split("\n").count()-2).toLongLong();
 }
 
 
@@ -768,6 +781,11 @@ PartionFormat GetPartitionFormat(const QString &targetDev)
 QString GetPartitionLabel(const QString &targetDev)
 {
     return XAPI::GetPartitionLabel(targetDev);
+}
+
+qint64 GetPartitionTotalSpace(const QString &targetDev)
+{
+    return XAPI::GetPartitionTotalSpace(targetDev);
 }
 
 qint64 GetPartitionFreeSpace(const QString &targetDev)

@@ -44,6 +44,7 @@ PartionFormat GetPartitionFormat(const QString &targetDev);
 QString GetPartitionDisk(const QString &targetDev);
 
 qint64 GetPartitionFreeSpace(const QString &targetDev);
+qint64 GetPartitionTotalSpace(const QString &targetDev);
 QString GetPartitionLabel(const QString &targetDev);
 }
 

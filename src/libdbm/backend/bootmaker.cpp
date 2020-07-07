@@ -26,6 +26,7 @@
 #include "../util/devicemonitor.h"
 #include "diskutil.h"
 #include <QDebug>
+#include <QFileInfo>
 
 #include <XSys>
 
@@ -144,11 +145,29 @@ bool BootMaker::checkfile(const QString &filepath)
 //    emit checkFileResult(true);
     return true;
 }
+
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
     emit m_usbDeviceMonitor->pauseMonitor();
 
     qDebug() << image << unused_device << partition << formatDevice;
+    QFileInfo isoInfo(image);
+
+#define KByt 1024
+    if (formatDevice) {
+        if (isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionTotalSpace(partition)) {
+            qCritical() << "Error::get(Error::USBSizeError)";
+            emit finished(USBSizeError, errorString(USBSizeError));
+            return false;
+        }
+    } else {
+        if (isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionFreeSpace(partition)) {
+            qCritical() << "Error::get(Error::USBSizeError)";
+            emit finished(USBSizeError, errorString(USBSizeError));
+            return false;
+        }
+    }
+
 
     //check iso integrity
     SevenZip sevenZipCheck(image, "");
@@ -254,10 +273,17 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     }, Qt::QueuedConnection);
 
     if (!sevenZip.extract()) {
-//        qCritical() << "Error::get(Error::ExtractImgeFailed)";
-//        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
-        qCritical() << "Error::get(Error::USBSizeError)";
-        emit finished(USBSizeError, errorString(USBSizeError));
+        //fix bug 32703,fix Unplug the USB flash disk
+        QFileInfo devFile(partition);
+        if (!devFile.exists()) {
+            qCritical() << "Error::get(Error::USBMountFailed)";
+            emit finished(USBMountFailed, errorString(USBMountFailed));
+            return false;
+        }
+        qCritical() << "Error::get(Error::ExtractImgeFailed)";
+        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
+//        qCritical() << "Error::get(Error::USBSizeError)";
+//        emit finished(USBSizeError, errorString(USBSizeError));
         return false;
     }
     this->reportProgress(80, Error::NoError, "end extract files", "");
