@@ -235,7 +235,18 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
                 QProcess::startDetached("deepin-feedback");
             });
             break;
-        } else {
+        } else if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::deepinType() == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::DeepinPersonal ) {
+            m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
+            m_rebootLater->setText(tr("Submit Feedback"));
+            m_logHits->adjustSize();
+            m_rebootLater->disconnect();
+            connect(m_rebootLater, &DPushButton::clicked,
+            this, [ = ]() {
+                // FIXME: call feedback 个人版保持链接进个人版社区
+                QProcess::startDetached("deepin-feedback");
+            });
+            break;
+         } else {
             m_rebootLater->setText(tr("After-Sale Services"));
             m_logHits->adjustSize();
             m_rebootLater->disconnect();
