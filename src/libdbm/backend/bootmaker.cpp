@@ -206,7 +206,9 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         XSys::SynExec("partprobe", "");
         XSys::SynExec("partprobe", "");
         QStringList args1;
-        XSys::Result ret7 = XSys::SynExec("isoinfo", QString("-i %1 -d").arg(image));
+        QStringList isoArgs;
+        isoArgs << "-i" << images << "-d";
+        XSys::Result ret7 = XSys::SynExec("isoinfo", isoArgs);
         if (!ret7.isSuccess()) {
             qWarning() << "call isoinfo failed" << ret7.result();
         }
