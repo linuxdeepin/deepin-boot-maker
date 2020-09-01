@@ -29,7 +29,7 @@ class DropFrame : public DFrame
 {
     Q_OBJECT
 public:
-    explicit DropFrame(DWidget *parent = 0);
+    explicit DropFrame(DWidget *parent = nullptr);
 
     virtual void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
     virtual void dragLeaveEvent(QDragLeaveEvent *event) Q_DECL_OVERRIDE;

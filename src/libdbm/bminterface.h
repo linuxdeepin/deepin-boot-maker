@@ -32,7 +32,7 @@ class BMInterface : public QObject, public Dtk::Core::DSingleton<BMInterface>
 {
     Q_OBJECT
 public:
-    explicit BMInterface(QObject *parent = 0);
+    explicit BMInterface(QObject *parent = nullptr);
     ~BMInterface();
 
     static void initResources()

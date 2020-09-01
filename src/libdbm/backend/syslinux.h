@@ -28,7 +28,7 @@ class Syslinux : public QObject
 {
     Q_OBJECT
 public:
-    explicit Syslinux(QObject *parent = 0);
+    explicit Syslinux(QObject *parent = nullptr);
 
 signals:
 

@@ -28,7 +28,7 @@ class BootMaker : public BMHandler
 {
     Q_OBJECT
 public:
-    explicit BootMaker(QObject *parent = 0);
+    explicit BootMaker(QObject *parent = nullptr);
 
 public slots:
     void reboot();

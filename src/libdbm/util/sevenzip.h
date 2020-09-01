@@ -30,7 +30,7 @@ class SevenZipProcessParser : public QThread
 {
     Q_OBJECT
 public:
-    explicit SevenZipProcessParser(const QString &file, QProcess *process, QObject *parent = 0);
+    explicit SevenZipProcessParser(const QString &file, QProcess *process, QObject *parent = nullptr);
 
     void setProgressName(const QString &file) {m_progressFilename = file;}
 
@@ -53,7 +53,7 @@ class SevenZip : public QObject
 public:
     SevenZipProcessParser   *m_szpp;
 
-    explicit SevenZip(const QString &image, const QString &target, QObject *parent = 0);
+    explicit SevenZip(const QString &image, const QString &target, QObject *parent = nullptr);
 
     void setArchiveFile(const QString &archiveFile);
     void setOutputDirectory(const QString &outputDir);

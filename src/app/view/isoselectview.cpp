@@ -35,6 +35,7 @@
 #include <QDebug>
 #include <QFontDatabase>
 #include <QtConcurrent>
+#include <QDBusInterface>
 
 DWIDGET_USE_NAMESPACE
 
@@ -454,38 +455,6 @@ void ISOSelectView::onFileSelected(const QString &file)
         t_checkfile.start();
     }
 }
-
-//void ISOSelectView::onFileSelected(const QString &file)
-//{
-//    bool checkok = false;
-//    checkok = BMInterface::instance()->checkfile(file);
-//    QFileInfo info(file);
-//    m_fileLabel->setText(info.fileName());
-//    m_fileLabel->show();
-//    m_hits->setText("");
-//    m_selectText = tr("Reselect an ISO image file");
-//    m_checkFile->setText(tr("Detecting ISO file, please wait..."));
-//    slot_ThemeChange();
-//    m_nextSetp->setDisabled(true);
-////    m_checkFile->setText("");
-//    QString stateText = "";
-//    if (!checkok)
-//        stateText = tr("Illegal ISO image file");
-////    QString linkText = QString(s_linkTemplate).arg(selectText).arg(selectText);
-////    m_fileSelect->setText(linkText);
-//    m_nextSetp->setDisabled(false);
-////    m_stateLabel->hide();
-//    if ("" != stateText) {
-//        QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
-////        m_stateLabel->setText(stateTemplateText);
-////        m_stateLabel->show();
-//        m_hits->setText(stateTemplateText);
-//        m_nextSetp->setDisabled(true);
-//    }
-//    m_isoFilePath = file;
-//    qDebug() << "onFileSelected file:" << file;
-//}
-
 
 void ISOSelectView::onFileVerfiyFinished(bool ok)
 {

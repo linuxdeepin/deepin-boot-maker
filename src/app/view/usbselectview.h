@@ -31,7 +31,7 @@ class UsbSelectView : public DWidget
 {
     Q_OBJECT
 public:
-    explicit UsbSelectView(DWidget *parent = 0);
+    explicit UsbSelectView(DWidget *parent = nullptr);
 
 signals:
     void deviceSelected(const QString &partition, bool format);
