@@ -86,8 +86,6 @@ void loadTranslate()
     }
 
     QString tranlateUrl;
-//    tnapplang = "it";
-//    tnappcoun = "IT";
     if (!tnappcoun.isEmpty()) {
         tranlateUrl = QString(":/translations/deepin-boot-maker_%1_%2.qm").arg(tnapplang).arg(tnappcoun);
     }
@@ -156,13 +154,12 @@ QMap<QString, DeviceInfo> CommandDfParse()
 {
     QProcess df;
     df.start("df", QStringList{"-k", "--output=source,used,avail"});
-    df.waitForStarted(-1);
     df.waitForFinished(-1);
 
     QString dfout = df.readAll();
 
     QMap<QString, DeviceInfo> deviceInfos;
-    foreach (const QString infoline, dfout.split("\n")) {
+    foreach (const QString &infoline, dfout.split("\n")) {
         QStringList infos = infoline.simplified().split(" ");
 
         if (infos.size() != 3) {
@@ -175,108 +172,99 @@ QMap<QString, DeviceInfo> CommandDfParse()
         }
         devInfo.used = static_cast<quint32>(infos.at(1).toInt() / 1024);
         devInfo.total = static_cast<quint32>((infos.at(2).toInt() + infos.at(1).toInt()) / 1024) ;
-//        devInfo.target = infos.at(3);
         deviceInfos.insert(devInfo.path, devInfo);
-//        qDebug() <<  devInfo.device << devInfo.used << devInfo.total << devInfo.target ;
     }
     return deviceInfos;
 }
 
+static QByteArray unescapeLimited(const QString &str)
+{
+    bool escape = false;
+    QByteArray hex(2, '\0');
+    QByteArray ret;
+    QByteArray origin = str.toUtf8();
+    for (auto it = origin.constBegin(); it != origin.constEnd();) {
+        if (escape) {
+            if (*it != 'x' || it + 2 > origin.constEnd())
+                break;
+            hex[0] = (*(it + 1));
+            hex[1] = (*(it + 2));
+            ret.append(QByteArray::fromHex(hex));
+            escape = false;
+            it += 3;
+        } else {
+            if (*it == '\\')
+                escape = true;
+            else
+                ret.append(*it);
+            ++it;
+        }
+    }
+
+    return ret;
+}
+
 QMap<QString, DeviceInfo> CommandLsblkParse()
 {
-    QProcess df;
-    df.start("lsblk", QStringList{"-b", "-p", "-J", "-o", "name,mountpoint,label,size,uuid,fstype"});
-    df.waitForStarted(-1);
-    df.waitForFinished(-1);
-    QString dfout = df.readAll();
-    qDebug() << "CommandLsblkParse dfout:" << dfout.toLocal8Bit();
+    QProcess lsblk;
+    lsblk.start("lsblk", QStringList{"-b", "-p", "-P", "-o", "name,label,size,uuid,fstype,type"});
+    lsblk.waitForFinished(-1);
 
+    QString line;
+    DeviceInfo info;
+    QString diskDevPath;
     QMap<QString, DeviceInfo> deviceInfos;
+    do {
+        bool isPart = false;
+        line = QString::fromUtf8(lsblk.readLine());
+        if (line.isEmpty())
+            break;
+        QStringList pairs = line.split(" ");
+        for (auto it = pairs.constBegin(); it != pairs.constEnd(); ++it) {
+            if (it->isEmpty())
+                continue;
 
-//    QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLatin1());
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(dfout.toLocal8Bit());
-    foreach (const QJsonValue &value, jsonDoc.object()["blockdevices"].toArray()) {
-        QMap<QString, DeviceInfo> children;
-        foreach (const QJsonValue &partiotion, value.toObject()["children"].toArray()) {
-            DeviceInfo info;
-            info.path = partiotion.toObject()["name"].toString();
-            info.uuid = partiotion.toObject()["uuid"].toString();
-            info.label = partiotion.toObject()["label"].toString();
-            info.fstype = partiotion.toObject()["fstype"].toString();
-            //fix 解决关于gbk中文乱码的问题，直接转utf8行不通，只能通过判断字节大小转换
-            DIR *pstdir = opendir("/dev/disk/by-label");
-            if (pstdir != 0) {
-                dirent *dp;
-                while (dp = readdir(pstdir)) {
-                    QTextCodec *utf8 = QTextCodec::codecForName("UTF-8");
-                    QTextCodec *gbk = QTextCodec::codecForName("");
-                    QString strtem("%1");
-                    strtem = strtem.arg(dp->d_name);
-                    qDebug() << dp->d_name;
-                    if (strtem.count("\\x") > 0) {
-                        QByteArray arr = dp->d_name;
-                        qDebug() << dp->d_name ;
-                        QByteArray ba = dp->d_name;
-                        QString link(ba);
-                        QByteArray t_destByteArray;
-                        QByteArray t_tmpByteArray;
-                        for (int i = 0; i < ba.size(); i++) {
-                            if (92 == ba.at(i)) {
-                                if (4 == t_tmpByteArray.size()) {
-                                    t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray));
-                                } else {
-                                    if (t_tmpByteArray.size() > 4) {
-                                        t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray.left(4)));
-                                        t_destByteArray.append(t_tmpByteArray.mid(4));
-                                    } else {
-                                        t_destByteArray.append(t_tmpByteArray);
-                                    }
-                                }
-                                t_tmpByteArray.clear();
-                                t_tmpByteArray.append(ba.at(i));
-                                continue;
-                            } else if (t_tmpByteArray.size() > 0) {
-                                t_tmpByteArray.append(ba.at(i));
-                                continue;
-                            } else {
-                                t_destByteArray.append(ba.at(i));
-                            }
-                        }
+            QStringList kv = it->split("=");
+            if (kv.size() != 2)
+                continue;
 
-                        if (4 == t_tmpByteArray.size()) {
-                            t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray));
-                        } else {
-                            if (t_tmpByteArray.size() > 4) {
-                                t_destByteArray.append(QByteArray::fromHex(t_tmpByteArray.left(4)));
-                                t_destByteArray.append(t_tmpByteArray.mid(4));
-                            } else {
-                                t_destByteArray.append(t_tmpByteArray);
-                            }
-                        }
+            QString key = kv[0].toLower();
+            QString value = kv[1].trimmed();
+            if (value.endsWith("\"") && value.startsWith("\""))
+                value = value.mid(1, value.size() - 2);
 
-                        link = QTextCodec::codecForName("GBK")->toUnicode(t_destByteArray);
-                        qDebug() << link;
-                        int idx = link.lastIndexOf("/", link.length() - 1);
-                        QString stres = link.mid(idx + 1);
-                        if (strtem.count("\\x") > 0) {
-                            info.label = stres;
-
-                            break;
-                        }
-                    }
+            if (!key.compare("name")) {
+                info.path = value;
+            } else if (!key.compare("label")) {
+                if (value.contains("\\x", Qt::CaseInsensitive)) {
+                    value = QTextCodec::codecForName("GBK")->toUnicode(unescapeLimited(value));
+                    if (value.isEmpty())
+                        value = QObject::tr("Removable disk");
                 }
-                children.insert(info.path, info);
+                info.label = value;
+            }
+            else if (!key.compare("uuid")) {
+                info.uuid = value;
+            } else if (!key.compare("fstype")) {
+                info.fstype = value;
+            } else if (!key.compare("type")) {
+                QString type = value;
+                if (!type.compare("disk"))
+                    diskDevPath = info.path;
+                else if (!type.compare("part")){
+                    isPart = true;
+                } else {
+                    diskDevPath = "";
+                }
             }
         }
-        DeviceInfo info;
-        info.path = value.toObject()["name"].toString();
-        info.uuid = value.toObject()["uuid"].toString();
-        info.label = value.toObject()["label"].toString();
-        info.fstype = value.toObject()["fstype"].toString();
-        info.children = children;
+        if (isPart && !diskDevPath.isEmpty()) {
+            deviceInfos[diskDevPath].children.insert(info.path, info);
+        } else {
+            deviceInfos.insert(info.path, info);
+        }
+    } while(true);
 
-        deviceInfos.insert(info.path, info);
-    }
     return deviceInfos;
 }
 #endif
@@ -339,7 +327,6 @@ QList<DeviceInfo> ListUsbDrives()
         if (QDir::toNativeSeparators(deviceLetter) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(deviceLetter)
                 .contains("A:") && !QDir::toNativeSeparators(deviceLetter)
                 .contains("B:")) {
-//            qDebug() << GetDriveType(LPWSTR(deviceLetter.utf16())) << deviceLetter;
             if (GetDriveType(LPWSTR(deviceLetter.utf16())) == 2) {
 
                 DeviceInfo info;
