@@ -29,7 +29,7 @@ class DeviceMonitor : public QObject
 {
     Q_OBJECT
 public:
-    explicit DeviceMonitor(QObject *parent = 0);
+    explicit DeviceMonitor(QObject *parent = nullptr);
 
 signals:
     void startMonitor();

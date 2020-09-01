@@ -33,7 +33,7 @@ class BMDbusHandler : public BMHandler
 {
     Q_OBJECT
 public:
-    explicit BMDbusHandler(QObject *parent = 0)
+    explicit BMDbusHandler(QObject *parent = nullptr)
         : BMHandler(parent)
     {
         m_dbus = new BMDBusInterface("com.deepin.bootmaker",

@@ -28,7 +28,7 @@ class ProgressView : public DWidget
 {
     Q_OBJECT
 public:
-    explicit ProgressView(DWidget *parent = 0);
+    explicit ProgressView(DWidget *parent = nullptr);
 
 signals:
     void finish(quint32 current,quint32 error, const QString &title, const QString &description);

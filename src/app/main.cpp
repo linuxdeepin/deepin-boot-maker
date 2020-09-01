@@ -108,10 +108,6 @@ int main(int argc, char **argv)
     if (!DGuiApplicationHelper::instance()->setSingleInstance(app.applicationName(), DGuiApplicationHelper::UserScope)) {
         exit(0);
     }
-//    if (!app.setSingleInstance("deepinbootmaker")) {
-//        qDebug() << "another deepin boot maker has started";
-//        exit(0);
-//    }
 #endif
 
 #ifdef Q_OS_WIN

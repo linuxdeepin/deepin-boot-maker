@@ -37,7 +37,7 @@ public:
         ExtractImgeFailed,
     };
 
-    explicit BMHandler(QObject *parent = 0): QObject(parent)
+    explicit BMHandler(QObject *parent = nullptr): QObject(parent)
     {
         connect(this, &BMHandler::startInstall,
                 this, &BMHandler::install);

@@ -35,7 +35,7 @@ class ResultView : public DWidget
 {
     Q_OBJECT
 public:
-    explicit ResultView(DWidget *parent = 0);
+    explicit ResultView(DWidget *parent = nullptr);
 
 public slots:
     void onLogLinkActivated(const QString &);

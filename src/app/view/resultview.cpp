@@ -43,6 +43,7 @@
 #include <DSysInfo>
 #include <QDBusInterface>
 #include <QDBusAbstractInterface>
+#include <QDBusError>
 ResultView::ResultView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("ResultView");
@@ -214,7 +215,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 void ResultView::updateResult(quint32 error, const QString &/*title*/, const QString &/*description*/)
 {
     auto errorType = static_cast<BMHandler::ErrorType>(error);
-
     switch (errorType) {
     case BMHandler::NoError:
         m_rebootLater->disconnect();
@@ -224,29 +224,18 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         });
         return;
     case BMHandler::SyscExecFailed:
-        if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::isCommunityEdition() == true) {
+        if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() != DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosProfessional) {
             m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
             m_rebootLater->setText(tr("Submit Feedback"));
             m_logHits->adjustSize();
             m_rebootLater->disconnect();
             connect(m_rebootLater, &DPushButton::clicked,
             this, [ = ]() {
-                // FIXME: call feedback 社区版保持链接进社区
+                // FIXME: call feedback 非专业版保持链接进社区
                 QProcess::startDetached("deepin-feedback");
             });
-            break;
-        } else if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::deepinType() == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::DeepinPersonal ) {
-            m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
-            m_rebootLater->setText(tr("Submit Feedback"));
-            m_logHits->adjustSize();
-            m_rebootLater->disconnect();
-            connect(m_rebootLater, &DPushButton::clicked,
-            this, [ = ]() {
-                // FIXME: call feedback 个人版保持链接进个人版社区
-                QProcess::startDetached("deepin-feedback");
-            });
-            break;
-         } else {
+
+        } else {
             m_rebootLater->setText(tr("After-Sale Services"));
             m_logHits->adjustSize();
             m_rebootLater->disconnect();
@@ -254,10 +243,13 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
             this, [ = ]() {
                 // FIXME: call service-support  fix bug 19711 专业版不再调用deepin-feedback链接进社区，而是调用服务与支持客户端
                 QDBusInterface syssupport("com.deepin.dde.ServiceAndSupport", "/com/deepin/dde/ServiceAndSupport", "com.deepin.dde.ServiceAndSupport");
-                syssupport.call("showWindow");
+                if (syssupport.isValid())
+                    syssupport.call("showWindow");
+                else
+                    qWarning() << "dbus error:" << syssupport.lastError();
             });
-            break;
         }
+        break;
     case BMHandler::USBFormatError:
     case BMHandler::USBSizeError:
     case BMHandler::USBMountFailed:

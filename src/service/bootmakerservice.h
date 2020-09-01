@@ -33,7 +33,7 @@ class BootMakerService :  public QObject,
     Q_CLASSINFO("D-Bus Interface", "com.deepin.bootmaker")
 
 public:
-    explicit BootMakerService(QObject *parent = 0);
+    explicit BootMakerService(QObject *parent = nullptr);
     virtual ~BootMakerService();
 
 signals:

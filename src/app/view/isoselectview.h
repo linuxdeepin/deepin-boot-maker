@@ -53,7 +53,7 @@ class ISOSelectView : public DWidget
 
     Q_PROPERTY(QString isoFilePath READ isoFilePath)
 public:
-    explicit ISOSelectView(DWidget *parent = 0);
+    explicit ISOSelectView(DWidget *parent = nullptr);
 
     inline QString isoFilePath() const
     {

@@ -29,5 +29,5 @@ class DeviceListWidget : public DListWidget
 {
     Q_OBJECT
 public:
-    explicit DeviceListWidget(DWidget *parent = 0);
+    explicit DeviceListWidget(DWidget *parent = nullptr);
 };

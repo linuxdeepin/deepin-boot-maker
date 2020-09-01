@@ -414,8 +414,8 @@ qint64 GetPartitionTotalSpace(const QString &targetDev)
         return 0;
     }
 
-    qDebug() << "result" << ret.result().split("\n").at(ret.result().split("\n").count()-2);
-    return ret.result().split("\n").at(ret.result().split("\n").count()-2).toLongLong();
+    qDebug() << "result" << ret.result().split("\n").at(ret.result().split("\n").count() - 2);
+    return ret.result().split("\n").at(ret.result().split("\n").count() - 2).toLongLong();
 }
 
 qint64 GetPartitionFreeSpace(const QString &targetDev)
@@ -425,8 +425,8 @@ qint64 GetPartitionFreeSpace(const QString &targetDev)
         return 0;
     }
 
-    qDebug() << "result" << ret.result().split("\n").at(ret.result().split("\n").count()-2);
-    return ret.result().split("\n").at(ret.result().split("\n").count()-2).toLongLong();
+    qDebug() << "result" << ret.result().split("\n").at(ret.result().split("\n").count() - 2);
+    return ret.result().split("\n").at(ret.result().split("\n").count() - 2).toLongLong();
 }
 
 
@@ -481,7 +481,10 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
 
     // rename label
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(targetDev));
-    XSys::Result ret3 = XSys::SynExec("isoinfo", QString("-i %1 -d").arg(images));
+    /*QProcess cannot handle Chinese paths*/
+    QStringList args;
+    args << "-i" << images << "-d";
+    XSys::Result ret3 = XSys::SynExec("isoinfo", args);
     if (!ret3.isSuccess()) {
         qWarning() << "call df failed" << ret3.result();
     }
@@ -549,7 +552,9 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
 
     // rename label  fix bug 20233 区分社区版专业版镜像设置U盘卷标名
     ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(newTargetDev));
-    XSys::Result ret3 = XSys::SynExec("isoinfo", QString("-i %1 -d").arg(images));
+    QStringList isoArgs;
+    isoArgs << "-i" << images << "-d";
+    XSys::Result ret3 = XSys::SynExec("isoinfo", isoArgs);
     if (!ret3.isSuccess()) {
         qWarning() << "call df failed" << ret3.result();
     }
