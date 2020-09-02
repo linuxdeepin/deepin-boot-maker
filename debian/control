@@ -25,5 +25,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools,
  syslinux [linux-amd64 linux-i386],
  syslinux-common [linux-amd64 linux-i386],genisoimage
-Description: 
- Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.
+Description:  Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.
+Deepin Boot Disk Creation Tool is a system boot disk creation tool developed by the Deepin Technology team.
+It has the characteristics of simple interface and simple operation. It can help users to make deepin bootable U disk simply and conveniently.
+This tool is a cross-platform application, compatible with mac, windwos and Linux.
