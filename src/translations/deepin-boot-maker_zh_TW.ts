@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>執行命令 1% 失敗</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
@@ -14,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>磁碟空間不足：請確保至少有1%的剩餘空間</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>售後服務</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
@@ -191,7 +191,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="332"/>
