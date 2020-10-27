@@ -14,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Zu wenig speicher: überprüfe ob die Festplatte 1% freien speicher hat</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
@@ -89,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning</source>
-        <translation>Brennen</translation>
+        <translation>Wird gebrannt</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>Brennen, bitte warten ...</translation>
+        <translation>Wird gebrannt, bitte warten ...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Kundendienst</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
