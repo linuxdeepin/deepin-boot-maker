@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Ha fallat cridar l&apos;ordre 1%.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Error de format del disc: formateu el disc en FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Espai de disc insuficient: assegureu-vos que el disc té 1% d&apos;espai lliure.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Error de muntatge de disc: torneu a connectar el disc o reinicieu el sistema per tornar-ho a provar.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Error de descompressió d&apos;imatge: comproveu la suma de verificació md5 de la imatge i assegureu-vos que sigui íntegra.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Error intern</translation>
     </message>
@@ -115,7 +115,7 @@
         <translation>Disc extraïble</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Disc extraïble</translation>
     </message>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Serveis de postvenda</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>

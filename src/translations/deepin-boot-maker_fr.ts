@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d’exécuter la commande 1%</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Erreur Formatage Disque: veuillez formater le disque en FAT32</translation>
+        <translation>Erreur de Formatage Disque: veuillez formater le disque en FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Espace disque insuffisant : assurez-vous que le disque dispose de 1% d&apos;espace libre</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Erreur montage disque : Veuillez réinsérer le disque ou redémarrer le système</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Erreur décompression image : Vérifiez la somme de contrôle MD5 de l&apos;image et assurez-vous de son intégrité</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Erreur Interne</translation>
     </message>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>Créateur de démarrage</translation>
     </message>
 </context>
 <context>
@@ -115,14 +115,14 @@
         <translation>Périphérique amovible</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Périphérique amovible</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>Créateur de démarrage</translation>
     </message>
 </context>
 <context>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Services après-vente</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>

@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Error al llamar al comando %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Error con formato de disco: Formatee el disco con FAT32</translation>
+        <translation>Error del formato de disco: Formatee el disco con FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Espacio en disco insuficiente: Asegúrese que tenga %1 de espacio libre.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Error al montar el disco: vuelva a conectar el disco o reinicie el sistema para volver a intentarlo</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Error al descomprimir la imagen: Compruebe la suma de verificación md5 de la imagen y asegúrese de que esté correcta</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Error interno</translation>
     </message>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>El creador de unidades de arranque deepin es una herramienta sencilla que importa imágenes ISO, CD / DVD a USB y otros medios de instalación.</translation>
+        <translation>Creador de arranque de Deepin es una herramienta sencilla que graba imágenes ISO en CD/DVD, memorias USB y otros medios.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="123"/>
@@ -71,12 +71,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
-        <translation>Reseleccionar una imagen ISO</translation>
+        <translation>Cambiar imagen ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="238"/>
         <source>Illegal ISO image file</source>
-        <translation>Archivo de imagen ISO ilegal</translation>
+        <translation>Archivo de imagen ISO no permitido</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
@@ -115,7 +115,7 @@
         <translation>Disco extraible</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Disco extraíble</translation>
     </message>
@@ -140,7 +140,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
         <source>Successful</source>
-        <translation>Exitoso</translation>
+        <translation>Listo</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="228"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Servicios postventa</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
@@ -196,12 +196,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="332"/>
         <source>Format USB flash drive</source>
-        <translation>Formatear unidad flash USB</translation>
+        <translation>Formatear memoria USB</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a disk</source>
-        <translation>Selecciona un disco</translation>
+        <translation>Seleccione un disco</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="163"/>
@@ -216,7 +216,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="334"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>El formateo del disco sobrescribirá todos los datos, por favor haga una copia de seguridad antes de continuar.</translation>
+        <translation>El formateo del disco barrará todos los datos, por favor haga una copia de seguridad antes de continuar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
@@ -231,7 +231,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Error con formato de disco: Formatee el disco con FAT32</translation>
+        <translation>Error del formato de disco: Formatee el disco con FAT32</translation>
     </message>
 </context>
 </TS>

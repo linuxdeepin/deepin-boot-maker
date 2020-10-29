@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Не вдалося викликати команду 1%</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Помилка формату диска: Будь ласка, форматуйте диск у FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Недостатньо місця на диску: будь ласка, переконайтесь, що на диску є 1% вільного місця</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Помилка монтування диску: Будь ласка, знову підключіть диск або перезавантажте систему, щоб повторити спробу</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Помилка розпакування образу: Будь ласка, перевірте контрольну суму md5 образу, щоб забезпечити його цілісність</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Внутрішня помилка</translation>
     </message>
@@ -115,7 +115,7 @@
         <translation>Знімний диск</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Знімний диск</translation>
     </message>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
-        <translation>Готово</translation>
+        <translation>Виконано</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Післяпродажне обслуговування</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>

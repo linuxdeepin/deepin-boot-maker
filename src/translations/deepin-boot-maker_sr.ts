@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Неуспешно позивање команде 1%</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Грешка формата диска: форматирајте га као FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Недовољно простора на диску. Осигурајте да диск има 1% слободног простора.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Грешка монтирања диска: прикључите поново диск или поновно покрените систем</translation>
+        <translation>Грешка монтирања диска: поново прикључите диск или поновно покрените систем</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Грешка при распакивању одраза: верификујте МД5 суму одраза и проверите да ли је одраз комплетан</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Унутрашња грешка</translation>
     </message>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>Творац Покретача је једноставан алат којом се исписује системски одраз на ЦД/ДВД, УСБ преносиви уређај и друге медије.</translation>
+        <translation>Творац Покретача је једноставан алат којом се исписује системски одраз на ЦД/ДВД, УСБ преносиве уређаје и друге медије.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="123"/>
@@ -71,12 +71,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
-        <translation>Поново изабери датотеку ИСО одраза.</translation>
+        <translation>Реизбор датотеке ИСО одраза</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="238"/>
         <source>Illegal ISO image file</source>
-        <translation>Незаконит ИСО одраз</translation>
+        <translation>Неважећи ИСО одраз</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
@@ -115,7 +115,7 @@
         <translation>Уклоњиви диск</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Уклоњиви диск</translation>
     </message>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Услуге након продаје</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="251"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation>Форматирање ће обрисати све податке са диска, потврдите за наставак</translation>
+        <translation>Форматирање брише све податке, потврдите за наставак</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="334"/>

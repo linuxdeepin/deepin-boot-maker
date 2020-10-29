@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>ไม่สามารถเรียกคำสั่ง 1%</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>ฟอร์แมตดิสก์ผิดพลาด: โปรดทำการฟอร์แมตดิสก์ด้วย FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>พื้นที่ดิสก์ไม่เพียงพอ: ตรวจสอบให้แน่ใจว่าดิสก์มีพื้นที่ว่าง %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>ข้อผิดพลาดของการเมานต์ดิสก์: ใส่ดิสก์อีกครั้งหรือรีบูตเพื่อลองอีกครั้ง</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>ข้อผิดพลาดการบีบอัดรูปภาพ: ตรวจสอบแฮท md5 ของภาพเพื่อให้แน่ใจว่าสมบูรณ์</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>ข้อผิดพลาดภายใน</translation>
     </message>
@@ -115,7 +115,7 @@
         <translation>ดิสก์แบบถอดได้</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>ดิสก์แบบถอดได้</translation>
     </message>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>กําลังตรวจสอบข้อมูลและลบสื่อออกอย่างปลอดภัย กรุณารอสักครู่...</translation>
     </message>
 </context>
 <context>

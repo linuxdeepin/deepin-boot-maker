@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Formatierungsfehler: Bitte formatieren Sie den Datenträger im Format FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Zu wenig speicher: überprüfe ob die Festplatte 1% freien speicher hat</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Fehler beim Einhängen des Datenträgers: Bitte überprüfen Sie, ob die Verbindung zum Datenträger korrekt ist oder der Datenträger korrekt in das Laufwerk eingelegt wurde. Starten Sie anschließend den Rechner neu.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Fehler beim Entpacken des Abbilds: Bitte prüfen Sie die MD5-Prüfsumme des Abbilds und stellen Sie sicher, dass es sich um ein vollständiges unbeschädigtes Abbild handelt.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Interner Fehler</translation>
     </message>
@@ -89,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning</source>
-        <translation>Brennen</translation>
+        <translation>Wird gebrannt</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>Brennen, bitte warten ...</translation>
+        <translation>Wird gebrannt, bitte warten ...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
@@ -115,7 +115,7 @@
         <translation>Wechseldatenträger</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Wechseldatenträger</translation>
     </message>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Kundendienst</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>

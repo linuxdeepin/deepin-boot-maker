@@ -1,35 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="gl_ES">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="gl_ES" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Fallou a chamada ao comando 1%</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Erro no formato do disco: Por favor, dalle formato ao disco con FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espazo do discurso insuficiente: asegúrese de que o disco teña un 1% de espazo libre</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro de montaxe de disco: insira o disco de novo ou reinicie para intentalo de novo</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro de descompresión da imaxe: verifique o resumo md5 da imaxe para garantir a súa integridade</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Erro interno</translation>
     </message>
@@ -39,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="121"/>
         <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>Boot Maker é unha ferramenta sinxela para escribir ficheiros de imaxe do sistema en CD / DVD, unidade flash USB e outros medios.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Creador de arranque de Deepin</translation>
+        <translation>Creador de arranque</translation>
     </message>
 </context>
 <context>
@@ -52,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="124"/>
         <source>Drag an ISO image file here</source>
-        <translation>Arrastra unha imaxe ISO até aquí e sóltaa</translation>
+        <translation>Arrastre aquí un ficheiro de imaxe ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
@@ -71,19 +69,19 @@
         <translation>Seguinte</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
-        <source>Illegal ISO image file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
         <source>Reselect an ISO image file</source>
         <translation>Volve seleccionar unha imaxe ISO</translation>
     </message>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <source>Illegal ISO image file</source>
+        <translation>Ficheiro de imaxe ISO ilegal</translation>
+    </message>
+    <message>
         <location filename="../app/view/isoselectview.cpp" line="442"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation></translation>
+        <translation>Detectando ficheiro ISO, agarde...</translation>
     </message>
 </context>
 <context>
@@ -91,17 +89,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning</source>
-        <translation>Facendo</translation>
+        <translation>Gravando...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>Creando o disco, por favor agarda...</translation>
+        <translation>Gravando, agarde...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation type="unfinished"></translation>
+        <translation>Non elimine o disco nin apague o computador durante o proceso</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="111"/>
@@ -117,14 +115,14 @@
         <translation>Disco extraible</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Disco extraíble</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Creador de arranque de Deepin</translation>
+        <translation>Creador de arranque</translation>
     </message>
 </context>
 <context>
@@ -147,17 +145,17 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>O rexistro de erros cargarase automaticamente co feedback. Non podemos mellorar sen os teus comentarios</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Enviar comentarios</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"></translation>
+        <translation>Servizos pos-venda</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
@@ -172,7 +170,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="264"/>
         <source>Process failed</source>
-        <translation>Produciuse un erro durante o proceso.</translation>
+        <translation>O proceso fallou</translation>
     </message>
 </context>
 <context>
@@ -180,7 +178,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verificando datos e eliminando os medios de seguridade, agarde...</translation>
     </message>
 </context>
 <context>
@@ -188,12 +186,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatee o disco para aumentar a taxa de éxito de gravación</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
         <source>Start</source>
-        <translation>Iniciar proceso</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="332"/>
@@ -203,22 +201,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a disk</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar disco</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="163"/>
         <source>No disk available</source>
-        <translation type="unfinished"></translation>
+        <translation>Disco non dispoñíbel</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="251"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation type="unfinished"></translation>
+        <translation>O formato borrará todos os datos do disco, confirme e continúe</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="334"/>
         <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>O formato do disco sobreescribirá todos os datos. Ten unha copia de seguridade antes de continuar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
@@ -233,7 +231,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished">Erro no formato do disco: Por favor, dalle formato ao disco con FAT32</translation>
+        <translation>Erro no formato do disco: Por favor, dalle formato ao disco con FAT32</translation>
     </message>
 </context>
 </TS>

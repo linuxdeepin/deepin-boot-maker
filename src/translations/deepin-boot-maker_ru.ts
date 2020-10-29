@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Не удался вызов команды %1.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Ошибка Форматирования Диска: Пожалуйста используйте FAT32</translation>
+        <translation>Ошибка Форматирования Диска:  при форматировании используйте формат FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Недостаточное дисковое пространство: Убедитесь, что на диске есть %1 свободного места</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Ошибка Монтирования Диска: пожалуйста, подключите диск снова или перезагрузите систему, чтобы повторить попытку.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Распаковка образа не удалась: проверьте контрольную сумму образа md5 и убедитесь, что образ корректный.</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Внутренняя Ошибка</translation>
     </message>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Создание Загрузочного Диска</translation>
+        <translation>Средство для создания  Загрузочного Диска</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="214"/>
         <source>Next</source>
-        <translation>Следующий</translation>
+        <translation>Далее</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="301"/>
@@ -94,7 +94,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="77"/>
         <source>Burning, please wait...</source>
-        <translation>Запись, пожалуйста ждите... </translation>
+        <translation>Запись, пожалуйста подождите... </translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
@@ -115,14 +115,14 @@
         <translation>Съемный диск</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Съемный диск</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="123"/>
         <source>Boot Maker</source>
-        <translation>Создание Загрузочного Диска</translation>
+        <translation>Средство для создания  Загрузочного Диска</translation>
     </message>
 </context>
 <context>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="131"/>
         <source>Done</source>
-        <translation>Выполнено</translation>
+        <translation>Готово</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="65"/>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Журнал ошибок будет загружен автоматически для обратной связи. Мы не можем делать улучшения без ваших отзывов</translation>
+        <translation>Журнал ошибок будет загружен автоматически для обратной связи. Мы не можем работать над улучшениями без ваших отзывов</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="229"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Послепродажное обслуживание</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>Проверка данных и безопасное извлечение носителей, пожалуйста, подождите...</translation>
     </message>
 </context>
 <context>
@@ -186,7 +186,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation>Отформатируйте диск, чтобы увеличить скорость записи</translation>
+        <translation>Отформатируйте диск, для повышения скорости записи данных</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="251"/>
         <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation>Форматирование удалит всю информацию на диске, пожалуйста, подтвердите и продолжите</translation>
+        <translation>Форматирование удалит всю информацию доступную на диске, пожалуйста, подтвердите и продолжите</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="334"/>
@@ -231,7 +231,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="351"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Ошибка Форматирования Диска: Пожалуйста используйте FAT32</translation>
+        <translation>Ошибка Форматирования Диска:  при форматировании используйте формат FAT32</translation>
     </message>
 </context>
 </TS>

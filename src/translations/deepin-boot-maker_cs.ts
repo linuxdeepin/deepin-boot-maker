@@ -2,32 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="66"/>
         <source>Failed to call the command 1%</source>
-        <translation type="unfinished"/>
+        <translation>Nepodařilo se zavolat příkaz %1</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="68"/>
         <source>Disk Format Error: Please format the disk with FAT32</source>
         <translation>Chyba formátu disku: Vytvořte na něm souborový systém FAT32</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="70"/>
         <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation type="unfinished"/>
+        <translation>Nedostatek místa na disku: Zajistěte, aby na disku bylo alespoň %1 volného místa</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="72"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Chyba při připojování disku: Disk odpojte a znovu připojte nebo počítač restartujte – pak znovu zkuste zapsat</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="74"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Chyba při rozbalování obrazu: Zkontrolujte md5 kontrolní součet obrazu a ověřte tak, že je obraz v pořádku</translation>
+        <translation>Chyba při rozbalování obrazu: Zkontrolujte md5 kontrolní součet obrazu a ověřte tak, zda je obraz v pořádku</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bootmaker.cpp" line="76"/>
         <source>Internal Error</source>
         <translation>Vnitřní chyba</translation>
     </message>
@@ -99,12 +99,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="89"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Neodstraňujte, prosím, disk a nevypínejte počítač v době, kdy je disk dělán.</translation>
+        <translation>V průběhu vytváření disk nevyjímejte a ani nevypínejte počítač.</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="111"/>
         <source>Cancel</source>
-        <translation>Storno</translation>
+        <translation>Zrušit</translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
         <translation>Vyjímatelný disk</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="118"/>
         <source>Removable disk</source>
         <translation>Vyjímatelný disk</translation>
     </message>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="239"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Poprodejní služby</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="255"/>
@@ -186,7 +186,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the disk to increase the burning success rate</source>
-        <translation>Tím, že disk před zapsáním instalačních souborů nejprve zformátujete, zvýšíte šanci na zdar tohoto procesu</translation>
+        <translation>Tím, že disk před zapsáním instalačních souborů nejprve zformátujete, zvýšíte šanci na úspěch tohoto procesu</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="183"/>
@@ -221,7 +221,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
         <source>Cancel</source>
-        <translation>Storno</translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="336"/>
