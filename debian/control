@@ -2,13 +2,12 @@ Source: deepin-boot-maker
 Section: misc
 Priority: standard
 Maintainer: Deepin Sysdev <sysdev@linuxdeepin.com>
-Build-Depends: debhelper (>= 9),
+Build-Depends: debhelper-compat (= 11),
  python,
- qt5-default,
  qt5-qmake,
  qttools5-dev-tools,
- qtbase5-private-dev,
  qtbase5-dev,
+ pkg-config,
  libxcb-util0-dev,
  libmtdev-dev,
  libxrender-dev,
@@ -17,7 +16,7 @@ Build-Depends: debhelper (>= 9),
  libegl1-mesa-dev,
  libstartup-notification0-dev,
  libdtkwidget-dev
-Standards-Version: 3.9.5
+Standards-Version: 4.1.3
 Homepage: http://www.linuxdeepin.com/
 
 Package: deepin-boot-maker
@@ -26,6 +25,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools,
  syslinux [linux-amd64 linux-i386],
  syslinux-common [linux-amd64 linux-i386],genisoimage
 Description:  Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.
-Deepin Boot Disk Creation Tool is a system boot disk creation tool developed by the Deepin Technology team.
-It has the characteristics of simple interface and simple operation. It can help users to make deepin bootable U disk simply and conveniently.
-This tool is a cross-platform application, compatible with mac, windwos and Linux.
+ Deepin Boot Disk Creation Tool is a system boot disk creation tool developed by the Deepin Technology team.
+ It has the characteristics of simple interface and simple operation. It can help users to make deepin bootable U disk simply and conveniently.
+ This tool is a cross-platform application, compatible with mac, windwos and Linux.
