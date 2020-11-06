@@ -50,6 +50,7 @@ void loadTranslate()
     qtTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     qApp->installTranslator(qtTranslator);
 
+#ifdef Q_OS_WIN
     QTranslator *translator = new QTranslator();
     QString tnapplang;
     QString tnappcoun;
@@ -105,6 +106,7 @@ void loadTranslate()
     if (translator->load(tranlateUrl)) {
         qApp->installTranslator(translator);
     }
+#endif
 }
 
 QString UsbShowText(const QString &dev)

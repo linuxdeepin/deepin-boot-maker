@@ -23,7 +23,7 @@ CONFIG(release, debug|release) {
         system(lrelease $$tsfile -qm $$qmfile) | error("Failed to lrelease")
     }
 linux {
-    dtk_translations.path = /usr/share/$$TARGET/translations
+    dtk_translations.path = /usr/share/deepin-boot-maker/translations
     dtk_translations.files = $$PWD/translations/*.qm
     INSTALLS += dtk_translations
 

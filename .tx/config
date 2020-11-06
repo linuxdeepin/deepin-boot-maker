@@ -12,6 +12,7 @@ type = QT
 [deepin-boot-maker.deepin-boot-maker-desktop-ts]
 file_filter = src/translations/desktop/desktop_<lang>.ts
 source_file = src/translations/desktop/desktop.ts
+preTranslate_file = src/app/platform/linux/deepin-boot-maker.desktop
 source_lang = en
 type = QT
 
