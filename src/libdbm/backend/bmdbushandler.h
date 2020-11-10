@@ -45,9 +45,9 @@ public:
         }
         qDebug() << "m_dbus isValid true";
         connect(m_dbus, &BMDBusInterface::DeviceListChanged,
-        this, [ = ](const QString & deviceListJson) {
+        this, [ = ](const QString & addlistJson, const QString& dellistJson) {
             qDebug() << "DeviceListChanged,";
-            emit removablePartitionsChanged(deviceListFromJson(deviceListJson));
+            emit removablePartitionsChanged(deviceListFromJson(addlistJson), deviceListFromJson(dellistJson));
         });
         connect(m_dbus, &BMDBusInterface::Finished,
                 this, &BMDbusHandler::finished);

@@ -38,7 +38,7 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
     qRegisterMetaType<QList<DeviceInfo>>();
 
     m_timer = new QTimer(this);
-    m_timer->setInterval(3000);
+    m_timer->setInterval(2000);
     connect(m_timer, &QTimer::timeout, this, [ = ] {
         QList<DeviceInfo> list = Utils::ListUsbDrives();
         qDebug() << "list length:" << list.length();
@@ -46,7 +46,19 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
         {
             qDebug() << "list i:" << i << " path:" << list.at(i).path << " label:" << list.at(i).label;
         }
-        emit this->removablePartitionsChanged(list);
+
+        QList<DeviceInfo> intersectList = this->getIntersectDevice(list);
+        qDebug() << "intersectlist count:" << intersectList.size();
+        QList<DeviceInfo> addList = this->getNorDevice(list, intersectList);
+        QList<DeviceInfo> delList = this->getNorDevice(m_deviceList, intersectList);
+
+        if ((!addList.isEmpty()) || !delList.isEmpty()) {
+            emit this->removablePartitionsChanged(addList, delList);
+            qDebug() << "addlist count = " << addList.count();
+            qDebug() << "reducelist count =" << delList.count();
+        }
+
+        this->m_deviceList = list;
     });
 
     connect(this, &DeviceMonitor::pauseMonitor, this, [ = ]() {
@@ -55,6 +67,43 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
     connect(this, &DeviceMonitor::startMonitor, this, [ = ]() {
         m_timer->start();
     });
+}
+
+QList<DeviceInfo> DeviceMonitor::getIntersectDevice(const QList<DeviceInfo>& list)
+{
+   QList<DeviceInfo> intersectList;
+
+   foreach (DeviceInfo info, list) {
+       foreach(DeviceInfo tempInfo, m_deviceList) {
+           if(tempInfo == info) {
+               intersectList.push_back(info);
+           }
+       }
+   }
+
+   return intersectList;
+}
+
+QList<DeviceInfo> DeviceMonitor::getNorDevice(const QList<DeviceInfo>& calcuList, const QList<DeviceInfo>& refList)
+{
+   QList<DeviceInfo> XorList;
+
+   foreach (DeviceInfo info, calcuList) {
+       bool bInsert = true;
+
+       foreach (DeviceInfo tempInfo, refList) {
+           if (info.path == tempInfo.path) {
+               bInsert = false;
+               break;
+           }
+       }
+
+       if (bInsert) {
+           XorList.push_back(info);
+       }
+   }
+
+   return XorList;
 }
 
 const QList<DeviceInfo> DeviceMonitor::deviceList() const

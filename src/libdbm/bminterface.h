@@ -43,7 +43,7 @@ public:
     }
 
 signals:
-    void deviceListChanged(const QList<DeviceInfo> &partitions);
+    void deviceListChanged(const QList<DeviceInfo> &addlist, const QList<DeviceInfo> &dellist);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int total, const QString &title, const QString &description);
     void reportProgress1(int current, int total, const QString &title, const QString &description);

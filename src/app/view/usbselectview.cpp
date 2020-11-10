@@ -257,17 +257,28 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     });
 
     connect(BMInterface::instance(), &BMInterface::deviceListChanged,
-    this, [ = ](const QList<DeviceInfo> &partitions) {
+    this, [ = ](const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& dellist) {
         bool hasPartitionSelected = false;
-        m_formatDiskCheck->setVisible(partitions.size());
-//        checkBoxHints->setVisible(partitions.size());
-        m_emptyHint->setVisible(!partitions.size());
-        m_deviceList->setVisible(partitions.size());
-        m_warningHint->setVisible(partitions.size());
+
+        foreach (DeviceInfo info, dellist) {
+            for (int i = 0; i < this->m_mountDevs.count(); i++) {
+                DeviceInfo refInfo = this->m_mountDevs.at(i);
+
+                if (refInfo == info) {
+                    this->m_mountDevs.removeAt(i);
+                }
+            }
+        }
+
+        this->m_mountDevs += addlist;
+        m_formatDiskCheck->setVisible(this->m_mountDevs.size());
+        m_emptyHint->setVisible(!this->m_mountDevs.size());
+        m_deviceList->setVisible(this->m_mountDevs.size());
+        m_warningHint->setVisible(this->m_mountDevs.size());
         //        m_formatDiskCheck->setEnabled(partitions.size());
 
         m_deviceList->clear();
-        foreach (const DeviceInfo &partition, partitions) {
+        foreach (const DeviceInfo &partition, this->m_mountDevs) {
             QListWidgetItem *listItem = new QListWidgetItem;
             DeviceInfoItem *infoItem = new DeviceInfoItem(
                 partition.label,

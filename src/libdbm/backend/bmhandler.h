@@ -49,7 +49,7 @@ public:
 signals:
     void startInstall(const QString &, const QString &, const QString &, bool);
     void startCheckfile(const QString &filepath);
-    void removablePartitionsChanged(const QList<DeviceInfo> &list);
+    void removablePartitionsChanged(const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& reducelist);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int error, const QString &title, const QString &description);
    void  reportProgress1(int current, int error, const QString &title, const QString &description);

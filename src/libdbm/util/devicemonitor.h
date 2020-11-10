@@ -31,14 +31,19 @@ class DeviceMonitor : public QObject
 public:
     explicit DeviceMonitor(QObject *parent = nullptr);
 
+private:
+    QList<DeviceInfo> getIntersectDevice(const QList<DeviceInfo>& list);
+    static QList<DeviceInfo> getNorDevice(const QList<DeviceInfo>& calcuList, const QList<DeviceInfo>& refList);
+
 signals:
     void startMonitor();
     void pauseMonitor();
-    void removablePartitionsChanged(const QList<DeviceInfo> &list);
+    void removablePartitionsChanged(const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& reducelist);
 
 public slots:
     const QList<DeviceInfo> deviceList() const;
 
 private:
     QTimer *m_timer = nullptr;
+    QList<DeviceInfo> m_deviceList;
 };

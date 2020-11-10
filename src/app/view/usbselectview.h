@@ -24,9 +24,11 @@
 #include <DWidget>
 #include <DFrame>
 #include <DLabel>
+#include <bminterface.h>
 
 DWIDGET_USE_NAMESPACE
 
+class DeviceInfo;
 class UsbSelectView : public DWidget
 {
     Q_OBJECT
@@ -36,4 +38,7 @@ public:
 signals:
     void deviceSelected(const QString &partition, bool format);
     void finish(quint32 error, const QString &title, const QString &description);
+
+private:
+    QList<DeviceInfo> m_mountDevs;
 };

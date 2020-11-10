@@ -37,7 +37,7 @@ public:
     virtual ~BootMakerService();
 
 signals:
-    Q_SCRIPTABLE void DeviceListChanged(const QString deviceListJson);
+    Q_SCRIPTABLE void DeviceListChanged(const QString addlistJson, const QString& dellistJson);
     Q_SCRIPTABLE void Finished(int errcode, const QString &description);
     Q_SCRIPTABLE void ReportProgress(int current, int error, const QString &title, const QString &description);
     Q_SCRIPTABLE void ReportProgress1(int current, int error, const QString &title, const QString &description);

@@ -43,6 +43,11 @@ public:
     QString target  = "";
     bool needFormat = false;
     QMap<QString, DeviceInfo> children;
+
+    bool operator==(const DeviceInfo& otherInfo)
+    {
+        return (this->path == otherInfo.path);
+    }
 };
 
 Q_DECLARE_METATYPE(QList<DeviceInfo>);

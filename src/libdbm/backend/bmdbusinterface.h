@@ -77,7 +77,7 @@ public Q_SLOTS: // METHODS
     }
 
 Q_SIGNALS: // SIGNALS
-    void DeviceListChanged(const QString &deviceListJson);
+    void DeviceListChanged(const QString &addlistJson, const QString &dellistJson);
     void Finished(int errcode, const QString &description);
     void ReportProgress(int current, int total, const QString &title, const QString &description);
     void ReportProgress1(int current, int total, const QString &title, const QString &description);
