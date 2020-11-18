@@ -174,6 +174,7 @@ QMap<QString, DeviceInfo> CommandDfParse()
         }
         devInfo.used = static_cast<quint32>(infos.at(1).toInt() / 1024);
         devInfo.total = static_cast<quint32>((infos.at(2).toInt() + infos.at(1).toInt()) / 1024) ;
+        qDebug() << "device path" << devInfo.path << "used: " << devInfo.used << "total: " << devInfo.total;
         deviceInfos.insert(devInfo.path, devInfo);
     }
     return deviceInfos;
@@ -216,22 +217,27 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
     DeviceInfo info;
     QString diskDevPath;
     QMap<QString, DeviceInfo> deviceInfos;
+
     do {
         bool isPart = false;
         line = QString::fromUtf8(lsblk.readLine());
         if (line.isEmpty())
             break;
+
         QStringList pairs = line.split(" ");
+
         for (auto it = pairs.constBegin(); it != pairs.constEnd(); ++it) {
             if (it->isEmpty())
                 continue;
 
             QStringList kv = it->split("=");
+
             if (kv.size() != 2)
                 continue;
 
             QString key = kv[0].toLower();
             QString value = kv[1].trimmed();
+
             if (value.endsWith("\"") && value.startsWith("\""))
                 value = value.mid(1, value.size() - 2);
 
@@ -260,6 +266,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
                 }
             }
         }
+
         if (isPart && !diskDevPath.isEmpty()) {
             deviceInfos[diskDevPath].children.insert(info.path, info);
         } else {
@@ -359,30 +366,33 @@ QList<DeviceInfo> ListUsbDrives()
             continue;
         }
         // find first partion
-        QString partionPath = devicePath;
-        DeviceInfo info = lsblkDeviceInfos.value(devicePath);
-        bool needformat = true;
+        QString strDiskName = devicePath;
+        DeviceInfo diskinfo = lsblkDeviceInfos.value(devicePath);
+        QStringList partionNames = diskinfo.children.keys();
 
-        if (!info.children.keys().isEmpty()) {
-            auto infoKey = info.children.keys().value(0);
-            info = info.children.value(infoKey);
-            partionPath = infoKey;
-            if (info.fstype != "vsfat") {
+        foreach (QString strPartionName, partionNames) {
+            bool needformat = true;
+            DeviceInfo partionInfo = diskinfo.children.value(strPartionName);
+
+            if (partionInfo.fstype != "vfat") {
+                needformat = true;
+            }
+            else {
                 needformat = false;
             }
-        }
 
-        DeviceInfo dfinfo = dfDeviceInfos.value(partionPath, info);
-        if (info.label.isEmpty()) {
-            info.label = info.path;
-        }
-        info.used = dfinfo.used;
-        info.total = dfinfo.total;
-        info.target = dfinfo.target;
-        info.needFormat = needformat;
+            DeviceInfo dfinfo = dfDeviceInfos.value(strPartionName);
+            if (partionInfo.label.isEmpty()) {
+                partionInfo.label = partionInfo.path;
+            }
 
-        deviceList.push_back(info);
-        qDebug() << info.path << info.used << info.total << info.target << info.needFormat;
+            partionInfo.used = dfinfo.used;
+            partionInfo.total = dfinfo.total;
+            partionInfo.target = dfinfo.target;
+            partionInfo.needFormat = needformat;
+            deviceList.push_back(partionInfo);
+            qDebug() << partionInfo.path << partionInfo.used << partionInfo.total << partionInfo.target << partionInfo.needFormat;
+        }
     }
 #endif
 

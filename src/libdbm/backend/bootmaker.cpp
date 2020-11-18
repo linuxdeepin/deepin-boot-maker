@@ -168,7 +168,6 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         }
     }
 
-
     //check iso integrity
     SevenZip sevenZipCheck(image, "");
     if (!sevenZipCheck.check()) {
