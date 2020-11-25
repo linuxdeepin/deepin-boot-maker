@@ -35,6 +35,7 @@ public:
         USBSizeError,
         USBMountFailed,
         ExtractImgeFailed,
+        UMountUSBFailed
     };
 
     explicit BMHandler(QObject *parent = nullptr): QObject(parent)

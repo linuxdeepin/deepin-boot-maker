@@ -20,6 +20,7 @@
  */
 
 #include "bootmaker.h"
+#include "qtlinuxinstaller.h"
 
 #include "../util/sevenzip.h"
 #include "../util/utils.h"
@@ -53,7 +54,13 @@ public:
         USBFormatError,
         USBSizeError,
         USBMountFailed,
+        USBNotMountFailed,
+        CheckImageIntegrityFailed,
         ExtractImgeFailed,
+        InstallBootloaderFailed,
+        GetUsbInstallDirFailed,
+        SyncIOFailed,
+        UnDefinedError
     };
 };
 
@@ -149,166 +156,37 @@ bool BootMaker::checkfile(const QString &filepath)
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
     emit m_usbDeviceMonitor->pauseMonitor();
-
     qDebug() << image << unused_device << partition << formatDevice;
-    QFileInfo isoInfo(image);
+    QtBaseInstaller* pInstaller = nullptr;
+    pInstaller->deleteLater();
 
-#define KByt 1024
-    if (formatDevice) {
-        if (isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionTotalSpace(partition)) {
-            qCritical() << "Error::get(Error::USBSizeError)";
-            emit finished(USBSizeError, errorString(USBSizeError));
-            return false;
-        }
-    } else {
-        if (isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionFreeSpace(partition)) {
-            qCritical() << "Error::get(Error::USBSizeError)";
-            emit finished(USBSizeError, errorString(USBSizeError));
-            return false;
-        }
-    }
-
-    //check iso integrity
-    SevenZip sevenZipCheck(image, "");
-    if (!sevenZipCheck.check()) {
-        qCritical() << "Error::get(Error::ExtractImgeFailed)";
-        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
-        return false;
-    }
-#ifdef Q_OS_UNIX
-    QString device = XSys::DiskUtil::GetPartitionDisk(partition);
+#ifdef Q_OS_WIN
 #else
-    QString device = partition;
-#endif
-
-    this->reportProgress(5, Error::NoError, "install bootloader", "");
-    qDebug() << "begin install bootloader on" << partition;
-    QString targetPartition = partition;
-    XSys::Result result;
-#ifdef DBM_NO_BOOTLOADER
-    qWarning() << "make disk with no bootloader mode";
-    if (formatDevice) {
-        result = XSys::SynExec("umount", targetPartition);
-        qDebug() << "umount disk: " << result.isSuccess();
-        auto targetDisk = XSys::DiskUtil::GetPartitionDisk(targetPartition);
-        QStringList args;
-        args << targetDisk << "-I" ;
-        XSys::SynExec("umount", targetDisk);
-        XSys::SynExec("mkfs.fat", args.join(" "));
-        result = XSys::SynExec("parted", QString(" -s -a optimal %1 mklabel msdos").arg(targetDisk));
-        qDebug() << "parted  -s -a optimal %1 mklabel msdos " << targetDisk;
-        qDebug() << "format mklabel: " << result.isSuccess();
-        //fix bug 18668 arm和龙芯制作格式化使u盘变小，现在格式化制作如实大小
-        result = XSys::SynExec("parted", QString("-s -a optimal %1 mkpart primary fat32 0% 100%").arg(targetDisk));
-        qDebug() << "format mkpart: " << result.isSuccess();
-        targetPartition = targetDisk + "1";
-        XSys::SynExec("partprobe", "");
-        XSys::SynExec("partprobe", "");
-        QStringList args1;
-        QStringList isoArgs;
-        isoArgs << "-i" << image << "-d";
-        XSys::Result ret7 = XSys::SynExec("isoinfo", isoArgs);
-        if (!ret7.isSuccess()) {
-            qWarning() << "call isoinfo failed" << ret7.result();
-        }
-        QStringList volume = ret7.result().split("\n").filter("Volume id");
-        QString tmp = volume.takeAt(0);
-        if (tmp.contains("deepin", Qt::CaseInsensitive)) {
-            args1 << "-n" << "DEEPINOS" << targetPartition ;
-        } else if (tmp.contains("uos", Qt::CaseInsensitive)) {
-            args1 << "-n" << "UOS" << targetPartition ;
-        } else {
-            args1 << "-n" << "UNKNOWN" << targetPartition ;
-        }
-        XSys::SynExec("umount", targetPartition);
-        XSys::SynExec("umount", targetPartition);
-        XSys::SynExec("umount", targetPartition);
-        XSys::SynExec("mkfs.fat", args1.join(" "));
-        qDebug() << "format partation: " << targetPartition << result.isSuccess();
-//        XSys::DiskUtil::Mount(targetPartition);
-    }
-    XSys::DiskUtil::Mount(targetPartition);
-#else
-    if (formatDevice) {
-        result = XSys::Bootloader::InstallBootloader(device, image);
-        targetPartition = result.result();
-    } else {
-        result = XSys::Bootloader::Syslinux::InstallSyslinux(partition, image);
-    }
-    qDebug() << "install bootloader finish: " << result.isSuccess();
-#endif
-    if (! result.isSuccess()) {
-        qCritical() << "install bootloader failed: " << result.errmsg();
-        emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
-        return false;
-    }
-
-    this->reportProgress(10, Error::NoError, "begin reload disk", "");
-    qDebug() << "begin reload disk";
-
-    QString installDir = partition;
-//fix bug 18693 12288 如果u盘有多个分区挂载失败的问题
 #ifdef Q_OS_UNIX
-#ifdef Q_OS_LINUX
-    device = device + "1";
+    pInstaller = new QtLinuxInstaller;
+#else
 #endif
-    installDir = XSys::DiskUtil::MountPoint(device);
-    if (installDir.isEmpty()) {
-        qCritical() << "Error::get(Error::USBMountFailed)";
-        emit finished(USBMountFailed, errorString(USBMountFailed));
-        return false;
-    }
 #endif
 
-    this->reportProgress(15, Error::NoError, "clear target device files", "");
-    qDebug() << "begin clear target device files";
-    Utils::ClearTargetDev(installDir);
+    pInstaller->setImage(image);
+    pInstaller->setPartionName(partition);
+    pInstaller->setformat(formatDevice);
 
-    this->reportProgress(20, Error::NoError, "extract files", "");
-    this->reportProgress(20, Error::NoError, "begin extract files", "");
-    SevenZip sevenZip(image, installDir);
-    connect(sevenZip.m_szpp, &SevenZipProcessParser::progressChanged,
+    connect(pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, ProgressErorr error) {
+        Q_UNUSED(status);
+        emit finished(error, errorString(BMHandler::ErrorType(error)));
+    });
+
+    connect(pInstaller, &QtBaseInstaller::reportProgress, this, [=](int current, const QString &title, const QString &description){
+        emit this->reportProgress(current, Error::NoError, title, description);
+    });
+
+    connect(pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
     m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
-//        qDebug() << current << total << fileName;
         emit this->reportProgress(current * 60 / 100 + 20, Error::NoError, "extract", fileName);
     }, Qt::QueuedConnection);
 
-    if (!sevenZip.extract()) {
-        //fix bug 32703,fix Unplug the USB flash disk
-        QFileInfo devFile(partition);
-        if (!devFile.exists()) {
-            qCritical() << "Error::get(Error::USBMountFailed)";
-            emit finished(USBMountFailed, errorString(USBMountFailed));
-            return false;
-        }
-        qCritical() << "Error::get(Error::ExtractImgeFailed)";
-        emit finished(ExtractImgeFailed, errorString(ExtractImgeFailed));
-//        qCritical() << "Error::get(Error::USBSizeError)";
-//        emit finished(USBSizeError, errorString(USBSizeError));
-        return false;
-    }
-    this->reportProgress(80, Error::NoError, "end extract files", "");
-    this->reportProgress(80, Error::NoError, "config syslinux", "");
-    XSys::Bootloader::Syslinux::ConfigSyslinx(installDir);
-//#ifdef Q_OS_UNIX
-//    this->reportProgress(81, Error::NoError, "begin syncing filesystems", "");
-//    XSys::SynExec("sync", "");
-//    this->reportProgress(94, Error::NoError, "begin syncing filesystems", "");
-//#endif
-    this->reportProgress(95, Error::NoError, "eject disk", "");
-#ifdef Q_OS_MAC
-    XSys::DiskUtil::EjectDisk(partition);
-#endif
-    this->reportProgress(100, Error::NoError, "finish", "");
-//fix bug 12284 更改交互做断电处理，使得同步等待时间合理化
-#ifdef Q_OS_LINUX
-    XSys::SynExec("sync", "");
-    result = XSys::DiskUtil::EjectDisk(partition);
-    if (! result.isSuccess()) {
-        emit finished(SyscExecFailed, errorString(SyscExecFailed).arg(result.cmd()) + " " + result.errmsg());
-    } else {
-        this->reportProgress(101, Error::NoError, "finish", "");
-    }
-#endif
+    pInstaller->beginInstall();
+    emit m_usbDeviceMonitor->startMonitor();
     return true;
 }

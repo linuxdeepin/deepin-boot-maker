@@ -35,6 +35,7 @@ enum PartionFormat {
 };
 
 bool UmountDisk(const QString &targetDev);
+bool UmountPartion(const QString& strPartionName);
 XSys::Result EjectDisk(const QString &targetDev);
 void detach();
 bool Mount(const QString &targetDev);
@@ -46,6 +47,8 @@ QString GetPartitionDisk(const QString &targetDev);
 qint64 GetPartitionFreeSpace(const QString &targetDev);
 qint64 GetPartitionTotalSpace(const QString &targetDev);
 QString GetPartitionLabel(const QString &targetDev);
+bool FormatPartion(const QString& targetDev);
+QStringList GetPartionOfDisk(const QString& strDisk);
 }
 
 namespace Bootloader {

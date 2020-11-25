@@ -36,6 +36,5 @@ bool CheckInstallDisk(const QString &targetDev);
 QMap<QString, DeviceInfo> CommandDfParse();
 QMap<QString, DeviceInfo> CommandLsblkParse();
 QList<DeviceInfo>  ListUsbDrives();
-
 QString UsbShowText(const QString &targetdev);
 }

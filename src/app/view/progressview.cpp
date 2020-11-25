@@ -28,7 +28,6 @@
 #include <DCheckBox>
 #include <DLabel>
 #include <DListWidget>
-#include <DWaterProgress>
 #include <DPushButton>
 #include <DApplicationHelper>
 #include <DTipLabel>
@@ -37,10 +36,12 @@
 #include <QDebug>
 #include <QVBoxLayout>
 #include <QFontDatabase>
+#include <QTimerEvent>
 
 DWIDGET_USE_NAMESPACE
 
 ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
+ ,m_iInterval(-1)
 {
     setObjectName("ProgressView");
     setAutoFillBackground(true);
@@ -71,8 +72,8 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 //    qf.setPixelSize(24);
 //    m_title->setFont(qf);
 
-    auto waterProgress = new Dtk::Widget::DWaterProgress;
-    waterProgress->setFixedSize(100, 100);
+    m_waterProgress = new Dtk::Widget::DWaterProgress;
+    m_waterProgress->setFixedSize(100, 100);
 
     DLabel *m_hitsTitle = new DLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
@@ -118,7 +119,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(95);
-    mainLayout->addWidget(waterProgress, 0, Qt::AlignHCenter);
+    mainLayout->addWidget(m_waterProgress, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(26);
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(0);
@@ -127,8 +128,8 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
 
-    waterProgress->setValue(0);
-    waterProgress->start();
+    m_waterProgress->setValue(0);
+    m_waterProgress->start();
 
 //    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
 //    this->setStyleSheet("#ProgressHits{line-height: 1.67;}");
@@ -171,14 +172,37 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     connect(BMInterface::instance(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << current << title << description;
-        if (current != 101) {
-            waterProgress->setValue(static_cast<int>(current));
+
+        if (current <= 80) {
+            m_waterProgress->setValue(static_cast<int>(current));
         }
-        if (current >= 100) {
+        else if (current <= 100) {
+            if(m_iInterval == -1) {
+                m_iInterval = QObject::startTimer(6000);
+            }
+        }
+        else {
             qDebug() << "finish" << current << error;
+
+            if(m_iInterval != -1) {
+                QObject::killTimer(m_iInterval);
+                m_iInterval = -1;
+            }
+
             emit finish(current, error, title, description);
-
         }
-
     });
+}
+
+void ProgressView::timerEvent(QTimerEvent *event)
+{
+    if (m_iInterval == event->timerId()) {
+        int iVal = m_waterProgress->value();
+
+        if (iVal < 99) {
+            m_waterProgress->setValue(m_waterProgress->value() + 1);
+        }
+    }
+
+    DWidget::timerEvent(event);
 }

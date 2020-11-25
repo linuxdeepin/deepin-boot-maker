@@ -60,6 +60,16 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     //            this, &SevenZip::handleFinished);
 }
 
+void SevenZip::setArchiveFile(const QString &archiveFile)
+{
+    m_archiveFile = archiveFile;
+}
+
+void SevenZip::setOutputDirectory(const QString &outputDir)
+{
+    m_outputDir = "-o" + outputDir;
+}
+
 bool SevenZip::extract()
 {
     m_sevenz.setProgram(m_sevenZip);

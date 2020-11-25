@@ -380,15 +380,6 @@ QString GetPartitionDisk(QString targetDev)
     }
 }
 
-XSys::Result UmountDisk(const QString &targetDev)
-{
-    XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
-    XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
-    XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
-    XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
-    return XSys::SynExec("bash", QString("-c \"umount -v -f %1?*\"").arg(GetPartitionDisk(targetDev)));
-}
-
 bool CheckFormatFat32(const QString &targetDev)
 {
     XSys::Result ret = XSys::SynExec("blkid", "-s TYPE " + targetDev);
@@ -402,7 +393,7 @@ QString GetPartitionLabel(const QString &targetDev)
 {
     XSys::Result ret = XSys::SynExec("blkid", "-s LABEL -o value " + targetDev);
     if (!ret.isSuccess()) {
-        return 0;
+        return "";
     }
     return ret.result();
 }
@@ -504,8 +495,11 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
 }
 XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
 {
-    //change the partoi
-    XSys::Result ret = UmountDisk(diskDev);
+    //change the partion
+    if (!XSys::DiskUtil::UmountDisk(diskDev)) {
+        return XSys::Result(XSys::Result::Failed, "", diskDev);
+    }
+
     QStringList args;
     args << diskDev << "-I" ;
     XSys::SynExec("umount", diskDev);
@@ -526,7 +520,8 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
     QString xfbinstPath = XSys::FS::InsertTmpFile(xfbinstResource);
 
     qDebug() << "load" << xfbinstResource << xfbinstPath;
-    ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
+
+    XSys::Result ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
     if (!ret.isSuccess()) {
         return ret;
     }
@@ -546,7 +541,10 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
     }
 
     // after format, diskdev change to /dev/sd?1
-    UmountDisk(diskDev);
+    if (!XSys::DiskUtil::UmountDisk(diskDev)) {
+        return XSys::Result(XSys::Result::Failed, "", diskDev);
+    }
+
     ret = XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
 //    if (!ret.isSuccess()) { return ret; }
 
@@ -578,7 +576,6 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
     }
 
     // fbinst: add pbr file ldlinux.bin
-    ret = UmountDisk(diskDev);
     ret = XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
     if (!ret.isSuccess()) {
         return ret;
@@ -788,6 +785,62 @@ QString GetPartitionLabel(const QString &targetDev)
     return XAPI::GetPartitionLabel(targetDev);
 }
 
+bool FormatPartion(const QString& targetDev)
+{
+    return XSys::SynExec("mkfs.fat", targetDev).isSuccess();
+}
+
+QStringList GetPartionOfDisk(const QString& strDisk)
+{
+    QStringList strPartions;
+    XSys::Result result = XSys::SynExec("lsblk", "-P -o name,type");
+
+    if (result.isSuccess()) {
+        QString strResult = result.result();
+        QStringList strLines = strResult.split("\n");
+
+        foreach (QString strLine, strLines) {
+            if (strLine.contains(strDisk)) {
+                QStringList strPairs = strLine.split(" ");
+
+                if (strPairs.size() != 2) {
+                    strPartions.clear();
+                    break;
+                }
+
+                QString strName;
+                QString strType;
+
+                foreach (QString strPair, strPairs) {
+                    QStringList strValues = strPair.split("=");
+
+                    if (0 == strValues[0].compare("NAME", Qt::CaseInsensitive)) {
+                        strName = strValues[1];
+                    }
+                    else {
+                        strType = strValues[1];
+                    }
+                }
+
+                strName = strName.remove("\"");
+                strType = strType.remove("\"");
+
+                if((strName == strDisk) &&(strType != "disk")) {
+                    strPartions.clear();
+                    break;
+                }
+                else {
+                    if (strType == "part") {
+                        strPartions.push_back(strName);
+                    }
+                }
+            }
+        }
+    }
+
+    return strPartions;
+}
+
 qint64 GetPartitionTotalSpace(const QString &targetDev)
 {
     return XAPI::GetPartitionTotalSpace(targetDev);
@@ -805,13 +858,65 @@ QString GetPartitionDisk(const QString &targetDev)
 
 XSys::Result EjectDisk(const QString &targetDev)
 {
-    UmountDisk(targetDev);
     return XSys::SynExec("bash", QString("-c \"udisksctl power-off -b %1?*\"").arg(GetPartitionDisk(targetDev)));
 }
 
-bool UmountDisk(const QString &disk)
+bool UmountPartion(const QString& strPartionName)
 {
-    return XAPI::UmountDisk(disk).isSuccess();
+    bool bRet = false;
+
+    do {
+        XSys::Result result = XSys::SynExec("udisksctl", QString("unmount -b %1").arg(strPartionName));
+
+        if(!result.isSuccess()) {
+            QString strErr = result.errmsg();
+
+            if (strErr.contains("not mounted")) {
+                bRet = true;
+                break;
+            }
+            else if (strErr.contains("is busy")) {
+                bRet = false;
+                break;
+            }
+            else {
+                bRet = false;
+                break;
+            }
+        }
+    } while (1);
+
+    return bRet;
+}
+
+bool UmountDisk(const QString &targetDev)
+{
+    bool bRet = false;
+    int iIndex = targetDev.lastIndexOf("/");
+
+    if (iIndex < 0) {
+        return false;
+    }
+
+    QString strPath = targetDev.left(iIndex + 1);
+    QString strKey = targetDev.right(targetDev.length() - iIndex - 1);
+
+    if (strKey.isEmpty()) {
+        return  false;
+    }
+
+    QStringList strPartions = GetPartionOfDisk(strKey);
+
+    foreach (QString strPartion, strPartions) {
+        QString strVal = strPath + strPartion;
+        bRet = UmountPartion(strVal);
+
+        if (!bRet) {
+            break;
+        }
+    }
+
+    return bRet;
 }
 
 QString MountPoint(const QString &targetDev)

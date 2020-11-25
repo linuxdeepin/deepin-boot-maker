@@ -14,7 +14,9 @@ SOURCES += \
     util/devicemonitor.cpp \
     util/sevenzip.cpp \
     util/utils.cpp \
-    bminterface.cpp
+    bminterface.cpp \
+    backend/qtbaseinstaller.cpp \
+    backend/qtlinuxinstaller.cpp
 
 HEADERS += \
     backend/bmhandler.h \
@@ -25,7 +27,9 @@ HEADERS += \
     util/devicemonitor.h \
     util/sevenzip.h \
     util/utils.h \
-    bminterface.h
+    bminterface.h \
+    backend/qtbaseinstaller.h \
+    backend/qtlinuxinstaller.h
 
 linux {
 HEADERS += \

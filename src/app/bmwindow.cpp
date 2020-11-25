@@ -263,21 +263,12 @@ BMWindow::BMWindow(QWidget *parent)
             d->wsib->setCurrentPage(3);
         }
 #ifdef  Q_OS_LINUX
-        if (error == BMHandler::NoError && current != 101) {
-            emit d->unmountWidget->startSpinner();
-            setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
-            titlebar()->setMenuVisible(true);
-            DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
-            slideWidget(d->progressWidget, d->unmountWidget);
-            d->wsib->setCurrentPage(3);
-
-        } else {
-            emit d->unmountWidget->pauseSpinner();
+        if (error == BMHandler::NoError && current == 101) {
             titlebar()->setMenuVisible(true);
             titlebar()->setQuitMenuDisabled(false);
             DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
             d->resultWidget->updateResult(error, title, description);
-            slideWidget(d->unmountWidget, d->resultWidget);
+            slideWidget(d->progressWidget, d->resultWidget);
             d->wsib->setCurrentPage(3);
         }
 #endif
