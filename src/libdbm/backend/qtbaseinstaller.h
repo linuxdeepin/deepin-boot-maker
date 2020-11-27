@@ -2,6 +2,7 @@
 #define QTBASEINSTALLER_H
 
 #include "../util/sevenzip.h"
+#include "bmhandler.h"
 
 #include <QObject>
 
@@ -16,22 +17,6 @@ enum ProgressStatus
     SYNCIO,
     EJECTDISK,
     FINISHED
-};
-
-enum ProgressErorr
-{
-    NoError = 0,
-    SyscExecFailed,
-    USBFormatError,
-    USBSizeError,
-    USBMountFailed,
-    USBNotMountFailed,
-    CheckImageIntegrityFailed,
-    ExtractImgeFailed,
-    InstallBootloaderFailed,
-    GetUsbInstallDirFailed,
-    SyncIOFailed,
-    UnDefinedError
 };
 
 class QtBaseInstaller : public QObject
@@ -63,7 +48,7 @@ private:
     bool configSyslinux();
 
 signals:
-    void progressfinished(ProgressStatus status, ProgressErorr error);
+    void progressfinished(ProgressStatus status, BMHandler::ErrorType error);
     void reportProgress(int current, const QString &title, const QString &description);
     void reportextractProgress(int, int, const QString &);
 
@@ -77,7 +62,7 @@ protected:
     QString m_strPartionName;
     QString m_strImage;
     ProgressStatus m_progressStatus;
-    ProgressErorr m_progressError;
+    BMHandler::ErrorType m_progressError;
 };
 
 #endif // QTBASEINSTALLER_H

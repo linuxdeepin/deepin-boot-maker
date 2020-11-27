@@ -34,8 +34,14 @@ public:
         USBFormatError,
         USBSizeError,
         USBMountFailed,
+        USBNotMountFailed,
+        UMountUSBFailed,
+        CheckImageIntegrityFailed,
         ExtractImgeFailed,
-        UMountUSBFailed
+        InstallBootloaderFailed,
+        GetUsbInstallDirFailed,
+        SyncIOFailed,
+        UnDefinedError
     };
 
     explicit BMHandler(QObject *parent = nullptr): QObject(parent)
@@ -46,7 +52,7 @@ public:
                 this, &BMHandler::checkfile);
     }
 
-    static const QString errorString(ErrorType et);
+    static const QString errorString(BMHandler::ErrorType et);
 signals:
     void startInstall(const QString &, const QString &, const QString &, bool);
     void startCheckfile(const QString &filepath);

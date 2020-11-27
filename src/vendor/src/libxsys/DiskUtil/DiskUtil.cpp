@@ -420,36 +420,6 @@ qint64 GetPartitionFreeSpace(const QString &targetDev)
     return ret.result().split("\n").at(ret.result().split("\n").count() - 2).toLongLong();
 }
 
-
-XSys::Result FixMountPartition(const QString &partition)
-{
-    QString mountPoint = XSys::DiskUtil::MountPoint(partition);
-    mountPoint = QString("%1").arg(XSys::FS::TmpFilePath("deepin-boot-maker"));
-
-    XSys::Result ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    ret = XSys::SynExec("chmod", " a+wrx " + mountPoint);
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    QString mountCmd = "%1 %2";
-    QString remountCmd = "-t vfat -o remountflush,rw,utf8=1,sync,nodev,nosuid %1 %2";
-
-    QString mp = MountPoint(partition);
-    if (mp.isEmpty()) {
-        XSys::SynExec("mount",  mountCmd.arg(partition).arg(mountPoint));
-        QThread::sleep(1);
-    }
-    XSys::SynExec("mount",  remountCmd.arg(partition).arg(mountPoint));
-    QThread::sleep(1);
-
-    return XSys::Result(XSys::Result::Success, "", mountPoint);
-}
-
 XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
 {
     // install syslinux
@@ -489,8 +459,7 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
         ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(targetDev));
     }
 
-    FixMountPartition(targetDev);
-
+    XSys::DiskUtil::Mount(targetDev);
     return ret;
 }
 XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
@@ -593,7 +562,7 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
         return ret;
     }
 
-    FixMountPartition(newTargetDev);
+    XSys::DiskUtil::Mount(newTargetDev);
 
 //    QString mountCmd = "-o "
 //                       "flush,rw,nosuid,nodev,shortname=mixed,"
@@ -932,7 +901,7 @@ bool Mount(const QString &targetDev, const QString &path)
 bool Mount(const QString &targetDev)
 {
 #ifdef Q_OS_LINUX
-    return XAPI::FixMountPartition(targetDev).isSuccess();
+    return XSys::SynExec("udisksctl", QString("mount -b %1").arg(targetDev)).isSuccess();
 #endif
     return true;
 }

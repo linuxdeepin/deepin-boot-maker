@@ -107,40 +107,56 @@ void QtBaseInstaller::beginInstall()
 void QtBaseInstaller::checkError()
 {
     qDebug() << "begin check error";
-    QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
-    QFileInfo devFile(installDir);
+    QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
-    if (!devFile.exists()) {
+    if (strDisk.isEmpty()) {
         qCritical() << "Error::get(Error::USBMountFailed)";
-        emit progressfinished(m_progressStatus, USBNotMountFailed);
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBMountFailed);
         return;
+    }
+    else {
+        QStringList strPartions = XSys::DiskUtil::GetPartionOfDisk(strDisk);
+
+        if (!strPartions.contains(m_strPartionName)) {
+            qCritical() << "Error::get(Error::USBMountFailed)";
+            emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBMountFailed);
+            return;
+        }
     }
 
     if (m_progressStatus == CHECKSPACE) {
-        emit progressfinished(m_progressStatus, USBSizeError);
+        qCritical() << "Error::get(Error::USBSizeError)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBSizeError);
         return;
     }
     else if (m_progressStatus == CHECKINTEGRITY) {
-        emit progressfinished(m_progressStatus, CheckImageIntegrityFailed);
+        qCritical() << "Error::get(Error::CheckImageIntegrityFailed)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::CheckImageIntegrityFailed);
         return;
     }
     else if (m_progressStatus == FORMATUSB) {
-        emit progressfinished(m_progressStatus, USBFormatError);
+        qCritical() << "Error::get(Error::USBFormatError)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBFormatError);
     }
     else if (m_progressStatus == INSTALLBOOTLOADER) {
-        emit progressfinished(m_progressStatus, InstallBootloaderFailed);
+        qCritical() << "Error::get(Error::InstallBootloaderFailed)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::InstallBootloaderFailed);
     }
     else if (m_progressStatus == GETINSTALLDIR) {
-        emit progressfinished(m_progressStatus, GetUsbInstallDirFailed);
+        qCritical() << "Error::get(Error::GetUsbInstallDirFailed)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::GetUsbInstallDirFailed);
     }
     else if (m_progressStatus == EXTRACTISO) {
-        emit progressfinished(m_progressStatus, ExtractImgeFailed);
+        qCritical() << "Error::get(Error::ExtractImgeFailed)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::ExtractImgeFailed);
     }
     else if (m_progressStatus == SYNCIO) {
-        emit progressfinished(m_progressStatus, SyncIOFailed);
+        qCritical() << "Error::get(Error::SyncIOFailed)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::SyncIOFailed);
     }
     else {
-        emit progressfinished(m_progressStatus, UnDefinedError);
+        qCritical() << "Error::get(Error::UnDefinedError)";
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::UnDefinedError);
     }
 }
 

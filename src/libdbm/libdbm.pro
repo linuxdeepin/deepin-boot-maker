@@ -16,7 +16,8 @@ SOURCES += \
     util/utils.cpp \
     bminterface.cpp \
     backend/qtbaseinstaller.cpp \
-    backend/qtlinuxinstaller.cpp
+    backend/qtlinuxinstaller.cpp \
+    backend/bmhandler.cpp
 
 HEADERS += \
     backend/bmhandler.h \

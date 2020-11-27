@@ -31,8 +31,6 @@
 
 #include <XSys>
 
-
-
 #ifdef Q_OS_WIN32
 #include <windows.h>
 #include <shellapi.h>
@@ -44,45 +42,6 @@
 #include <unistd.h>
 #include <sys/reboot.h>
 #endif
-
-class Error
-{
-public:
-    enum ErrorType {
-        NoError = 0,
-        SyscExecFailed,
-        USBFormatError,
-        USBSizeError,
-        USBMountFailed,
-        USBNotMountFailed,
-        CheckImageIntegrityFailed,
-        ExtractImgeFailed,
-        InstallBootloaderFailed,
-        GetUsbInstallDirFailed,
-        SyncIOFailed,
-        UnDefinedError
-    };
-};
-
-const QString BMHandler::errorString(BMHandler::ErrorType et)
-{
-    switch (et) {
-    case NoError:
-        return "";
-    case SyscExecFailed:
-        return BMHandler::tr("Failed to call the command 1%");
-    case USBFormatError:
-        return BMHandler::tr("Disk Format Error: Please format the disk with FAT32");
-    case USBSizeError:
-        return BMHandler::tr("Insufficient Disk Space: Ensure the disk has 1% free space");
-    case USBMountFailed:
-        return BMHandler::tr("Disk Mount Error: Insert the disk again or reboot to retry");
-    case ExtractImgeFailed:
-        return BMHandler::tr("Image Decompression Error: Verify md5 checksum of the image to ensure its integrity");
-    }
-    return BMHandler::tr("Internal Error");
-}
-
 
 BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
 {
@@ -172,18 +131,18 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
     pInstaller->setPartionName(partition);
     pInstaller->setformat(formatDevice);
 
-    connect(pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, ProgressErorr error) {
+    connect(pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, BMHandler::ErrorType error) {
         Q_UNUSED(status);
         emit finished(error, errorString(BMHandler::ErrorType(error)));
     });
 
     connect(pInstaller, &QtBaseInstaller::reportProgress, this, [=](int current, const QString &title, const QString &description){
-        emit this->reportProgress(current, Error::NoError, title, description);
+        emit this->reportProgress(current, ErrorType::NoError, title, description);
     });
 
     connect(pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
     m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
-        emit this->reportProgress(current * 60 / 100 + 20, Error::NoError, "extract", fileName);
+        emit this->reportProgress(current * 60 / 100 + 20, ErrorType::NoError, "extract", fileName);
     }, Qt::QueuedConnection);
 
     pInstaller->beginInstall();
