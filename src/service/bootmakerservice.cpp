@@ -124,6 +124,9 @@ BootMakerService::BootMakerService(QObject *parent) :
         QThread::msleep(1000);
         qApp->exit(errcode);
     });
+
+    connect(this, &BootMakerService::s_StartBootMarker,
+            d->bm, &BootMaker::start);
 }
 
 BootMakerService::~BootMakerService()
@@ -147,7 +150,7 @@ void BootMakerService::Start()
         return;
     }
 
-    d->bm->start();
+    emit s_StartBootMarker();
 }
 
 void BootMakerService::Stop()

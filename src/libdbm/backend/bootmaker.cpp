@@ -83,9 +83,41 @@ void BootMaker::reboot()
 
 void BootMaker::start()
 {
-
     qDebug() << "BootMaker start";
-    emit m_usbDeviceMonitor->startMonitor();
+
+#ifdef Q_OS_WIN
+#else
+#ifdef Q_OS_UNIX
+
+    if (m_pInstaller == nullptr) {
+        m_pInstaller = new QtLinuxInstaller;
+        connect(m_pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, BMHandler::ErrorType error) {
+            Q_UNUSED(status);
+            emit finished(error, errorString(BMHandler::ErrorType(error)));
+        });
+
+        connect(m_pInstaller, &QtBaseInstaller::reportProgress, m_usbDeviceMonitor, [=](int current, const QString &title, const QString &description){
+            emit this->reportProgress(current, ErrorType::NoError, title, description);
+        });
+
+        connect(m_pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
+        m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
+            emit this->reportProgress(current * 60 / 100 + 20, ErrorType::NoError, "extract", fileName);
+        }, Qt::QueuedConnection);
+    }
+#else
+#endif
+#endif
+
+    if (m_pInstaller != nullptr) {
+        if (m_pInstaller->isRunning()) {
+            qDebug() << "Installer is running";
+            m_pInstaller->stopInstall();
+        }
+        else {
+            emit m_usbDeviceMonitor->startMonitor();
+        }
+    }
 }
 
 void BootMaker::stop()
@@ -103,49 +135,28 @@ bool BootMaker::checkfile(const QString &filepath)
     qDebug() << "CheckFile:" << filepath;
     //check iso integrity
     SevenZip sevenZipCheck(filepath, "");
+
     if (!sevenZipCheck.check()) {
-        qCritical() << "Error::file check error";
-//        emit checkFileResult(false);
-        return false;
+       qCritical() << "Error::file check error";
+    //        emit checkFileResult(false);
+       return false;
     }
-//    emit checkFileResult(true);
+    //    emit checkFileResult(true);
     return true;
 }
 
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
-    emit m_usbDeviceMonitor->pauseMonitor();
-    qDebug() << image << unused_device << partition << formatDevice;
-    QtBaseInstaller* pInstaller = nullptr;
-    pInstaller->deleteLater();
+    qDebug() << "Begin install" << image << unused_device << partition << formatDevice;
 
-#ifdef Q_OS_WIN
-#else
-#ifdef Q_OS_UNIX
-    pInstaller = new QtLinuxInstaller;
-#else
-#endif
-#endif
+    if (m_pInstaller != nullptr) {
+        emit m_usbDeviceMonitor->pauseMonitor();
+        m_pInstaller->setImage(image);
+        m_pInstaller->setPartionName(partition);
+        m_pInstaller->setformat(formatDevice);
+        m_pInstaller->beginInstall();
+        emit m_usbDeviceMonitor->startMonitor();
+    }
 
-    pInstaller->setImage(image);
-    pInstaller->setPartionName(partition);
-    pInstaller->setformat(formatDevice);
-
-    connect(pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, BMHandler::ErrorType error) {
-        Q_UNUSED(status);
-        emit finished(error, errorString(BMHandler::ErrorType(error)));
-    });
-
-    connect(pInstaller, &QtBaseInstaller::reportProgress, this, [=](int current, const QString &title, const QString &description){
-        emit this->reportProgress(current, ErrorType::NoError, title, description);
-    });
-
-    connect(pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
-    m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
-        emit this->reportProgress(current * 60 / 100 + 20, ErrorType::NoError, "extract", fileName);
-    }, Qt::QueuedConnection);
-
-    pInstaller->beginInstall();
-    emit m_usbDeviceMonitor->startMonitor();
     return true;
 }

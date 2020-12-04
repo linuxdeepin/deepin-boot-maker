@@ -25,6 +25,7 @@
 #include <QObject>
 #include <QThread>
 #include <QProcess>
+#include <QEventLoop>
 
 class SevenZipProcessParser : public QThread
 {
@@ -57,18 +58,23 @@ public:
 
     void setArchiveFile(const QString &archiveFile);
     void setOutputDirectory(const QString &outputDir);
-
+    void stopProcess();
     bool extract();
     bool check();
 
 signals:
     void progressChanged(int);
 
+private slots:
+    void handleFinished();
+
 private:
     QProcess                m_sevenz;
     QString                 m_sevenZip;
     QString                 m_archiveFile;
     QString                 m_outputDir;
+    QEventLoop              m_eventLoop;
+    bool m_bExit;
 };
 
 #endif // SEVENZIP_HHH

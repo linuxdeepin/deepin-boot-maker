@@ -22,6 +22,7 @@
 #pragma once
 
 #include "bmhandler.h"
+#include "qtbaseinstaller.h"
 
 class DeviceMonitor;
 class BootMaker : public BMHandler
@@ -42,7 +43,7 @@ public slots:
     bool checkfile(const QString &filepath);
 
 private:
-    DeviceMonitor        *m_usbDeviceMonitor = nullptr;
-
+    DeviceMonitor* m_usbDeviceMonitor = nullptr;
+    QtBaseInstaller* m_pInstaller;
 };
 

@@ -8,6 +8,8 @@
 
 QtBaseInstaller::QtBaseInstaller(QObject *parent) : QObject(parent)
   ,m_sevenZipCheck("","")
+  ,m_bRunning(false)
+  ,m_bStop(false)
 {
 
 }
@@ -29,6 +31,8 @@ void QtBaseInstaller::setImage(const QString& strImage)
 
 void QtBaseInstaller::beginInstall()
 {
+    m_bRunning = true;
+    m_bStop = false;
     bool bRet = hasEnoughSpace();
 
     if (!bRet) {
@@ -37,6 +41,11 @@ void QtBaseInstaller::beginInstall()
     }
     else {
         emit this->reportProgress(5, "check usb space finished", "");
+    }
+
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
     }
 
     bRet = checkISOIntegrity();
@@ -49,6 +58,11 @@ void QtBaseInstaller::beginInstall()
         emit this->reportProgress(10, "check integrity finished", "");
     }
 
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
+    }
+
     bRet = formatUsb();
 
     if (!bRet) {
@@ -59,6 +73,11 @@ void QtBaseInstaller::beginInstall()
         emit this->reportProgress(15, "format usb finished", "");
     }
 
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
+    }
+
     bRet = installBootload();
 
     if (!bRet) {
@@ -67,6 +86,11 @@ void QtBaseInstaller::beginInstall()
     }
     else {
         emit this->reportProgress(20, "install bootloader finished", "");
+    }
+
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
     }
 
     bRet = extractISO();
@@ -80,6 +104,12 @@ void QtBaseInstaller::beginInstall()
     }
 
     emit this->reportProgress(81, "begin sync IO", "");
+
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
+    }
+
     bRet = syncIO();
 
     if (!bRet) {
@@ -90,8 +120,18 @@ void QtBaseInstaller::beginInstall()
         emit this->reportProgress(90, "sync IO finished", "");
     }
 
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
+    }
+
     configSyslinux();
     emit this->reportProgress(100, "finish", "");
+
+    if (m_bStop) {
+        m_bRunning = false;
+        return;
+    }
 
     bRet = ejectDisk();
 
@@ -102,10 +142,19 @@ void QtBaseInstaller::beginInstall()
     else {
         emit this->reportProgress(101, "finish", "");
     }
+
+    m_bRunning = false;
 }
 
 void QtBaseInstaller::checkError()
 {
+    m_bRunning = false;
+
+    if (m_bStop) {
+        qDebug() << "Stop Install";
+        return;
+    }
+
     qDebug() << "begin check error";
     QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
@@ -157,6 +206,22 @@ void QtBaseInstaller::checkError()
     else {
         qCritical() << "Error::get(Error::UnDefinedError)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::UnDefinedError);
+    }
+}
+
+bool QtBaseInstaller::isRunning() const
+{
+    return m_bRunning;
+}
+
+void QtBaseInstaller::stopInstall()
+{
+    m_bStop = true;
+    qDebug() << "m_progressStatus:" << m_progressStatus;
+
+    if(EXTRACTISO ==  m_progressStatus || CHECKINTEGRITY == m_progressStatus) {
+        qDebug() << "Installer stop install";
+        m_sevenZipCheck.stopProcess();
     }
 }
 
@@ -257,6 +322,10 @@ bool QtBaseInstaller::extractISO()
     if (installDir.isEmpty()) {
         qCritical() << "Error::get(Error::USBMountFailed)";
         return false;
+    }
+
+    if (m_bStop) {
+       return true;
     }
 
     qDebug() << "begin clear target device files";

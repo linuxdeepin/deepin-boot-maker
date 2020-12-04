@@ -32,6 +32,8 @@
 
 SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     : QObject(parent)
+    ,m_eventLoop(this)
+    ,m_bExit(true)
 {
 #ifdef Q_OS_WIN32
     QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
@@ -56,8 +58,8 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     m_archiveFile = image;
     m_outputDir = "-o" + target;
     //    connect(&m_szpp, &SevenZipProcessParser::progressChanged, this, &SevenZip::progressChanged);
-    //    connect(&m_sevenz, static_cast<void(QProcess::*)(int exitCode)>(&QProcess::finished),
-    //            this, &SevenZip::handleFinished);
+        connect(&m_sevenz, static_cast<void(QProcess::*)(int exitCode)>(&QProcess::finished),
+                this, &SevenZip::handleFinished);
 }
 
 void SevenZip::setArchiveFile(const QString &archiveFile)
@@ -68,6 +70,13 @@ void SevenZip::setArchiveFile(const QString &archiveFile)
 void SevenZip::setOutputDirectory(const QString &outputDir)
 {
     m_outputDir = "-o" + outputDir;
+}
+
+void SevenZip::stopProcess()
+{
+    QString strCmd = QString("kill 9 %1").arg(m_sevenz.processId());
+    qDebug() << strCmd;
+    QProcess::execute(strCmd);
 }
 
 bool SevenZip::extract()
@@ -103,7 +112,7 @@ bool SevenZip::extract()
 
     m_szpp->setProgressName(progress.fileName());
     m_szpp->start();
-    m_sevenz.waitForFinished(-1);
+    m_eventLoop.exec();
     m_szpp->wait();
 
     progress.close();
@@ -131,12 +140,17 @@ bool SevenZip::check()
     QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
 #endif
 
-    m_sevenz.waitForFinished(-1);
-
+    m_eventLoop.exec();
     qDebug() << "check iso result" << m_sevenz.exitStatus() << m_sevenz.exitCode();
     qDebug() <<  m_sevenz.arguments();
     return (m_sevenz.exitStatus() == QProcess::NormalExit) &&
            (0 == m_sevenz.exitCode());
+}
+
+void SevenZip::handleFinished()
+{
+    qDebug() <<"Zip Event Exit";
+    m_eventLoop.quit();
 }
 
 SevenZipProcessParser::SevenZipProcessParser(const QString &file, QProcess *process, QObject *parent): QThread(parent)

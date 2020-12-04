@@ -42,6 +42,7 @@ signals:
     Q_SCRIPTABLE void ReportProgress(int current, int error, const QString &title, const QString &description);
     Q_SCRIPTABLE void ReportProgress1(int current, int error, const QString &title, const QString &description);
     //    Q_SCRIPTABLE void CheckFileResult(bool result);
+    void s_StartBootMarker();
 
 public slots:
     Q_SCRIPTABLE void Reboot();

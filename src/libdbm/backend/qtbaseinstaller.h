@@ -31,6 +31,9 @@ public:
     void setImage(const QString&);
     void beginInstall();
     void checkError();
+    bool isRunning() const;
+    void stopInstall();
+    bool checkISOIntegrity();
 
 protected:
     virtual bool umountPartion() = 0;
@@ -40,7 +43,6 @@ protected:
 
 private:
     bool hasEnoughSpace();
-    bool checkISOIntegrity();
     bool formatUsb();
     bool installBootload();
     bool extractISO();
@@ -59,6 +61,8 @@ public:
 
 protected:
     bool m_bFormat;
+    bool m_bRunning;
+    bool m_bStop;
     QString m_strPartionName;
     QString m_strImage;
     ProgressStatus m_progressStatus;
