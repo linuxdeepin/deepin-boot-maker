@@ -1,0 +1,9 @@
+debian/missing-sources/gfxboot.c32
+debian/missing-sources/menu.c32
+debian/missing-sources/xfbinst_x64
+debian/missing-sources/chain.c32
+debian/missing-sources/xfbinst_x32
+debian/missing-sources/vesamenu.c32
+debian/missing-sources/libcom32.c32
+debian/missing-sources/libutil.c32
+
