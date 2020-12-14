@@ -21,7 +21,7 @@ Homepage: http://www.linuxdeepin.com/
 
 Package: deepin-boot-maker
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools,
+Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools, udisks2,
  syslinux [linux-amd64 linux-i386],
  syslinux-common [linux-amd64 linux-i386],genisoimage
 Description:  Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.

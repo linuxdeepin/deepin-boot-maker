@@ -106,6 +106,45 @@ Result InstallModule(const QString &installDirectory)
     return Result(Result::Success, "", "");
 }
 
+Result ConfigSyslinx(const QString &targetPath)
+{
+    // rename isolinux to syslinux
+    QString syslinxDir = QString("%1/syslinux/").arg(targetPath);
+    if (!XSys::FS::RmDir(syslinxDir)) {
+        return Result(Result::Failed, "Remove Dir Failed: " + syslinxDir);
+    }
+
+    QString isolinxDir = QString("%1/isolinux/").arg(targetPath);
+    if (!XSys::FS::MoveDir(isolinxDir, syslinxDir)) {
+        return Result(Result::Failed, "Move Dir Failed: " + isolinxDir + " to " + syslinxDir);
+    }
+    qDebug() << "Move " << isolinxDir << " ot " << syslinxDir;
+
+    QString syslinxCfgPath = QString("%1/syslinux/syslinux.cfg").arg(targetPath);
+    if (!XSys::FS::RmFile(syslinxCfgPath)) {
+        return Result(Result::Failed, "Remove File Failed: " + syslinxCfgPath);
+    }
+
+    QString isolinxCfgPath = QString("%1/syslinux/isolinux.cfg").arg(targetPath);
+    qDebug() << "Rename " << isolinxCfgPath << " ot " << syslinxCfgPath;
+
+    if (!XSys::FS::CpFile(isolinxCfgPath, syslinxCfgPath)) {
+        return Result(Result::Failed, "Copy File Failed: " + isolinxCfgPath + " to " + syslinxCfgPath);
+    }
+
+    qDebug() << "InstallModule to" << syslinxDir;
+    XSys::Syslinux::InstallModule(syslinxDir);
+
+    // bugfix
+    // TODO: we change syslinux to 6.02, but gfxboot will not work
+    // so use a syslinux.cfg will not use gfxboot and vesamenu
+//    if (!XSys::FS::InsertFile(":/blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
+//        return Result(Result::Failed, "Insert Config File Failed: :/blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
+//    }
+
+    return Result(Result::Success, "");
+}
+
 
 }
 

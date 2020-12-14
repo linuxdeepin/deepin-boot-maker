@@ -462,6 +462,7 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
     XSys::DiskUtil::Mount(targetDev);
     return ret;
 }
+
 XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
 {
     //change the partion
@@ -810,6 +811,38 @@ QStringList GetPartionOfDisk(const QString& strDisk)
     return strPartions;
 }
 
+bool SetActivePartion(const QString& strDisk, const QString& strPartion)
+{
+    QString strTemp = strPartion;
+    QString strIndex = strTemp.remove(strDisk);
+    XSys::Result ret = XSys::SynExec(XSys::FS::SearchBin("sfdisk"), QString("%1 -A %2").arg(strDisk).arg(strIndex));
+    return ret.isSuccess();
+}
+
+void SetPartionLabel(const QString& strPartion, const QString& strImage)
+{
+    /*QProcess cannot handle Chinese paths*/
+    XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(strPartion));
+    QStringList args;
+    args << "-i" << strImage << "-d";
+    XSys::Result ret3 = XSys::SynExec("isoinfo", args);
+
+    if (!ret3.isSuccess()) {
+        qWarning() << "call df failed" << ret3.result();
+        return;
+    }
+
+    QStringList volume = ret3.result().split("\n").filter("Volume id");
+    QString tem = volume.takeAt(0);
+    if (tem.contains("Volume id: deepin", Qt::CaseInsensitive)) {
+        XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(strPartion));
+    } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
+        XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(strPartion));
+    } else {
+        XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(strPartion));
+    }
+}
+
 qint64 GetPartitionTotalSpace(const QString &targetDev)
 {
     return XAPI::GetPartitionTotalSpace(targetDev);
@@ -827,7 +860,7 @@ QString GetPartitionDisk(const QString &targetDev)
 
 XSys::Result EjectDisk(const QString &targetDev)
 {
-    return XSys::SynExec("bash", QString("-c \"udisksctl power-off -b %1?*\"").arg(GetPartitionDisk(targetDev)));
+    return XSys::SynExec("udisksctl", QString("power-off -b %1").arg(GetPartitionDisk(targetDev)));
 }
 
 bool UmountPartion(const QString& strPartionName)
@@ -913,53 +946,6 @@ namespace Bootloader {
 Result InstallBootloader(const QString &diskDev, const QString &images)
 {
     return XAPI::InstallBootloader(diskDev, images);
-}
-
-namespace Syslinux {
-
-Result InstallSyslinux(const QString &diskDev, const QString &images)
-{
-    return XAPI::InstallSyslinux(diskDev, images);
-}
-
-Result ConfigSyslinx(const QString &targetPath)
-{
-    // rename isolinux to syslinux
-    QString syslinxDir = QString("%1/syslinux/").arg(targetPath);
-    if (!XSys::FS::RmDir(syslinxDir)) {
-        return Result(Result::Failed, "Remove Dir Failed: " + syslinxDir);
-    }
-
-    QString isolinxDir = QString("%1/isolinux/").arg(targetPath);
-    if (!XSys::FS::MoveDir(isolinxDir, syslinxDir)) {
-        return Result(Result::Failed, "Move Dir Failed: " + isolinxDir + " to " + syslinxDir);
-    }
-    qDebug() << "Move " << isolinxDir << " ot " << syslinxDir;
-
-    QString syslinxCfgPath = QString("%1/syslinux/syslinux.cfg").arg(targetPath);
-    if (!XSys::FS::RmFile(syslinxCfgPath)) {
-        return Result(Result::Failed, "Remove File Failed: " + syslinxCfgPath);
-    }
-
-    QString isolinxCfgPath = QString("%1/syslinux/isolinux.cfg").arg(targetPath);
-    qDebug() << "Rename " << isolinxCfgPath << " ot " << syslinxCfgPath;
-
-    if (!XSys::FS::CpFile(isolinxCfgPath, syslinxCfgPath)) {
-        return Result(Result::Failed, "Copy File Failed: " + isolinxCfgPath + " to " + syslinxCfgPath);
-    }
-
-    qDebug() << "InstallModule to" << syslinxDir;
-    XSys::Syslinux::InstallModule(syslinxDir);
-
-    // bugfix
-    // TODO: we change syslinux to 6.02, but gfxboot will not work
-    // so use a syslinux.cfg will not use gfxboot and vesamenu
-//    if (!XSys::FS::InsertFile(":/blob/syslinux/syslinux.cfg", QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"))) {
-//        return Result(Result::Failed, "Insert Config File Failed: :/blob/syslinux/syslinux.cfg to " + QDir::toNativeSeparators(syslinxDir + "syslinux.cfg"));
-//    }
-
-    return Result(Result::Success, "");
-}
 }
 }
 }

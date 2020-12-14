@@ -29,5 +29,6 @@ namespace  Syslinux {
 Result InstallModule(const QString &installDirectory);
 Result InstallBootloader(const QString &device);
 Result InstallMbr(const QString &device);
+Result ConfigSyslinx(const QString &targetDev);
 }
 }

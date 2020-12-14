@@ -225,18 +225,6 @@ void QtBaseInstaller::stopInstall()
     }
 }
 
-QString QtBaseInstaller::getMountPoint()
-{
-    return  "";
-}
-
-bool QtBaseInstaller::ejectDisk()
-{
-    qDebug() << "begin eject disk";
-    XSys::Result result = XSys::DiskUtil::EjectDisk(m_strPartionName);
-    return result.isSuccess();
-}
-
 bool QtBaseInstaller::hasEnoughSpace()
 {
     bool bRet = false;
@@ -287,6 +275,46 @@ bool QtBaseInstaller::checkISOIntegrity()
     return bRet;
 }
 
+bool QtBaseInstaller::umountPartion()
+{
+    return XSys::DiskUtil::UmountPartion(m_strPartionName);
+}
+
+bool QtBaseInstaller::umountDisk()
+{
+    bool bRet = false;
+    QString device = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
+
+    if (!XSys::DiskUtil::UmountDisk(device)) {
+        qCritical() << "umount partion failed: ";
+        bRet = false;
+    }
+    else {
+        bRet = true;
+    }
+
+    return bRet;
+}
+
+QString QtBaseInstaller::getMountPoint()
+{
+    return  XSys::DiskUtil::MountPoint(m_strPartionName);
+}
+
+bool QtBaseInstaller::ejectDisk()
+{
+    qDebug() << "begin eject disk";
+    m_progressStatus = EJECTDISK;
+
+    if (!(umountDisk())) {
+        return false;
+    }
+
+    QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
+    XSys::Result result = XSys::DiskUtil::EjectDisk(strDisk);
+    return result.isSuccess();
+}
+
 bool QtBaseInstaller::formatUsb()
 {
     qDebug() << "begin format usb.";
@@ -307,10 +335,7 @@ bool QtBaseInstaller::formatUsb()
 
 bool QtBaseInstaller::installBootload()
 {
-    qDebug() << "begin install bootloader on" << m_strPartionName;
-    m_progressStatus = INSTALLBOOTLOADER;
-    XSys::Result result = XSys::Bootloader::Syslinux::InstallSyslinux(m_strPartionName, m_strImage);
-    return result.isSuccess();
+    return false;
 }
 
 bool QtBaseInstaller::extractISO()
@@ -318,6 +343,11 @@ bool QtBaseInstaller::extractISO()
     qDebug() << "begin extract ISO to" << m_strPartionName;
     m_progressStatus = GETINSTALLDIR;
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
+
+    if (installDir.isEmpty()) {
+        XSys::DiskUtil::Mount(m_strPartionName);
+        installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
+    }
 
     if (installDir.isEmpty()) {
         qCritical() << "Error::get(Error::USBMountFailed)";
@@ -348,5 +378,5 @@ bool QtBaseInstaller::configSyslinux()
     XSys::SynExec("sync", "");
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
     qDebug() << "configure syslinux, installDir:" << installDir;
-    return XSys::Bootloader::Syslinux::ConfigSyslinx(installDir).isSuccess();
+    return XSys::Syslinux::ConfigSyslinx(installDir).isSuccess();
 }

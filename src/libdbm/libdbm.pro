@@ -15,9 +15,10 @@ SOURCES += \
     util/sevenzip.cpp \
     util/utils.cpp \
     bminterface.cpp \
-    backend/qtbaseinstaller.cpp \
-    backend/qtlinuxinstaller.cpp \
-    backend/bmhandler.cpp
+    backend/bmhandler.cpp \
+    installer/qtbaseinstaller.cpp \
+    installer/qtinstallerfactory.cpp \
+    installer/qtX86Installer.cpp
 
 HEADERS += \
     backend/bmhandler.h \
@@ -29,8 +30,11 @@ HEADERS += \
     util/sevenzip.h \
     util/utils.h \
     bminterface.h \
-    backend/qtbaseinstaller.h \
-    backend/qtlinuxinstaller.h
+    installer/qtbaseinstaller.h \
+    installer/qtinstallerfactory.h \
+    installer/qtX86Installer.h \
+    installer/qtmipsinstaller.h \
+    installer/qtarminstaller.h
 
 linux {
 HEADERS += \

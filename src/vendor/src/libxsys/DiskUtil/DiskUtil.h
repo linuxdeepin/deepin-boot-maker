@@ -49,16 +49,12 @@ qint64 GetPartitionTotalSpace(const QString &targetDev);
 QString GetPartitionLabel(const QString &targetDev);
 bool FormatPartion(const QString& targetDev);
 QStringList GetPartionOfDisk(const QString& strDisk);
+bool SetActivePartion(const QString& strDisk, const QString& strPartion);
+void SetPartionLabel(const QString& strPartion, const QString& strImage);
 }
 
 namespace Bootloader {
 
 Result InstallBootloader(const QString &diskDev, const QString &images);
-
-namespace Syslinux {
-Result InstallSyslinux(const QString &diskDev, const QString &images);
-Result ConfigSyslinx(const QString &targetDev);
-}
-
 }
 }

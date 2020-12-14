@@ -20,7 +20,7 @@
  */
 
 #include "bootmaker.h"
-#include "qtlinuxinstaller.h"
+#include "../installer/qtinstallerfactory.h"
 
 #include "../util/sevenzip.h"
 #include "../util/utils.h"
@@ -85,29 +85,25 @@ void BootMaker::start()
 {
     qDebug() << "BootMaker start";
 
-#ifdef Q_OS_WIN
-#else
-#ifdef Q_OS_UNIX
-
     if (m_pInstaller == nullptr) {
-        m_pInstaller = new QtLinuxInstaller;
-        connect(m_pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, BMHandler::ErrorType error) {
-            Q_UNUSED(status);
-            emit finished(error, errorString(BMHandler::ErrorType(error)));
-        });
+        m_pInstaller = QtInstallerFactory::getInstance()->createInstaller();
 
-        connect(m_pInstaller, &QtBaseInstaller::reportProgress, m_usbDeviceMonitor, [=](int current, const QString &title, const QString &description){
-            emit this->reportProgress(current, ErrorType::NoError, title, description);
-        });
+        if (m_pInstaller != nullptr) {
+            connect(m_pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, BMHandler::ErrorType error) {
+                Q_UNUSED(status);
+                emit finished(error, errorString(BMHandler::ErrorType(error)));
+            });
 
-        connect(m_pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
-        m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
-            emit this->reportProgress(current * 60 / 100 + 20, ErrorType::NoError, "extract", fileName);
-        }, Qt::QueuedConnection);
+            connect(m_pInstaller, &QtBaseInstaller::reportProgress, m_usbDeviceMonitor, [=](int current, const QString &title, const QString &description){
+                emit this->reportProgress(current, ErrorType::NoError, title, description);
+            });
+
+            connect(m_pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
+            m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
+                emit this->reportProgress(current * 60 / 100 + 20, ErrorType::NoError, "extract", fileName);
+            }, Qt::QueuedConnection);
+        }
     }
-#else
-#endif
-#endif
 
     if (m_pInstaller != nullptr) {
         if (m_pInstaller->isRunning()) {
@@ -115,6 +111,7 @@ void BootMaker::start()
             m_pInstaller->stopInstall();
         }
         else {
+            qDebug() << "Start flush disk";
             emit m_usbDeviceMonitor->startMonitor();
         }
     }

@@ -22,7 +22,7 @@
 #pragma once
 
 #include "bmhandler.h"
-#include "qtbaseinstaller.h"
+#include "../installer/qtbaseinstaller.h"
 
 class DeviceMonitor;
 class BootMaker : public BMHandler

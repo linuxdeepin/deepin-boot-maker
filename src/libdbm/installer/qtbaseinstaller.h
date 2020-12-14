@@ -2,7 +2,7 @@
 #define QTBASEINSTALLER_H
 
 #include "../util/sevenzip.h"
-#include "bmhandler.h"
+#include "../backend/bmhandler.h"
 
 #include <QObject>
 
@@ -36,15 +36,15 @@ public:
     bool checkISOIntegrity();
 
 protected:
-    virtual bool umountPartion() = 0;
-    virtual bool umountDisk() = 0;
+    virtual bool umountPartion();
+    virtual bool umountDisk();
     virtual QString getMountPoint();
     virtual bool ejectDisk();
+    virtual bool installBootload();
 
 private:
     bool hasEnoughSpace();
     bool formatUsb();
-    bool installBootload();
     bool extractISO();
     bool syncIO();
     bool configSyslinux();
