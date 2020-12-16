@@ -194,9 +194,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(10);
     mainLayout->addWidget(m_warningHint, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(20);
-    mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
+    mainLayout->addWidget(start, 0, Qt::AlignHCenter|Qt::AlignBottom);
 
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
@@ -249,7 +248,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             return;
         }
         m_warningHint->setText(tr("Formatting will erase all data on the disk, please confirm and continue"));
-        this->adjustSize();
     };
     connect(m_formatDiskCheck, &DCheckBox::clicked, this, [ = ](bool checked) {
         this->setProperty("user_format", checked);

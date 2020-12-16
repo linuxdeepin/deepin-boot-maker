@@ -125,7 +125,6 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_fileLabel = new DLabel(tr("Drag an ISO image file here"));
 #endif
     m_fileLabel->setObjectName("IsoFileName");
-    m_fileLabel->setFixedHeight(19);
     DFontSizeManager::instance()->bind(m_fileLabel, DFontSizeManager::T8);
 //    qf = m_fileLabel->font();
 //    qf.setPixelSize(12);
@@ -185,7 +184,6 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);
 //    isoPanelLayout->addSpacing(4);
 //    isoPanelLayout->addWidget(m_stateLabel, 0, Qt::AlignCenter);
-    isoPanelLayout->addSpacing(0);
     isoPanelLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
     isoPanelLayout->addSpacing(14);
     isoPanelLayout->addWidget(spliter, 0, Qt::AlignHCenter);
@@ -226,9 +224,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
     mainLayout->addSpacing(16);
     mainLayout->addWidget(m_checkFile, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(20);
-    mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter);
     mainLayout->addStretch();
+    mainLayout->addWidget(m_nextSetp, 0, Qt::AlignCenter|Qt::AlignBottom);
 
     slot_ThemeChange();
     connect(&t_checkfile, &ThreadCheckFile::checkFileFinish,
