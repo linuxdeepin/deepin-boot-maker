@@ -44,48 +44,8 @@
 #include <QThread>
 #include <QKeyEvent>
 
-
-
-DWIDGET_USE_NAMESPACE
-
 const static QString debugQSS = "background-color: rgba(255, 0, 255, 20%);border: 1px solid;"
                                 " border-radius: 3; border-color: rgba(0, 255, 0, 20%);";
-
-
-
-static void slideWidget(DWidget *left, DWidget *right)
-{
-    right->show();
-    left->show();
-    int delay = 300;
-    QRect leftStart = QRect(0, 0, left->width(), left->height());
-    QRect leftEnd = leftStart;
-    leftEnd.setX(-left->width());
-
-    QPropertyAnimation *animation = new QPropertyAnimation(left, "geometry");
-    animation->setDuration(delay);
-    animation->setStartValue(leftStart);
-    animation->setEndValue(leftEnd);
-    animation->start();
-
-    QRect rightStart = QRect(left->width(), 0, right->width(), right->height());
-    QRect rightEnd = leftStart;
-    leftEnd.setX(0);
-
-    QPropertyAnimation *animation2 = new QPropertyAnimation(right, "geometry");
-    animation2->setDuration(delay);
-    animation2->setStartValue(rightStart);
-    animation2->setEndValue(rightEnd);
-    animation2->start();
-
-    animation->connect(animation, &QPropertyAnimation::finished,
-                       animation, &QPropertyAnimation::deleteLater);
-    animation2->connect(animation2, &QPropertyAnimation::finished,
-                        animation2, &QPropertyAnimation::deleteLater);
-    animation2->connect(animation2, &QPropertyAnimation::finished,
-                        left, &QWidget::hide);
-
-}
 
 class BMWindowPrivate
 {
@@ -111,7 +71,7 @@ BMWindow::BMWindow(QWidget *parent)
 {
     Q_D(BMWindow);
 
-    resize(440, 550);
+    setFixedSize(440, 550);
 
     d->interface = BMInterface::instance();
 
@@ -143,39 +103,31 @@ BMWindow::BMWindow(QWidget *parent)
     setTitlebarShadowEnabled(false);
     title->setTitle("");
     title->setIcon(QIcon::fromTheme("deepin-boot-maker")/*QIcon(":/theme/light/image/deepin-boot-maker.svg")*/);
-//    title->setBackgroundTransparent(true);
     title->setFixedHeight(50);
-//    title->setFrameStyle(QFrame::NoFrame);
-    QVBoxLayout *mainLayout = new QVBoxLayout();
-    mainLayout->setMargin(0);
-    mainLayout->setSpacing(0);
-
-    auto centralWidget = new DWidget;
-    centralWidget->setLayout(mainLayout);
-    setCentralWidget(centralWidget);
 
     auto viewWidth = 440;
-    auto *actionsLayout = new QStackedLayout;
-    mainLayout->addLayout(actionsLayout);
+    QStackedLayout *actionsLayout = new QStackedLayout;
     actionsLayout->setMargin(0);
     d->isoWidget = new ISOSelectView();
+    d->isoWidget->resize(440, 466);
 
     d->usbWidget = new UsbSelectView;
     d->usbWidget->move(viewWidth, 0);
+    d->usbWidget->resize(440, 466);
 
     d->progressWidget = new ProgressView;
     d->progressWidget->move(viewWidth, 0);
+    d->progressWidget->resize(440, 466);
 
     d->resultWidget = new ResultView;
     d->resultWidget->move(viewWidth, 0);
+    d->resultWidget->resize(440, 466);
 
     actionsLayout->addWidget(d->isoWidget);
-
     actionsLayout->addWidget(d->usbWidget);
     actionsLayout->addWidget(d->progressWidget);
     actionsLayout->addWidget(d->resultWidget);
 
-    mainLayout->addSpacing(0);
     d->wsib = new DPageIndicator(this);
     d->wsib->setAutoFillBackground(true);
     d->wsib->setPageCount(4);
@@ -184,9 +136,20 @@ BMWindow::BMWindow(QWidget *parent)
     d->wsib->setPointRadius(3);
     d->wsib->setSecondaryPointRadius(3);
     d->wsib->setPointDistance(12);
-    mainLayout->addWidget(d->wsib);
 
+    QVBoxLayout *mainLayout = new QVBoxLayout();
+    mainLayout->setMargin(0);
+    mainLayout->setSpacing(0);
+    mainLayout->addLayout(actionsLayout);
+    mainLayout->addWidget(d->wsib);
+    auto centralWidget = new DWidget;
+    centralWidget->resize(440, 466);
+    centralWidget->setLayout(mainLayout);
+    setCentralWidget(centralWidget);
+
+    m_pSAnimationGroup = new QSequentialAnimationGroup(this);
     slot_ThemeChange();
+
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::newProcessInstance, this, [ = ] {
         this->activateWindow();
     });
@@ -299,7 +262,7 @@ void BMWindow :: slot_ThemeChange()
 
 BMWindow::~BMWindow()
 {
-
+    m_pSAnimationGroup->deleteLater();
 }
 
 QString rootCommand()
@@ -322,3 +285,85 @@ void BMWindow::closeEvent(QCloseEvent *event)
     }
 }
 #endif
+
+void BMWindow::slideWidget(DWidget *left, DWidget *right)
+{
+    SlideAnimatoin* pSlideAnimation = new SlideAnimatoin;
+    pSlideAnimation->initAnimation(left, right);
+
+    if (QAbstractAnimation::Stopped == m_pSAnimationGroup->state()) {
+        for (int i = 0; i < m_pSAnimationGroup->animationCount(); i++) {
+            m_pSAnimationGroup->animationAt(i)->deleteLater();
+        }
+
+        m_pSAnimationGroup->clear();
+        m_pSAnimationGroup->addAnimation(pSlideAnimation);
+        m_pSAnimationGroup->start();
+    }
+    else {
+        m_pSAnimationGroup->addAnimation(pSlideAnimation);
+    }
+}
+
+SlideAnimatoin::SlideAnimatoin(QObject* pParent):QParallelAnimationGroup (pParent)
+{
+    QObject::connect(this, &SlideAnimatoin::finished, this, &SlideAnimatoin::slot_AnimationGroupFinished);
+}
+
+SlideAnimatoin::~SlideAnimatoin()
+{
+}
+
+void SlideAnimatoin::initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget)
+{
+    setLeftWidget(pLeftWidget);
+    setRightWidget(pRightWidget);
+    m_pLeftWidget->show();
+    m_pRightWidget->show();
+    int delay = 300;
+    QRect leftStart = QRect(0, 0, m_pLeftWidget->width(), m_pLeftWidget->height());
+    QRect leftEnd = QRect(-m_pLeftWidget->width(), 0, m_pLeftWidget->width(), m_pLeftWidget->height());
+
+    QPropertyAnimation *animation = new QPropertyAnimation(m_pLeftWidget, "geometry");
+    animation->setDuration(delay);
+    animation->setStartValue(leftStart);
+    animation->setEndValue(leftEnd);
+
+    QRect rightStart = QRect(m_pLeftWidget->width(), 0, m_pRightWidget->width(), m_pRightWidget->height());
+    QRect rightEnd = leftStart;
+    leftEnd.setX(0);
+
+    QPropertyAnimation *animation2 = new QPropertyAnimation(m_pRightWidget, "geometry");
+    animation2->setDuration(delay);
+    animation2->setStartValue(rightStart);
+    animation2->setEndValue(rightEnd);
+    addAnimation(animation);
+    addAnimation(animation2);
+}
+
+void SlideAnimatoin::setLeftWidget(DWidget* pWidget)
+{
+    m_pLeftWidget = pWidget;
+}
+
+void SlideAnimatoin::setRightWidget(DWidget* pWidget)
+{
+    m_pRightWidget = pWidget;
+}
+
+void SlideAnimatoin::slot_AnimationGroupFinished()
+{
+    for (int i = 0; i < this->animationCount(); i++) {
+        this->animationAt(i)->deleteLater();
+    }
+
+    this->clear();
+
+    if (m_pLeftWidget != nullptr) {
+        m_pLeftWidget->hide();
+    }
+
+    if (m_pRightWidget != nullptr) {
+        m_pRightWidget->show();
+    }
+}

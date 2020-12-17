@@ -22,8 +22,13 @@
 #pragma once
 
 #include <DMainWindow>
+#include <DWidget>
 
 #include <QScopedPointer>
+#include <QParallelAnimationGroup>
+#include <QSequentialAnimationGroup>
+
+DWIDGET_USE_NAMESPACE
 
 #define BMWindowBaseClass DTK_WIDGET_NAMESPACE::DMainWindow
 
@@ -36,8 +41,34 @@ public:
     ~BMWindow();
 public slots:
     void slot_ThemeChange();
+
+private:
+    void slideWidget(DWidget *left, DWidget *right);
+
 private:
     QScopedPointer<BMWindowPrivate> d_ptr;
     Q_DECLARE_PRIVATE_D(qGetPtrHelper(d_ptr), BMWindow)
+    QSequentialAnimationGroup* m_pSAnimationGroup;
 };
 
+class SlideAnimatoin:public QParallelAnimationGroup
+{
+    Q_OBJECT
+public:
+    SlideAnimatoin(QObject* pParent = nullptr);
+    ~SlideAnimatoin();
+
+public:
+    void initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget);
+
+private:
+    void setLeftWidget(DWidget* pWidget);
+    void setRightWidget(DWidget* pWidget);
+
+private slots:
+    void slot_AnimationGroupFinished();
+
+private:
+    DWidget* m_pLeftWidget;
+    DWidget* m_pRightWidget;
+};
