@@ -75,8 +75,8 @@ QList<DeviceInfo> DeviceMonitor::getIntersectDevice(const QList<DeviceInfo>& lis
    QList<DeviceInfo> intersectList;
 
    foreach (DeviceInfo info, list) {
-       foreach(DeviceInfo tempInfo, m_deviceList) {
-           if(tempInfo == info) {
+       foreach (DeviceInfo tempInfo, m_deviceList) {
+           if ((tempInfo == info)&&(tempInfo.total == info.total)&&(tempInfo.used == info.used)) {
                intersectList.push_back(info);
            }
        }
