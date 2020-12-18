@@ -834,13 +834,18 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
 
     QStringList volume = ret3.result().split("\n").filter("Volume id");
     QString tem = volume.takeAt(0);
-    if (tem.contains("Volume id: deepin", Qt::CaseInsensitive)) {
-        XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(strPartion));
-    } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
-        XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(strPartion));
-    } else {
-        XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(strPartion));
+    QStringList strValues = tem.split(":");
+    QString strName = QString("UKNOWN");
+    QString strTemp;
+
+    if (2 == strValues.size()) {
+        strTemp = strValues.at(1);
+        strTemp = strTemp.trimmed();
     }
+
+    //标签名最长长度为十一位
+    strName = strTemp.isEmpty()?strName:(strTemp.length() > 11)?strTemp.left(11):strTemp;
+    XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 %2").arg(strPartion).arg(strName));
 }
 
 qint64 GetPartitionTotalSpace(const QString &targetDev)
