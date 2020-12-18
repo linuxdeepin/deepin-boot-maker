@@ -164,9 +164,28 @@ void QtBaseInstaller::checkError()
         return;
     }
     else {
+        int iIndex = strDisk.lastIndexOf("/");
+        QString strTempName;
+
+        if (iIndex >= 0) {
+            strDisk = strDisk.right(strDisk.length() - iIndex - 1);
+        }
+
+        bool bFind = false;
         QStringList strPartions = XSys::DiskUtil::GetPartionOfDisk(strDisk);
 
         if (!strPartions.contains(m_strPartionName)) {
+            foreach (QString strName, strPartions) {
+                QString strTemp = QString("/dev") + "/" + strName;
+
+                if (strTemp == m_strPartionName) {
+                    bFind = true;
+                    break;
+                }
+            }
+        }
+
+      if (!bFind) {
             qCritical() << "Error::get(Error::USBMountFailed)";
             emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBMountFailed);
             return;

@@ -223,6 +223,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         });
         return;
     case BMHandler::SyscExecFailed:
+    case BMHandler::ErrorType::InstallBootloaderFailed:
         if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() != DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosProfessional) {
             m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
             m_rebootLater->setText(tr("Submit Feedback"));
