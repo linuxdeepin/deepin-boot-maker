@@ -43,6 +43,108 @@ static void initQRC()
 
 namespace Utils {
 
+bool isUft8(const QByteArray& byArr)
+{
+    unsigned int nBytes = 0;//UFT8可用1-6个字节编码,ASCII用一个字节
+    bool bAllAscii = true;
+
+    for (int i = 0;  i < byArr.length(); ++i) {
+        unsigned char chr = static_cast<unsigned char>(byArr.at(i));
+
+        //ASCII码高位为0
+        if (nBytes == 0 && (chr & 0x80) != 0) {
+            bAllAscii = false;
+        }
+
+        if (nBytes == 0) {
+            //计算连续1的位数
+            if (chr >= 0x80) {
+                if (chr >= 0xFC && chr <= 0xFD) {
+                    nBytes = 6;
+                }
+                else if (chr >= 0xF8) {
+                    nBytes = 5;
+                }
+                else if (chr >= 0xF0) {
+                    nBytes = 4;
+                }
+                else if (chr >= 0xE0) {
+                    nBytes = 3;
+                }
+                else if (chr >= 0xC0) {
+                    nBytes = 2;
+                }
+                else {
+                    return false;
+                }
+
+                nBytes--;
+            }
+        }
+        else {
+            if ((chr & 0xC0) != 0x80) {
+                return false;
+            }
+
+            nBytes--;
+        }
+    }
+
+    if (nBytes != 0)  {
+        return false;
+    }
+
+    if (bAllAscii) { //如果全部都是ASCII, 也是UTF8
+        return true;
+    }
+
+    return true;
+}
+
+bool isGBK(const QByteArray& byArr)
+{
+    unsigned int nBytes = 0;
+    bool bAllAscii = true;
+
+    for (int i = 0;  i < byArr.length(); ++i) {
+        unsigned char chr = static_cast<unsigned char>(byArr.at(i));
+
+        //ASCII码高位为0
+        if ((chr & 0x80) != 0 && nBytes == 0) {
+            bAllAscii = false;
+        }
+
+        if (nBytes == 0) {
+            if (chr >= 0x80) {
+                if (chr >= 0x81 && chr <= 0xFE) {
+                    nBytes = +2;
+                }
+                else {
+                    return false;
+                }
+
+                nBytes--;
+            }
+        }
+        else {
+            if (chr < 0x40 || chr>0xFE) {
+                return false;
+            }
+
+            nBytes--;
+        }
+    }
+
+    if (nBytes != 0) {//违返规则
+        return false;
+    }
+
+    if (bAllAscii){ //如果全部都是ASCII, 也是GBK
+        return true;
+    }
+
+    return true;
+}
 
 void loadTranslate()
 {
@@ -212,7 +314,6 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
     QProcess lsblk;
     lsblk.start("lsblk", QStringList{"-b", "-p", "-P", "-o", "name,label,size,uuid,fstype,type"});
     lsblk.waitForFinished(-1);
-
     QString line;
     DeviceInfo info;
     QString diskDevPath;
@@ -245,10 +346,22 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
                 info.path = value;
             } else if (!key.compare("label")) {
                 if (value.contains("\\x", Qt::CaseInsensitive)) {
-                    value = QTextCodec::codecForName("GBK")->toUnicode(unescapeLimited(value));
+                    QByteArray byArr = unescapeLimited(value);
+
+                    if (isUft8(byArr)) {
+                        value = QTextCodec::codecForName("UTF-8")->toUnicode(unescapeLimited(value));
+                    }
+                    else if(isGBK(byArr)) {
+                        value = QTextCodec::codecForName("GBK")->toUnicode(byArr);
+                    }
+                    else {
+                        value = QString::fromLocal8Bit(byArr);
+                    }
+
                     if (value.isEmpty())
                         value = QObject::tr("Removable disk");
                 }
+
                 info.label = value;
             }
             else if (!key.compare("uuid")) {
@@ -308,7 +421,6 @@ bool CheckInstallDisk(const QString &targetDev)
     test.close();
     UOS.close();
     test.remove();
-
     return true;
 }
 
