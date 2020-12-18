@@ -138,24 +138,10 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     mainLayout->addWidget(m_deviceIcon, 0, Qt::AlignLeft);
     mainLayout->addSpacing(7);
     mainLayout->addWidget(m_bodywidget, 0, Qt::AlignLeft);
-//    mainLayout->addWidget(m_deviceLabel, 0, Qt::AlignCenter);
-//    mainLayout->addSpacing(10);
-//    mainLayout->addWidget(m_deviceDevName, 0, Qt::AlignCenter);
-//    mainLayout->addStretch();
-//    mainLayout->addWidget(m_deviceCapacity, 0, Qt::AlignCenter);
-//    mainLayout->addSpacing(10);
-//    mainLayout->addWidget(m_deviceCapacityBar, 0, Qt::AlignCenter);
     mainLayout->addSpacing(10);
-//    mainLayout->addWidget(m_radiobutton, 0, Qt::AlignRight);
     mainLayout->addWidget(m_fillingposition, 0, Qt::AlignRight);
-
     setFixedSize(400, 60);
-
     setProperty("needformat", false);
-
-//    this->setAutoFillBackground(true);
-//    pa.setColor(QPalette::Background, QColor(0, 0, 0, 13));
-//    this->setPalette(pa);
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
     this, [ = ] {
@@ -163,34 +149,25 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType)
         {
-//            pa = m_deviceLabel->palette();
-//            pa.setColor(DPalette::Text, QColor("#414D68"));
-//            m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
             pa.setColor(DPalette::Text, QColor("#8AA1B4"));
             m_deviceDevName->setPalette(pa);
             pa = m_deviceCapacity->palette();
             pa.setColor(DPalette::Text, QColor("#8AA1B4"));
-            m_filepath = ":/theme/light/image/select_active.svg";
             m_deviceCapacity->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
-//            pa = m_deviceLabel->palette();
-//            pa.setColor(DPalette::Text, QColor("#C0C6D4"));
-//            m_deviceLabel->setPalette(pa);
             pa = m_deviceDevName->palette();
             pa.setColor(DPalette::Text, QColor("#6D7C88"));
             m_deviceDevName->setPalette(pa);
             pa = m_deviceCapacity->palette();
             pa.setColor(DPalette::Text, QColor("#6D7C88"));
             m_deviceCapacity->setPalette(pa);
-            m_filepath = ":/theme/dark/image/select_active_dark.svg";
         }
-        if (flag1)
-        {
-            QPixmap pixmap = renderSVG(m_filepath, QSize(28, 28));
-            m_fillingposition->setPixmap(pixmap);
-        }
+
+        auto icon = qobject_cast<DStyle *>(style())->standardIcon(DStyle::SP_IndicatorChecked);
+        QPixmap pixmap = icon.pixmap(QSize(16, 16), QIcon::Active);
+        m_fillingposition->setPixmap(pixmap);
 
     });
 
@@ -246,19 +223,13 @@ void DeviceInfoItem::setCheck(bool flag)
 {
 //    m_deviceIcon->setPixmap(flag ? s_selectDevice : s_removeDevice);
 //    m_radiobutton->setChecked(flag);
-    flag1 = flag;
+
     if (flag) {
-        QPixmap pixmap = renderSVG(m_filepath, QSize(28, 28));
-//        pixmap.setDevicePixelRatio(m_fillingposition->devicePixelRatioF());
-//        pixmap.setDevicePixelRatio(qApp->devicePixelRatio());
-//        pixmap = pixmap.scaled(pixmap.width(), pixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        auto icon = qobject_cast<DStyle *>(style())->standardIcon(DStyle::SP_IndicatorChecked);
+        QPixmap pixmap = icon.pixmap(QSize(16, 16), QIcon::Active);
         m_fillingposition->setPixmap(pixmap);
-//        m_radiobutton->show();
-//        m_fillingposition->hide();
     } else {
         m_fillingposition->clear();
-//        m_radiobutton->hide();
-//        m_fillingposition->show();
     }
 }
 

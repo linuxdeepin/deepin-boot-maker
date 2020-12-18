@@ -63,7 +63,6 @@ private:
     DLabel *m_deviceIcon    = nullptr;
 //    QRadioButton *m_radiobutton = nullptr;
     DLabel *m_fillingposition    = nullptr;
-    bool flag1=false;
     QString m_filepath;
     QPixmap s_removeDevice;
 //    QPixmap s_selectDevice;
