@@ -18,7 +18,8 @@ SOURCES += \
     backend/bmhandler.cpp \
     installer/qtbaseinstaller.cpp \
     installer/qtinstallerfactory.cpp \
-    installer/qtX86Installer.cpp
+    installer/qtX86Installer.cpp \
+    installer/qtmipsinstaller.cpp
 
 HEADERS += \
     backend/bmhandler.h \

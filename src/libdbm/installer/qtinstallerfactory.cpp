@@ -1,10 +1,10 @@
 #include "qtinstallerfactory.h"
 
-#ifdef Q_PROCESSOR_X86
+#if defined(Q_PROCESSOR_X86)
 #include "qtX86Installer.h"
-#elif Q_PROCESSOR_MIPS
+#elif defined(Q_PROCESSOR_MIPS)
 #include "qtmipsinstaller.h"
-#elif Q_PROCESSOR_ARM
+#elif definded(Q_PROCESSOR_ARM)
 #include "qtarminstaller.h"
 #endif
 
@@ -25,13 +25,16 @@ QtBaseInstaller* QtInstallerFactory::createInstaller()
 {
     QtBaseInstaller* pInstaller = nullptr;
 
-#ifdef Q_PROCESSOR_X86
+#if defined(Q_PROCESSOR_X86)
     qDebug() << "Architecture:X86_64";
     pInstaller = new QtX86Installer;
-#elif Q_PROCESSOR_MIPS
+#elif defined(Q_PROCESSOR_MIPS)
     qDebug() << "Architecture:MIPS";
     pInstaller = new QtMipsInstaller;
-#elif Q_PROCESSOR_ARM
+#elif definded(Q_PROCESSOR_ARM)
+    qDebug() << "Architecture:ARM";
+    pInstaller = new QtArmInstaller;
+#else
 #error "not support architecture"
 #endif
 
