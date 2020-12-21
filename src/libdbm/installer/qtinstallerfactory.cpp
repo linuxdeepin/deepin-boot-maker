@@ -4,7 +4,7 @@
 #include "qtX86Installer.h"
 #elif defined(Q_PROCESSOR_MIPS)
 #include "qtmipsinstaller.h"
-#elif definded(Q_PROCESSOR_ARM)
+#elif defined(Q_PROCESSOR_ARM)
 #include "qtarminstaller.h"
 #endif
 
@@ -31,7 +31,7 @@ QtBaseInstaller* QtInstallerFactory::createInstaller()
 #elif defined(Q_PROCESSOR_MIPS)
     qDebug() << "Architecture:MIPS";
     pInstaller = new QtMipsInstaller;
-#elif definded(Q_PROCESSOR_ARM)
+#elif defined(Q_PROCESSOR_ARM)
     qDebug() << "Architecture:ARM";
     pInstaller = new QtArmInstaller;
 #else
