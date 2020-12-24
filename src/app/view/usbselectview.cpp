@@ -243,10 +243,14 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             m_deviceList->setItemWidget(listItem, infoItem);
             infoItem->setProperty("path", partition.path);
             infoItem->setProperty("fstype", partition.fstype);
+
             if (partition.path == this->property("last_path").toString()) {
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
                 hasPartitionSelected = true;
+            }
+            else {
+                infoItem->setCheck(false);
             }
         }
 

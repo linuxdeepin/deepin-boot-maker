@@ -165,10 +165,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
             m_deviceCapacity->setPalette(pa);
         }
 
-        auto icon = qobject_cast<DStyle *>(style())->standardIcon(DStyle::SP_IndicatorChecked);
-        QPixmap pixmap = icon.pixmap(QSize(16, 16), QIcon::Active);
-        m_fillingposition->setPixmap(pixmap);
-
+        setCheck(checked);
     });
 
     emit DGuiApplicationHelper::instance()->themeTypeChanged(DGuiApplicationHelper::instance()->themeType());
@@ -231,6 +228,8 @@ void DeviceInfoItem::setCheck(bool flag)
     } else {
         m_fillingposition->clear();
     }
+
+    checked = flag;
 }
 
 bool DeviceInfoItem::needFormat() const
