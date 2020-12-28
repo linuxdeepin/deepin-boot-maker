@@ -28,6 +28,7 @@
 #include <dirent.h>
 #include <QTextCodec>
 #include <QByteArray>
+#include <QRegExp>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif
@@ -325,60 +326,45 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
         if (line.isEmpty())
             break;
 
-        QStringList pairs = line.split(" ");
+        QString type;
+        QRegExp reg("NAME=\"(.*)\" LABEL=\"(.*)\" SIZE=\"(.*)\" UUID=\"(.*)\" FSTYPE=\"(.*)\" TYPE=\"(.*)\"");
 
-        for (auto it = pairs.constBegin(); it != pairs.constEnd(); ++it) {
-            if (it->isEmpty())
-                continue;
+        if (reg.indexIn(line) >= 0) {
+            info.path = reg.cap(1);
+            info.label = reg.cap(2);
+            info.uuid = reg.cap(4);
+            info.fstype = reg.cap(5);
+            type = reg.cap(6);
 
-            QStringList kv = it->split("=");
-
-            if (kv.size() != 2)
-                continue;
-
-            QString key = kv[0].toLower();
-            QString value = kv[1].trimmed();
-
-            if (value.endsWith("\"") && value.startsWith("\""))
-                value = value.mid(1, value.size() - 2);
-
-            if (!key.compare("name")) {
-                info.path = value;
-            } else if (!key.compare("label")) {
-                if (value.contains("\\x", Qt::CaseInsensitive)) {
-                    QByteArray byArr = unescapeLimited(value);
-
-                    if (isUft8(byArr)) {
-                        value = QTextCodec::codecForName("UTF-8")->toUnicode(unescapeLimited(value));
-                    }
-                    else if(isGBK(byArr)) {
-                        value = QTextCodec::codecForName("GBK")->toUnicode(byArr);
-                    }
-                    else {
-                        value = QString::fromLocal8Bit(byArr);
-                    }
-
-                    if (value.isEmpty())
-                        value = QObject::tr("Removable disk");
-                }
-
-                info.label = value;
-            }
-            else if (!key.compare("uuid")) {
-                info.uuid = value;
-            } else if (!key.compare("fstype")) {
-                info.fstype = value;
-            } else if (!key.compare("type")) {
-                QString type = value;
-                if (!type.compare("disk"))
-                    diskDevPath = info.path;
-                else if (!type.compare("part")){
-                    isPart = true;
-                } else {
-                    diskDevPath = "";
-                }
+            if (!type.compare("disk"))
+                diskDevPath = info.path;
+            else if (!type.compare("part")){
+                isPart = true;
+            } else {
+                diskDevPath = "";
             }
         }
+
+        QString strLabel = info.label;
+
+        if (info.label.contains("\\x", Qt::CaseInsensitive)) {
+            QByteArray byArr = unescapeLimited(info.label);
+
+            if (isUft8(byArr)) {
+                strLabel = QTextCodec::codecForName("UTF-8")->toUnicode(byArr);
+            }
+            else if(isGBK(byArr)) {
+                strLabel = QTextCodec::codecForName("GBK")->toUnicode(byArr);
+            }
+            else {
+                strLabel = QString::fromLocal8Bit(byArr);
+            }
+
+            if (strLabel.isEmpty())
+                strLabel = QObject::tr("Removable disk");
+        }
+
+        info.label = strLabel;
 
         if (isPart && !diskDevPath.isEmpty()) {
             deviceInfos[diskDevPath].children.insert(info.path, info);
