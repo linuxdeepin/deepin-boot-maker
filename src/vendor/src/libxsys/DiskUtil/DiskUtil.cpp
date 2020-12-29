@@ -845,7 +845,7 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
 
     //标签名最长长度为十一位
     strName = strTemp.isEmpty()?strName:(strTemp.length() > 11)?strTemp.left(11):strTemp;
-    XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 %2").arg(strPartion).arg(strName));
+    XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 \"%2\"").arg(strPartion).arg(strName));
 }
 
 qint64 GetPartitionTotalSpace(const QString &targetDev)
@@ -871,27 +871,33 @@ XSys::Result EjectDisk(const QString &targetDev)
 bool UmountPartion(const QString& strPartionName)
 {
     bool bRet = false;
+    //对一个分区进行unmount,最多尝试5次。
+    int iCount= 5;
+    QString strMountPt = XSys::DiskUtil::MountPoint(strPartionName);
 
-    do {
-        XSys::Result result = XSys::SynExec("udisksctl", QString("unmount -b %1").arg(strPartionName));
+    if (!strMountPt.isEmpty()) {
+        do {
+            XSys::Result result = XSys::SynExec("udisksctl", QString("unmount -b %1").arg(strPartionName));
 
-        if(!result.isSuccess()) {
-            QString strErr = result.errmsg();
+            if (!result.isSuccess()) {
+                bRet = false;
+                break;
+            }
 
-            if (strErr.contains("not mounted")) {
+            strMountPt = XSys::DiskUtil::MountPoint(strPartionName);
+
+            if (strMountPt.isEmpty()) {
                 bRet = true;
                 break;
             }
-            else if (strErr.contains("is busy")) {
-                bRet = false;
-                break;
-            }
             else {
-                bRet = false;
-                break;
+                iCount--;
             }
-        }
-    } while (1);
+        } while (iCount > 0);
+    }
+    else {
+        bRet = true;
+    }
 
     return bRet;
 }
