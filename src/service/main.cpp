@@ -39,12 +39,19 @@ int main(int argc, char *argv[])
     if (PATH.isEmpty()) {
         PATH = "/usr/bin";
     }
+
     PATH += ":/usr/sbin";
     PATH += ":/sbin";
     qputenv("PATH", PATH.toLatin1());
 
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+    QString strDebug = qgetenv("QT_LOGGING_RULES");
 
+    if (strDebug.isEmpty()) {
+        strDebug = "*.debug=false";
+    }
+
+    qputenv("QT_LOGGING_RULES", strDebug.toLatin1());
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     Utils::initResource();
 
     QCoreApplication a(argc, argv);

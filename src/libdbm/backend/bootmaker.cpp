@@ -83,7 +83,7 @@ void BootMaker::reboot()
 
 void BootMaker::start()
 {
-    qDebug() << "BootMaker start";
+    qInfo() << "BootMaker start";
 
     if (m_pInstaller == nullptr) {
         m_pInstaller = QtInstallerFactory::getInstance()->createInstaller();
@@ -107,11 +107,11 @@ void BootMaker::start()
 
     if (m_pInstaller != nullptr) {
         if (m_pInstaller->isRunning()) {
-            qDebug() << "Installer is running";
+            qInfo() << "Installer is running";
             m_pInstaller->stopInstall();
         }
         else {
-            qDebug() << "Start flush disk";
+            qInfo() << "Start flush disk";
             emit m_usbDeviceMonitor->startMonitor();
         }
     }

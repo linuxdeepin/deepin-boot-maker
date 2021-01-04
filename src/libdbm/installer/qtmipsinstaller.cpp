@@ -10,7 +10,7 @@ QtMipsInstaller::QtMipsInstaller(QObject *parent) : QtBaseInstaller (parent)
 
 bool QtMipsInstaller::installBootload()
 {
-    qDebug() << "begin install bootloader on" << m_strPartionName;
+    qInfo() << "begin install bootloader on" << m_strPartionName;
     m_progressStatus = INSTALLBOOTLOADER;
 
     QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);

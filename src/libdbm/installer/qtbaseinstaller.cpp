@@ -151,11 +151,11 @@ void QtBaseInstaller::checkError()
     m_bRunning = false;
 
     if (m_bStop) {
-        qDebug() << "Stop Install";
+        qInfo() << "Stop Install";
         return;
     }
 
-    qDebug() << "begin check error";
+    qInfo() << "begin check error";
     QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
     if (strDisk.isEmpty()) {
@@ -236,10 +236,10 @@ bool QtBaseInstaller::isRunning() const
 void QtBaseInstaller::stopInstall()
 {
     m_bStop = true;
-    qDebug() << "m_progressStatus:" << m_progressStatus;
+    qInfo() << "m_progressStatus:" << m_progressStatus;
 
     if(EXTRACTISO ==  m_progressStatus || CHECKINTEGRITY == m_progressStatus) {
-        qDebug() << "Installer stop install";
+        qInfo() << "Installer stop install";
         m_sevenZipCheck.stopProcess();
     }
 }
@@ -247,7 +247,7 @@ void QtBaseInstaller::stopInstall()
 bool QtBaseInstaller::hasEnoughSpace()
 {
     bool bRet = false;
-    qDebug() << "begin check space";
+    qInfo() << "begin check space";
     m_progressStatus = CHECKSPACE;
     QFileInfo isoInfo(m_strImage);
 
@@ -276,7 +276,7 @@ bool QtBaseInstaller::hasEnoughSpace()
 bool QtBaseInstaller::checkISOIntegrity()
 {
     bool bRet = false;
-    qDebug() << "check iso integrity.";
+    qInfo() << "check iso integrity.";
     m_progressStatus = CHECKINTEGRITY;
 
     //check iso integrity
@@ -322,7 +322,7 @@ QString QtBaseInstaller::getMountPoint()
 
 bool QtBaseInstaller::ejectDisk()
 {
-    qDebug() << "begin eject disk";
+    qInfo() << "begin eject disk";
     m_progressStatus = EJECTDISK;
 
     if (!(umountDisk())) {
@@ -336,7 +336,7 @@ bool QtBaseInstaller::ejectDisk()
 
 bool QtBaseInstaller::formatUsb()
 {
-    qDebug() << "begin format usb.";
+    qInfo() << "begin format usb.";
     m_progressStatus = FORMATUSB;
 
     if (!umountPartion()) {
@@ -359,7 +359,7 @@ bool QtBaseInstaller::installBootload()
 
 bool QtBaseInstaller::extractISO()
 {
-    qDebug() << "begin extract ISO to" << m_strPartionName;
+    qInfo() << "begin extract ISO to" << m_strPartionName;
     m_progressStatus = GETINSTALLDIR;
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
 
@@ -377,7 +377,7 @@ bool QtBaseInstaller::extractISO()
        return true;
     }
 
-    qDebug() << "begin clear target device files";
+    qInfo() << "begin clear target device files";
     m_progressStatus = EXTRACTISO;
     Utils::ClearTargetDev(installDir);
     m_sevenZipCheck.setArchiveFile(m_strImage);
@@ -387,15 +387,15 @@ bool QtBaseInstaller::extractISO()
 
 bool QtBaseInstaller::syncIO()
 {
-    qDebug() << "begin sysc IO";
+    qInfo() << "begin sysc IO";
     return XSys::SynExec("sync", "").isSuccess();
 }
 
 bool QtBaseInstaller::configSyslinux()
 {
-    qDebug() << "begin configure syslinux";
+    qInfo() << "begin configure syslinux";
     XSys::SynExec("sync", "");
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
-    qDebug() << "configure syslinux, installDir:" << installDir;
+    qInfo() << "configure syslinux, installDir:" << installDir;
     return XSys::Syslinux::ConfigSyslinx(installDir).isSuccess();
 }

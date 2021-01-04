@@ -71,8 +71,8 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
 Result SynExec(const QString &exec, const QString &param, const QString &execPipeIn)
 {
     Result ret = runApp(exec, param, execPipeIn);
-    qDebug() << "call:" << exec + " " + param << "with:" << execPipeIn ;
-    qDebug() << "resut:" << ret.isSuccess() << ret.errmsg();
+    qInfo() << "call:" << exec + " " + param << "with:" << execPipeIn ;
+    qInfo() << "resut:" << ret.isSuccess() << ret.errmsg();
     return ret;
 }
 
@@ -113,8 +113,8 @@ static Result runApp(const QString &execPath, const QStringList &args)
 Result SynExec(const QString &exec, const QStringList &args)
 {
     Result ret = runApp(exec, args);
-    qDebug() << "call:" << exec << args ;
-    qDebug() << "resut:" << ret.isSuccess() << ret.errmsg();
+    qInfo() << "call:" << exec << args ;
+    qInfo() << "resut:" << ret.isSuccess() << ret.errmsg();
     return ret;
 }
 
