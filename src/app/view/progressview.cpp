@@ -173,12 +173,12 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << current << title << description;
 
-        if (current <= 80) {
+        if (current <= 75) {
             m_waterProgress->setValue(static_cast<int>(current));
         }
         else if (current <= 100) {
             if(m_iInterval == -1) {
-                m_iInterval = QObject::startTimer(6000);
+                m_iInterval = QObject::startTimer(10000);
             }
         }
         else {
