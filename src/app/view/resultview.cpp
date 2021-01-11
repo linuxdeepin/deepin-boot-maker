@@ -232,7 +232,15 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
             connect(m_rebootLater, &DPushButton::clicked,
             this, [ = ]() {
                 // FIXME: call feedback 非专业版保持链接进社区
-                QProcess::startDetached("deepin-feedback");
+                if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosCommunity) {
+                    QDesktopServices::openUrl(QString("https://bbs.deepin.org/post/209286"));
+                }
+                else if(DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosHome) {
+                    QDesktopServices::openUrl(QString("https://bbs.chinauos.com/post/4838?id=4838&type_id=5&forum_name=%E6%A1%8C%E9%9D%A2%E4%B8%AA%E4%BA%BA%E7%89%88"));
+                }
+                else {
+                    QProcess::startDetached("deepin-feedback");
+                }
             });
 
         } else {
