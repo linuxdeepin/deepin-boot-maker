@@ -341,19 +341,22 @@ bool Mount(const QString &/*targetDev*/, const QString &/*path*/)
 const QString MountPoint(const QString &targetDev)
 {
     /*
-    Filesystem    512-blocks     Used Available Capacity iused     ifree %iused
-    Mounted on
-    /dev/disk2s1     3920616  2683872   1236744    69%       0         0  100%
-    /Volumes/DEEPINOS 1
+    文件系统       挂载点
+    udev           /dev
+    tmpfs          /run
     */
-    XSys::Result ret = XSys::SynExec("df", "");
+    XSys::Result ret = XSys::SynExec("df", "--output=source,target");
+
     if (!ret.isSuccess()) {
         qWarning() << "call df failed" << ret.result();
     }
+
     QStringList mounts = ret.result().split("\n").filter(targetDev);
+
     if (0 == mounts.size()) {
         return "";
     }
+
     QString mountinfo = mounts.last();
     mountinfo.remove(targetDev);
     return mountinfo.mid(mountinfo.indexOf('/'));
