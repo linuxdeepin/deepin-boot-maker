@@ -252,7 +252,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
                 // FIXME: call service-support  fix bug 19711 专业版不再调用deepin-feedback链接进社区，而是调用服务与支持客户端
                 QDBusInterface syssupport("com.deepin.dde.ServiceAndSupport", "/com/deepin/dde/ServiceAndSupport", "com.deepin.dde.ServiceAndSupport");
                 if (syssupport.isValid())
-                    syssupport.call("showWindow");
+                    syssupport.call("ServiceSession", 2);
                 else
                     qWarning() << "dbus error:" << syssupport.lastError();
             });
