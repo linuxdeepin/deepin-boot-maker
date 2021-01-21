@@ -313,7 +313,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             DDialog msgbox(this);
             msgbox.setFixedWidth(400);
             msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
-            msgbox.setTitle(tr("Format USB flash drive"));
+            msgbox.setTitle(tr("Format Partition"));
             msgbox.setTextFormat(Qt::AutoText);
             msgbox.setMessage(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
             msgbox.insertButton(0, tr("Cancel"), true, DDialog::ButtonRecommend);

@@ -4,40 +4,27 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <source>Failed to call the command %1</source>
-        <translation type="vanished">Nu s-a putut apela comanda %1</translation>
-    </message>
-    <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
-        <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>Eroare de formatare: Mediul de stocare trebuie să fie formatat în format FAT32</translation>
-    </message>
-    <message>
-        <source>Insufficient Disk Space: Ensure the disk has %1 free space</source>
-        <translation type="vanished">Spaţiu insufucient pe disc: Asiguraţi-vă ca discul are %1 spaţiu liber</translation>
-    </message>
-    <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
-        <source>Failed to call the command 1%</source>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
+        <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
-        <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
+        <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Eroare montare disc: Introduceţi discul din nou sau restartaţi pentru a reîncerca</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Eroare decomprimare imagine: Verificați suma de control md5 a imaginii pentru a asigura integritatea acesteia</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Internal Error</source>
         <translation>Eroare internă</translation>
     </message>
@@ -45,20 +32,12 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <source>Deepin Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation type="vanished">Deepin Boot Maker este un instrument simplu de a scrie fișiere imagine de sistem în CD / DVD, unitate flash USB și alte suporturi media.</translation>
-    </message>
-    <message>
-        <source>Deepin Boot Maker</source>
-        <translation type="vanished">Deepin Boot Maker</translation>
-    </message>
-    <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
-        <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
+        <location filename="../app/bmwindow.cpp" line="79"/>
+        <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="123"/>
+        <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -66,42 +45,38 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <source>Drag an ISO image file and drop it here</source>
-        <translation type="vanished">Trageți și plasați o imagine ISO aici</translation>
-    </message>
-    <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
         <source>OR</source>
         <translation>sau</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="88"/>
+        <location filename="../app/view/isoselectview.cpp" line="89"/>
         <location filename="../app/view/isoselectview.cpp" line="163"/>
         <source>Select an ISO image file</source>
         <translation>Selectați o imagine ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="124"/>
+        <location filename="../app/view/isoselectview.cpp" line="125"/>
         <source>Drag an ISO image file here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="214"/>
+        <location filename="../app/view/isoselectview.cpp" line="213"/>
         <source>Next</source>
         <translation>Următorul</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <location filename="../app/view/isoselectview.cpp" line="236"/>
         <source>Illegal ISO image file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="301"/>
+        <location filename="../app/view/isoselectview.cpp" line="299"/>
         <source>Reselect an ISO image file</source>
         <translation>Reselectați o imagine ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="442"/>
+        <location filename="../app/view/isoselectview.cpp" line="440"/>
         <source>Detecting ISO file, please wait...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -109,30 +84,22 @@
 <context>
     <name>ProgressView</name>
     <message>
-        <source>Making</source>
-        <translation type="vanished">Se creează</translation>
-    </message>
-    <message>
-        <source>Making the disk, please wait...</source>
-        <translation type="vanished">Se creează disk-ul, așteptați...</translation>
-    </message>
-    <message>
-        <location filename="../app/view/progressview.cpp" line="61"/>
+        <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Burning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="77"/>
+        <location filename="../app/view/progressview.cpp" line="78"/>
         <source>Burning, please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="89"/>
+        <location filename="../app/view/progressview.cpp" line="90"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>Nu scoateți discul sau nu opriți calculatorul în timpul procesului</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="111"/>
+        <location filename="../app/view/progressview.cpp" line="112"/>
         <source>Cancel</source>
         <translation>Anulează</translation>
     </message>
@@ -145,16 +112,13 @@
         <translation>Dispozitiv amovibil</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="221"/>
+        <location filename="../libdbm/util/utils.cpp" line="364"/>
         <source>Removable disk</source>
         <translation>Dispozitiv amovibil</translation>
     </message>
     <message>
-        <source>Deepin Boot Maker</source>
-        <translation type="vanished">Deepin Boot Maker</translation>
-    </message>
-    <message>
-        <location filename="../app/main.cpp" line="123"/>
+        <location filename="../app/main.cpp" line="119"/>
         <source>Boot Maker</source>
         <translation type="unfinished"></translation>
     </message>
@@ -162,17 +126,17 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="148"/>
+        <location filename="../app/view/resultview.cpp" line="149"/>
         <source>Reboot now</source>
         <translation>Restartează acum</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="131"/>
+        <location filename="../app/view/resultview.cpp" line="132"/>
         <source>Done</source>
         <translation>Efectuat</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="65"/>
+        <location filename="../app/view/resultview.cpp" line="66"/>
         <source>Successful</source>
         <translation>cu succes</translation>
     </message>
@@ -187,32 +151,24 @@
         <translation>Trimiteţi Feedback-ul dumneavoastră</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="239"/>
+        <location filename="../app/view/resultview.cpp" line="247"/>
         <source>After-Sale Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="255"/>
+        <location filename="../app/view/resultview.cpp" line="266"/>
         <source>Close</source>
         <translation>Închidere</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="263"/>
+        <location filename="../app/view/resultview.cpp" line="274"/>
         <source>Sorry, process failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="264"/>
+        <location filename="../app/view/resultview.cpp" line="275"/>
         <source>Process failed</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sorry, making failed</source>
-        <translation type="vanished">Proces eșuat</translation>
-    </message>
-    <message>
-        <source>Making failed</source>
-        <translation type="vanished">Proces eșuat</translation>
     </message>
 </context>
 <context>
@@ -226,70 +182,59 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <source>Formatting disk can increase the making success rate</source>
-        <translation type="vanished">Formatarea discului poate crește rata de succes</translation>
-    </message>
-    <message>
-        <source>Start making</source>
-        <translation type="vanished">Începe procesul</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="332"/>
-        <source>Format USB flash drive</source>
-        <translation>Formatare USB</translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
-        <source>Select a disk</source>
-        <translation>Selectează un disc</translation>
-    </message>
-    <message>
-        <source>No available disk</source>
-        <translation type="vanished">Nici un disc disponibil</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="114"/>
-        <source>Format the disk to increase the burning success rate</source>
+        <source>Select a partition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="163"/>
+        <location filename="../app/view/usbselectview.cpp" line="114"/>
+        <source>Format the partition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="147"/>
         <source>No disk available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="183"/>
+        <location filename="../app/view/usbselectview.cpp" line="162"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="251"/>
-        <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation>Formatarea va şterge toate datele de pe disc, vă rugăm să confirmaţi şi să continuaţi</translation>
+        <location filename="../app/view/usbselectview.cpp" line="166"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="334"/>
-        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatarea va şterge toate datele, vă rugăm să creaţi o copie de rezervă înainte să continuaţi</translation>
+        <location filename="../app/view/usbselectview.cpp" line="222"/>
+        <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="316"/>
+        <source>Format Partition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="318"/>
+        <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
+        <source>Disk Format Error: Please format the partition with FAT32</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="319"/>
         <source>Cancel</source>
         <translation>Anulare</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="336"/>
+        <location filename="../app/view/usbselectview.cpp" line="320"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="351"/>
-        <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation type="unfinished">Eroare de formatare: Mediul de stocare trebuie să fie formatat în format FAT32</translation>
-    </message>
-    <message>
-        <source>Ok</source>
-        <translation type="vanished">Ok</translation>
     </message>
 </context>
 </TS>

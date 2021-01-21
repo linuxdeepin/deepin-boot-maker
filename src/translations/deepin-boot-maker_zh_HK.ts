@@ -2,32 +2,27 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="65"/>
-        <source>Failed to call the command 1%</source>
-        <translation>執行命令 1% 失敗</translation>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
+        <source>Disk Format Error: Please format the partition with FAT32</source>
+        <translation>磁盤格式錯誤：請使用FAT32格式重新格式化分區</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="67"/>
-        <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>硬碟格式錯誤：請用FAT32格式對硬碟進行格式化</translation>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
+        <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
+        <translation>磁盤空間不足：請確保有足夠的剩餘空間</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="69"/>
-        <source>Insufficient Disk Space: Ensure the disk has 1% free space</source>
-        <translation>磁盤空間不足：請確保至少有1%的剩餘空間</translation>
-    </message>
-    <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="71"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>磁盤掛載錯誤：請重新插入磁盤或重啟系統後重試</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="73"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>解壓鏡像失敗：請檢查鏡像文件的md5, 確保鏡像文件完整</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bootmaker.cpp" line="75"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Internal Error</source>
         <translation>內部錯誤</translation>
     </message>
@@ -35,12 +30,12 @@
 <context>
     <name>BMWindow</name>
     <message>
-        <location filename="../app/bmwindow.cpp" line="121"/>
-        <source>Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.</source>
-        <translation>開機碟製作是一款將系統鏡像文件寫入光盤、USB記憶體等安裝介質的小工具。</translation>
+        <location filename="../app/bmwindow.cpp" line="79"/>
+        <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
+        <translation>啟動盤製作工具是一款將系統鏡像文件寫入外接存儲介質的小工具。</translation>
     </message>
     <message>
-        <location filename="../app/bmwindow.cpp" line="123"/>
+        <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
         <translation>開機碟製作</translation>
     </message>
@@ -48,9 +43,9 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="124"/>
+        <location filename="../app/view/isoselectview.cpp" line="125"/>
         <source>Drag an ISO image file here</source>
-        <translation>拖拽光盤鏡像文件到此</translation>
+        <translation>拖拽鏡像文件到此</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
@@ -58,28 +53,28 @@
         <translation>或者</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="88"/>
+        <location filename="../app/view/isoselectview.cpp" line="89"/>
         <location filename="../app/view/isoselectview.cpp" line="163"/>
         <source>Select an ISO image file</source>
         <translation>選擇一個 ISO 影像檔案</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="214"/>
+        <location filename="../app/view/isoselectview.cpp" line="213"/>
         <source>Next</source>
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="301"/>
+        <location filename="../app/view/isoselectview.cpp" line="299"/>
         <source>Reselect an ISO image file</source>
-        <translation>重新選擇光盤鏡像文件</translation>
+        <translation>重新選擇鏡像文件</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="238"/>
+        <location filename="../app/view/isoselectview.cpp" line="236"/>
         <source>Illegal ISO image file</source>
         <translation>非法ISO文件</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="442"/>
+        <location filename="../app/view/isoselectview.cpp" line="440"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>正在檢測ISO文件，請稍候...</translation>
     </message>
@@ -87,22 +82,22 @@
 <context>
     <name>ProgressView</name>
     <message>
-        <location filename="../app/view/progressview.cpp" line="61"/>
+        <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Burning</source>
         <translation>正在製作</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="77"/>
+        <location filename="../app/view/progressview.cpp" line="78"/>
         <source>Burning, please wait...</source>
         <translation>正在製作，請稍後...</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="89"/>
+        <location filename="../app/view/progressview.cpp" line="90"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>製作時請不要移除磁盤或關機</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="111"/>
+        <location filename="../app/view/progressview.cpp" line="112"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -115,12 +110,13 @@
         <translation>可移除碟機</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="115"/>
+        <location filename="../libdbm/util/utils.cpp" line="221"/>
+        <location filename="../libdbm/util/utils.cpp" line="364"/>
         <source>Removable disk</source>
         <translation>可移除碟機</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="123"/>
+        <location filename="../app/main.cpp" line="119"/>
         <source>Boot Maker</source>
         <translation>開機碟製作</translation>
     </message>
@@ -128,17 +124,17 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="148"/>
+        <location filename="../app/view/resultview.cpp" line="149"/>
         <source>Reboot now</source>
         <translation>現在就重新啟動</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="131"/>
+        <location filename="../app/view/resultview.cpp" line="132"/>
         <source>Done</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="65"/>
+        <location filename="../app/view/resultview.cpp" line="66"/>
         <source>Successful</source>
         <translation>製作成功</translation>
     </message>
@@ -153,22 +149,22 @@
         <translation>提交反饋</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="239"/>
+        <location filename="../app/view/resultview.cpp" line="247"/>
         <source>After-Sale Services</source>
         <translation>售後服務</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="255"/>
+        <location filename="../app/view/resultview.cpp" line="266"/>
         <source>Close</source>
         <translation>關閉</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="263"/>
+        <location filename="../app/view/resultview.cpp" line="274"/>
         <source>Sorry, process failed</source>
         <translation>製作失敗，非常抱歉</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="264"/>
+        <location filename="../app/view/resultview.cpp" line="275"/>
         <source>Process failed</source>
         <translation>製作失敗</translation>
     </message>
@@ -184,54 +180,59 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="114"/>
-        <source>Format the disk to increase the burning success rate</source>
-        <translation>格式化磁盤可提高製作成功率</translation>
+        <location filename="../app/view/usbselectview.cpp" line="87"/>
+        <source>Select a partition</source>
+        <translation>請選擇分區</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="183"/>
+        <location filename="../app/view/usbselectview.cpp" line="114"/>
+        <source>Format the partition</source>
+        <translation>格式化分區</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="162"/>
         <source>Start</source>
         <translation>開始</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="332"/>
-        <source>Format USB flash drive</source>
-        <translation>格式化 USB 記憶體</translation>
+        <location filename="../app/view/usbselectview.cpp" line="166"/>
+        <source>Back</source>
+        <translation>返回</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="87"/>
-        <source>Select a disk</source>
-        <translation>請選擇磁盤</translation>
+        <location filename="../app/view/usbselectview.cpp" line="222"/>
+        <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
+        <translation>格式化將徹底刪除分區上的數據，但可提高製作成功率，請確認後繼續</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="163"/>
+        <location filename="../app/view/usbselectview.cpp" line="318"/>
+        <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
+        <translation>格式化分區將丟失該分區上所有數據，請做好備份後繼續。</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="335"/>
+        <source>Disk Format Error: Please format the partition with FAT32</source>
+        <translation>磁盤格式錯誤：請使用FAT32格式重新格式化分區</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="147"/>
         <source>No disk available</source>
         <translation>未發現可用磁盤</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="251"/>
-        <source>Formatting will erase all data on the disk, please confirm and continue</source>
-        <translation>格式化將徹底刪除磁盤上的數據，請您確認後繼續</translation>
+        <location filename="../app/view/usbselectview.cpp" line="316"/>
+        <source>Format Partition</source>
+        <translation>格式化分區</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="334"/>
-        <source>Formatting the disk will overwrite all data, please have a backup before proceeding.</source>
-        <translation>格式化USB記憶體將丟失USB記憶體上的所有資料，請做好備份後繼續。</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="335"/>
+        <location filename="../app/view/usbselectview.cpp" line="319"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="336"/>
+        <location filename="../app/view/usbselectview.cpp" line="320"/>
         <source>OK</source>
         <translation>確定</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="351"/>
-        <source>Disk Format Error: Please format the disk with FAT32</source>
-        <translation>硬碟格式錯誤：請用FAT32格式對硬碟進行格式化</translation>
     </message>
 </context>
 </TS>
