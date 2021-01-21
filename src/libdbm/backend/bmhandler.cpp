@@ -8,14 +8,11 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
     case NoError:
         strErr = "";
         break;
-    case SyscExecFailed:
-        strErr = BMHandler::tr("Failed to call the command 1%");
-        break;
     case USBFormatError:
-        strErr = BMHandler::tr("Disk Format Error: Please format the disk with FAT32");
+        strErr = BMHandler::tr("Disk Format Error: Please format the partition with FAT32");
         break;
     case USBSizeError:
-        strErr = BMHandler::tr("Insufficient Disk Space: Ensure the disk has 1% free space");
+        strErr = BMHandler::tr("Insufficient disk Space: Ensure that the disk has enough free space");
         break;
     case USBMountFailed:
         strErr = BMHandler::tr("Disk Mount Error: Insert the disk again or reboot to retry");

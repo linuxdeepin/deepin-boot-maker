@@ -43,7 +43,8 @@ public slots:
     void slot_ThemeChange();
 
 private:
-    void slideWidget(DWidget *left, DWidget *right);
+    //iDirection:-1 从右往左滑动; 1 从左往右滑动
+    void slideWidget(DWidget *left, DWidget *right, int iDirection = -1);
 
 private:
     QScopedPointer<BMWindowPrivate> d_ptr;
@@ -59,7 +60,8 @@ public:
     ~SlideAnimatoin();
 
 public:
-    void initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget);
+    //iDirection:-1 从右往左滑动; 1 从左往右滑动
+    void initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget, int iDirection = -1);
 
 private:
     void setLeftWidget(DWidget* pWidget);

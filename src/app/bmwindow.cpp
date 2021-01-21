@@ -76,7 +76,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->interface = BMInterface::instance();
 
     // init about info
-    QString descriptionText = tr("Boot Maker is a simple tool to write system image files into CD/DVD, USB flash drive and other media.");
+    QString descriptionText = tr("Boot Maker is a simple tool to write system image files into USB flash drives and other media.");
     QString acknowledgementLink = "https://www.deepin.org/acknowledgments/deepin-boot-maker#thanks";
     qApp->setProductName(tr("Boot Maker"));
     qApp->setApplicationAcknowledgementPage(acknowledgementLink);
@@ -191,6 +191,10 @@ BMWindow::BMWindow(QWidget *parent)
         d->wsib->setCurrentPage(2);
         emit d->progressWidget->finish(0, error, title, description);
     });
+    connect(d->usbWidget, &UsbSelectView::backToPrevUI, this, [=]{
+        slideWidget(d->usbWidget, d->isoWidget, 1);
+        d->wsib->setCurrentPage(0);
+    });
     //diff mac，win，linux
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
@@ -286,10 +290,10 @@ void BMWindow::closeEvent(QCloseEvent *event)
 }
 #endif
 
-void BMWindow::slideWidget(DWidget *left, DWidget *right)
+void BMWindow::slideWidget(DWidget *left, DWidget *right, int iDirection)
 {
     SlideAnimatoin* pSlideAnimation = new SlideAnimatoin;
-    pSlideAnimation->initAnimation(left, right);
+    pSlideAnimation->initAnimation(left, right, iDirection);
 
     if (QAbstractAnimation::Stopped == m_pSAnimationGroup->state()) {
         for (int i = 0; i < m_pSAnimationGroup->animationCount(); i++) {
@@ -314,7 +318,7 @@ SlideAnimatoin::~SlideAnimatoin()
 {
 }
 
-void SlideAnimatoin::initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget)
+void SlideAnimatoin::initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget, int iDirection)
 {
     setLeftWidget(pLeftWidget);
     setRightWidget(pRightWidget);
@@ -322,14 +326,14 @@ void SlideAnimatoin::initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget)
     m_pRightWidget->show();
     int delay = 300;
     QRect leftStart = QRect(0, 0, m_pLeftWidget->width(), m_pLeftWidget->height());
-    QRect leftEnd = QRect(-m_pLeftWidget->width(), 0, m_pLeftWidget->width(), m_pLeftWidget->height());
+    QRect leftEnd = QRect(iDirection*m_pLeftWidget->width(), 0, m_pLeftWidget->width(), m_pLeftWidget->height());
 
     QPropertyAnimation *animation = new QPropertyAnimation(m_pLeftWidget, "geometry");
     animation->setDuration(delay);
     animation->setStartValue(leftStart);
     animation->setEndValue(leftEnd);
 
-    QRect rightStart = QRect(m_pLeftWidget->width(), 0, m_pRightWidget->width(), m_pRightWidget->height());
+    QRect rightStart = QRect(-iDirection*m_pLeftWidget->width(), 0, m_pRightWidget->width(), m_pRightWidget->height());
     QRect rightEnd = leftStart;
     leftEnd.setX(0);
 

@@ -84,7 +84,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
-    DLabel *m_title = new DLabel(tr("Select a disk"));
+    DLabel *m_title = new DLabel(tr("Select a partition"));
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
@@ -111,12 +111,15 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     checkBoxLayout->setSpacing(0);
 
     DCheckBox *m_formatDiskCheck = new DCheckBox(this);
-    m_formatDiskCheck->setText(tr("Format the disk to increase the burning success rate"));
+    m_formatDiskCheck->setText(tr("Format the partition"));
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(20);
     m_formatDiskCheck->setFocusPolicy(Qt::NoFocus);
     m_formatDiskCheck->hide();
-    DFontSizeManager::instance()->bind(m_formatDiskCheck, DFontSizeManager::T6);
+    QFont font;
+    font.setPixelSize(14);
+    font.setWeight(QFont::Medium);
+    m_formatDiskCheck->setFont(font);
     checkBoxLayout->addStretch();
     checkBoxLayout->addWidget(m_formatDiskCheck);
     checkBoxLayout->addStretch();
@@ -132,11 +135,14 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     DLabel *m_warningHint = new  DLabel("");
     m_warningHint->setObjectName("WarningHint");
-    m_warningHint->setFixedWidth(370);
-    m_warningHint->setMinimumHeight(17);
     m_warningHint->setWordWrap(true);
-    DFontSizeManager::instance()->bind(m_warningHint, DFontSizeManager::T9);
+    font.setPixelSize(11);
+    font.setWeight(QFont::Normal);
+    m_warningHint->setFont(font);
     m_warningHint->setAlignment(Qt::AlignCenter);
+    QHBoxLayout* pWarningLayout = new QHBoxLayout;
+    pWarningLayout->setContentsMargins(30, 0, 30, 0);
+    pWarningLayout->addWidget(m_warningHint);
 
     DLabel *m_emptyHint = new  DLabel(tr("No disk available"));
     m_emptyHint->setObjectName("EmptyHintTitle");
@@ -152,19 +158,29 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     DPushButton *start = new DPushButton();
     start->setFocusPolicy(Qt::NoFocus);
-    start->setFixedSize(310, 36);
     start->setObjectName("StartMake");
     start->setText(tr("Start"));
     DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
     start->setDisabled(true);
+    start->setFixedHeight(36);
+    DPushButton* pBackBtn = new DPushButton(tr("Back"));
+    pBackBtn->setFocusPolicy(Qt::NoFocus);
+    DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
+    pBackBtn->setDisabled(false);
+    pBackBtn->setFixedHeight(36);
+    QHBoxLayout* pHlayout = new QHBoxLayout;
+    pHlayout->setContentsMargins(20, 0, 20, 0);
+    pHlayout->setSpacing(10);
+    pHlayout->addWidget(pBackBtn);
+    pHlayout->addWidget(start);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(40);
     mainLayout->addWidget(usbDeviceListPanel, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(10);
-    mainLayout->addWidget(m_warningHint, 0, Qt::AlignHCenter);
+    mainLayout->addLayout(pWarningLayout);
     mainLayout->addStretch();
-    mainLayout->addWidget(start, 0, Qt::AlignHCenter|Qt::AlignBottom);
+    mainLayout->addLayout(pHlayout);
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
     this, [ = ] {
@@ -181,7 +197,8 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             pa = m_emptyHint->palette();
             pa.setColor(DPalette::Text, QColor(85, 85, 85, 102));
             m_emptyHint->setPalette(pa);
-        } else if (themeType == DGuiApplicationHelper::DarkType)
+        }
+        else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = palette();
             pa.setColor(DPalette::Background, QColor("#292929"));
@@ -202,7 +219,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             m_warningHint->setText("");
             return;
         }
-        m_warningHint->setText(tr("Formatting will erase all data on the disk, please confirm and continue"));
+        m_warningHint->setText(tr("Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding"));
     };
     connect(m_formatDiskCheck, &DCheckBox::clicked, this, [ = ](bool checked) {
         this->setProperty("user_format", checked);
@@ -298,7 +315,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
             msgbox.setTitle(tr("Format USB flash drive"));
             msgbox.setTextFormat(Qt::AutoText);
-            msgbox.setMessage(tr("Formatting the disk will overwrite all data, please have a backup before proceeding."));
+            msgbox.setMessage(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
             msgbox.insertButton(0, tr("Cancel"), true, DDialog::ButtonRecommend);
             msgbox.insertButton(1, tr("OK"), false, DDialog::ButtonWarning);
 
@@ -315,13 +332,17 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 #ifdef Q_OS_LINUX
         if (!m_formatDiskCheck->isChecked() && "vfat" != this->property("last_fstype").toString())
         {
-            emit finish(2, "install failed", tr("Disk Format Error: Please format the disk with FAT32"));
+            emit finish(2, "install failed", tr("Disk Format Error: Please format the partition with FAT32"));
             return;
         }
 #endif
         QString path = this->property("last_path").toString();
         qDebug() << "Select usb device" << path;
         emit this->deviceSelected(path, m_formatDiskCheck->isChecked());
+    });
+
+    connect(pBackBtn, &DPushButton::clicked, this, [=]{
+        emit this->backToPrevUI();
     });
 }
 
