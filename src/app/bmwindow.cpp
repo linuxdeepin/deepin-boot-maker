@@ -200,7 +200,6 @@ BMWindow::BMWindow(QWidget *parent)
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << title << description << current;
         if (error != BMHandler::NoError) {
-            titlebar()->setMenuVisible(false);
             titlebar()->setQuitMenuDisabled(false);
 #ifdef Q_OS_WIN
             setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
