@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fi">
 <context>
     <name>BMHandler</name>
     <message>
@@ -149,22 +151,22 @@
         <translation>Anna palautetta</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>Myynnin jälkeiset palvelut</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Sulje</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>Valitettavasti prosessi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>Prosessi epäonnistui</translation>
     </message>
@@ -207,7 +209,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="318"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>Alustaminen ylikirjoittaa kaikki tiedot, ota varmuuskopio ennen kuin jatkat.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
@@ -222,7 +224,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"/>
+        <translation>Alusta osio</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>

@@ -6,12 +6,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Error de format de disc: si us plau, formateu la partició amb FAT32.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espai de disc insuficient: assegureu-vos que té prou espai lliure.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>El Creador de mitjans d&apos;arrancada és una eina senzilla per escriure fitxers d&apos;imatges de sistema en una memòria USB i altres mitjans.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -151,22 +151,22 @@
         <translation>Envia la informació de retorn</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveis de postvenda</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Tanca</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>El procés ha fallat.</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>El procés ha fallat.</translation>
     </message>
@@ -184,12 +184,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccioneu una partició</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Formata la partició</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="162"/>
@@ -199,22 +199,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Enrere</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
+        <translation>La formatació eliminarà totes les dades de la partició, però pot augmentar-ne el bon funcionament. Confirmeu-ho abans de continuar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="318"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatar la partició en sobreescriurà totes les dades. Si us plau, feu-ne una còpia de seguretat abans de continuar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Error de format de disc: si us plau, formateu la partició amb FAT32.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="147"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Formata la partició</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>

@@ -151,22 +151,22 @@
         <translation>Enviar comentarios</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>Servizos pos-venda</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Pechar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>Sentímolo, o proceso fallou</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>O proceso fallou</translation>
     </message>

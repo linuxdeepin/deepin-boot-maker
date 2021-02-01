@@ -151,22 +151,22 @@
         <translation>ส่งข้อเสนอแนะ</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>ปิด</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>ขออภัยกระบวนการล้มเหลว</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>กระบวนการล้มเหลว</translation>
     </message>

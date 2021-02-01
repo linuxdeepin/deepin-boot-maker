@@ -151,22 +151,22 @@
         <translation>Rückmeldung senden</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>Kundendienst</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Schließen</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>Entschuldigung, Vorgang fehlgeschlagen</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>Vorgang fehlgeschlagen</translation>
     </message>
@@ -176,7 +176,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Daten werden verifiziert und das Medium sicher ausgeworfen. Bitte warten...</translation>
+        <translation>Daten werden verifiziert und das Medium sicher ausgeworfen. Bitte warten ...</translation>
     </message>
 </context>
 <context>
@@ -184,7 +184,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie eine Partition aus</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Partition formatieren</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>

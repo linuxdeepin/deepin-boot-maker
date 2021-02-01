@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="kn_IN">
+<TS version="2.1" language="km_KH">
 <context>
     <name>BMHandler</name>
     <message>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"></translation>
+        <translation>កំហុសក្នុងថាសម៉ោនថ៍ៈបញ្ចូលថាសម្តងទៀតឬចាប់ផ្តើមឡើងវិញដើម្បីព្យាយាមម្តងទៀត</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"></translation>
+        <translation>កំហុសក្នុងការដោះការបង្ហាប់រូបភាព៖ ផ្ទៀងផ្ទាត់ឆេកសាំ md5 នៃរូបភាពដើម្បីធានាបាននូវភាពត្រឹមត្រូវរបស់វា</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>កំហុស​ខាងក្នុង</translation>
     </message>
 </context>
 <context>
@@ -39,46 +39,46 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation type="unfinished"></translation>
+        <translation>Boot Maker</translation>
     </message>
 </context>
 <context>
     <name>ISOSelectView</name>
     <message>
+        <location filename="../app/view/isoselectview.cpp" line="125"/>
+        <source>Drag an ISO image file here</source>
+        <translation>ទាញឯកសាររូបភាព ISO នៅទីនេះ</translation>
+    </message>
+    <message>
         <location filename="../app/view/isoselectview.cpp" line="144"/>
         <source>OR</source>
-        <translation type="unfinished"></translation>
+        <translation>ឬ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="89"/>
         <location filename="../app/view/isoselectview.cpp" line="163"/>
         <source>Select an ISO image file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../app/view/isoselectview.cpp" line="125"/>
-        <source>Drag an ISO image file here</source>
-        <translation type="unfinished"></translation>
+        <translation>ជ្រើសរើសឯកសាររូបភាព ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="213"/>
         <source>Next</source>
-        <translation>ಮುಂದೆ</translation>
-    </message>
-    <message>
-        <location filename="../app/view/isoselectview.cpp" line="236"/>
-        <source>Illegal ISO image file</source>
-        <translation type="unfinished"></translation>
+        <translation>បន្ទាប់</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="299"/>
         <source>Reselect an ISO image file</source>
-        <translation type="unfinished"></translation>
+        <translation>ជ្រើសរើសឯកសាររូបភាព ISO ឡើងវិញ</translation>
+    </message>
+    <message>
+        <location filename="../app/view/isoselectview.cpp" line="236"/>
+        <source>Illegal ISO image file</source>
+        <translation>ឯកសាររូបភាព ISO ខុសច្បាប់</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="440"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>រកឃើញឯកសារ ISO សូមរង់ចាំ...</translation>
     </message>
 </context>
 <context>
@@ -86,22 +86,22 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Burning</source>
-        <translation type="unfinished"></translation>
+        <translation>កំពុងដុត</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="78"/>
         <source>Burning, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>កំពុងដុត សូមរង់ចាំ...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="90"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation type="unfinished"></translation>
+        <translation>កុំដកឌីសឬបិទកុំព្យួទ័រកំឡុងពេលដំណើរការ</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="112"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>បោះបង់</translation>
     </message>
 </context>
 <context>
@@ -109,18 +109,18 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>ថាសចល័ត</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="221"/>
         <location filename="../libdbm/util/utils.cpp" line="364"/>
         <source>Removable disk</source>
-        <translation type="unfinished"></translation>
+        <translation>ថាសចល័ត</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="119"/>
         <source>Boot Maker</source>
-        <translation type="unfinished"></translation>
+        <translation>Boot Maker</translation>
     </message>
 </context>
 <context>
@@ -128,47 +128,47 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="149"/>
         <source>Reboot now</source>
-        <translation type="unfinished"></translation>
+        <translation>បិទ​និង​បើក​វិញ​ឥលូវ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="132"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>ធ្វើរួច</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="66"/>
         <source>Successful</source>
-        <translation type="unfinished"></translation>
+        <translation>ជោគជ័យ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>កំណត់ហេតុកំហុសនឹងត្រូវបានផ្ទុកឡើងដោយស្វ័យប្រវត្តិជាមួយនឹងមតិត្រឡប់។ យើងមិនអាចកែលម្អបានទេបើគ្មានមតិត្រឡប់របស់អ្នក</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>បញ្ជូនមតិត្រឡប់</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"></translation>
+        <translation>សេវាកម្មក្រោយពេលលក់</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>បិទ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
-        <translation type="unfinished"></translation>
+        <translation>សូមអភ័យទោស ដំណើរការបានបរាជ័យ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
-        <translation type="unfinished"></translation>
+        <translation>ដំណើរការបានបរាជ័យ</translation>
     </message>
 </context>
 <context>
@@ -176,7 +176,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>ផ្ទៀងផ្ទាត់ទិន្នន័យ និងដកមេឌៀចេញដោយសុវត្ថិភាព សូមរង់ចាំ...</translation>
     </message>
 </context>
 <context>
@@ -192,14 +192,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="147"/>
-        <source>No disk available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../app/view/usbselectview.cpp" line="162"/>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>ចាប់ផ្តើម</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
@@ -209,11 +204,6 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="316"/>
-        <source>Format Partition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -227,14 +217,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../app/view/usbselectview.cpp" line="147"/>
+        <source>No disk available</source>
+        <translation>មិនមានឌីសទេ</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="316"/>
+        <source>Format Partition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>បោះបង់</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="320"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>យល់ព្រម</translation>
     </message>
 </context>
 </TS>

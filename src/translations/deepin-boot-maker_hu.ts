@@ -6,12 +6,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiba lépett fel a lemez formázása közben: Kérjük formázza a lemezt FAT32 fájlrendszerrel.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Kevés a lemezterület: Győződjön meg arról, hogy a lemezen van elég szabad hely</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>A Rendszerindító Készítő egy egyszerű eszköz a rendszer képfájljainak írására CD / DVD-re, USB flash meghajtóra és más adathordozókra.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -86,12 +86,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Burning</source>
-        <translation>Kiírás</translation>
+        <translation>Írás</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="78"/>
         <source>Burning, please wait...</source>
-        <translation>Kiírás folyamatban, kérjük várjon...</translation>
+        <translation>Az írás folyamatban, kérjük várjon...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="90"/>
@@ -151,22 +151,22 @@
         <translation>Visszajelzés küldése</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>Értékesítés utáni szolgáltatások</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Bezárás</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>Sajnáljuk, a folyamat sikertelen</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>A folyamat sikertelen</translation>
     </message>
@@ -184,12 +184,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Partíció kiválasztása</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Partíció formázása</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="162"/>
@@ -199,22 +199,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Vissza</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
+        <translation>A formázás törli a partíción lévő összes adatot, de növelheti a partíció működésének sikerességi arányát, a folytatás előtt kérjük erősítse meg</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="318"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>A partíció formázása felülír minden adatot, a folytatás előtt kérjük készítsen biztonsági másolatot.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiba lépett fel a lemez formázása közben: Kérjük formázza a lemezt FAT32 fájlrendszerrel.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="147"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Partíció formázása</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>

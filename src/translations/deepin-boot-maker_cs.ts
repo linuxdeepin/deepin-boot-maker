@@ -21,7 +21,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Chyba při rozbalování obrazu: Zkontrolujte md5 kontrolní součet obrazu a ověřte tak, že je obraz v pořádku</translation>
+        <translation>Chyba při rozbalování obrazu: Zkontrolujte md5 kontrolní součet obrazu a ověřte tak, zda je obraz v pořádku</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
@@ -96,12 +96,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="90"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Neodstraňujte, prosím, disk a nevypínejte počítač v době, kdy je disk dělán.</translation>
+        <translation>V průběhu vytváření disk nevyjímejte a ani nevypínejte počítač.</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="112"/>
         <source>Cancel</source>
-        <translation>Storno</translation>
+        <translation>Zrušit</translation>
     </message>
 </context>
 <context>
@@ -151,22 +151,22 @@
         <translation>Odeslat zpětnou vazbu vývojářům</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"></translation>
+        <translation>Poprodejní služby</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>Je nám líto, proces se nezdařil</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>Proces se nezdařil</translation>
     </message>
@@ -184,7 +184,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat oddíl</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpět</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
@@ -229,7 +229,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>
         <source>Cancel</source>
-        <translation>Storno</translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="320"/>

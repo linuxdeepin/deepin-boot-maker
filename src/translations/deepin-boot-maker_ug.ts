@@ -6,12 +6,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>دىىسكا فورماتى خاتا: FAT32 فورمات ئارقىلىق دىسكىنى قايتىدىن فورماتلاڭ</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>دىسكا بوشلۇقى يېتىشمىدى: يېتەرلىك بوشلۇق بولۇشقا كاپالەتلىك قىلىڭ</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>قوزغىتىش دىسكىسى ياساش قورالى بولسا سىستېما تەسۋىر ھۆججىتىنى ئوپتىكىلىق دىسكا، بارماق دىسكا قاتارلىق قاچىلاش ۋاسىتىلىرىغا يازىدىغان قورالچاقتۇر. </translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -151,22 +151,22 @@
         <translation>ئىنكاس تاپشۇرۇش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>سېتىشتىن كېيىنكى مۇلازىمەت</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>تاقاش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>ياساش مەغلۇپ بولدى، كەچۈرۈڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>ياساش مەغلۇپ بولدى</translation>
     </message>
@@ -184,12 +184,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>رايون تاللاڭ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the partition</source>
-        <translation type="unfinished"></translation>
+        <translation>رايوننى فورماتلاش</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="162"/>
@@ -199,22 +199,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>قايتىش</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
+        <translation>فورماتلاش رايوندىكى بارلىق سانلىق مەلۇماتلارنى ئۆچۈرۈۋېتىدۇ، ئەمما مۇۋەپپەقىيەت قازىنىش نىسبىتىنى ئاشۇرالايدۇ، داۋاملاشتۇرۇشتىن بۇرۇن جەزملەشتۈرۈڭ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="318"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>رايوننى فورماتلىسىڭىز بارلىق سانلىق مەلۇماتلارنى ئۆچۈرۈۋېتىدۇ، زاپاسلىۋالغاندىن كېيىن داۋملاشتۇرۇڭ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>دىىسكا فورماتى خاتا: FAT32 فورمات ئارقىلىق دىسكىنى قايتىدىن فورماتلاڭ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="147"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>رايوننى فورماتلاش</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>

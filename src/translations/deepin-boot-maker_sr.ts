@@ -6,17 +6,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка формата диска: форматирајте партицију као FAT32</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Недовољно простора на диску. Осигурајте да диск има довољно слободног простора.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Грешка монтирања диска: прикључите поново диск или поновно покрените систем</translation>
+        <translation>Грешка монтирања диска: поново прикључите диск или поновно покрените систем</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>Творац Покретача је једноставан алат којом се исписује системски одраз на УСБ преносиве уређаје и друге медије.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -68,12 +68,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="299"/>
         <source>Reselect an ISO image file</source>
-        <translation>Поново изабери датотеку ИСО одраза.</translation>
+        <translation>Реизбор датотеке ИСО одраза</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="236"/>
         <source>Illegal ISO image file</source>
-        <translation>Незаконит ИСО одраз</translation>
+        <translation>Неважећи ИСО одраз</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="440"/>
@@ -151,22 +151,22 @@
         <translation>Пошаљи информације</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="247"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"></translation>
+        <translation>Услуге након продаје</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="266"/>
+        <location filename="../app/view/resultview.cpp" line="271"/>
         <source>Close</source>
         <translation>Затвори</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="274"/>
+        <location filename="../app/view/resultview.cpp" line="279"/>
         <source>Sorry, process failed</source>
         <translation>Извините, процес је неуспешан</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="275"/>
+        <location filename="../app/view/resultview.cpp" line="280"/>
         <source>Process failed</source>
         <translation>Процес неуспешан</translation>
     </message>
@@ -184,12 +184,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Изабери партицију</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматирај партицију</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="162"/>
@@ -199,22 +199,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматирање ће обрисати све податке партиције, али може повећети стопу успеха. Потврдите за наставак.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="318"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматирање партиције ће обрисати све податке, молимо направите резерву пре него што наставите.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Грешка формата диска: форматирајте партицију као FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="147"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматирај партицију</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>
