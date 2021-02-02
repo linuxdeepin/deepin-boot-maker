@@ -258,10 +258,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
             });
         }
         break;
-    case BMHandler::USBFormatError:
-    case BMHandler::USBSizeError:
-    case BMHandler::USBMountFailed:
-    case BMHandler::ExtractImgeFailed:
+    default:
         m_logHits->setText(BMHandler::errorString(errorType));
         m_rebootLater->setText(tr("Close"));
         m_rebootLater->disconnect();
