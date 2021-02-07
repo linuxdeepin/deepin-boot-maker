@@ -118,7 +118,7 @@ bool SevenZip::extract()
     progress.close();
     progress.remove();
 
-    qDebug() << m_sevenz.exitStatus() << m_sevenz.exitCode();
+    qInfo() << m_sevenz.exitStatus() << m_sevenz.exitCode();
 
     return (m_sevenz.exitStatus() == QProcess::NormalExit) &&
            (0 == m_sevenz.exitCode());
