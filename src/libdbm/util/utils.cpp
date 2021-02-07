@@ -243,6 +243,7 @@ void ClearTargetDev(const QString &targetPath)
     dirlist.append("/pool/");
     dirlist.append("/preseed/");
     dirlist.append("/syslinux/");
+    dirlist.append("/oem/");
 
     foreach (QString dirname, dirlist) {
         QString fullDir = targetPath + dirname;
