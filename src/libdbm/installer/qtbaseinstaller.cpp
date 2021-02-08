@@ -250,6 +250,19 @@ bool QtBaseInstaller::hasEnoughSpace()
     qInfo() << "begin check space";
     m_progressStatus = CHECKSPACE;
     QFileInfo isoInfo(m_strImage);
+    //分区没有挂载时是获取不到正确的可用空间和分区大小的,因些需要先进行挂载。
+    QString strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
+
+    if (strMountPt.isEmpty()) {
+        XSys::DiskUtil::Mount(m_strPartionName);
+    }
+
+    strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
+
+    if (strMountPt.isEmpty()) {
+        qCritical() << "Can't get correct partion space.";
+        return false;
+    }
 
 #define KByt 1024
     if (m_bFormat) {
@@ -360,6 +373,7 @@ bool QtBaseInstaller::installBootload()
 bool QtBaseInstaller::extractISO()
 {
     qInfo() << "begin extract ISO to" << m_strPartionName;
+    XSys::SynExec("partprobe", m_strPartionName);
     m_progressStatus = GETINSTALLDIR;
     //由于前面的命令中会自动挂载系统，而导致如果操作过快会获取挂载点为空，然后在后面再次进行挂载时又挂载失败。因此加一个延时，让系统内核状态同步完成。
     int iTestCount = 3;
