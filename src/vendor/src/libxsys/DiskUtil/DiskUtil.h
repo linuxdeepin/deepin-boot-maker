@@ -51,6 +51,7 @@ bool FormatPartion(const QString& targetDev);
 QStringList GetPartionOfDisk(const QString& strDisk);
 bool SetActivePartion(const QString& strDisk, const QString& strPartion);
 void SetPartionLabel(const QString& strPartion, const QString& strImage);
+QString getPartitionPPID(const QString& strPartition);
 }
 
 namespace Bootloader {

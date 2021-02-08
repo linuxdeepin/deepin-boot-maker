@@ -48,6 +48,9 @@ private:
     bool extractISO();
     bool syncIO();
     bool configSyslinux();
+    void modifyLiveGrubFile();
+    void modifyBootGrubFile();
+    bool analysisMenuentry(const QString& strData, QString& strResult);
 
 signals:
     void progressfinished(ProgressStatus status, BMHandler::ErrorType error);
