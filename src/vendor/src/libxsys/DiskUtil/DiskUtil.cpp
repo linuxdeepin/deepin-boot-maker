@@ -922,6 +922,36 @@ bool UmountPartion(const QString& strPartionName)
         bRet = true;
     }
 
+    //经测试在服务器版上执行udiskctrl unmount命令时会失败，但是执行umount却能成功。固失败之后补加一个umount流程。
+    if (!bRet) {
+        iCount = 5;
+        strMountPt = XSys::DiskUtil::MountPoint(strPartionName);
+
+        if (!strMountPt.isEmpty()) {
+            do {
+                XSys::Result result = XSys::SynExec("umount", strPartionName);
+
+                if (!result.isSuccess()) {
+                    bRet = false;
+                    break;
+                }
+
+                strMountPt = XSys::DiskUtil::MountPoint(strPartionName);
+
+                if (strMountPt.isEmpty()) {
+                    bRet = true;
+                    break;
+                }
+                else {
+                    iCount--;
+                }
+            } while (iCount > 0);
+        }
+        else {
+            bRet = true;
+        }
+    }
+
     return bRet;
 }
 
