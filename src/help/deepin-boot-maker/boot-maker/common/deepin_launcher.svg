@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <filter id="deepin-launcher24-a" width="122.7%" height="122.7%" x="-11.4%" y="-11.4%" filterUnits="objectBoundingBox">
+      <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="deepin-launcher24-b" x1="36.374%" x2="36.374%" y1="10.403%" y2="93.072%">
+      <stop offset="0%" stop-color="#FFF"/>
+      <stop offset="100%" stop-color="#C6D3D5"/>
+    </linearGradient>
+    <linearGradient id="deepin-launcher24-c" x1="100%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ECD935"/>
+      <stop offset="100%" stop-color="#3BCAB9"/>
+    </linearGradient>
+    <linearGradient id="deepin-launcher24-d" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#00B8E8"/>
+      <stop offset="100%" stop-color="#4B5EFF"/>
+    </linearGradient>
+    <linearGradient id="deepin-launcher24-e" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC823"/>
+      <stop offset="100%" stop-color="#FF2F78"/>
+    </linearGradient>
+    <linearGradient id="deepin-launcher24-f" x1="81.903%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#DE00C0"/>
+      <stop offset="100%" stop-color="#8720FF"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd" filter="url(#deepin-launcher24-a)" transform="translate(1 1)">
+    <path fill="url(#deepin-launcher24-b)" d="M0,11 C0,4.92485714 4.92485714,0 11,0 C17.0751429,0 22,4.92485714 22,11 C22,17.0751429 17.0751429,22 11,22 C4.92485714,22 0,17.0751429 0,11 Z"/>
+    <g transform="translate(3 3)">
+      <path fill="url(#deepin-launcher24-c)" d="M2.10526316,5.66743373 L4.63157895,5.66743373 C5.21293132,5.66743373 5.68421053,6.13871294 5.68421053,6.72006531 L5.68421053,9.2463811 C5.68421053,9.82773347 5.21293132,10.2990127 4.63157895,10.2990127 L2.10526316,10.2990127 C1.52391079,10.2990127 1.05263158,9.82773347 1.05263158,9.2463811 L1.05263158,6.72006531 C1.05263158,6.13871294 1.52391079,5.66743373 2.10526316,5.66743373 Z" transform="rotate(-45 3.368 7.983)"/>
+      <path fill="url(#deepin-launcher24-d)" d="M6.72006531,10.2822359 L9.2463811,10.2822359 C9.82773347,10.2822359 10.2990127,10.7535151 10.2990127,11.3348675 L10.2990127,13.8611832 C10.2990127,14.4425356 9.82773347,14.9138148 9.2463811,14.9138148 L6.72006531,14.9138148 C6.13871294,14.9138148 5.66743373,14.4425356 5.66743373,13.8611832 L5.66743373,11.3348675 C5.66743373,10.7535151 6.13871294,10.2822359 6.72006531,10.2822359 Z" transform="rotate(-45 7.983 12.598)"/>
+      <path fill="url(#deepin-launcher24-e)" d="M6.72006531,1.05263158 L9.2463811,1.05263158 C9.82773347,1.05263158 10.2990127,1.52391079 10.2990127,2.10526316 L10.2990127,4.63157895 C10.2990127,5.21293132 9.82773347,5.68421053 9.2463811,5.68421053 L6.72006531,5.68421053 C6.13871294,5.68421053 5.66743373,5.21293132 5.66743373,4.63157895 L5.66743373,2.10526316 C5.66743373,1.52391079 6.13871294,1.05263158 6.72006531,1.05263158 Z" transform="rotate(-45 7.983 3.368)"/>
+      <path fill="url(#deepin-launcher24-f)" d="M11.3348675,5.66743373 L13.8611832,5.66743373 C14.4425356,5.66743373 14.9138148,6.13871294 14.9138148,6.72006531 L14.9138148,9.2463811 C14.9138148,9.82773347 14.4425356,10.2990127 13.8611832,10.2990127 L11.3348675,10.2990127 C10.7535151,10.2990127 10.2822359,9.82773347 10.2822359,9.2463811 L10.2822359,6.72006531 C10.2822359,6.13871294 10.7535151,5.66743373 11.3348675,5.66743373 Z" transform="rotate(-45 12.598 7.983)"/>
+    </g>
+  </g>
+</svg>
