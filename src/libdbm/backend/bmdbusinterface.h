@@ -73,7 +73,7 @@ public Q_SLOTS: // METHODS
     inline QDBusPendingReply<> Stop()
     {
         QList<QVariant> argumentList;
-        return asyncCallWithArgumentList(QStringLiteral("Stop"), argumentList);
+        return callWithArgumentList(QDBus::CallMode::Block, QStringLiteral("Stop"), argumentList);
     }
 
 Q_SIGNALS: // SIGNALS
