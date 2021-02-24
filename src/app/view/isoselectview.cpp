@@ -162,6 +162,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    m_fileSelect->setOpenExternalLinks(false);
     m_selectText = tr("Select an ISO image file");
     m_fileSelect->setFixedHeight(24);
+    m_fileSelect->setContextMenuPolicy(Qt::NoContextMenu);
 //    QString linkText = QString(s_linkTemplatelight).arg(m_selectText).arg(m_selectText);
 //    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
 //    if (themeType == DGuiApplicationHelper::DarkType) {
