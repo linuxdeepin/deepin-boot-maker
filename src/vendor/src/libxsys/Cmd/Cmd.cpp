@@ -113,8 +113,12 @@ static Result runApp(const QString &execPath, const QStringList &args)
 Result SynExec(const QString &exec, const QStringList &args)
 {
     Result ret = runApp(exec, args);
-    qInfo() << "call:" << exec << args ;
-    qInfo() << "resut:" << ret.isSuccess() << ret.errmsg();
+
+    if (exec.trimmed().toLower() != QString("isoinfo")) {
+        qInfo() << "call:" << exec << args ;
+        qInfo() << "resut:" << ret.isSuccess() << ret.errmsg();
+    }
+
     return ret;
 }
 

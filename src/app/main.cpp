@@ -101,7 +101,6 @@ int main(int argc, char **argv)
     DLogManager::setLogFormat(m_format);
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
-    qDebug() << "save log to:" << DLogManager::getlogFilePath();
 
 #ifndef Q_OS_MAC
     qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");

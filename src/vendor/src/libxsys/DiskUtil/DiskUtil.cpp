@@ -450,7 +450,7 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
     args << "-i" << images << "-d";
     XSys::Result ret3 = XSys::SynExec("isoinfo", args);
     if (!ret3.isSuccess()) {
-        qWarning() << "call df failed" << ret3.result();
+        qWarning() << "call isoinfo failed" << ret3.result();
     }
     QStringList volume = ret3.result().split("\n").filter("Volume id");
     QString tem = volume.takeAt(0);
@@ -527,7 +527,7 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
     isoArgs << "-i" << images << "-d";
     XSys::Result ret3 = XSys::SynExec("isoinfo", isoArgs);
     if (!ret3.isSuccess()) {
-        qWarning() << "call df failed" << ret3.result();
+        qWarning() << "call isoinfo failed" << ret3.result();
     }
     QStringList volume = ret3.result().split("\n").filter("Volume id");
     QString tem = volume.takeAt(0);
@@ -831,7 +831,7 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
     XSys::Result ret3 = XSys::SynExec("isoinfo", args);
 
     if (!ret3.isSuccess()) {
-        qWarning() << "call df failed" << ret3.result();
+        qWarning() << "call isoinfo failed" << ret3.result();
         return;
     }
 

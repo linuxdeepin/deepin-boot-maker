@@ -159,7 +159,6 @@ BMWindow::BMWindow(QWidget *parent)
         slideWidget(d->isoWidget, d->usbWidget);
         setProperty("bmISOFilePath", d->isoWidget->isoFilePath());
         d->wsib->setCurrentPage(1);
-        qDebug() << "iso path:" << d->isoWidget->isoFilePath();
     });
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
@@ -173,7 +172,7 @@ BMWindow::BMWindow(QWidget *parent)
         slideWidget(d->usbWidget, d->progressWidget);
         d->wsib->setCurrentPage(2);
         auto isoFilePath = property("bmISOFilePath").toString();
-        qDebug() << "call interface install" << isoFilePath << partition << format;
+        qDebug() << "call interface install" << partition << format;
         emit d->interface->startInstall(isoFilePath, "", partition, format);
     });
     connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {

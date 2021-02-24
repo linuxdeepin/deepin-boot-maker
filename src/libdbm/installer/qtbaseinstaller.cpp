@@ -426,7 +426,7 @@ bool QtBaseInstaller::configSyslinux()
     qInfo() << "begin configure syslinux";
     XSys::SynExec("sync", "");
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
-    qInfo() << "configure syslinux, installDir:" << installDir;
+    qDebug() << "configure syslinux, installDir:" << installDir;
     return XSys::Syslinux::ConfigSyslinx(installDir).isSuccess();
 }
 
