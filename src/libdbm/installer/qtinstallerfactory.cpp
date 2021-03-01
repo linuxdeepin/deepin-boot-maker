@@ -6,6 +6,8 @@
 #include "qtmipsinstaller.h"
 #elif defined(Q_PROCESSOR_ARM)
 #include "qtarminstaller.h"
+#elif defined(__sw_64__)
+#include "qtswinstaller.h"
 #endif
 
 #include <QDebug>
@@ -34,6 +36,9 @@ QtBaseInstaller* QtInstallerFactory::createInstaller()
 #elif defined(Q_PROCESSOR_ARM)
     qDebug() << "Architecture:ARM";
     pInstaller = new QtArmInstaller;
+#elif defined(__sw_64__)
+    qDebug() << "Architecture:SW";
+    pInstaller = new QtSwInstaller;
 #else
 #error "not support architecture"
 #endif

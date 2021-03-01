@@ -35,7 +35,8 @@ HEADERS += \
     installer/qtinstallerfactory.h \
     installer/qtX86Installer.h \
     installer/qtmipsinstaller.h \
-    installer/qtarminstaller.h
+    installer/qtarminstaller.h \
+    installer/qtswinstaller.h
 
 linux {
 HEADERS += \
