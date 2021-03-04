@@ -5,7 +5,7 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
-        <source>Disk Format Error: Please format the partition with FAT32</source>
+        <source>Disk Format Error: Please reformat it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -61,22 +61,22 @@
         <translation>ISO 이미지 파일 선택</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="213"/>
+        <location filename="../app/view/isoselectview.cpp" line="214"/>
         <source>Next</source>
         <translation>다음</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="299"/>
+        <location filename="../app/view/isoselectview.cpp" line="300"/>
         <source>Reselect an ISO image file</source>
         <translation>ISO 이미지 파일 다시 선택</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="236"/>
+        <location filename="../app/view/isoselectview.cpp" line="237"/>
         <source>Illegal ISO image file</source>
         <translation>잘못된 ISO 이미지 파일</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="440"/>
+        <location filename="../app/view/isoselectview.cpp" line="441"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>ISO 파일을 검색하는 중, 기다려 주십시오...</translation>
     </message>
@@ -113,12 +113,12 @@
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="221"/>
-        <location filename="../libdbm/util/utils.cpp" line="364"/>
+        <location filename="../libdbm/util/utils.cpp" line="365"/>
         <source>Removable disk</source>
         <translation>이동식 디스크</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="119"/>
+        <location filename="../app/main.cpp" line="118"/>
         <source>Boot Maker</source>
         <translation>시동 제작도구</translation>
     </message>
@@ -141,32 +141,32 @@
         <translation>성공</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="228"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>피드백과 함께 오류 로그가 자동으로 업로드됩니다. 우리는 당신의 의견 없다면 개선할 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="230"/>
         <source>Submit Feedback</source>
         <translation>피드백 제출</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="252"/>
+        <location filename="../app/view/resultview.cpp" line="253"/>
         <source>After-Sale Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="271"/>
+        <location filename="../app/view/resultview.cpp" line="269"/>
         <source>Close</source>
         <translation>닫기</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="279"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Sorry, process failed</source>
         <translation>죄송합니다, 프로세스가 실패했습니다</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="280"/>
+        <location filename="../app/view/resultview.cpp" line="278"/>
         <source>Process failed</source>
         <translation>프로세스가 실패했습니다</translation>
     </message>

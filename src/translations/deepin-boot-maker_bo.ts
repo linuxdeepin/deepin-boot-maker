@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
-        <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>སྡུད་སྡེར་གྱི་རྣམ་གཞག་ནོར་བས། FAT32རྣམ་གཞག་བེད་སྤྱད་བྱས་ཏེ་ཡང་བསྐྱར་རྣམ་གཞག་ཏུ་སྒྱུར་ནས་ཁུལ་དབྱེ་བ།</translation>
+        <source>Disk Format Error: Please reformat it</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
@@ -61,22 +61,22 @@
         <translation>འོད་སྡེར་སྣང་བརྙན་ཡིག་ཆ་འདེམས་རྒྱུ།</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="213"/>
+        <location filename="../app/view/isoselectview.cpp" line="214"/>
         <source>Next</source>
         <translation>རྗེས་མ། </translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="299"/>
+        <location filename="../app/view/isoselectview.cpp" line="300"/>
         <source>Reselect an ISO image file</source>
         <translation>འོད་སྡེར་སྣང་བརྙན་ཡིག་ཆ་ཡང་བསྐྱར་འདེམས་རྒྱུ།</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="236"/>
+        <location filename="../app/view/isoselectview.cpp" line="237"/>
         <source>Illegal ISO image file</source>
         <translation>ཁྲིམས་འགལ་ISOཡིག་ཆ།</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="440"/>
+        <location filename="../app/view/isoselectview.cpp" line="441"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>ISOཡིག་ཆ་བཤེར་འཇལ་བྱེད་བཞིན་པས། ཏོག་ཙམ་སྒུག་རོགས་གནང་།</translation>
     </message>
@@ -113,12 +113,12 @@
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="221"/>
-        <location filename="../libdbm/util/utils.cpp" line="364"/>
+        <location filename="../libdbm/util/utils.cpp" line="365"/>
         <source>Removable disk</source>
         <translation>སྤོ་རུང་སྡུད་སྡེར།</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="119"/>
+        <location filename="../app/main.cpp" line="118"/>
         <source>Boot Maker</source>
         <translation>འགོ་སློང་སྡེར་བཟོ་བའི་ཡོ་བྱད།</translation>
     </message>
@@ -141,32 +141,32 @@
         <translation>བཟོ་ཐུབ་སོང་།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="228"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>གནད་དོན་ལྡོག་སྐྱེལ་བྱེད་སྐབས་རང་འགུལ་ངང་ནོར་འཁྲུལ་ཉིན་ཐོ་སྐྱེལ་འཇོག་བྱེད་སྲིད། ང་ཚོའི་ཡར་རྒྱས་དང་སྐུ་ཉིད་ཀྱི་ལྡོག་སྐྱེལ་དང་རྒྱབ་སྐྱོར་བྲལ་ཐབས་མེད།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="230"/>
         <source>Submit Feedback</source>
         <translation>ལྡོག་སྐྱེལ་སྤྲོད་པ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="252"/>
+        <location filename="../app/view/resultview.cpp" line="253"/>
         <source>After-Sale Services</source>
         <translation>བཙོངས་རྗེས་ཞབས་ཞུ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="271"/>
+        <location filename="../app/view/resultview.cpp" line="269"/>
         <source>Close</source>
         <translation>སྒོ་བརྒྱབ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="279"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Sorry, process failed</source>
         <translation>བཟོ་མི་ཐུབ་པས། དགོངས་པ་མ་ཚོམ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="280"/>
+        <location filename="../app/view/resultview.cpp" line="278"/>
         <source>Process failed</source>
         <translation>བཟོ་མི་ཐུབ།</translation>
     </message>

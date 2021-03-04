@@ -9,7 +9,7 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
         strErr = "";
         break;
     case USBFormatError:
-        strErr = BMHandler::tr("Disk Format Error: Please format the partition with FAT32");
+        strErr = BMHandler::tr("Disk Format Error: Please reformat it");
         break;
     case USBSizeError:
         strErr = BMHandler::tr("Insufficient disk Space: Ensure that the disk has enough free space");

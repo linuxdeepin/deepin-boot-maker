@@ -5,7 +5,7 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
-        <source>Disk Format Error: Please format the partition with FAT32</source>
+        <source>Disk Format Error: Please reformat it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -61,22 +61,22 @@
         <translation>Wybierz plik obrazu ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="213"/>
+        <location filename="../app/view/isoselectview.cpp" line="214"/>
         <source>Next</source>
         <translation>Następny</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="236"/>
+        <location filename="../app/view/isoselectview.cpp" line="237"/>
         <source>Illegal ISO image file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="299"/>
+        <location filename="../app/view/isoselectview.cpp" line="300"/>
         <source>Reselect an ISO image file</source>
         <translation>Wybierz ponownie plik obrazu ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="440"/>
+        <location filename="../app/view/isoselectview.cpp" line="441"/>
         <source>Detecting ISO file, please wait...</source>
         <translation></translation>
     </message>
@@ -113,12 +113,12 @@
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="221"/>
-        <location filename="../libdbm/util/utils.cpp" line="364"/>
+        <location filename="../libdbm/util/utils.cpp" line="365"/>
         <source>Removable disk</source>
         <translation>Dysk wymienny</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="119"/>
+        <location filename="../app/main.cpp" line="118"/>
         <source>Boot Maker</source>
         <translation>Twórca rozruchu Deepin</translation>
     </message>
@@ -141,32 +141,32 @@
         <translation>Zakończone pomyślnie</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="228"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Dziennik błędów zostanie automatycznie przesłany wraz z informacją zwrotną. Nie możemy poprawić bez Twojej opinii</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="230"/>
         <source>Submit Feedback</source>
         <translation>Prześlij opinię</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="252"/>
+        <location filename="../app/view/resultview.cpp" line="253"/>
         <source>After-Sale Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="271"/>
+        <location filename="../app/view/resultview.cpp" line="269"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="279"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Sorry, process failed</source>
         <translation>Przepraszamy, błąd tworzenia</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="280"/>
+        <location filename="../app/view/resultview.cpp" line="278"/>
         <source>Process failed</source>
         <translation>Błąd tworzenia</translation>
     </message>

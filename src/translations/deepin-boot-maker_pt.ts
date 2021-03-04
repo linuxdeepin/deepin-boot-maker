@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
-        <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Erro de formato do disco: Formate a partição com FAT32</translation>
+        <source>Disk Format Error: Please reformat it</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
@@ -61,22 +61,22 @@
         <translation>Selecione um ficheiro ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="213"/>
+        <location filename="../app/view/isoselectview.cpp" line="214"/>
         <source>Next</source>
         <translation>Seguinte</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="299"/>
+        <location filename="../app/view/isoselectview.cpp" line="300"/>
         <source>Reselect an ISO image file</source>
         <translation>Volte a selecionar um ficheiro ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="236"/>
+        <location filename="../app/view/isoselectview.cpp" line="237"/>
         <source>Illegal ISO image file</source>
         <translation>Ficheiro ISO ilegal</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="440"/>
+        <location filename="../app/view/isoselectview.cpp" line="441"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>A detetar o ficheiro ISO, aguarde...</translation>
     </message>
@@ -113,12 +113,12 @@
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="221"/>
-        <location filename="../libdbm/util/utils.cpp" line="364"/>
+        <location filename="../libdbm/util/utils.cpp" line="365"/>
         <source>Removable disk</source>
         <translation>Disco removível</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="119"/>
+        <location filename="../app/main.cpp" line="118"/>
         <source>Boot Maker</source>
         <translation>Criador de unidade de arranque</translation>
     </message>
@@ -141,32 +141,32 @@
         <translation>Bem sucedido</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="228"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>O registo de erros será carregado automaticamente com o comentário. Não podemos melhorar sem o seu comentário</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="230"/>
         <source>Submit Feedback</source>
         <translation>Submeter comentário</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="252"/>
+        <location filename="../app/view/resultview.cpp" line="253"/>
         <source>After-Sale Services</source>
         <translation>Serviços pós-venda</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="271"/>
+        <location filename="../app/view/resultview.cpp" line="269"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="279"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Sorry, process failed</source>
         <translation>O processo falhou</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="280"/>
+        <location filename="../app/view/resultview.cpp" line="278"/>
         <source>Process failed</source>
         <translation>O processo falhou</translation>
     </message>
