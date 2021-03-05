@@ -158,7 +158,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     usbPanelLayout->addSpacing(15);
     usbPanelLayout->addLayout(checkBoxLayout);
 
-    DPushButton *start = new DPushButton();
+    DSuggestButton *start = new DSuggestButton;
     start->setFocusPolicy(Qt::NoFocus);
     start->setObjectName("StartMake");
     start->setText(tr("Start"));
