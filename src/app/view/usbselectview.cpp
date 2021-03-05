@@ -33,6 +33,8 @@
 #include <DPushButton>
 #include <DApplicationHelper>
 #include <DFontSizeManager>
+#include <DSuggestButton>
+#include <DWarningButton>
 #include <DDialog>
 
 #include <QDebug>
@@ -311,15 +313,35 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         if (format)
         {
             DDialog msgbox(this);
-            msgbox.setFixedWidth(400);
+            msgbox.setFixedSize(380, 228);
             msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
-            msgbox.setTitle(tr("Format Partition"));
-            msgbox.setTextFormat(Qt::AutoText);
-            msgbox.setMessage(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
-            msgbox.insertButton(0, tr("Cancel"), true, DDialog::ButtonRecommend);
-            msgbox.insertButton(1, tr("OK"), false, DDialog::ButtonWarning);
-
+            QWidget* pInnerWidget = new QWidget;
+            pInnerWidget->deleteLater();
+            QVBoxLayout* pVInnerLayout = new QVBoxLayout;
+            DLabel* pLabelTitle = new DLabel(tr("Format Partition"));
+            DFontSizeManager::instance()->bind(pLabelTitle, DFontSizeManager::T6, 500);
+            pLabelTitle->setAlignment(Qt::AlignCenter);
+            DLabel* pLabelMsg = new DLabel(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
+            DFontSizeManager::instance()->bind(pLabelMsg, DFontSizeManager::T8, 400);
+            pLabelMsg->setAlignment(Qt::AlignCenter);
+            pLabelMsg->setWordWrap(true);
+            DSuggestButton* pBtnCancel = new DSuggestButton(tr("Cancel"));
+            DWarningButton* pBtnOk = new DWarningButton;
+            pBtnOk->setText(tr("OK"));
+            QHBoxLayout* pHlayout = new QHBoxLayout;
+            pHlayout->addWidget(pBtnCancel);
+            pHlayout->addWidget(pBtnOk);
+            pVInnerLayout->addStretch();
+            pVInnerLayout->addWidget(pLabelTitle);
+            pVInnerLayout->addWidget(pLabelMsg);
+            pVInnerLayout->addStretch();
+            pVInnerLayout->addLayout(pHlayout);
+            pInnerWidget->setLayout(pVInnerLayout);
+            msgbox.addContent(pInnerWidget);
+            QObject::connect(pBtnCancel, &DSuggestButton::clicked, &msgbox, &DDialog::reject);
+            QObject::connect(pBtnOk, &DSuggestButton::clicked, &msgbox, &DDialog::accept);
             auto ret = msgbox.exec();
+
             if (ret != 1) {
                 m_formatDiskCheck->setChecked(false);
                 this->setProperty("user_format", false);
