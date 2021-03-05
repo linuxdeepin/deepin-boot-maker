@@ -152,6 +152,8 @@ void loadTranslate()
     QTranslator *qtTranslator = new QTranslator;
     qtTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     qApp->installTranslator(qtTranslator);
+    qtTranslator->deleteLater();
+    qtTranslator = nullptr;
 
 #ifdef Q_OS_WIN
     QTranslator *translator = new QTranslator();
