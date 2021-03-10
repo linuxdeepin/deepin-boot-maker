@@ -91,7 +91,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
-    m_title->setFixedHeight(35);
+    m_title->setFixedHeight(40);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 //    QFont qf = m_title->font();
 //    if (m_fontList.size() > 0)
@@ -161,7 +161,6 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    m_fileSelect->setFixedHeight(15);
 //    m_fileSelect->setOpenExternalLinks(false);
     m_selectText = tr("Select an ISO image file");
-    m_fileSelect->setFixedHeight(24);
     m_fileSelect->setContextMenuPolicy(Qt::NoContextMenu);
 //    QString linkText = QString(s_linkTemplatelight).arg(m_selectText).arg(m_selectText);
 //    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
@@ -199,7 +198,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     pa = DApplicationHelper::instance()->palette(m_checkFile);
     brush = DApplicationHelper::instance()->palette(m_checkFile).text();
     pa.setBrush(DPalette::Text, brush);
-    m_checkFile->setFixedHeight(18);
+    //m_checkFile->setFixedHeight(18);
     DFontSizeManager::instance()->bind(m_checkFile, DFontSizeManager::T8);
 //    qf = m_checkFile->font();
 //    m_checkFile->setText("");
@@ -245,7 +244,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
             int itemCount = isoPanelLayout->count();
             for (int i = (itemCount - 1); i >= 0; --i) { //从末尾开始是因为你删除会影响布局的顺序。例如你删掉第一个，后面的会往前移，第二就变成第一个，然后这时你要是++i的话，就是删掉原来布局里的第三个，这第二个被跳过了。
                 QLayoutItem *item = isoPanelLayout->takeAt(i);
-                if (item != 0) {
+                if (item != nullptr) {
                     isoPanelLayout->removeWidget(item->widget());
                 }
             }
@@ -266,7 +265,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
             int itemCount = isoPanelLayout->count();
             for (int i = (itemCount - 1); i >= 0; --i) { //从末尾开始是因为你删除会影响布局的顺序。例如你删掉第一个，后面的会往前移，第二就变成第一个，然后这时你要是++i的话，就是删掉原来布局里的第三个，这第二个被跳过了。
                 QLayoutItem *item = isoPanelLayout->takeAt(i);
-                if (item != 0) {
+                if (item != nullptr) {
                     isoPanelLayout->removeWidget(item->widget());
                 }
             }

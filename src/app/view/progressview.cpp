@@ -64,7 +64,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
-    m_title->setFixedHeight(36);
+    m_title->setFixedHeight(40);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 //    QFont qf = m_title->font();
 //    if (m_fontList.size() > 0)
@@ -77,7 +77,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 
     DLabel *m_hitsTitle = new DLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
-    m_hitsTitle->setFixedHeight(25);
+    //m_hitsTitle->setFixedHeight(25);
     DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
 //    qf = m_hitsTitle->font();
 //    qf.setPixelSize(17);

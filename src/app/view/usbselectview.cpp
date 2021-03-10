@@ -313,7 +313,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         if (format)
         {
             DDialog msgbox(this);
-            msgbox.setFixedSize(380, 228);
+            msgbox.setFixedSize(380, 240);
             msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
             QWidget* pInnerWidget = new QWidget;
             pInnerWidget->deleteLater();
@@ -325,7 +325,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             DFontSizeManager::instance()->bind(pLabelMsg, DFontSizeManager::T8, 400);
             pLabelMsg->setAlignment(Qt::AlignCenter);
             pLabelMsg->setWordWrap(true);
-            DSuggestButton* pBtnCancel = new DSuggestButton(tr("Cancel"));
+            QPushButton* pBtnCancel = new QPushButton(tr("Cancel"));
             DWarningButton* pBtnOk = new DWarningButton;
             pBtnOk->setText(tr("OK"));
             QHBoxLayout* pHlayout = new QHBoxLayout;
@@ -340,6 +340,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             msgbox.addContent(pInnerWidget);
             QObject::connect(pBtnCancel, &DSuggestButton::clicked, &msgbox, &DDialog::reject);
             QObject::connect(pBtnOk, &DSuggestButton::clicked, &msgbox, &DDialog::accept);
+            msgbox.setContentsMargins(0, 0, 0, 0);
             auto ret = msgbox.exec();
 
             if (ret != 1) {
