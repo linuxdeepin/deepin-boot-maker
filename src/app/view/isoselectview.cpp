@@ -144,7 +144,6 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_hits = new DLabel(tr("OR"));
 #endif
     m_hits->setObjectName("IsoHits");
-    m_hits->setFixedHeight(22);
     DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
 //    qf = m_hits->font();
 //    qf.setPixelSize(12);
