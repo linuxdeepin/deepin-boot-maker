@@ -15,7 +15,8 @@ Build-Depends: debhelper-compat (= 11),
  libfontconfig-dev,
  libegl1-mesa-dev,
  libstartup-notification0-dev,
- libdtkwidget-dev
+ libdtkwidget-dev,
+ libgtest-dev
 Standards-Version: 4.1.3
 Homepage: http://www.linuxdeepin.com/
 
