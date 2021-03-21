@@ -91,7 +91,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
-    m_title->setFixedHeight(40);
+    m_title->setWordWrap(true);
+    m_title->setAlignment(Qt::AlignHCenter);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 //    QFont qf = m_title->font();
 //    if (m_fontList.size() > 0)
@@ -218,8 +219,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    m_nextSetp->setFont(qf);
     m_nextSetp->setDisabled(true);
 
-    mainLayout->addWidget(m_title, 0, Qt::AlignCenter);
-    mainLayout->addSpacing(32);
+    mainLayout->addWidget(m_title);
+    mainLayout->addStretch();
     mainLayout->addWidget(isoPanel, 0, Qt::AlignCenter);
     mainLayout->addSpacing(16);
     mainLayout->addWidget(m_checkFile, 0, Qt::AlignCenter);
