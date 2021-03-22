@@ -1,4 +1,4 @@
-# Boot Maker|../common/deepin_boot_maker_96.svg|
+# Boot Maker|deepin-boot-maker|
 
 ## Overview
 
@@ -33,12 +33,12 @@ You can run, close or create a shortcut for Boot Maker as follows.
 
 ### Preparation
 
-1. Download the latest official image file from UnionTech OS official website.
+1. Download the latest official image file from the official website.
 2. Prepare a USB disk (8GB at least).
 3. Run Boot Maker.
- - Boot Maker is built in UnionTech OS system by default, so you can find it in Launcher quickly.
+ - Boot Maker is built in the system by default, so you can find it in Launcher quickly.
+ - Visit the official website to obtain the specified Boot Maker.
  - For Windows system, you can also extract xxx-boot-maker.exe from the image file.
- - You can download its specified version from UnionTech OS official website.
 
 ### Select Image File
 
