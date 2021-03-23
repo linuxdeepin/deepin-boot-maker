@@ -851,26 +851,6 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
     XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 \"%2\"").arg(strPartion).arg(strName));
 }
 
-QString getPartitionPPID(const QString& strPartition)
-{
-    XSys::Result ret = XSys::SynExec("lsblk", "-o PATH,PARTUUID");
-
-    if (!ret.isSuccess()) {
-        qWarning() << "call lsblk failed" << ret.result();
-    }
-
-    QStringList uuids = ret.result().split("\n").filter(strPartition);
-
-    if (0 == uuids.size()) {
-        return "";
-    }
-
-    QString strLine = uuids.last();
-    strLine  = strLine.remove(strPartition);
-    QString strUuid = strLine.trimmed();
-    return strUuid;
-}
-
 qint64 GetPartitionTotalSpace(const QString &targetDev)
 {
     return XAPI::GetPartitionTotalSpace(targetDev);
