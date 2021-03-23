@@ -459,7 +459,7 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
     } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
         ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(targetDev));
     } else {
-        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(targetDev));
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UNKNOWN").arg(targetDev));
     }
 
     XSys::DiskUtil::Mount(targetDev);
@@ -536,7 +536,7 @@ XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
     } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
         ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
     } else {
-        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UKNOWN").arg(newTargetDev));
+        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UNKNOWN").arg(newTargetDev));
     }
     // install syslinux
     XSys::Syslinux::InstallBootloader(newTargetDev);
@@ -838,7 +838,7 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
     QStringList volume = ret3.result().split("\n").filter("Volume id");
     QString tem = volume.takeAt(0);
     QStringList strValues = tem.split(":");
-    QString strName = QString("UKNOWN");
+    QString strName = QString("UNKNOWN");
     QString strTemp;
 
     if (2 == strValues.size()) {
