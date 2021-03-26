@@ -247,7 +247,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         m_emptyHint->setVisible(!this->m_mountDevs.size());
         m_deviceList->setVisible(this->m_mountDevs.size());
         m_warningHint->setVisible(this->m_mountDevs.size());
-
+        bool bFirst = true;
         m_deviceList->clear();
         foreach (const DeviceInfo &partition, this->m_mountDevs) {
             QListWidgetItem *listItem = new QListWidgetItem;
@@ -263,6 +263,20 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             infoItem->setProperty("path", partition.path);
             infoItem->setProperty("fstype", partition.fstype);
 
+            if (bFirst) {
+                infoItem->setEnabled(true);
+                infoItem->setCheck(true);
+                m_deviceList->setCurrentItem(listItem);
+                this->setProperty("last_path", infoItem->property("path").toString());
+                hasPartitionSelected = true;
+            }
+            else {
+                infoItem->setEnabled(false);
+            }
+
+            bFirst = false;
+
+            /*
             if (partition.path == this->property("last_path").toString()) {
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
@@ -271,6 +285,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             else {
                 infoItem->setCheck(false);
             }
+            */
         }
 
         start->setDisabled(!hasPartitionSelected);
@@ -280,6 +295,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
     });
 
+    /*
     connect(m_deviceList, &DeviceListWidget::currentItemChanged,
     this, [ = ](QListWidgetItem * current, QListWidgetItem * previous) {
         DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(previous));
@@ -306,6 +322,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             start->setDisabled(false);
         }
     });
+    */
 
     connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
