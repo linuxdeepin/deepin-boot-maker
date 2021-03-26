@@ -1,4 +1,4 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: deepin-boot-maker
 Source: https://gitcafe.com/Deepin/deepin-boot-maker
 
@@ -8,6 +8,8 @@ License: GPL-3+
 
 Files: debian/*
 Copyright: Deepin Technology Co., Ltd.
+License: GPL-3+
+
 License: GPL-3+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

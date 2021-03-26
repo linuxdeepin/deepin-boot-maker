@@ -1,3 +1,9 @@
+deepin-boot-maker (5.6.5+dfsg-1) experimental; urgency=low
+
+  * Rebuild Version 5.6.5
+
+ -- Ma Aiguo <imaiguo@gmail.com>  Fri, 19 Mar 2021 19:32:15 +0800
+
 deepin-boot-maker (1.9.0-1) stable; urgency=low
 
   * Pre release 2.0.0

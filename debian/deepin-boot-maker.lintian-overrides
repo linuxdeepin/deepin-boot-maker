@@ -1,12 +1,6 @@
 # the deepin-boot-maker manual pages are in the deepin-boot-maker-man package.
 deepin-boot-maker: statically-linked-binary usr/bin/xfbinst_x32
 deepin-boot-maker: statically-linked-binary usr/bin/xfbinst_x64
-deepin-boot-maker: hardening-no-pie usr/bin/deepin-boot-maker
-deepin-boot-maker: hardening-no-pie usr/lib/deepin-daemon/deepin-boot-maker-service
-deepin-boot-maker: description-too-long
-deepin-boot-maker: extended-description-line-too-long
-deepin-boot-maker: extended-description-line-too-long
-deepin-boot-maker: extended-description-line-too-long
 deepin-boot-maker: binary-without-manpage usr/bin/deepin-boot-maker
 deepin-boot-maker: binary-without-manpage usr/bin/xfbinst_x32
 deepin-boot-maker: binary-without-manpage usr/bin/xfbinst_x64
