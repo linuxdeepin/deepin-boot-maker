@@ -54,7 +54,7 @@ There are two ways to select the image file:
 
 ### Select a Partition
 
-Select the USB disk or partition, and click **Start** or **Back**.
+Select the USB disk, or, in case the USB disk has been partitioned, you can only select the first partition, and click **Start** or **Back**.
 
    - Start: it is recommended to check **Format the partition**. Make sure you have saved the data inside the USB disk before burning.
    - Back: click this button to return to the previous step.
