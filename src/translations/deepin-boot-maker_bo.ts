@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="bo">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="bo" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"></translation>
+        <translation>སྡུད་སྡེར་རྣམ་གཞག་ནོར་འདུག་པས། ཡང་བསྐྱར་བཟོ་རོགས།</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
@@ -141,32 +139,32 @@
         <translation>བཟོ་ཐུབ་སོང་།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>གནད་དོན་ལྡོག་སྐྱེལ་བྱེད་སྐབས་རང་འགུལ་ངང་ནོར་འཁྲུལ་ཉིན་ཐོ་སྐྱེལ་འཇོག་བྱེད་སྲིད། ང་ཚོའི་ཡར་རྒྱས་དང་སྐུ་ཉིད་ཀྱི་ལྡོག་སྐྱེལ་དང་རྒྱབ་སྐྱོར་བྲལ་ཐབས་མེད།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="230"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>ལྡོག་སྐྱེལ་སྤྲོད་པ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="253"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>བཙོངས་རྗེས་ཞབས་ཞུ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="269"/>
+        <location filename="../app/view/resultview.cpp" line="268"/>
         <source>Close</source>
         <translation>སྒོ་བརྒྱབ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="277"/>
+        <location filename="../app/view/resultview.cpp" line="276"/>
         <source>Sorry, process failed</source>
         <translation>བཟོ་མི་ཐུབ་པས། དགོངས་པ་མ་ཚོམ།</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="278"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Process failed</source>
         <translation>བཟོ་མི་ཐུབ།</translation>
     </message>

@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"></translation>
+        <translation>Error del formato de disco: Vuelva a formatearlo</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espacio insuficiente en el disco: Asegúrese de que el disco tiene suficiente espacio libre</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
@@ -34,7 +32,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>Boot Maker es una utilidad sencilla para escribir archivos de imagen del sistema en unidades flash USB y otros medios.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -141,32 +139,32 @@
         <translation>Listo</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>El registro de errores se cargará automáticamente con sus comentarios. No podemos mejorar sin su comentario</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="230"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>Enviar comentarios</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="253"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>Servicios postventa</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="269"/>
+        <location filename="../app/view/resultview.cpp" line="268"/>
         <source>Close</source>
         <translation>Cerrar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="277"/>
+        <location filename="../app/view/resultview.cpp" line="276"/>
         <source>Sorry, process failed</source>
         <translation>Lo siento, el proceso falló</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="278"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Process failed</source>
         <translation>El proceso falló</translation>
     </message>
@@ -184,12 +182,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="87"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione una partición</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="114"/>
         <source>Format the partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatee la partición</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="162"/>
@@ -199,22 +197,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="166"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Atrás</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="222"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
+        <translation>El formateo borrará todos los datos de la partición, pero puede aumentar el porcentaje de éxito, por favor confirme antes de proceder</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="318"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>El formateo de la partición sobrescribirá todos los datos, por favor haga una copia de seguridad antes de proceder.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="335"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Error de formato de disco: Por favor, formatee la partición con FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="147"/>
@@ -224,7 +222,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="316"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatear partición</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="319"/>

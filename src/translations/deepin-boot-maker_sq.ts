@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sq">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sq" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"></translation>
+        <translation>Gabim Formatimi Disku: Ju lutemi, riformatojeni</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
@@ -141,32 +139,32 @@
         <translation>E suksesshme</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Regjistri i gabimeve do të ngarkohet automatikisht me përshtypjet. Pa përshtypjet tuaja, s’e përmirësojmë dot</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="230"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>Parashtroni Përshtypjet</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="253"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>Shërbime Pas-Shitjesh</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="269"/>
+        <location filename="../app/view/resultview.cpp" line="268"/>
         <source>Close</source>
         <translation>Mbylle</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="277"/>
+        <location filename="../app/view/resultview.cpp" line="276"/>
         <source>Sorry, process failed</source>
         <translation>Na ndjeni, procesi dështoi</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="278"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Process failed</source>
         <translation>Procesi dështoi</translation>
     </message>

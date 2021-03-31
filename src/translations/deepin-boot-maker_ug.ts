@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ug">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ug" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"></translation>
+        <translation>دىسكىنى فورماتلاشتا خاتالىق كۆرۈلدى، قايتا سىناپ بېقىڭ</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
@@ -141,32 +139,32 @@
         <translation>ياساش مۇۋەپپەقىيەتلىك بولدى</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="228"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>مەسىلە ئىنكاس قىلغاندا خاتا كۈندىلىك خاتىرە ئاپتوماتىك يوللىنىدۇ، تەرەققىياتىمىز سىزنىڭ ئىنكاسىڭىز ۋە قوللىشىڭىزدىن ئايرىلالمايدۇ </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="230"/>
+        <location filename="../app/view/resultview.cpp" line="229"/>
         <source>Submit Feedback</source>
         <translation>ئىنكاس تاپشۇرۇش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="253"/>
+        <location filename="../app/view/resultview.cpp" line="252"/>
         <source>After-Sale Services</source>
         <translation>سېتىشتىن كېيىنكى مۇلازىمەت</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="269"/>
+        <location filename="../app/view/resultview.cpp" line="268"/>
         <source>Close</source>
         <translation>تاقاش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="277"/>
+        <location filename="../app/view/resultview.cpp" line="276"/>
         <source>Sorry, process failed</source>
         <translation>ياساش مەغلۇپ بولدى، كەچۈرۈڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="278"/>
+        <location filename="../app/view/resultview.cpp" line="277"/>
         <source>Process failed</source>
         <translation>ياساش مەغلۇپ بولدى</translation>
     </message>
