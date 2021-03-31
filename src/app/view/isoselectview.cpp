@@ -191,8 +191,6 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
     isoPanelLayout->addStretch();
 
-
-
     m_checkFile = new DLabel();
     m_checkFile->setObjectName("IsoFileSelect");
     pa = DApplicationHelper::instance()->palette(m_checkFile);

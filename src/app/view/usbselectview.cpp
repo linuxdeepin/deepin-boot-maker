@@ -247,8 +247,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         m_emptyHint->setVisible(!this->m_mountDevs.size());
         m_deviceList->setVisible(this->m_mountDevs.size());
         m_warningHint->setVisible(this->m_mountDevs.size());
-        bool bFirst = true;
         m_deviceList->clear();
+        QStringList strDevList;
+
         foreach (const DeviceInfo &partition, this->m_mountDevs) {
             QListWidgetItem *listItem = new QListWidgetItem;
             DeviceInfoItem *infoItem = new DeviceInfoItem(
@@ -263,20 +264,16 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             infoItem->setProperty("path", partition.path);
             infoItem->setProperty("fstype", partition.fstype);
 
-            if (bFirst) {
+            if (!strDevList.contains(partition.strDev)) {
+                strDevList.push_back(partition.strDev);
+                listItem->setData(Qt::UserRole, true);
                 infoItem->setEnabled(true);
-                infoItem->setCheck(true);
-                m_deviceList->setCurrentItem(listItem);
-                this->setProperty("last_path", infoItem->property("path").toString());
-                hasPartitionSelected = true;
             }
             else {
+                listItem->setData(Qt::UserRole, false);
                 infoItem->setEnabled(false);
             }
 
-            bFirst = false;
-
-            /*
             if (partition.path == this->property("last_path").toString()) {
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
@@ -285,7 +282,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             else {
                 infoItem->setCheck(false);
             }
-            */
         }
 
         start->setDisabled(!hasPartitionSelected);
@@ -295,15 +291,30 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
     });
 
-    /*
     connect(m_deviceList, &DeviceListWidget::currentItemChanged,
     this, [ = ](QListWidgetItem * current, QListWidgetItem * previous) {
+        if (current != nullptr) {
+            bool bFirst = current->data(Qt::UserRole).toBool();
+
+            if (!bFirst) {
+                if (previous != nullptr) {
+                    m_deviceList->setCurrentItem(previous);
+                }
+
+                return;
+            }
+        }
+        else {
+            return;
+        }
+
         DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(previous));
         if (infoItem) {
             infoItem->setCheck(false);
         }
 
         infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
+
         if (infoItem) {
             if (infoItem->needFormat()) {
                 m_formatDiskCheck->setChecked(true);
@@ -322,7 +333,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             start->setDisabled(false);
         }
     });
-    */
 
     connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();

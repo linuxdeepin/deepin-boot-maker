@@ -41,6 +41,8 @@ public:
     QString uuid    = "";
     QString fstype  = "";
     QString target  = "";
+    QString strDev = "";
+    bool isDisk = false;
     bool needFormat = false;
     QMap<QString, DeviceInfo> children;
 

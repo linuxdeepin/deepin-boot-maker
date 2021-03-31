@@ -339,8 +339,10 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             info.fstype = reg.cap(5);
             type = reg.cap(6);
 
-            if (!type.compare("disk"))
+            if (!type.compare("disk")) {
                 diskDevPath = info.path;
+                isPart = false;
+            }
             else if (!type.compare("part")){
                 isPart = true;
             } else {
@@ -370,8 +372,12 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
         info.label = strLabel;
 
         if (isPart && !diskDevPath.isEmpty()) {
+            info.isDisk = false;
+            info.strDev = diskDevPath;
             deviceInfos[diskDevPath].children.insert(info.path, info);
         } else {
+            info.isDisk = true;
+            info.strDev = "";
             deviceInfos.insert(info.path, info);
         }
     } while(true);
