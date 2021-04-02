@@ -72,6 +72,12 @@ static int percent(quint32 usage, quint32 total)
     return static_cast<int>(usage * 100 / total);
 }
 
+bool caseInsensitiveLessThan(const DeviceInfo &dev1, const DeviceInfo &dev2)
+{
+  return dev1.path < dev2.path;
+}
+
+
 UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("UsbSelectView");
@@ -243,6 +249,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
 
         this->m_mountDevs += addlist;
+        qSort(m_mountDevs.begin(), m_mountDevs.end(), caseInsensitiveLessThan);
         m_formatDiskCheck->setVisible(this->m_mountDevs.size());
         m_emptyHint->setVisible(!this->m_mountDevs.size());
         m_deviceList->setVisible(this->m_mountDevs.size());
