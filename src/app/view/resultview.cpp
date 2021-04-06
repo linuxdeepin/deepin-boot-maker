@@ -106,24 +106,11 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
 //    m_logHits = new DTipLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);   如果不注释这一行，Windows上无法编译
     m_logHits->setObjectName("ResultErrorDescription");
+    m_logHits->setContentsMargins(20, 0, 20, 0);
     m_logHits->setWordWrap(true);
-    m_logHits->setFixedWidth(400);
-    m_logHits->setFixedHeight(100);
-    m_logHits->setMargin(9);
-//    connect(m_logHits, &QLabel::linkActivated, this, &ResultView::onLogLinkActivated);
-//    m_logHits->setOpenExternalLinks(false);
-//    m_logHits->hide();
-    DFontSizeManager::instance()->bind(m_logHits, DFontSizeManager::T8);
-//    qf = m_logHits->font();
-//    if (m_fontList.size() > 0)
-//        qf.setFamily(m_fontList.at(0));
-//    qf.setPixelSize(12);
-//    m_logHits->setFont(qf);
-//    DPalette pa = DApplicationHelper::instance()->palette(m_logHits);
-//    QBrush brush = DApplicationHelper::instance()->palette(m_logHits).textTips();
-//    pa.setBrush(DPalette::WindowText, brush);
-//    m_logHits->setPalette(pa);
     m_logHits->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
+    DFontSizeManager::instance()->bind(m_logHits, DFontSizeManager::T8);
+
 
 //    m_rebootLater = new SuggestButton();
     m_rebootLater = new DPushButton();
@@ -160,7 +147,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->addSpacing(11);
     mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(0);
-    mainLayout->addWidget(m_logHits, 0, Qt::AlignHCenter);
+    mainLayout->addWidget(m_logHits);
     mainLayout->addStretch();
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignHCenter|Qt::AlignBottom);
 //    mainLayout->addSpacing(15);
@@ -215,6 +202,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 void ResultView::updateResult(quint32 error, const QString &/*title*/, const QString &/*description*/)
 {
     auto errorType = static_cast<BMHandler::ErrorType>(error);
+
     switch (errorType) {
     case BMHandler::NoError:
         m_rebootLater->disconnect();

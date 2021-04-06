@@ -1,5 +1,7 @@
 #include "bmhandler.h"
 
+#include <DSysInfo>
+
 const QString BMHandler::errorString(BMHandler::ErrorType et)
 {
     QString strErr;
@@ -9,7 +11,14 @@ const QString BMHandler::errorString(BMHandler::ErrorType et)
         strErr = "";
         break;
     case USBFormatError:
-        strErr = BMHandler::tr("Disk Format Error: Please reformat it");
+        if ((DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosProfessional) ||
+        (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosHome)) {
+            strErr = BMHandler::tr("Disk Format Error: Please reformat it or disable \"Auto scan USB storage devices\" in Security Center");
+        }
+        else {
+            strErr = BMHandler::tr("Disk Format Error: Please reformat it");
+        }
+
         break;
     case USBSizeError:
         strErr = BMHandler::tr("Insufficient disk Space: Ensure that the disk has enough free space");
