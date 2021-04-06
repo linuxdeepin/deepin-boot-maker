@@ -246,15 +246,15 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
                 if (refInfo == info) {
                     this->m_mountDevs.removeAt(i);
                 }
+            }
 
-                //移除列表中包含选中项
-                if (refInfo.path == this->property("last_path")) {
-                    m_formatDiskCheck->setDisabled(true);
-                    m_formatDiskCheck->setChecked(false);
-                    setProperty("user_format", false);
-                    setProperty("last_path", "");
-                    setProperty("last_fstype", "");
-                }
+            //移除列表中包含选中项
+            if (info.path == this->property("last_path")&&!info.path.isEmpty()&&!addlist.contains(info)) {
+                m_formatDiskCheck->setDisabled(true);
+                m_formatDiskCheck->setChecked(false);
+                setProperty("user_format", false);
+                setProperty("last_path", "");
+                setProperty("last_fstype", "");
             }
         }
 
