@@ -1,30 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pl" version="2.1">
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd formatu dysku: Sformatuj go ponownie </translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Niewystarczająca ilość miejsca na dysku: Upewnij się, że dysk ma wystarczającą ilość wolnego miejsca</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>Błąd montowania dysku: Włóż dysk ponownie lub uruchom ponownie, aby spróbować ponownie</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>Błąd dekompresji obrazu: Sprawdź sumę kontrolną md5 obrazu, aby zapewnić jego integralność</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="33"/>
         <source>Internal Error</source>
         <translation>Błąd wewnętrzny</translation>
     </message>
@@ -34,23 +37,23 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"></translation>
+        <translation>Boot Maker jest prostym narzędziem do zapisu pliku obrazu na pendrive lub inne media.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation>Twórca rozruchu Deepin</translation>
+        <translation>Twórca rozruchu</translation>
     </message>
 </context>
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="125"/>
+        <location filename="../app/view/isoselectview.cpp" line="126"/>
         <source>Drag an ISO image file here</source>
-        <translation>Przeciągnij plik obrazu ISO i upuść go tutaj</translation>
+        <translation>Przeciągnij tutaj plik obrazu ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="144"/>
+        <location filename="../app/view/isoselectview.cpp" line="145"/>
         <source>OR</source>
         <translation>LUB</translation>
     </message>
@@ -61,24 +64,24 @@
         <translation>Wybierz plik obrazu ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="214"/>
+        <location filename="../app/view/isoselectview.cpp" line="211"/>
         <source>Next</source>
         <translation>Następny</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="237"/>
-        <source>Illegal ISO image file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../app/view/isoselectview.cpp" line="300"/>
+        <location filename="../app/view/isoselectview.cpp" line="297"/>
         <source>Reselect an ISO image file</source>
         <translation>Wybierz ponownie plik obrazu ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="441"/>
+        <location filename="../app/view/isoselectview.cpp" line="234"/>
+        <source>Illegal ISO image file</source>
+        <translation>Nielegalny plik obrazu ISO</translation>
+    </message>
+    <message>
+        <location filename="../app/view/isoselectview.cpp" line="438"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation></translation>
+        <translation>Wykrywanie pliku ISO, proszę czekać...</translation>
     </message>
 </context>
 <context>
@@ -86,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="62"/>
         <source>Burning</source>
-        <translation>Tworzenie</translation>
+        <translation>Nagrywanie</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="78"/>
         <source>Burning, please wait...</source>
-        <translation>Tworzenie dysku, prosimy czekać...</translation>
+        <translation>Nagrywanie, proszę czekać...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="90"/>
@@ -112,63 +115,63 @@
         <translation>Dysk wymienny</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="221"/>
-        <location filename="../libdbm/util/utils.cpp" line="365"/>
+        <location filename="../libdbm/util/utils.cpp" line="223"/>
+        <location filename="../libdbm/util/utils.cpp" line="369"/>
         <source>Removable disk</source>
         <translation>Dysk wymienny</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="118"/>
         <source>Boot Maker</source>
-        <translation>Twórca rozruchu Deepin</translation>
+        <translation>Boot Maker</translation>
     </message>
 </context>
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="149"/>
+        <location filename="../app/view/resultview.cpp" line="137"/>
         <source>Reboot now</source>
         <translation>Uruchom ponownie teraz</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="132"/>
+        <location filename="../app/view/resultview.cpp" line="120"/>
         <source>Done</source>
         <translation>Gotowe</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="66"/>
+        <location filename="../app/view/resultview.cpp" line="68"/>
         <source>Successful</source>
         <translation>Zakończone pomyślnie</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="217"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Dziennik błędów zostanie automatycznie przesłany wraz z informacją zwrotną. Nie możemy poprawić bez Twojej opinii</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="230"/>
+        <location filename="../app/view/resultview.cpp" line="218"/>
         <source>Submit Feedback</source>
         <translation>Prześlij opinię</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="253"/>
+        <location filename="../app/view/resultview.cpp" line="241"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"></translation>
+        <translation>Usługi posprzedażne</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="269"/>
+        <location filename="../app/view/resultview.cpp" line="254"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="277"/>
+        <location filename="../app/view/resultview.cpp" line="262"/>
         <source>Sorry, process failed</source>
-        <translation>Przepraszamy, błąd tworzenia</translation>
+        <translation>Przepraszamy, proces nie powiódł się</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="278"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Process failed</source>
-        <translation>Błąd tworzenia</translation>
+        <translation>Proces nie powiódł się</translation>
     </message>
 </context>
 <context>
@@ -176,63 +179,63 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Weryfikuję dane i bezpiecznie usuwam media, proszę czekać...</translation>
     </message>
 </context>
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="87"/>
+        <location filename="../app/view/usbselectview.cpp" line="95"/>
         <source>Select a partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz partycję</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="114"/>
+        <location filename="../app/view/usbselectview.cpp" line="122"/>
         <source>Format the partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatuj partycję</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="162"/>
+        <location filename="../app/view/usbselectview.cpp" line="171"/>
         <source>Start</source>
-        <translation>Rozpocznij tworzenie</translation>
+        <translation>Rozpocznij</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="166"/>
+        <location filename="../app/view/usbselectview.cpp" line="175"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstecz</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="222"/>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatowanie usunie wszystkie dane z partycji, ale zwiększy szansę na ukończenie instalacji. Potwierdź przed kontynuacją.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="318"/>
+        <location filename="../app/view/usbselectview.cpp" line="368"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatowanie partycji usunie wszystkie dane! Upewnij się, że masz kopię zapasową przed kontynuacją.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="335"/>
+        <location filename="../app/view/usbselectview.cpp" line="402"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd formatowania dysku: Sformatuj partycję jako FAT32.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="147"/>
+        <location filename="../app/view/usbselectview.cpp" line="156"/>
         <source>No disk available</source>
         <translation>Brak dostępnego dysku</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="316"/>
+        <location filename="../app/view/usbselectview.cpp" line="365"/>
         <source>Format Partition</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatuj partycję.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="319"/>
+        <location filename="../app/view/usbselectview.cpp" line="372"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="320"/>
+        <location filename="../app/view/usbselectview.cpp" line="374"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>

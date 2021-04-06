@@ -2,27 +2,32 @@
 <context>
     <name>BMHandler</name>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="12"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>دىسكا فورماتى خاتا: فورماتلىماقچى بولغان رايوننى تاللاڭ ياكى بىخەتەرلىك مەركىزىنىڭ USB نى ئاپتوماتىك تەكشۈرۈش ئىقتىدارىنى تاقىۋەتكەندىن كېيىن قايتا سىناڭ</translation>
+    </message>
+    <message>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
         <translation>دىسكىنى فورماتلاشتا خاتالىق كۆرۈلدى، قايتا سىناپ بېقىڭ</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="15"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
         <translation>دىسكا بوشلۇقى يېتىشمىدى: يېتەرلىك بوشلۇق بولۇشقا كاپالەتلىك قىلىڭ</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="18"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
         <translation>دىسكا يۈكلەش خاتا: قايتىدىن دىسكا كىرگۈزۈڭ ياكى سىستېمىنى قايتا قوزغىتىپ سىناپ بېقىڭ</translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="21"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
         <translation>تەسۋىرنى پىرېستىن يېشىش مەغلۇب بولدى: تەسۋىر ھۆججىتىنىڭ md5 سىنى تەكشۈرۈپ سۈرەت ھۆججىتىنىڭ مۇكەممەل ئىكەنلىكىنى جەزملەشتۈرۈڭ </translation>
     </message>
     <message>
-        <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
+        <location filename="../libdbm/backend/bmhandler.cpp" line="33"/>
         <source>Internal Error</source>
         <translation>نامەلۇم خاتالىق</translation>
     </message>
@@ -43,12 +48,12 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="125"/>
+        <location filename="../app/view/isoselectview.cpp" line="126"/>
         <source>Drag an ISO image file here</source>
         <translation>ئوپتىكىلىق دىسكا تەسۋىر ھۆججىتىنى بۇ يەرگە ئەكىرىڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="144"/>
+        <location filename="../app/view/isoselectview.cpp" line="145"/>
         <source>OR</source>
         <translation>ياكى</translation>
     </message>
@@ -59,22 +64,22 @@
         <translation>ئوپتىكىلىق دىسكا تەسۋىر ھۆججىتىنى تاللاڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="214"/>
+        <location filename="../app/view/isoselectview.cpp" line="211"/>
         <source>Next</source>
         <translation>كېيىنكى </translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="300"/>
+        <location filename="../app/view/isoselectview.cpp" line="297"/>
         <source>Reselect an ISO image file</source>
         <translation>ئوپتىكىلىق دىسكا تەسۋىر ھۆججىتىنى قايتىدىن تاللاڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="237"/>
+        <location filename="../app/view/isoselectview.cpp" line="234"/>
         <source>Illegal ISO image file</source>
         <translation>ISO ھۆججىتى قانۇنسىز </translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="441"/>
+        <location filename="../app/view/isoselectview.cpp" line="438"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>ISO ھۆججىتىنى تەكشۈرۈۋاتىدۇ، سەل ساقلاڭ...</translation>
     </message>
@@ -110,8 +115,8 @@
         <translation>يۆتكىلىشچان دىسكا</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="221"/>
-        <location filename="../libdbm/util/utils.cpp" line="365"/>
+        <location filename="../libdbm/util/utils.cpp" line="223"/>
+        <location filename="../libdbm/util/utils.cpp" line="369"/>
         <source>Removable disk</source>
         <translation>يۆتكىلىشچان دىسكا</translation>
     </message>
@@ -124,47 +129,47 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="149"/>
+        <location filename="../app/view/resultview.cpp" line="137"/>
         <source>Reboot now</source>
         <translation>ھازىرلا قايتا قوزغىتىش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="132"/>
+        <location filename="../app/view/resultview.cpp" line="120"/>
         <source>Done</source>
         <translation>تامام</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="66"/>
+        <location filename="../app/view/resultview.cpp" line="68"/>
         <source>Successful</source>
         <translation>ياساش مۇۋەپپەقىيەتلىك بولدى</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="228"/>
+        <location filename="../app/view/resultview.cpp" line="217"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>مەسىلە ئىنكاس قىلغاندا خاتا كۈندىلىك خاتىرە ئاپتوماتىك يوللىنىدۇ، تەرەققىياتىمىز سىزنىڭ ئىنكاسىڭىز ۋە قوللىشىڭىزدىن ئايرىلالمايدۇ </translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="229"/>
+        <location filename="../app/view/resultview.cpp" line="218"/>
         <source>Submit Feedback</source>
         <translation>ئىنكاس تاپشۇرۇش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="252"/>
+        <location filename="../app/view/resultview.cpp" line="241"/>
         <source>After-Sale Services</source>
         <translation>سېتىشتىن كېيىنكى مۇلازىمەت</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="268"/>
+        <location filename="../app/view/resultview.cpp" line="254"/>
         <source>Close</source>
         <translation>تاقاش</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="276"/>
+        <location filename="../app/view/resultview.cpp" line="262"/>
         <source>Sorry, process failed</source>
         <translation>ياساش مەغلۇپ بولدى، كەچۈرۈڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="277"/>
+        <location filename="../app/view/resultview.cpp" line="263"/>
         <source>Process failed</source>
         <translation>ياساش مەغلۇپ بولدى</translation>
     </message>
@@ -180,57 +185,57 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="87"/>
+        <location filename="../app/view/usbselectview.cpp" line="95"/>
         <source>Select a partition</source>
         <translation>رايون تاللاڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="114"/>
+        <location filename="../app/view/usbselectview.cpp" line="122"/>
         <source>Format the partition</source>
         <translation>رايوننى فورماتلاش</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="162"/>
+        <location filename="../app/view/usbselectview.cpp" line="171"/>
         <source>Start</source>
         <translation>ياساشنى باشلاش</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="166"/>
+        <location filename="../app/view/usbselectview.cpp" line="175"/>
         <source>Back</source>
         <translation>قايتىش</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="222"/>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
         <translation>فورماتلاش رايوندىكى بارلىق سانلىق مەلۇماتلارنى ئۆچۈرۈۋېتىدۇ، ئەمما مۇۋەپپەقىيەت قازىنىش نىسبىتىنى ئاشۇرالايدۇ، داۋاملاشتۇرۇشتىن بۇرۇن جەزملەشتۈرۈڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="318"/>
+        <location filename="../app/view/usbselectview.cpp" line="368"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
         <translation>رايوننى فورماتلىسىڭىز بارلىق سانلىق مەلۇماتلارنى ئۆچۈرۈۋېتىدۇ، زاپاسلىۋالغاندىن كېيىن داۋملاشتۇرۇڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="335"/>
+        <location filename="../app/view/usbselectview.cpp" line="402"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation>دىىسكا فورماتى خاتا: FAT32 فورمات ئارقىلىق دىسكىنى قايتىدىن فورماتلاڭ</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="147"/>
+        <location filename="../app/view/usbselectview.cpp" line="156"/>
         <source>No disk available</source>
         <translation>ئىشلەتكىلى بولىدىغان دىسكا تېپىلمىدى</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="316"/>
+        <location filename="../app/view/usbselectview.cpp" line="365"/>
         <source>Format Partition</source>
         <translation>رايوننى فورماتلاش</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="319"/>
+        <location filename="../app/view/usbselectview.cpp" line="372"/>
         <source>Cancel</source>
         <translation>بىكار قىلىش</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="320"/>
+        <location filename="../app/view/usbselectview.cpp" line="374"/>
         <source>OK</source>
         <translation>جەزىملەشتۈرۈش</translation>
     </message>
