@@ -177,7 +177,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //    qf.setBold(false);
 //    m_fileSelect->setFont(qf);
 
-    isoPanelLayout->addSpacing(63);
+    isoPanelLayout->addStretch();
     isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
 //    isoPanelLayout->addWidget(isoIconDoNothing, 0, Qt::AlignHCenter);
     isoPanelLayout->addSpacing(3);
@@ -190,6 +190,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanelLayout->addSpacing(7);
     isoPanelLayout->addWidget(m_fileSelect, 0, Qt::AlignHCenter);
     isoPanelLayout->addStretch();
+    isoPanel->setLayout(isoPanelLayout);
 
     m_checkFile = new DLabel();
     m_checkFile->setObjectName("IsoFileSelect");
@@ -283,7 +284,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 //            isoPanelLayout->addStretch();
         }
         spliter->hide();
-        isoPanelLayout->addSpacing(63);
+        isoPanelLayout->addStretch();
         isoPanelLayout->addWidget(isoIcon, 0, Qt::AlignHCenter);
         isoPanelLayout->addSpacing(2);
         isoPanelLayout->addWidget(m_fileLabel, 0, Qt::AlignHCenter);

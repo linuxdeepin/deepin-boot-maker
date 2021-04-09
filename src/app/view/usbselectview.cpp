@@ -107,7 +107,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     DFrame *usbDeviceListPanel = new DFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
-    usbDeviceListPanel->setFixedSize(410, 302);
+    usbDeviceListPanel->setFixedSize(410, 282);
     usbDeviceListPanel->setFrameStyle(QFrame::NoFrame);
     usbDeviceListPanel->setAutoFillBackground(true);
 
@@ -357,7 +357,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         if (format)
         {
             DDialog msgbox(this);
-            msgbox.setFixedSize(380, 240);
+            msgbox.setFixedSize(380, 275);
             msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
             QWidget* pInnerWidget = new QWidget;
             pInnerWidget->deleteLater();
@@ -370,8 +370,10 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             pLabelMsg->setAlignment(Qt::AlignCenter);
             pLabelMsg->setWordWrap(true);
             QPushButton* pBtnCancel = new QPushButton(tr("Cancel"));
+            pBtnCancel->setFixedHeight(40);
             DWarningButton* pBtnOk = new DWarningButton;
             pBtnOk->setText(tr("OK"));
+            pBtnOk->setFixedHeight(40);
             QHBoxLayout* pHlayout = new QHBoxLayout;
             pHlayout->addWidget(pBtnCancel);
             pHlayout->addWidget(pBtnOk);

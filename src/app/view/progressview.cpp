@@ -64,7 +64,6 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
-    m_title->setFixedHeight(40);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 //    QFont qf = m_title->font();
 //    if (m_fontList.size() > 0)
@@ -77,22 +76,18 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 
     DLabel *m_hitsTitle = new DLabel(tr("Burning, please wait..."));
     m_hitsTitle->setObjectName("ProgressHitsTitle");
-    //m_hitsTitle->setFixedHeight(25);
     DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
-//    qf = m_hitsTitle->font();
-//    qf.setPixelSize(17);
-//    if (m_fontList.size() > 1)
-//        qf.setFamily(m_fontList.at(1));
-////    qf.setBold(true);
-//    m_hitsTitle->setFont(qf);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
+    m_hitsTitle->setWordWrap(true);
+    m_hitsTitle->setContentsMargins(20, 0, 20, 0);
 
     DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
 //    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
 //    m_hits->setFixedSize(213, 17);
-    m_hits->setFixedSize(250, 50);
     m_hits->setWordWrap(true);
+    m_hits->setAlignment(Qt::AlignCenter);
+    m_hits->setContentsMargins(20, 0, 20, 0);
     DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
 //    QFont qf = m_hits->font();
 ////    qf.setPixelSize(12);
@@ -111,20 +106,13 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     start->setObjectName("ProgressCancel");
     start->setText(tr("Cancel"));
     DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
-//    qf = start->font();
-//    if (m_fontList.size() > 0)
-//        qf.setFamily(m_fontList.at(0));
-//    qf.setPixelSize(14);
-//    start->setFont(qf);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(95);
+    mainLayout->addStretch();
     mainLayout->addWidget(m_waterProgress, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(26);
-    mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(0);
-    mainLayout->addWidget(m_hits, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(0);
+    mainLayout->addWidget(m_hitsTitle);
+    mainLayout->addWidget(m_hits);
     mainLayout->addWidget(start, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
 
@@ -158,9 +146,6 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
-//            pa = m_title->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
-//            m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);

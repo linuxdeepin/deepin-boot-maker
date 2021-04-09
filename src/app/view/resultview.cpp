@@ -52,7 +52,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     setAutoFillBackground(true);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 1, 0, 0);
-    mainLayout->setSpacing(0);
 
 //    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
 //    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
@@ -70,7 +69,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
-    m_title->setFixedHeight(40);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 //    QFont qf = m_title->font();
 //    if (m_fontList.size() > 0)
@@ -88,7 +86,8 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     brush = DApplicationHelper::instance()->palette(m_hitsTitle).text();
     pa.setBrush(DPalette::Text, brush);
     m_hitsTitle->setPalette(pa);
-    m_hitsTitle->setFixedWidth(340);
+    m_hitsTitle->setAlignment(Qt::AlignCenter);
+    m_hitsTitle->setContentsMargins(20, 0, 20, 0);
 
     DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
 //    qf = m_hitsTitle->font();
@@ -97,7 +96,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 //        qf.setFamily(m_fontList.at(1));
 ////    qf.setBold(true);
 //    m_hitsTitle->setFont(qf);
-    m_hitsTitle->setAlignment(Qt::AlignCenter);
 
 //    QString hitsFormat = "<a style='color:#b4b4b4; font-size:11px'>%1</a>";
 //    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
@@ -108,7 +106,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setContentsMargins(20, 0, 20, 0);
     m_logHits->setWordWrap(true);
-    m_logHits->setAlignment(Qt::AlignTop | Qt::AlignHCenter);
+    m_logHits->setAlignment(Qt::AlignHCenter);
     DFontSizeManager::instance()->bind(m_logHits, DFontSizeManager::T8);
 
 
@@ -142,11 +140,10 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 //    m_rebootNow->setFont(qf);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(87);
+    mainLayout->addStretch();
     mainLayout->addWidget(m_resultIcon, 0, Qt::AlignHCenter);
     mainLayout->addSpacing(11);
-    mainLayout->addWidget(m_hitsTitle, 0, Qt::AlignHCenter);
-    mainLayout->addSpacing(0);
+    mainLayout->addWidget(m_hitsTitle);
     mainLayout->addWidget(m_logHits);
     mainLayout->addStretch();
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignHCenter|Qt::AlignBottom);
@@ -172,26 +169,25 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 //            pa = m_title->palette();
 //            pa.setColor(DPalette::WindowText, QColor("#414D68"));
 //            m_title->setPalette(pa);
-//            pa = m_hitsTitle->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
-//            m_hitsTitle->setPalette(pa);
-//            pa = m_logHits->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
-//            m_logHits->setPalette(pa);
-        } else if (themeType == DGuiApplicationHelper::DarkType)
-        {
+            pa = m_hitsTitle->palette();
+            pa.setColor(DPalette::WindowText, QColor("#001A2E"));
+            m_hitsTitle->setPalette(pa);
+            pa = m_logHits->palette();
+            pa.setColor(DPalette::WindowText, QColor("#526A7F"));
+            m_logHits->setPalette(pa);
+        } else if (themeType == DGuiApplicationHelper::DarkType) {
             pa = palette();
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
 //            pa = m_title->palette();
 //            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
 //            m_title->setPalette(pa);
-//            pa = m_hitsTitle->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
-//            m_hitsTitle->setPalette(pa);
-//            pa = m_logHits->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
-//            m_logHits->setPalette(pa);
+            pa = m_hitsTitle->palette();
+            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
+            m_hitsTitle->setPalette(pa);
+            pa = m_logHits->palette();
+            pa.setColor(DPalette::WindowText, QColor("#6D7C88"));
+            m_logHits->setPalette(pa);
         }
     });
 

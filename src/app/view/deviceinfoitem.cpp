@@ -68,7 +68,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     QBrush brush = DApplicationHelper::instance()->palette(m_deviceLabel).text();
     pa.setBrush(DPalette::Text, brush);
     m_deviceLabel->setText(name);
-    m_deviceLabel->setFixedHeight(20);
+    m_deviceLabel->setFixedHeight(25);
     DFontSizeManager::instance()->bind(m_deviceLabel, DFontSizeManager::T6);
 //    QFont qf = m_deviceLabel->font();
 //    qf.setPixelSize(14);
@@ -77,7 +77,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     auto m_deviceDevName = new DLabel;
     m_deviceDevName->setObjectName("DeviceInfoDevName");
     m_deviceDevName->setText(QString("%1").arg(device));
-    m_deviceDevName->setFixedHeight(18);
+    m_deviceDevName->setFixedHeight(20);
     DFontSizeManager::instance()->bind(m_deviceDevName, DFontSizeManager::T8);
 //    qf = m_deviceDevName->font();
 //    qf.setPixelSize(12);
@@ -140,7 +140,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     mainLayout->addWidget(m_bodywidget, 0, Qt::AlignLeft);
     mainLayout->addSpacing(10);
     mainLayout->addWidget(m_fillingposition, 0, Qt::AlignRight);
-    setFixedSize(400, 60);
+    setFixedSize(400, 70);
     setProperty("needformat", false);
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
