@@ -357,7 +357,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         if (format)
         {
             DDialog msgbox(this);
-            msgbox.setFixedSize(380, 275);
+            msgbox.setFixedSize(380, 300);
             msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
             QWidget* pInnerWidget = new QWidget;
             pInnerWidget->deleteLater();
