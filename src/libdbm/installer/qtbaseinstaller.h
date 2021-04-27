@@ -69,6 +69,8 @@ private:
     bool extractISO();
     bool syncIO();
     bool configSyslinux();
+    bool needAddRepo();
+    void modifyBootGrubFile();
 
 signals:
     void progressfinished(ProgressStatus status, BMHandler::ErrorType error);

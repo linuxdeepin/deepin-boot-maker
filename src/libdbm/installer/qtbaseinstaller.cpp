@@ -26,6 +26,7 @@
 #include <QDebug>
 #include <XSys>
 #include <QVector>
+#include <QDir>
 
 QtBaseInstaller::QtBaseInstaller(QObject *parent) : QObject(parent)
   ,m_sevenZipCheck("","")
@@ -147,6 +148,12 @@ void QtBaseInstaller::beginInstall()
     }
 
     configSyslinux();
+    //通过判断镜像中是否存在anaconda的文件夹来推测该镜像的安装器
+
+    if(needAddRepo()) {
+        modifyBootGrubFile();
+    }
+
     emit this->reportProgress(100, "finish", "");
 
     if (m_bStop) {
@@ -447,4 +454,63 @@ bool QtBaseInstaller::configSyslinux()
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
     qDebug() << "configure syslinux, installDir:" << installDir;
     return XSys::Syslinux::ConfigSyslinx(installDir).isSuccess();
+}
+
+bool QtBaseInstaller::needAddRepo()
+{
+    QStringList args;
+    args << "-f" << "-i" << m_strImage;
+    XSys::Result ret = XSys::SynExec("isoinfo", args);
+
+    if (!ret.isSuccess()) {
+        qWarning() << "call isoinfo failed" << ret.result();
+        return false;
+    }
+
+    QStringList strList = ret.result().split("\n");
+    QStringList strPackagesList = strList.filter("/Packages/anaconda_", Qt::CaseInsensitive);
+    QStringList strReleaseList = strList.filter("/Packages/UnionTech_release_", Qt::CaseInsensitive);
+    return (!strPackagesList.isEmpty()&&!strReleaseList.isEmpty());
+}
+
+void QtBaseInstaller::modifyBootGrubFile()
+{
+    QString strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
+    QString strFullFileName = strMountPt + "/EFI/BOOT/grub.cfg";
+
+    if (QFile::exists(strFullFileName)) {
+        QFile readFile(strFullFileName);
+
+        if (!readFile.open(QIODevice::ReadOnly)) {
+            qCritical() << readFile.errorString();
+            return;
+        }
+
+        QString strTempFileName = strMountPt + "/EFI/BOOT/tempgrub.cfg";
+        QFile writeFile(strTempFileName);
+
+        if (!writeFile.open(QIODevice::ReadWrite|QIODevice::Truncate)) {
+            qCritical() << writeFile.errorString();
+            return;
+        }
+
+        while (!readFile.atEnd()) {
+            QString strData = readFile.readLine();
+            QString strData2 = strData.trimmed();
+
+            if (strData2.startsWith("linux")&&(strData2.contains("inst.stage2"))&&(!strData2.contains("inst.repo="))) {
+                QString strUUID = XSys::DiskUtil::getPartitionUUID(m_strPartionName);
+                strData.remove("\n");
+                strData.append(" ");
+                strData.append(QString("inst.repo=hd:UUID=%1\n").arg(strUUID));
+            }
+
+            writeFile.write(QByteArray::fromStdString(strData.toStdString()));
+        }
+
+        readFile.close();
+        writeFile.close();
+        QFile::remove(strFullFileName);
+        QFile::rename(strTempFileName, strFullFileName);
+    }
 }
