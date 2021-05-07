@@ -34,6 +34,7 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     : QObject(parent)
     ,m_eventLoop(this)
     ,m_bExit(true)
+    ,m_sevenz(this)
 {
 #ifdef Q_OS_WIN32
     QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
@@ -53,6 +54,9 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     QString sevnz = "7z";
 #endif
 
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    env.insert("LANG", "zh_CN.UTF-8"); // Add an environment variable
+    m_sevenz.setProcessEnvironment(env);
     m_szpp = new SevenZipProcessParser("", &m_sevenz);
     m_sevenZip = sevnz;
     m_archiveFile = image;
