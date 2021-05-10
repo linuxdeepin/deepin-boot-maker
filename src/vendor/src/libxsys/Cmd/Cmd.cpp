@@ -60,7 +60,7 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
     }
 
     if (0 != app.exitCode()) {
-        qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
+        //qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
         return Result(Result::Failed, standardError, "", app.program());
     }
 
@@ -102,7 +102,7 @@ static Result runApp(const QString &execPath, const QStringList &args)
     }
 
     if (0 != app.exitCode()) {
-        qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
+        //qWarning() << "exitCode error:" << app.exitCode() << standardError << app.program();
         return Result(Result::Failed, standardError, "", app.program());
     }
 
