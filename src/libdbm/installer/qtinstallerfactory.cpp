@@ -29,6 +29,8 @@
 #include "qtarminstaller.h"
 #elif defined(__sw_64__)
 #include "qtswinstaller.h"
+#else
+#include "qtotherinstaller.h"
 #endif
 
 #include <QDebug>
@@ -61,7 +63,8 @@ QtBaseInstaller* QtInstallerFactory::createInstaller()
     qDebug() << "Architecture:SW";
     pInstaller = new QtSwInstaller;
 #else
-#error "not support architecture"
+    qDebug() << "Architecture:Other";
+    pInstaller = new QtOtherInstaller;
 #endif
 
     return pInstaller;
