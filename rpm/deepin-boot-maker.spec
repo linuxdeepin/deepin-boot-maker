@@ -59,9 +59,10 @@ export PATH=%{_qt5_bindir}:$PATH
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/%{name}
+%{_bindir}/*
 %{_datadir}/*
 /usr/lib/deepin-daemon/deepin-boot-maker-service
+
 
 
 %changelog
