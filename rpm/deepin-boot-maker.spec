@@ -32,6 +32,7 @@ BuildRequires: libXext-devel
 
 %ifarch x86_64
 Requires: syslinux
+Requires: syslinux-nonlinux
 %endif
 Requires: p7zip
 Requires: mtools
