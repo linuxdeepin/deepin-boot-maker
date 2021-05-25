@@ -70,7 +70,7 @@ private:
     bool syncIO();
     bool configSyslinux();
     bool needAddRepo();
-    void modifyBootGrubFile();
+    void modifyBootGrubFile(QString grub_file_name);
 
 signals:
     void progressfinished(ProgressStatus status, BMHandler::ErrorType error);

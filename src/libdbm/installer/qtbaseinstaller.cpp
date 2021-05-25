@@ -151,7 +151,8 @@ void QtBaseInstaller::beginInstall()
     //通过判断镜像中是否存在anaconda的文件夹来推测该镜像的安装器
 
     if(needAddRepo()) {
-        modifyBootGrubFile();
+        modifyBootGrubFile("/EFI/BOOT/grub.cfg");
+        modifyBootGrubFile("/isolinux/grub.conf");
     }
 
     emit this->reportProgress(100, "finish", "");
@@ -473,10 +474,10 @@ bool QtBaseInstaller::needAddRepo()
     return (!strPackagesList.isEmpty()&&!strReleaseList.isEmpty());
 }
 
-void QtBaseInstaller::modifyBootGrubFile()
+void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
 {
     QString strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
-    QString strFullFileName = strMountPt + "/EFI/BOOT/grub.cfg";
+    QString strFullFileName = strMountPt + grub_file_name;
 
     if (QFile::exists(strFullFileName)) {
         QFile readFile(strFullFileName);
@@ -498,7 +499,7 @@ void QtBaseInstaller::modifyBootGrubFile()
             QString strData = readFile.readLine();
             QString strData2 = strData.trimmed();
 
-            if (strData2.startsWith("linux")&&(strData2.contains("inst.stage2"))&&(!strData2.contains("inst.repo="))) {
+            if ((strData2.startsWith("linux") || strData2.startsWith("kernel")) && (strData2.contains("inst.stage2")) && (!strData2.contains("inst.repo="))) {
                 QString strUUID = XSys::DiskUtil::getPartitionUUID(m_strPartionName);
                 strData.remove("\n");
                 strData.append(" ");
