@@ -152,7 +152,7 @@ void QtBaseInstaller::beginInstall()
 
     if(needAddRepo()) {
         modifyBootGrubFile("/EFI/BOOT/grub.cfg");
-        modifyBootGrubFile("/isolinux/grub.conf");
+        modifyBootGrubFile("/syslinux/syslinux.cfg");
     }
 
     emit this->reportProgress(100, "finish", "");
@@ -487,7 +487,8 @@ void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
             return;
         }
 
-        QString strTempFileName = strMountPt + "/EFI/BOOT/tempgrub.cfg";
+        //QString strTempFileName = strMountPt + "/EFI/BOOT/tempgrub.cfg";
+        QString strTempFileName = strMountPt + "/tempfile";
         QFile writeFile(strTempFileName);
 
         if (!writeFile.open(QIODevice::ReadWrite|QIODevice::Truncate)) {
@@ -499,7 +500,7 @@ void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
             QString strData = readFile.readLine();
             QString strData2 = strData.trimmed();
 
-            if ((strData2.startsWith("linux") || strData2.startsWith("kernel")) && (strData2.contains("inst.stage2")) && (!strData2.contains("inst.repo="))) {
+            if ((strData2.startsWith("linux") || strData2.startsWith("append")) && (strData2.contains("inst.stage2")) && (!strData2.contains("inst.repo="))) {
                 QString strUUID = XSys::DiskUtil::getPartitionUUID(m_strPartionName);
                 strData.remove("\n");
                 strData.append(" ");
