@@ -297,6 +297,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
         isoPanelLayout->addStretch();
         m_selectText = tr("Reselect an ISO image file");
         slot_ThemeChange();
+        this->activateWindow();
     });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &ISOSelectView :: slot_ThemeChange);
