@@ -53,28 +53,12 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
-//    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
-//    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
-//    QStringList m_fontList;
-//    m_fontList.clear();
-//    if (lcdFontId != -1) {
-//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-//    }
-//    if (lcdFontId != -1) {
-//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
-//    }
-
     m_title = new DLabel(tr("Successful"));
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
-//    QFont qf = m_title->font();
-//    if (m_fontList.size() > 0)
-//        qf.setFamily(m_fontList.at(0));
-//    qf.setPixelSize(24);
-//    m_title->setFont(qf);
 
     m_resultIcon = new DLabel();
     m_resultIcon->setObjectName("ResultIcon");
@@ -90,19 +74,8 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setContentsMargins(20, 0, 20, 0);
 
     DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
-//    qf = m_hitsTitle->font();
-//    qf.setPixelSize(17);
-//    if (m_fontList.size() > 1)
-//        qf.setFamily(m_fontList.at(1));
-////    qf.setBold(true);
-//    m_hitsTitle->setFont(qf);
 
-//    QString hitsFormat = "<a style='color:#b4b4b4; font-size:11px'>%1</a>";
-//    QString tagBegin = "<a href='#show_log'><span style='text-decoration: underline; color:#1B85ff;'>";
-//    QString tagEnd = "</span></a>";
-//    QString log = tr("Installation logs are stored in %1HERE%2, you can upload to forum to help us solve your problem.");
     m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
-//    m_logHits = new DTipLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);   如果不注释这一行，Windows上无法编译
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setContentsMargins(20, 0, 20, 0);
     m_logHits->setWordWrap(true);
@@ -110,7 +83,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_logHits, DFontSizeManager::T8);
 
 
-//    m_rebootLater = new SuggestButton();
     m_rebootLater = new DPushButton();
     m_rebootLater->setFocusPolicy(Qt::NoFocus);
     m_rebootLater->setFixedSize(310, 36);
@@ -118,26 +90,13 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_rebootLater->setText(tr("Done"));
     m_rebootLater->setProperty("normal", true);
     DFontSizeManager::instance()->bind(m_rebootLater, DFontSizeManager::T6);
-//    qf = m_rebootLater->font();
-//    if (m_fontList.size() > 0)
-//        qf.setFamily(m_fontList.at(0));
-//    qf.setPixelSize(14);
-//    m_rebootLater->setFont(qf);
-    /*
-    rebootLater->style()->unpolish(rebootLater);
-    rebootLater->style()->polish(rebootLater);*/
 
-//    m_rebootNow = new SuggestButton();
     m_rebootNow = new DPushButton();
     m_rebootNow->setFocusPolicy(Qt::NoFocus);
     m_rebootNow->setFixedSize(310, 36);
     m_rebootNow->setObjectName("RebootLater");
     m_rebootNow->setText(tr("Reboot now"));
     DFontSizeManager::instance()->bind(m_rebootNow, DFontSizeManager::T6);
-//    qf = m_rebootNow->font();
-//    qf.setFamily("SourceHanSansSC-Medium");
-//    qf.setPixelSize(14);
-//    m_rebootNow->setFont(qf);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
@@ -147,10 +106,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(m_logHits);
     mainLayout->addStretch();
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignHCenter|Qt::AlignBottom);
-//    mainLayout->addSpacing(15);
-//    m_rebootNow->hide();
-//    mainLayout->addWidget(m_rebootNow, 0, Qt::AlignCenter);
-
 
     connect(m_rebootNow, &DPushButton::clicked,
     this, [ = ]() {
@@ -166,9 +121,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
             setPalette(pa);
-//            pa = m_title->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#414D68"));
-//            m_title->setPalette(pa);
+
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);
@@ -179,9 +132,6 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor("#292929"));
             setPalette(pa);
-//            pa = m_title->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
-//            m_title->setPalette(pa);
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
             m_hitsTitle->setPalette(pa);

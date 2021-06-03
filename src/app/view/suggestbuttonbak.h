@@ -44,7 +44,6 @@ protected:
 
 private:
     qreal m_filletradii;
-//    QString m_text;
     bool  israised;
 };
 

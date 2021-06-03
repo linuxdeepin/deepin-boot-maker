@@ -48,28 +48,12 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
-//    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
-//    int lcdFontId1 = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Bold.ttf");
-//    QStringList m_fontList;
-//    m_fontList.clear();
-//    if (lcdFontId != -1) {
-//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-//    }
-//    if (lcdFontId != -1) {
-//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId1);
-//    }
-
     DLabel *m_title = new DLabel(tr("Burning"));
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
-//    QFont qf = m_title->font();
-//    if (m_fontList.size() > 0)
-//        qf.setFamily(m_fontList.at(0));
-//    qf.setPixelSize(24);
-//    m_title->setFont(qf);
 
     m_waterProgress = new Dtk::Widget::DWaterProgress;
     m_waterProgress->setFixedSize(100, 100);
@@ -82,24 +66,13 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setContentsMargins(20, 0, 20, 0);
 
     DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
-//    DLabel *m_hits = new DLabel(tr("Do not remove the disk or shut down the computer during the process"));
     m_hits->setObjectName("ProgressHits");
-//    m_hits->setFixedSize(213, 17);
     m_hits->setWordWrap(true);
     m_hits->setAlignment(Qt::AlignCenter);
     m_hits->setContentsMargins(20, 0, 20, 0);
     DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
-//    QFont qf = m_hits->font();
-////    qf.setPixelSize(12);
-//    qf.setLetterSpacing(QFont::AbsoluteSpacing, 2);
-//    m_hits->setFont(qf);
     m_hits->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
-//    DPalette pa = DApplicationHelper::instance()->palette(m_hits);
-//    QBrush brush = DApplicationHelper::instance()->palette(m_hits).textTips();
-//    pa.setBrush(DPalette::WindowText, brush);
-//    m_hits->setPalette(pa);
 
-//    SuggestButton *start = new SuggestButton();
     DPushButton *start = new DPushButton();
     start->setFocusPolicy(Qt::NoFocus);
     start->setFixedSize(310, 36);
@@ -119,10 +92,6 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     m_waterProgress->setValue(0);
     m_waterProgress->start();
 
-//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/ProgressView.theme"));
-//    this->setStyleSheet("#ProgressHits{line-height: 1.67;}");
-
-//    connect(start, &SuggestButton::clicked, this, &ProgressView::testCancel);
     start->hide();
 
 
@@ -135,9 +104,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             pa = palette();
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
             setPalette(pa);
-//            pa = m_title->palette();
-//            pa.setColor(DPalette::WindowText, QColor("#414D68"));
-//            m_title->setPalette(pa);
+
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#001A2E"));
             m_hitsTitle->setPalette(pa);

@@ -63,20 +63,16 @@ public:
 signals:
     void requestVerfiyISOFile(const QString &file);
     void isoFileSelected();
-//    void checkFileFinish();
 
 public slots:
     void onFileSelected(const QString &file);
     void onFileVerfiyFinished(bool ok);
     void slot_ThemeChange();
-//    void checkFileResult(bool result);
 
 private:
     DLabel          *m_hits         = nullptr;
     DLabel          *m_fileLabel    = nullptr;
-//    QLabel          *m_stateLabel    = nullptr;
     DLabel          *m_fileSelect   = nullptr;
-//    SuggestButton   *m_nextSetp     = nullptr;
     DPushButton   *m_nextSetp     = nullptr;
     DLabel          *m_title     = nullptr;
     DropFrame       *isoPanel     = nullptr;
@@ -87,6 +83,5 @@ private:
     DLabel          *m_checkFile     = nullptr;
     ThreadCheckFile t_checkfile;
     DLabel *isoIcon = nullptr;
-//    DLabel *isoIconDoNothing = nullptr;
 };
 

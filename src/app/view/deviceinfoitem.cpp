@@ -50,9 +50,6 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     : DWidget(parent)
 {
     s_removeDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive.svg", this);
-//    s_selectDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive-select.svg", this);
-
-//    this->setStyleSheet(WidgetUtil::getQss(":/theme/light/DeviceInfoItem.theme"));
 
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->setContentsMargins(9, 0, 6, 0);
@@ -70,27 +67,20 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     m_deviceLabel->setText(name);
     m_deviceLabel->setFixedHeight(25);
     DFontSizeManager::instance()->bind(m_deviceLabel, DFontSizeManager::T6);
-//    QFont qf = m_deviceLabel->font();
-//    qf.setPixelSize(14);
-//    m_deviceLabel->setFont(qf);
 
     auto m_deviceDevName = new DLabel;
     m_deviceDevName->setObjectName("DeviceInfoDevName");
     m_deviceDevName->setText(QString("%1").arg(device));
     m_deviceDevName->setFixedHeight(20);
     DFontSizeManager::instance()->bind(m_deviceDevName, DFontSizeManager::T8);
-//    qf = m_deviceDevName->font();
-//    qf.setPixelSize(12);
-//    m_deviceDevName->setFont(qf);
+
     m_deviceDevName->setAlignment(Qt::AlignCenter);
     auto m_deviceCapacity = new DLabel;
     m_deviceCapacity->setObjectName("DeviceInfoCapacity");
     m_deviceCapacity->setText(cap);
     m_deviceCapacity->setFixedHeight(18);
     DFontSizeManager::instance()->bind(m_deviceCapacity, DFontSizeManager::T10);
-//    qf = m_deviceCapacity->font();
-//    qf.setPixelSize(10);
-//    m_deviceCapacity->setFont(qf);
+
     m_deviceCapacity->setAlignment(Qt::AlignCenter);
 #if  defined(Q_OS_WIN32)||defined(Q_OS_MAC)
     m_deviceCapacity->hide();
@@ -101,19 +91,8 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
     m_deviceCapacityBar->setTextVisible(false);
     m_deviceCapacityBar->setFixedSize(292, 4);
     m_deviceCapacityBar->setValue(percent);
-//    m_deviceCapacityBar->setStyleSheet(".QProgressBar{background - color: rgba(0, 0, 0, 0.05);border: solid 1px rgba(0, 0, 0, 0.03);border-radius: 1.5px;}"
-//                                       ".QProgressBar::chunk{background - color:#2ca7f8;border-radius: 1.5px;}");
-
-
-//    m_radiobutton = new QRadioButton;
-//    m_radiobutton->setFocusPolicy(Qt::NoFocus);
-//    m_radiobutton->setChecked(false);
-//    m_radiobutton->setFixedSize(20, 20);
-//    m_radiobutton->hide();
-
 
     m_fillingposition    = new DLabel;
-//    m_fillingposition->setFixedSize(30, 30);
 
     auto m_bodywidget = new DWidget;
     auto bodyLayout = new QVBoxLayout(m_bodywidget);
@@ -218,9 +197,6 @@ QPixmap DeviceInfoItem::renderSVG(const QString &filePath, const QSize &size)
 
 void DeviceInfoItem::setCheck(bool flag)
 {
-//    m_deviceIcon->setPixmap(flag ? s_selectDevice : s_removeDevice);
-//    m_radiobutton->setChecked(flag);
-
     if (flag) {
         auto icon = qobject_cast<DStyle *>(style())->standardIcon(DStyle::SP_IndicatorChecked);
         QPixmap pixmap = icon.pixmap(QSize(16, 16), QIcon::Active);

@@ -46,9 +46,6 @@ private:
     QPointer<DLabel> m_hitsTitle;
     QPointer<DLabel> m_resultIcon;
     QPointer<DLabel> m_logHits;
-//    DTipLabel       *m_logHits;
-//    QPointer<SuggestButton> m_rebootLater;
-//    QPointer<SuggestButton> m_rebootNow;
     QPointer<DPushButton> m_rebootLater;
     QPointer<DPushButton> m_rebootNow;
 

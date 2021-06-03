@@ -61,10 +61,8 @@ private:
     QPixmap renderSVG(const QString &filePath, const QSize &size);
     bool checked            = false;
     DLabel *m_deviceIcon    = nullptr;
-//    QRadioButton *m_radiobutton = nullptr;
     DLabel *m_fillingposition    = nullptr;
     QString m_filepath;
     QPixmap s_removeDevice;
-//    QPixmap s_selectDevice;
 };
 

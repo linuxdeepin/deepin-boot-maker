@@ -82,12 +82,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 {
     setObjectName("UsbSelectView");
     setAutoFillBackground(true);
-//    int lcdFontId = QFontDatabase::addApplicationFont(":/theme/SourceHanSansSC-Medium.ttf");
-//    QStringList m_fontList;
-//    m_fontList.clear();
-//    if (lcdFontId != -1) {
-//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-//    }
+
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 1, 0, 0);
@@ -99,11 +94,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     m_title->setPalette(pa);
     m_title->setWordWrap(true);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
-//    QFont ft = m_title->font();
-//    if (m_fontList.size() > 0)
-//        ft.setFamily(m_fontList.at(0));
-//    ft.setPixelSize(24);
-//    m_title->setFont(ft);
 
     DFrame *usbDeviceListPanel = new DFrame;
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
