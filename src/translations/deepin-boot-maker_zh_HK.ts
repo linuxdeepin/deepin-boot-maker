@@ -48,38 +48,38 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="126"/>
+        <location filename="../app/view/isoselectview.cpp" line="112"/>
         <source>Drag an ISO image file here</source>
         <translation>拖拽鏡像文件到此</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="145"/>
+        <location filename="../app/view/isoselectview.cpp" line="120"/>
         <source>OR</source>
         <translation>或者</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="89"/>
-        <location filename="../app/view/isoselectview.cpp" line="163"/>
+        <location filename="../app/view/isoselectview.cpp" line="82"/>
+        <location filename="../app/view/isoselectview.cpp" line="132"/>
         <source>Select an ISO image file</source>
         <translation>選擇一個 ISO 影像檔案</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="211"/>
+        <location filename="../app/view/isoselectview.cpp" line="160"/>
         <source>Next</source>
         <translation>下一步</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="297"/>
+        <location filename="../app/view/isoselectview.cpp" line="215"/>
         <source>Reselect an ISO image file</source>
         <translation>重新選擇鏡像文件</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="234"/>
+        <location filename="../app/view/isoselectview.cpp" line="178"/>
         <source>Illegal ISO image file</source>
         <translation>非法ISO文件</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="438"/>
+        <location filename="../app/view/isoselectview.cpp" line="315"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>正在檢測ISO文件，請稍候...</translation>
     </message>
@@ -87,24 +87,25 @@
 <context>
     <name>ProgressView</name>
     <message>
-        <location filename="../app/view/progressview.cpp" line="62"/>
+        <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
         <translation>正在製作</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="78"/>
+        <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning, please wait...</source>
         <translation>正在製作，請稍後...</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="90"/>
+        <location filename="../app/view/progressview.cpp" line="68"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>製作時請不要移除磁盤或關機</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="112"/>
+        <location filename="../app/view/progressview.cpp" line="80"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <comment>button</comment>
+        <translation>取 消</translation>
     </message>
 </context>
 <context>
@@ -129,47 +130,48 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="137"/>
+        <location filename="../app/view/resultview.cpp" line="98"/>
         <source>Reboot now</source>
         <translation>現在就重新啟動</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="120"/>
+        <location filename="../app/view/resultview.cpp" line="90"/>
         <source>Done</source>
-        <translation>完成</translation>
+        <translation>完 成</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="68"/>
+        <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
         <translation>製作成功</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="217"/>
+        <location filename="../app/view/resultview.cpp" line="163"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>反饋問題時會自動上傳錯誤日誌，我們的進步離不開您的反饋和支持</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="218"/>
+        <location filename="../app/view/resultview.cpp" line="164"/>
         <source>Submit Feedback</source>
         <translation>提交反饋</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="241"/>
+        <location filename="../app/view/resultview.cpp" line="187"/>
         <source>After-Sale Services</source>
         <translation>售後服務</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="254"/>
+        <location filename="../app/view/resultview.cpp" line="200"/>
         <source>Close</source>
-        <translation>關閉</translation>
+        <comment>button</comment>
+        <translation>關 閉</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="262"/>
+        <location filename="../app/view/resultview.cpp" line="208"/>
         <source>Sorry, process failed</source>
         <translation>製作失敗，非常抱歉</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="263"/>
+        <location filename="../app/view/resultview.cpp" line="209"/>
         <source>Process failed</source>
         <translation>製作失敗</translation>
     </message>
@@ -185,59 +187,62 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="95"/>
+        <location filename="../app/view/usbselectview.cpp" line="90"/>
         <source>Select a partition</source>
         <translation>請選擇分區</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="122"/>
+        <location filename="../app/view/usbselectview.cpp" line="112"/>
         <source>Format the partition</source>
         <translation>格式化分區</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="171"/>
+        <location filename="../app/view/usbselectview.cpp" line="161"/>
         <source>Start</source>
         <translation>開始</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="175"/>
-        <source>Back</source>
-        <translation>返回</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <location filename="../app/view/usbselectview.cpp" line="221"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
         <translation>格式化將徹底刪除分區上的數據，但可提高製作成功率，請確認後繼續</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="368"/>
+        <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
         <translation>格式化分區將丟失該分區上所有數據，請做好備份後繼續。</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="402"/>
+        <location filename="../app/view/usbselectview.cpp" line="362"/>
+        <source>Cancel</source>
+        <comment>button</comment>
+        <translation>取 消</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <source>OK</source>
+        <comment>button</comment>
+        <translation>確 定</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="394"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation>磁盤格式錯誤：請使用FAT32格式重新格式化分區</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="156"/>
+        <location filename="../app/view/usbselectview.cpp" line="146"/>
         <source>No disk available</source>
         <translation>未發現可用磁盤</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <location filename="../app/view/usbselectview.cpp" line="165"/>
+        <source>Back</source>
+        <comment>button</comment>
+        <translation>返 回</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="355"/>
         <source>Format Partition</source>
         <translation>格式化分區</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="372"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="374"/>
-        <source>OK</source>
-        <translation>確定</translation>
     </message>
 </context>
 </TS>

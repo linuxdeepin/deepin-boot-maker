@@ -87,7 +87,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_rebootLater->setFocusPolicy(Qt::NoFocus);
     m_rebootLater->setFixedSize(310, 36);
     m_rebootLater->setObjectName("RebootLater");
-    m_rebootLater->setText(tr("Done"));
+    m_rebootLater->setText(tr("Done", "button"));
     m_rebootLater->setProperty("normal", true);
     DFontSizeManager::instance()->bind(m_rebootLater, DFontSizeManager::T6);
 
@@ -197,7 +197,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         break;
     default:
         m_logHits->setText(BMHandler::errorString(errorType));
-        m_rebootLater->setText(tr("Close"));
+        m_rebootLater->setText(tr("Close", "button"));
         m_rebootLater->disconnect();
         connect(m_rebootLater, &DPushButton::clicked,
         this, [ = ]() {

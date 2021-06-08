@@ -162,7 +162,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
     start->setDisabled(true);
     start->setFixedHeight(36);
-    DPushButton* pBackBtn = new DPushButton(tr("Back"));
+    DPushButton* pBackBtn = new DPushButton(tr("Back", "button"));
     pBackBtn->setFocusPolicy(Qt::NoFocus);
     DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
     pBackBtn->setDisabled(false);
@@ -359,10 +359,10 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             DFontSizeManager::instance()->bind(pLabelMsg, DFontSizeManager::T8, 400);
             pLabelMsg->setAlignment(Qt::AlignCenter);
             pLabelMsg->setWordWrap(true);
-            QPushButton* pBtnCancel = new QPushButton(tr("Cancel"));
+            QPushButton* pBtnCancel = new QPushButton(tr("Cancel", "button"));
             pBtnCancel->setFixedHeight(40);
             DWarningButton* pBtnOk = new DWarningButton;
-            pBtnOk->setText(tr("OK"));
+            pBtnOk->setText(tr("OK", "button"));
             pBtnOk->setFixedHeight(40);
             QHBoxLayout* pHlayout = new QHBoxLayout;
             pHlayout->addWidget(pBtnCancel);

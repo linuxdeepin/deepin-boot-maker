@@ -77,7 +77,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     start->setFocusPolicy(Qt::NoFocus);
     start->setFixedSize(310, 36);
     start->setObjectName("ProgressCancel");
-    start->setText(tr("Cancel"));
+    start->setText(tr("Cancel", "button"));
     DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
