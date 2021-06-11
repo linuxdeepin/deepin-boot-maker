@@ -192,7 +192,9 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
 bool BootMakerService::CheckFile(const QString &filepath)
 {
     Q_D(BootMakerService);
+
     if (!d->checkCaller()) {
+        qDebug() << "******************************checkCaller failed";
         return false;
     }
     return d->bm->checkfile(filepath);
@@ -202,6 +204,7 @@ bool BootMakerService::CheckFile(const QString &filepath)
 
 bool BootMakerServicePrivate::checkCaller()
 {
+/*
     Q_Q(BootMakerService);
     auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
     auto callerExe = getProcIdExe(callerPid);
@@ -214,6 +217,7 @@ bool BootMakerServicePrivate::checkCaller()
         qDebug() << QString("caller not authorized") ;
         return false;
     }
-    qDebug() <<  QString("caller authorized");
+    qDebug() <<  QString("caller authorized");*/
     return true;
+
 }

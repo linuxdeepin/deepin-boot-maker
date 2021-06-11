@@ -302,17 +302,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     this, [ = ](QListWidgetItem * current, QListWidgetItem * previous) {
         if (current != nullptr) {
             bool bFirst = current->data(Qt::UserRole).toBool();
-
             if (!bFirst) {
-                if (previous != nullptr) {
-                    m_deviceList->setCurrentItem(previous);
-                }
-
-                return;
+                return ;
             }
-        }
-        else {
-            return;
         }
 
         DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(previous));
