@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Gabim Formatimi Disku: Ju lutemi, riformatojeni ose çaktivizoni “Skano automatikisht pajisje USB depozitimi” te Qendër Sigurie</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -48,38 +48,38 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="126"/>
+        <location filename="../app/view/isoselectview.cpp" line="112"/>
         <source>Drag an ISO image file here</source>
         <translation>Tërhiqni këtu një kartelë pamje ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="145"/>
+        <location filename="../app/view/isoselectview.cpp" line="120"/>
         <source>OR</source>
         <translation>OSE</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="89"/>
-        <location filename="../app/view/isoselectview.cpp" line="163"/>
+        <location filename="../app/view/isoselectview.cpp" line="82"/>
+        <location filename="../app/view/isoselectview.cpp" line="132"/>
         <source>Select an ISO image file</source>
         <translation>Përzgjidhni një kartelë pamje ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="211"/>
+        <location filename="../app/view/isoselectview.cpp" line="160"/>
         <source>Next</source>
         <translation>Pasuesi</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="297"/>
+        <location filename="../app/view/isoselectview.cpp" line="215"/>
         <source>Reselect an ISO image file</source>
         <translation>Ripërzgjidhni një kartelë pamje ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="234"/>
+        <location filename="../app/view/isoselectview.cpp" line="178"/>
         <source>Illegal ISO image file</source>
         <translation>Kartelë pamje ISO e paligjshme</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="438"/>
+        <location filename="../app/view/isoselectview.cpp" line="315"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>Po pikaset kartelë ISO, ju lutemi, pritni…</translation>
     </message>
@@ -87,23 +87,24 @@
 <context>
     <name>ProgressView</name>
     <message>
-        <location filename="../app/view/progressview.cpp" line="62"/>
+        <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
         <translation>Po piqet</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="78"/>
+        <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning, please wait...</source>
         <translation>Po piqet, ju lutemi, pritni…</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="90"/>
+        <location filename="../app/view/progressview.cpp" line="68"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>Mos e hiqni diskun, apo të fikni kompjuterin gjatë procesit</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="112"/>
+        <location filename="../app/view/progressview.cpp" line="80"/>
         <source>Cancel</source>
+        <comment>button</comment>
         <translation>Anuloje</translation>
     </message>
 </context>
@@ -129,47 +130,48 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="137"/>
+        <location filename="../app/view/resultview.cpp" line="98"/>
         <source>Reboot now</source>
         <translation>Rinisu tani</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="120"/>
+        <location filename="../app/view/resultview.cpp" line="90"/>
         <source>Done</source>
         <translation>U bë</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="68"/>
+        <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
         <translation>E suksesshme</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="217"/>
+        <location filename="../app/view/resultview.cpp" line="163"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Regjistri i gabimeve do të ngarkohet automatikisht me përshtypjet. Pa përshtypjet tuaja, s’e përmirësojmë dot</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="218"/>
+        <location filename="../app/view/resultview.cpp" line="164"/>
         <source>Submit Feedback</source>
         <translation>Parashtroni Përshtypjet</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="241"/>
+        <location filename="../app/view/resultview.cpp" line="187"/>
         <source>After-Sale Services</source>
         <translation>Shërbime Pas-Shitjesh</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="254"/>
+        <location filename="../app/view/resultview.cpp" line="200"/>
         <source>Close</source>
+        <comment>button</comment>
         <translation>Mbylle</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="262"/>
+        <location filename="../app/view/resultview.cpp" line="208"/>
         <source>Sorry, process failed</source>
         <translation>Na ndjeni, procesi dështoi</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="263"/>
+        <location filename="../app/view/resultview.cpp" line="209"/>
         <source>Process failed</source>
         <translation>Procesi dështoi</translation>
     </message>
@@ -185,59 +187,62 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="95"/>
+        <location filename="../app/view/usbselectview.cpp" line="90"/>
         <source>Select a partition</source>
         <translation>Përzgjidhni një pjesë</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="122"/>
+        <location filename="../app/view/usbselectview.cpp" line="112"/>
         <source>Format the partition</source>
         <translation>Formatoje pjesën</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="171"/>
+        <location filename="../app/view/usbselectview.cpp" line="161"/>
         <source>Start</source>
         <translation>Fillo</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="175"/>
-        <source>Back</source>
-        <translation>Mprapsht</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <location filename="../app/view/usbselectview.cpp" line="221"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
         <translation>Formatimi do të fshijë krejt të dhënat te pjesa, por mund të shtojë gjasat e suksesit, ju lutemi, ripohojeni, përpara se të vazhdohet</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="368"/>
+        <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
         <translation>Formatimi i pjesës do të mbishkruajë krejt të dhënat, ju lutemi, bëni një kopjeruajtje, përpara se të vazhdohet.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="402"/>
+        <location filename="../app/view/usbselectview.cpp" line="362"/>
+        <source>Cancel</source>
+        <comment>button</comment>
+        <translation>Anuloje</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <source>OK</source>
+        <comment>button</comment>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="394"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation>Gabim Formatimi Disku: Ju lutemi, formatojeni pjesën si FAT32</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="156"/>
+        <location filename="../app/view/usbselectview.cpp" line="146"/>
         <source>No disk available</source>
         <translation>S’ka disk të gatshëm</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <location filename="../app/view/usbselectview.cpp" line="165"/>
+        <source>Back</source>
+        <comment>button</comment>
+        <translation>Mprapsht</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="355"/>
         <source>Format Partition</source>
         <translation>Formatoje Pjesën</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="372"/>
-        <source>Cancel</source>
-        <translation>Anuloje</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="374"/>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 </TS>

@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Lemezformátum hiba: Kérjük formázza újra, vagy tiltsa le az &quot;USB-s tárolóeszközök automatikus keresése&quot; funkciót a Biztonsági Központban</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -48,38 +48,38 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="126"/>
+        <location filename="../app/view/isoselectview.cpp" line="112"/>
         <source>Drag an ISO image file here</source>
         <translation>Húzzon ide egy ISO lemezképfájlt</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="145"/>
+        <location filename="../app/view/isoselectview.cpp" line="120"/>
         <source>OR</source>
         <translation>VAGY</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="89"/>
-        <location filename="../app/view/isoselectview.cpp" line="163"/>
+        <location filename="../app/view/isoselectview.cpp" line="82"/>
+        <location filename="../app/view/isoselectview.cpp" line="132"/>
         <source>Select an ISO image file</source>
         <translation>ISO lemezképfájl kiválasztása</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="211"/>
+        <location filename="../app/view/isoselectview.cpp" line="160"/>
         <source>Next</source>
         <translation>Következő</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="297"/>
+        <location filename="../app/view/isoselectview.cpp" line="215"/>
         <source>Reselect an ISO image file</source>
         <translation>ISO lemezképfájl újra kiválasztása</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="234"/>
+        <location filename="../app/view/isoselectview.cpp" line="178"/>
         <source>Illegal ISO image file</source>
         <translation>Hibás ISO lemezképfájl</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="438"/>
+        <location filename="../app/view/isoselectview.cpp" line="315"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>ISO lemezképfájl észlelése, kérjük várjon...</translation>
     </message>
@@ -87,23 +87,24 @@
 <context>
     <name>ProgressView</name>
     <message>
-        <location filename="../app/view/progressview.cpp" line="62"/>
+        <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
         <translation>Írás</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="78"/>
+        <location filename="../app/view/progressview.cpp" line="61"/>
         <source>Burning, please wait...</source>
         <translation>Az írás folyamatban, kérjük várjon...</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="90"/>
+        <location filename="../app/view/progressview.cpp" line="68"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>A folyamat során ne távolítsa el a lemezt, és ne állítsa le a számítógépet</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="112"/>
+        <location filename="../app/view/progressview.cpp" line="80"/>
         <source>Cancel</source>
+        <comment>button</comment>
         <translation>Mégsem</translation>
     </message>
 </context>
@@ -129,47 +130,48 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="137"/>
+        <location filename="../app/view/resultview.cpp" line="98"/>
         <source>Reboot now</source>
         <translation>Újraindítás most</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="120"/>
+        <location filename="../app/view/resultview.cpp" line="90"/>
         <source>Done</source>
         <translation>Kész</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="68"/>
+        <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
         <translation>Sikeres</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="217"/>
+        <location filename="../app/view/resultview.cpp" line="163"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>A hibanapló automatikusan feltöltésre kerül a visszajelzéssel. Az Ön visszajelzése nélkül nem tudunk javítani</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="218"/>
+        <location filename="../app/view/resultview.cpp" line="164"/>
         <source>Submit Feedback</source>
         <translation>Visszajelzés küldése</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="241"/>
+        <location filename="../app/view/resultview.cpp" line="187"/>
         <source>After-Sale Services</source>
         <translation>Értékesítés utáni szolgáltatások</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="254"/>
+        <location filename="../app/view/resultview.cpp" line="200"/>
         <source>Close</source>
+        <comment>button</comment>
         <translation>Bezárás</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="262"/>
+        <location filename="../app/view/resultview.cpp" line="208"/>
         <source>Sorry, process failed</source>
         <translation>Sajnáljuk, a folyamat sikertelen</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="263"/>
+        <location filename="../app/view/resultview.cpp" line="209"/>
         <source>Process failed</source>
         <translation>A folyamat sikertelen</translation>
     </message>
@@ -185,59 +187,62 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="95"/>
+        <location filename="../app/view/usbselectview.cpp" line="90"/>
         <source>Select a partition</source>
         <translation>Partíció kiválasztása</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="122"/>
+        <location filename="../app/view/usbselectview.cpp" line="112"/>
         <source>Format the partition</source>
         <translation>Partíció formázása</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="171"/>
+        <location filename="../app/view/usbselectview.cpp" line="161"/>
         <source>Start</source>
         <translation>Indítás</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="175"/>
-        <source>Back</source>
-        <translation>Vissza</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="231"/>
+        <location filename="../app/view/usbselectview.cpp" line="221"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
         <translation>A formázás törli a partíción lévő összes adatot, de növelheti a partíció működésének sikerességi arányát, a folytatás előtt kérjük erősítse meg</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="368"/>
+        <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
         <translation>A partíció formázása felülír minden adatot, a folytatás előtt kérjük készítsen biztonsági másolatot.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="402"/>
+        <location filename="../app/view/usbselectview.cpp" line="362"/>
+        <source>Cancel</source>
+        <comment>button</comment>
+        <translation>Mégsem</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <source>OK</source>
+        <comment>button</comment>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="394"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation>lemezformátum hiba: Kérjük formázza a lemezt FAT32 fájlrendszerrel.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="156"/>
+        <location filename="../app/view/usbselectview.cpp" line="146"/>
         <source>No disk available</source>
         <translation>Nincs rendelkezésre álló lemez</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <location filename="../app/view/usbselectview.cpp" line="165"/>
+        <source>Back</source>
+        <comment>button</comment>
+        <translation>Vissza</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="355"/>
         <source>Format Partition</source>
         <translation>Partíció formázása</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="372"/>
-        <source>Cancel</source>
-        <translation>Mégsem</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="374"/>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 </TS>

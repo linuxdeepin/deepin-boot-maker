@@ -199,7 +199,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="161"/>
         <source>Start</source>
-        <translation>開始</translation>
+        <translation>開始製作</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="221"/>
