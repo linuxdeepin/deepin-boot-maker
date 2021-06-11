@@ -72,7 +72,7 @@ Result SynExec(const QString &exec, const QString &param, const QString &execPip
 {
     Result ret = runApp(exec, param, execPipeIn);
     qInfo() << "call:" << exec + " " + param << "with:" << execPipeIn ;
-    qInfo() << "resut:" << ret.isSuccess() << ret.errmsg();
+    qInfo() << "resut:" << ret.isSuccess();
     return ret;
 }
 
