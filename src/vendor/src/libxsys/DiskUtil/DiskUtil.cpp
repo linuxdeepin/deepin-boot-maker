@@ -904,7 +904,6 @@ bool UmountPartion(const QString& strPartionName)
 
             if (!result.isSuccess()) {
                 bRet = false;
-                break;
             }
 
             strMountPt = XSys::DiskUtil::MountPoint(strPartionName);
@@ -913,10 +912,8 @@ bool UmountPartion(const QString& strPartionName)
                 bRet = true;
                 break;
             }
-            else {
-                iCount--;
-            }
-        } while (iCount > 0);
+            QThread::sleep(3);
+        } while (--iCount > 0);
     }
     else {
         bRet = true;
@@ -933,7 +930,6 @@ bool UmountPartion(const QString& strPartionName)
 
                 if (!result.isSuccess()) {
                     bRet = false;
-                    break;
                 }
 
                 strMountPt = XSys::DiskUtil::MountPoint(strPartionName);
@@ -942,10 +938,8 @@ bool UmountPartion(const QString& strPartionName)
                     bRet = true;
                     break;
                 }
-                else {
-                    iCount--;
-                }
-            } while (iCount > 0);
+                QThread::sleep(3);
+            } while (--iCount > 0);
         }
         else {
             bRet = true;
