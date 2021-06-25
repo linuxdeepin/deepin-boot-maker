@@ -136,17 +136,14 @@ bool SevenZip::check()
     args << "t" << m_archiveFile;
 
     m_sevenz.setArguments(args);
-
     m_sevenz.start();
-    m_sevenz.waitForStarted(-1);
-
-#ifdef Q_OS_LINUX
-    QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
-#endif
-
-    m_eventLoop.exec();
-    qDebug() << "check iso result" << m_sevenz.exitStatus() << m_sevenz.exitCode();
-    qDebug() <<  m_sevenz.arguments();
+    if (m_sevenz.waitForStarted(-1) && m_sevenz.pid()) {
+        #ifdef Q_OS_LINUX
+            QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
+        #endif
+        m_eventLoop.exec();
+    }
+    qInfo() << "check iso result" << m_sevenz.exitStatus() << m_sevenz.exitCode();
     return (m_sevenz.exitStatus() == QProcess::NormalExit) &&
            (0 == m_sevenz.exitCode());
 }

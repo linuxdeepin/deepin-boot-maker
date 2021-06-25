@@ -131,15 +131,15 @@ const QList<DeviceInfo> BootMaker::deviceList() const
 bool BootMaker::checkfile(const QString &filepath)
 {
     qDebug() << "CheckFile:" << filepath;
-    //check iso integrity
-    SevenZip sevenZipCheck(filepath, "");
+    // //check iso integrity
+    // SevenZip sevenZipCheck(filepath, "");
 
-    if (!sevenZipCheck.check()) {
-       qCritical() << "Error::file check error";
-    //        emit checkFileResult(false);
-       return false;
-    }
-    //    emit checkFileResult(true);
+    // if (!sevenZipCheck.check()) {
+    //    qCritical() << "Error::file check error";
+    // //        emit checkFileResult(false);
+    //    return false;
+    // }
+    // //    emit checkFileResult(true);
     return true;
 }
 
