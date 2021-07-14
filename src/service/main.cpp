@@ -28,6 +28,7 @@
 #include <QCoreApplication>
 #include <QDBusConnection>
 #include <QDBusError>
+#include <sanitizer/asan_interface.h>
 
 const QString BootMakerServiceName = "com.deepin.bootmaker";
 const QString BootMakerPath = "/com/deepin/bootmaker";
@@ -58,7 +59,7 @@ int main(int argc, char *argv[])
     a.setOrganizationName("deepin");
     a.setApplicationName("deepin-boot-maker-service");
     BootMakerService service;
-
+     __sanitizer_set_report_path("deepin-boot-maker-server.log");
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
     DBMLogManager::setSystemLog(true);
     DBMLogManager::setLogFormat(m_format);

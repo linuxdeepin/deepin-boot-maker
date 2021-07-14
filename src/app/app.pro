@@ -1,4 +1,7 @@
 include($$PWD/vendor.pri)
+QMAKE_CXX += -g -fsanitize=address -O2
+QMAKE_CXXFLAGS += -g -fsanitize=address -O2
+QMAKE_LFLAGS += -g -fsanitize=address -O2
 
 TEMPLATE  = app
 

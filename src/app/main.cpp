@@ -38,6 +38,7 @@ void loadFonts();
 #include <DWidgetUtil>
 #include <DApplicationSettings>
 #include <DGuiApplicationHelper>
+#include <sanitizer/asan_interface.h>
 
 DCORE_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
@@ -96,7 +97,7 @@ int main(int argc, char **argv)
         exit(0);
     }
 #endif
-
+    __sanitizer_set_report_path("deepin-boot-maker.log");
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-40} %{line:-4} %{threadid:-8} ] %{message}\n";
     DLogManager::setLogFormat(m_format);
     DLogManager::registerConsoleAppender();
