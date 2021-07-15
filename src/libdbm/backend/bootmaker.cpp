@@ -46,7 +46,8 @@
 BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
   ,m_pInstaller(nullptr)
 {
-    m_usbDeviceMonitor = new DeviceMonitor;
+    m_usbDeviceMonitor = new DeviceMonitor(this);
+
     QThread *monitorWork = new QThread;
     m_usbDeviceMonitor->moveToThread(monitorWork);
 //    connect(monitorWork, &QThread::started,

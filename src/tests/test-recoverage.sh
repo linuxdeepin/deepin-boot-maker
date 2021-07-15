@@ -22,7 +22,7 @@ qmake CONFIG+=debug ../
 
 TESTARGS="--gtest_output=xml:deepin_test_report_boot_maker.xml"  make check -j$(nproc)
 
-mv deepin-boot-maker.log* asan_dde-boot-maker.log
+mv asan_loader.log* asan_dde-boot-maker.log
 
 lcov -d ./ -c -o coverage_all.info
 
