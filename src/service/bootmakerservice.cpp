@@ -193,10 +193,9 @@ bool BootMakerService::CheckFile(const QString &filepath)
 {
     Q_D(BootMakerService);
 
-    if (!d->checkCaller()) {
-        qDebug() << "******************************checkCaller failed";
-        return false;
-    }
+    // if (!d->checkCaller()) {
+    //     return false;
+    // }
     return d->bm->checkfile(filepath);
 //    emit d->bm->startCheckfile(filepath);
 //    return true;

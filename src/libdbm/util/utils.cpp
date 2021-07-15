@@ -29,6 +29,7 @@
 #include <QTextCodec>
 #include <QByteArray>
 #include <QRegExp>
+#include <qglobal.h>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif
@@ -36,7 +37,7 @@
 static void initQRC()
 {
 #ifdef Q_OS_LINUX
-    Q_INIT_RESOURCE(blob_linux);
+    //Q_INIT_RESOURCE(blob_linux);
 #else
     Q_INIT_RESOURCE(blob);
 #endif
@@ -534,5 +535,4 @@ void initResource()
 {
     initQRC();
 }
-
 }

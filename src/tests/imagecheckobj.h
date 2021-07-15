@@ -2,7 +2,8 @@
 #define IMAGECHECKOBJ_H
 
 #include <gtest/gtest.h>
-#include <backend/bootmaker.h>
+#include "backend/bootmaker.h"
+#include "util/utils.h"
 
 class ImageCheckObj : public ::testing::Test
 {
