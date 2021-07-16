@@ -24,9 +24,13 @@ TESTARGS="--gtest_output=xml:deepin_test_report_boot_maker.xml"  make check -j$(
 
 mv asan_loader.log* asan_dde-boot-maker.log
 
+[ -e asan_loader.log* ] && mv asan_loader.log* asan_dde-boot-maker.log || touch asan_dde-boot-maker.log
+
 lcov -d ./ -c -o coverage_all.info
 
 lcov --remove coverage_all.info "*/tests/*" "*/usr/include*" --output-file coverage.info
 cd ..
 genhtml -o $REPORT_DIR $BUILD_DIR/coverage.info
 #rm -rf $BUILD_DIR
+
+exit 0
