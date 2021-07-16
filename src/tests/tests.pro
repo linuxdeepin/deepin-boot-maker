@@ -1,8 +1,11 @@
 include($$PWD/vendor.pri)
 
-QMAKE_CXX += -g -fsanitize=address -O2
-QMAKE_CXXFLAGS += -g -fsanitize=address -O2
-QMAKE_LFLAGS += -g -fsanitize=address -O2
+# 添加内存泄露检测
+CONFIG(debug, debug|release) {
+    QMAKE_CXX += -g -fsanitize=address -O2
+    QMAKE_CXXFLAGS += -g -fsanitize=address -O2
+    QMAKE_LFLAGS += -g -fsanitize=address -O2
+}
 
 QT += core gui widgets testlib
 
