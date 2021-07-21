@@ -309,6 +309,7 @@ void ISOSelectView::onFileSelected(const QString &file)
 {
     QFileInfo info(file);
     m_fileLabel->setText(info.fileName());
+    m_fileLabel->setToolTip(info.fileName());
     m_fileLabel->show();
     m_hits->setText("");
     m_selectText = "";
