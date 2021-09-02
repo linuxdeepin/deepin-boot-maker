@@ -34,6 +34,14 @@ SOURCES += \
     unittestobj.cpp \
     diskapitestobj.cpp \
     imagecheckobj.cpp \
+    bootmakerservicetest.cpp \
+    filesystemtest.cpp \
+    resulTtest.cpp \
+    logmanagertest.cpp \
+    qtbaseinstallertest.cpp \
+    bootmakertest.cpp \
+    utilstest.cpp \
+    sevenziptest.cpp \
     ../libdbm/backend/bootmaker.cpp \
     ../libdbm/backend/diskutil.cpp \
     ../libdbm/backend/syslinux.cpp \
@@ -51,7 +59,11 @@ SOURCES += \
     ../vendor/src/libxsys/Common/Result.cpp \
     ../vendor/src/libxsys/Cmd/Cmd.cpp \
     ../vendor/src/libxsys/FileSystem/FileSystem.cpp \
-    ../vendor/src/libxsys/DiskUtil/Syslinux.cpp
+    ../vendor/src/libxsys/DiskUtil/Syslinux.cpp \
+    ../service/bootmakerservice.cpp \
+    ../service/LogManager.cpp
+
+
 
 
 
@@ -59,6 +71,14 @@ HEADERS += \
     unittestobj.h \
     diskapitestobj.h \
     imagecheckobj.h \
+    bootmakerservicetest.h \
+    filesystemtest.h \
+    resultTest.h \
+    logmanagertest.h \
+    qtbaseinstallertest.h \
+    bootmakertest.h \
+    utilstest.h \
+    sevenziptest.h \
     ../libdbm/backend/bmhandler.h \
     ../libdbm/backend/bootmaker.h \
     ../libdbm/backend/diskutil.h \
@@ -80,7 +100,11 @@ HEADERS += \
     ../vendor/src/libxsys/Common/Result.h \
     ../vendor/src/libxsys/Cmd/Cmd.h \
     ../vendor/src/libxsys/FileSystem/FileSystem.h \
-    ../vendor/src/libxsys/DiskUtil/Syslinux.h
+    ../vendor/src/libxsys/DiskUtil/Syslinux.h \
+    ../service/bootmakerservice.h \
+    ../service/LogManager.h
+
+
 
 
 INCLUDEPATH += ../app ../libdbm ../vendor/src/libxsys
