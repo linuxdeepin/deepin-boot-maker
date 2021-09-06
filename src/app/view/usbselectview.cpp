@@ -88,6 +88,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
     DLabel *m_title = new DLabel(tr("Select a partition"));
+    m_title->setAccessibleName("usbSelectWidget_titleLabel");
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
@@ -96,6 +97,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 
     DFrame *usbDeviceListPanel = new DFrame;
+    usbDeviceListPanel->setAccessibleName("usbSelectWidget_usbDeviceListPanel");
     usbDeviceListPanel->setObjectName("UsbDeviceListPanel");
     usbDeviceListPanel->setFixedSize(410, 282);
     usbDeviceListPanel->setFrameStyle(QFrame::NoFrame);
@@ -109,6 +111,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     checkBoxLayout->setSpacing(0);
 
     DCheckBox *m_formatDiskCheck = new DCheckBox(this);
+    m_formatDiskCheck->setAccessibleName("usbDeviceListPanel_formatDiskCheck");
     m_formatDiskCheck->setText(tr("Format the partition"));
     m_formatDiskCheck->setObjectName("UsbFormatCheckBox");
     m_formatDiskCheck->setFixedHeight(20);
@@ -125,6 +128,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     checkBoxLayout->setAlignment(Qt::AlignCenter);
 
     DeviceListWidget *m_deviceList = new DeviceListWidget;
+    m_deviceList->setAccessibleName("usbDeviceListPanel_deviceListWidget");
     m_deviceList->setObjectName("UsbDeviceList");
     m_deviceList->setFixedSize(400, 270);
     m_deviceList->hide();
@@ -133,6 +137,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     m_deviceList->setItemDelegate(m_devicedelegate);
 
     DLabel *m_warningHint = new  DLabel("");
+    m_warningHint->setAccessibleName("usbSelectWidget_warningHintLabel");
     m_warningHint->setObjectName("WarningHint");
     m_warningHint->setWordWrap(true);
     font.setPixelSize(11);
@@ -144,6 +149,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     pWarningLayout->addWidget(m_warningHint);
 
     DLabel *m_emptyHint = new  DLabel(tr("No disk available"));
+    m_emptyHint->setAccessibleName("usbDeviceListPanel_emptyHintLabel");
     m_emptyHint->setObjectName("EmptyHintTitle");
     m_emptyHint->setFixedHeight(29);
     m_emptyHint->setAlignment(Qt::AlignCenter);
@@ -156,6 +162,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     usbPanelLayout->addLayout(checkBoxLayout);
 
     DSuggestButton *start = new DSuggestButton;
+    start->setAccessibleName("usbSelectWidget_startButton");
     start->setFocusPolicy(Qt::NoFocus);
     start->setObjectName("StartMake");
     start->setText(tr("Start"));
@@ -163,6 +170,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     start->setDisabled(true);
     start->setFixedHeight(36);
     DPushButton* pBackBtn = new DPushButton(tr("Back", "button"));
+    pBackBtn->setAccessibleName("usbSelectWidget_backBuuton");
     pBackBtn->setFocusPolicy(Qt::NoFocus);
     DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
     pBackBtn->setDisabled(false);

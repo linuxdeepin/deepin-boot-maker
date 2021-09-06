@@ -54,6 +54,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
     m_title = new DLabel(tr("Successful"));
+    m_title->setAccessibleName("resultWidget_title");
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
@@ -61,10 +62,12 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 
     m_resultIcon = new DLabel();
+    m_resultIcon->setAccessibleName("resultWidget_resultIconLabel");
     m_resultIcon->setObjectName("ResultIcon");
     m_resultIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/success.svg", this));
 
     m_hitsTitle = new DLabel();
+    m_hitsTitle->setAccessibleName("resultWidget_hitsTitleLabel");
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     pa = DApplicationHelper::instance()->palette(m_hitsTitle);
     brush = DApplicationHelper::instance()->palette(m_hitsTitle).text();
@@ -76,6 +79,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
 
     m_logHits = new DLabel(/*hitsFormat.arg(log.arg(tagBegin).arg(tagEnd))*/);
+    m_logHits->setAccessibleName("resultWidget_logHitsLabel");
     m_logHits->setObjectName("ResultErrorDescription");
     m_logHits->setContentsMargins(20, 0, 20, 0);
     m_logHits->setWordWrap(true);
@@ -84,6 +88,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 
 
     m_rebootLater = new DPushButton();
+    m_rebootLater->setAccessibleName("resultWidget_rebootLaterButton");
     m_rebootLater->setFocusPolicy(Qt::NoFocus);
     m_rebootLater->setFixedSize(310, 36);
     m_rebootLater->setObjectName("RebootLater");
@@ -92,6 +97,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_rebootLater, DFontSizeManager::T6);
 
     m_rebootNow = new DPushButton();
+    m_rebootNow->setAccessibleName("resultWidget_rebootNowButton");
     m_rebootNow->setFocusPolicy(Qt::NoFocus);
     m_rebootNow->setFixedSize(310, 36);
     m_rebootNow->setObjectName("RebootLater");

@@ -80,6 +80,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     mainLayout->setSpacing(0);
 
     m_title = new DLabel(tr("Select an ISO image file"));
+    m_title->setAccessibleName("isoSelectWidget_titleLabel");
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
@@ -89,17 +90,20 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 
     isoIcon = new DLabel(this);
+    isoIcon->setAccessibleName("isoPanels_isoIconLabel");
     isoIcon->setObjectName("ISOIcon");
     isoIcon->setFixedSize(96, 96);
     isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
 
     growIcon = new DLabel(this);
+    growIcon->setAccessibleName("isoSelectWidget_growIconLabel");
     growIcon->setObjectName("GrowIcon");
 
     growIcon->setFixedSize(220, 220);
     growIcon->hide();
 
     isoPanel = new DropFrame;
+    isoPanel->setAccessibleName("isoSelectWidget_isoPanel");
     isoPanel->setObjectName("IosPanel");
     isoPanel->setFixedSize(410, 300);
 
@@ -111,6 +115,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 #else
     m_fileLabel = new DLabel(tr("Drag an ISO image file here"));
 #endif
+    m_fileLabel->setAccessibleName("isoPanel_fileLabel");
     m_fileLabel->setObjectName("IsoFileName");
     DFontSizeManager::instance()->bind(m_fileLabel, DFontSizeManager::T8);
 
@@ -119,15 +124,18 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 #else
     m_hits = new DLabel(tr("OR"));
 #endif
+    m_hits->setAccessibleName("isoPanel_hitsLabel");
     m_hits->setObjectName("IsoHits");
     DFontSizeManager::instance()->bind(m_hits, DFontSizeManager::T8);
 
     spliter = new DLabel;
+    spliter->setAccessibleName("isoPanel_spliter");
     spliter->setObjectName("IsoSpliter");
     spliter->setFixedSize(230, 1);
     spliter->setAutoFillBackground(true);
 
     m_fileSelect = new DLabel();
+    m_fileSelect->setAccessibleName("isoPanel_fileSelectLabel");
     m_fileSelect->setObjectName("IsoFileSelect");
     m_selectText = tr("Select an ISO image file");
     m_fileSelect->setContextMenuPolicy(Qt::NoContextMenu);
@@ -147,6 +155,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanel->setLayout(isoPanelLayout);
 
     m_checkFile = new DLabel();
+    m_checkFile->setAccessibleName("isoSelectWidget_checkFileLabel");
     m_checkFile->setObjectName("IsoFileSelect");
     pa = DApplicationHelper::instance()->palette(m_checkFile);
     brush = DApplicationHelper::instance()->palette(m_checkFile).text();
@@ -154,6 +163,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 
     DFontSizeManager::instance()->bind(m_checkFile, DFontSizeManager::T8);
     m_nextSetp = new DPushButton();
+    m_nextSetp->setAccessibleName("isoSelectWidget_nextSetpButton");
     m_nextSetp->setFocusPolicy(Qt::NoFocus);
     m_nextSetp->setFixedSize(310, 36);
     m_nextSetp->setObjectName("NextStepButton");

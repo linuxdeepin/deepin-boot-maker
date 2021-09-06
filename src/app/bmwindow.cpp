@@ -85,6 +85,8 @@ BMWindow::BMWindow(QWidget *parent)
     qApp->setApplicationDescription(descriptionText);
 
     auto title = titlebar();
+    this->setAccessibleName("BMWindow");
+    title->setAccessibleName("BMWindow_titlebar");
     auto flags = windowFlags() & ~Qt::WindowMaximizeButtonHint;
     setWindowFlags(flags);
 #ifdef Q_OS_WIN
@@ -109,17 +111,21 @@ BMWindow::BMWindow(QWidget *parent)
     QStackedLayout *actionsLayout = new QStackedLayout;
     actionsLayout->setMargin(0);
     d->isoWidget = new ISOSelectView();
+    d->isoWidget->setAccessibleName("centralWidget_isoSelectWidget");
     d->isoWidget->resize(440, 466);
 
     d->usbWidget = new UsbSelectView;
+    d->usbWidget->setAccessibleName("centralWidget_usbSelectWidget");
     d->usbWidget->move(viewWidth, 0);
     d->usbWidget->resize(440, 466);
 
     d->progressWidget = new ProgressView;
+    d->progressWidget->setAccessibleName("centralWidget_progressWidget");
     d->progressWidget->move(viewWidth, 0);
     d->progressWidget->resize(440, 466);
 
     d->resultWidget = new ResultView;
+    d->resultWidget->setAccessibleName("centralWidget_resultWidget");
     d->resultWidget->move(viewWidth, 0);
     d->resultWidget->resize(440, 466);
 
@@ -129,6 +135,7 @@ BMWindow::BMWindow(QWidget *parent)
     actionsLayout->addWidget(d->resultWidget);
 
     d->wsib = new DPageIndicator(this);
+    d->wsib->setAccessibleName("DPageIndicator_wsib");
     d->wsib->setAutoFillBackground(true);
     d->wsib->setPageCount(4);
     d->wsib->setCurrentPage(0);
@@ -143,6 +150,7 @@ BMWindow::BMWindow(QWidget *parent)
     mainLayout->addLayout(actionsLayout);
     mainLayout->addWidget(d->wsib);
     auto centralWidget = new DWidget;
+    centralWidget->setAccessibleName("BMWindow_centralWidget");
     centralWidget->resize(440, 466);
     centralWidget->setLayout(mainLayout);
     setCentralWidget(centralWidget);

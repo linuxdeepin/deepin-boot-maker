@@ -49,6 +49,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
     DLabel *m_title = new DLabel(tr("Burning"));
+    m_title->setAccessibleName("progressWidget_title");
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
     pa.setBrush(DPalette::Text, brush);
@@ -56,9 +57,11 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
 
     m_waterProgress = new Dtk::Widget::DWaterProgress;
+    m_waterProgress->setAccessibleName("progressWidget_waterProgress");
     m_waterProgress->setFixedSize(100, 100);
 
     DLabel *m_hitsTitle = new DLabel(tr("Burning, please wait..."));
+    m_hitsTitle->setAccessibleName("progressWidget_hitsTitleLabel");
     m_hitsTitle->setObjectName("ProgressHitsTitle");
     DFontSizeManager::instance()->bind(m_hitsTitle, DFontSizeManager::T5);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
@@ -66,6 +69,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     m_hitsTitle->setContentsMargins(20, 0, 20, 0);
 
     DTipLabel *m_hits = new DTipLabel(tr("Do not remove the disk or shut down the computer during the process"));
+    m_hits->setAccessibleName("progressWidget_hitsTipLabel");
     m_hits->setObjectName("ProgressHits");
     m_hits->setWordWrap(true);
     m_hits->setAlignment(Qt::AlignCenter);
@@ -75,6 +79,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 
     DPushButton *start = new DPushButton();
     start->setFocusPolicy(Qt::NoFocus);
+    start->setAccessibleName("progressWidget_cancelButton");
     start->setFixedSize(310, 36);
     start->setObjectName("ProgressCancel");
     start->setText(tr("Cancel", "button"));
