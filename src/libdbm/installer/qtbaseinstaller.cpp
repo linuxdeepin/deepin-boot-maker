@@ -289,7 +289,7 @@ bool QtBaseInstaller::hasEnoughSpace()
     strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
 
     if (strMountPt.isEmpty()) {
-        qCritical() << "Can't get correct partion space.";
+        qCritical() << "Can't get correct partition space.";
         return false;
     }
 
@@ -347,7 +347,7 @@ bool QtBaseInstaller::umountDisk()
     QString device = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
     if (!XSys::DiskUtil::UmountDisk(device)) {
-        qCritical() << "umount partion failed: ";
+        qCritical() << "umount partition failed: ";
         bRet = false;
     }
     else {

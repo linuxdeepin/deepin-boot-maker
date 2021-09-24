@@ -473,16 +473,16 @@ QList<DeviceInfo> ListUsbDrives()
         if (!removeDevice.contains(devicePath)) {
             continue;
         }
-        // find first partion
+        // find first partition
         QString strDiskName = devicePath;
         DeviceInfo diskinfo = lsblkDeviceInfos.value(devicePath);
-        QStringList partionNames = diskinfo.children.keys();
+        QStringList partitionNames = diskinfo.children.keys();
 
-        foreach (QString strPartionName, partionNames) {
+        foreach (QString strPartionName, partitionNames) {
             bool needformat = true;
-            DeviceInfo partionInfo = diskinfo.children.value(strPartionName);
+            DeviceInfo partitionInfo = diskinfo.children.value(strPartionName);
 
-            if (partionInfo.fstype != "vfat") {
+            if (partitionInfo.fstype != "vfat") {
                 needformat = true;
             }
             else {
@@ -490,16 +490,16 @@ QList<DeviceInfo> ListUsbDrives()
             }
 
             DeviceInfo dfinfo = dfDeviceInfos.value(strPartionName);
-            if (partionInfo.label.isEmpty()) {
-                partionInfo.label = partionInfo.path;
+            if (partitionInfo.label.isEmpty()) {
+                partitionInfo.label = partitionInfo.path;
             }
 
-            partionInfo.used = dfinfo.used;
-            partionInfo.total = dfinfo.total;
-            partionInfo.target = dfinfo.target;
-            partionInfo.needFormat = needformat;
-            deviceList.push_back(partionInfo);
-            qDebug() << partionInfo.path << partionInfo.used << partionInfo.total << partionInfo.target << partionInfo.needFormat;
+            partitionInfo.used = dfinfo.used;
+            partitionInfo.total = dfinfo.total;
+            partitionInfo.target = dfinfo.target;
+            partitionInfo.needFormat = needformat;
+            deviceList.push_back(partitionInfo);
+            qDebug() << partitionInfo.path << partitionInfo.used << partitionInfo.total << partitionInfo.target << partitionInfo.needFormat;
         }
     }
 #endif

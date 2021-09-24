@@ -468,7 +468,7 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
 
 XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
 {
-    //change the partion
+    //change the partition
     if (!XSys::DiskUtil::UmountDisk(diskDev)) {
         return XSys::Result(XSys::Result::Failed, "", diskDev);
     }

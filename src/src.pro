@@ -15,7 +15,7 @@ mac* {
     TRANSLATIONS_NAME = deepin-boot-maker
     TRANSLATIONS += $$PWD/translations/$${TRANSLATIONS_NAME}.ts \
                 $$PWD/translations/$${TRANSLATIONS_NAME}_zh_CN.ts
-    system(python $$PWD/tools/translate_generation.py $$PWD)
+    system(python3 $$PWD/tools/translate_generation.py $$PWD)
 } else {
     TRANSLATIONS = $$files($$PWD/translations/*.ts)
     for(tsfile, TRANSLATIONS) {

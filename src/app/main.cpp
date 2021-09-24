@@ -81,6 +81,11 @@ int main(int argc, char **argv)
 #endif
 #endif
 
+    if (!QString(qgetenv("XDG_CURRENT_DESKTOP")).toLower().startsWith("deepin")) {
+
+        setenv("XDG_CURRENT_DESKTOP", "Deepin", 1);
+    }
+
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
