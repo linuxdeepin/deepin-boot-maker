@@ -11,8 +11,8 @@ linux{
     QT += x11extras dbus x11extras
     CONFIG += link_pkgconfig
     PKGCONFIG += dtkwidget
-    PKGCONFIG += xcb-util libstartup-notification-1.0
-    LIBS += -lxcb -lX11 -lXext
+#    PKGCONFIG += xcb-util libstartup-notification-1.0
+#    LIBS += -lxcb -lX11 -lXext
 }
 
 win32{

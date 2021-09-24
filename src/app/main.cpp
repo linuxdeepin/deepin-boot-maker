@@ -86,7 +86,7 @@ int main(int argc, char **argv)
         setenv("XDG_CURRENT_DESKTOP", "Deepin", 1);
     }
 
-    DApplication::loadDXcbPlugin();
+//    DApplication::loadDXcbPlugin(); //去除为兼容wayland环境
     DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
