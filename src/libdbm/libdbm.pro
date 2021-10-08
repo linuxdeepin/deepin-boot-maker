@@ -7,6 +7,12 @@ TARGET = libdbm
 TEMPLATE = lib
 CONFIG += staticlib c++11 link_pkgconfig
 
+#添加安全编译参数
+CONFIG(debug, debug|release) {
+    QMAKE_CXXFLAGS += -fstack-protector-strong -D_FORTITY_SOURCE=1 \
+    -z noexecstack -pie -fPIC -z lazy
+}
+
 SOURCES += \
     backend/bootmaker.cpp \
     backend/diskutil.cpp \
