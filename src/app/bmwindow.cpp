@@ -169,6 +169,8 @@ BMWindow::BMWindow(QWidget *parent)
         d->wsib->setCurrentPage(1);
     });
 
+    connect(d->isoWidget,&ISOSelectView::isoFileSelected,d->usbWidget,&UsbSelectView::getIsoFileSelectedPath);
+
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
 #ifdef Q_OS_WIN
         setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);

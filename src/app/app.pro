@@ -27,7 +27,8 @@ HEADERS += \
     view/progressview.h \
     view/resultview.h \
     view/dropframe.h \
-    view/unmountusbview.h
+    view/unmountusbview.h \
+    ../vendor/src/libxsys/DiskUtil/DiskUtil.h
 
 SOURCES += \
     view/isoselectview.cpp \
@@ -40,7 +41,8 @@ SOURCES += \
     view/dropframe.cpp \
     bmwindow.cpp \
     main.cpp \
-    view/unmountusbview.cpp
+    view/unmountusbview.cpp \
+    ../vendor/src/libxsys/DiskUtil/DiskUtil.cpp \
 
 unix {
 

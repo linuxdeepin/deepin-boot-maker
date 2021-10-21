@@ -62,7 +62,7 @@ public:
 
 signals:
     void requestVerfiyISOFile(const QString &file);
-    void isoFileSelected();
+    void isoFileSelected(QString isoFilePath);
 
 public slots:
     void onFileSelected(const QString &file);

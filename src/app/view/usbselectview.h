@@ -39,6 +39,8 @@ signals:
     void deviceSelected(const QString &partition, bool format);
     void finish(quint32 error, const QString &title, const QString &description);
     void backToPrevUI();
+public slots:
+    void getIsoFileSelectedPath(QString isoPath);
 
 private:
     QList<DeviceInfo> m_mountDevs;

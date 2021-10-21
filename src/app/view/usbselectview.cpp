@@ -23,7 +23,9 @@
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
 #include "devicelistwidget.h"
+#include <DiskUtil/DiskUtil.h>
 #include <bminterface.h>
+
 
 #include <DListWidget>
 #include <DLabel>
@@ -344,47 +346,58 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
 
-        if (format)
-        {
-            DDialog msgbox(this);
-            msgbox.setFixedSize(380, 300);
-            msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
-            QWidget* pInnerWidget = new QWidget;
-            pInnerWidget->deleteLater();
-            QVBoxLayout* pVInnerLayout = new QVBoxLayout;
-            DLabel* pLabelTitle = new DLabel(tr("Format Partition"));
-            DFontSizeManager::instance()->bind(pLabelTitle, DFontSizeManager::T6, 500);
-            pLabelTitle->setAlignment(Qt::AlignCenter);
-            DLabel* pLabelMsg = new DLabel(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
-            DFontSizeManager::instance()->bind(pLabelMsg, DFontSizeManager::T8, 400);
-            pLabelMsg->setAlignment(Qt::AlignCenter);
-            pLabelMsg->setWordWrap(true);
+        QString usbFilePath =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
+        QString isoFilePath = this->property("isoFilePath").toString();
+
+        DDialog msgbox(this);
+        msgbox.setFixedWidth(380);
+        msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
+        QWidget* pInnerWidget = new QWidget;
+        pInnerWidget->deleteLater();
+        QVBoxLayout* pVInnerLayout = new QVBoxLayout;
+        msgbox.setTitle(tr("Format Partition"));
+        DLabel* pLabelMsg = new DLabel;
+        pLabelMsg->setFixedWidth(340);
+//        DFontSizeManager::instance()->bind(pLabelMsg, DFontSizeManager::T8, 400);
+        pLabelMsg->setAlignment(Qt::AlignCenter);
+        pLabelMsg->setWordWrap(true);
+        msgbox.addContent(pLabelMsg,Qt::AlignCenter);
+        QHBoxLayout* pHlayout = new QHBoxLayout;
+
+        pVInnerLayout->addWidget(pLabelMsg);
+        pVInnerLayout->addStretch();
+        pVInnerLayout->addLayout(pHlayout);
+        pInnerWidget->setLayout(pVInnerLayout);
+        msgbox.addContent(pInnerWidget);
+        msgbox.setContentsMargins(0, 0, 0, 0);
+        int ret = 1;
+        // 判断用户勾选格式化后选择的ISO镜像的位置是否就是用户制作启动盘的U盘里。
+        if (format && usbFilePath == isoFilePath.left(usbFilePath.length())) {
+            DWarningButton* pBtnCancel = new DWarningButton;
+            pBtnCancel->setText(tr("OK", "button"));
+            pBtnCancel->setFixedHeight(40);
+            pHlayout->addWidget(pBtnCancel);
+            pLabelMsg->setText(tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."));
+            QObject::connect(pBtnCancel, &DSuggestButton::clicked, &msgbox, &DDialog::reject);
+            ret = msgbox.exec();
+        } else if (format) {
             QPushButton* pBtnCancel = new QPushButton(tr("Cancel", "button"));
             pBtnCancel->setFixedHeight(40);
+            pHlayout->addWidget(pBtnCancel);
             DWarningButton* pBtnOk = new DWarningButton;
             pBtnOk->setText(tr("OK", "button"));
             pBtnOk->setFixedHeight(40);
-            QHBoxLayout* pHlayout = new QHBoxLayout;
-            pHlayout->addWidget(pBtnCancel);
             pHlayout->addWidget(pBtnOk);
-            pVInnerLayout->addStretch();
-            pVInnerLayout->addWidget(pLabelTitle);
-            pVInnerLayout->addWidget(pLabelMsg);
-            pVInnerLayout->addStretch();
-            pVInnerLayout->addLayout(pHlayout);
-            pInnerWidget->setLayout(pVInnerLayout);
-            msgbox.addContent(pInnerWidget);
+            pLabelMsg->setText(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
             QObject::connect(pBtnCancel, &DSuggestButton::clicked, &msgbox, &DDialog::reject);
             QObject::connect(pBtnOk, &DSuggestButton::clicked, &msgbox, &DDialog::accept);
-            msgbox.setContentsMargins(0, 0, 0, 0);
-            auto ret = msgbox.exec();
-
-            if (ret != 1) {
-                m_formatDiskCheck->setChecked(false);
-                this->setProperty("user_format", false);
-                handleFormat(false);
-                return;
-            }
+            ret = msgbox.exec();
+        }
+        if (ret != 1) {
+            m_formatDiskCheck->setChecked(false);
+            this->setProperty("user_format", false);
+            handleFormat(false);
+            return;
         }
 
         start->setEnabled(false);
@@ -405,3 +418,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     });
 }
 
+void UsbSelectView::getIsoFileSelectedPath(QString isoPath)
+{
+    this->setProperty("isoFilePath",isoPath);
+}

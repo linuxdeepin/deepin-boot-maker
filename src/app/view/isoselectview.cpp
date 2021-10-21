@@ -263,7 +263,9 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
             onFileSelected(text);
         }
     });
-    connect(m_nextSetp, &DPushButton::clicked, this, &ISOSelectView::isoFileSelected);
+    connect(m_nextSetp, &DPushButton::clicked, this, [=]{
+        emit isoFileSelected(m_isoFilePath);
+    });
     connect(isoPanel, &DropFrame::fileDrop, this, &ISOSelectView::onFileSelected);
 
 }
