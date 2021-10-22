@@ -48,38 +48,38 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="112"/>
+        <location filename="../app/view/isoselectview.cpp" line="116"/>
         <source>Drag an ISO image file here</source>
         <translation>Arraste e solte a imagem .iso aqui</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="120"/>
+        <location filename="../app/view/isoselectview.cpp" line="125"/>
         <source>OR</source>
         <translation>ou</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="82"/>
-        <location filename="../app/view/isoselectview.cpp" line="132"/>
+        <location filename="../app/view/isoselectview.cpp" line="140"/>
         <source>Select an ISO image file</source>
         <translation>Selecione a ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="160"/>
+        <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
         <translation>Próximo</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="215"/>
+        <location filename="../app/view/isoselectview.cpp" line="225"/>
         <source>Reselect an ISO image file</source>
         <translation>Selecione novamente a ISO</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="178"/>
+        <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
         <translation>Está imagem ISO é ilegal</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="315"/>
+        <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>Detectando a ISO, aguarde...</translation>
     </message>
@@ -92,17 +92,17 @@
         <translation>Gravando</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="61"/>
+        <location filename="../app/view/progressview.cpp" line="63"/>
         <source>Burning, please wait...</source>
         <translation>Gravando, aguarde...</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="68"/>
+        <location filename="../app/view/progressview.cpp" line="71"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>Não remova o disco ou desligue o computador durante este processo</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="80"/>
+        <location filename="../app/view/progressview.cpp" line="85"/>
         <source>Cancel</source>
         <comment>button</comment>
         <translation>Cancelar</translation>
@@ -116,13 +116,13 @@
         <translation>Disco Removível</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="223"/>
-        <location filename="../libdbm/util/utils.cpp" line="369"/>
+        <location filename="../libdbm/util/utils.cpp" line="224"/>
+        <location filename="../libdbm/util/utils.cpp" line="370"/>
         <source>Removable disk</source>
         <translation>Disco removível</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="118"/>
+        <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
         <translation>Criador de Mídia Inicializável</translation>
     </message>
@@ -130,14 +130,9 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="98"/>
+        <location filename="../app/view/resultview.cpp" line="104"/>
         <source>Reboot now</source>
         <translation>Reiniciar Agora</translation>
-    </message>
-    <message>
-        <location filename="../app/view/resultview.cpp" line="90"/>
-        <source>Done</source>
-        <translation>Concluído</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="56"/>
@@ -145,33 +140,39 @@
         <translation>Bem-sucedido!</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="163"/>
+        <location filename="../app/view/resultview.cpp" line="95"/>
+        <source>Done</source>
+        <comment>button</comment>
+        <translation>Concluído</translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="169"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>O log de erro será enviado com o feedback.</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="164"/>
+        <location filename="../app/view/resultview.cpp" line="170"/>
         <source>Submit Feedback</source>
         <translation>Enviar Feedback</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="187"/>
+        <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
         <translation>Serviços de Pós-venda</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="200"/>
+        <location filename="../app/view/resultview.cpp" line="206"/>
         <source>Close</source>
         <comment>button</comment>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="208"/>
+        <location filename="../app/view/resultview.cpp" line="214"/>
         <source>Sorry, process failed</source>
         <translation>Falha no Processo</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="209"/>
+        <location filename="../app/view/resultview.cpp" line="215"/>
         <source>Process failed</source>
         <translation>Falha no Processo</translation>
     </message>
@@ -187,60 +188,66 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="90"/>
+        <location filename="../app/view/usbselectview.cpp" line="92"/>
         <source>Select a partition</source>
         <translation>Selecione uma partição</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="112"/>
+        <location filename="../app/view/usbselectview.cpp" line="117"/>
         <source>Format the partition</source>
         <translation>Formatar a partição</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="161"/>
+        <location filename="../app/view/usbselectview.cpp" line="170"/>
         <source>Start</source>
         <translation>Iniciar</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="221"/>
+        <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
         <translation>A formatação apagará todos os dados da partição; mas, poderá aumentar a taxa de sucesso. Confirme antes de prosseguir</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="358"/>
-        <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>A formatação da partição irá sobrescrever todos os dados. Crie um backup antes de prosseguir.</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="362"/>
-        <source>Cancel</source>
-        <comment>button</comment>
-        <translation>Cancelar</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <location filename="../app/view/usbselectview.cpp" line="377"/>
+        <location filename="../app/view/usbselectview.cpp" line="388"/>
         <source>OK</source>
         <comment>button</comment>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="394"/>
+        <location filename="../app/view/usbselectview.cpp" line="380"/>
+        <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="384"/>
+        <source>Cancel</source>
+        <comment>button</comment>
+        <translation>Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="391"/>
+        <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
+        <translation>A formatação da partição irá sobrescrever todos os dados. Crie um backup antes de prosseguir.</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation>Erro de Formato do Disco: Formate a partição em FAT32</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="146"/>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>No disk available</source>
         <translation>Nenhum disco disponível</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="165"/>
+        <location filename="../app/view/usbselectview.cpp" line="174"/>
         <source>Back</source>
         <comment>button</comment>
         <translation>Voltar</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="355"/>
+        <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
         <translation>Formatar Partição</translation>
     </message>

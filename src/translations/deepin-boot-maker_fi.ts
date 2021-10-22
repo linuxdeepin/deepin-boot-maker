@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Levyn alustus virhe: Alusta se uudelleen tai poista &quot;Tarkista USB-muistitikut&quot; -toiminto käytöstä Turvakeskuksessa</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -48,38 +48,38 @@
 <context>
     <name>ISOSelectView</name>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="126"/>
+        <location filename="../app/view/isoselectview.cpp" line="116"/>
         <source>Drag an ISO image file here</source>
         <translation>Vedä ISO-kuvatiedosto tähän</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="145"/>
+        <location filename="../app/view/isoselectview.cpp" line="125"/>
         <source>OR</source>
         <translation>TAI</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="89"/>
-        <location filename="../app/view/isoselectview.cpp" line="163"/>
+        <location filename="../app/view/isoselectview.cpp" line="82"/>
+        <location filename="../app/view/isoselectview.cpp" line="140"/>
         <source>Select an ISO image file</source>
         <translation>Valitse ISO-kuvatiedosto</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="211"/>
+        <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
         <translation>Seuraava</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="297"/>
+        <location filename="../app/view/isoselectview.cpp" line="225"/>
         <source>Reselect an ISO image file</source>
         <translation>Valitse ISO-kuvatiedosto uudelleen</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="234"/>
+        <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
         <translation>Laiton ISO-kuvatiedosto</translation>
     </message>
     <message>
-        <location filename="../app/view/isoselectview.cpp" line="438"/>
+        <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
         <translation>Tunnistetaan ISO-tiedostoa, odota...</translation>
     </message>
@@ -87,23 +87,24 @@
 <context>
     <name>ProgressView</name>
     <message>
-        <location filename="../app/view/progressview.cpp" line="62"/>
+        <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
         <translation>Kirjoita</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="78"/>
+        <location filename="../app/view/progressview.cpp" line="63"/>
         <source>Burning, please wait...</source>
         <translation>Kirjoitetaan, odota...</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="90"/>
+        <location filename="../app/view/progressview.cpp" line="71"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
         <translation>Älä poista levyä tai sammuta tietokonetta prosessin aikana</translation>
     </message>
     <message>
-        <location filename="../app/view/progressview.cpp" line="112"/>
+        <location filename="../app/view/progressview.cpp" line="85"/>
         <source>Cancel</source>
+        <comment>button</comment>
         <translation>Peruuta</translation>
     </message>
 </context>
@@ -115,13 +116,13 @@
         <translation>Irroitettava levy</translation>
     </message>
     <message>
-        <location filename="../libdbm/util/utils.cpp" line="223"/>
-        <location filename="../libdbm/util/utils.cpp" line="369"/>
+        <location filename="../libdbm/util/utils.cpp" line="224"/>
+        <location filename="../libdbm/util/utils.cpp" line="370"/>
         <source>Removable disk</source>
         <translation>Irroitettava levy</translation>
     </message>
     <message>
-        <location filename="../app/main.cpp" line="118"/>
+        <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
         <translation>Mediat</translation>
     </message>
@@ -129,47 +130,49 @@
 <context>
     <name>ResultView</name>
     <message>
-        <location filename="../app/view/resultview.cpp" line="137"/>
+        <location filename="../app/view/resultview.cpp" line="104"/>
         <source>Reboot now</source>
         <translation>Käynnistä uudelleen</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="120"/>
-        <source>Done</source>
-        <translation>Valmis</translation>
-    </message>
-    <message>
-        <location filename="../app/view/resultview.cpp" line="68"/>
+        <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
         <translation>Onnistui</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="217"/>
+        <location filename="../app/view/resultview.cpp" line="95"/>
+        <source>Done</source>
+        <comment>button</comment>
+        <translation>Valmis</translation>
+    </message>
+    <message>
+        <location filename="../app/view/resultview.cpp" line="169"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
         <translation>Virheloki ladataan automaattisesti palautteen mukana. Emme voi edistyä ilman palautettasi.</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="218"/>
+        <location filename="../app/view/resultview.cpp" line="170"/>
         <source>Submit Feedback</source>
         <translation>Anna palautetta</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="241"/>
+        <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
         <translation>Myynnin jälkeiset palvelut</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="254"/>
+        <location filename="../app/view/resultview.cpp" line="206"/>
         <source>Close</source>
+        <comment>button</comment>
         <translation>Sulje</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="262"/>
+        <location filename="../app/view/resultview.cpp" line="214"/>
         <source>Sorry, process failed</source>
         <translation>Valitettavasti prosessi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../app/view/resultview.cpp" line="263"/>
+        <location filename="../app/view/resultview.cpp" line="215"/>
         <source>Process failed</source>
         <translation>Prosessi epäonnistui</translation>
     </message>
@@ -185,24 +188,19 @@
 <context>
     <name>UsbSelectView</name>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="95"/>
+        <location filename="../app/view/usbselectview.cpp" line="92"/>
         <source>Select a partition</source>
         <translation>Valitse osio</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="122"/>
+        <location filename="../app/view/usbselectview.cpp" line="117"/>
         <source>Format the partition</source>
         <translation>Alusta osio</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="171"/>
+        <location filename="../app/view/usbselectview.cpp" line="170"/>
         <source>Start</source>
         <translation>Aloita</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="175"/>
-        <source>Back</source>
-        <translation>Takaisin</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
@@ -210,34 +208,48 @@
         <translation>Alustaminen poistaa kaikki osion tiedot, mutta lisää onnistumisastetta. Vahvista ennen jatkamista</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="368"/>
+        <location filename="../app/view/usbselectview.cpp" line="377"/>
+        <location filename="../app/view/usbselectview.cpp" line="388"/>
+        <source>OK</source>
+        <comment>button</comment>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="380"/>
+        <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="384"/>
+        <source>Cancel</source>
+        <comment>button</comment>
+        <translation>Peruuta</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
         <translation>Alustaminen ylikirjoittaa kaikki tiedot, ota varmuuskopio ennen kuin jatkat.</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="402"/>
+        <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
         <translation>Levyn alustusvirhe: Alusta levy muotoon FAT32</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="156"/>
+        <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>No disk available</source>
         <translation>Ei levyä saatavilla</translation>
     </message>
     <message>
-        <location filename="../app/view/usbselectview.cpp" line="365"/>
+        <location filename="../app/view/usbselectview.cpp" line="174"/>
+        <source>Back</source>
+        <comment>button</comment>
+        <translation>Takaisin</translation>
+    </message>
+    <message>
+        <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
         <translation>Alusta osio</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="372"/>
-        <source>Cancel</source>
-        <translation>Peruuta</translation>
-    </message>
-    <message>
-        <location filename="../app/view/usbselectview.cpp" line="374"/>
-        <source>OK</source>
-        <translation>OK</translation>
     </message>
 </context>
 </TS>
