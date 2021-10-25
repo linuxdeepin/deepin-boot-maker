@@ -45,6 +45,9 @@ class QtBaseInstaller : public QObject
     Q_OBJECT
 public:
     explicit QtBaseInstaller(QObject *parent = nullptr);
+    virtual ~QtBaseInstaller() {
+
+    }
 
 public:
     void setformat(bool);

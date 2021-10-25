@@ -57,7 +57,7 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     env.insert("LANG", "zh_CN.UTF-8"); // Add an environment variable
     m_sevenz.setProcessEnvironment(env);
-    m_szpp = new SevenZipProcessParser("", &m_sevenz);
+    m_szpp = new SevenZipProcessParser("", &m_sevenz, this);
     m_sevenZip = sevnz;
     m_archiveFile = image;
     m_outputDir = "-o" + target;

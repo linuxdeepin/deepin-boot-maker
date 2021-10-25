@@ -86,7 +86,12 @@ class BootMakerServicePrivate
 {
 public:
     BootMakerServicePrivate(BootMakerService *parent) : q_ptr(parent) {}
-
+    ~BootMakerServicePrivate() {
+//        if (bm != nullptr) {
+//            delete bm;
+//            bm = nullptr;
+//        }
+    }
     bool checkCaller();
 
     BootMaker   *bm;
@@ -99,8 +104,8 @@ BootMakerService::BootMakerService(QObject *parent) :
     QObject(parent), d_ptr(new BootMakerServicePrivate(this))
 {
     Q_D(BootMakerService);
-    d->bm = new BootMaker;
-    QThread *bmThread = new QThread;
+    d->bm = new BootMaker();
+    QThread *bmThread = new QThread();
     d->bm->moveToThread(bmThread);
     bmThread->start();
 

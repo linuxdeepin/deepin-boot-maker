@@ -31,6 +31,9 @@ class QtX86Installer : public QtBaseInstaller
     Q_OBJECT
 public:
     explicit QtX86Installer(QObject *parent = nullptr);
+    virtual ~QtX86Installer() {
+
+    }
 
 protected:
     virtual bool installBootload() override;

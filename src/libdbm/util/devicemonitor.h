@@ -30,6 +30,9 @@ class DeviceMonitor : public QObject
     Q_OBJECT
 public:
     explicit DeviceMonitor(QObject *parent = nullptr);
+    ~DeviceMonitor() {
+
+    }
 
 private:
     QList<DeviceInfo> getIntersectDevice(const QList<DeviceInfo>& list);

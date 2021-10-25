@@ -31,7 +31,6 @@ class QtInstallerFactory : public QObject
     Q_OBJECT
 public:
     static QtInstallerFactory* getInstance();
-
 public:
     QtBaseInstaller* createInstaller();
 

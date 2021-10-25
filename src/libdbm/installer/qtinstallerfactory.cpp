@@ -52,7 +52,7 @@ QtBaseInstaller* QtInstallerFactory::createInstaller()
 
 #if defined(Q_PROCESSOR_X86)
     qDebug() << "Architecture:X86_64";
-    pInstaller = new QtX86Installer;
+    pInstaller = new QtX86Installer();
 #elif defined(Q_PROCESSOR_MIPS)
     qDebug() << "Architecture:MIPS";
     pInstaller = new QtMipsInstaller;

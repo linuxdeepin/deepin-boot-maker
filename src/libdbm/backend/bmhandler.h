@@ -52,6 +52,9 @@ public:
                 this, &BMHandler::checkfile);
     }
 
+    virtual ~BMHandler() {
+
+    }
     static const QString errorString(BMHandler::ErrorType et);
 signals:
     void startInstall(const QString &, const QString &, const QString &, bool);

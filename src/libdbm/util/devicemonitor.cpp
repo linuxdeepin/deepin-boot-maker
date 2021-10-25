@@ -61,9 +61,7 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
         this->m_deviceList = list;
     });
 
-    connect(this, &DeviceMonitor::pauseMonitor, this, [ = ]() {
-        m_timer->stop();
-    });
+    connect(this, &DeviceMonitor::pauseMonitor, m_timer, &QTimer::stop);
     connect(this, &DeviceMonitor::startMonitor, this, [ = ]() {
         this->m_deviceList.clear();
         m_timer->start();

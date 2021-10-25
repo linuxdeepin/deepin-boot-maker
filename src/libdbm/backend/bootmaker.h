@@ -23,6 +23,8 @@
 
 #include "bmhandler.h"
 #include "../installer/qtbaseinstaller.h"
+#include "../util/devicemonitor.h"
+#include <istream>
 
 class DeviceMonitor;
 class BootMaker : public BMHandler
@@ -30,7 +32,20 @@ class BootMaker : public BMHandler
     Q_OBJECT
 public:
     explicit BootMaker(QObject *parent = nullptr);
+    virtual ~BootMaker() {
 
+        if (m_pInstaller != nullptr) {
+            delete m_pInstaller;
+            m_pInstaller = nullptr;
+        }
+
+        if (m_monitorWork != nullptr) {
+            m_monitorWork->quit();
+            m_monitorWork->wait();
+            m_monitorWork->deleteLater();
+        }
+
+    }
 public slots:
     void reboot();
     void start();
@@ -45,5 +60,6 @@ public slots:
 private:
     DeviceMonitor* m_usbDeviceMonitor = nullptr;
     QtBaseInstaller* m_pInstaller;
+    QThread* m_monitorWork;
 };
 

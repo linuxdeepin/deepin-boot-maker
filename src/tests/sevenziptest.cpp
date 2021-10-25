@@ -15,7 +15,7 @@ TEST_F(SevenZipTest, Public)
 {
     m_sevenZip->setArchiveFile("xxdasf");
     m_sevenZip->setOutputDirectory("xxdasf");
-//    m_sevenZip->stopProcess();
-//    m_sevenZip->extract();
+    //m_sevenZip->stopProcess();
+    //m_sevenZip->extract();
     m_sevenZip->check();
 }

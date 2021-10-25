@@ -24,7 +24,6 @@
 
 #include "../util/sevenzip.h"
 #include "../util/utils.h"
-#include "../util/devicemonitor.h"
 #include "diskutil.h"
 #include <QDebug>
 #include <QFileInfo>
@@ -46,16 +45,18 @@
 BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
   ,m_pInstaller(nullptr)
 {
-    m_usbDeviceMonitor = new DeviceMonitor(this);
+    m_usbDeviceMonitor = new DeviceMonitor();
 
-    QThread *monitorWork = new QThread;
-    m_usbDeviceMonitor->moveToThread(monitorWork);
+    m_monitorWork = new QThread();
+    m_usbDeviceMonitor->moveToThread(m_monitorWork);
 //    connect(monitorWork, &QThread::started,
 //            m_usbDeviceMonitor, &DeviceMonitor::startMonitor);
+
+    connect(m_monitorWork, &QThread::finished, m_usbDeviceMonitor, &DeviceMonitor::deleteLater);
     connect(m_usbDeviceMonitor, &DeviceMonitor::removablePartitionsChanged,
             this, &BootMaker::removablePartitionsChanged);
 
-    monitorWork->start();
+    m_monitorWork->start();
 
     connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString & description) {
         this->reportProgress(101, errcode, "install failed", description);
