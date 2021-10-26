@@ -394,9 +394,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             ret = msgbox.exec();
         }
         if (ret != 1) {
-            m_formatDiskCheck->setChecked(false);
-            this->setProperty("user_format", false);
-            handleFormat(false);
+            if (this->property("last_fstype") == "vfat") {
+                m_formatDiskCheck->setChecked(false);
+                this->setProperty("user_format", false);
+                handleFormat(false);
+            }
             return;
         }
 
