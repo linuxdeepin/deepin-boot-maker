@@ -242,7 +242,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         foreach (DeviceInfo info, dellist) {
             for (int i = 0; i < this->m_mountDevs.count(); i++) {
                 DeviceInfo refInfo = this->m_mountDevs.at(i);
-
                 if (refInfo == info) {
                     this->m_mountDevs.removeAt(i);
                 }
@@ -346,7 +345,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
 
-        QString usbFilePath =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
+        QString usbMountPoint =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
         QString isoFilePath = this->property("isoFilePath").toString();
 
         DDialog msgbox(this);
@@ -372,7 +371,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         msgbox.setContentsMargins(0, 0, 0, 0);
         int ret = 1;
         // 判断用户勾选格式化后选择的ISO镜像的位置是否就是用户制作启动盘的U盘里。
-        if (format && usbFilePath == isoFilePath.left(usbFilePath.length())) {
+        if (format && (usbMountPoint.length() != 0) && (usbMountPoint == isoFilePath.left(usbMountPoint.length()))) {
             DWarningButton* pBtnCancel = new DWarningButton;
             pBtnCancel->setText(tr("OK", "button"));
             pBtnCancel->setFixedHeight(40);
