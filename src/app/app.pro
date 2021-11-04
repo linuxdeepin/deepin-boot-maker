@@ -4,10 +4,17 @@ TEMPLATE  = app
 
 TARGET = deepin-boot-maker
 #添加安全编译参数
-CONFIG(debug, debug|release) {
-    QMAKE_CXXFLAGS += -fstack-protector-strong -D_FORTITY_SOURCE=1 \
-    -z noexecstack -pie -fPIC -z lazy
-}
+QMAKE_LFLAGS += -z noexecstack -pie -fPIC -z relro -z now
+QMAKE_CFLAGS += -fstack-protector-all
+QMAKE_CXXFLAGS += -fstack-protector-all
+
+## 添加内存泄露检测
+#CONFIG(debug, debug|release) {
+#    QMAKE_CXX += -g -fsanitize=address -O2
+#    QMAKE_CXXFLAGS += -g -fsanitize=address -O2
+#    QMAKE_LFLAGS += -g -fsanitize=address -O2
+#}
+
 
 QT += core gui widgets concurrent network svg
 

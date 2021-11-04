@@ -8,10 +8,11 @@ TEMPLATE = lib
 CONFIG += staticlib c++11 link_pkgconfig
 
 #添加安全编译参数
-CONFIG(debug, debug|release) {
-    QMAKE_CXXFLAGS += -fstack-protector-strong -D_FORTITY_SOURCE=1 \
-    -z noexecstack -pie -fPIC -z lazy
-}
+QMAKE_LFLAGS += -z noexecstack -pie -fPIC -z relro -z now
+QMAKE_CFLAGS += -fstack-protector-all
+QMAKE_CXXFLAGS += -fstack-protector-all
+
+
 
 SOURCES += \
     backend/bootmaker.cpp \
