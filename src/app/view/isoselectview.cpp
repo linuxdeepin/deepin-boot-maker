@@ -114,6 +114,9 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_fileLabel = new DLabel("");
 #else
     m_fileLabel = new DLabel(tr("Drag an ISO image file here"));
+    m_fileLabel->setFixedWidth(400);
+    m_fileLabel->setAlignment(Qt::AlignHCenter);
+    m_fileLabel->installEventFilter(this);
 #endif
     m_fileLabel->setAccessibleName("isoPanel_fileLabel");
     m_fileLabel->setObjectName("IsoFileName");
@@ -317,10 +320,30 @@ void ISOSelectView :: slot_ThemeChange()
     }
 }
 
+bool ISOSelectView::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == m_fileLabel && m_fileLabel != nullptr) {
+        if (event->type() == QEvent::FontChange) {
+            QFileInfo info(m_isoFilePath);
+            QFontMetrics fontWidth(m_fileLabel->font());
+            QString elidedText = fontWidth.elidedText(info.fileName(), Qt::ElideMiddle, m_fileLabel->width() - 20);
+            m_fileLabel->setText(elidedText);
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return ISOSelectView::eventFilter(obj, event);
+    }
+}
+
 void ISOSelectView::onFileSelected(const QString &file)
 {
     QFileInfo info(file);
-    m_fileLabel->setText(info.fileName());
+    QFontMetrics fontWidth(m_fileLabel->font());
+    QString elidedText = fontWidth.elidedText(info.fileName(), Qt::ElideMiddle, m_fileLabel->width() - 20);
+
+    m_fileLabel->setText(elidedText);
     m_fileLabel->setToolTip(info.fileName());
     m_fileLabel->show();
     m_hits->setText("");

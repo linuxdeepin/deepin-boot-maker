@@ -69,19 +69,22 @@ public slots:
     void onFileVerfiyFinished(bool ok);
     void slot_ThemeChange();
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
+
 private:
     DLabel          *m_hits         = nullptr;
     DLabel          *m_fileLabel    = nullptr;
     DLabel          *m_fileSelect   = nullptr;
-    DPushButton   *m_nextSetp     = nullptr;
-    DLabel          *m_title     = nullptr;
-    DropFrame       *isoPanel     = nullptr;
-    DLabel          *spliter     = nullptr;
+    DPushButton     *m_nextSetp     = nullptr;
+    DLabel          *m_title        = nullptr;
+    DropFrame       *isoPanel       = nullptr;
+    DLabel          *spliter        = nullptr;
     QString         m_isoFilePath;
-    QString m_selectText;
-    DLabel          *growIcon     = nullptr;
-    DLabel          *m_checkFile     = nullptr;
+    QString         m_selectText;
+    DLabel          *growIcon       = nullptr;
+    DLabel          *m_checkFile    = nullptr;
     ThreadCheckFile t_checkfile;
-    DLabel *isoIcon = nullptr;
+    DLabel          *isoIcon        = nullptr;
 };
 
