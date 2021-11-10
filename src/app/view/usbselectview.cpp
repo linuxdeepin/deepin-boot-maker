@@ -341,6 +341,12 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             start->setDisabled(false);
         }
     });
+    formatDialogSceneA.initDialog(tr("Format Partition"),tr("Formatting the partition will overwrite all data, please have a backup before proceeding."),
+                      tr("Cancel", "button"),DDialog::ButtonType::ButtonNormal,tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
+    formatDialogSceneB.initDialog(tr("Format Partition"),tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."),
+                                                        tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
+    formatDialogSceneA.setContentsMargins(0, 0, 0, 0);
+    formatDialogSceneB.setContentsMargins(0, 0, 0, 0);
 
     connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
@@ -348,49 +354,12 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         QString usbMountPoint =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
         QString isoFilePath = this->property("isoFilePath").toString();
 
-        DDialog msgbox(this);
-        msgbox.setFixedWidth(380);
-        msgbox.setIcon(DMessageBox::standardIcon(DMessageBox::Warning));
-        QWidget* pInnerWidget = new QWidget;
-        pInnerWidget->deleteLater();
-        QVBoxLayout* pVInnerLayout = new QVBoxLayout;
-        msgbox.setTitle(tr("Format Partition"));
-        DLabel* pLabelMsg = new DLabel;
-        pLabelMsg->setFixedWidth(340);
-//        DFontSizeManager::instance()->bind(pLabelMsg, DFontSizeManager::T8, 400);
-        pLabelMsg->setAlignment(Qt::AlignCenter);
-        pLabelMsg->setWordWrap(true);
-        msgbox.addContent(pLabelMsg,Qt::AlignCenter);
-        QHBoxLayout* pHlayout = new QHBoxLayout;
-
-        pVInnerLayout->addWidget(pLabelMsg);
-        pVInnerLayout->addStretch();
-        pVInnerLayout->addLayout(pHlayout);
-        pInnerWidget->setLayout(pVInnerLayout);
-        msgbox.addContent(pInnerWidget);
-        msgbox.setContentsMargins(0, 0, 0, 0);
         int ret = 1;
         // 判断用户勾选格式化后选择的ISO镜像的位置是否就是用户制作启动盘的U盘里。
         if (format && (usbMountPoint.length() != 0) && (usbMountPoint == isoFilePath.left(usbMountPoint.length()))) {
-            DWarningButton* pBtnCancel = new DWarningButton;
-            pBtnCancel->setText(tr("OK", "button"));
-            pBtnCancel->setFixedHeight(40);
-            pHlayout->addWidget(pBtnCancel);
-            pLabelMsg->setText(tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."));
-            QObject::connect(pBtnCancel, &DSuggestButton::clicked, &msgbox, &DDialog::reject);
-            ret = msgbox.exec();
+            ret = formatDialogSceneB.exec();
         } else if (format) {
-            QPushButton* pBtnCancel = new QPushButton(tr("Cancel", "button"));
-            pBtnCancel->setFixedHeight(40);
-            pHlayout->addWidget(pBtnCancel);
-            DWarningButton* pBtnOk = new DWarningButton;
-            pBtnOk->setText(tr("OK", "button"));
-            pBtnOk->setFixedHeight(40);
-            pHlayout->addWidget(pBtnOk);
-            pLabelMsg->setText(tr("Formatting the partition will overwrite all data, please have a backup before proceeding."));
-            QObject::connect(pBtnCancel, &DSuggestButton::clicked, &msgbox, &DDialog::reject);
-            QObject::connect(pBtnOk, &DSuggestButton::clicked, &msgbox, &DDialog::accept);
-            ret = msgbox.exec();
+            ret = formatDialogSceneA.exec();
         }
         if (ret != 1) {
             if (this->property("last_fstype") == "vfat") {

@@ -20,6 +20,7 @@
  */
 
 #pragma once
+#include "formatdialog.h"
 
 #include <DWidget>
 #include <DFrame>
@@ -44,4 +45,7 @@ public slots:
 
 private:
     QList<DeviceInfo> m_mountDevs;
+    FormatDialog formatDialogSceneA;
+    FormatDialog formatDialogSceneB;
 };
+

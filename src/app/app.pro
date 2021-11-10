@@ -35,7 +35,8 @@ HEADERS += \
     view/resultview.h \
     view/dropframe.h \
     view/unmountusbview.h \
-    ../vendor/src/libxsys/DiskUtil/DiskUtil.h
+    ../vendor/src/libxsys/DiskUtil/DiskUtil.h \
+    view/formatdialog.h
 
 SOURCES += \
     view/isoselectview.cpp \
@@ -50,6 +51,7 @@ SOURCES += \
     main.cpp \
     view/unmountusbview.cpp \
     ../vendor/src/libxsys/DiskUtil/DiskUtil.cpp \
+    view/formatdialog.cpp
 
 unix {
 
