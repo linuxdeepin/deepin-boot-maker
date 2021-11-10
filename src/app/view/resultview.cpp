@@ -53,7 +53,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 1, 0, 0);
 
-    m_title = new DLabel(tr("Successful"));
+    m_title = new DLabel();
     m_title->setAccessibleName("resultWidget_title");
     DPalette pa = DApplicationHelper::instance()->palette(m_title);
     QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
@@ -66,7 +66,7 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_resultIcon->setObjectName("ResultIcon");
     m_resultIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/success.svg", this));
 
-    m_hitsTitle = new DLabel();
+    m_hitsTitle = new DLabel(tr("Successful"));
     m_hitsTitle->setAccessibleName("resultWidget_hitsTitleLabel");
     m_hitsTitle->setObjectName("ResulteHitsTitle");
     pa = DApplicationHelper::instance()->palette(m_hitsTitle);
@@ -212,7 +212,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         break;
     }
     m_hitsTitle->setText(tr("Sorry, process failed"));
-    m_title->setText(tr("Process failed"));
+//    m_title->setText(tr("Process failed"));
     m_resultIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/fail.svg", this));
     m_logHits->show();
     m_rebootNow->hide();
