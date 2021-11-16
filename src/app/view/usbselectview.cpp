@@ -289,7 +289,6 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
                 listItem->setData(Qt::UserRole, false);
                 infoItem->setEnabled(false);
             }
-
             if (partition.path == this->property("last_path").toString()) {
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
@@ -307,19 +306,23 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
     });
 
-    connect(m_deviceList, &DeviceListWidget::currentItemChanged,
-    this, [ = ](QListWidgetItem * current, QListWidgetItem * previous) {
+    connect(m_deviceList, &DeviceListWidget::itemClicked,
+    this, [ = ](QListWidgetItem * current) {
+
         if (current != nullptr) {
             bool bFirst = current->data(Qt::UserRole).toBool();
             if (!bFirst) {
                 return ;
             }
         }
-
-        DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(previous));
-        if (infoItem) {
-            infoItem->setCheck(false);
+        DeviceInfoItem *infoItem;
+        if (m_previous != nullptr) {
+            infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(m_previous));
+            if (infoItem) {
+                infoItem->setCheck(false);
+            }
         }
+
 
         infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
 
@@ -340,6 +343,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             this->setProperty("last_fstype", infoItem->property("fstype").toString());
             start->setDisabled(false);
         }
+         m_previous = current;
     });
     formatDialogSceneA.initDialog(tr("Format Partition"),tr("Formatting the partition will overwrite all data, please have a backup before proceeding."),
                       tr("Cancel", "button"),DDialog::ButtonType::ButtonNormal,tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
@@ -362,7 +366,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             ret = formatDialogSceneA.exec();
         }
         if (ret != 1) {
-            if (this->property("last_fstype") == "vfat") {
+            if (this->property("last_fstype").toString() == "vfat") {
                 m_formatDiskCheck->setChecked(false);
                 this->setProperty("user_format", false);
                 handleFormat(false);

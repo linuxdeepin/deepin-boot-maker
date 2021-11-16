@@ -26,6 +26,7 @@
 #include <DFrame>
 #include <DLabel>
 #include <bminterface.h>
+#include <QListWidgetItem>
 
 DWIDGET_USE_NAMESPACE
 
@@ -47,5 +48,6 @@ private:
     QList<DeviceInfo> m_mountDevs;
     FormatDialog formatDialogSceneA;
     FormatDialog formatDialogSceneB;
+    QListWidgetItem *m_previous = nullptr;
 };
 
