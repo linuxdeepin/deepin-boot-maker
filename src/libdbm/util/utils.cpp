@@ -323,7 +323,8 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
     DeviceInfo info;
     QString diskDevPath;
     QMap<QString, DeviceInfo> deviceInfos;
-
+    // currentPartPath用记录当前的磁盘设备，如sdb
+    QString currentPartPath = "";
     do {
         bool isPart = false;
         line = QString::fromUtf8(lsblk.readLine());
@@ -371,15 +372,17 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
         }
 
         info.label = strLabel;
-
-        if (isPart && !diskDevPath.isEmpty()) {
+        // 如果是disk 如sdb1，sdb2。
+        if (isPart && !diskDevPath.isEmpty() && (info.path.left(currentPartPath.length()) == currentPartPath)) {
             info.isDisk = false;
             info.strDev = diskDevPath;
             deviceInfos[diskDevPath].children.insert(info.path, info);
-        } else {
+        } else { // 否则就是 part, 如sdb。
             info.isDisk = true;
             info.strDev = "";
             deviceInfos.insert(info.path, info);
+            // 记录当前是part的情况
+            currentPartPath = info.path;
         }
     } while(true);
 
