@@ -116,7 +116,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_fileLabel = new DLabel(tr("Drag an ISO image file here"));
     m_fileLabel->setFixedWidth(400);
     m_fileLabel->setAlignment(Qt::AlignHCenter);
-    m_fileLabel->installEventFilter(this);
+
 #endif
     m_fileLabel->setAccessibleName("isoPanel_fileLabel");
     m_fileLabel->setObjectName("IsoFileName");
@@ -342,6 +342,8 @@ void ISOSelectView::onFileSelected(const QString &file)
     QFileInfo info(file);
     QFontMetrics fontWidth(m_fileLabel->font());
     QString elidedText = fontWidth.elidedText(info.fileName(), Qt::ElideMiddle, m_fileLabel->width() - 20);
+
+    m_fileLabel->installEventFilter(this);
 
     m_fileLabel->setText(elidedText);
     m_fileLabel->setToolTip(info.fileName());
