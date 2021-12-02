@@ -52,6 +52,7 @@ public:
     explicit DeviceInfoItem(DWidget *parent = Q_NULLPTR);
 
     void setCheck(bool flag);
+    bool isChecked();
     bool needFormat() const;
     void setNeedFormat(bool format);
 

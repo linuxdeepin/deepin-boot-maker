@@ -304,6 +304,14 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         if (!hasPartitionSelected) {
             this->setProperty("last_path", "");
         }
+//        当插U盘或者拔U盘时，重新记录前面被勾选上的item
+        m_previous = nullptr;
+        for (int i = 0; i < m_deviceList->count(); i++) {
+            DeviceInfoItem *infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(m_deviceList->item(i)));
+            if (infoItem && infoItem->isChecked()) {
+                m_previous = m_deviceList->item(i);
+            }
+        }
     });
 
     connect(m_deviceList, &DeviceListWidget::itemClicked,

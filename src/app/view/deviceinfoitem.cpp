@@ -208,6 +208,11 @@ void DeviceInfoItem::setCheck(bool flag)
     checked = flag;
 }
 
+bool DeviceInfoItem::isChecked()
+{
+    return checked;
+}
+
 bool DeviceInfoItem::needFormat() const
 {
     return property("needformat").toBool();
