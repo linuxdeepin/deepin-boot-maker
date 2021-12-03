@@ -100,6 +100,8 @@ void FormatDialog::initDialog(const QString &titleText, const QString &strFormat
     addContent(pFormatLbl, Qt::AlignHCenter); // 使用Qt::AlignHCenter效果最好
 
     autoFeed(pFormatLbl);
+//    这里主要是对1050dtk对DDialog的改动进行的微调，给pFormatLbl足够的空间做伸展。bug#105285
+    m_iDialogOldHeight = this->height() + 10;
 }
 
 
