@@ -325,9 +325,11 @@ bool ISOSelectView::eventFilter(QObject *obj, QEvent *event)
     if (obj == m_fileLabel && m_fileLabel != nullptr) {
         if (event->type() == QEvent::FontChange) {
             QFileInfo info(m_isoFilePath);
-            QFontMetrics fontWidth(m_fileLabel->font());
+            QFontMetrics fontWidth(m_fileLabel->font());     
             QString elidedText = fontWidth.elidedText(info.fileName(), Qt::ElideMiddle, m_fileLabel->width() - 20);
+//            重新更新m_fileLabel的text和像素高度
             m_fileLabel->setText(elidedText);
+            m_fileLabel->setFixedHeight(fontWidth.boundingRect(elidedText).height());
             return true;
         } else {
             return false;
