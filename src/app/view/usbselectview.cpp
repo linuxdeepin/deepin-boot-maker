@@ -353,24 +353,26 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
          m_previous = current;
     });
-    formatDialogSceneA.initDialog(tr("Format Partition"),tr("Formatting the partition will overwrite all data, please have a backup before proceeding."),
-                      tr("Cancel", "button"),DDialog::ButtonType::ButtonNormal,tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
-    formatDialogSceneB.initDialog(tr("Format Partition"),tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."),
-                                                        tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
-    formatDialogSceneA.setContentsMargins(0, 0, 0, 0);
-    formatDialogSceneB.setContentsMargins(0, 0, 0, 0);
+
 
     connect(start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
 
         QString usbMountPoint =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
         QString isoFilePath = this->property("isoFilePath").toString();
-
         int ret = 1;
         // 判断用户勾选格式化后选择的ISO镜像的位置是否就是用户制作启动盘的U盘里。
         if (format && (usbMountPoint.length() != 0) && (usbMountPoint == isoFilePath.left(usbMountPoint.length()))) {
+            FormatDialog formatDialogSceneB(this);
+            formatDialogSceneB.initDialog(tr("Format Partition"),tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."),
+                                                                tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
+            formatDialogSceneB.setContentsMargins(0, 0, 0, 0);
             ret = formatDialogSceneB.exec();
         } else if (format) {
+            FormatDialog formatDialogSceneA(this);
+            formatDialogSceneA.initDialog(tr("Format Partition"),tr("Formatting the partition will overwrite all data, please have a backup before proceeding."),
+                                                                tr("Cancel", "button"),DDialog::ButtonType::ButtonNormal,tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
+            formatDialogSceneA.setContentsMargins(0, 0, 0, 0);
             ret = formatDialogSceneA.exec();
         }
         if (ret != 1) {

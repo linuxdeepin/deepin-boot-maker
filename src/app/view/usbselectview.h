@@ -46,8 +46,6 @@ public slots:
 
 private:
     QList<DeviceInfo> m_mountDevs;
-    FormatDialog formatDialogSceneA;
-    FormatDialog formatDialogSceneB;
     QListWidgetItem *m_previous = nullptr;
 };
 
