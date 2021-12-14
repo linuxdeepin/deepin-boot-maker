@@ -359,10 +359,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         auto format = m_formatDiskCheck->isChecked();
 
         QString usbMountPoint =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
+        usbMountPoint += "/";
         QString isoFilePath = this->property("isoFilePath").toString();
         int ret = 1;
         // 判断用户勾选格式化后选择的ISO镜像的位置是否就是用户制作启动盘的U盘里。
-        if (format && (usbMountPoint.length() != 0) && (usbMountPoint == isoFilePath.left(usbMountPoint.length()))) {
+        if (format && (usbMountPoint.length() > 1) && (usbMountPoint == isoFilePath.left(usbMountPoint.length()))) {
             FormatDialog formatDialogSceneB(this);
             formatDialogSceneB.initDialog(tr("Format Partition"),tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."),
                                                                 tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
