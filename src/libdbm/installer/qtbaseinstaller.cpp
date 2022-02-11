@@ -151,8 +151,11 @@ void QtBaseInstaller::beginInstall()
     //通过判断镜像中是否存在anaconda的文件夹来推测该镜像的安装器
 
     if(needAddRepo()) {
+        qInfo() << "need add repo";
         modifyBootGrubFile("/EFI/BOOT/grub.cfg");
         modifyBootGrubFile("/syslinux/syslinux.cfg");
+    } else {
+        qInfo() << "not need add repo";
     }
 
     emit this->reportProgress(100, "finish", "");
@@ -469,9 +472,13 @@ bool QtBaseInstaller::needAddRepo()
     }
 
     QStringList strList = ret.result().split("\n");
+//    欧拉版判断方法
     QStringList strPackagesList = strList.filter("/Packages/anaconda_", Qt::CaseInsensitive);
     QStringList strReleaseList = strList.filter("/Packages/UnionTech_release_", Qt::CaseInsensitive);
-    return (!strPackagesList.isEmpty()&&!strReleaseList.isEmpty());
+//    行业版判断方法
+    QStringList strAppStreamPackagesList = strList.filter("/AppStream/Packages/anaconda", Qt::CaseInsensitive);
+
+    return ((!strPackagesList.isEmpty()&&!strReleaseList.isEmpty()) || !strAppStreamPackagesList.isEmpty());
 }
 
 void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
