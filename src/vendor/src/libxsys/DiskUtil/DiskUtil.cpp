@@ -853,7 +853,7 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
 
 QString getPartitionUUID(const QString& strPartition)
 {
-    XSys::Result ret = XSys::SynExec("lsblk", "-o PATH,UUID");
+    XSys::Result ret = XSys::SynExec("lsblk", "-p -l --fs -o name,uuid");
 
     if (!ret.isSuccess()) {
         qWarning() << "call lsblk failed" << ret.result();
