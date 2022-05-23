@@ -1,0 +1,15 @@
+name: Call build-deb
+on:
+  pull_request_target:
+    paths-ignore:
+      - ".github/workflows/**"
+
+concurrency:
+  group: ${{ github.workflow }}-pull/${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  check_job:
+    uses: linuxdeepin/.github/.github/workflows/build-deb.yml@master
+    secrets:
+      BridgeToken: ${{ secrets.BridgeToken }}
