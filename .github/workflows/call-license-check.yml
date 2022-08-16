@@ -1,7 +1,7 @@
 name: Call License and README Check
 on:
   pull_request_target:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
 
 permissions:
   pull-requests: write
