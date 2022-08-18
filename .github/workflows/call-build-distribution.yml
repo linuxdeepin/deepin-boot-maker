@@ -1,0 +1,17 @@
+name: Call build-distribution
+on:
+  push:
+    paths-ignore:
+      - ".github/workflows/**"
+  pull_request_target:
+    paths-ignore:
+      - ".github/workflows/**"
+
+jobs:
+  check_job:
+    uses: linuxdeepin/.github/.github/workflows/build-distribution.yml@master
+    secrets:
+      BUILD_GPG_PRIVATE_KEY: ${{ secrets.BUILD_GPG_PRIVATE_KEY }}
+      BUILD_SSH_PRIVATE_KEY: ${{ secrets.BUILD_SSH_PRIVATE_KEY }}
+      WEBDAV_PASSWD: ${{ secrets.WEBDAV_PASSWD }}
+      WEBDAV_USER: ${{ secrets.WEBDAV_USER }}
