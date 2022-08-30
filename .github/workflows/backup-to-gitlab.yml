@@ -6,47 +6,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  backup-to-gitlab:
-    if: github.repository_owner == 'linuxdeepin'
-    name: backup-to-gitlab
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: "linuxdeepin/jenkins-bridge-client"
-          path: jenkins-bridge-client
-
-      - name: Install Client
-        run: |
-          cd $GITHUB_WORKSPACE/jenkins-bridge-client
-          go build .
-          sudo install -Dvm755 jenkins-bridge-client -t /usr/bin/
-      - name: Trigger sync
-        id: generate-runid
-        run: |
-          echo "::set-output name=RUN_ID::$(jenkins-bridge-client -triggerSync -token '${{ secrets.BRIDGETOKEN }}')"
-      - name: Print log
-        run: |
-          jenkins-bridge-client -printlog -token "${{ secrets.BRIDGETOKEN }}" -runid "${{ steps.generate-runid.outputs.RUN_ID }}"
+  backup-to-gitlabwh:
+    uses: linuxdeepin/.github/.github/workflows/backup-to-gitlabwh.yml@master
+    secrets:
+      BRIDGETOKEN: ${{ secrets.BRIDGETOKEN }}
 
   backup-to-gitee:
-    if: github.repository_owner == 'linuxdeepin'
-    runs-on: ubuntu-latest
-    steps:
-      - name: create-repo
-        run: |
-          repo=${{ github.event.repository.name }}
-          homepage="https://github.com/linuxdeepin/${repo}"
-          description="mirror of ${homepage}"
-          # remove '.' prefix
-          repo=${repo#"."}
-          curl -X POST --header 'Content-Type: application/json;charset=UTF-8' 'https://gitee.com/api/v5/enterprises/linuxdeepin/repos' -d '{"private": 1,"access_token":"${{ secrets.GITEE_SYNC_TOKEN }}","name":"'"$repo"'","description":"'"$description"'","homepage":"'"$homepage"'","has_issues":"false","has_wiki":"false","can_comment":"false"}' || true
-      - name: push
-        run: |
-          git clone --bare https://github.com/linuxdeepin/${{ github.event.repository.name }}.git .git
-          repo=${{ github.event.repository.name }}
-          # remove '.' prefix
-          repo=${repo#"."}
-          git remote set-url origin https://myml:${{ secrets.GITEE_SYNC_TOKEN }}@gitee.com/linuxdeepin/${repo}.git
-          git push -f --all --prune origin
-          git push --tags origin
+    uses: linuxdeepin/.github/.github/workflows/backup-to-gitee.yml@master
+    secrets:
+      GITEE_SYNC_TOKEN: ${{ secrets.GITEE_SYNC_TOKEN }}
