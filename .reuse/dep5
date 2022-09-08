@@ -1,0 +1,45 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: deepin-boot-maker
+Upstream-Contact: UnionTech Software Technology Co., Ltd. <>
+Source: https://github.com/linuxdeepin/deepin-boot-maker
+
+# md txt files
+Files: *.md *.txt
+Copyright: None
+License: CC-BY-4.0
+
+# image files
+Files: *.svg *.png *.jpg
+Copyright: None
+License: CC0-1.0
+
+# themes
+Files: src/app/view/resource/theme/*
+Copyright: None
+License: CC0-1.0
+
+# eliminate files in src
+Files: src/app/platform/* src/service/data/* src/libdbm/blob/* src/libdbm/qrc/xfbinst_x32 src/libdbm/qrc/xfbinst_x64 src/tools/exportPot src/tools/importPo src/vendor/src/libxsys/XSys
+Copyright: None
+License: CC0-1.0
+
+# translation files
+Files: src/translations/* .tx/*
+Copyright: None
+License: CC0-1.0
+
+# git
+Files: .github/* *.gitignore *.gitrepo
+Copyright: None
+License: CC0-1.0
+
+# debian rpm
+Files: debian/* rpm/*
+Copyright: None
+License: CC0-1.0
+
+# other project file
+Files: *.pro *.pri *.qrc *.py *.bat .clog.toml copyright
+Copyright: None
+License: CC0-1.0
+
