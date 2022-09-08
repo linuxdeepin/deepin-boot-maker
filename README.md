@@ -34,9 +34,10 @@ See [INSTALL](INSTALL.md) for detail.
 
 Any usage issues can ask for help via
 
-* [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
+* [WiKi](https://wiki.deepin.org)
 * [Forum](https://bbs.deepin.org)
-* [WiKi](https://wiki.deepin.org/)
+* [Developer Center](https://github.com/linuxdeepin/developer-center/issues)
+* [Matrix](https://matrix.to/#/#deepin-community:matrix.org)
 
 ## Getting involved
 
