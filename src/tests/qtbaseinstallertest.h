@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
 #ifndef QTBASEINSTALLERTEST_H
 #define QTBASEINSTALLERTEST_H
 #include <gtest/gtest.h>
