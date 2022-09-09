@@ -1,0 +1,74 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: deepin-boot-maker
+Upstream-Contact: UnionTech Software Technology Co., Ltd. <>
+Source: https://github.com/linuxdeepin/deepin-boot-maker
+
+# readme files
+Files: CHANGELOG.md INSTALL.md README.md README.zh_CN.md src/vendor/src/libxsys/README.md
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC-BY-4.0
+
+# help files
+Files: src/help/* docs/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC-BY-4.0
+
+# themes
+Files: src/app/view/resource/theme/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# translation files
+Files: src/translate.qrc src/tools/translate_generation.py src/translations/* .tx/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# git
+Files: .github/* *.gitignore *.gitrepo
+Copyright: None
+License: CC0-1.0
+
+# debian rpm
+Files: debian/* rpm/*
+Copyright: None
+License: CC0-1.0
+
+# test
+Files: src/tests/tests.pro src/tests/vendor.pri
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# project file
+Files: deepin-boot-maker.pro .project.json conanfile.py .clog.toml
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# eliminate file in src
+Files: src/src.pro
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# eliminate files in src/tools
+Files: src/tools/exportPot src/tools/importPo src/tools/importPo.bat
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# eliminate file in src/app
+Files: src/app/app.pro src/app/vendor.pri src/app/view/resource/resource.qrc src/app/windows.qrc src/app/platform/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# eliminate file in src/libdbm
+Files: src/libdbm/libdbm.pro src/libdbm/libdbm.pri src/libdbm/vendor.pri src/libdbm/blob.qrc src/libdbm/blob_linux.qrc src/libdbm/qrc/xfbinst_x32 src/libdbm/qrc/xfbinst_x64 src/libdbm/blob/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# eliminate file in src/service
+Files: src/service/service.pro src/service/vendor.pri src/service/data/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# eliminate file in src/vendor
+Files: src/vendor/src/libxsys/libxsys.pro src/vendor/src/libxsys/libxsys.pri src/vendor/env.pri src/vendor/src/libxsys/XSys
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
