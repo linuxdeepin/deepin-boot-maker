@@ -94,7 +94,5 @@ mac* {
 
     QMAKE_POST_LINK = macdeployqt deepin-boot-maker.app/ -libpath=/Users/deepin/Development/ci/usr/lib
 }
-DISTFILES += \
-    qrc/xfbinst_x32 \
-    qrc/xfbinst_x64
+
 

@@ -6,12 +6,6 @@
 #include <QIcon>
 #include <QProcess>
 
-#ifdef Q_OS_WIN32
-#include <QFontDatabase>
-namespace Utils {
-void loadFonts();
-}
-#endif
 #include "bmwindow.h"
 #include <bminterface.h>
 #include <util/utils.h>

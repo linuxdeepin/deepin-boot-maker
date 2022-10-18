@@ -19,19 +19,6 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     ,m_bExit(true)
     ,m_sevenz(this)
 {
-#ifdef Q_OS_WIN32
-    QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
-    QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll", "7z.dll");
-    qDebug() << sevnz << sevnzdll;
-#endif
-
-#ifdef Q_OS_MAC
-    QDir resourceDir = QDir(QCoreApplication::applicationDirPath());
-    resourceDir.cdUp();
-    resourceDir.cd("Resources");
-    QString sevnz = resourceDir.absoluteFilePath("7z-mac");
-    qDebug() << sevnz;
-#endif
 
 #ifdef Q_OS_LINUX
     QString sevnz = "7z";
