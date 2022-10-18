@@ -59,7 +59,7 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
 # eliminate file in src/libdbm
-Files: src/libdbm/libdbm.pro src/libdbm/libdbm.pri src/libdbm/vendor.pri src/libdbm/blob.qrc src/libdbm/blob_linux.qrc src/libdbm/qrc/xfbinst_x32 src/libdbm/qrc/xfbinst_x64 src/libdbm/blob/*
+Files: src/libdbm/libdbm.pro src/libdbm/libdbm.pri src/libdbm/vendor.pri src/libdbm/blob.qrc src/libdbm/blob_linux.qrc src/libdbm/blob/syslinux/*
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
