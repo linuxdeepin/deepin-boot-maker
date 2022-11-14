@@ -37,7 +37,6 @@ You can run, close or create a shortcut for Boot Maker as follows.
 2. Prepare a USB disk (8GB at least).
 3. Run Boot Maker.
  - Boot Maker is built in the system by default, so you can find it in Launcher quickly.
- - Visit the official website to obtain the specified Boot Maker.
  - For Windows system, you can also extract xxx-boot-maker.exe from the image file.
 
 ### Select Image File
