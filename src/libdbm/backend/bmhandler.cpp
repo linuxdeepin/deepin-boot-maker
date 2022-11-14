@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
 #include "bmhandler.h"
 
 #include <DSysInfo>
