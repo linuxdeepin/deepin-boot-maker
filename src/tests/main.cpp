@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-only
+
 #include <QCoreApplication>
 #include <gtest/gtest.h>
 #ifdef QT_DEBUG

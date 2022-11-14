@@ -11,7 +11,7 @@ If you want binary install, please see [README](README.md).
 ### Install Build Dependencies
 
 ```bash
-sudo apt-get install debhelper python qt5-default qt5-qmake qttools5-dev-tools lib-dev lib-dev libdtkwidget-dev
+sudo apt-get install debhelper python qt5-default qt5-qmake qttools5-dev-tools libstartup-notification0-dev libxcb-util0-dev libdtkwidget-dev
 ```
 
 ### Build Deepin Boot Maker

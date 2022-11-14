@@ -1,23 +1,6 @@
-/*
- * Copyright (C) 2015 ~ 2018 Wuhan Deepin Technology Co., Ltd.
- *
- * Author:     Iceyer <me@iceyer.net>
- *
- * Maintainer: Iceyer <me@iceyer.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-only
 
 #include "DiskUtil.h"
 
@@ -466,128 +449,6 @@ XSys::Result InstallSyslinux(const QString &targetDev, const QString &images)
     return ret;
 }
 
-XSys::Result InstallBootloader(const QString &diskDev, const QString &images)
-{
-    //change the partition
-    if (!XSys::DiskUtil::UmountDisk(diskDev)) {
-        return XSys::Result(XSys::Result::Failed, "", diskDev);
-    }
-
-    QStringList args;
-    args << diskDev << "-I" ;
-    XSys::SynExec("umount", diskDev);
-    XSys::SynExec("umount", diskDev);
-    XSys::SynExec("mkfs.fat", args.join(" "));
-    // pre format
-    QString newTargetDev = diskDev + "1";
-    QString xfbinstDiskName = QString("\"(hd%1)\"").arg(diskDev[diskDev.length() - 1].toLatin1() - 'a');
-
-    // fbinst: format
-    XSys::SynExec("umount", diskDev);
-    XSys::SynExec("umount", diskDev);
-
-    QString xfbinstResource = "/usr/bin/xfbinst_x32";
-    if (QSysInfo::buildCpuArchitecture() == "x86_64") {
-        xfbinstResource = "/usr/bin/xfbinst_x64";
-    }
-    QString xfbinstPath = XSys::FS::InsertTmpFile(xfbinstResource);
-
-    qDebug() << "load" << xfbinstResource << xfbinstPath;
-
-    XSys::Result ret = XSys::SynExec("chmod", " +x " + xfbinstPath);
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    ret = XSys::SynExec(xfbinstPath, QString(" %1 format --fat32 --align --force").arg(xfbinstDiskName));
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    // fbinst: install fg.cfg
-    QString tmpfgcfgPath = XSys::FS::InsertTmpFile(QString(":/blob/xfbinst/fb.cfg"));
-    XSys::SynExec("umount", diskDev);
-    XSys::SynExec("umount", diskDev);
-    ret = XSys::SynExec(xfbinstPath, QString(" %1 add-menu fb.cfg %2 ").arg(xfbinstDiskName).arg(tmpfgcfgPath));
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    // after format, diskdev change to /dev/sd?1
-    if (!XSys::DiskUtil::UmountDisk(diskDev)) {
-        return XSys::Result(XSys::Result::Failed, "", diskDev);
-    }
-
-    ret = XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
-//    if (!ret.isSuccess()) { return ret; }
-
-    // rename label  fix bug 20233 区分社区版专业版镜像设置U盘卷标名
-    ret = XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(newTargetDev));
-    QStringList isoArgs;
-    isoArgs << "-i" << images << "-d";
-    XSys::Result ret3 = XSys::SynExec("isoinfo", isoArgs);
-    if (!ret3.isSuccess()) {
-        qWarning() << "call isoinfo failed" << ret3.result();
-    }
-    QStringList volume = ret3.result().split("\n").filter("Volume id");
-    QString tem = volume.takeAt(0);
-    if (tem.contains("Volume id: deepin", Qt::CaseInsensitive)) {
-        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 DEEPINOS").arg(newTargetDev));
-    } else if (tem.contains("Volume id: uos", Qt::CaseInsensitive)) {
-        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UOS").arg(newTargetDev));
-    } else {
-        ret = XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 UNKNOWN").arg(newTargetDev));
-    }
-    // install syslinux
-    XSys::Syslinux::InstallBootloader(newTargetDev);
-
-    // dd pbr file ldlinux.bin
-    QString tmpPbrPath = XSys::FS::TmpFilePath("ldlinux.bin");
-    ret = XSys::SynExec("dd", QString(" if=%1 of=%2 bs=512 count=1").arg(newTargetDev).arg(tmpPbrPath));
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    // fbinst: add pbr file ldlinux.bin
-    ret = XSys::SynExec(xfbinstPath, QString(" %1 add ldlinux.bin %2 -s").arg(xfbinstDiskName).arg(tmpPbrPath));
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    // mount
-    QString mountPoint = QString("/usr/bin/%1").arg(XSys::FS::TmpFilePath(""));
-    ret = XSys::SynExec("mkdir", QString(" -p %1").arg(mountPoint));
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    ret = XSys::SynExec("chmod",  " a+wrx " + mountPoint);
-    if (!ret.isSuccess()) {
-        return ret;
-    }
-
-    XSys::DiskUtil::Mount(newTargetDev);
-
-//    QString mountCmd = "-o "
-//                       "flush,rw,nosuid,nodev,shortname=mixed,"
-//                       "dmask=0077,utf8=1,showexec %1 %2";
-    // the disk must be mount
-//    int retryTimes = 5;
-
-//    do {
-//        qDebug() << "Try mount the disk " << (6 - retryTimes) << " first time";
-//        UmountDisk(diskDev);
-//        QThread::sleep(5);
-//        XSys::SynExec("partprobe", QString(" %1").arg(diskDev));
-//        QThread::sleep(5);
-//        XSys::SynExec("mount", isoinfomountCmd.arg(newTargetDev).arg(mountPoint));
-//        QThread::sleep(5);
-//        retryTimes--;
-//    } while((MountPoint(newTargetDev) == "") && retryTimes);
-//    // how ever, if mount failed, check before install.
-    return XSys::Result(XSys::Result::Success, "", newTargetDev);
-}
-
 #endif
 
 
@@ -853,7 +714,7 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
 
 QString getPartitionUUID(const QString& strPartition)
 {
-    XSys::Result ret = XSys::SynExec("lsblk", "-o PATH,UUID");
+    XSys::Result ret = XSys::SynExec("lsblk", "-p -l --fs -o name,uuid");
 
     if (!ret.isSuccess()) {
         qWarning() << "call lsblk failed" << ret.result();
@@ -999,11 +860,4 @@ bool Mount(const QString &targetDev)
 
 }
 
-namespace Bootloader {
-
-Result InstallBootloader(const QString &diskDev, const QString &images)
-{
-    return XAPI::InstallBootloader(diskDev, images);
-}
-}
 }

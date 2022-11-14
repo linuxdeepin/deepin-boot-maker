@@ -1,0 +1,13 @@
+name: tag build
+on:
+  push:
+    tags: "*"
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: linuxdeepin/.github/.github/workflows/build-tag.yml@master
+    secrets: inherit

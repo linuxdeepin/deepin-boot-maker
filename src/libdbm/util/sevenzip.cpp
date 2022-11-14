@@ -1,23 +1,6 @@
-/*
- * Copyright (C) 2017 ~ 2018 Wuhan Deepin Technology Co., Ltd.
- *
- * Author:     Iceyer <me@iceyer.net>
- *
- * Maintainer: Iceyer <me@iceyer.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-only
 
 #include "sevenzip.h"
 
@@ -36,19 +19,6 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     ,m_bExit(true)
     ,m_sevenz(this)
 {
-#ifdef Q_OS_WIN32
-    QString sevnz = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.exe");
-    QString sevnzdll = XSys::FS::InsertTmpFile(":/blob/sevnz/sevnz.dll", "7z.dll");
-    qDebug() << sevnz << sevnzdll;
-#endif
-
-#ifdef Q_OS_MAC
-    QDir resourceDir = QDir(QCoreApplication::applicationDirPath());
-    resourceDir.cdUp();
-    resourceDir.cd("Resources");
-    QString sevnz = resourceDir.absoluteFilePath("7z-mac");
-    qDebug() << sevnz;
-#endif
 
 #ifdef Q_OS_LINUX
     QString sevnz = "7z";

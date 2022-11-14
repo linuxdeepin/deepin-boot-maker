@@ -1,23 +1,6 @@
-/*
- * Copyright (C) 2020 ~ 2021 Uniontech Software Co., Ltd.
- *
- * Author:     shenfusheng <shenfusheng@uniontech.com>
- *
- * Maintainer: shenfusheng <shenfusheng@uniontech.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-only
 
 #include "qtbaseinstaller.h"
 #include "../util/utils.h"
@@ -151,8 +134,11 @@ void QtBaseInstaller::beginInstall()
     //通过判断镜像中是否存在anaconda的文件夹来推测该镜像的安装器
 
     if(needAddRepo()) {
+        qInfo() << "need add repo";
         modifyBootGrubFile("/EFI/BOOT/grub.cfg");
         modifyBootGrubFile("/syslinux/syslinux.cfg");
+    } else {
+        qInfo() << "not need add repo";
     }
 
     emit this->reportProgress(100, "finish", "");
@@ -469,9 +455,13 @@ bool QtBaseInstaller::needAddRepo()
     }
 
     QStringList strList = ret.result().split("\n");
+//    欧拉版判断方法
     QStringList strPackagesList = strList.filter("/Packages/anaconda_", Qt::CaseInsensitive);
     QStringList strReleaseList = strList.filter("/Packages/UnionTech_release_", Qt::CaseInsensitive);
-    return (!strPackagesList.isEmpty()&&!strReleaseList.isEmpty());
+//    行业版判断方法
+    QStringList strAppStreamPackagesList = strList.filter("/AppStream/Packages/anaconda", Qt::CaseInsensitive);
+
+    return ((!strPackagesList.isEmpty()&&!strReleaseList.isEmpty()) || !strAppStreamPackagesList.isEmpty());
 }
 
 void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
