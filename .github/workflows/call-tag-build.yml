@@ -9,5 +9,5 @@ concurrency:
 
 jobs:
   build:
-    uses: linuxdeepin/.github/.github/workflows/build-tag.yml@master
+    uses: linuxdeepin/.github/.github/workflows/tag-build.yml@master
     secrets: inherit
