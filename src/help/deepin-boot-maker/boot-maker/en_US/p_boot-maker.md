@@ -74,17 +74,20 @@ It takes a few minutes to make a boot disk. Please wait patiently. Please do not
 Common causes of failure may include:
 
 - Wrong disk format
+
 - Wrong disk space 
+
 - Wrong disk mounting
+
 - Image distraction error
 
-  
+![boot-maker](fig/failed.png)
 
-![bootmaker](fig/failed.png)
 
-When some unknown error occurs, you will see the button **After-Sale Services** in the "Process Failed" window. Click it  to jump to the homepage of **Support**. In **Support**, you can obtain help by leaving a message, online service and so on. 
 
-![aftersale_services](fig/aftersale_services.png)
+When some unknown error occurs, you will see the button **Submit Feedback** in the "Process Failed" window. Click it  to jump to the relevant website to submit your feedback. 
+
+
 
 
 
