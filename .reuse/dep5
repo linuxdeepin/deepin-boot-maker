@@ -24,7 +24,7 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
 # git
-Files: .github/* *.gitignore *.gitrepo
+Files: .github/* *.gitignore *.gitrepo .obs/*
 Copyright: None
 License: CC0-1.0
 
