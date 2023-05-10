@@ -6,5 +6,4 @@ on:
 jobs:
   chatopt:
     uses: linuxdeepin/.github/.github/workflows/chatOps.yml@master
-    secrets:
-      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+    secrets: inherit
