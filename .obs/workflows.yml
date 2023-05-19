@@ -28,10 +28,9 @@ test_build:
 
 tag_build:
   steps:
-    - branch_package:
-        source_project: deepin:Develop:dde
-        source_package: %{SCM_REPOSITORY_NAME}
-        target_project: deepin:Unstable:dde
+    - trigger_services:
+        project: deepin:Unstable:dde
+        package: %{SCM_REPOSITORY_NAME}
   filters:
     event: tag_push
 
