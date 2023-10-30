@@ -15,7 +15,13 @@ void DBMLogManager::initConsoleAppender()
 {
     m_consoleAppender = new ConsoleAppender;
     m_consoleAppender->setFormat(m_format);
+#ifdef logger
+    qInfo() << "defined logger!";
     logger->registerAppender(m_consoleAppender);
+#else
+    qInfo() << "defined dlogger!";
+    dlogger->registerAppender(m_consoleAppender);
+#endif
 }
 
 void DBMLogManager::initRollingFileAppender()
@@ -33,7 +39,13 @@ void DBMLogManager::initRollingFileAppender()
     m_rollingFileAppender->setFormat(m_format);
     m_rollingFileAppender->setLogFilesLimit(5);
     m_rollingFileAppender->setDatePattern(RollingFileAppender::DailyRollover);
+#ifdef logger
+    qInfo() << "defined logger!";
     logger->registerAppender(m_rollingFileAppender);
+#else
+    qInfo() << "defined dlogger!";
+    dlogger->registerAppender(m_rollingFileAppender);
+#endif
 }
 
 //! Registers the appender to write the log records to the Console
