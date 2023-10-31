@@ -56,6 +56,7 @@ bool InsertFileData(const QString &filename, const QByteArray &data)
     }
     if (!file.write(data)) {
         qWarning() << "Insert Tmp FileData Failed, Can not Write" << filename;
+        file.close();
         return false;
     }
     file.close();
@@ -75,6 +76,7 @@ QString InsertTmpFile(const QString &fileurl, const QString &distFilename)
     }
     if (!InsertFileData(filename, file.readAll())) {
         qWarning() << "Insert Tmp File Failed" << fileurl;
+        file.close();
         return filename;
     }
     file.close();
@@ -88,6 +90,7 @@ bool InsertFile(const QString &fileurl, const QString &fullpath)
         return false;
     }
     if (!InsertFileData(fullpath, file.readAll())) {
+        file.close();
         return false;
     }
     file.close();
@@ -117,8 +120,15 @@ bool CpFile(const QString &srcName, const QString &desName)
     bool ret = true;
     QFile srcFile(srcName);
     QFile desFile(desName);
-    srcFile.open(QIODevice::ReadOnly);
-    desFile.open(QIODevice::WriteOnly);
+    if (!srcFile.open(QIODevice::ReadOnly)) {
+        qWarning() << "error open file: " << srcName;
+        return false;
+    }
+    if (!desFile.open(QIODevice::WriteOnly)) {
+        qWarning() << "error open file: " << desName;
+        srcFile.close();
+        return false;
+    }
     QByteArray data = srcFile.readAll();
     qint64 writeBytes = desFile.write(data);
     if (writeBytes != data.size()) {
