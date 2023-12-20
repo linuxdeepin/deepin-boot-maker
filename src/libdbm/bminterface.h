@@ -34,7 +34,8 @@ signals:
                       const QString &device,
                       const QString &partition,
                       bool  formatDevice);
-//    void checkFileResult(bool result);
+    void startInstallRet(bool success);
+
 public slots:
     void start();
     void stop();

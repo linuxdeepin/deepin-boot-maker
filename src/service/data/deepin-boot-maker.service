@@ -1,0 +1,15 @@
+[Unit]
+Description=Deepin Boot Maker
+
+[Service]
+Type=dbus
+BusName=com.deepin.bootmaker
+ExecStart=/usr/lib/deepin-daemon/deepin-boot-maker-service
+StandardOutput=syslog
+# Needs CAP_SYS_ADMIN umount u-disk.
+CapabilityBoundingSet=~CAP_SYS_BPF CAP_NET_ADMIN
+MemoryLimit=10G
+IOWeight=200
+
+[Install]
+WantedBy=multi-user.target

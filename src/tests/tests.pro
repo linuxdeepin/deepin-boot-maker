@@ -10,7 +10,7 @@ CONFIG(debug, debug|release) {
 #添加安全编译参数
 QMAKE_LFLAGS += -z noexecstack -pie -fPIC -z relro -z now
 QMAKE_CFLAGS += -fstack-protector-all
-QMAKE_CXXFLAGS += -fstack-protector-all
+QMAKE_CXXFLAGS += -fstack-protector-all -fno-access-control
 
 
 QT += core gui widgets testlib
@@ -22,6 +22,7 @@ CONFIG += testcase no_testcase_installs
 CONFIG   += resources_big
 PKGCONFIG += dtkwidget
 PKGCONFIG += dtkcore
+PKGCONFIG += polkit-qt5-1
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -108,7 +109,8 @@ HEADERS += \
     ../vendor/src/libxsys/FileSystem/FileSystem.h \
     ../vendor/src/libxsys/DiskUtil/Syslinux.h \
     ../service/bootmakerservice.h \
-    ../service/LogManager.h
+    ../service/LogManager.h \
+    ../service/bootmakerservice_p.h
 
 
 

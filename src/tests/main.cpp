@@ -11,6 +11,9 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+    a.setOrganizationName("deepin");
+    a.setApplicationName("deepin-boot-maker");
+
     ::testing::InitGoogleTest(&argc,argv);
     int ret = RUN_ALL_TESTS();
 #ifdef QT_DEBUG

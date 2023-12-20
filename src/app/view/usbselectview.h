@@ -8,6 +8,7 @@
 #include <DWidget>
 #include <DFrame>
 #include <DLabel>
+#include <DSuggestButton>
 #include <bminterface.h>
 #include <QListWidgetItem>
 
@@ -24,11 +25,14 @@ signals:
     void deviceSelected(const QString &partition, bool format);
     void finish(quint32 error, const QString &title, const QString &description);
     void backToPrevUI();
+
 public slots:
     void getIsoFileSelectedPath(QString isoPath);
+    void resetStartInstall();
 
 private:
     QList<DeviceInfo> m_mountDevs;
     QListWidgetItem *m_previous = nullptr;
+    DSuggestButton *m_start = nullptr;
 };
 

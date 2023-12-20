@@ -25,7 +25,8 @@ SOURCES += main.cpp \
 
 HEADERS += \
     bootmakerservice.h \
-    LogManager.h
+    LogManager.h \
+    bootmakerservice_p.h
 
 unix{
 binary.path = $${PREFIX}/lib/deepin-daemon/
@@ -37,5 +38,11 @@ service.files = $$PWD/data/com.deepin.bootmaker.service
 dbus.path = $${PREFIX}/share/dbus-1/system.d/
 dbus.files = $$PWD/data/com.deepin.bootmaker.conf
 
-INSTALLS += service dbus binary
+systemd.path = $${PREFIX}/lib/systemd/system
+systemd.files = $$PWD/data/deepin-boot-maker.service
+
+policy.path = $${PREFIX}/share/polkit-1/actions
+policy.files = $$PWD/data/com.deepin.bootmaker.policy
+
+INSTALLS += service dbus binary systemd policy
 }

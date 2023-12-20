@@ -15,8 +15,8 @@ class BootMaker : public BMHandler
     Q_OBJECT
 public:
     explicit BootMaker(QObject *parent = nullptr);
-    virtual ~BootMaker() {
-
+    virtual ~BootMaker() override
+    {
         if (m_pInstaller != nullptr) {
             delete m_pInstaller;
             m_pInstaller = nullptr;
@@ -27,22 +27,18 @@ public:
             m_monitorWork->wait();
             m_monitorWork->deleteLater();
         }
-
     }
+
 public slots:
-    void reboot();
-    void start();
-    void stop();
-    const QList<DeviceInfo> deviceList() const;
-    bool install(const QString &image,
-                 const QString &device,
-                 const QString &partition,
-                 bool  formatDevice);
-    bool checkfile(const QString &filepath);
+    void reboot() override;
+    void start() override;
+    void stop() override;
+    const QList<DeviceInfo> deviceList() const override;
+    bool install(const QString &image, const QString &device, const QString &partition, bool formatDevice) override;
+    bool checkfile(const QString &filepath) override;
 
 private:
-    DeviceMonitor* m_usbDeviceMonitor = nullptr;
-    QtBaseInstaller* m_pInstaller;
-    QThread* m_monitorWork;
+    DeviceMonitor *m_usbDeviceMonitor = nullptr;
+    QtBaseInstaller *m_pInstaller = nullptr;
+    QThread *m_monitorWork = nullptr;
 };
-

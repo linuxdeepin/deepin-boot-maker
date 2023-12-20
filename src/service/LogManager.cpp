@@ -15,7 +15,7 @@ void DBMLogManager::initConsoleAppender()
 {
     m_consoleAppender = new ConsoleAppender;
     m_consoleAppender->setFormat(m_format);
-    logger->registerAppender(m_consoleAppender);
+    loggerInstance()->registerAppender(m_consoleAppender);
 }
 
 void DBMLogManager::initRollingFileAppender()
@@ -25,7 +25,9 @@ void DBMLogManager::initRollingFileAppender()
         cachePath = QString("/var/log/%1").arg(qApp->organizationName());
     }
     if (!QDir(cachePath).exists()) {
-        QDir(cachePath).mkpath(cachePath);
+        if (!QDir(cachePath).mkpath(cachePath)) {
+            return;
+        }
     }
     m_logPath = joinPath(cachePath, QString("%1.log").arg(qApp->applicationName()));
 
@@ -33,7 +35,7 @@ void DBMLogManager::initRollingFileAppender()
     m_rollingFileAppender->setFormat(m_format);
     m_rollingFileAppender->setLogFilesLimit(5);
     m_rollingFileAppender->setDatePattern(RollingFileAppender::DailyRollover);
-    logger->registerAppender(m_rollingFileAppender);
+    loggerInstance()->registerAppender(m_rollingFileAppender);
 }
 
 //! Registers the appender to write the log records to the Console

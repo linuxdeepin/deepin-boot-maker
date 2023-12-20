@@ -1,4 +1,5 @@
 [D-BUS Service]
 Name=com.deepin.bootmaker
-Exec=/usr/lib/deepin-daemon/deepin-boot-maker-service
-User=root
+Exec=/usr/bin/false
+# Activate by sysmtemd service.
+SystemdService=deepin-boot-maker.service

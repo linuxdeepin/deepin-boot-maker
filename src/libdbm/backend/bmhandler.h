@@ -45,8 +45,8 @@ signals:
     void removablePartitionsChanged(const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& reducelist);
     void finished(int errcode, const QString &description);
     void reportProgress(int current, int error, const QString &title, const QString &description);
-   void  reportProgress1(int current, int error, const QString &title, const QString &description);
-    //    void checkFileResult(bool result);
+    void reportProgress1(int current, int error, const QString &title, const QString &description);
+    void startInstallRet(bool success);
 
 public slots:
     virtual void reboot() = 0;

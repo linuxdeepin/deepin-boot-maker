@@ -160,14 +160,39 @@ BMWindow::BMWindow(QWidget *parent)
         closeflags = false;
         this->setVisible(true);
 #endif
+
         DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, false);
         titlebar()->setQuitMenuDisabled(true);
+        d->usbWidget->setEnabled(false);
+
+#ifdef Q_OS_WIN
         slideWidget(d->usbWidget, d->progressWidget);
         d->wsib->setCurrentPage(2);
+#endif
+
         auto isoFilePath = property("bmISOFilePath").toString();
         qDebug() << "call interface install" << partition << format;
         emit d->interface->startInstall(isoFilePath, "", partition, format);
+        // Linux: wait for startInstallRet() polkit authorization check result, then animate the widget.
     });
+
+#ifndef Q_OS_WIN
+    // Check polkit authorization success, not availiable on windows.
+    connect(d->interface, &BMInterface::startInstallRet, this, [ = ](bool success) {
+        if (success) {
+            slideWidget(d->usbWidget, d->progressWidget);
+            d->wsib->setCurrentPage(2);
+        } else {
+            qWarning() << "call interface install return failed";
+
+            d->usbWidget->resetStartInstall();
+            d->usbWidget->setEnabled(true);
+            titlebar()->setQuitMenuDisabled(false);
+            DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
+        }
+    });
+#endif
+
     connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
         setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
         d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
