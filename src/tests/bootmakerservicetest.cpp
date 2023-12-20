@@ -3,11 +3,14 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "bootmakerservicetest.h"
+#include "../service/bootmakerservice_p.h"
 #include <QDebug>
+
 // Sets up the test fixture.
 void BootMakerServiceTest::SetUp()
 {
     m_bootMakerService = new BootMakerService;
+    m_bootMakerService->d_ptr->disableCheck = true;
 }
 
 // Tears down the test fixture.

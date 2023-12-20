@@ -146,25 +146,25 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     usbPanelLayout->addSpacing(15);
     usbPanelLayout->addLayout(checkBoxLayout);
 
-    DSuggestButton *start = new DSuggestButton;
-    start->setAccessibleName("usbSelectWidget_startButton");
-    start->setFocusPolicy(Qt::NoFocus);
-    start->setObjectName("StartMake");
-    start->setText(tr("Start"));
-    DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
-    start->setDisabled(true);
-    start->setFixedHeight(36);
+    m_start = new DSuggestButton;
+    m_start->setAccessibleName("usbSelectWidget_startButton");
+    m_start->setFocusPolicy(Qt::NoFocus);
+    m_start->setObjectName("StartMake");
+    m_start->setText(tr("Start"));
+    DFontSizeManager::instance()->bind(m_start, DFontSizeManager::T6);
+    m_start->setDisabled(true);
+    m_start->setFixedHeight(36);
     DPushButton* pBackBtn = new DPushButton(tr("Back", "button"));
     pBackBtn->setAccessibleName("usbSelectWidget_backBuuton");
     pBackBtn->setFocusPolicy(Qt::NoFocus);
-    DFontSizeManager::instance()->bind(start, DFontSizeManager::T6);
+    DFontSizeManager::instance()->bind(m_start, DFontSizeManager::T6);
     pBackBtn->setDisabled(false);
     pBackBtn->setFixedHeight(36);
     QHBoxLayout* pHlayout = new QHBoxLayout;
     pHlayout->setContentsMargins(20, 0, 20, 0);
     pHlayout->setSpacing(10);
     pHlayout->addWidget(pBackBtn);
-    pHlayout->addWidget(start);
+    pHlayout->addWidget(m_start);
 
     mainLayout->addWidget(m_title, 0, Qt::AlignHCenter);
     mainLayout->addStretch();
@@ -282,7 +282,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             }
         }
 
-        start->setDisabled(!hasPartitionSelected);
+        m_start->setDisabled(!hasPartitionSelected);
 
         if (!hasPartitionSelected) {
             this->setProperty("last_path", "");
@@ -332,13 +332,13 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             infoItem->setCheck(true);
             this->setProperty("last_path", infoItem->property("path").toString());
             this->setProperty("last_fstype", infoItem->property("fstype").toString());
-            start->setDisabled(false);
+            m_start->setDisabled(false);
         }
          m_previous = current;
     });
 
 
-    connect(start, &DPushButton::clicked, this, [ = ] {
+    connect(m_start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
 
         QString usbMountPoint =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
@@ -368,7 +368,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             return;
         }
 
-        start->setEnabled(false);
+        m_start->setEnabled(false);
 #ifdef Q_OS_LINUX
         if (!m_formatDiskCheck->isChecked() && "vfat" != this->property("last_fstype").toString())
         {
@@ -389,4 +389,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 void UsbSelectView::getIsoFileSelectedPath(QString isoPath)
 {
     this->setProperty("isoFilePath",isoPath);
+}
+
+void UsbSelectView::resetStartInstall()
+{
+    m_start->setEnabled(true);
 }

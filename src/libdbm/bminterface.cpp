@@ -55,6 +55,8 @@ BMInterface::BMInterface(QObject *parent) :
             this,&BMInterface::reportProgress1);
     connect(this, &BMInterface::startInstall,
             d->handler, &BMHandler::startInstall );
+    connect(d->handler, &BMHandler::startInstallRet,
+            this, &BMInterface::startInstallRet);
 }
 
 BMInterface::~BMInterface()

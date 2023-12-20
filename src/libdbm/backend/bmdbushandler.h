@@ -26,6 +26,10 @@ public:
         if (!m_dbus->isValid()) {
             qDebug() << "m_dbus isValid false error:" << m_dbus->lastError();
         }
+
+        // Not default timeout (~25s), waiting for polkit authorization to complete.
+        m_dbus->setTimeout(INT_MAX);
+
         qDebug() << "m_dbus isValid true";
         connect(m_dbus, &BMDBusInterface::DeviceListChanged,
         this, [ = ](const QString & addlistJson, const QString& dellistJson) {
@@ -43,24 +47,24 @@ public:
     }
 
 public slots:
-    void reboot()
+    void reboot() override
     {
         m_dbus->Reboot();
     }
 
-    void start()
+    void start() override
     {
         qDebug() << "start";
         m_dbus->Start();
         qDebug() << "m_dbus Start error:" << m_dbus->lastError();
     }
 
-    void stop()
+    void stop() override
     {
         m_dbus->Stop();
     }
 
-    const QList<DeviceInfo> deviceList() const
+    const QList<DeviceInfo> deviceList() const override
     {
         qDebug() << "deviceList";
         return  deviceListFromJson(m_dbus->DeviceList());
@@ -69,13 +73,15 @@ public slots:
     bool install(const QString &image,
                  const QString &device,
                  const QString &partition,
-                 bool  formatDevice)
+                 bool  formatDevice) override
     {
         qDebug() << "install";
-        return m_dbus->Install(image, device, partition, formatDevice);
+        bool ret = m_dbus->Install(image, device, partition, formatDevice);
+        Q_EMIT startInstallRet(ret);
+        return ret;
     }
 
-    bool checkfile(const QString &filepath)
+    bool checkfile(const QString &filepath) override
     {
         qDebug() << "checkfile";
         return m_dbus->CheckFile(filepath);

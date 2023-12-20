@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+    <vendor>LinuxDeepin</vendor>
+    <vendor_url>https://www.deepin.com/</vendor_url>
+    <action id="com.deepin.bootmaker">
+        <message>To create a bootable USB drive you need to authenticate.</message>
+        <message xml:lang="zh_CN">创建启动盘需要您进行认证。</message>
+        <message xml:lang="zh_HK">創建啓動盤需要您進行認證。</message>
+        <message xml:lang="zh_TW">創建啟動盤需要您進行認證。</message>
+            <defaults>
+                <allow_any>no</allow_any>
+                <allow_inactive>no</allow_inactive>
+                <allow_active>auth_admin_keep</allow_active>
+            </defaults>
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/deepin-daemon/deepin-boot-maker-service</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+    </action>
+</policyconfig>

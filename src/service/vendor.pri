@@ -3,7 +3,7 @@ include($$PWD/../vendor/env.pri)
 unix{
     QT += dbus
     CONFIG += link_pkgconfig
-    PKGCONFIG += dtkcore
+    PKGCONFIG += dtkcore polkit-qt5-1
 }
 
 win32{

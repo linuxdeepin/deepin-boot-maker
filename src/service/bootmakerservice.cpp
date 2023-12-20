@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "bootmakerservice.h"
+#include "bootmakerservice_p.h"
 
 #include <QDebug>
 #include <QThread>
@@ -10,6 +11,7 @@
 #include <QDBusContext>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
+#include <QStandardPaths>
 
 #include <sys/types.h>
 #include <dirent.h>
@@ -22,6 +24,37 @@
 
 #include <backend/bootmaker.h>
 
+#if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
+#include <polkit-qt5-1/PolkitQt1/Authority>
+#include <polkit-qt5-1/PolkitQt1/Subject>
+#endif
+
+const QString s_PolkitAction = "com.deepin.bootmaker";
+
+/**
+   @brief Polkit action authorization check.
+        Use com.deepin.bootmaker.policy config file.
+        Default action id: "com.deepin.bootmaker"
+   @note Available on linux/unix/macos platform.
+   @return check passed.
+ */
+bool checkAuthorization(qint64 pid)
+{
+#if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
+    PolkitQt1::Authority::Result ret = PolkitQt1::Authority::instance()->checkAuthorizationSync(
+        s_PolkitAction, PolkitQt1::UnixProcessSubject(pid), PolkitQt1::Authority::AllowUserInteraction);
+    if (PolkitQt1::Authority::Yes == ret) {
+        return true;
+    } else {
+        qWarning() << qPrintable("Policy authorization check failed!");
+        return false;
+    }
+#else
+    return true;
+#endif
+}
+
+#if 0 // Not use now
 int getProcIdByExeName(std::string execName)
 {
     int pid = -1;
@@ -52,36 +85,19 @@ int getProcIdByExeName(std::string execName)
 
     return pid;
 }
+#endif
 
-static std::string getProcIdExe(int id)
+static QString getProcIdExe(qint64 id)
 {
-    std::string execName;
+    QString execName;
     if (id > 0) {
         // Read contents of virtual /proc/{pid}/cmdline file
-        auto exeSymlinkPath = std::string("/proc/") + QString("%1").arg(id).toStdString() + "/exe";
-        char *actualpath = realpath(exeSymlinkPath.c_str(), NULL);
-        execName = std::string(actualpath);
+        QString exeSymlinkPath = QString("/proc/%1/exe").arg(id);
+        char *actualpath = realpath(exeSymlinkPath.toStdString().c_str(), NULL);
+        execName = QString(actualpath);
     }
     return execName;
 }
-
-class BootMakerServicePrivate
-{
-public:
-    BootMakerServicePrivate(BootMakerService *parent) : q_ptr(parent) {}
-    ~BootMakerServicePrivate() {
-//        if (bm != nullptr) {
-//            delete bm;
-//            bm = nullptr;
-//        }
-    }
-    bool checkCaller();
-
-    BootMaker   *bm;
-
-    BootMakerService *q_ptr;
-    Q_DECLARE_PUBLIC(BootMakerService)
-};
 
 BootMakerService::BootMakerService(QObject *parent) :
     QObject(parent), d_ptr(new BootMakerServicePrivate(this))
@@ -172,6 +188,11 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
     if (!d->checkCaller()) {
         return false;
     }
+
+    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid())) {
+        return false;
+    }
+
     qDebug() << "install  image:" << image << " device:" << device << " partition:" << partition;
     emit d->bm->startInstall(image, device, partition, formatDevice);
     return true;
@@ -191,20 +212,45 @@ bool BootMakerService::CheckFile(const QString &filepath)
 
 bool BootMakerServicePrivate::checkCaller()
 {
-/*
-    Q_Q(BootMakerService);
-    auto callerPid = static_cast<int>(q->connection().interface()->servicePid(q->message().service()).value());
-    auto callerExe = getProcIdExe(callerPid);
-    auto dbmExe = "/usr/bin/deepin-boot-maker";
-//    auto dbmPid = getProcIdByExeName();
+    if (disableCheck) {
+        return true;
+    }
 
-    qDebug() << "callerPid is: " << callerPid  << "callerExe is:" << callerExe.c_str() ;
+    Q_Q(BootMakerService);
+    if (!q->calledFromDBus()) {
+        return false;
+    }
+
+    qint64 callerPid = dbusCallerPid();
+    QString callerExe = getProcIdExe(callerPid);
+    QString dbmExe = QStandardPaths::findExecutable("deepin-boot-maker", {"/usr/bin"});
+
+    qDebug() << "callerPid is: " << callerPid << "callerExe is:" << callerExe;
 
     if (callerExe != dbmExe) {
         qDebug() << QString("caller not authorized") ;
         return false;
     }
-    qDebug() <<  QString("caller authorized");*/
-    return true;
+    qDebug() <<  QString("caller authorized");
 
+    return true;
+}
+
+/**
+   @return DBus interface caller pid
+    If the call is not from dbus (from UT), return 0
+ */
+qint64 BootMakerServicePrivate::dbusCallerPid()
+{
+    Q_Q(BootMakerService);
+    if (!q->calledFromDBus()) {
+        return 0;
+    }
+
+    auto interface = q->connection().interface();
+    if (interface) {
+        return static_cast<qint64>(interface->servicePid(q->message().service()).value());
+    }
+
+    return 0;
 }
