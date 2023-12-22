@@ -1,3 +1,14 @@
+deepin-boot-maker (5.7.10) unstable; urgency=medium
+
+  * chore: adapt license and copyright (#45)(Task: 187933)
+  * docs: linux dependency update (#32)
+    Thanks to Alvaro Samudio
+  * fix: remove macOS and windows support (#46)
+    Thanks to guonafu
+  * feat: Adapt dbus security standard.(Task: 310479)
+
+ -- renbin <renbin@uniontech.com>  Fri, 22 Dec 2023 11:14:14 +0800
+
 deepin-boot-maker (5.6.12-1) unstable; urgency=low
 
   * fix lintian warnings
