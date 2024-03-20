@@ -29,7 +29,8 @@
 #include <polkit-qt5-1/PolkitQt1/Subject>
 #endif
 
-const QString s_PolkitAction = "com.deepin.bootmaker";
+const QString s_PolkitActionCreate = "com.deepin.bootmaker.create";
+const QString s_PolkitActionReboot = "com.deepin.bootmaker.reboot";
 
 /**
    @brief Polkit action authorization check.
@@ -38,11 +39,14 @@ const QString s_PolkitAction = "com.deepin.bootmaker";
    @note Available on linux/unix/macos platform.
    @return check passed.
  */
-bool checkAuthorization(qint64 pid)
+bool checkAuthorization(qint64 pid, const QString &action)
 {
 #if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
     PolkitQt1::Authority::Result ret = PolkitQt1::Authority::instance()->checkAuthorizationSync(
-        s_PolkitAction, PolkitQt1::UnixProcessSubject(pid), PolkitQt1::Authority::AllowUserInteraction);
+        action,
+        PolkitQt1::UnixProcessSubject(pid),
+        PolkitQt1::Authority::AllowUserInteraction);
+
     if (PolkitQt1::Authority::Yes == ret) {
         return true;
     } else {
@@ -141,10 +145,8 @@ BootMakerService::~BootMakerService()
 void BootMakerService::Reboot()
 {
     Q_D(BootMakerService);
-    if (!d->checkCaller()) {
-        return;
-    }
-    d->bm->reboot();
+    if (checkAuthorization(d->dbusCallerPid(), s_PolkitActionReboot))
+        d->bm->reboot();
 }
 
 void BootMakerService::Start()
@@ -189,7 +191,7 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
         return false;
     }
 
-    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid())) {
+    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
         return false;
     }
 
