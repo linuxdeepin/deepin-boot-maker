@@ -5,11 +5,24 @@
 <policyconfig>
     <vendor>LinuxDeepin</vendor>
     <vendor_url>https://www.deepin.com/</vendor_url>
-    <action id="com.deepin.bootmaker">
+    <action id="com.deepin.bootmaker.create">
         <message>To create a bootable USB drive you need to authenticate.</message>
         <message xml:lang="zh_CN">创建启动盘需要您进行认证。</message>
         <message xml:lang="zh_HK">創建啓動盤需要您進行認證。</message>
         <message xml:lang="zh_TW">創建啟動盤需要您進行認證。</message>
+            <defaults>
+                <allow_any>no</allow_any>
+                <allow_inactive>no</allow_inactive>
+                <allow_active>auth_admin_keep</allow_active>
+            </defaults>
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/deepin-daemon/deepin-boot-maker-service</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+    </action>
+    <action id="com.deepin.bootmaker.reboot">
+        <message>Authentication is required to reboot the operating system.</message>
+        <message xml:lang="zh_CN">重启操作系统需要认证。</message>
+        <message xml:lang="zh_HK">重啓作業系統需要認證。</message>
+        <message xml:lang="zh_TW">重啟作業系統需要認證。</message>
             <defaults>
                 <allow_any>no</allow_any>
                 <allow_inactive>no</allow_inactive>
