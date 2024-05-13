@@ -135,7 +135,12 @@ void SevenZipProcessParser::run()
     qDebug() << "Start Parse";
     QFile progress(m_progressFilename);
 //    qDebug() << "progressFilename:" << m_progressFilename;
-    progress.open(QIODevice::ReadOnly);
+
+    if (!progress.open(QIODevice::ReadOnly)) {
+        qDebug() << "error open file: " << progress.fileName();
+        return;
+    }
+
     while (QProcess::NotRunning != m_sevenZip->state()) {
         QByteArray  readed = progress.readLine();
         QString progressStr = QString::fromUtf8(readed).split("\b").last();

@@ -264,11 +264,18 @@ XSys::Result InstallBootloader(const QString &targetDev)
     qDebug() << "dump pbr begin";
     QString tmpPbrPath = XSys::FS::TmpFilePath("ldlinux.bin");
     QFile pbr(tmpPbrPath);
-    pbr.open(QIODevice::WriteOnly);
+    if (!pbr.open(QIODevice::WriteOnly)) {
+        qDebug() << "error open file: " << pbr.fileName();
+        return XSys::Result(XSys::Result::Failed, pbr.errorString());
+    }
 
     QString targetPhyName = "\\\\.\\" + QString(targetDev).remove('\\');
     QFile targetPhy(targetPhyName);
-    targetPhy.open(QIODevice::ReadOnly);
+    if (!targetPhy.open(QIODevice::ReadOnly)) {
+        qDebug() << "error open file: " << targetPhy.fileName();
+        pbr.close();
+        return XSys::Result(XSys::Result::Failed, targetPhy.errorString());
+    }
 
     pbr.write(targetPhy.read(512));
     targetPhy.close();
