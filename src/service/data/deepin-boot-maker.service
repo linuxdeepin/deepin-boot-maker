@@ -1,15 +1,42 @@
 [Unit]
 Description=Deepin Boot Maker
+Wants=dbus.socket
+After=dbus.socket
 
 [Service]
 Type=dbus
 BusName=com.deepin.bootmaker
+#当前使用非root账户存在一些问题后期根据实际情况判断是否改为deepin-daemon
+User=root
 ExecStart=/usr/lib/deepin-daemon/deepin-boot-maker-service
-StandardOutput=syslog
+StandardOutput=journal
+StandardError=journal
 # Needs CAP_SYS_ADMIN umount u-disk.
-CapabilityBoundingSet=~CAP_SYS_BPF CAP_NET_ADMIN
+#CapabilityBoundingSet=~CAP_SYS_BPF CAP_NET_ADMIN
 MemoryLimit=10G
 IOWeight=200
+ProtectSystem=strict
+#image 镜像文件在home目录下时无法正常制作
+#ProtectHome=yes
+#ReadWritePaths=-/tmp 使用私有tmp
+PrivateTmp=yes
+
+InaccessiblePaths=-/etc/shadow
+InaccessiblePaths=-/etc/NetworkManager/system-connections
+InaccessiblePaths=-/etc/pam.d
+InaccessiblePaths=-/usr/share/uadp/
+
+NoNewPrivileges=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+PrivateMounts=yes 
+PrivateNetwork=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+MemoryDenyWriteExecute=yes
 
 [Install]
 WantedBy=multi-user.target
