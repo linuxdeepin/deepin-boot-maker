@@ -3,8 +3,13 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "LogManager.h"
+#include <dtkcore_global.h>
 
+// 均使用以兼容不同 DTK Log 模块版本
 DCORE_USE_NAMESPACE
+#ifdef DLOG_CORE_USE_NAMESPACE
+DLOG_CORE_USE_NAMESPACE
+#endif
 
 DBMLogManager::DBMLogManager()
 {
