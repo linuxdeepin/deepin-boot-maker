@@ -1,3 +1,9 @@
+deepin-boot-maker (5.10.0) unstable; urgency=medium
+
+  * fix: adapt diff dlog version
+
+ -- renbin <renbin@uniontech.com>  Wed, 21 Aug 2024 15:59:15 +0800
+
 deepin-boot-maker (5.7.11) unstable; urgency=medium
 
   * a permission promote issue was resolved.
