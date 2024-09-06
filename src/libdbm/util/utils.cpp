@@ -14,7 +14,7 @@
 #include <QRegExp>
 #include <qglobal.h>
 #ifdef Q_OS_WIN32
-#include <Windows.h>
+#    include <Windows.h>
 #endif
 
 static void initQRC()
@@ -28,12 +28,12 @@ static void initQRC()
 
 namespace Utils {
 
-bool isUft8(const QByteArray& byArr)
+bool isUft8(const QByteArray &byArr)
 {
-    unsigned int nBytes = 0;//UFT8可用1-6个字节编码,ASCII用一个字节
+    unsigned int nBytes = 0;   //UFT8可用1-6个字节编码,ASCII用一个字节
     bool bAllAscii = true;
 
-    for (int i = 0;  i < byArr.length(); ++i) {
+    for (int i = 0; i < byArr.length(); ++i) {
         unsigned char chr = static_cast<unsigned char>(byArr.at(i));
 
         //ASCII码高位为0
@@ -46,27 +46,21 @@ bool isUft8(const QByteArray& byArr)
             if (chr >= 0x80) {
                 if (chr >= 0xFC && chr <= 0xFD) {
                     nBytes = 6;
-                }
-                else if (chr >= 0xF8) {
+                } else if (chr >= 0xF8) {
                     nBytes = 5;
-                }
-                else if (chr >= 0xF0) {
+                } else if (chr >= 0xF0) {
                     nBytes = 4;
-                }
-                else if (chr >= 0xE0) {
+                } else if (chr >= 0xE0) {
                     nBytes = 3;
-                }
-                else if (chr >= 0xC0) {
+                } else if (chr >= 0xC0) {
                     nBytes = 2;
-                }
-                else {
+                } else {
                     return false;
                 }
 
                 nBytes--;
             }
-        }
-        else {
+        } else {
             if ((chr & 0xC0) != 0x80) {
                 return false;
             }
@@ -75,23 +69,23 @@ bool isUft8(const QByteArray& byArr)
         }
     }
 
-    if (nBytes != 0)  {
+    if (nBytes != 0) {
         return false;
     }
 
-    if (bAllAscii) { //如果全部都是ASCII, 也是UTF8
+    if (bAllAscii) {   //如果全部都是ASCII, 也是UTF8
         return true;
     }
 
     return true;
 }
 
-bool isGBK(const QByteArray& byArr)
+bool isGBK(const QByteArray &byArr)
 {
     unsigned int nBytes = 0;
     bool bAllAscii = true;
 
-    for (int i = 0;  i < byArr.length(); ++i) {
+    for (int i = 0; i < byArr.length(); ++i) {
         unsigned char chr = static_cast<unsigned char>(byArr.at(i));
 
         //ASCII码高位为0
@@ -103,16 +97,14 @@ bool isGBK(const QByteArray& byArr)
             if (chr >= 0x80) {
                 if (chr >= 0x81 && chr <= 0xFE) {
                     nBytes = +2;
-                }
-                else {
+                } else {
                     return false;
                 }
 
                 nBytes--;
             }
-        }
-        else {
-            if (chr < 0x40 || chr>0xFE) {
+        } else {
+            if (chr < 0x40 || chr > 0xFE) {
                 return false;
             }
 
@@ -120,11 +112,11 @@ bool isGBK(const QByteArray& byArr)
         }
     }
 
-    if (nBytes != 0) {//违返规则
+    if (nBytes != 0) {   //违返规则
         return false;
     }
 
-    if (bAllAscii){ //如果全部都是ASCII, 也是GBK
+    if (bAllAscii) {   //如果全部都是ASCII, 也是GBK
         return true;
     }
 
@@ -144,16 +136,16 @@ void loadTranslate()
     QString tnapplang;
     QString tnappcoun;
     QString clangcode = "";
-    QStringList allappargs =  qApp->arguments();
-    QList<QPair<QString, QString> > oppairs;
+    QStringList allappargs = qApp->arguments();
+    QList<QPair<QString, QString>> oppairs;
 
     for (QList<QString>::const_iterator i = allappargs.constBegin(); i < allappargs.constEnd(); ++i) {
         if (i->count('=') == 1) {
-            oppairs.append(QPair<QString, QString> (i->section('=', 0, 0).simplified(), i->section('=', 1, 1).simplified()));
+            oppairs.append(QPair<QString, QString>(i->section('=', 0, 0).simplified(), i->section('=', 1, 1).simplified()));
         }
     }
 
-    for (QList<QPair<QString, QString> >::const_iterator i = oppairs.constBegin(); i < oppairs.constEnd(); ++i) {
+    for (QList<QPair<QString, QString>>::const_iterator i = oppairs.constBegin(); i < oppairs.constEnd(); ++i) {
         if (i->first.contains("lang", Qt::CaseInsensitive)) {
             clangcode = i->second;
             tnapplang = clangcode.left(2);
@@ -183,7 +175,6 @@ void loadTranslate()
     if (!QFile::exists(tranlateUrl)) {
         tranlateUrl = QString(":/translations/deepin-boot-maker_%1.qm").arg(tnapplang);
     }
-
 
     if (!QFile::exists(tranlateUrl)) {
         tranlateUrl = ":/translations/deepin-boot-maker.qm";
@@ -245,7 +236,7 @@ void ClearTargetDev(const QString &targetPath)
 QMap<QString, DeviceInfo> CommandDfParse()
 {
     QProcess df;
-    df.start("df", QStringList{"-k", "--output=source,used,avail"});
+    df.start("df", QStringList { "-k", "--output=source,used,avail" });
     df.waitForFinished(-1);
 
     QString dfout = df.readAll();
@@ -263,7 +254,7 @@ QMap<QString, DeviceInfo> CommandDfParse()
             continue;
         }
         devInfo.used = static_cast<quint32>(infos.at(1).toInt() / 1024);
-        devInfo.total = static_cast<quint32>((infos.at(2).toInt() + infos.at(1).toInt()) / 1024) ;
+        devInfo.total = static_cast<quint32>((infos.at(2).toInt() + infos.at(1).toInt()) / 1024);
         qDebug() << "device path" << devInfo.path << "used: " << devInfo.used << "total: " << devInfo.total;
         deviceInfos.insert(devInfo.path, devInfo);
     }
@@ -300,7 +291,7 @@ static QByteArray unescapeLimited(const QString &str)
 QMap<QString, DeviceInfo> CommandLsblkParse()
 {
     QProcess lsblk;
-    lsblk.start("lsblk", QStringList{"-b", "-p", "-P", "-o", "name,label,size,uuid,fstype,type"});
+    lsblk.start("lsblk", QStringList { "-b", "-p", "-P", "-o", "name,label,size,uuid,fstype,type" });
     lsblk.waitForFinished(-1);
     QString line;
     DeviceInfo info;
@@ -327,8 +318,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             if (!type.compare("disk")) {
                 diskDevPath = info.path;
                 isPart = false;
-            }
-            else if (!type.compare("part")){
+            } else if (!type.compare("part")) {
                 isPart = true;
             } else {
                 diskDevPath = "";
@@ -342,11 +332,9 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
 
             if (isUft8(byArr)) {
                 strLabel = QTextCodec::codecForName("UTF-8")->toUnicode(byArr);
-            }
-            else if(isGBK(byArr)) {
+            } else if (isGBK(byArr)) {
                 strLabel = QTextCodec::codecForName("GBK")->toUnicode(byArr);
-            }
-            else {
+            } else {
                 strLabel = QString::fromLocal8Bit(byArr);
             }
 
@@ -360,19 +348,18 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             info.isDisk = false;
             info.strDev = diskDevPath;
             deviceInfos[diskDevPath].children.insert(info.path, info);
-        } else { // 否则就是 part, 如sdb。
+        } else {   // 否则就是 part, 如sdb。
             info.isDisk = true;
             info.strDev = "";
             deviceInfos.insert(info.path, info);
             // 记录当前是part的情况
             currentPartPath = info.path;
         }
-    } while(true);
+    } while (true);
 
     return deviceInfos;
 }
 #endif
-
 
 bool CheckInstallDisk(const QString &targetDev)
 {
@@ -409,7 +396,7 @@ bool CheckInstallDisk(const QString &targetDev)
 bool isUsbDisk(const QString &dev)
 {
     QString out = XSys::FS::TmpFilePath("diskutil_isusb_out");
-    XSys::SynExec("bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
+    XSys::SynExec("diskutil", QString(" \"  info %1 > \"%2\" \" ").arg(dev).arg(out));
     QFile outfile(out);
     outfile.open(QIODevice::ReadOnly);
     QString info = outfile.readAll();
@@ -427,9 +414,7 @@ QList<DeviceInfo> ListUsbDrives()
 
     for (int i = 0; i < extdrivesList.size(); ++i) {
         QString deviceLetter = extdrivesList.at(i).path().toUpper();
-        if (QDir::toNativeSeparators(deviceLetter) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(deviceLetter)
-                .contains("A:") && !QDir::toNativeSeparators(deviceLetter)
-                .contains("B:")) {
+        if (QDir::toNativeSeparators(deviceLetter) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(deviceLetter).contains("A:") && !QDir::toNativeSeparators(deviceLetter).contains("B:")) {
             if (GetDriveType(LPWSTR(deviceLetter.utf16())) == 2) {
 
                 DeviceInfo info;
@@ -470,8 +455,7 @@ QList<DeviceInfo> ListUsbDrives()
 
             if (partitionInfo.fstype != "vfat") {
                 needformat = true;
-            }
-            else {
+            } else {
                 needformat = false;
             }
 
@@ -493,7 +477,7 @@ QList<DeviceInfo> ListUsbDrives()
 #ifdef Q_OS_MAC
     QStringList fulldrivelist;
     QString out = XSys::FS::TmpFilePath("diskutil_out");
-    XSys::SynExec("bash", QString("-c \" diskutil list > \"%1\" \" ").arg(out));
+    XSys::SynExec("diskutil", QString(" \"  list > \"%1\" \" ").arg(out));
     QFile outfile(out);
     outfile.open(QIODevice::ReadOnly);
     QString diskutilList = outfile.readAll();
