@@ -4,22 +4,22 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Błąd formatu dysku: sformatuj go ponownie lub wyłącz &quot;Auto scan pamięci USB&quot; w Centrum Bezpieczeństwa</translation>
+        <translation>Błąd formatowania dysku: Sformatuj go ponownie lub wyłącz &quot;Automatyczne skanowanie pamięci USB&quot; w Centrum Bezpieczeństwa</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Błąd formatu dysku: Sformatuj go ponownie </translation>
+        <translation>Błąd formatowania dysku: Sformatuj go ponownie</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Niewystarczająca ilość miejsca na dysku: Upewnij się, że dysk ma wystarczającą ilość wolnego miejsca</translation>
+        <translation>Za mało miejsca na dysku: Upewnij się, że dysk ma wystarczającą ilość wolnego miejsca</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Błąd montowania dysku: Włóż dysk ponownie lub uruchom ponownie, aby spróbować ponownie</translation>
+        <translation>Błąd montowania dysku: Włóż dysk lub uruchom ponownie</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker jest prostym narzędziem do zapisu pliku obrazu na pendrive lub inne media.</translation>
+        <translation>Twórca rozruchu jest prostym narzędziem do zapisywania obrazów systemu na pamięć USB i innych nośników danych.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
-        <translation>Następny</translation>
+        <translation>Dalej</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
-        <translation>Nielegalny plik obrazu ISO</translation>
+        <translation>Nieprawidłowy plik obrazu ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="328"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Nie usuwaj dysku ani nie wyłączaj komputera podczas procesu</translation>
+        <translation>Nie usuwaj dysku, ani nie wyłączaj komputera w trakcie</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="85"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>Twórca rozruchu</translation>
     </message>
 </context>
 <context>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
-        <translation>Zakończone pomyślnie</translation>
+        <translation>Sukces</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="95"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="169"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Dziennik błędów zostanie automatycznie przesłany wraz z informacją zwrotną. Nie możemy poprawić bez Twojej opinii</translation>
+        <translation>Dziennik błędów zostanie wysłany automatycznie wraz z Twoją opinią. Nie jesteśmy w stanie się rozwijać bez Ciebie</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="170"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
-        <translation>Usługi posprzedażne</translation>
+        <translation>Usługi po-sprzedażowe</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="206"/>
@@ -169,12 +169,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="214"/>
         <source>Sorry, process failed</source>
-        <translation>Przepraszamy, proces nie powiódł się</translation>
+        <translation>Przepraszamy, błąd procesu</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="215"/>
         <source>Process failed</source>
-        <translation>Proces nie powiódł się</translation>
+        <translation>Błąd procesu</translation>
     </message>
 </context>
 <context>
@@ -182,7 +182,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Weryfikuję dane i bezpiecznie usuwam media, proszę czekać...</translation>
+        <translation>Weryfikacja danych i bezpieczne usuwanie urządzenia, proszę czekać...</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formatowanie usunie wszystkie dane z partycji, ale zwiększy szansę na ukończenie instalacji. Potwierdź przed kontynuacją.</translation>
+        <translation>Formatowanie usunie wszystkie dane z partycji, lecz może zwiększyć szanse powodzenia. Potwierdź przed przejściem dalej.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Wybrany obraz ISO znajduje się na pamięci USB, która została wybrana do sformatowania. Wybierz inny obraz lub anuluj formatowanie.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
@@ -228,7 +228,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatowanie partycji usunie wszystkie dane! Upewnij się, że masz kopię zapasową przed kontynuacją.</translation>
+        <translation>Formatowanie partycji nadpisze wszystkie dane. Utwórz kopię zapasową przed przejściem dalej.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>No disk available</source>
-        <translation>Brak dostępnego dysku</translation>
+        <translation>Brak dostępnych dysków</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="174"/>
@@ -249,7 +249,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation>Formatuj partycję.</translation>
+        <translation>Formatowanie partycji</translation>
     </message>
 </context>
 </TS>
