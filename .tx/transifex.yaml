@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
+filters:
+  - filter_type: file
+    source_file: src/translations/deepin-boot-maker.ts
+    file_format: QT
+    source_language: en_US
+    translation_files_expression: src/translations/deepin-boot-maker_<lang>.ts
+  - filter_type: file
+    source_file: src/translations/desktop/desktop.ts
+    file_format: QT
+    source_language: en_US
+    translation_files_expression: src/translations/desktop/desktop_<lang>.ts
+settings:
+  pr_branch_name: transifex_update_<br_unique_id>
