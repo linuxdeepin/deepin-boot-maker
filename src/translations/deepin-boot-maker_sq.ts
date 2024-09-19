@@ -66,7 +66,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
-        <translation>Pasuesi</translation>
+        <translation>Pasuesja</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Keni përzgjedhur pamje ISO te ky diskth USB. Formatimi i tij do të sjellë fshirjen e krejt kartelave tuaja në të. Ju lutemi, ripërzgjidhni kartelën e pamjes, ose anuloni formatimin.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
