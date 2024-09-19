@@ -19,7 +19,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Levyn liitosvirhe: Asenna levy uudelleen tai käynnistä kone ja yritä uudelleen.</translation>
+        <translation>Levyn liitosvirhe: Liitä levy uudelleen tai käynnistä tietokone uudelleen.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Mediat on helppo työkalu levykuvien kirjoittamiseen USB-muistitikkuihin ja muuhun mediaan.</translation>
+        <translation>Asennusmedia on työkalu levykuvien kirjoittamiseen usb-muistitikulle tai vastaaville medioille.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
