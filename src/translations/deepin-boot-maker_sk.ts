@@ -4,17 +4,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Chyba formátu disku: Preformátujte ho alebo zakážte „Automatické skenovanie úložných zariadení USB“ v Centre zabezpečenia</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"/>
+        <translation>Chyba formátu disku: Preformátujte ho</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"/>
+        <translation>Nedostatok miesta na disku: Skontrolujte, či je na disku dostatok voľného miesta</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Boot Maker je jednoduchý nástroj na zapisovanie obrazových súborov systému na USB flash disky a iné médiá.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="116"/>
         <source>Drag an ISO image file here</source>
-        <translation type="unfinished"/>
+        <translation>Sem presuňte obrazový súbor ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="125"/>
@@ -76,12 +76,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>Ilegálny obrazový súbor ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>Zisťuje sa súbor ISO, čakajte...</translation>
     </message>
 </context>
 <context>
