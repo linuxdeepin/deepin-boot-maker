@@ -4,17 +4,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Erro de formato de disco: Por favor, dalle formato ou desactiva &quot;Escanear automaticamente dispositivos de almacenamento USB&quot; no Centro de seguranza</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"/>
+        <translation>Erro no formato do disco: Por favor, dalle reformato</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"/>
+        <translation>Espazo no disco insuficiente: asegúrese de que o disco teña espazo libre suficiente</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Boot Maker é unha ferramenta sinxela para escribir ficheiros de imaxe do sistema en unidades flash USB e outros medios.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -190,12 +190,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="92"/>
         <source>Select a partition</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar partición</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="117"/>
         <source>Format the partition</source>
-        <translation type="unfinished"/>
+        <translation>Formatear a partición</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="170"/>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"/>
+        <translation>O formateo borrará todos os datos da partición, pero pode aumentar a taxa de éxito. Confírmao antes de continuar</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionaches a imaxe ISO nesta unidade flash USB. Formatándoo, borrará todos os teus ficheiros. Volve seleccionar o ficheiro de imaxe ou cancela o formateo.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
@@ -228,7 +228,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>O formateo da partición sobrescribirá todos os datos. Faga unha copia de seguridade antes de continuar.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
@@ -249,7 +249,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation type="unfinished"/>
+        <translation>Formatear á partición</translation>
     </message>
 </context>
 </TS>
