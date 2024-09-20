@@ -9,7 +9,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Erro no formato do disco: Por favor, dalle reformato</translation>
+        <translation>Erro no formato do disco: Por favor, reformateao</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>Erro no formato do disco: Por favor, formatee a partición con FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
