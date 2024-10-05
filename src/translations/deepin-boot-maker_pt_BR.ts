@@ -29,7 +29,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="33"/>
         <source>Internal Error</source>
-        <translation>Erro Interno</translation>
+        <translation>Erro interno</translation>
     </message>
 </context>
 <context>
