@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Gabim Formatimi Disku: Ju lutemi, riformatojeni ose çaktivizoni “Skano automatikisht pajisje USB depozitimi” te Qendër Sigurie</translation>
+        <translation>Gabim Formatimi Disku: Ju lutemi, riformatojeni, ose çaktivizoni te Qendër Sigurie “Skano automatikisht pajisje USB depozitimi”</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -14,12 +14,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Hapësirë disku e Pamjaftueshme: Garantoni që disku të ketë hapësirë të lirë të mjaftueshme</translation>
+        <translation>Hapësirë disku e Pamjaftueshme: Siguroni që disku të ketë hapësirë të lirë të mjaftueshme</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Gabim Montimi Disku: Rifuteni diskun ose rinisni sistemin që të provohet</translation>
+        <translation>Gabim Montimi Disku: Rifuteni diskun, ose rinisni sistemin, që të provohet</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker është një mjet i thjeshtë për shkrim kartelash pamje sistemi në diskth USB dhe media tjetër.</translation>
+        <translation>Boot Maker është një mjet i thjeshtë për shkrim kartelash pamjeje sistemi në diskth USB dhe media tjetër.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
-        <translation>Pasuesja</translation>
+        <translation>Pasuesi</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
@@ -89,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
-        <translation>Po piqet</translation>
+        <translation>Po shkruhet</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="63"/>
         <source>Burning, please wait...</source>
-        <translation>Po piqet, ju lutemi, pritni…</translation>
+        <translation>Po shkruhet, ju lutemi, pritni…</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
-        <translation>E suksesshme</translation>
+        <translation>I suksesshëm</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="95"/>
