@@ -228,7 +228,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>A formatação da partição irá sobrescrever todos os dados. Crie um backup antes de prosseguir.</translation>
+        <translation>A formatação da partição apagará todos os dados nela contidos; crie um backup antes de prosseguir.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
