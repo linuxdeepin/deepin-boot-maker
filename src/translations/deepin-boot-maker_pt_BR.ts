@@ -99,7 +99,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Não remova o disco ou desligue o computador durante este processo</translation>
+        <translation>Não remova o disco ou desligue o computador durante o processo</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="85"/>
@@ -113,7 +113,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation>Disco Removível</translation>
+        <translation>Disco removível</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="224"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="104"/>
         <source>Reboot now</source>
-        <translation>Reiniciar Agora</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="56"/>
@@ -153,12 +153,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="170"/>
         <source>Submit Feedback</source>
-        <translation>Enviar Feedback</translation>
+        <translation>Enviar feedback</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
-        <translation>Serviços de Pós-venda</translation>
+        <translation>Serviços de pós-venda</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="206"/>
@@ -169,12 +169,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="214"/>
         <source>Sorry, process failed</source>
-        <translation>Falha no Processo</translation>
+        <translation>O processo falhou</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="215"/>
         <source>Process failed</source>
-        <translation>Falha no Processo</translation>
+        <translation>O processo falhou</translation>
     </message>
 </context>
 <context>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Erro de Formato do Disco: Formate a partição em FAT32</translation>
+        <translation>Erro de formatação do disco: Formate a partição em FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
@@ -249,7 +249,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation>Formatar Partição</translation>
+        <translation>Formatar partição</translation>
     </message>
 </context>
 </TS>
