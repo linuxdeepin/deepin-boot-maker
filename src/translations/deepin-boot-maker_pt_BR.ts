@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="169"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>O log de erro será enviado com o feedback.</translation>
+        <translation>O log de erro será enviado automaticamente com o feedback.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="170"/>
@@ -182,7 +182,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Verificando os dados e removendo a mídia com segurança, aguarde...</translation>
+        <translation>Verificando dados e removendo a mídia com segurança, aguarde...</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>A formatação apagará todos os dados da partição; mas, poderá aumentar a taxa de sucesso. Confirme antes de prosseguir</translation>
+        <translation>A formatação apagará todos os dados da partição, o que aumenta a taxa de sucesso. Confirme antes de prosseguir</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Você selecionou a imagem ISO nesta unidade flash USB. Formatá-lo apagará todos os seus arquivos. Selecione novamente o arquivo de imagem ou cancele a formatação.</translation>
+        <translation>Você selecionou a imagem .iso neste dispositivo de armazenamento removível. A formatação apagará todos os seus arquivos. Selecione-os novamente ou cancele a formatação.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
