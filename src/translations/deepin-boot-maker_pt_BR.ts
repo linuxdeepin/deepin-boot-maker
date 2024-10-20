@@ -24,7 +24,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Erro de Descompressão da Imagem: Verifique a integridade da imagem (MD5)</translation>
+        <translation>Erro de descompressão de imagem: Verifique o hash MD5 da imagem para garantir a sua integridade</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="33"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>O Criador de Mídia Inicializável é uma ferramenta para gravar os arquivos de imagem do sistema, em dispositivos de armazenamento removível e em outras mídias.</translation>
+        <translation>O Criador de Mídia Inicializável é uma ferramenta fácil de usar para gravar arquivos de imagem do sistema em dispositivos de armazenamento removível e em outras mídias.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -61,7 +61,7 @@
         <location filename="../app/view/isoselectview.cpp" line="82"/>
         <location filename="../app/view/isoselectview.cpp" line="140"/>
         <source>Select an ISO image file</source>
-        <translation>Selecione a ISO</translation>
+        <translation>Selecione uma imagem .iso</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
@@ -71,17 +71,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
         <source>Reselect an ISO image file</source>
-        <translation>Selecione novamente a ISO</translation>
+        <translation>Selecione novamente uma imagem .iso</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
-        <translation>Está imagem ISO é ilegal</translation>
+        <translation>Imagem .iso ilegal</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Detectando a ISO, aguarde...</translation>
+        <translation>Detectando a imagem .iso, aguarde...</translation>
     </message>
 </context>
 <context>
