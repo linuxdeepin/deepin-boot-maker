@@ -42,7 +42,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>Créateur de démarrage</translation>
     </message>
 </context>
 <context>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>Créateur de démarrage</translation>
     </message>
 </context>
 <context>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Vous avez sélectionné l&apos;image ISO dans cette clé USB. La formater effacera tous vos fichiers. Veuillez re-sélectionner le fichier image ou annuler le formatage.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

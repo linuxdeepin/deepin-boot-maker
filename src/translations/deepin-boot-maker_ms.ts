@@ -4,12 +4,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Ralat Format Cakera: Sila format ia atau lumpuhkan &quot;Auto imbas peranti storan USB&quot; dalam Pusat Keselamatan</translation>
+        <translation>Keralatan Format Cakera: Sila formatkannya semula atau nyahaktifkan &quot;Imbas automatik peranti storan USB&quot; dalam Pusat Keselamatan</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Ralat Format Cakera: Sila format ia</translation>
+        <translation>Keralatan Format Cakera: Sila formatkannya semula</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Anda telah memilih imej ISO di dalam pemacu pena USB ini. Memformatnya akan menyebabkan semua fail di dalamnya terpadam. Sila pilih semula fail imej atau batalkan pemformatan.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
