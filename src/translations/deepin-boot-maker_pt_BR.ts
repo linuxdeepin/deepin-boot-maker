@@ -4,12 +4,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Erro de Formato do Disco: Reformate-o ou desative a &quot;Verificação automática dos dispositivos de armazenamento USB&quot; na Central de Segurança</translation>
+        <translation>Erro de formatação do disco: Reformate-o ou desative a &quot;Verificação automática dos dispositivos de armazenamento USB&quot; na Central de Segurança</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Erro de Formato do Disco: Reformate-o</translation>
+        <translation>Erro de formatação do disco: Reformate-o</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Erro ao Montar: Insira novamente o disco ou reinicie</translation>
+        <translation>Erro de montagem do disco: Insira-o novamente ou reinicie</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
