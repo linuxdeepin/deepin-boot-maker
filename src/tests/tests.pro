@@ -16,8 +16,8 @@ QMAKE_CXXFLAGS += -fstack-protector-all -fno-access-control
 QT += core gui widgets testlib
 
 
-#CONFIG += c++11 console
-CONFIG += c++11 console link_pkgconfig
+#CONFIG += c++14 console
+CONFIG += c++14 console link_pkgconfig
 CONFIG += testcase no_testcase_installs
 CONFIG   += resources_big
 PKGCONFIG += dtkwidget
