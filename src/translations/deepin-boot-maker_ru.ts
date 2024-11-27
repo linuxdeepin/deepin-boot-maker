@@ -42,7 +42,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation>Средство для создания Загрузочного Диска</translation>
+        <translation>Средство для создания  Загрузочного Диска</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
-        <translation>Следующий</translation>
+        <translation>Далее</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
-        <translation>Создание Загрузочного Диска</translation>
+        <translation>Средство для создания  Загрузочного Диска</translation>
     </message>
 </context>
 <context>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Вы выбрали ISO-образ на этом USB-накопителе. Форматирование сотрет все ваши файлы. Пожалуйста, повторно выберите файл изображения или отмените форматирование.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

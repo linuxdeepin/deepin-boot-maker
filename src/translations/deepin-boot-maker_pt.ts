@@ -143,7 +143,7 @@
         <location filename="../app/view/resultview.cpp" line="95"/>
         <source>Done</source>
         <comment>button</comment>
-        <translation>Feito</translation>
+        <translation>Concluído</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="169"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Selecionou a imagem ISO nesta unidade flash USB. A sua formatação irá eliminar todos os seus ficheiros. Selecione novamente o ficheiro de imagem ou cancele a formatação.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

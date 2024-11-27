@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Datenträgerformatierungsfehler: Bitte erneut formatieren oder &apos;Auto Scan USB-Speichergeräte&apos; im Sicherheitscenter ausschalten</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -14,7 +14,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"/>
+        <translation>Speicherplatz des Datenträgers reicht nicht aus. Stellen Sie ausreichenden Speicherplatz auf dem Datenträger sicher</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Boot Maker ist ein einfaches Werkzeug um System-Images auf USB-Flash-Speichersticks oder andere Medien zu schreiben</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben das ISO-Image auf diesem USB-Stick ausgewählt. Das Formatieren wird alle Daten darauf löschen. Bitte wählen Sie diese Image-Datei erneut aus oder brechen Sie das Formatieren ab.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

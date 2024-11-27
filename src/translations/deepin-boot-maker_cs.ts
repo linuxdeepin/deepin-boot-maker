@@ -94,7 +94,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="63"/>
         <source>Burning, please wait...</source>
-        <translation>Zapisování – čekejte prosím…</translation>
+        <translation>Zapisuje se – čekejte prosím…</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
@@ -105,7 +105,7 @@
         <location filename="../app/view/progressview.cpp" line="85"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation>Storno</translation>
+        <translation>Zrušit</translation>
     </message>
 </context>
 <context>
@@ -217,13 +217,13 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Vybrali jste ISO obraz, který se nachází právě na tomto USB flash disku. A formátováním by byl vymazán. Vyberte tedy soubor s obrazem odjinud, nebo formátování zrušte.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation>Storno</translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
