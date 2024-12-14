@@ -4,17 +4,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>خطأ في تهيئة القرص: الرجاء إعادة تهيئة القرص أو تعطيل ميزة &quot;الكشف الآلي عن أجهزة تخزين USB &quot; من مركز الحماية</translation>
+        <translation>خطأ في تهيئة القرص: يرجى إعادة تهيئته أو تعطيل &quot;الفحص التلقائي لمحركات التخزين USB&quot; في مركز الأمان</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>خطأ في تهيئة القرص: الرجاء إعادة تهيئة القرص </translation>
+        <translation>خطأ في تهيئة القرص: يرجى إعادة تهيئته</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>مساحة القرص غير كافية: تأكد من أن القرص يحتوي على مساحة خالية كافية</translation>
+        <translation>مساحة القرص غير كافية: تأكد من أن القرص لديه مساحة فارغة كافية</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>تطبيق إعداد أقراص الإقلاع هو أداة بسيطة لكتابة وإنشاء أقراص النظام على أجهزة التخزين من نوع CD/DVD و USB وغيرها.</translation>
+        <translation>محرك الإقلاع هو أداة بسيطة لكتابة ملفات صور النظام في محركات أقراص فلاش USB وغيرها من الوسائط.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation>تطبيق إعداد أقراص الإقلاع</translation>
+        <translation>صانع إقلاع</translation>
     </message>
 </context>
 <context>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="116"/>
         <source>Drag an ISO image file here</source>
-        <translation>اسحب ملف من صيغة ISO هنا </translation>
+        <translation>1111</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="125"/>
@@ -76,12 +76,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
-        <translation>ملف من صيغة ISO غير قانوني</translation>
+        <translation>1111</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>جاري الكشف عن ملف من صيغة ISO ، الرجاء الانتظار...</translation>
+        <translation>1111</translation>
     </message>
 </context>
 <context>
@@ -89,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
-        <translation>جاري الآن الحرق</translation>
+        <translation>يتم الآن الحرق</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="63"/>
         <source>Burning, please wait...</source>
-        <translation>جاري الآن الحرق، نرجوا الانتظار</translation>
+        <translation>يتم الآن الحرق، نرجوا الانتظار</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
-        <translation>تطبيق إعداد أقراص الإقلاع</translation>
+        <translation>صانع إقلاع</translation>
     </message>
 </context>
 <context>
@@ -190,12 +190,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="92"/>
         <source>Select a partition</source>
-        <translation>اختيار القسم</translation>
+        <translation>اختر قسمًا</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="117"/>
         <source>Format the partition</source>
-        <translation>إعادة تهيئة القسم</translation>
+        <translation>تحويل قسم إلى FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="170"/>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>إعادة تهيئة القسم سوف تحذف كل البيانات التي موجودة به،  قد يؤدي إلى زيادة في معدل النجاح، يرجى التأكيد قبل المتابعة</translation>
+        <translation>سيؤدي التنسيق إلى محو جميع البيانات الموجودة على القرص، ولكن يمكن زيادة معدل النجاح، يرجى التأكيد قبل المتابعة</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -228,17 +228,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>إعادة تهيئة القسم سوف تحذف كل البيانات التي موجودة به، الرجاء القيام بعمل نسخة احتياطية لها قبل الإستمرار.</translation>
+        <translation>سيقوم بتجاوز جميع البيانات الموجودة على القرص، يرجى عمل نسخة احتياطية قبل المتابعة.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>خطأ في تهيئة القرص: الرجاء تهيئة القرص باستخدام نظام ملفات FAT32</translation>
+        <translation>خطأ في تهيئة القرص: يرجى تهيئة قسم باستخدام FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
         <source>No disk available</source>
-        <translation>لا يوجد قرص متاح</translation>
+        <translation>1111</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="174"/>
@@ -249,7 +249,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation>إعادة تهيئة القسم</translation>
+        <translation>تحويل قسم</translation>
     </message>
 </context>
 </TS>
