@@ -218,7 +218,7 @@ Localizzazione italiana a cura di Massimo A. Carofano</translation>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Hai selezionato l&apos;immagine ISO per questa unità flash USB. La formattazione cancellerà tutti i tuoi file. In caso di errori, riselezionare il file immagine o annullare la formattazione.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

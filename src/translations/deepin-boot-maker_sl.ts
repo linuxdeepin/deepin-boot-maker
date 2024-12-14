@@ -66,7 +66,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
         <source>Next</source>
-        <translation>Naslednji</translation>
+        <translation>Naprej</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Izbran je ISO posnetek na tem USB pogonu. Formatiranje bo izbrisalo vse datoteke. Ponovno izberite datoteko posnetka ali prekinite formatiranje.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
