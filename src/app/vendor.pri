@@ -1,18 +1,28 @@
 include($$PWD/../vendor/env.pri)
 
-QT += dtkwidget
-
 unix{
     QT += network
     CONFIG += link_pkgconfig
 }
 
-linux{
-    QT += x11extras dbus x11extras
-    CONFIG += link_pkgconfig
-    PKGCONFIG += dtkwidget
-#    PKGCONFIG += xcb-util libstartup-notification-1.0
-#    LIBS += -lxcb -lX11 -lXext
+versionAtLeast(QT_VERSION, 6.0.0) {
+    # Qt 6 specific configurations
+    linux{
+        QT += dbus
+        CONFIG += link_pkgconfig
+        PKGCONFIG += dtk6widget
+    #    PKGCONFIG += xcb-util libstartup-notification-1.0
+    #    LIBS += -lxcb -lX11 -lXext
+    }
+} else {
+    # Qt 5 specific configurations
+    linux{
+        QT += dbus
+        CONFIG += link_pkgconfig
+        PKGCONFIG += dtkwidget
+    #    PKGCONFIG += xcb-util libstartup-notification-1.0
+    #    LIBS += -lxcb -lX11 -lXext
+    }
 }
 
 win32{

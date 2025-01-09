@@ -7,7 +7,7 @@
 
 #include <DApplication>
 #include <DProgressBar>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DFontSizeManager>
 
 #include <QDebug>
@@ -44,8 +44,8 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     auto m_deviceLabel = new DLabel;
     m_deviceLabel->setObjectName("DeviceInfoLabel");
-    DPalette pa = DApplicationHelper::instance()->palette(m_deviceLabel);
-    QBrush brush = DApplicationHelper::instance()->palette(m_deviceLabel).text();
+    QPalette pa = m_deviceLabel->palette();
+    QBrush brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
     m_deviceLabel->setText(name);
     m_deviceLabel->setFixedHeight(25);
@@ -79,12 +79,12 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     auto m_bodywidget = new DWidget;
     auto bodyLayout = new QVBoxLayout(m_bodywidget);
-    bodyLayout->setMargin(0);
+    bodyLayout->setContentsMargins(0, 0, 0, 0);
     auto m_middlewidget = new DWidget;
     m_middlewidget->setFixedWidth(292);
     m_middlewidget->setFixedHeight(18);
     auto middleLayout = new QHBoxLayout(m_middlewidget);
-    middleLayout->setMargin(0);
+    middleLayout->setContentsMargins(0, 0, 0, 0);
 
     middleLayout->addWidget(m_deviceDevName, 0, Qt::AlignLeft);
     middleLayout->addWidget(m_deviceCapacity, 0, Qt::AlignRight);

@@ -15,11 +15,18 @@ QMAKE_CXXFLAGS += -fstack-protector-all
 #    QMAKE_LFLAGS += -g -fsanitize=address -O2
 #}
 
-
 QT += core gui widgets concurrent network svg
 
 CONFIG += c++11 link_pkgconfig
 CONFIG   += resources_big
+
+versionAtLeast(QT_VERSION, 6.0.0) {
+    PKGCONFIG += dtk6widget
+    PKGCONFIG += polkit-qt6-1
+} else {
+    PKGCONFIG += dtkwidget
+    PKGCONFIG += polkit-qt5-1
+}
 
 RESOURCES +=  \
     ../translate.qrc \

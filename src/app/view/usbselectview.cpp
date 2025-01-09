@@ -16,7 +16,7 @@
 #include <DPalette>
 #include <DCheckBox>
 #include <DPushButton>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DFontSizeManager>
 #include <DSuggestButton>
 #include <DWarningButton>
@@ -74,8 +74,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     DLabel *m_title = new DLabel(tr("Select a partition"));
     m_title->setAccessibleName("usbSelectWidget_titleLabel");
-    DPalette pa = DApplicationHelper::instance()->palette(m_title);
-    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    // TODO
+    DPalette pa = m_title->palette();
+    QBrush brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     m_title->setWordWrap(true);
@@ -181,7 +182,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         if (themeType == DGuiApplicationHelper::LightType)
         {
             pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
+#else
+            pa.setColor(DPalette::Window, QColor(255, 255, 255));
+#endif
             setPalette(pa);
             pa = m_warningHint->palette();
             pa.setColor(DPalette::WindowText, QColor("#FF5800"));
@@ -193,7 +198,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         else if (themeType == DGuiApplicationHelper::DarkType)
         {
             pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             pa.setColor(DPalette::Background, QColor("#292929"));
+#else
+            pa.setColor(DPalette::Window, QColor("#292929"));
+#endif
             setPalette(pa);
             pa = m_warningHint->palette();
             pa.setColor(DPalette::WindowText, QColor("#9A2F2F"));
@@ -218,7 +227,9 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         handleFormat(checked);
     });
 
-    connect(BMInterface::instance(), &BMInterface::deviceListChanged,
+    // TODO
+
+    connect(&BMInterface::ref(), &BMInterface::deviceListChanged,
     this, [ = ](const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& dellist) {
         bool hasPartitionSelected = false;
 
@@ -241,7 +252,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         }
 
         this->m_mountDevs += addlist;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         qSort(m_mountDevs.begin(), m_mountDevs.end(), caseInsensitiveLessThan);
+#else
+        std::sort(m_mountDevs.begin(), m_mountDevs.end(), caseInsensitiveLessThan);
+#endif
         m_formatDiskCheck->setVisible(this->m_mountDevs.size());
         m_emptyHint->setVisible(!this->m_mountDevs.size());
         m_deviceList->setVisible(this->m_mountDevs.size());

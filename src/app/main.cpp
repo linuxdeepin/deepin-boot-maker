@@ -9,11 +9,10 @@
 #include "bmwindow.h"
 #include <bminterface.h>
 #include <util/utils.h>
-
+#include <QDebug>
 #include <DLog>
 #include <DApplication>
 #include <DWidgetUtil>
-#include <DApplicationSettings>
 #include <DGuiApplicationHelper>
 
 DCORE_USE_NAMESPACE
@@ -65,8 +64,8 @@ int main(int argc, char **argv)
 
 //    DApplication::loadDXcbPlugin(); //去除为兼容wayland环境
     DApplication app(argc, argv);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
-    app.setAttribute(Qt::AA_EnableHighDpiScaling);
+    // app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+    // app.setAttribute(Qt::AA_EnableHighDpiScaling);
     app.setOrganizationName("deepin");
     app.setApplicationName("deepin-boot-maker");
     app.setApplicationVersion(DApplication::buildVersion("20191031"));
@@ -99,15 +98,19 @@ int main(int argc, char **argv)
     app.setApplicationDisplayName(QObject::tr("Boot Maker"));
 
     qDebug() << "Boot Maker UI started.";
-
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     DApplicationSettings savetheme;
+#endif
     BMWindow w;
     Dtk::Widget::moveToCenter(&w);
     w.show();
 //    w.waitAuth();
-
     auto ret =  app.exec();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     BMInterface::instance()->stop();
+#else
+    BMInterface::ref().stop();
+#endif
     return ret;
 }
 

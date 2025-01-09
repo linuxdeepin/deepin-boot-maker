@@ -8,7 +8,7 @@
 
 #include <DLabel>
 #include <DFileDialog>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DUtil>
 #include <DFontSizeManager>
 
@@ -44,6 +44,7 @@ void ThreadCheckFile::setRestart()
 
 void ThreadCheckFile::run()
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     restart = true;
     bool checkok = false;
     while (restart) {
@@ -51,6 +52,16 @@ void ThreadCheckFile::run()
         checkok = BMInterface::instance()->checkfile(m_file);
     }
     emit checkFileFinish(checkok);
+#else
+    restart = true;
+    bool checkok = false;
+    while (restart) {
+        restart = false;
+        //BMInterface::instance() 在dtk6中被屏蔽了
+        checkok = BMInterface::ref().checkfile(m_file); 
+    }
+    emit checkFileFinish(checkok);
+#endif
 }
 
 ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
@@ -64,8 +75,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 
     m_title = new DLabel(tr("Select an ISO image file"));
     m_title->setAccessibleName("isoSelectWidget_titleLabel");
-    DPalette pa = DApplicationHelper::instance()->palette(m_title);
-    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    QPalette pa = m_title->palette();
+    QBrush brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     m_title->setWordWrap(true);
@@ -91,7 +102,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     isoPanel->setFixedSize(410, 300);
 
     QVBoxLayout *isoPanelLayout = new QVBoxLayout(isoPanel);
-    isoPanelLayout->setMargin(0);
+    isoPanelLayout->setContentsMargins(0, 0, 0, 0);
 
 #ifdef Q_OS_WIN
     m_fileLabel = new DLabel("");
@@ -143,8 +154,8 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     m_checkFile = new DLabel();
     m_checkFile->setAccessibleName("isoSelectWidget_checkFileLabel");
     m_checkFile->setObjectName("IsoFileSelect");
-    pa = DApplicationHelper::instance()->palette(m_checkFile);
-    brush = DApplicationHelper::instance()->palette(m_checkFile).text();
+    pa = m_checkFile->palette();
+    brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
 
     DFontSizeManager::instance()->bind(m_checkFile, DFontSizeManager::T8);
@@ -262,10 +273,18 @@ void ISOSelectView :: slot_ThemeChange()
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType) {
         pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
+#else
+        pa.setColor(DPalette::Window, QColor(255, 255, 255));
+#endif
         setPalette(pa);
         pa = isoPanel->palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor(255, 255, 255, 13));
+#else
+        pa.setColor(DPalette::Window, QColor(255, 255, 255, 13));
+#endif
         isoPanel->setPalette(pa);
         pa = m_fileLabel->palette();
         pa.setColor(DPalette::Text, QColor("#B1B1B1"));
@@ -282,10 +301,18 @@ void ISOSelectView :: slot_ThemeChange()
         m_checkFile->setPalette(pa);
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor("#292929"));
+#else
+        pa.setColor(DPalette::Window, QColor("#292929"));
+#endif
         setPalette(pa);
         pa = isoPanel->palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor(0, 0, 0, 13));
+#else
+        pa.setColor(DPalette::Window, QColor(0, 0, 0, 13));
+#endif
         isoPanel->setPalette(pa);
         pa = m_fileLabel->palette();
         pa.setColor(DPalette::Text, QColor("#6D7C88"));

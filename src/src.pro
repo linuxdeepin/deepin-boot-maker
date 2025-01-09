@@ -20,7 +20,11 @@ mac* {
     TRANSLATIONS = $$files($$PWD/translations/*.ts)
     for(tsfile, TRANSLATIONS) {
         qmfile = $$replace(tsfile, .ts$, .qm)
-        system(lrelease $$tsfile -qm $$qmfile) | error("Failed to lrelease")
+        versionAtLeast(QT_VERSION, 6.0.0) {
+            system(/usr/lib/qt6/bin/lrelease $$tsfile -qm $$qmfile) | error("Failed to lrelease")
+        } else {
+            system(lrelease $$tsfile -qm $$qmfile) | error("Failed to lrelease")
+        }
     }
     linux {
         dtk_translations.path = /usr/share/deepin-boot-maker/translations
@@ -28,3 +32,4 @@ mac* {
         INSTALLS += dtk_translations
     }
 }
+

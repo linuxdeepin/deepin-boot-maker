@@ -32,8 +32,13 @@ SevenZip::SevenZip(const QString &image, const QString &target, QObject *parent)
     m_archiveFile = image;
     m_outputDir = "-o" + target;
     //    connect(&m_szpp, &SevenZipProcessParser::progressChanged, this, &SevenZip::progressChanged);
-        connect(&m_sevenz, static_cast<void(QProcess::*)(int exitCode)>(&QProcess::finished),
-                this, &SevenZip::handleFinished);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    connect(&m_sevenz, static_cast<void(QProcess::*)(int)>(&QProcess::finished),
+            this, &SevenZip::handleFinished);
+#else
+    connect(&m_sevenz, &QProcess::finished,
+            this, &SevenZip::handleFinished);
+#endif
 }
 
 void SevenZip::setArchiveFile(const QString &archiveFile)
@@ -81,7 +86,7 @@ bool SevenZip::extract()
     m_sevenz.waitForStarted(-1);
 
 #ifdef Q_OS_LINUX
-    QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
+    QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.processId()));
 #endif
 
     m_szpp->setProgressName(progress.fileName());
@@ -107,10 +112,10 @@ bool SevenZip::check()
 
     m_sevenz.setArguments(args);
     m_sevenz.start();
-    if (m_sevenz.waitForStarted(-1) && m_sevenz.pid()) {
-        #ifdef Q_OS_LINUX
-            QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.pid()));
-        #endif
+    if (m_sevenz.waitForStarted(-1) && m_sevenz.processId()) {
+#ifdef Q_OS_LINUX
+        QProcess::execute(QString("ionice -c3 -p %1").arg(m_sevenz.processId()));
+#endif
         m_eventLoop.exec();
     }
     qInfo() << "check iso result" << m_sevenz.exitStatus() << m_sevenz.exitCode();

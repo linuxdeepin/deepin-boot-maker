@@ -12,7 +12,7 @@
 #include <DLabel>
 #include <DListWidget>
 #include <DPushButton>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DTipLabel>
 #include <DFontSizeManager>
 
@@ -33,8 +33,8 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
 
     DLabel *m_title = new DLabel(tr("Burning"));
     m_title->setAccessibleName("progressWidget_title");
-    DPalette pa = DApplicationHelper::instance()->palette(m_title);
-    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    QPalette pa = m_title->palette();
+    QBrush brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
@@ -90,7 +90,11 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
         if (themeType == DGuiApplicationHelper::LightType)
         {
             pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
+#else
+            pa.setColor(DPalette::Window, QColor(255, 255, 255));
+#endif
             setPalette(pa);
 
             pa = m_hitsTitle->palette();
@@ -98,8 +102,12 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             m_hitsTitle->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType)
         {
-            pa = palette();
+            pa = palette(); 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             pa.setColor(DPalette::Background, QColor("#292929"));
+#else
+            pa.setColor(DPalette::Window, QColor("#292929"));
+#endif
             setPalette(pa);
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
@@ -108,8 +116,9 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     });
 
     emit DGuiApplicationHelper::instance()->themeTypeChanged(DGuiApplicationHelper::instance()->themeType());
-
-    connect(BMInterface::instance(), &BMInterface::reportProgress,
+    
+    // TODO dtk6 中BMInterface::instance()被屏蔽了
+    connect(&BMInterface::ref(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
         qDebug() << error << current << title << description;
 
@@ -132,6 +141,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             emit finish(current, error, title, description);
         }
     });
+
 }
 
 void ProgressView::timerEvent(QTimerEvent *event)

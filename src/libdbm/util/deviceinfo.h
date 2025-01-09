@@ -29,7 +29,7 @@ public:
     bool needFormat = false;
     QMap<QString, DeviceInfo> children;
 
-    bool operator==(const DeviceInfo& otherInfo)
+    bool operator==(const DeviceInfo& otherInfo) const
     {
         return (this->path == otherInfo.path);
     }

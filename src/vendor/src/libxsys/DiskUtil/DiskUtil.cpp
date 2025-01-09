@@ -11,6 +11,7 @@
 #include <QtCore>
 #include <QString>
 #include <QSysInfo>
+#include <QRegularExpression>
 
 #ifdef Q_OS_WIN32
 #include <Windows.h>
@@ -359,10 +360,10 @@ bool Mount(const QString &targetDev, const QString &path)
 
 QString GetPartitionDisk(QString targetDev)
 {
-    if (targetDev.contains(QRegExp("p\\d$"))) {
-        return QString(targetDev).remove(QRegExp("p\\d$"));
+    if (targetDev.contains(QRegularExpression("p\\d$"))) {
+        return QString(targetDev).remove(QRegularExpression("p\\d$"));
     } else {
-        return QString(targetDev).remove(QRegExp("\\d$"));
+        return QString(targetDev).remove(QRegularExpression("\\d$"));
     }
 }
 
@@ -492,12 +493,12 @@ qint64 GetPartitionFreeSpace(const QString &targetDev)
         qDebug() << "Call df Failed";
         return 0;
     }
-    return ret.result().split("\n").filter(targetDev).first().split(" ").filter(QRegExp("[^\\s]")).at(3).toLongLong() * 512;
+    return ret.result().split("\n").filter(targetDev).first().split(" ").filter(QRegularExpression("[^\\s]")).at(3).toLongLong() * 512;
 }
 
 QString GetPartitionDisk(QString targetDev)
 {
-    return QString(targetDev).remove(QRegExp("s\\d$"));
+    return QString(targetDev).remove(QRegularExpression("s\\d$"));
 }
 
 XSys::Result UmountDisk(const QString &targetDev)
@@ -510,7 +511,7 @@ bool CheckFormatFat32(const QString &targetDev)
     XSys::Result ret = XSys::SynExec("diskutil", "info " + targetDev);
     QString partitionType = ret.result().split("\n").filter("Partition Type:").first();
 
-    if (partitionType.contains(QRegExp("_FAT_32"))) {
+    if (partitionType.contains(QRegularExpression("_FAT_32"))) {
         return true;
     }
 
