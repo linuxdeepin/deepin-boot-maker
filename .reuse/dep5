@@ -19,7 +19,7 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
 # translation files
-Files: src/translate.qrc src/tools/translate_generation.py src/translations/* .tx/*
+Files: src/translate.qrc src/tools/translate_generation.py src/translations/* .tx/config .tx/deepin.conf .tx/ts2desktop
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
