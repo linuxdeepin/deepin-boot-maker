@@ -24,9 +24,17 @@
 
 #include <backend/bootmaker.h>
 
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
 #include <polkit-qt5-1/PolkitQt1/Authority>
 #include <polkit-qt5-1/PolkitQt1/Subject>
+#endif
+#else
+#if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
+#include <polkit-qt6-1/PolkitQt1/Authority>
+#include <polkit-qt6-1/PolkitQt1/Subject>
+#endif
 #endif
 
 const QString s_PolkitActionCreate = "com.deepin.bootmaker.create";

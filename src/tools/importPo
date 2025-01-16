@@ -1,6 +1,6 @@
 #!/bin/bash
 
-qtPath=/opt/qt5-static/5.3/linuxg64
+qtPath=/opt/qt6-static/5.3/linuxg64
 qtPath=/opt/qtstatic/5.3/linuxg64
 qtBin=$qtPath/bin
 

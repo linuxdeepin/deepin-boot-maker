@@ -12,7 +12,7 @@
 #include <DTipLabel>
 #include <QVBoxLayout>
 #include <DPalette>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <QBrush>
 #include <DFontSizeManager>
 #include "widgetutil.h"

@@ -9,9 +9,15 @@
 
 #include <XSys>
 #include <dirent.h>
-#include <QTextCodec>
 #include <QByteArray>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QRegExp>
+#include <QTextCodec>
+#else
+#include <QRegularExpression>
+#endif
+
 #include <qglobal.h>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
@@ -315,15 +321,24 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             break;
 
         QString type;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QRegExp reg("NAME=\"(.*)\" LABEL=\"(.*)\" SIZE=\"(.*)\" UUID=\"(.*)\" FSTYPE=\"(.*)\" TYPE=\"(.*)\"");
-
         if (reg.indexIn(line) >= 0) {
             info.path = reg.cap(1);
             info.label = reg.cap(2);
             info.uuid = reg.cap(4);
             info.fstype = reg.cap(5);
             type = reg.cap(6);
-
+#else
+        QRegularExpression reg("NAME=\"(.*)\" LABEL=\"(.*)\" SIZE=\"(.*)\" UUID=\"(.*)\" FSTYPE=\"(.*)\" TYPE=\"(.*)\"");
+        QRegularExpressionMatch match = reg.match(line);
+        if (match.hasMatch()) {
+            info.path = match.captured(1);
+            info.label = match.captured(2);
+            info.uuid = match.captured(4);
+            info.fstype = match.captured(5);
+            type = match.captured(6);
+#endif
             if (!type.compare("disk")) {
                 diskDevPath = info.path;
                 isPart = false;
@@ -340,12 +355,21 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
         if (info.label.contains("\\x", Qt::CaseInsensitive)) {
             QByteArray byArr = unescapeLimited(info.label);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             if (isUft8(byArr)) {
                 strLabel = QTextCodec::codecForName("UTF-8")->toUnicode(byArr);
             }
             else if(isGBK(byArr)) {
                 strLabel = QTextCodec::codecForName("GBK")->toUnicode(byArr);
             }
+#else
+            if (isUft8(byArr)) {
+                strLabel = QString::fromUtf8(byArr);
+            }
+            else if(isGBK(byArr)) {
+                strLabel = QString::fromLocal8Bit(byArr);
+            }
+#endif
             else {
                 strLabel = QString::fromLocal8Bit(byArr);
             }
@@ -415,7 +439,7 @@ bool isUsbDisk(const QString &dev)
     QString info = outfile.readAll();
     outfile.close();
     outfile.remove();
-    return info.contains(QRegExp("Protocol:\\s+USB"));
+    return info.contains(QRegularExpression("Protocol:\\s+USB"));
 }
 
 QList<DeviceInfo> ListUsbDrives()
@@ -449,7 +473,11 @@ QList<DeviceInfo> ListUsbDrives()
     QMap<QString, QString> removeDevice;
 
     for (int i = 0; i < usbfileinfoL.size(); ++i) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         if (usbfileinfoL.at(i).fileName().contains(QRegExp("^usb-\\S{1,}$")) || usbfileinfoL.at(i).fileName().contains(QRegExp("^mmc-\\S{1,}$"))) {
+#else
+        if (usbfileinfoL.at(i).fileName().contains(QRegularExpression("^usb-\\S{1,}$")) || usbfileinfoL.at(i).fileName().contains(QRegularExpression("^mmc-\\S{1,}$"))) {
+#endif
             QString path = usbfileinfoL.at(i).canonicalFilePath();
             removeDevice.insert(path, usbfileinfoL.at(i).fileName());
         }
@@ -497,7 +525,8 @@ QList<DeviceInfo> ListUsbDrives()
     QFile outfile(out);
     outfile.open(QIODevice::ReadOnly);
     QString diskutilList = outfile.readAll();
-    QStringList usbdevsL = diskutilList.split("\n").filter(QRegExp("(FAT|Microsoft)")).join(" ").split(" ").filter("disk");
+
+    QStringList usbdevsL = diskutilList.split("\n").filter(QRegularExpression("(FAT|Microsoft)")).join(" ").split(" ").filter("disk");
 
     for (int i = 0; i < usbdevsL.size(); ++i) {
         if (isUsbDisk("/dev/" + usbdevsL.at(i))) {

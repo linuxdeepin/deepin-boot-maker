@@ -17,7 +17,7 @@ Source0:    %{name}_%{version}.orig.tar.xz
 
 
 BuildRequires: python3
-BuildRequires: qt5-devel
+#BuildRequires: qt6-devel
 BuildRequires: xcb-util-devel
 BuildRequires: mtdev-devel
 BuildRequires: libXrender-devel
@@ -48,9 +48,9 @@ Requires: genisoimage
 
 
 %build
-# help find (and prefer) qt5 utilities, e.g. qmake, lrelease
-export PATH=%{_qt5_bindir}:$PATH
-%qmake_qt5 DAPP_VERSION=%{version} DEFINES+="VERSION=%{version}"
+# help find (and prefer) qt6 utilities, e.g. qmake, lrelease
+export PATH=%{_qt6_bindir}:$PATH
+%qmake_qt6 DAPP_VERSION=%{version} DEFINES+="VERSION=%{version}"
 %make_build
 
 

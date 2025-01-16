@@ -13,7 +13,7 @@
 #include <DTitlebar>
 #include <DPageIndicator>
 #include <DApplication>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DWindowManagerHelper>
 
 #include <QDebug>
@@ -56,7 +56,12 @@ BMWindow::BMWindow(QWidget *parent)
 
     setFixedSize(440, 550);
 
+    // TODO
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     d->interface = BMInterface::instance();
+#else
+    d->interface = &BMInterface::ref();
+#endif
 
     // init about info
     QString descriptionText = tr("Boot Maker is a simple tool to write system image files into USB flash drives and other media.");
@@ -80,7 +85,8 @@ BMWindow::BMWindow(QWidget *parent)
     titlebar()->setWindowFlags(flags);
 
     QPalette pal(palette());
-    pal.setColor(QPalette::Background, Qt::white);
+    pal.setColor(QPalette::Window, QColor(255, 255, 255));
+
     setAutoFillBackground(true);
     setPalette(pal);
 #endif
@@ -92,7 +98,7 @@ BMWindow::BMWindow(QWidget *parent)
 
     auto viewWidth = 440;
     QStackedLayout *actionsLayout = new QStackedLayout;
-    actionsLayout->setMargin(0);
+    actionsLayout->setContentsMargins(0, 0, 0, 0);
     d->isoWidget = new ISOSelectView();
     d->isoWidget->setAccessibleName("centralWidget_isoSelectWidget");
     d->isoWidget->resize(440, 466);
@@ -128,7 +134,7 @@ BMWindow::BMWindow(QWidget *parent)
     d->wsib->setPointDistance(12);
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
-    mainLayout->setMargin(0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
     mainLayout->addLayout(actionsLayout);
     mainLayout->addWidget(d->wsib);
@@ -265,14 +271,22 @@ void BMWindow :: slot_ThemeChange()
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType) {
         pa = d->wsib->palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
+#else
+        pa.setColor(DPalette::Window, QColor(255, 255, 255));
+#endif
         d->wsib->setPalette(pa);
         d->wsib->setPointColor(QColor("#2CA7F8"));
 //        d->wsib->setSecondaryPointColor(QColor("#96ACBD"));
         d->wsib->setSecondaryPointColor(QColor(150, 172, 189, 51));
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         pa = d->wsib->palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor("#292929"));
+#else
+        pa.setColor(DPalette::Window, QColor("#292929"));
+#endif
         d->wsib->setPalette(pa);
         d->wsib->setPointColor(QColor("#0082FA"));
 //        d->wsib->setSecondaryPointColor(QColor("#555555"));
