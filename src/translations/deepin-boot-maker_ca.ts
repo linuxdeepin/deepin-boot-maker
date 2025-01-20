@@ -89,7 +89,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
-        <translation>Es grava</translation>
+        <translation>Es grava </translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="63"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Heu seleccionat la imatge ISO en aquesta unitat USB. En formatar-la, se n&apos;esborraran tots els fitxers. Torneu a seleccionar el fitxer d&apos;imatge o cancel·leu-ho.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Gabim Formatimi Disku: Ju lutemi, riformatojeni ose çaktivizoni “Skano automatikisht pajisje USB depozitimi” te Qendër Sigurie</translation>
+        <translation>Gabim Formatimi Disku: Ju lutemi, riformatojeni, ose çaktivizoni te Qendër Sigurie “Skano automatikisht pajisje USB depozitimi”</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -14,12 +14,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Hapësirë disku e Pamjaftueshme: Garantoni që disku të ketë hapësirë të lirë të mjaftueshme</translation>
+        <translation>Hapësirë disku e Pamjaftueshme: Siguroni që disku të ketë hapësirë të lirë të mjaftueshme</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Gabim Montimi Disku: Rifuteni diskun ose rinisni sistemin që të provohet</translation>
+        <translation>Gabim Montimi Disku: Rifuteni diskun, ose rinisni sistemin, që të provohet</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker është një mjet i thjeshtë për shkrim kartelash pamje sistemi në diskth USB dhe media tjetër.</translation>
+        <translation>Boot Maker është një mjet i thjeshtë për shkrim kartelash pamjeje sistemi në diskth USB dhe media tjetër.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -89,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="51"/>
         <source>Burning</source>
-        <translation>Po piqet</translation>
+        <translation>Po shkruhet</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="63"/>
         <source>Burning, please wait...</source>
-        <translation>Po piqet, ju lutemi, pritni…</translation>
+        <translation>Po shkruhet, ju lutemi, pritni…</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="56"/>
         <source>Successful</source>
-        <translation>E suksesshme</translation>
+        <translation>I suksesshëm</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="95"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Keni përzgjedhur pamje ISO te ky diskth USB. Formatimi i tij do të sjellë fshirjen e krejt kartelave tuaja në të. Ju lutemi, ripërzgjidhni kartelën e pamjes, ose anuloni formatimin.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

@@ -4,12 +4,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Erro de Formato do Disco: Reformate-o ou desative a &quot;Verificação automática dos dispositivos de armazenamento USB&quot; na Central de Segurança</translation>
+        <translation>Erro de formatação do disco: Reformate-o ou desative a &quot;Verificação automática dos dispositivos de armazenamento USB&quot; na Central de Segurança</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Erro de Formato do Disco: Reformate-o</translation>
+        <translation>Erro de formatação do disco: Reformate-o</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
@@ -19,17 +19,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Erro ao Montar: Insira novamente o disco ou reinicie</translation>
+        <translation>Erro de montagem do disco: Insira-o novamente ou reinicie</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Erro de Descompressão da Imagem: Verifique a integridade da imagem (MD5)</translation>
+        <translation>Erro de descompressão de imagem: Verifique o hash MD5 da imagem para garantir a sua integridade</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="33"/>
         <source>Internal Error</source>
-        <translation>Erro Interno</translation>
+        <translation>Erro interno</translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>O Criador de Mídia Inicializável é uma ferramenta para gravar os arquivos de imagem do sistema, em dispositivos de armazenamento removível e em outras mídias.</translation>
+        <translation>O Criador de Mídia Inicializável é uma ferramenta fácil de usar para gravar arquivos de imagem do sistema em dispositivos de armazenamento removível e em outras mídias.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -61,7 +61,7 @@
         <location filename="../app/view/isoselectview.cpp" line="82"/>
         <location filename="../app/view/isoselectview.cpp" line="140"/>
         <source>Select an ISO image file</source>
-        <translation>Selecione a ISO</translation>
+        <translation>Selecione uma imagem .iso</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="170"/>
@@ -71,17 +71,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="225"/>
         <source>Reselect an ISO image file</source>
-        <translation>Selecione novamente a ISO</translation>
+        <translation>Selecione novamente uma imagem .iso</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
-        <translation>Está imagem ISO é ilegal</translation>
+        <translation>Imagem .iso ilegal</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Detectando a ISO, aguarde...</translation>
+        <translation>Detectando a imagem .iso, aguarde...</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Não remova o disco ou desligue o computador durante este processo</translation>
+        <translation>Não remova o disco ou desligue o computador durante o processo</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="85"/>
@@ -113,7 +113,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="40"/>
         <source>Removable Disk</source>
-        <translation>Disco Removível</translation>
+        <translation>Disco removível</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="224"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="104"/>
         <source>Reboot now</source>
-        <translation>Reiniciar Agora</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="56"/>
@@ -148,17 +148,17 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="169"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>O log de erro será enviado com o feedback.</translation>
+        <translation>O log de erro será enviado automaticamente com o feedback.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="170"/>
         <source>Submit Feedback</source>
-        <translation>Enviar Feedback</translation>
+        <translation>Enviar feedback</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
-        <translation>Serviços de Pós-venda</translation>
+        <translation>Serviços de pós-venda</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="206"/>
@@ -169,12 +169,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="214"/>
         <source>Sorry, process failed</source>
-        <translation>Falha no Processo</translation>
+        <translation>O processo falhou</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="215"/>
         <source>Process failed</source>
-        <translation>Falha no Processo</translation>
+        <translation>O processo falhou</translation>
     </message>
 </context>
 <context>
@@ -182,7 +182,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Verificando os dados e removendo a mídia com segurança, aguarde...</translation>
+        <translation>Verificando dados e removendo a mídia com segurança, aguarde...</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>A formatação apagará todos os dados da partição; mas, poderá aumentar a taxa de sucesso. Confirme antes de prosseguir</translation>
+        <translation>A formatação apagará todos os dados da partição, o que aumenta a taxa de sucesso. Confirme antes de prosseguir</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Você selecionou a imagem .iso neste dispositivo de armazenamento removível. A formatação apagará todos os seus arquivos. Selecione-os novamente ou cancele a formatação.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
@@ -228,12 +228,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>A formatação da partição irá sobrescrever todos os dados. Crie um backup antes de prosseguir.</translation>
+        <translation>A formatação da partição apagará todos os dados nela contidos; crie um backup antes de prosseguir.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Erro de Formato do Disco: Formate a partição em FAT32</translation>
+        <translation>Erro de formatação do disco: Formate a partição em FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
@@ -249,7 +249,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation>Formatar Partição</translation>
+        <translation>Formatar partição</translation>
     </message>
 </context>
 </TS>
