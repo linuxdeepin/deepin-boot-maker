@@ -20,9 +20,16 @@ QT += core gui widgets testlib
 CONFIG += c++14 console link_pkgconfig
 CONFIG += testcase no_testcase_installs
 CONFIG   += resources_big
-PKGCONFIG += dtkwidget
-PKGCONFIG += dtkcore
-PKGCONFIG += polkit-qt5-1
+
+versionAtLeast(QT_VERSION, 6.0.0) {
+    PKGCONFIG += dtk6widget
+    PKGCONFIG += dtk6core
+    PKGCONFIG += polkit-qt6-1
+} else {
+    PKGCONFIG += dtkwidget
+    PKGCONFIG += dtkcore
+    PKGCONFIG += polkit-qt5-1
+}
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings

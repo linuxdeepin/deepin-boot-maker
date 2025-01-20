@@ -15,9 +15,9 @@ UnmountUsbView::UnmountUsbView(DWidget *parent): DWidget(parent)
     m_spinner->setObjectName("spinner");
     m_spinner->setFixedSize(32, 32);
     m_hitTitle = new DLabel(tr("Verifying data and safely removing the media, please wait..."));
-    DPalette pa = DApplicationHelper::instance()->palette(m_hitTitle);
-    QBrush brush = DApplicationHelper::instance()->palette(m_hitTitle).text();
-    pa.setBrush(DPalette::Text, brush);
+    QPalette pa = m_hitTitle->palette();
+    QBrush brush = pa.text();
+    pa.setBrush(QPalette::Text, brush);
     m_hitTitle->setPalette(pa);
     m_hitTitle->setFixedWidth(440);
     m_hitTitle->setFixedHeight(50);
@@ -30,8 +30,12 @@ UnmountUsbView::UnmountUsbView(DWidget *parent): DWidget(parent)
     MainLayout->addSpacing(10);
     MainLayout->addWidget(m_hitTitle, 0, Qt::AlignCenter);
     MainLayout->addStretch();
-    DPalette pa1 = DApplicationHelper::instance()->palette(this);
+    DPalette pa1 = this->palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     pa.setBrush(DPalette::Background, pa.color(DPalette::Base));
+#else
+    pa.setBrush(DPalette::Window, pa.color(DPalette::Base));
+#endif
     this->setPalette(pa1);
     connect(this, &UnmountUsbView::startSpinner, this, [ = ]() {
         m_spinner->start();

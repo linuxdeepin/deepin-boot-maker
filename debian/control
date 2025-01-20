@@ -5,9 +5,13 @@ Maintainer: Deepin Packages Builder <packages@deepin.com>
 Uploaders: Ma Aiguo <imaiguo@gmail.com>,
 Build-Depends: debhelper-compat (=11),
  python3,
- qt5-qmake,
- qttools5-dev-tools,
- qtbase5-dev,
+ qt6-base-dev,
+ qt6-base-dev-tools,
+ qt6-base-private-dev,
+ qt6-l10n-tools,
+ qt6-tools-dev-tools,
+ qt6-tools-dev,
+ qt6-svg-dev,
  pkg-config,
  libxcb-util0-dev,
  libmtdev-dev,
@@ -16,9 +20,9 @@ Build-Depends: debhelper-compat (=11),
  libfontconfig-dev,
  libegl1-mesa-dev,
  libstartup-notification0-dev,
- libdtkwidget-dev,
+ libdtk6widget-dev,
  libgtest-dev,
- libpolkit-qt5-1-dev
+ libpolkit-qt6-1-dev
 Standards-Version: 4.5.1
 Homepage: https://github.com/linuxdeepin/deepin-boot-maker
 Vcs-Git: https://salsa.debian.org/pkg-deepin-team/deepin-boot-maker.git
@@ -28,7 +32,7 @@ Package: deepin-boot-maker
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools, udisks2,
  syslinux [linux-amd64 linux-i386],
- syslinux-common [linux-amd64 linux-i386],genisoimage,dde-qt5integration
+ syslinux-common [linux-amd64 linux-i386],genisoimage,dde-qt6integration
 Description: Simple tool for user to create a boot usb stick quickly and easily
  It's designed to support deepin system iso, it can works for Debian and ubuntu
  iso too.

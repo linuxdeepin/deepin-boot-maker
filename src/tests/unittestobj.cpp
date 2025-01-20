@@ -12,7 +12,8 @@ BMInterface* UnitTestObj::m_pBMinterFace = nullptr;
 
 void UnitTestObj::SetUpTestCase()
 {
-    m_pBMinterFace = BMInterface::instance();
+    // m_pBMinterFace = BMInterface::instance();
+    m_pBMinterFace = &BMInterface::ref();
 }
 
 void UnitTestObj::TearDownTestCase()

@@ -34,7 +34,10 @@ int main(int argc, char *argv[])
     }
 
     qputenv("QT_LOGGING_RULES", strDebug.toLatin1());
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    // 在Qt6中，这个步骤是不必要的，因为Qt6默认使用UTF-8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+#endif
     Utils::initResource();
 
     QCoreApplication a(argc, argv);

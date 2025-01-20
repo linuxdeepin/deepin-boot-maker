@@ -1,6 +1,8 @@
 include($$PWD/../vendor/env.pri)
 
-QT += dtkcore
+# QT += dtk6core
+
+PKGCONFIG += dtk6core
 
 unix{
     QT += dbus

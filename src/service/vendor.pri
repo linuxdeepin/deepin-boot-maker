@@ -3,13 +3,13 @@ include($$PWD/../vendor/env.pri)
 unix{
     QT += dbus
     CONFIG += link_pkgconfig
-    PKGCONFIG += dtkcore polkit-qt5-1
+    PKGCONFIG += dtk6core polkit-qt6-1
 }
 
 win32{
     INCLUDEPATH += $$DTK_INCLUDE\DCore
     DEPENDPATH  += $$DTK_DEPEND\DCore
-    LIBS += -L$$DTK_LIBRARY -ldtkcore
+    LIBS += -L$$DTK_LIBRARY -ldtk6core
 }
 
 ##################################################################

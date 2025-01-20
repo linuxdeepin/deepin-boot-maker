@@ -14,7 +14,7 @@
 #include <DApplication>
 #include <DCheckBox>
 #include <DLog>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DFontSizeManager>
 
 #include <QDebug>
@@ -38,8 +38,8 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 
     m_title = new DLabel();
     m_title->setAccessibleName("resultWidget_title");
-    DPalette pa = DApplicationHelper::instance()->palette(m_title);
-    QBrush brush = DApplicationHelper::instance()->palette(m_title).text();
+    QPalette pa = m_title->palette();
+    QBrush brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
     m_title->setPalette(pa);
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T3);
@@ -52,8 +52,9 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     m_hitsTitle = new DLabel(tr("Successful"));
     m_hitsTitle->setAccessibleName("resultWidget_hitsTitleLabel");
     m_hitsTitle->setObjectName("ResulteHitsTitle");
-    pa = DApplicationHelper::instance()->palette(m_hitsTitle);
-    brush = DApplicationHelper::instance()->palette(m_hitsTitle).text();
+    // TODO
+    pa = QApplication::palette(m_hitsTitle);
+    brush = pa.text();
     pa.setBrush(DPalette::Text, brush);
     m_hitsTitle->setPalette(pa);
     m_hitsTitle->setAlignment(Qt::AlignCenter);
@@ -95,11 +96,19 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
     mainLayout->addWidget(m_logHits);
     mainLayout->addStretch();
     mainLayout->addWidget(m_rebootLater, 0, Qt::AlignHCenter|Qt::AlignBottom);
-
+    
+    // TODO
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     connect(m_rebootNow, &DPushButton::clicked,
     this, [ = ]() {
         BMInterface::instance()->reboot();
     });
+#else
+    connect(m_rebootNow, &DPushButton::clicked,
+    this, [ = ]() {
+        BMInterface::ref().reboot();
+    });
+#endif
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
     this, [ = ] {
@@ -108,7 +117,11 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
         if (themeType == DGuiApplicationHelper::LightType)
         {
             pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             pa.setColor(DPalette::Background, QColor(255, 255, 255));
+#else
+            pa.setColor(DPalette::Window, QColor(255, 255, 255));
+#endif
             setPalette(pa);
 
             pa = m_hitsTitle->palette();
@@ -119,7 +132,11 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
             m_logHits->setPalette(pa);
         } else if (themeType == DGuiApplicationHelper::DarkType) {
             pa = palette();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             pa.setColor(DPalette::Background, QColor("#292929"));
+#else
+            pa.setColor(DPalette::Window, QColor("#292929"));
+#endif
             setPalette(pa);
             pa = m_hitsTitle->palette();
             pa.setColor(DPalette::WindowText, QColor("#C0C6D4"));
