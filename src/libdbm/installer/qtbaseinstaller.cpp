@@ -483,6 +483,7 @@ void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
 
         if (!writeFile.open(QIODevice::ReadWrite|QIODevice::Truncate)) {
             qCritical() << writeFile.errorString();
+            readFile.close();
             return;
         }
 
