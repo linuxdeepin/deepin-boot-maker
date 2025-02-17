@@ -24,7 +24,10 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
     app.setStandardInputFile(execPipeIn);
 //    app.setStandardOutputFile(outPipePath);
 //    app.setStandardErrorFile(outPipePath);
-    app.start("\"" + execPath + "\"" + " " + execParam);
+    app.setProgram(execPath);
+    QStringList argList = execParam.split(" ", Qt::SkipEmptyParts);
+    app.setArguments(argList);
+    app.start();
     if (!app.waitForStarted()) {
         qWarning() << "Cmd Exec Failed:" << app.errorString();
         return Result(Result::Failed, app.errorString(), "", app.program());
