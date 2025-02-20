@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.1) unstable; urgency=medium
+
+  * fix: Fixed the issue that the boot disk failed to be created(Bug: 303439)
+
+ -- renbin <renbin@uniontech.com>  Thu, 20 Feb 2025 19:41:24 +0800
+
 deepin-boot-maker (6.0.0) unstable; urgency=medium
 
   * New tag 
