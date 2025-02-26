@@ -19,7 +19,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Levyn liitosvirhe: Asenna levy uudelleen tai käynnistä kone ja yritä uudelleen.</translation>
+        <translation>Levyn liitosvirhe: Liitä levy uudelleen tai käynnistä tietokone uudelleen.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Mediat on helppo työkalu levykuvien kirjoittamiseen USB-muistitikkuihin ja muuhun mediaan.</translation>
+        <translation>Asennusmedia on työkalu levykuvien kirjoittamiseen usb-muistitikulle tai vastaaville medioille.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation>Mediat</translation>
+        <translation>Asennusmediat</translation>
     </message>
 </context>
 <context>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
-        <translation>Mediat</translation>
+        <translation>Asennusmediat</translation>
     </message>
 </context>
 <context>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Olet valinnut ISO-kuvan tästä USB-muistitikusta. Alustus poistaa sen kaikki tiedostot. Valitse tiedosto uudelleen tai peruuta alustus.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>

@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Вами вибрано образ ISO на цьому флеш-диску USB. Форматування диска призведе до витирання усіх файлів на ньому. Будь ласка, виберіть інший файл образу або скасуйте форматування.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
