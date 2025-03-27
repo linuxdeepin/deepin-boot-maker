@@ -4,7 +4,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Formatering av disk feilet: Vennligst reformater den eller slå av &quot;Automatisk skanning av USB-enheter&quot; i Sikkerhetssenteret</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="169"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"/>
+        <translation>Feilloggen vil bli lastet opp automatisk sammen med tilbakemeldingen. Din tilbakemelding er viktig for at vi skal kunne forbedre oss</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="170"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Ettersalgsservice</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="206"/>
@@ -182,7 +182,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Verifiserer data og løser ut medium, vennligst vent...</translation>
+        <translation>Verifiserer data og løser ut lagringsmedium, vennligst vent...</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"/>
+        <translation>Formatering vil overskrive alle data på denne partisjonen, men kan øke suksessraten, vennligst bekreft for å fortsette</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Du har valgt ISO-filen på denne flyttbare USB-enheten. Formatering vil overskrive alle filer. Vennligst velg ISO-fil på nytt eller kanseller formateringen.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>Formatering av disk feilet: Vennligst formater partisjonen som FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
