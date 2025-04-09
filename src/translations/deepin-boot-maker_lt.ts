@@ -4,17 +4,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Disksų formatavimo klaida: Palikite jį formatuoti ar išjunkite &quot;Automatinį USB stokų įrenginių skanavimą&quot; iš saugumo centro</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"/>
+        <translation>Disksų formatavimo klaida: Palikite jį formatuoti</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="24"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"/>
+        <translation>Nepakankamoios diskas svorių: Įsikurkite pakankamą laisvą vietą</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="27"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Boot Maker yra paprastas įrankis, skirtas rinktinėms sistema failų rašyti į USB flash diskus ir kitus medijas.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="193"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Po-parduotuvės paslaugos</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="206"/>
@@ -190,12 +190,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="92"/>
         <source>Select a partition</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkite dišką</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="117"/>
         <source>Format the partition</source>
-        <translation type="unfinished"/>
+        <translation>Formatuokite dišką</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="170"/>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"/>
+        <translation>Formatavimas ištrins visą duomenų diške, bet galės padidinti sėkmingumo greitį, prašome patvirtinti prieš tęsiant</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkote ISO paveikslą šiame USB flash diske. Formatavimas ištrins visus Jūsų failus. Pasirinkite dar kartą paveikslą ar atšaukti formatavimą.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
@@ -228,12 +228,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="391"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>Formatavimas ištrins visus duomenis, prašome turėti kopiją prieš tęsiant.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="407"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>Disksų formatavimo klaida: Formatuokite dišką FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="153"/>
@@ -249,7 +249,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation type="unfinished"/>
+        <translation>Formatuokite dišką</translation>
     </message>
 </context>
 </TS>
