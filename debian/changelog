@@ -1,3 +1,10 @@
+deepin-boot-maker (6.0.2) unstable; urgency=medium
+
+  * i18n: Updates for project Deepin Boot Maker (#70)
+  * chore: update translations.
+
+ -- renbin <renbin@uniontech.com>  Thu, 17 Apr 2025 10:40:47 +0800
+
 deepin-boot-maker (6.0.1) unstable; urgency=medium
 
   * fix: Fixed the issue that the boot disk failed to be created(Bug: 303439)
