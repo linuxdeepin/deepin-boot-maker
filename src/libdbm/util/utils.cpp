@@ -416,11 +416,19 @@ bool CheckInstallDisk(const QString &targetDev)
     }
 
     QFile UOS(":src/UOS");
-    UOS.open(QIODevice::ReadOnly);
+    if (!UOS.open(QIODevice::ReadOnly)) {
+        qDebug() << "error open file: " << UOS.fileName();
+        test.close();
+        return false;
+    }
+
     QByteArray data = UOS.readAll();
 
     if (data.length() != test.write(data)) {
         qDebug() << "erro write file: " << UOS.fileName();
+        test.close();
+        UOS.close();
+        test.remove();
         return false;
     }
 
@@ -435,7 +443,10 @@ bool isUsbDisk(const QString &dev)
     QString out = XSys::FS::TmpFilePath("diskutil_isusb_out");
     XSys::SynExec("bash", QString("-c \" diskutil info %1 > \"%2\" \" ").arg(dev).arg(out));
     QFile outfile(out);
-    outfile.open(QIODevice::ReadOnly);
+    if (!outfile.open(QIODevice::ReadOnly)) {
+        qDebug() << "error open file: " << outfile.fileName();
+        return false;
+    }
     QString info = outfile.readAll();
     outfile.close();
     outfile.remove();
@@ -523,7 +534,10 @@ QList<DeviceInfo> ListUsbDrives()
     QString out = XSys::FS::TmpFilePath("diskutil_out");
     XSys::SynExec("bash", QString("-c \" diskutil list > \"%1\" \" ").arg(out));
     QFile outfile(out);
-    outfile.open(QIODevice::ReadOnly);
+    if (!outfile.open(QIODevice::ReadOnly)) {
+        qDebug() << "error open file: " << outfile.fileName();
+        return deviceList;
+    }
     QString diskutilList = outfile.readAll();
 
     QStringList usbdevsL = diskutilList.split("\n").filter(QRegularExpression("(FAT|Microsoft)")).join(" ").split(" ").filter("disk");
