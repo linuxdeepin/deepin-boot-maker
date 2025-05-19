@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.3) unstable; urgency=medium
+
+  * update debian/rules to disable service
+
+ -- wangrong <wangrong@uniontech.com>  Mon, 19 May 2025 14:50:50 +0800
+
 deepin-boot-maker (6.0.2) unstable; urgency=medium
 
   * i18n: Updates for project Deepin Boot Maker (#70)
