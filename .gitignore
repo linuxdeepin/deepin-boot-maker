@@ -7,3 +7,10 @@ osx
 *.log
 *.qm
 .DS_Store
+.vscode
+.cursor
+# SpecStory explanation file
+.specstory
+.cursorindexingignore
+# SpecStory explanation file
+.specstory/.what-is-this.md

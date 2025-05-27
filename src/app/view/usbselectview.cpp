@@ -231,9 +231,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     connect(&BMInterface::ref(), &BMInterface::deviceListChanged,
     this, [ = ](const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& dellist) {
+        qInfo() << "Device list changed - Added:" << addlist.size() << "devices, Removed:" << dellist.size() << "devices";
         bool hasPartitionSelected = false;
 
         foreach (DeviceInfo info, dellist) {
+            qInfo() << "Device removed:" << info.path << "Label:" << info.label;
             for (int i = 0; i < this->m_mountDevs.count(); i++) {
                 DeviceInfo refInfo = this->m_mountDevs.at(i);
                 if (refInfo == info) {
@@ -243,6 +245,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
             //移除列表中包含选中项
             if (info.path == this->property("last_path")&&!info.path.isEmpty()&&!addlist.contains(info)) {
+                qInfo() << "Selected device was removed:" << info.path;
                 m_formatDiskCheck->setDisabled(true);
                 m_formatDiskCheck->setChecked(false);
                 setProperty("user_format", false);
@@ -265,6 +268,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
         QStringList strDevList;
 
         foreach (const DeviceInfo &partition, this->m_mountDevs) {
+            qInfo() << "Adding device to list:" << partition.path << "Label:" << partition.label << "Format needed:" << partition.needFormat;
             QListWidgetItem *listItem = new QListWidgetItem;
             DeviceInfoItem *infoItem = new DeviceInfoItem(
                 partition.label,
@@ -288,6 +292,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
                 infoItem->setEnabled(false);
             }
             if (partition.path == this->property("last_path").toString()) {
+                qInfo() << "Restoring previous selection:" << partition.path;
                 infoItem->setCheck(true);
                 m_deviceList->setCurrentItem(listItem);
                 hasPartitionSelected = true;
@@ -314,11 +319,11 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 
     connect(m_deviceList, &DeviceListWidget::itemClicked,
     this, [ = ](QListWidgetItem * current) {
-
         if (current != nullptr) {
             bool bFirst = current->data(Qt::UserRole).toBool();
             if (!bFirst) {
-                return ;
+                qInfo() << "Ignoring click on non-primary device";
+                return;
             }
         }
         DeviceInfoItem *infoItem;
@@ -329,16 +334,18 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             }
         }
 
-
         infoItem = qobject_cast<DeviceInfoItem *>(m_deviceList->itemWidget(current));
 
         if (infoItem) {
+            qInfo() << "Device selected:" << infoItem->property("path").toString() << "Format needed:" << infoItem->needFormat();
             if (infoItem->needFormat()) {
+                qInfo() << "Device requires formatting";
                 m_formatDiskCheck->setChecked(true);
                 m_formatDiskCheck->setDisabled(true);
                 handleFormat(true);
             } else {
                 auto format = this->property("user_format").toBool();
+                qInfo() << "User format preference:" << format;
                 m_formatDiskCheck->setChecked(format);
                 m_formatDiskCheck->setDisabled(false);
                 handleFormat(format);
@@ -349,25 +356,30 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             this->setProperty("last_fstype", infoItem->property("fstype").toString());
             m_start->setDisabled(false);
         }
-         m_previous = current;
+        m_previous = current;
     });
 
 
     connect(m_start, &DPushButton::clicked, this, [ = ] {
         auto format = m_formatDiskCheck->isChecked();
+        qInfo() << "Start button clicked, format option:" << format;
 
         QString usbMountPoint =  XSys::DiskUtil::MountPoint(this->property("last_path").toString());
         usbMountPoint += "/";
         QString isoFilePath = this->property("isoFilePath").toString();
+        qInfo() << "USB mount point:" << usbMountPoint << "ISO file path:" << isoFilePath;
+        
         int ret = 1;
         // 判断用户勾选格式化后选择的ISO镜像的位置是否就是用户制作启动盘的U盘里。
         if (format && (usbMountPoint.length() > 1) && (usbMountPoint == isoFilePath.left(usbMountPoint.length()))) {
+            qWarning() << "ISO file is on the target USB drive - showing warning dialog";
             FormatDialog formatDialogSceneB(this);
             formatDialogSceneB.initDialog(tr("Format Partition"),tr("You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting."),
                                                                 tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
             formatDialogSceneB.setContentsMargins(0, 0, 0, 0);
             ret = formatDialogSceneB.exec();
         } else if (format) {
+            qInfo() << "Showing format confirmation dialog";
             FormatDialog formatDialogSceneA(this);
             formatDialogSceneA.initDialog(tr("Format Partition"),tr("Formatting the partition will overwrite all data, please have a backup before proceeding."),
                                                                 tr("Cancel", "button"),DDialog::ButtonType::ButtonNormal,tr("OK", "button"),DDialog::ButtonType::ButtonWarning);
@@ -375,6 +387,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
             ret = formatDialogSceneA.exec();
         }
         if (ret != 1) {
+            qInfo() << "Format operation cancelled by user";
             if (this->property("last_fstype").toString() == "vfat") {
                 m_formatDiskCheck->setChecked(false);
                 this->setProperty("user_format", false);
@@ -387,26 +400,30 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
 #ifdef Q_OS_LINUX
         if (!m_formatDiskCheck->isChecked() && "vfat" != this->property("last_fstype").toString())
         {
+            qWarning() << "Disk format error: Non-FAT32 partition selected without formatting";
             emit finish(2, "install failed", tr("Disk Format Error: Please format the partition with FAT32"));
             return;
         }
 #endif
         QString path = this->property("last_path").toString();
-        qDebug() << "Select usb device" << path;
+        qInfo() << "Starting installation with device:" << path << "Format:" << m_formatDiskCheck->isChecked();
         emit this->deviceSelected(path, m_formatDiskCheck->isChecked());
     });
 
     connect(pBackBtn, &DPushButton::clicked, this, [=]{
+        qInfo() << "Back button clicked";
         emit this->backToPrevUI();
     });
 }
 
 void UsbSelectView::getIsoFileSelectedPath(QString isoPath)
 {
+    qInfo() << "ISO file path set:" << isoPath;
     this->setProperty("isoFilePath",isoPath);
 }
 
 void UsbSelectView::resetStartInstall()
 {
+    qInfo() << "Resetting start button state";
     m_start->setEnabled(true);
 }
