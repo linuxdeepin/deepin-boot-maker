@@ -17,19 +17,26 @@ const QString BootMakerPath = "/com/deepin/bootmaker";
 
 int main(int argc, char *argv[])
 {
+    qInfo() << "Starting Boot Maker Service";
+    
     QString PATH = qgetenv("PATH");
+    qDebug() << "Initial PATH:" << PATH;
 
     if (PATH.isEmpty()) {
+        qDebug() << "PATH is empty, setting default to /usr/bin";
         PATH = "/usr/bin";
     }
 
     PATH += ":/usr/sbin";
     PATH += ":/sbin";
     qputenv("PATH", PATH.toLatin1());
+    qDebug() << "Updated PATH:" << PATH;
 
     QString strDebug = qgetenv("QT_LOGGING_RULES");
+    qDebug() << "Initial QT_LOGGING_RULES:" << strDebug;
 
     if (strDebug.isEmpty()) {
+        qDebug() << "Setting default QT_LOGGING_RULES to *.debug=false";
         strDebug = "*.debug=false";
     }
 
@@ -43,6 +50,8 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     a.setOrganizationName("deepin");
     a.setApplicationName("deepin-boot-maker-service");
+    qDebug() << "Application initialized with name:" << a.applicationName();
+
     BootMakerService service;
 
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-35} %{line:-4} %{threadid} ] %{message}\n";
@@ -51,22 +60,27 @@ int main(int argc, char *argv[])
     DBMLogManager::registerFileAppender();
     DBMLogManager::registerConsoleAppender();
 
-    qDebug() << "write log to" << DBMLogManager::getlogFilePath();
-    qDebug() << PATH;
+    qInfo() << "Log file path:" << DBMLogManager::getlogFilePath();
+    qDebug() << "Environment PATH:" << PATH;
 
+    qDebug() << "Registering D-Bus service:" << BootMakerServiceName;
     auto systemBus = QDBusConnection::systemBus();
     if (!systemBus.registerService(BootMakerServiceName)) {
-        qCritical() << "registerService failed:" << systemBus.lastError();
+        qCritical() << "Failed to register D-Bus service:" << systemBus.lastError().message();
         exit(0x0001);
     }
+    qInfo() << "D-Bus service registered successfully";
 
+    qDebug() << "Registering D-Bus object at path:" << BootMakerPath;
     if (!systemBus.registerObject(BootMakerPath,
                                   &service,
                                   QDBusConnection::ExportAllSlots |
                                   QDBusConnection::ExportAllSignals)) {
-        qCritical() << "registerObject failed:" << systemBus.lastError();
+        qCritical() << "Failed to register D-Bus object:" << systemBus.lastError().message();
         exit(0x0002);
     }
+    qInfo() << "D-Bus object registered successfully";
 
+    qInfo() << "Boot Maker Service started successfully";
     return a.exec();
 }

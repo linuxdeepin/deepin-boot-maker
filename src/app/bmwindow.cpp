@@ -53,6 +53,7 @@ BMWindow::BMWindow(QWidget *parent)
     : BMWindowBaseClass(parent), d_ptr(new BMWindowPrivate(this))
 {
     Q_D(BMWindow);
+    qDebug() << "Initializing Boot Maker window";
 
     setFixedSize(440, 550);
 
@@ -62,6 +63,7 @@ BMWindow::BMWindow(QWidget *parent)
 #else
     d->interface = &BMInterface::ref();
 #endif
+    qDebug() << "BMInterface initialized";
 
     // init about info
     QString descriptionText = tr("Boot Maker is a simple tool to write system image files into USB flash drives and other media.");
@@ -148,11 +150,13 @@ BMWindow::BMWindow(QWidget *parent)
     slot_ThemeChange();
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::newProcessInstance, this, [ = ] {
+        qDebug() << "New process instance detected, activating window";
         this->activateWindow();
     });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &BMWindow :: slot_ThemeChange);
     connect(d->isoWidget, &ISOSelectView::isoFileSelected, this, [ = ] {
+        qDebug() << "ISO file selected, transitioning to USB selection view";
         slideWidget(d->isoWidget, d->usbWidget);
         setProperty("bmISOFilePath", d->isoWidget->isoFilePath());
         d->wsib->setCurrentPage(1);
@@ -161,6 +165,7 @@ BMWindow::BMWindow(QWidget *parent)
     connect(d->isoWidget,&ISOSelectView::isoFileSelected,d->usbWidget,&UsbSelectView::getIsoFileSelectedPath);
 
     connect(d->usbWidget, &UsbSelectView::deviceSelected, this, [ = ](const QString & partition, bool format) {
+        qDebug() << "Device selected - Partition:" << partition << "Format:" << format;
 #ifdef Q_OS_WIN
         setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
         closeflags = false;
@@ -177,7 +182,7 @@ BMWindow::BMWindow(QWidget *parent)
 #endif
 
         auto isoFilePath = property("bmISOFilePath").toString();
-        qDebug() << "call interface install" << partition << format;
+        qDebug() << "Starting installation - ISO:" << isoFilePath << "Partition:" << partition << "Format:" << format;
         emit d->interface->startInstall(isoFilePath, "", partition, format);
         // Linux: wait for startInstallRet() polkit authorization check result, then animate the widget.
     });
@@ -186,10 +191,11 @@ BMWindow::BMWindow(QWidget *parent)
     // Check polkit authorization success, not availiable on windows.
     connect(d->interface, &BMInterface::startInstallRet, this, [ = ](bool success) {
         if (success) {
+            qDebug() << "Installation authorization successful, transitioning to progress view";
             slideWidget(d->usbWidget, d->progressWidget);
             d->wsib->setCurrentPage(2);
         } else {
-            qWarning() << "call interface install return failed";
+            qWarning() << "Installation authorization failed";
 
             d->usbWidget->resetStartInstall();
             d->usbWidget->setEnabled(true);
@@ -200,12 +206,14 @@ BMWindow::BMWindow(QWidget *parent)
 #endif
 
     connect(d->progressWidget, &ProgressView::testCancel, this, [ = ] {
+        qDebug() << "Installation cancelled by user";
         setWindowFlags(windowFlags() | Qt::WindowCloseButtonHint);
         d->resultWidget->updateResult(BMHandler::SyscExecFailed, "title", "description");
         slideWidget(d->progressWidget, d->resultWidget);
         d->wsib->setCurrentPage(2);
     });
     connect(d->usbWidget, &UsbSelectView::finish, this, [ = ](quint32 error, const QString & title, const QString & description) {
+        qDebug() << "USB selection finished - Error:" << error << "Title:" << title;
         Qt::WindowFlags flags = Qt::WindowCloseButtonHint;
         flags |= Qt::WindowSystemMenuHint;
         flags |= Qt::WindowMinimizeButtonHint;
@@ -215,14 +223,16 @@ BMWindow::BMWindow(QWidget *parent)
         emit d->progressWidget->finish(0, error, title, description);
     });
     connect(d->usbWidget, &UsbSelectView::backToPrevUI, this, [=]{
+        qDebug() << "User clicked back, returning to ISO selection";
         slideWidget(d->usbWidget, d->isoWidget, 1);
         d->wsib->setCurrentPage(0);
     });
     //diff mac，win，linux
     connect(d->progressWidget, &ProgressView::finish,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
-        qDebug() << error << title << description << current;
+        qDebug() << "Progress finished - Current:" << current << "Error:" << error << "Title:" << title;
         if (error != BMHandler::NoError) {
+            qWarning() << "Operation failed with error:" << error;
             titlebar()->setQuitMenuDisabled(false);
 #ifdef Q_OS_WIN
             setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
@@ -238,6 +248,7 @@ BMWindow::BMWindow(QWidget *parent)
         }
 #ifdef  Q_OS_LINUX
         if (error == BMHandler::NoError && current == 101) {
+            qDebug() << "Operation completed successfully on Linux";
             titlebar()->setMenuVisible(true);
             titlebar()->setQuitMenuDisabled(false);
             DWindowManagerHelper::instance()->setMotifFunctions(windowHandle(), DWindowManagerHelper::FUNC_CLOSE, true);
@@ -248,6 +259,7 @@ BMWindow::BMWindow(QWidget *parent)
 #endif
 #ifndef Q_OS_LINUX
 #if defined Q_OS_Win
+        qDebug() << "Operation completed on Windows";
         titlebar()->setQuitMenuDisabled(false);
         setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
         closeflags = true;
@@ -261,15 +273,18 @@ BMWindow::BMWindow(QWidget *parent)
 #endif
     });
 
+    qDebug() << "Starting BMInterface";
     d->interface->start();
 }
 
 void BMWindow :: slot_ThemeChange()
 {
     Q_D(BMWindow);
+    qDebug() << "Theme change detected";
     DPalette pa;
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType) {
+        qDebug() << "Applying light theme";
         pa = d->wsib->palette();
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor(255, 255, 255));
@@ -281,6 +296,7 @@ void BMWindow :: slot_ThemeChange()
 //        d->wsib->setSecondaryPointColor(QColor("#96ACBD"));
         d->wsib->setSecondaryPointColor(QColor(150, 172, 189, 51));
     } else if (themeType == DGuiApplicationHelper::DarkType) {
+        qDebug() << "Applying dark theme";
         pa = d->wsib->palette();
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         pa.setColor(DPalette::Background, QColor("#292929"));
@@ -296,6 +312,7 @@ void BMWindow :: slot_ThemeChange()
 
 BMWindow::~BMWindow()
 {
+    qDebug() << "Destroying Boot Maker window";
     m_pSAnimationGroup->deleteLater();
 }
 
@@ -306,12 +323,14 @@ QString rootCommand()
 
 void startBackend()
 {
+    qDebug() << "Starting backend process";
     QProcess::startDetached(rootCommand());
 }
 
 #if defined(Q_OS_WIN)
 void BMWindow::closeEvent(QCloseEvent *event)
 {
+    qDebug() << "Close event received, closeflags:" << closeflags;
     if (closeflags == false) {
         event->ignore();
     } else {
@@ -322,6 +341,7 @@ void BMWindow::closeEvent(QCloseEvent *event)
 
 void BMWindow::slideWidget(DWidget *left, DWidget *right, int iDirection)
 {
+    qDebug() << "Sliding widgets - Direction:" << iDirection;
     SlideAnimatoin* pSlideAnimation = new SlideAnimatoin;
     pSlideAnimation->initAnimation(left, right, iDirection);
 
@@ -350,6 +370,7 @@ SlideAnimatoin::~SlideAnimatoin()
 
 void SlideAnimatoin::initAnimation(DWidget* pLeftWidget, DWidget* pRightWidget, int iDirection)
 {
+    qDebug() << "Initializing slide animation - Direction:" << iDirection;
     setLeftWidget(pLeftWidget);
     setRightWidget(pRightWidget);
     m_pLeftWidget->show();
@@ -387,6 +408,7 @@ void SlideAnimatoin::setRightWidget(DWidget* pWidget)
 
 void SlideAnimatoin::slot_AnimationGroupFinished()
 {
+    qDebug() << "Slide animation finished";
     for (int i = 0; i < this->animationCount(); i++) {
         this->animationAt(i)->deleteLater();
     }

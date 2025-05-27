@@ -28,20 +28,22 @@
 BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
   ,m_pInstaller(nullptr)
 {
+    qDebug() << "Initializing BootMaker";
     m_usbDeviceMonitor = new DeviceMonitor();
 
     m_monitorWork = new QThread();
     m_usbDeviceMonitor->moveToThread(m_monitorWork);
-//    connect(monitorWork, &QThread::started,
-//            m_usbDeviceMonitor, &DeviceMonitor::startMonitor);
+    qDebug() << "Device monitor moved to worker thread";
 
     connect(m_monitorWork, &QThread::finished, m_usbDeviceMonitor, &DeviceMonitor::deleteLater);
     connect(m_usbDeviceMonitor, &DeviceMonitor::removablePartitionsChanged,
             this, &BootMaker::removablePartitionsChanged);
 
     m_monitorWork->start();
+    qDebug() << "Device monitor thread started";
 
     connect(this, &BootMaker::finished, this, [ = ](int errcode, const QString & description) {
+        qInfo() << "Installation finished - Error code:" << errcode << "Description:" << description;
         this->reportProgress(101, errcode, "install failed", description);
     });
 }
@@ -49,6 +51,7 @@ BootMaker::BootMaker(QObject *parent) : BMHandler(parent)
 void BootMaker::reboot()
 {
 #ifdef Q_OS_WIN32
+    qInfo() << "Windows reboot sequence started";
     HANDLE hToken;
     TOKEN_PRIVILEGES tkp;
     OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
@@ -59,45 +62,54 @@ void BootMaker::reboot()
 //    ExitWindowsEx(EWX_REBOOT, EWX_FORCE);
 #endif
 #ifdef Q_OS_LINUX
+    qInfo() << "Linux reboot sequence started";
     sync();
     ::reboot(RB_AUTOBOOT);
 #endif
 #ifdef Q_OS_MAC
+    qInfo() << "macOS reboot sequence started";
     XSys::SynExec("shutdown", "-r now &");
 #endif
 }
 
 void BootMaker::start()
 {
-    qInfo() << "BootMaker start";
+    qInfo() << "Starting BootMaker service";
 
     if (m_pInstaller == nullptr) {
+        qDebug() << "Creating new installer instance";
         m_pInstaller = QtInstallerFactory::getInstance()->createInstaller();
 
         if (m_pInstaller != nullptr) {
+            qDebug() << "Setting up installer connections";
             connect(m_pInstaller, &QtBaseInstaller::progressfinished, this, [=](ProgressStatus status, BMHandler::ErrorType error) {
                 Q_UNUSED(status);
+                qInfo() << "Installation progress finished - Error type:" << error;
                 emit finished(error, errorString(BMHandler::ErrorType(error)));
             });
 
             connect(m_pInstaller, &QtBaseInstaller::reportProgress, m_usbDeviceMonitor, [=](int current, const QString &title, const QString &description){
+                qDebug() << "Progress update - Current:" << current << "Title:" << title;
                 emit this->reportProgress(current, ErrorType::NoError, title, description);
             });
 
             connect(m_pInstaller->m_sevenZipCheck.m_szpp, &SevenZipProcessParser::progressChanged,
             m_usbDeviceMonitor, [ = ](int current, int /*total*/, const QString & fileName) {
+                qDebug() << "SevenZip progress - Current:" << current << "File:" << fileName;
                 emit this->reportProgress(current * 60 / 100 + 20, ErrorType::NoError, "extract", fileName);
             }, Qt::QueuedConnection);
+        } else {
+            qWarning() << "Failed to create installer instance";
         }
     }
 
     if (m_pInstaller != nullptr) {
         if (m_pInstaller->isRunning()) {
-            qInfo() << "Installer is running";
+            qInfo() << "Installer is already running, stopping current installation";
             m_pInstaller->stopInstall();
         }
         else {
-            qInfo() << "Start flush disk";
+            qInfo() << "Starting disk flush and device monitoring";
             emit m_usbDeviceMonitor->startMonitor();
         }
     }
@@ -105,17 +117,19 @@ void BootMaker::start()
 
 void BootMaker::stop()
 {
+    qInfo() << "Stopping BootMaker service";
     emit m_usbDeviceMonitor->pauseMonitor();
 }
 
 const QList<DeviceInfo> BootMaker::deviceList() const
 {
-    qDebug() << "BootMaker deviceList";
+    qDebug() << "Retrieving device list";
     return m_usbDeviceMonitor->deviceList();
 }
+
 bool BootMaker::checkfile(const QString &filepath)
 {
-    qDebug() << "CheckFile:" << filepath;
+    qDebug() << "Checking file integrity:" << filepath;
     // //check iso integrity
     // SevenZip sevenZipCheck(filepath, "");
 
@@ -130,7 +144,7 @@ bool BootMaker::checkfile(const QString &filepath)
 
 bool BootMaker::install(const QString &image, const QString &unused_device, const QString &partition, bool formatDevice)
 {
-    qDebug() << "Begin install" << image << unused_device << partition << formatDevice;
+    qDebug() << "Starting installation - Image:" << image << "Partition:" << partition << "Format:" << formatDevice;
 
     if (m_pInstaller != nullptr) {
         emit m_usbDeviceMonitor->pauseMonitor();
@@ -139,6 +153,8 @@ bool BootMaker::install(const QString &image, const QString &unused_device, cons
         m_pInstaller->setformat(formatDevice);
         m_pInstaller->beginInstall();
         emit m_usbDeviceMonitor->startMonitor();
+    } else {
+        qWarning() << "Installation failed - Installer not initialized";
     }
 
     return true;

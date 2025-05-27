@@ -18,27 +18,31 @@
 
 DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
 {
+    qDebug() << "Initializing device monitor";
     qRegisterMetaType<QList<DeviceInfo>>();
 
     m_timer = new QTimer(this);
     m_timer->setInterval(2000);
     connect(m_timer, &QTimer::timeout, this, [ = ] {
         QList<DeviceInfo> list = Utils::ListUsbDrives();
-        qDebug() << "list length:" << list.length();
+        qDebug() << "Detected" << list.length() << "USB devices";
         for (int i = 0; i < list.size(); i++)
         {
-            qDebug() << "list i:" << i << " path:" << list.at(i).path << " label:" << list.at(i).label;
+            qDebug() << "Device" << i << "- Path:" << list.at(i).path 
+                     << "Label:" << list.at(i).label 
+                     << "Type:" << list.at(i).fstype
+                     << "Format needed:" << list.at(i).needFormat;
         }
 
         QList<DeviceInfo> intersectList = this->getIntersectDevice(list);
-        qDebug() << "intersectlist count:" << intersectList.size();
+        qDebug() << "Found" << intersectList.size() << "unchanged devices";
         QList<DeviceInfo> addList = this->getNorDevice(list, intersectList);
         QList<DeviceInfo> delList = this->getNorDevice(m_deviceList, intersectList);
 
         if ((!addList.isEmpty()) || !delList.isEmpty()) {
+            qInfo() << "Device changes detected - Added:" << addList.count() 
+                    << "Removed:" << delList.count();
             emit this->removablePartitionsChanged(addList, delList);
-            qDebug() << "addlist count = " << addList.count();
-            qDebug() << "reducelist count =" << delList.count();
         }
 
         this->m_deviceList = list;
@@ -46,6 +50,7 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
 
     connect(this, &DeviceMonitor::pauseMonitor, m_timer, &QTimer::stop);
     connect(this, &DeviceMonitor::startMonitor, this, [ = ]() {
+        qInfo() << "Starting device monitoring";
         this->m_deviceList.clear();
         m_timer->start();
     });
@@ -58,6 +63,8 @@ QList<DeviceInfo> DeviceMonitor::getIntersectDevice(const QList<DeviceInfo>& lis
    foreach (DeviceInfo info, list) {
        foreach (DeviceInfo tempInfo, m_deviceList) {
            if ((tempInfo == info)&&(tempInfo.total == info.total)&&(tempInfo.used == info.used)) {
+               qDebug() << "Found unchanged device - Path:" << info.path 
+                        << "Label:" << info.label;
                intersectList.push_back(info);
            }
        }
@@ -81,6 +88,8 @@ QList<DeviceInfo> DeviceMonitor::getNorDevice(const QList<DeviceInfo>& calcuList
        }
 
        if (bInsert) {
+           qDebug() << "Found new device - Path:" << info.path 
+                    << "Label:" << info.label;
            XorList.push_back(info);
        }
    }
@@ -90,11 +99,13 @@ QList<DeviceInfo> DeviceMonitor::getNorDevice(const QList<DeviceInfo>& calcuList
 
 const QList<DeviceInfo> DeviceMonitor::deviceList() const
 {
+    qDebug() << "Retrieving current device list";
     return Utils::ListUsbDrives();
 }
 
 QString deviceListToJson(QList<DeviceInfo> deviceList)
 {
+    qDebug() << "Converting device list to JSON format";
     QJsonArray array;
     for (auto device : deviceList) {
         QJsonObject obj;
@@ -106,17 +117,10 @@ QString deviceListToJson(QList<DeviceInfo> deviceList)
         obj.insert("needformat", device.needFormat);
         obj.insert("strDev", device.strDev);
         obj.insert("isDisk", device.isDisk);
-        qDebug() << device.needFormat;
+        qDebug() << "Device format needed:" << device.needFormat;
         array.push_back(obj);
     }
 
-//    QJsonObject obj;
-//    obj.insert("path", "Utest");
-//    obj.insert("label", "U盘test");
-//    obj.insert("used", 10000);
-//    obj.insert("total", 100000);
-//    obj.insert("needformat", false);
-//    array.push_back(obj);
     QJsonDocument doc;
     doc.setArray(array);
     return QString::fromUtf8(doc.toJson());
@@ -124,6 +128,7 @@ QString deviceListToJson(QList<DeviceInfo> deviceList)
 
 QList<DeviceInfo> deviceListFromJson(QString json)
 {
+    qDebug() << "Parsing device list from JSON";
     QList<DeviceInfo> list;
     QJsonDocument doc = QJsonDocument::fromJson(json.toUtf8());
     for (auto jsonObj : doc.array()) {
@@ -137,6 +142,8 @@ QList<DeviceInfo> deviceListFromJson(QString json)
         device.needFormat = obj.value("needformat").toBool();
         device.isDisk = obj.value("isDisk").toBool();
         device.strDev = obj.value("strDev").toString();
+        qDebug() << "Parsed device - Path:" << device.path 
+                 << "Label:" << device.label;
         list.push_back(device);
     }
     return list;
