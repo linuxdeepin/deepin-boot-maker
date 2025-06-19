@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.4) unstable; urgency=medium
+
+  * chore: Update dman's resource
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 19 Jun 2025 14:36:45 +0800
+
 deepin-boot-maker (6.0.3) unstable; urgency=medium
 
   * update debian/rules to disable service
