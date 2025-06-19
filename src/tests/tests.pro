@@ -8,9 +8,9 @@ CONFIG(debug, debug|release) {
 }
 
 #添加安全编译参数
-QMAKE_LFLAGS += -z noexecstack -pie -fPIC -z relro -z now
-QMAKE_CFLAGS += -fstack-protector-all
-QMAKE_CXXFLAGS += -fstack-protector-all -fno-access-control
+QMAKE_LFLAGS += -z noexecstack -pie -z relro -z now
+QMAKE_CFLAGS += -fstack-protector-all -fPIC
+QMAKE_CXXFLAGS += -fstack-protector-all -fno-access-control -fPIC
 
 
 QT += core gui widgets testlib
