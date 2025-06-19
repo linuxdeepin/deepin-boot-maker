@@ -8,9 +8,9 @@ TEMPLATE = lib
 CONFIG += staticlib c++11 link_pkgconfig
 
 #添加安全编译参数
-QMAKE_LFLAGS += -z noexecstack -pie -fPIC -z relro -z now
-QMAKE_CFLAGS += -fstack-protector-all
-QMAKE_CXXFLAGS += -fstack-protector-all
+QMAKE_LFLAGS += -z noexecstack -pie -z relro -z now
+QMAKE_CFLAGS += -fstack-protector-all -fPIE
+QMAKE_CXXFLAGS += -fstack-protector-all -fPIE
 
 
 

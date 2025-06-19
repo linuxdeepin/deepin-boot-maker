@@ -11,9 +11,9 @@ TEMPLATE = lib
 CONFIG += staticlib
 
 #添加安全编译参数
-QMAKE_LFLAGS += -z noexecstack -pie -fPIC -z relro -z now
-QMAKE_CFLAGS += -fstack-protector-all
-QMAKE_CXXFLAGS += -fstack-protector-all
+QMAKE_LFLAGS += -z noexecstack -pie -z relro -z now
+QMAKE_CFLAGS += -fstack-protector-all -fPIC
+QMAKE_CXXFLAGS += -fstack-protector-all -fPIC
 
 DEFINES += QT_MESSAGELOGCONTEXT
 
