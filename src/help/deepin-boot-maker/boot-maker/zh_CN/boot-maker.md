@@ -42,7 +42,7 @@
 - 单击 **请选择镜像文件**，选中已下载的镜像文件后单击 **下一步**。
 - 直接将镜像文件拖拽到制作工具界面，然后单击 **下一步**。
 
-![0|boot_maker](fig/select_file.png)
+<img src="fig/select_file.png" alt="0|boot_maker" style="zoom:67%;" />
 
 ### 选择分区
 
@@ -51,16 +51,13 @@
 - 开始制作：建议勾选 **格式化分区**，制作前请保存好U盘的数据。
 - 返回：返回到选择镜像界面。
 
-![0|select_disk](fig/select_disk.png)
+<img src="fig/select_disk.png" alt="0|select_disk" style="zoom:67%;" />
 
 ### 制作成功
 
 制作过程需要一定的时间，请耐心等待，制作时请不要移除U盘或关机。待进度条满格，出现 **制作成功** 的提示，表明启动盘已经制作完成。
 
-
-![boot_maker](fig/boot_making.png)
-
-![recoder](fig/success.png)
+<img src="fig/boot_making.png" alt="boot_maker" style="zoom:67%;" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -75,9 +72,6 @@
 - 磁盘挂载错误
 
 - 解压镜像错误
-
-
-![failed](fig/failed.png)
 
 当出现未知错误时，制作失败窗口会出现 “提交反馈” 按钮。单击 **提交反馈** 后，跳转到相关论坛进行问题反馈。
 

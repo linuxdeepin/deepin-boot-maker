@@ -1,121 +1,90 @@
-# Boot Maker|deepin-boot-maker|
+# Boot Disk Creation Tool | deepin-boot-maker
 
 ## Overview
 
-Boot Maker is an easy-to-use tool with a simple interface to help you burn the system image files into installation medium such as USB disks.
+The Boot Disk Creation Tool is a lightweight utility that writes system image files to installation media such as USB drives. It features a simple interface and straightforward operation.
 
+## Getting Started
 
+Run or close the Boot Disk Creation Tool, or create its shortcut using the methods below.
 
-## Guide
+### Running the Boot Disk Creation Tool
 
-You can run, close or create a shortcut for Boot Maker as follows.
+1. Click the Launcher icon ![deepin_launcher](../common/deepin_launcher.svg) on the taskbar to enter the Launcher interface.
+2. Scroll the mouse wheel or search to locate the Boot Disk Creation Tool icon ![deepin_boot_maker](../common/deepin_boot_maker.svg), then click to run.
+3. Right-click ![deepin_boot_maker](../common/deepin_boot_maker.svg) to:
+   - Click **Send to Desktop** to create a desktop shortcut.
+   - Click **Pin to Taskbar** to pin the app to the taskbar.
+   - Click **Start on Boot** to add the app to startup items.
 
-### Run Boot Maker
+### Closing the Boot Disk Creation Tool
 
-1. Click ![deepin_launcher](../common/deepin_launcher.svg) on the Dock to enter the interface of launcher.
+- Click ![close](../common/close.svg) in the interface to exit.
+- Right-click ![deepin_boot_maker](../common/deepin_boot_maker.svg) on the taskbar and select **Close All**.
+- Click ![icon_menu](../common/icon_menu.svg) in the interface and select **Exit**.
 
-2. Locate ![deepin_boot_maker](../common/deepin_boot_maker.svg) by scrolling the mouse wheel or searching "Boot Maker" in the Launcher interface and click it to run. 
+## Operations Guide
 
-3. Right-click![deepin_boot_maker](../common/deepin_boot_maker.svg) to:
+### Preparations
 
-   - Select **Send to desktop** to create a shortcut on the desktop.
-   - Select  **Send to dock** to fix it onto the dock.
-   - Select **Add to startup** to run it automatically when the computer is turned on.
+1. Download the latest system image file from the official website.
+2. Prepare a USB drive with at least 8GB capacity.
+3. Obtain the Boot Disk Creation Tool:
+   - Pre-installed on the system (find it in Launcher).
+   - Download from the official website.
+   - On Windows: Extract `xxx_boot_maker.exe` from the ISO file.
 
-###  Exit Boot Maker
+### Selecting the Image File
 
-- On the main interface, click![close_icon](../common/close.svg) to exit.
-- Right-click ![deepin_boot_maker](../common/deepin_boot_maker.svg)  on the Dock, select **Close all** to exit.
-- On interface of Device Manager, click ![icon_menu](../common/icon_menu.svg)  and select **Exit** to exit.
+Choose an image file via:
+- Click **Select Image File** → Choose downloaded file → Click **Next**.
+- Drag the image file directly into the interface → Click **Next**.
 
+<img src="fig/select_file.png" alt="0|boot_maker" style="zoom:67%;" />
 
-## Operations
+### Selecting the Partition
 
-### Preparation
+Select the target USB drive. If the drive has multiple partitions, only the first is available. Click **Start Creation** or **Back**.
+- **Start Creation**: Check **Format Partition** (back up USB data first!).
+- **Back**: Return to the image selection screen.
 
-1. Download the latest official image file from the official website.
-2. Prepare a USB disk (8GB at least).
-3. Run Boot Maker.
- - Boot Maker is built in the system by default, so you can find it in Launcher quickly.
- - Visit the official website to obtain the specified Boot Maker.
- - For Windows system, you can also extract xxx-boot-maker.exe from the image file.
+<img src="fig/select_disk.png" alt="0|select_disk" style="zoom:67%;" />
 
-### Select Image File
+### Successful Creation
 
-There are two ways to select the image file:
+The process may take time. Do not remove the USB or shut down the PC. When the progress bar is full and **Success** appears, the boot disk is ready.
 
-1. Click **Select an ISO image file** to select the downloaded file, then click **Next**.
+<img src="fig/boot_making.png" alt="boot_maker" style="zoom:67%;" />
 
-2. Drag an ISO image file and drop it to the interface, then click **Next**.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+### Creation Failure
 
+Failure may occur due to:
+- Incorrect disk format
+- Insufficient disk space
+- Disk mount error
+- Image decompression error
 
-![0|file](fig/selectfile.png)
-
-### Select a Partition
-
-Select the USB disk, or, in case the USB disk has been partitioned, you can only select the first partition, and click **Start** or **Back**.
-
-   - Start: it is recommended to check **Format the partition**. Make sure you have saved the data inside the USB disk before burning.
-   - Back: click this button to return to the previous step.
-
-![0|boot_maker](fig/select_disk.png)
-
-
-### Burned Successfully
-
-It takes a few minutes to make a boot disk. Please wait patiently. Please do not remove the USB disk or shut down the computer. When the progress bar is full, a prompt **Successful** pops up, which means the boot disk is made successfully.  
-
-![3|making](fig/making.png)
-
-![3|done](fig/success.png)
-
-### Burning Failed
-
-Common causes of failure may include:
-
-- Wrong disk format
-
-- Wrong disk space 
-
-- Wrong disk mounting
-
-- Image distraction error
-
-![boot-maker](fig/failed.png)
-
-
-
-When some unknown error occurs, you will see the button **Submit Feedback** in the "Process Failed" window. Click it  to jump to the relevant website to submit your feedback. 
-
-
-
-
+If an unknown error occurs, click **Submit Feedback** to report the issue on the forum.
 
 ## Main Menu
 
-In the main menu, you can switch themes, view manual, and so on.
+Access theme switching, help manual, and more via the main menu.
 
 ### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme.
-
-1. Click ![icon_menu](../common/icon_menu.svg)on the interface.
-2. Click  **Theme** to select one.
+Window themes include Light, Dark, and System.
+1. Click ![icon_menu](../common/icon_menu.svg) in the interface.
+2. Select **Theme** → Choose a theme.
 
 ### Help
-
-You can click to view the manual, which will help you further know and use Boot Maker.
-
-1. Click ![icon_menu](../common/icon_menu.svg)on the interface.
-2. Click **Help** to view the manual.
+1. Click ![icon_menu](../common/icon_menu.svg).
+2. Select **Help** to view the manual.
 
 ### About
-
-1. Click ![icon_menu](../common/icon_menu.svg)on the interface.
-2. Click **About** to view the version description and introduction.
+1. Click ![icon_menu](../common/icon_menu.svg).
+2. Select **About** to view version and introduction.
 
 ### Exit
-
-1. Click ![icon_menu](../common/icon_menu.svg)on the interface.
-2. Click **Exit**.
+1. Click ![icon_menu](../common/icon_menu.svg).
+2. Select **Exit**.
