@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ast" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ast">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="16"/>
-        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Fallu del formatéu: Volvi formatiar la unidá o desactiva «Buscar automáticamente preseos USB d&apos;almacenamientu» nel Centru de Seguranza</translation>
+        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
+        <translation>Fallu del formatéu: Volvi formatiar la unidá o desactiva «Buscar automáticamente preseos USB d'almacenamientu» nel Centru de Seguranza</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="19"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="30"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Fallu de descompresión: Verifica la suma de comprobación MD5 de la imaxe p&apos;asegurar la so integridá</translation>
+        <translation>Fallu de descompresión: Verifica la suma de comprobación MD5 de la imaxe p'asegurar la so integridá</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="33"/>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="79"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Deepin Book Maker ye una ferramienta cenciella pa escribir ficheros ISO n&apos;unidaes USB y otros medios.</translation>
+        <translation>Deepin Book Maker ye una ferramienta cenciella pa escribir ficheros ISO n'unidaes USB y otros medios.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="81"/>
         <source>Boot Maker</source>
-        <translation>Creador de medios d&apos;arrinque</translation>
+        <translation>Creador de medios d'arrinque</translation>
     </message>
 </context>
 <context>
@@ -59,7 +59,6 @@
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="82"/>
-        <location filename="../app/view/isoselectview.cpp" line="140"/>
         <source>Select an ISO image file</source>
         <translation>Esbilla un ficheru ISO</translation>
     </message>
@@ -76,12 +75,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="188"/>
         <source>Illegal ISO image file</source>
-        <translation>L&apos;usu de la imaxe ISO ye illegal</translation>
+        <translation>L'usu de la imaxe ISO ye illegal</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="328"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Detectando&apos;l ficheru ISO, espera…</translation>
+        <translation>Detectando'l ficheru ISO, espera…</translation>
     </message>
 </context>
 <context>
@@ -99,7 +98,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="71"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Nun estrayas la unidá o apagues l&apos;ordenador nel procesu</translation>
+        <translation>Nun estrayas la unidá o apagues l'ordenador nel procesu</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="85"/>
@@ -117,14 +116,13 @@
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="224"/>
-        <location filename="../libdbm/util/utils.cpp" line="370"/>
         <source>Removable disk</source>
         <translation>Discu estrayible</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="122"/>
         <source>Boot Maker</source>
-        <translation>Creador de medios d&apos;arrinque</translation>
+        <translation>Creador de medios d'arrinque</translation>
     </message>
 </context>
 <context>
@@ -182,7 +180,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="13"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Verificando los datos y estrayendo&apos;l mediu con seguranza, espera…</translation>
+        <translation>Verificando los datos y estrayendo'l mediu con seguranza, espera…</translation>
     </message>
 </context>
 <context>
@@ -205,11 +203,10 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="231"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>El formatéu desanicia tolos datos de la partición mas pues aumentar el porcentaxe d&apos;ésitu, confirma l&apos;aición enantes de siguir</translation>
+        <translation>El formatéu desanicia tolos datos de la partición mas pues aumentar el porcentaxe d'ésitu, confirma l'aición enantes de siguir</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
-        <location filename="../app/view/usbselectview.cpp" line="388"/>
         <source>OK</source>
         <comment>button</comment>
         <translation>Aceutar</translation>
@@ -217,7 +214,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="380"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Tienes seleccionáu l imaxe ISO desta unitat USB. Formatearla eliminará todos sos ficheiros. Por favor, selecciona nuevamente l ficheru d'imagen o cancela'l formato.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
@@ -249,7 +246,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="358"/>
         <source>Format Partition</source>
-        <translation>Formatéu d&apos;una partición</translation>
+        <translation>Formatéu d'una partición</translation>
     </message>
 </context>
 </TS>

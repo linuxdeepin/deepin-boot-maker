@@ -1,18 +1,18 @@
 [main]
 host = https://www.transifex.com
 minimum_perc = 80
+minimum_perc = 80
 mode = developer
 
-[deepin-boot-maker.deepin-boot-maker-v2-ts]
+[o:linuxdeepin:p:deepin-boot-maker:r:3ad823c17b908ee2e11867d21b6583cb]
 file_filter = src/translations/deepin-boot-maker_<lang>.ts
 source_file = src/translations/deepin-boot-maker.ts
-source_lang = en
+source_lang = en_US
 type = QT
 
-[deepin-boot-maker.deepin-boot-maker-desktop-ts]
+[o:linuxdeepin:p:deepin-boot-maker:r:34166b204fcb7d08c4ab6b76d212002c]
 file_filter = src/translations/desktop/desktop_<lang>.ts
 source_file = src/translations/desktop/desktop.ts
-preTranslate_file = src/app/platform/linux/deepin-boot-maker.desktop
-source_lang = en
+source_lang = en_US
 type = QT
 
