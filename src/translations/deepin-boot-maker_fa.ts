@@ -4,17 +4,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>خطا در فرمت دیسک: لطفا آن را دوباره فرمت کنید یا «سنسور USB» را در مرکز امنیت غیرفعال کنید</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"/>
+        <translation>خطا در فرمت دیسک: لطفا آن را دوباره فرمت کنید</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"/>
+        <translation>فضای دیسک کافی نیست: مطمئن شوید که دیسک فضای خالی کافی دارد</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Boot Maker ابزاری ساده است که فایل‌های تصویر سیستم را به یک دیسک USB و سایر رسانه‌ها نوشته و اجرا می‌کند.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -50,7 +50,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation type="unfinished"/>
+        <translation>فایل تصویر ISO را اینجا بکشید</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
@@ -76,12 +76,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation type="unfinished"/>
+        <translation>فایل تصویر ISO غیرقانونی است</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>در حال تشخیص فایل ISO هستیم، لطفا منتظر بمانید...</translation>
     </message>
 </context>
 <context>
@@ -89,12 +89,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation type="unfinished"/>
+        <translation>سوزاندن</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>سوزاندن، لطفا منتظر بمانید...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>خدمات پس از فروش</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation type="unfinished"/>
+        <translation>با عرض پوزش، فرآیند با خطا مواجه شد</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>در حال بررسی داده‌ها و ایمن کردن رسانه است، لطفا منتظر بمانید...</translation>
     </message>
 </context>
 <context>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation type="unfinished"/>
+        <translation>یک بخش را انتخاب کنید</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation type="unfinished"/>
+        <translation>بخش را فرمت کنید</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"/>
+        <translation>فرمت کردن بخش تمام داده‌های آن را پاک خواهد کرد، اما می‌تواند نرخ موفقیت را افزایش دهد، لطفا قبل از ادامه تأیید کنید</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -212,7 +212,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>فایل تصویر ISO را در این دیسک USB انتخاب کرده‌اید. فرمت کردن آن تمام فایل‌های شما را پاک خواهد کرد. لطفا فایل تصویر را دوباره انتخاب یا فرمت را لغو کنید.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -223,17 +223,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>فرمت کردن بخش تمام داده‌ها را پوشش خواهد داد، لطفا قبل از ادامه یک کپی از داده‌ها نگه دارید.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>خطا در فرمت دیسک: لطفا بخش را با FAT32 فرمت کنید</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation type="unfinished"/>
+        <translation>هیچ دیسکی در دسترس نیست</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
@@ -245,7 +245,7 @@
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Format Partition</source>
-        <translation type="unfinished"/>
+        <translation>فرمت بخش</translation>
     </message>
 </context>
 </TS>
