@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation type="unfinished"/>
+        <translation>אימות נתונים וудאות הסרת המצע, אנא המתן...</translation>
     </message>
 </context>
 <context>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation type="unfinished"/>
+        <translation>הוסף חלון תפריט</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation type="unfinished"/>
+        <translation>פורמט חלון תפריט</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"/>
+        <translation>הפורמט ימחק את כל הנתונים על החלון, אך יכול להגביר את אחוז הצלחה, אנא אשר לפני הפעולה</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -212,7 +212,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>אתה בחר את קובץ האיסו על הפלטפורמה ה-USB. הפורמט ימחק את כל הקבצים שלך. אנא בחר מחדש את קובץ התמונה או ביטל את הפורמט.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -223,17 +223,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>הפורמט של החלון ימחק את כל הנתונים, אנא הפקד גיבוי לפני הפעולה.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>טעות בפורמט הדיסק: אנא פורמט את החלון עם FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation type="unfinished"/>
+        <translation>אין דיסק זמין</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
@@ -245,7 +245,7 @@
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Format Partition</source>
-        <translation type="unfinished"/>
+        <translation>פורמט חלון תפריט</translation>
     </message>
 </context>
 </TS>
