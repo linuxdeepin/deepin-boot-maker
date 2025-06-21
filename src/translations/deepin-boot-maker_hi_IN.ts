@@ -212,7 +212,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>आपने इस यूएसबी फ्लैश ड्राइव में ISO छवि चुन ली है। इसके प्रारूपित करने से आपके सभी फाइल डिलीट हो जाएंगी। कृपया छवि फ़ाइल को फिर से चुनें या प्रारूपित करना रद्द करें।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
