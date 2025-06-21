@@ -4,12 +4,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>Greška u formatiranju disketa: Ponovno formatirajte je ili onemogućite &quot;Automatsko skeniranje USB skladišta&quot; u sigurnosnom centru</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"/>
+        <translation>Greška u formatiranju disketa: Ponovno formatirajte je</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
@@ -24,12 +24,12 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"/>
+        <translation>Greška u dekompresiji slike: Provjerite md5 kontrolni zbroj slike kako biste osigurali njenu čistotu</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
         <source>Internal Error</source>
-        <translation type="unfinished"/>
+        <translation>Unutarnja greška</translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>Boot Maker je jednostavan alat za pisanje datoteka sistema u USB flash pločice i druge medije.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation type="unfinished"/>
+        <translation>Poslovni servisi</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -212,7 +212,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>Odabrali ste ISO sliku na ovoj USB flash pločici. Formatiranje će izbrisati sve vaše datoteke. Molim vas, ponovno odaberite sliku ili odustanite od formatiranja.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
