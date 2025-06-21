@@ -4,17 +4,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation type="unfinished"/>
+        <translation>디스크 포맷 오류: 다시 포맷하거나 보안 센터에서 &quot;USB 저장 장치 자동 스캔&quot;을 비활성화하세요</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation type="unfinished"/>
+        <translation>디스크 포맷 오류: 다시 포맷하세요</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"/>
+        <translation>디스크 공간 부족: 디스크에 충분한 여유 공간이 있는지 확인하세요</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation type="unfinished"/>
+        <translation>부트 메이커는 USB 플래시 드라이브 및 기타 매체에 시스템 이미지 파일을 작성하기 위한 간단한 도구입니다.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation type="unfinished"/>
+        <translation>파티션 선택</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation type="unfinished"/>
+        <translation>파티션 포맷</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation type="unfinished"/>
+        <translation>포맷 작업은 파티션에 있는 모든 데이터를 지우지만 성공률을 높일 수 있습니다. 계속하기 전에 확인해 주세요</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -212,7 +212,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"/>
+        <translation>이 USB 플래시 드라이브의 ISO 이미지를 선택하셨습니다. 포맷 작업은 모든 파일을 삭제합니다. 이미지 파일을 다시 선택하거나 포맷을 취소하세요.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -223,12 +223,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation type="unfinished"/>
+        <translation>파티션 포맷 작업은 모든 데이터를 덮어쓰므로 계속하기 전에 백업을 해주세요</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation type="unfinished"/>
+        <translation>디스크 포맷 오류: FAT32로 파티션을 포맷하세요</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -245,7 +245,7 @@
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Format Partition</source>
-        <translation type="unfinished"/>
+        <translation>파티션 포맷</translation>
     </message>
 </context>
 </TS>
