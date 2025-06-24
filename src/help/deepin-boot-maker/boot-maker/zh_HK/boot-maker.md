@@ -1,4 +1,4 @@
-# 啟動碟製作工具 | deepin-boot-maker
+# 啟動碟製作工具|deepin-boot-maker|
 
 ## 概述
 
