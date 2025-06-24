@@ -1,4 +1,4 @@
-# Boot Disk Creation Tool | deepin-boot-maker
+# Boot Disk Creation Tool|deepin-boot-maker|
 
 ## Overview
 
