@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.9) unstable; urgency=medium
+
+  * update version to 6.0.9. 
+
+ -- Tian ShiLin <tianshilin@uniontech.com>  Tue, 01 Jul 2025 20:44:44 +0800
+
 deepin-boot-maker (6.0.8) unstable; urgency=medium
 
   * chore: New version 6.0.8.
