@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Грешка при форматирању диска: Поново форматирајте или онемогућите "Аутоматски проверавај УСБ складишта" у Безбедносном Центру</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Грешка при форматирању диска: Поново форматирајте или онемогућите &quot;Аутоматски проверавај УСБ складишта&quot; у Безбедносном Центру</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Odabrali ste ISO sliku na ovom USB ključu. Formatiranje će obrisati sve vaše fajlove. Molim vas odaberite ponovno sliku ili prekini formatiranje.</translation>
+        <translation>Одабрили сте ISO слику на овом USB флеш-дисплеју. Форматирање ће изbrisati sve ваше датотеке. Молимо вас да поново одaberете датотеку слику или откажете форматирање.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>

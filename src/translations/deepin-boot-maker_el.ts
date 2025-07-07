@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Σφάλμα τύπου δίσκου: Παρακαλώ τον ανανέωση ή απενεργοποιήστε την «Αυτόματη αναζήτηση συσκευών USB αποθήκευσης» στο Κέντρο Ασφαλείας</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Σφάλμα μορφοποίησης δίσκου: Παρακαλώ επαναδιαμορφώστε τον ή απενεργοποιήστε την επιλογή "Αυτόματη σάρωση συσκευών αποθήκευσης USB" στο Κέντρο Ασφαλείας</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Σφάλμα τύπου δίσκου: Παρακαλώ τον ανανέωση</translation>
+        <translation>ΑΔΙΑΧΕΙΡΕΣΗ ΤΟΥ ΔΙΣΚΟΥ: ΠΑΡΑΚΑΛΩ ΤΟΝ ΑΝΑΚΑΤΑΣΚΕΥΑΣΕTE</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Ανεπαρκής χώρος δίσκου: Ελέγξτε ότι ο δίσκος έχει αρκετό ελεύθερο χώρο</translation>
+        <translation>Ανεπαρκής χώρος στο δίσκο: Βεβαιωθείτε ότι ο δίσκος έχει αρκετό ελεύθερο χώρο</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Ο Boot Maker είναι ένας απλός εργαλειοκατασκευαστής για την εγγραφή αρχείων εικόνας συστήματος σε κάρτες USB και άλλα μέσα.</translation>
+        <translation>Το Boot Maker είναι ένα απλό εργαλείο για την εγγραφή αρχείων εικόνας συστήματος σε οδηγούς USB flash και άλλα μέσα</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>Σύρετε ένα αρχείο ISO εδώ</translation>
+        <translation>Σύρετε ένα αρχείο ISO εικόνας εδώ</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
@@ -77,12 +77,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>Ανεπιτρεπτό αρχείο ISO</translation>
+        <translation>Απαγορευμένο αρχείο ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Ανίχνευση αρχείου ISO, παρακαλώ περιμένετε...</translation>
+        <translation>Ανακαλύπτω το αρχείο ISO, παρακαλώ περιμένετε...</translation>
     </message>
 </context>
 <context>
@@ -95,7 +95,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Καύση, παρακαλώ περιμένετε...</translation>
+        <translation>Γύρνανε, παρακαλώ περιμένετε...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Υπηρεσίες Μετά την Πώληση</translation>
+        <translation>Υπηρεσίες μετά την πώληση</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>Λυπάμαι, το διαδικαστικό πρόγραμμα απέτυχε</translation>
+        <translation>Κατάλογκο, η διαδικασία απέτυχε</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Επιβεβαίωση δεδομένων και ασφαλής αποσύρεση του μέσου, παρακαλώ περιμένετε...</translation>
+        <translation>Επικύρωση δεδομένων και ασφαλής απομακρυνμένος του μέσου, παρακαλώ περιμένετε...</translation>
     </message>
 </context>
 <context>
@@ -190,7 +190,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>Φόρματ της διαμέρισης</translation>
+        <translation>Ταξιδεύτε την κομμάτια</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Το φόρματ θα διαγράψει όλα τα δεδομένα από τη διαμέριση, αλλά μπορεί να αυξήσει την επιτυχία, παρακαλώ επιβεβαίωση πριν επεξεργαστείτε</translation>
+        <translation>Η ταξιδεία θα κατρικλώσει όλα τα δεδομένα στην κομμάτια, αλλά θα αυξήσει την επιτυχιώδη ρυθμισμό, παρακαλώ επιβεβαιώστε πριν προχωρήσετε</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Έχετε επιλέξει το αρχείο ISO σε αυτήν την κάρτα USB. Το φόρματ θα διαγράψει όλα τα αρχεία σας. Παρακαλώ επιλέξτε ξανά το αρχείο εικόνας ή ακυρώστε το φόρματ.</translation>
+        <translation>Έχετε επιλέξει το αρχείο ISO σε αυτήν την ομοιότυπη μνήμη USB. Η κατατμήτρωσή του θα διαγράψει όλα τα αρχεία σας. Παρακαλώ επιλέξτε ξανά το αρχείο εικόνας ή ακυρώστε την κατατμήτρωση.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Το φόρματ της διαμέρισης θα καταστρέψει όλα τα δεδομένα. Παρακαλώ κάντε αντίγραφο ασφαλείας πριν επεξεργαστείτε.</translation>
+        <translation>Η κατατμήτρωση της διαμέρισης θα καταργήσει όλα τα δεδομένα. Παρακαλώ κάντε μια αντίγραφο αντίγραφο πριν συνεχίσετε.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Σφάλμα τύπου δίσκου: Παρακαλώ τον ανανέωση της διαμέρισης με τύπο FAT32</translation>
+        <translation>Σφάλμα του τύπου δίσκου: Παρακαλώ ταξιδεύτε την κομμάτια με τον τύπο FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>Φόρματ Διαμέρισης</translation>
+        <translation>Ταξιδεύτε Κομμάτια</translation>
     </message>
 </context>
 </TS>

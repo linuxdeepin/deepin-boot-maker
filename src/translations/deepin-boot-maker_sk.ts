@@ -5,7 +5,7 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
         <translation>Chyba formátu disku: Preformátujte ho alebo zakážte „Automatické skenovanie úložných zariadení USB“ v Centre zabezpečenia</translation>
     </message>
     <message>
@@ -90,12 +90,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Zapálenie</translation>
+        <translation>Horenie</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Zapálenie, prosím čakajte...</translation>
+        <translation>Horenie, prosím, čakajte...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Po predajové služby</translation>
+        <translation>Po- predajné služby</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>Prepáčte, proces sa neúspešne skončil</translation>
+        <translation>Ľúbom sa prehlásené, proces zlyhal</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Overenie dát a bezpečné odpojenie média, prosím čakajte...</translation>
+        <translation>Overenie dát a bezpečné vybratie médií, prosím, čakajte...</translation>
     </message>
 </context>
 <context>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>Vyberte oddiel</translation>
+        <translation>Vyberte si oddiel</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>Formátujte oddiel</translation>
+        <translation>Formátovať oddiel</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formátovanie vymaže všetky dáta na oddiele, ale môže zvýšiť úspešnosť, prosím potvrďte pred pokračovaním</translation>
+        <translation>Formátovanie vymaže všetky údaje na sekcii, ale môže zvýšiť pravdepodobnosť úspechu. Poďme potvrdiť pred pokračovaním.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Vybrali ste ISO súbor v tomto USB flash disk. Formátovanie ho vymaže. Prosím, vyberte si znovu súbor alebo zrušte formátovanie.</translation>
+        <translation>Vybrali ste ISO obraz na tejto USB ploche. Jeho formátovanie vymaže všetky váš súbory. Prosím, preveďte si obraz alebo zrušte formátovanie.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,17 +222,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formátovanie oddielu prepíše všetky dáta. Prosím, urobte zálohu pred pokračovaním.</translation>
+        <translation>Formátovanie sekcje prepíše všetky údaje. Poďme mať zálohu pred pokračovaním.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Chyba formátu disku: Prosím, formátujte oddiel s FAT32</translation>
+        <translation>Chyba formátu disku: Prosím, formátujte sekcju s použitím systému FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation>Žiadny disk nie je dostupný</translation>
+        <translation>Žiadny disk nie je k dispozícii</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>Formátujte oddiel</translation>
+        <translation>Formátovať oddiel</translation>
     </message>
 </context>
 </TS>

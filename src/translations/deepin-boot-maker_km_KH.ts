@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Error ក្នុងការបញ្ចេញទំហំឌីស: សូមបញ្ចេញទំហំវិញ ឬបិទ "Auto scan USB storage devices" នៅក្នុង Security Center</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>ข้อผิดพลาดในการรูปแบบดิสก์: โปรดรูปแบบอีกครั้งหรือปิด &quot;การสแกนอัตโนมัติอุปกรณ์จัดเก็บ USB&quot; ใน Security Center</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Error ក្នុងការបញ្ចេញទំហំឌីស: សូមបញ្ចេញទំហំវិញ</translation>
+        <translation>ข้อผิดพลาดในการรูปแบบดิสก์: โปรดรูปแบบอีกครั้ง</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>មានចំណុចទំហំមិនគ្រប់គ្រាន់: សូមធានាថាទំហំឌីសមានចំណុចទំហំទាន់សម័យ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker គឺជាកុំពេញដែលងាយស្រួល ដើម្បីសរសេរឯកសាររូបរាងប្រព័ន្ធទៅលើឌីស USB និងអ៊ីនធឺណែតផ្សេងៗទៀត។</translation>
+        <translation>Boot Maker เป็นเครื่องมือที่ง่ายสำหรับเขียนไฟล์ภาพระบบลงใน USB flash drives และสื่อต่างๆ</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>ជ្រើសរើសប្រភេទឌីស</translation>
+        <translation>ជ្រើសរើសភាគថាស</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>បញ្ចេញទំហំប្រភេទឌីស</translation>
+        <translation>ធ្វើទ្រង់ទ្រាយភាគថាស</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>ការបញ្ចេញទំហំនឹងលុបចោលទិន្នន័យទាំងអស់នៅលើប្រភេទឌីស ប៉ុន្តែអាចកើនឡើងប្រហែល ឈប់បញ្ចេញទំហំ សូមបញ្ជាក់មុននឹងបន្ត</translation>
+        <translation>ការធ្វើទ្រង់ទ្រាយនឹងលុបទិន្នន័យទាំងអស់នៅលើភាគថាស ប៉ុន្តែអាចបង្កើនអត្រាជោគជ័យ សូមបញ្ជាក់មុនពេលបន្ត</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>អ្នកបានជ្រើសរើសឯកសាររូបរាង ISO នៅលើឌីស USB នេះ។ ការបញ្ចេញទំហំវានឹងលុបចោលឯកសារទាំងអស់របស់អ្នក។ សូមជ្រើសរើសឯកសាររូបរាងវិញ ឬបិទការបញ្ចេញទំហំ។</translation>
+        <translation>คุณได้เลือกไฟล์ภาพ ISO ใน USB flash drive นี้ การรูปแบบจะล้างไฟล์ทั้งหมดของคุณ โปรดเลือกไฟล์ภาพอีกครั้งหรือเลือกที่จะยกเลิกการรูปแบบ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>ការបញ្ចេញទំហំប្រភេទឌីសនឹងធ្វើឱ្យការសរសេរទិន្នន័យទាំងអស់ សូមធ្វើការសំរាកមុននឹងបន្ត។</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Error ក្នុងការបញ្ចេញទំហំឌីស: សូមបញ្ចេញទំហំវិញ ដោយប្រើ FAT32</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -238,12 +238,12 @@
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation>ត្រឡប់ក្រោយ</translation>
+        <translation>ត្រូវក្រោយ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>បញ្ចេញទំហំប្រភេទឌីស</translation>
+        <translation>រុបរាង Partitions</translation>
     </message>
 </context>
 </TS>

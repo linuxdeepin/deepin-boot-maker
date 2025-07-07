@@ -61,7 +61,6 @@
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="80"/>
-        <location filename="../app/view/isoselectview.cpp" line="141"/>
         <source>Select an ISO image file</source>
         <translation>ISO फ़ाइल का चयन करें </translation>
     </message>
@@ -119,7 +118,6 @@
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="227"/>
-        <location filename="../libdbm/util/utils.cpp" line="396"/>
         <source>Removable disk</source>
         <translation>हटाने योग्य डिस्क </translation>
     </message>
@@ -206,7 +204,6 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
-        <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>OK</source>
         <comment>button</comment>
         <translation>ठीक है</translation>
@@ -214,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>आपने इस यूएसबी फ्लैश ड्राइव में ISO छवि चुन ली है। इसके प्रारूपित करने से आपके सभी फाइल डिलीट हो जाएंगी। कृपया छवि फ़ाइल को फिर से चुनें या प्रारूपित करना रद्द करें।</translation>
+        <translation>आपने इस USB फ्लैश ड्राइ브 में ISO इमेज़ का चयन किया है। फॉर्मैटिंग करने पर आपके सभी फाइलें डिलीट हो जाएंगी। कृपया फिर से इमेज़ फाइल का चयन करें या फॉर्मैटिंग को रोकें।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -245,7 +242,6 @@
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
-        <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Format Partition</source>
         <translation>विभाजन फॉर्मेट करें</translation>
     </message>

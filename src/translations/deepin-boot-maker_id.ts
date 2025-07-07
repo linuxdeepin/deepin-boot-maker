@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Format disk error: Silakan reformat atau nonaktifkan "Auto scan USB storage devices" di Security Center</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Format disk error: Silakan reformat atau nonaktifkan &quot;Auto scan USB storage devices&quot; di Security Center</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Ruang disk tidak cukup: Pastikan disk memiliki ruang kosong yang cukup</translation>
+        <translation>Jumlah ruang disk tidak mencukupi: Pastikan disk memiliki ruang kosong yang cukup</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Error mount disk: Sisipkan disk kembali atau restart untuk mencoba ulang</translation>
+        <translation>Error mount disk: Sisipkan disk lagi atau restart untuk mencoba lagi</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Error decompress image: Verifikasi md5 checksum dari gambar untuk memastikan integritasnya</translation>
+        <translation>Error decompress gambar: Verifikasi md5 checksum gambar untuk memastikan integritasnya</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker adalah alat sederhana untuk menulis file gambar sistem ke drive flash USB dan media lainnya.</translation>
+        <translation>Boot Maker adalah alat sederhana untuk menulis file gambar sistem ke flash USB dan media lain.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>Tarik file gambar ISO di sini</translation>
+        <translation>Seret file gambar ISO di sini</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="171"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Mendeteksi file ISO, silakan tunggu...</translation>
+        <translation>Mendeteksi file ISO, harap tunggu...</translation>
     </message>
 </context>
 <context>
@@ -90,17 +90,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Membakar</translation>
+        <translation>Burning</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Membakar, silakan tunggu...</translation>
+        <translation>Burning, harap tunggu...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Jangan mengeluarkan disk atau mematikan komputer selama proses</translation>
+        <translation>Jangan lepaskan disk atau matikan komputer selama proses berlangsung</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="68"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Log error akan diunggah secara otomatis bersama umpan balik. Kami tidak bisa meningkatkan tanpa umpan balik Anda</translation>
+        <translation>Log kesalahan akan diunggah secara otomatis bersama umpan balik. Kita tidak dapat memperbaiki tanpa umpan balik Anda</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Mengverifikasi data dan mengeluarkan media secara aman, silakan tunggu...</translation>
+        <translation>Memverifikasi data dan mengeluarkan media dengan aman, harap tunggu...</translation>
     </message>
 </context>
 <context>
@@ -206,12 +206,12 @@
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation type="unfinished">Kembali</translation>
+        <translation>Kembali</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formatting akan menghapus semua data pada partisi, tetapi dapat meningkatkan tingkat keberhasilan, silakan konfirmasi sebelum melanjutkan</translation>
+        <translation>Formatting akan menghapus semua data di partisi, tetapi dapat meningkatkan tingkat kesuksesan, silakan konfirmasi sebelum melanjutkan</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -221,18 +221,18 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Anda telah memilih file ISO dalam USB flash drive ini. Mengformat akan menghapus semua file Anda. Silakan pilih ulang file gambar atau batal pengformatan.</translation>
+        <translation>Anda telah memilih file gambar ISO di flash USB ini. Formatting ini akan menghapus semua file Anda. Silakan pilih ulang file gambar atau batalkan formatting.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
         <source>OK</source>
         <comment>button</comment>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatting partisi akan menimpa semua data, silakan lakukan backup sebelum melanjutkan.</translation>
+        <translation>Mengformat partisi akan menimpa semua data, harap lakukan backup sebelum melanjutkan</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>

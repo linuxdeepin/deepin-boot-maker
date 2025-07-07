@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>ข้อผิดพลาดในการจัดรูปแบบดิสก์: กรุณาจัดรูปแบบใหม่ หรือปิดใช้งาน "Auto scan USB storage devices" ใน Security Center</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>ข้อความรูปแบบดิสก์ผิดพลาด: โปรดรูปแบบอีกครั้งหรือปิด &quot;การสแกนอัตโนมัติอุปกรณ์เก็บข้อมูล USB&quot; ใน Security Center</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>ข้อผิดพลาดในการจัดรูปแบบดิสก์: กรุณาจัดรูปแบบใหม่</translation>
+        <translation>ข้อความรูปแบบดิสก์ผิดพลาด: โปรดรูปแบบอีกครั้ง</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>พื้นที่ดิสก์ไม่เพียงพอ: ตรวจสอบว่าดิสก์มีพื้นที่ว่างเพียงพอ</translation>
+        <translation>พื้นที่ดิสก์ไม่เพียงพอ: โปรดตรวจสอบว่าดิสก์มีพื้นที่ว่างพอสมควร</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker เป็นเครื่องมือที่ใช้งานง่ายในการเขียนไฟล์ภาพระบบลงใน USB flash drive และอุปกรณ์อื่น ๆ</translation>
+        <translation>Boot Maker เป็นเครื่องมือที่ง่ายต่อการเขียนไฟล์ภาพระบบลง USB flash drives และสื่อตัวอื่น ๆ</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>เลือกพาร์ติชัน</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>จัดรูปแบบพาร์ติชัน</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>การจัดรูปแบบจะลบข้อมูลทั้งหมดในพาร์ติชัน แต่สามารถเพิ่มอัตราความสำเร็จได้ กรุณายืนยันก่อนดำเนินการต่อ</translation>
+        <translation>รูน ปาร์ติชัน จะทำลายข้อมูลทั้งหมด แต่จะเพิ่มอัตราความสำเร็จ โปรดยืนยันก่อนดำเนินการต่อ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>คุณได้เลือกไฟล์ภาพ ISO ใน USB flash drive นี้ การจัดรูปแบบจะลบไฟล์ทั้งหมดของคุณ กรุณาเลือกไฟล์ภาพอีกครั้งหรือยกเลิกการจัดรูปแบบ</translation>
+        <translation>คุณได้เลือกไฟล์ภาพ ISO ใน USB flash drive นี้ การรูปแบบจะทำลายข้อมูลทั้งหมดของคุณ โปรดเลือกไฟล์ภาพอีกครั้งหรือเลื่อนการรูปแบบ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>การจัดรูปแบบพาร์ติชันจะเขียนข้อมูลทั้งหมดใหม่ กรุณาสำรองข้อมูลก่อนดำเนินการต่อ</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>ข้อผิดพลาดในการจัดรูปแบบดิสก์: กรุณาจัดรูปแบบพาร์ติชันด้วย FAT32</translation>
+        <translation>ข้อผิดพลาดรูน จาน: โปรดรูน ปาร์ติชัน ด้วย FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -238,12 +238,12 @@
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation>ย้อนกลับ</translation>
+        <translation>กลับไป</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>จัดรูปแบบพาร์ติชัน</translation>
+        <translation>รูน ปาร์ติชัน</translation>
     </message>
 </context>
 </TS>

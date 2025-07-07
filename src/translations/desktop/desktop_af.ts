@@ -6,12 +6,12 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>ŉ tool om boot media te maak</translation>
+        <translation>ŉ instrument om bootmedia te skep</translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>Bootmaker</translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

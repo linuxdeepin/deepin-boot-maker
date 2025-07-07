@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Diska Formatēšanas Kļūda: Lūdzu pārformatējiet to vai Drošības Centrā atspējojiet "Automātiski skenēt USB datu glabāšanas ierīces"</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Diska Formatēšanas Kļūda: Lūdzu pārformatējiet to vai Drošības Centrā atspējojiet &quot;Automātiski skenēt USB datu glabāšanas ierīces&quot;</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepietika diskā ir mazākā vieta: Uzvariet, ka diska ir pietiekami daudz brīviem vietām</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation type="unfinished"></translation>
+        <translation>Kļūda diskam pielietot: Ievietojiet disk vēlreiz vai restartējiet, lai mēģinātu vēlreiz</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation type="unfinished"></translation>
+        <translation>Kļūda attēla dekompresēšanā: Verificējiet attēla md5 checksum, lai nodrošinātu tās integritāti</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation type="unfinished"></translation>
+        <translation>Kļūdu logs tiek augšupielaidts automātiski kopā ar atskaņojumu. Mēs nevaram uzlabot bez jūsu atskaņojuma</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jūs esat izvēlējušies ISO attēlu šajā USB atmiņkartei. Formātējot to, dzēsite visas jūsu failus. Lūdzu, izvēlieties attēla faili vēlreiz vai atceliet formātēšanu</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>

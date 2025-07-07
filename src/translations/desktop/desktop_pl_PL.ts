@@ -11,7 +11,7 @@
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Starter</translation>
+        <translation>Tworzenie systemu rozruchowego</translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

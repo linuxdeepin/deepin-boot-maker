@@ -11,7 +11,7 @@
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Κατασκευαστής Εκκίνησης</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

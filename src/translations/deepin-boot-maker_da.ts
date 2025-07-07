@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Fejl i diskformat: Gendan det eller deaktivér "Auto scan USB storage devices" i Sikkerhedscenter</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Fejl ved diskformatering: Formater disken igen eller deaktiver &quot;Auto scan USB-lagerenheder&quot; i Sikkerhedscenteret</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Fejl i diskformat: Gendan det</translation>
+        <translation>Fejl ved diskformatering: Formater disken igen</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Utiliseringsplads er utilstrækkelig: Sørg for, at disken har nok ledig plads</translation>
+        <translation>Utilstrækkelig plads på disk: Sikring at disken har nok ledig plads</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker er et simpelt værktøj til at skrive systembilleder til USB-stick og andre medier.</translation>
+        <translation>Boot Maker er et enkelt værktøj til at skrive systembilleder til USB-sticks og andre medier</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -190,7 +190,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>Formatér partitionen</translation>
+        <translation>Formater partitionen</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formatering vil slette alle data på partitionen, men kan øge succeschansen. Bekræft venligst før du fortsætter.</translation>
+        <translation>Formatering vil slette alt data på partitionen, men kan øge lykkesandsynligheden, bekræft venligst før du fortsætter</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Du har valgt ISO-billedet på denne USB-stick. Formatering vil slette alle dine filer. Vælg venligst billedfilen igen eller annullér formateringen.</translation>
+        <translation>Du har valgt ISO-billedet på denne USB-stik. Formatering vil slette alle dine filer. Vælg venligst billedet igen eller annuller formateringen</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatering af partitionen vil overskrive alle data. Venligst have en sikkerhedskopi inden du fortsætter.</translation>
+        <translation>Formatering af partitionen vil overskrive alle data, have en backup før du fortsætter</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Fejl i diskformat: Gendan partitionen med FAT32</translation>
+        <translation>Fejl ved diskformatering: Formater partitionen med FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>Formatér Partition</translation>
+        <translation>Formater partition</translation>
     </message>
 </context>
 </TS>

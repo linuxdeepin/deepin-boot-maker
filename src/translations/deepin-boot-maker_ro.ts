@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Eroare de formatare disc: Vă rugăm să reporniți sau să dezactivați „Scanare automată dispozitive de stocare USB” din Centrul de Securitate</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Eroare la formatarea discului: Reveniți la formatare sau dezactivați &quot;Scanare automată dispozitive de stocare USB&quot; din Centrul de Securitate</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Eroare de formatare disc: Vă rugăm să reporniți</translation>
+        <translation>Eroare la formatarea discului: Reveniți la formatare</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Spațiu insuficient pe disc: Asigurați-vă că discul are suficient spațiu liber</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker este un instrument simplu pentru a scrie fișierele de imagine a sistemului în drive-uri USB flash și alte suporturi.</translation>
+        <translation>Boot Maker este un instrument simplu pentru scrierea fișierelor de imagine a sistemului în drive-uri flash USB și alte medii</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>Selectați o partitie</translation>
+        <translation>Selectați o partiție</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>Formatați partitia</translation>
+        <translation>Formatați partiția</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formatarea va șterge toate datele de pe partitie, dar poate crește rata de succes. Vă rugăm să confirmați înainte de a continua</translation>
+        <translation>Formatarea va șterge toate datele de pe partiție, dar poate crește taxa de succes, vă rog confirmați înainte de a continua</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Ați selectat imaginea ISO de pe acest drive USB flash. Formatarea ei va șterge toate fișierele dvs. Vă rugăm să selectați din nou fișierul de imagine sau să anulați formatarea.</translation>
+        <translation>Ați selectat imaginea ISO de pe acest drive USB. Formatarea va șterge toate fișierele dvs. Vă rog reselectați fișierul imagine sau anulați formatarea</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatarea partitiei va suprascrie toate datele. Vă rugăm să aveți o copie de rezervă înainte de a continua.</translation>
+        <translation>Formatarea partiției va suprascrie toate datele, vă rog faceți o copie de rezervă înainte de a continua</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Eroare de formatare disc: Vă rugăm să formatați partitia cu FAT32</translation>
+        <translation>Eroare la formatarea discului: Vă rog formatați partiția cu FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>Formatați partitie</translation>
+        <translation>Formatează Partiția</translation>
     </message>
 </context>
 </TS>

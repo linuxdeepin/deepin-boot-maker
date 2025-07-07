@@ -6,12 +6,12 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>գործիք ստարտային միջանցք ստեղծելու համար</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Ստարտային կառուցիչը</translation>
+        <translation>ነፍ አስተዳደር</translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

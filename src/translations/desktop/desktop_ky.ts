@@ -4,7 +4,7 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>Башҡа һыҙыҡ үсереү өсөн ҡуып ҡуйыу инструменты</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>

@@ -4,7 +4,7 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>Εργαλείο δημιουργίας μέσων εκκίνησης</translation>
+        <translation>Ένα εργαλείο για τη δημιουργία μέσων εκκίνησης</translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>

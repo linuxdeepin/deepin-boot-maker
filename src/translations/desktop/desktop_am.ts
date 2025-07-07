@@ -11,7 +11,7 @@
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Boot Maker</translation>
+        <translation>የማስተዳደር አንቀሳል</translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

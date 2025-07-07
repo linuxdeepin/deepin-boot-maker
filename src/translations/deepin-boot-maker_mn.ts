@@ -5,28 +5,28 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Диский форматын алдаа: Дараах ашиглаж болохыг эсэхийг Security Center-д шалгаж, бүрэн форматлаарай</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Дисковая ошибка форматирования: Пожалуйста, переформатируйте диск или отключите &quot;Авто сканирование USB-накопителей&quot; в Центре Безопасности</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Диский форматын алдаа: Дараах ашиглаж болохыг бүрэн форматлаарай</translation>
+        <translation>Дисковая ошибка форматирования: Пожалуйста, переформатируйте диск</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Дискийн хангалтгүй: Диск нь хангалтгүй зайг бүхээрээ багатай байхыг баталгаажуулаарай</translation>
+        <translation>Дисково орчин нэрэлцэг байна: Харуулах хөтөлбөрийн дэд бүтцийн диске өмнөх байртай хангалттай орон зай байхийг баталгаажуулахыг хүсч байна.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Дискийн нөхөрсөн алдаа: Дискийг дахин оруулна уу эсвэл ажиллахыг дахин эхлүүлнэ үү</translation>
+        <translation>Ошибка монтирования диска: Вставьте диск снова или перезагрузите систему для повторной попытки</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Зураг нь түрүүлэлтийн алдаа: Зурагны md5 сумманд шалгаж, түүний бүтэц бүтээмжтэй байхыг баталгаажуулаарай</translation>
+        <translation>Ошибка декомпрессии изображения: Проверьте md5-сумму изображения для обеспечения его целостности</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker нь систем зураг файлыг USB flash drive-д бусад медиа болон нэмэгдүүлэх нь хялбар загвар юм.</translation>
+        <translation>Boot Maker - это простой инструмент для записи системных образов файлов на USB-накопители и другие носители.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>ISO зураг файлыг энд дарж өгнө үү</translation>
+        <translation>Перетащите файл ISO образа сюда</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="171"/>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>Хууль ёсны ISO зураг файл</translation>
+        <translation>Недопустимый файл ISO образа</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="231"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>ISO файлыг шалгаж байна, баяртай захиалга</translation>
+        <translation>Обнаруживаю файл ISO, пожалуйста, подождите...</translation>
     </message>
 </context>
 <context>
@@ -90,17 +90,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Зураг нь дамжуулах</translation>
+        <translation>Давсарлах</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Зураг нь дамжуулах, баяртай захиалга</translation>
+        <translation>Запись, пожалуйста, подождите...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Үйл ажиллагаагаар диск нь бүрэн ашиглаж байхдаа түүгүй авах, компьютерийг хэрэглэхгүй байна</translation>
+        <translation>Не отключайте диск или выключайте компьютер во время процесса</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="68"/>
@@ -148,17 +148,17 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Алдааны жагсаалт нь түүний түрүүлэлтийн дагуу автоматаар нэмэгдэнэ. Таны түрүүлэлтгүй бол таамаглах боломжгүй</translation>
+        <translation>Журнал ошибок будет автоматически загружен вместе с отзывом. Без вашего отзыва мы не сможем улучшить</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
         <source>Submit Feedback</source>
-        <translation>Түрүүлэлт нэмэх</translation>
+        <translation>Бодитойлон хүлээн авах</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Үйлчилгээ</translation>
+        <translation>После-продажные услуги</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>Хүндэтгэсэн, үйл ажиллагаа алдагдсан</translation>
+        <translation>Извините, процесс завершился неудачно</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Хэрэглэгдэхүүнгийн үнэн зөв байдалыг шалгаж, бүрэн ашиглаж байхдаа дараах ашиглаж болохыг бүрэн ашиглаж байна, баяртай захиалга</translation>
+        <translation>Проверяю данные и безопасное удаление носителя, пожалуйста, подождите...</translation>
     </message>
 </context>
 <context>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>Бүлэгийг сонгоно уу</translation>
+        <translation>Выберите раздел</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>Бүлэгийг форматлах</translation>
+        <translation>Форматировать раздел</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -200,39 +200,39 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
         <source>Start</source>
-        <translation>Эхлүүлэх</translation>
+        <translation>Начать</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation>Хойшоо</translation>
+        <translation>Назад</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Бүлэгийг форматлах нь түүний доторх мэдээллийг устгах болно, гэхдээ амжилттай болох боломжийг нэмэгдүүлнэ. Үйл ажиллагаагаар дараах ашиглаж болохыг баталгаажуулаарай</translation>
+        <translation>Форматлах нь хуваагдлын доторх бүх мэдээллийг орхиж, амжилтын хүртэлтийг нэмэгдүүлж болно. Үйлдлийг хийхээс өмнө баталгаажуулахыг хүсч байна.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>Бүлэгийг форматлах</translation>
+        <translation>Форматировать раздел</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Энэ USB flash drive-д ISO зураг файлыг сонгосон. Түүнийг форматлах нь таамаглах мэдээллийг устгах болно. Түүнийг дахин сонгоно уу эсвэл форматлахыг хасах</translation>
+        <translation>Вы выбрали ISO-образ на этом USB-накопителе. Форматирование его удалит все ваши файлы. Пожалуйста, выберите другой файл образа или отмените форматирование.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
         <source>OK</source>
         <comment>button</comment>
-        <translation>OK</translation>
+        <translation>ОК</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Бүлэгийг форматлах нь бүх мэдээллийг оновчлолтой болгоно, үйл ажиллагаагаар дараах ашиглаж болохыг бэлтгэх</translation>
+        <translation>Форматирование раздела перезапишет все данные. Пожалуйста, сделайте резервную копию перед продолжением.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Диский форматын алдаа: Тохирох хэсгийг FAT32-р форматлаарай</translation>
+        <translation>Ошибка форматирования диска: Пожалуйста, сформатируйте раздел с помощью FAT32</translation>
     </message>
 </context>
 </TS>
