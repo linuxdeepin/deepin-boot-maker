@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.10) unstable; urgency=medium
+
+  * chore: Update deepin-manual resources
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 09 Jul 2025 16:02:52 +0800
+
 deepin-boot-maker (6.0.9) unstable; urgency=medium
 
   * update version to 6.0.9. 
