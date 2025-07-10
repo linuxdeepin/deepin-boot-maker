@@ -5,33 +5,33 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Fel-formatering: Formatera disken om eller inaktivera "Auto scan USB storage devices" i Security Center</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Fel vid diskformatering: Omforma disken eller inaktivera &quot;Automatisk sökning av USB-lagringsenheter&quot; i Sicherheitszentrum</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Fel-formatering: Formatera disken om</translation>
+        <translation>Fel vid diskformatering: Omforma disken</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Otillräcklig diskutrymme: Se till att disken har tillräckligt med ledigt utrymme</translation>
+        <translation>Otillräckligt diskutrymme: Se till att disken har tillräckligt med ledigt utrymme</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Fel vid montering: Infoga disken igen eller starta om för att försöka igen</translation>
+        <translation>Fel vid montering av disk: Försök igen genom att sätta in disken igen eller starta om</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Fel vid avkompresion av bild: Kontrollera md5-checksummen på bilden för att säkerställa dess integritet</translation>
+        <translation>Fel vid bilddekomprimering: Verifiera md5-summan för bilden för att säkerställa dess integritet</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
         <source>Internal Error</source>
-        <translation>Inneboende fel</translation>
+        <translation>Innanliggande Fel</translation>
     </message>
 </context>
 <context>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker är ett enkelt verktyg för att skriva systemavbildningsfiler till USB-minneskort och annan media.</translation>
+        <translation>Boot Maker är ett enkelt verktyg för att skriva systemavbildningsfiler till USB-minneskort och andra medium.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -57,12 +57,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="80"/>
         <source>Select an ISO image file</source>
-        <translation>Välj en ISO-avbildningsfil</translation>
+        <translation>Välj en ISO-bildfil</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>Släpp en ISO-avbildningsfil här</translation>
+        <translation>Slå en ISO-bildfil här</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="171"/>
@@ -72,17 +72,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>Ogiltig ISO-avbildningsfil</translation>
+        <translation>Ogiltig ISO-bildfil</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="231"/>
         <source>Reselect an ISO image file</source>
-        <translation>Välj en ISO-avbildningsfil om</translation>
+        <translation>Välj en ISO-bildfil igen</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Identifierar ISO-fil, vänligen vänta...</translation>
+        <translation>Upptäcker ISO-fil, vänta...</translation>
     </message>
 </context>
 <context>
@@ -90,17 +90,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Brännning</translation>
+        <translation>Brännar</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Brännning, vänligen vänta...</translation>
+        <translation>Bränner, vänta...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Ta inte bort disken eller stäng av datorn under processen</translation>
+        <translation>Förbättra inte disken eller stäng inte av datorn under processen</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="68"/>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
-        <translation>Lyckad</translation>
+        <translation>Erfolgt</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
@@ -148,17 +148,17 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Felloggan kommer att laddas upp automatiskt tillsammans med återkopplingen. Vi kan inte förbättra utan din återkoppling</translation>
+        <translation>Felloggarna kommer att överföras automatiskt tillsammans med feedbacken. Vi kan inte förbättra oss utan din feedback</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
         <source>Submit Feedback</source>
-        <translation>Skicka återkoppling</translation>
+        <translation>Skicka feedback</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Efterföljande tjänster</translation>
+        <translation>Efterföljande service</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>Tyvärr, processen misslyckades</translation>
+        <translation>Sorry, processen misslyckades</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Bevittnar data och säkert tar bort media, vänligen vänta...</translation>
+        <translation>Verifierar data och säkerställer säker borttagning av medium, vänta...</translation>
     </message>
 </context>
 <context>
@@ -195,7 +195,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation>Inga diskar tillgängliga</translation>
+        <translation>Ingen disk tillgänglig</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formatering kommer att radera alla data på partitionen, men kan öka framgångsgraden. Vänligen bekräfta innan du fortsätter</translation>
+        <translation>Format kommer att radera alla data på partitionen, men kan öka framgången, bekräfta innan du fortsätter</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
@@ -221,7 +221,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Du har valt ISO-bilden på denna USB-minneskort. Formatering kommer att radera alla dina filer. Vänligen välj om en bildfil eller avbryt formateringen.</translation>
+        <translation>Du har valt ISO-bilden på detta USB-minneskort. Format kommer att radera alla dina filer. Vänligen välj bilden igen eller avbryt formatet.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -232,7 +232,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Formatering av partitionen kommer att överskriva alla data. Vänligen gör en säkerhetskopia innan du fortsätter.</translation>
+        <translation>Format av partitionen kommer att överskriva alla data. Vänligen gör en säkerhetskopiering innan du fortsätter.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Fel vid diskformat: Vänligen formatera partitionen med FAT32</translation>
+        <translation>Fel vid diskformatering: Formatera partitionen med FAT32</translation>
     </message>
 </context>
 </TS>

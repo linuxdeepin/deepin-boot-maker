@@ -5,23 +5,23 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>خطأ في تكوين القرص: من فضلك قم بإعادة تكوينه أو إيقاف "مسح أجهزة تخزين USB تلقائيًا" في مركز الأمان</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Erro de formatação do disco: Reformatar ou desativar &quot;Varre automaticamente dispositivos de armazenamento USB&quot; no Centro de Segurança</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>خطأ في تكوين القرص: من فضلك قم بإعادة تكوينه</translation>
+        <translation>Erro de formatação do disco: Reformatar</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>مساحة القرص غير كافية: تأكد من أن القرص يحتوي على مساحة فارغة كافية</translation>
+        <translation>N'eus ket a blas a-walc'h war an disk: Gwiriait ez eus plas frank a-walc'h war an disk</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Fazi en ur sevel an disk: lakait en-dro an disk e-barzh pe adloc'hit ar sistem evit klask en-dro</translation>
+        <translation>Fazi en ur sevel an disk: lakait en-dro an disk e-barzh pe adloc&apos;hit ar sistem evit klask en-dro</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker هو أداة بسيطة لكتابة ملفات صورة النظام على أجهزة USB فلاش ووسائط أخرى.</translation>
+        <translation>Boot Maker é uma ferramenta simples para escrever arquivos de imagem do sistema em drives USB flash e outros meios</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -90,12 +90,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Oc'h engravañ</translation>
+        <translation>Oc&apos;h engravañ</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Oc'h engravañ, gortozit mar plij...</translation>
+        <translation>Oc&apos;h engravañ, gortozit mar plij...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="88"/>
         <source>Reboot now</source>
-        <translation>Adloc'hañ bremañ</translation>
+        <translation>Adloc&apos;hañ bremañ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Renabl ar fazioù a vo kaset en un doare otomatek gant an evezhiadennoù. Diaes e vo deomp gwellaat hep hoc'h evezhiadennoù</translation>
+        <translation>Renabl ar fazioù a vo kaset en un doare otomatek gant an evezhiadennoù. Diaes e vo deomp gwellaat hep hoc&apos;h evezhiadennoù</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>C'hwitet ez eus bet war ar prosesus, digarezit</translation>
+        <translation>C&apos;hwitet ez eus bet war ar prosesus, digarezit</translation>
     </message>
 </context>
 <context>
@@ -185,22 +185,22 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>اختر قسمًا</translation>
+        <translation>Selecionar uma partição</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>قم بتنسيق القسم</translation>
+        <translation>Formatar a partição</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
         <source>Start</source>
-        <translation>Loc'hañ</translation>
+        <translation>Loc&apos;hañ</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>سيحذف التنسيق جميع البيانات الموجودة على القسم، ولكن يمكن أن يزيد من معدل النجاح، من فضلك تأكد قبل المتابعة</translation>
+        <translation>A formatação apagará todos os dados na partição, mas pode aumentar a taxa de sucesso, confirme antes de prosseguir</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>لقد اخترت ملف الصورة ISO في هذه الأداة USB فلاش. سيحذف تنسيقه جميع ملفاتك. من فضلك اختر ملف الصورة مرة أخرى أو إلغاء التنسيق.</translation>
+        <translation>Você selecionou a imagem ISO neste drive USB. A formatação apagará todos os seus arquivos. Por favor, selecione novamente o arquivo de imagem ou cancele a formatação.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>سيقوم تنسيق القسم بكتابة جميع البيانات، من فضلك احتفظ بنسخة احتياطية قبل المتابعة.</translation>
+        <translation>A formatação da partição sobreescreverá todos os dados, por favor, faça um backup antes de prosseguir.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>خطأ في تكوين القرص: من فضلك قم بتنسيق القسم باستخدام FAT32</translation>
+        <translation>Erro de formatação do disco: Formate a partição com FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>تنسيق القسم</translation>
+        <translation>Formatar Partição</translation>
     </message>
 </context>
 </TS>

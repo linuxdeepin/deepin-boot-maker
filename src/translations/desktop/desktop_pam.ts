@@ -6,12 +6,12 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>Isang tool para magsulat ng boot media</translation>
+        <translation>Kan tool ku kawe media boot</translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Maga-boot</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

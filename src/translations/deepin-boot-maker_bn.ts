@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>ডিস্ক ফরম্যাট ত্রুটি: অনুগ্রহ করে ফর্ম্যাট করুন বা সিকিউরিটি সেন্টারে "আটো স্ক্যান ইউএসবি স্টোরেজ ডিভাইস" অক্ষম করুন</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>डिस्क फॉरमेट त्रुटि: कृपया फिर से फॉरमेट करें या सेफ्टी सेंटर में &quot;यूएसबी स्टोरेज डिवाइसेज का ऑटो स्कैन अक्षम करें&quot; निष्कासित करें</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>ডিস্ক ফরম্যাট ত্রুটি: অনুগ্রহ করে ফর্ম্যাট করুন</translation>
+        <translation>डिस्क फॉरमेट त्रुटि: कृपया फिर से फॉरमेट करें</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>অপর্যাপ্ত ডিস্ক স্পেস: নিশ্চিত করুন যে ডিস্কে যথেষ্ট খালি স্পেস রয়েছ আছে</translation>
+        <translation>डिस्क स्पेस अपर्याप्त: कृपया डिस्क में पर्याप्त फ्री स्पेस होने की गारंटी दें</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>বুট মেকার হল একটি সরল টুল যেটিকে সিস্টেম ইমেজ ফাইলগুলি ইউএসবি ফ্লাশ ড্রাইভ এবং অন্যান্য মিডিয়াতে লিখতে হয়</translation>
+        <translation>बूट मेकर एक सरल टूल है जिसका उपयोग USB फ्लैश ड्राइव और अन्य मीडिया में सिस्टम इमेज फाइल्स लिखने के लिए किया जाता है।</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>এখানে একটি ISO ইমেজ ফাইল খাঁড়ুন</translation>
+        <translation>यहाँ ISO इमेज फाइल खींचें</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
@@ -77,12 +77,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>অধিকার বিহীন ISO ইমেজ ফাইল</translation>
+        <translation>अवैध ISO इमेज फाइल</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>ISO ফাইল ধরে নিচ্ছি, অনুগ্রহ করে অপেক্ষা করুন...</translation>
+        <translation>ISO फाइल पता चल रही है, कृपया प्रतीक्षा करें...</translation>
     </message>
 </context>
 <context>
@@ -90,12 +90,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>প্রস্তুতকরণ</translation>
+        <translation>बर्निंग</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>প্রস্তুতকরণ, অনুগ্রহ করে অপেক্ষা করুন...</translation>
+        <translation>बर्निंग, कृपया प्रतीक्षा करें...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>পূর্বাভ্যাস সেবা</translation>
+        <translation>पोस्ट-विक्रय सेवाएँ</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>দুঃখিত, প্রক্রিয়া ব্যর্থ হয়েছে</translation>
+        <translation>क्षमा करें, प्रक्रिया विफल रही है</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>ডেটা যাচাই করা এবং মিডিয়া নিরাপত্তিপূর্বক বাদ দেওয়া, অনুগ্রহ করে অপেক্ষা করুন...</translation>
+        <translation>डेटा की जांच कर रहा है और मीडिया को सुरक्षित रूप से हटा रहा है, कृपया प्रतीक्षा करें...</translation>
     </message>
 </context>
 <context>
@@ -185,12 +185,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>একটি পার্টিশন নির্বাচন করুন</translation>
+        <translation>एक पार्टीशन चुनें</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>পার্টিশন ফরম্যাট করুন</translation>
+        <translation>पार्टीशन को फॉरमेट करें</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>ফরম্যাটিং পার্টিশনে সব ডেটা মুছে দেবে, কিন্তু সফলতার হার বৃদ্ধি করতে পারে, প্রস্তুতকরণের আগে নিশ্চিত করুন</translation>
+        <translation>फॉरमेटिंग डिस्क पर सभी डेटा डिलीट करेगा, लेकिन सफलता की दर बढ़ा सकता है, प्रक्रिया जारी करने से पहले कृपया पुष्टि करें</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>আপনি এই ইউএসবি ফ্লাশ ড্রাইভে একটি ISO ইমেজ ফাইল নির্বাচন করেছেন। এটি ফরম্যাট করলে আপনার সব ফাইল মুছে যাবে। অনুগ্রহ করে ইমেজ ফাইল পুনরায় নির্বাচন করুন বা ফরম্যাট বাতিল করুন।</translation>
+        <translation>आप ने इस USB फ्लैश ड्राइव में ISO इमेज चुन ली है। इसको फॉरमेट करने से आपके सभी फाइल डिलीट हो जाएंगे। कृपया फिर से इमेज फाइल चुनें या फॉरमेट को रद्द करें।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,17 +222,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>পার্টিশন ফরম্যাট করলে সব ডেটা পুনরায় লিখে দেবে, প্রস্তুতকরণের আগে একটি ব্যাকআপ নিন।</translation>
+        <translation>पार्टीशन को फॉरमेट करने से सभी डेटा ओवरराइट हो जाएगा, प्रक्रिया जारी करने से पहले बैकअप लेने का अनुरोध करता है।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>ডিস্ক ফরম্যাট ত্রুটি: অনুগ্রহ করে FAT32 ব্যবহার করে পার্টিশন ফরম্যাট করুন</translation>
+        <translation>डिस्क फॉरमेट त्रुटि: कृपया पार्टीशन को FAT32 साथ फॉरमेट करें</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation>কোন ডিস্ক পাওয়া যায় নি</translation>
+        <translation>कोई डिस्क उपलब्ध नहीं</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>পার্টিশন ফরম্যাট করুন</translation>
+        <translation>पार्टीशन फॉरमेट करें</translation>
     </message>
 </context>
 </TS>

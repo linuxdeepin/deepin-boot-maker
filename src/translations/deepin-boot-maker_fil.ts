@@ -5,33 +5,33 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Mga error ng format ng disk: I-reformat ito o i-off ang "Auto scan USB storage devices" sa Security Center</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Maliwanan error sa disk: I-reformat ito o itigil ang &quot;Automatikong pag-scan ng mga storage na USB&quot; sa Security Center.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Mga error ng format ng disk: I-reformat ito</translation>
+        <translation>Maliwanan error sa disk: I-reformat ito.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Hindi sapat ang espasyo ng disk: Siguraduhin na may sapat na libreng espasyo ang disk</translation>
+        <translation>Dikit na espasyo sa disk: Siguruhin na may sapat na libreng espasyo sa disk.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Mga error ng mount ng disk: I-insert muli ang disk o i-reboot para ulitin</translation>
+        <translation>Error sa pag-mount ng disk: Ilagay muli ang disk o rebooting para subukan uli.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Mga error ng dekompresyon ng imahe: Patunayan ang md5 checksum ng imahe para mapanatili ang kanyang integridad</translation>
+        <translation>Error sa pag-dekompress ng image: Veripikatin ang md5 checksum ng image para masiguro ang kanyang integridad.</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
         <source>Internal Error</source>
-        <translation>Mga error sa loob</translation>
+        <translation>Error sa loob</translation>
     </message>
 </context>
 <context>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Ang Boot Maker ay isang simpleng tool para i-write ang mga file ng sistema sa USB flash drives at iba pang media.</translation>
+        <translation>Boot Maker ay isang simpleng tool na nagpapakilos ng mga file ng image ng systema sa mga USB flash drives at iba pang media.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -52,17 +52,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>I-drag ang ISO image file dito</translation>
+        <translation>I-click-dito ang file na ISO mo</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
         <source>OR</source>
-        <translation>O</translation>
+        <translation>Oo rin</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="80"/>
         <source>Select an ISO image file</source>
-        <translation>Piliin ang ISO image file</translation>
+        <translation>Piliin ang file ng ISO image.</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="171"/>
@@ -72,17 +72,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="231"/>
         <source>Reselect an ISO image file</source>
-        <translation>Piliin muli ang ISO image file</translation>
+        <translation>Piliin muli ang file ng ISO image.</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>Ilegal na ISO image file</translation>
+        <translation>Illegal na file ng ISO image</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Nagdetect ng ISO file, please wait...</translation>
+        <translation>Nakikita ang file ng ISO, saka po please wait...</translation>
     </message>
 </context>
 <context>
@@ -90,17 +90,17 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Nagburn</translation>
+        <translation>Pag-burn</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Nagburn, please wait...</translation>
+        <translation>Pag-burn, saka po please wait...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Huwag alisin ang disk o i-shut down ang computer habang nasa proseso</translation>
+        <translation>Huwag niyang alisin ang disk o i-shutdown ang computer sa loob ng proseso.</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="68"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="23"/>
         <source>Removable Disk</source>
-        <translation>Removable Disk</translation>
+        <translation>Disk na maaalis</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="227"/>
@@ -132,12 +132,12 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="88"/>
         <source>Reboot now</source>
-        <translation>I-reboot ngayon</translation>
+        <translation>Reboot ngayon</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
-        <translation>Matagumpay</translation>
+        <translation>Successful</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Ang error log ay inilalagay nang automatiko kasama ang feedback. Hindi natin maaaring makapagpabuti nang walang iyong feedback.</translation>
+        <translation>Ang log ng error ay papost sa feedback nang automatis. Hindi natin mababago kung walang feedback.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Mga Serbisyo sa Pagbili</translation>
+        <translation>Serbisyo sa pagkatapos ng pagbebenta</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>Sori, ang proseso ay nagkaroon ng error</translation>
+        <translation>Sorry, proseso naiwiwalis</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Nakakonekta ang data at nakakasiguro ng maayos na paglilipat ng media, pakihintay...</translation>
+        <translation>Nag-a-validate ng data at nag-aalis ng seguridad sa media, saka po please wait...</translation>
     </message>
 </context>
 <context>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>Pumili ng isang partition</translation>
+        <translation>Piliin ang partition</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
@@ -195,12 +195,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
         <source>Start</source>
-        <translation>Makikinig</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Ang pag-format ay magpapalit ng lahat ng data sa partition, ngunit maaaring magdagdag ng rate ng tagumpay, paki-verify bago magproseso</translation>
+        <translation>Pag-format ay e-erase lahat ng data sa partition, pero maaaring mag-a-increase ang sukatan ng success rate, saka po please confirm bago magproseguis.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,23 +211,23 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Nakakonekta ka ng ISO image sa USB flash drive na ito. Ang pag-format nito ay magpapalit ng lahat ng iyong mga file. Palitan ang image file o i-cancel ang pag-format.</translation>
+        <translation>Nagpili kayo ng ISO image sa USB flash drive. Pag-format nito ay e-erase lahat ng files ninyo. Please piliin muli ang file ng image o itigil ang formatting.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation>Iwan</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Ang pag-format ng partition ay magpapalit ng lahat ng data, paki-imbak ang backup bago magproseso.</translation>
+        <translation>Pag-format ng partition ay e-overwrite lahat ng data, please gawing backup bago magproseguis.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Mali ang format ng disk: I-format ang partition gamit ang FAT32</translation>
+        <translation>Maliwanan error sa disk: I-format ang partition gamit ang FAT32.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -238,12 +238,12 @@
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation>Bumalik</translation>
+        <translation>Bilugan</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>I-format ang Partition</translation>
+        <translation>I-format ang partition</translation>
     </message>
 </context>
 </TS>

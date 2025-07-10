@@ -5,33 +5,33 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>ಪ್ರಮಾಣಿತ ಸಂಪೂರ್ಣ ಅಥವಾ ಸುರಕ್ಷತೆ ಕೇಂದ್ರದಲ್ಲಿ 'USB ಸಂಗ್ರಹಣೆ ಸಾಧನಗಳನ್ನು ಆಟೋಮೇಟಿಕ್ ಸ್ಕಾನ್ ಮಾಡು' ಆಫ್ ಮಾಡಿ</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>डिस्क फॉरमैट एरोर: कृपया इसे फिर से फॉरमैट करें या सेक्यूरिटी सेंटर में &quot;USB स्टोरेज डिवाइसेज का स्वचालित स्कैन अक्षम करें&quot;</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>ಪ್ರಮಾಣಿತ ಸಂಪೂರ್ಣ ಅಥವಾ ಪುನಃ ಪ್ರಮಾಣಿತ ಮಾಡಿ</translation>
+        <translation>डिस्क फॉरमैट एरोर: कृपया इसे फिर से फॉरमैट करें</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>ಅಂತರ್ಗತ ಸಂಪೂರ್ಣದಲ್ಲಿ ಸಾಕಷ್ಟು ಖಾಲಿ ಸ್ಥಳವಿದೆಯೇ: ಖಾಲಿ ಸ್ಥಳವನ್ನು ಖಾತ್ರಿಪಡಿಸಲು ಸಂಪೂರ್ಣದಲ್ಲಿ ಸಾಕಷ್ಟು ಖಾಲಿ ಸ್ಥಳವಿರುವುದನ್ನು ಖಾತ್ರಿಪಡಿಸಿ</translation>
+        <translation>ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಸಾಕಷ್ಟು ಖಾಲಿ ಜಾಗವಿಲ್ಲ: ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಸಾಕಷ್ಟು ಖಾಲಿ ಜಾಗವಿದೆಯೆಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>ಸಂಪೂರ್ಣ ಮೌಂಟ್ ತಪ್ಪು: ಸಂಪೂರ್ಣವನ್ನು ಮತ್ತೆ ಸೇರಿಸಿ ಅಥವಾ ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ</translation>
+        <translation>डिस्क माउंट एरोर: कृपया डिस्क को फिर से इन्सर्ट करें या रिबोट करके फिर से आज़माएं</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>ಚಿತ್ರ ಅಣಿಮಾಡುವ ತಪ್ಪು: ಚಿತ್ರದ md5 ಚೆಕ್ಸಮ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಅದರ ಸ್ಥಿರತೆಯನ್ನು ಖಾತ್ರಿಪಡಿಸಿ</translation>
+        <translation>इमेज डिकम्प्रेशन एरोर: इमेज के md5 checksum को वेरिफाई करें ताकि इसकी इंटिग्रिटी सुनिश्चित हो</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
         <source>Internal Error</source>
-        <translation>ಪ್ರಮಾಣಿತ ತಪ್ಪು</translation>
+        <translation>इन्टर्नल एरोर</translation>
     </message>
 </context>
 <context>
@@ -39,12 +39,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>ಬೂಟ್ ಮೇಕರ್ ಅನ್ನು USB ಫ್ಲಶ್ ಡ್ರೈವ್ ಮತ್ತು ಇತರ ಮಾಧ್ಯಮಗಳಿಗೆ ಸ್ವಯಂಚಾಲಿತ ಸಿಸ್ಟಮ್ ಇಮೇಜ್ ಫೈಲ್ಗಳನ್ನು ಬರೆಯಲು ಉಪಯೋಗಿಸಲಾದ ಸರಳ ಸಾಧನವಾಗಿದೆ</translation>
+        <translation>बूट मेकर एक सरल टूल है जो सिस्टम इमेज फाइल्स को USB फ्लैश ड्राइव और अन्य मीडिया में लिखने में मदद करता है।</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
         <source>Boot Maker</source>
-        <translation>ಬೂಟ್ ಮೇಕರ್</translation>
+        <translation>बूट मेकर</translation>
     </message>
 </context>
 <context>
@@ -52,17 +52,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
         <source>OR</source>
-        <translation>ಅಥವಾ</translation>
+        <translation>या</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="80"/>
         <source>Select an ISO image file</source>
-        <translation>ಐಒಎಸ್ ಇಮೇಜ್ ಫೈಲ್ ಆಯ್ಕೆ ಮಾಡಿ</translation>
+        <translation>एक ISO इमेज फाइल चुनें</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>ಐಒಎಸ್ ಇಮೇಜ್ ಫೈಲ್ ಇಲ್ಲಿ ಹಾರಿಸಿ</translation>
+        <translation>एक ISO इमेज फाइल यहाँ खींचें</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="171"/>
@@ -72,17 +72,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>ಅಕ್ರಮ ಐಒಎಸ್ ಇಮೇಜ್ ಫೈಲ್</translation>
+        <translation>अवैध ISO इमेज फाइल</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="231"/>
         <source>Reselect an ISO image file</source>
-        <translation>ಐಒಎಸ್ ಇಮೇಜ್ ಫೈಲ್ ಮತ್ತೆ ಆಯ್ಕೆ ಮಾಡಿ</translation>
+        <translation>एक ISO इमेज फाइल फिर से चुनें</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>ಐಒಎಸ್ ಫೈಲ್ ಅನ್ನು ಅನ್ವೇಷಿಸುತ್ತಿದ್ದೇವೆ, ಕುತೂಹಲ ಇದೆ...</translation>
+        <translation>ISO फाइल का पता लग रहा है, कृपया प्रतीक्षा करें...</translation>
     </message>
 </context>
 <context>
@@ -90,23 +90,23 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>ಸ್ವಯಂಚಾಲಿತ ಹಾರಿಸುವ</translation>
+        <translation>बर्निंग</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>ಸ್ವಯಂಚಾಲಿತ ಹಾರಿಸುವ, ಕುತೂಹಲ ಇದೆ...</translation>
+        <translation>बर्निंग, कृपया प्रतीक्षा करें...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>ಪ್ರಕ್ರಿಯೆಯ ಸಮಯದಲ್ಲಿ ಸಂಪೂರ್ಣವನ್ನು ತೆಗೆದುಹಾಕದಿರಿ ಅಥವಾ ಕಂಪ್ಯೂಟರ್ ಅನ್ನು ಬಂದುಹಾಕದಿರಿ</translation>
+        <translation>प्रक्रिया के दौरान डिस्क या कंप्यूटर को हटाने न करें</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="68"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation>ವಾಪಸ್</translation>
+        <translation>रद्द करना</translation>
     </message>
 </context>
 <context>
@@ -114,17 +114,17 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="23"/>
         <source>Removable Disk</source>
-        <translation>ಹಾರಿಸುವ ಸಂಪೂರ್ಣ</translation>
+        <translation>यकाइन डिस्क</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="227"/>
         <source>Removable disk</source>
-        <translation>ಹಾರಿಸುವ ಸಂಪೂರ್ಣ</translation>
+        <translation>यकाइन डिस्क</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="105"/>
         <source>Boot Maker</source>
-        <translation>ಬೂಟ್ ಮೇಕರ್</translation>
+        <translation>बूट मेकर</translation>
     </message>
 </context>
 <context>
@@ -132,44 +132,44 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="88"/>
         <source>Reboot now</source>
-        <translation>ಅಂತರ್ಗತ ಹಾರಿಸಿ</translation>
+        <translation>अभी रिबोट करें</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
-        <translation>ಸ್ಥಿರ</translation>
+        <translation>यशस्वी</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <comment>button</comment>
-        <translation>ಮುಗಿಸಿ</translation>
+        <translation>समाप्त</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>ತಪ್ಪು ದಾಖಲೆಯನ್ನು ಪುನಃ ಸೇರಿಸಲು ನಿಮ್ಮ ಪುನಃ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಸೇರಿಸಲು ನಾವು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅಪ್ಲೋಡ್ ಮಾಡುತ್ತೇವೆ. ನಿಮ್ಮ ಪುನಃ ಪ್ರತಿಕ್ರಿಯೆ ಇಲ್ಲದೆ ನಾವು ಸುಧಾರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</translation>
+        <translation>एरोर लॉग वापरातीय फीडबैक के साथ स्वचालित रूप से अपलोड होगा। अगर आपका फीडबैक न होगा तो हम उन्नति नहीं कर सकते</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
         <source>Submit Feedback</source>
-        <translation>ಪುನಃ ಪ್ರತಿಕ್ರಿಯೆ ಸೇರಿಸಿ</translation>
+        <translation>प्रतिक्रिया जमा करें</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>ಪುನಃ ವಿಕ್ರಯ ಸೇವೆಗಳು</translation>
+        <translation>पोस्ट सेल सर्विसेस</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
         <source>Close</source>
         <comment>button</comment>
-        <translation>ಮುಚ್ಚಿ</translation>
+        <translation>बंद करना</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>ಕ್ಷಮಿಸಿ, ಪ್ರಕ್ರಿಯೆ ವಾಪಸ್</translation>
+        <translation>क्षमा करें, प्रक्रिया विफल रही</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>ಪುನಃ ಪ್ರಯತ್ನಿಸಲು ಡೇಟಾವನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿದ್ದೇವೆ ಮತ್ತು ಮಾಧ್ಯಮವನ್ನು ಸುರಕ್ಷತೆಯೊಂದಿಗೆ ತೆಗೆದುಹಾಕುತ್ತಿದ್ದೇವೆ, ಕುತೂಹಲ ಇದೆ...</translation>
+        <translation>डेटा के वेरिफाई करने और मीडिया को सेफ तरीके से हटाने के लिए कृपया प्रतीक्षा करें...</translation>
     </message>
 </context>
 <context>
@@ -185,65 +185,65 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>ಪಾರ್ಟಿಷನ್ ಆಯ್ಕೆ ಮಾಡಿ</translation>
+        <translation>एक पार्टीशन चुनें</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>ಪಾರ್ಟಿಷನ್ ಸ್ಫೋಟಗೊಳಿಸಿ</translation>
+        <translation>पार्टीशन फॉरमैट करें</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation>ಯಾವುದೇ ಡಿಸ್ಕ್ ಲಭ್ಯವಿಲ್ಲ</translation>
+        <translation>कोई डिस्क उपलब्ध नहीं</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
         <source>Start</source>
-        <translation>ಆರಂಭಿಸಿ</translation>
+        <translation>शुरु करना</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation>ಆಗಮನ</translation>
+        <translation>वापस</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>ಪಾರ್ಟಿಷನ್ ಮೇಲೆ ಫಾರ್ಮಾಟಿಂಗ್ ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ, ಆದರೆ ಬೆಂಬಲಿಕೆಯ ದರವನ್ನು ಹೆಚ್ಚಿಸಬಹುದು, ಮುಂದುವರೆಯುವ ಮುನ್ನಿಂದ ಪರಿಶೀಲಿಸಿ</translation>
+        <translation>पार्टीशन को फॉरमेट करने से सभी डेटा ओवरवराइट हो जाएगा, प्रक्रिया शुरु करने से पहले बैकअप लें।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>ಪಾರ್ಟಿಷನ್ ಫಾರ್ಮಾಟ್ ಮಾಡಿ</translation>
+        <translation>पार्टीशन फॉरमैट करना</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>ನೀವು ಈ USB ಫ್ಲ್ಯಾಶ್ ಡ್ರೈವ್ನಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿದ ಆಯ್ಸೋ ಇಮೇಜ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ್ದೀರಿ. ಇದನ್ನು ಫಾರ್ಮಾಟ್ ಮಾಡುವುದರಿಂದ ನಿಮ್ಮ ಎಲ್ಲಾ ಫೈಲ್‌ಗಳು ತೆಗೆದುಹಾಕಿಸುತ್ತದೆ. ಬದಲಾಯಿಸಲು ಇಮೇಜ್ ಫೈಲ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಅಥವಾ ಫಾರ್ಮಾಟ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಿ</translation>
+        <translation>आपने इस USB फ्लैश ड्राइव में ISO इमेज का चयन किया है। इसका फॉरमैट करने से आपके सभी फाइलें मिट जाएंगी। कृपया फिर से इमेज फाइल चुनें या फॉरमैटिंग रद्द करें।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
         <source>OK</source>
         <comment>button</comment>
-        <translation>ಅಂಗೀಕರಿಸಿ</translation>
+        <translation>ठीक</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>ಪಾರ್ಟಿಷನ್ ಫಾರ್ಮಾಟ್ ಮಾಡುವುದರಿಂದ ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ಮತ್ತೆ ಬರೆಯಲಾಗುತ್ತದೆ, ಮುಂದುವರೆಯುವ ಮುನ್ನಿಂದ ಬೆಂಬಲಿಕೆ ಮಾಡಿ</translation>
+        <translation>पार्टीशन का फॉरमैट करने से सभी डेटा ओवरवराइट हो जाएगा, प्रक्रिया शुरु करने से पहले बैकअप लें।</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation>ರದ್ದುಗೊಳಿಸಿ</translation>
+        <translation>रद्द करना</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>ಡಿಸ್ಕ್ ಫಾರ್ಮಾಟ್ ತಪ್ಪು: FAT32 ಅನ್ನು ಬಳಸಿ ಪಾರ್ಟಿಷನ್ ಫಾರ್ಮಾಟ್ ಮಾಡಿ</translation>
+        <translation>डिस्क फॉरमैट एरोर: कृपया पार्टीशन को FAT32 से फॉरमैट करें</translation>
     </message>
 </context>
 </TS>

@@ -5,33 +5,33 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Fout in diskformaat: Herformateer dit of deaktiveer "Otomatiese skannings van USB opslagapparate" in Veiligheidscentrum</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Foutkode op die disk: Formateer dit asseblief opnieuw of slak &quot;Otomatik pindaian perangkat penyimpanan USB&quot; dalam Pusat Keamanan</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Fout in diskformaat: Herformateer dit</translation>
+        <translation>Foutkode op die disk: Formateer dit asseblief opnieuw</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Onvoldoende diskruimte: Stel daarby dat die disk genoeg vrye ruimte het</translation>
+        <translation>Masa lapang disk tidak mencukupi: Pastikan disk mempunyai ruang bebas yang mencukupi</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
         <source>Disk Mount Error: Insert the disk again or reboot to retry</source>
-        <translation>Diskmontagefout: Skakel die disk weer in of herstart om te probeer</translation>
+        <translation>Ralat pemasangan disk: Masukkan disk semula atau reboot untuk cuba semula</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>Beelddekomprimeerfout: Verifieer die md5 som van die beeld om sy integriteit te verseker</translation>
+        <translation>Ralat pembongkaran imej: Pastikan checksum md5 imej untuk memastikan integriti</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
         <source>Internal Error</source>
-        <translation>Interne fout</translation>
+        <translation>Ralat dalaman</translation>
     </message>
 </context>
 <context>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker is 'n eenvoudige hulpmiddel om stelselbeeldbestandte in USB flash drives en ander media te skryf.</translation>
+        <translation>Boot Maker ialah alat mudah untuk menulis fail imej sistem ke flash USB dan media lain</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -52,17 +52,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
         <source>OR</source>
-        <translation>OF</translation>
+        <translation>ATAU</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="80"/>
         <source>Select an ISO image file</source>
-        <translation>Kies 'n ISO-beeldbestand</translation>
+        <translation>Pilih fail imej ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>Sleep 'n ISO-beeldbestand hierheen</translation>
+        <translation>Seret fail imej ISO ke sini</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="171"/>
@@ -72,17 +72,17 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>Ongeldige ISO-beeldbestand</translation>
+        <translation>Fail imej ISO haram</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="231"/>
         <source>Reselect an ISO image file</source>
-        <translation>Kies 'n ISO-beeldbestand opnieuw</translation>
+        <translation>Pilih semula fail imej ISO</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Beskryf ISO-beeldbestand, asseblief wag...</translation>
+        <translation>Mendeteksi fail ISO, sila tunggu...</translation>
     </message>
 </context>
 <context>
@@ -95,18 +95,18 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Brand, asseblief wag...</translation>
+        <translation>Mencetak, sila tunggu...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
         <source>Do not remove the disk or shut down the computer during the process</source>
-        <translation>Verwyder die disk nie of sluit die rekenaar af tydens die proses nie</translation>
+        <translation>Jangan keluarkan disk atau matikan komputer semasa proses</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="68"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation type="unfinished">Kanselleer</translation>
+        <translation>Batal</translation>
     </message>
 </context>
 <context>
@@ -114,12 +114,12 @@
     <message>
         <location filename="../libdbm/util/deviceinfo.h" line="23"/>
         <source>Removable Disk</source>
-        <translation>Verwyderbare disk</translation>
+        <translation>Disk boleh padam</translation>
     </message>
     <message>
         <location filename="../libdbm/util/utils.cpp" line="227"/>
         <source>Removable disk</source>
-        <translation>Verwyderbare disk</translation>
+        <translation>Disk boleh padam</translation>
     </message>
     <message>
         <location filename="../app/main.cpp" line="105"/>
@@ -132,44 +132,44 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="88"/>
         <source>Reboot now</source>
-        <translation>Herstart nou</translation>
+        <translation>Boot semula sekarang</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="52"/>
         <source>Successful</source>
-        <translation>Succesvol</translation>
+        <translation>Berjaya</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="79"/>
         <source>Done</source>
         <comment>button</comment>
-        <translation type="unfinished">Gedoen</translation>
+        <translation>Selesai</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="174"/>
         <source>The error log will be uploaded automatically with the feedback. We cannot improve without your feedback</source>
-        <translation>Die foutlogboek sal automatisch saam met die terugkoppelings opgestuur word. Ons kan nie verbeter sonder jou terugkoppelings nie</translation>
+        <translation>Die foutlogboek word automatisch saam met die terugkragteloop gestuur. Sonder jou terugkragteloop kan ons nie verbeter nie.</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
         <source>Submit Feedback</source>
-        <translation>Stuur terugkoppelings</translation>
+        <translation>Hantar Maklum Balas</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Na-koopdienste</translation>
+        <translation>Perkhidmatan Selepas Jualan</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
         <source>Close</source>
         <comment>button</comment>
-        <translation type="unfinished">Maak toe</translation>
+        <translation>Tutup</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>Jammer, proses het misluk</translation>
+        <translation>Maaf, proses gagal</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Verifieer data en verwyder die medium veilig, asseblief wag...</translation>
+        <translation>Mengesahkan data dan mengeluarkan media dengan selamat, sila tunggu...</translation>
     </message>
 </context>
 <context>
@@ -185,43 +185,43 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="75"/>
         <source>Select a partition</source>
-        <translation>Kies 'n partisie</translation>
+        <translation>Pilih partition</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="101"/>
         <source>Format the partition</source>
-        <translation>Formateer die partisie</translation>
+        <translation>Format partition</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation>Geen disk beskikbaar nie</translation>
+        <translation>Tiada disk tersedia</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="154"/>
         <source>Start</source>
-        <translation>Begin</translation>
+        <translation>Mula</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation>Terug</translation>
+        <translation>Kembali</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Formatering sal verwijder al data op die partisie, maar kan die suksesrate verhoog, bevestig asseblief voorafgaand aan voortgang</translation>
+        <translation>Pemformatan akan menghapuskan semua data pada partition, tetapi dapat meningkatkan kadar keselamatan, sila pastikan sebelum meneruskan</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>Formateer partisie</translation>
+        <translation>Format Partition</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Jy het die ISO-beeld in hierdie USB-stick gekies. Die formatering sal al jou lêers verwijder. Kies asseblief weer die beeldbestand of kanselleer die formatering.</translation>
+        <translation>Anda telah memilih fail imej ISO dalam flash USB ini. Pemformatan akan menghapuskan semua fail anda. Sila pilih semula fail imej atau batalkan pemformatan.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -232,18 +232,18 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Die formatering van die partisie sal al data oorskryf, bevestig asseblief voorafgaand aan voortgang.</translation>
+        <translation>Formatering van die partition sal alle data oorskryf. Houd asseblief &apos;n backup voordat u voortgaan.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation type="unfinished">Kanselleer</translation>
+        <translation>Batal</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Skermformatering fout: Formateer asseblief die partisie met FAT32</translation>
+        <translation>Ralat Format Disk: Sila format partition dengan FAT32</translation>
     </message>
 </context>
 </TS>

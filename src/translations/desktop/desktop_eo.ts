@@ -6,12 +6,12 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>Instrumento por krei boot medio</translation>
+        <translation>Instrumento por krei boot media</translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
         <source>Boot Maker</source>
-        <translation>Boot Faristo</translation>
+        <translation>Kreistoilo por boot</translation>
     </message>
     <message>
         <location filename="Desktop Entry]Name" line="0"/>

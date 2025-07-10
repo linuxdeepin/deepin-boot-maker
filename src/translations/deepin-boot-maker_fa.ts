@@ -5,13 +5,13 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>خطا در فرمت دیسک: لطفا آن را دوباره فرمت کنید یا «سنسور USB» را در مرکز امنیت غیرفعال کنید</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>خطای فرمت دیسک: لطفاً آن را دوباره فرمت بزنید یا &quot;اسکن خودکار دستگاه‌های ذخیره‌ساز USB&quot; را در مرکز امنیت غیرفعال کنید</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>خطا در فرمت دیسک: لطفا آن را دوباره فرمت کنید</translation>
+        <translation>خطای فرمت دیسک: لطفاً آن را دوباره فرمت بزنید</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker ابزاری ساده است که فایل‌های تصویر سیستم را به یک دیسک USB و سایر رسانه‌ها نوشته و اجرا می‌کند.</translation>
+        <translation>سازنده بوت یک ابزار ساده برای نوشتن فایل‌های تصویر سیستم به درایو‌های USB فلاشی و وسایل دیگر است.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>فایل تصویر ISO را اینجا بکشید</translation>
+        <translation>فایل تصویر ISO را اینجا کشید و رها کنید</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
@@ -77,12 +77,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>فایل تصویر ISO غیرقانونی است</translation>
+        <translation>فایل تصویر ISO غیرقانونی</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>در حال تشخیص فایل ISO هستیم، لطفا منتظر بمانید...</translation>
+        <translation>در حال تشخیص فایل ISO، صبر کنید...</translation>
     </message>
 </context>
 <context>
@@ -95,7 +95,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>سوزاندن، لطفا منتظر بمانید...</translation>
+        <translation>سوزاندن، صبر کنید...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="222"/>
         <source>Sorry, process failed</source>
-        <translation>با عرض پوزش، فرآیند با خطا مواجه شد</translation>
+        <translation>کهrocess با شکست مواجه شد، متأسفیم</translation>
     </message>
 </context>
 <context>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>در حال بررسی داده‌ها و ایمن کردن رسانه است، لطفا منتظر بمانید...</translation>
+        <translation>در حال تأیید داده‌ها و خارج کردن ایمن وسایل، صبر کنید...</translation>
     </message>
 </context>
 <context>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>فرمت کردن بخش تمام داده‌های آن را پاک خواهد کرد، اما می‌تواند نرخ موفقیت را افزایش دهد، لطفا قبل از ادامه تأیید کنید</translation>
+        <translation>فرمت‌بندی تمام داده‌های بخش را حذف می‌کند، اما می‌تواند نرخ موفقیت را افزایش دهد، لطفا قبل از ادامه قبلاً تایید کنید</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>فایل تصویر ISO را در این دیسک USB انتخاب کرده‌اید. فرمت کردن آن تمام فایل‌های شما را پاک خواهد کرد. لطفا فایل تصویر را دوباره انتخاب یا فرمت را لغو کنید.</translation>
+        <translation>شما تصویر ISO را در این درایو USB флеш انتخاب کرده‌اید. فرمت‌بندی آن تمام فایل‌های شما را حذف خواهد کرد. لطفاً تصویر فایل را دوباره انتخاب کنید یا فرمت‌بندی را لغو کنید.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,12 +222,12 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>فرمت کردن بخش تمام داده‌ها را پوشش خواهد داد، لطفا قبل از ادامه یک کپی از داده‌ها نگه دارید.</translation>
+        <translation>فرمت‌بندی پارتیشن تمام داده‌ها را نوشته می‌شود، قبل از ادامه لطفاً نسخه‌ای از داده‌ها خود را نگهداری کنید.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>خطا در فرمت دیسک: لطفا بخش را با FAT32 فرمت کنید</translation>
+        <translation>خطای فرمت دیسک: لطفاً بخش را با استاندارد FAT32 فرمت کنید</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>Format Partition</source>
-        <translation>فرمت بخش</translation>
+        <translation>فرمت‌بندی بخش</translation>
     </message>
 </context>
 </TS>

@@ -5,8 +5,8 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Lỗi định dạng đĩa: Vui lòng định dạng lại hoặc vô hiệu hóa "Quét tự động thiết bị lưu trữ USB" trong Trung tâm an ninh</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Lỗi định dạng đĩa: Vui lòng định dạng lại hoặc vô hiệu hóa &quot;Quét tự động thiết bị lưu trữ USB&quot; trong Trung tâm an ninh</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Bạn đã chọn tệp hình ảnh ISO trong ổ USB này. Việc định dạng sẽ xóa tất cả các tệp của bạn. Vui lòng chọn lại tệp hình ảnh hoặc hủy định dạng.</translation>
+        <translation>Bạn đã chọn tệp ISO này trên USB. Nếu định dạng, tất cả dữ liệu sẽ bị xóa. Vui lòng chọn lại tệp hoặc hủy định dạng.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>

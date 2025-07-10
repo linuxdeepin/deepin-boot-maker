@@ -5,18 +5,18 @@
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
-        <source>Disk Format Error: Please reformat it or disable "Auto scan USB storage devices" in Security Center</source>
-        <translation>Грешка във форматиране на диска: Моля, форматирай го отново или деактивирай "Автоскануване на USB съхранение" в Сигурността</translation>
+        <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
+        <translation>Грешка при форматиране на диска: Моля, повторно форматирайте го или деактивирайте &quot;Автоматично сканиране на USB приставки&quot; в Центъра за безопасност</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
         <source>Disk Format Error: Please reformat it</source>
-        <translation>Грешка във форматиране на диска: Моля, форматирай го отново</translation>
+        <translation>Грешка при форматиране на диска: Моля, повторно форматирайте го</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="28"/>
         <source>Insufficient disk Space: Ensure that the disk has enough free space</source>
-        <translation>Недостатъчно пространство на диска: Уверете се, че диска има достатъчно свободно пространство</translation>
+        <translation>Недостатъчно пространство на диска: Убедитесь, че диска има достатъчно свободно пространство</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="31"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>Boot Maker е прост инструмент за записване на системни образи в USB флеш носители и други носители.</translation>
+        <translation>Бутмейкер е прост инструмент за запис на файлове с изображение на системата в USB флеш-драйвове и други носители.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="114"/>
         <source>Drag an ISO image file here</source>
-        <translation>Потеглете ISO файл тук</translation>
+        <translation>Потърси и изтегли файл с ISO образ тук</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="126"/>
@@ -77,12 +77,12 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="191"/>
         <source>Illegal ISO image file</source>
-        <translation>Незаконен ISO файл</translation>
+        <translation>Невалиден ISO-файл</translation>
     </message>
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Идентифициране на ISO файл, моля, изчакайте...</translation>
+        <translation>Декодирам ISO файл, моля изчакайте...</translation>
     </message>
 </context>
 <context>
@@ -90,12 +90,12 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="34"/>
         <source>Burning</source>
-        <translation>Записване</translation>
+        <translation>Запалване</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Записване, моля, изчакайте...</translation>
+        <translation>Запалване, моля изчакайте...</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
         <source>After-Sale Services</source>
-        <translation>Послeпродажни услуги</translation>
+        <translation>После-продажни услуги</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="213"/>
@@ -177,7 +177,7 @@
     <message>
         <location filename="../app/view/unmountusbview.cpp" line="17"/>
         <source>Verifying data and safely removing the media, please wait...</source>
-        <translation>Проверка на данните и безопасно изтриване на носителя, моля, изчакайте...</translation>
+        <translation>Проверка на данни и безопасно премахване на носителя, моля изчакайте...</translation>
     </message>
 </context>
 <context>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="223"/>
         <source>Formatting will erase all data on the partition, but can increase the success rate, please confirm before proceeding</source>
-        <translation>Форматирането ще изтрие всички данни на раздела, но може да повиши вероятността за успех, моля, потвърдете преди да продължите</translation>
+        <translation>Форматирането ще изтрие всички данни от раздела, но може да повиши статистиката за успех, моля потвърдете преди да продължите</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="378"/>
@@ -211,7 +211,7 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Избрахте ISO файл в този USB флеш носител. Форматирането ще изтрие всички ваши файлове. Моля, изберете отново изображението или откажете форматирането.</translation>
+        <translation>Имате избран ISO образ в този USB флеш-драйв. Форматирането му ще изтрие всички ваши файлове. Моля, изберете отново файл със снимка или отменете форматирането.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
@@ -222,17 +222,17 @@
     <message>
         <location filename="../app/view/usbselectview.cpp" line="384"/>
         <source>Formatting the partition will overwrite all data, please have a backup before proceeding.</source>
-        <translation>Форматирането на раздела ще преписва всички данни, моля, направете резервна копие преди да продължите.</translation>
+        <translation>Форматирането на раздела ще презапише всички данни, моля имайте резерва преди да продължите.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="404"/>
         <source>Disk Format Error: Please format the partition with FAT32</source>
-        <translation>Грешка във форматиране на диска: Моля, форматирайте раздела с FAT32</translation>
+        <translation>Грешка при форматиране на диска: Моля, форматирайте раздела с FAT32</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="137"/>
         <source>No disk available</source>
-        <translation>Няма наличен дисков</translation>
+        <translation>Няма достъпен диск</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="158"/>

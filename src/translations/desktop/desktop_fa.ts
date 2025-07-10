@@ -4,7 +4,7 @@
     <message>
         <location filename="Desktop Entry]Comment" line="0"/>
         <source>A tool to create boot media</source>
-        <translation>یک ابزار برای ایجاد رسانه بوت</translation>
+        <translation>اکسپلورر</translation>
     </message>
     <message>
         <location filename="Desktop Entry]GenericName" line="0"/>
