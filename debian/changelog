@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.11) unstable; urgency=medium
+
+  * chore: Update desktop file translations
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 13 Aug 2025 14:19:23 +0800
+
 deepin-boot-maker (6.0.10) unstable; urgency=medium
 
   * chore: Update deepin-manual resources
