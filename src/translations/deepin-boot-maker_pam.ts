@@ -239,7 +239,7 @@
         <location filename="../app/view/usbselectview.cpp" line="158"/>
         <source>Back</source>
         <comment>button</comment>
-        <translation type="unfinished"/>
+        <translation>Balik</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
