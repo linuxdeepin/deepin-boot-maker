@@ -12,14 +12,14 @@ class DeviceInfo
 {
 public:
     DeviceInfo() {}
-    DeviceInfo(const QString &path, quint32 used, quint32 total, const QString &label)
+    DeviceInfo(const QString &path, quint64 used, quint64 total, const QString &label)
         : path(path),  used(used), total(total), label(label)
     {
     }
 
     QString path    = "";
-    quint32 used    = 0;
-    quint32 total   = 0;
+    quint64 used    = 0;
+    quint64 total   = 0;
     QString label   = QObject::tr("Removable Disk");
     QString uuid    = "";
     QString fstype  = "";

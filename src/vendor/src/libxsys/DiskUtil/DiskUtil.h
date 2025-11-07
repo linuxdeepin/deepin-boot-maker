@@ -31,6 +31,7 @@ qint64 GetPartitionFreeSpace(const QString &targetDev);
 qint64 GetPartitionTotalSpace(const QString &targetDev);
 QString GetPartitionLabel(const QString &targetDev);
 bool FormatPartion(const QString& targetDev);
+bool CreatePartition(const QString& diskDev);
 QStringList GetPartionOfDisk(const QString& strDisk);
 bool SetActivePartion(const QString& strDisk, const QString& strPartion);
 void SetPartionLabel(const QString& strPartion, const QString& strImage);
