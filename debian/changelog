@@ -1,3 +1,9 @@
+deepin-boot-maker (5.7.12) unstable; urgency=medium
+
+  * Support creating bootable USB drives from unpartitioned USB disks
+
+ -- XuShitong <xushitong@uniontech.com>  Fri, 07 Nov 2025 16:11:17 +0800
+
 deepin-boot-maker (5.7.11) unstable; urgency=medium
 
   * a permission promote issue was resolved.
