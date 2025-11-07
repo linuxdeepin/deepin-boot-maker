@@ -11,6 +11,8 @@
 #include <QtCore>
 #include <QString>
 #include <QSysInfo>
+#include <QThread>
+#include <sys/stat.h>
 
 #ifdef Q_OS_WIN32
 #include <Windows.h>
@@ -328,7 +330,8 @@ const QString MountPoint(const QString &targetDev)
     udev           /dev
     tmpfs          /run
     */
-    XSys::Result ret = XSys::SynExec("df", "--output=source,target");
+    // 排除网络文件系统类型，避免因为远程挂载导致 df 卡死
+    XSys::Result ret = XSys::SynExec("df", "--output=source,target -x cifs -x nfs -x smbfs -x sshfs -x ftpfs -x davfs");
 
     if (!ret.isSuccess()) {
         qWarning() << "call df failed" << ret.result();
@@ -624,6 +627,54 @@ bool FormatPartion(const QString& targetDev)
     return XSys::SynExec("mkfs.fat", targetDev).isSuccess();
 }
 
+bool CreatePartition(const QString& diskDev)
+{
+#ifdef Q_OS_LINUX
+    // 使用fdisk创建主分区（全盘创建一个主分区）
+    // o: 创建DOS分区表
+    // n: 创建新分区
+    // p: 主分区
+    // 1: 分区号1
+    // 默认起始扇区
+    // 默认结束扇区（使用全部空间）
+    // w: 写入磁盘
+
+    qDebug() << "Creating partition for disk" << diskDev;
+
+    QString cmd = QString("echo -e 'o\\nn\\np\\n1\\n\\n\\nw' | fdisk ") + diskDev;
+    XSys::Result result = XSys::SynExec("bash", "-c \"" + cmd + "\"");
+
+    if (!result.isSuccess()) {
+        qWarning() << "Failed to create partition table with fdisk for" << diskDev;
+        return false;
+    }
+    qDebug() << "Partition table created, reloading kernel partition table...";
+
+    // 通知内核重新读取分区表
+    XSys::SynExec("partprobe", diskDev);
+
+    // 等待分区创建完成
+    QThread::sleep(1);
+
+    // 检查分区是否创建成功
+    std::string partPath = diskDev.toStdString() + "1";
+    struct stat buffer;
+    bool success = (stat(partPath.c_str(), &buffer) == 0);
+
+    if (success) {
+        qDebug() << "Partition" << QString::fromStdString(partPath) << "created successfully";
+    } else {
+        qWarning() << "Partition creation verification failed for" << QString::fromStdString(partPath);
+    }
+
+    return success;
+#else
+    // Windows或其他系统暂不支持自动创建分区
+    (void)diskDev;
+    return false;
+#endif
+}
+
 QStringList GetPartionOfDisk(const QString& strDisk)
 {
     QStringList strPartions;
@@ -702,7 +753,7 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
     QString strName = QString("UNKNOWN");
     QString strTemp;
 
-    if (2 == strValues.size()) {
+    if (2 <= strValues.size()) {
         strTemp = strValues.at(1);
         strTemp = strTemp.trimmed();
     }
@@ -812,7 +863,7 @@ bool UmountPartion(const QString& strPartionName)
 
 bool UmountDisk(const QString &targetDev)
 {
-    bool bRet = false;
+    bool bRet = true;
     int iIndex = targetDev.lastIndexOf("/");
 
     if (iIndex < 0) {
@@ -827,6 +878,7 @@ bool UmountDisk(const QString &targetDev)
     }
 
     QStringList strPartions = GetPartionOfDisk(strKey);
+    strPartions.append(strKey);
 
     foreach (QString strPartion, strPartions) {
         QString strVal = strPath + strPartion;
