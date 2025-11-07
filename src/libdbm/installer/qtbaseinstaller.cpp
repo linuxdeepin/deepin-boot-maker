@@ -404,8 +404,37 @@ bool QtBaseInstaller::formatUsb()
     }
 
     if (m_bFormat) {
-        if (!XSys::DiskUtil::FormatPartion(m_strPartionName)) {
-            qCritical() << "Failed to format partition";
+        QString targetDev = m_strPartionName;
+
+        // 检查是否是 disk 节点（没有分区号）
+        // disk 节点如：/dev/sdb
+        // partition 节点如：/dev/sdb1
+        bool isDisk = true;
+        for (int i = targetDev.length() - 1; i >= 0; i--) {
+            if (targetDev[i].isDigit()) {
+                isDisk = false;
+                break;
+            }
+            if (targetDev[i] == '/') {
+                break;
+            }
+        }
+
+        // 如果是 disk 节点，需要先创建分区
+        if (isDisk) {
+            qDebug() << "Detected disk device" << targetDev << "without partition, creating partition...";
+            if (!XSys::DiskUtil::CreatePartition(targetDev)) {
+                qCritical() << "Failed to create partition for" << targetDev;
+                return false;
+            }
+            // 使用新创建的分区
+            targetDev = targetDev + "1";
+            m_strPartionName = targetDev;
+            qDebug() << "Partition created successfully, using" << targetDev;
+        }
+
+        // 格式化分区
+        if (!XSys::DiskUtil::FormatPartion(targetDev)) {
             return false;
         }
         qInfo() << "Partition formatted successfully";
