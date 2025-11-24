@@ -5,8 +5,8 @@ TEMPLATE  = app
 TARGET = deepin-boot-maker
 #添加安全编译参数
 QMAKE_LFLAGS += -z noexecstack -pie -z relro -z now
-QMAKE_CFLAGS += -fstack-protector-all -fPIE
-QMAKE_CXXFLAGS += -fstack-protector-all -fPIE
+QMAKE_CFLAGS += -fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2
+QMAKE_CXXFLAGS += -fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2
 
 ## 添加内存泄露检测
 #CONFIG(debug, debug|release) {

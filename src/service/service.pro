@@ -10,8 +10,8 @@ CONFIG -= app_bundle
 
 #添加安全编译参数
 QMAKE_LFLAGS += -z noexecstack -pie -z relro -z now
-QMAKE_CFLAGS += -fstack-protector-all -fPIE
-QMAKE_CXXFLAGS += -fstack-protector-all -fPIE
+QMAKE_CFLAGS += -fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2
+QMAKE_CXXFLAGS += -fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2
 
 
 TEMPLATE = app
