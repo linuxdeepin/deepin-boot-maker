@@ -24,7 +24,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="34"/>
         <source>Image Decompression Error: Verify md5 checksum of the image to ensure its integrity</source>
-        <translation>イメージ伸張エラー: イメージのMD5チェックサムを検証して、整合性を確認してください</translation>
+        <translation>イメージ展開エラー: イメージのMD5チェックサムを検証して、整合性を確認してください</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
