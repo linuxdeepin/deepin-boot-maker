@@ -1,9 +1,13 @@
 #!/usr/bin/make -f
 
-# 设置 Qt6 环境
-export QT_SELECT=qt6
-# 使用系统 PATH 中的 qmake6
-export QMAKE=qmake6
+# 自动检测 Qt 版本，优先使用 Qt6
+ifneq (,$(shell which qmake6 2>/dev/null))
+    export QT_SELECT=qt6
+    export QMAKE=qmake6
+else
+    export QT_SELECT=qt5
+    export QMAKE=qmake
+endif
 
 include /usr/share/dpkg/default.mk
 

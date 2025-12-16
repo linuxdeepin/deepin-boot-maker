@@ -25,7 +25,11 @@ static Result runApp(const QString &execPath, const QString &execParam, const QS
 //    app.setStandardOutputFile(outPipePath);
 //    app.setStandardErrorFile(outPipePath);
     app.setProgram(execPath);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     QStringList argList = execParam.split(" ", Qt::SkipEmptyParts);
+#else
+    QStringList argList = execParam.split(" ", QString::SkipEmptyParts);
+#endif
     app.setArguments(argList);
     app.start();
     if (!app.waitForStarted()) {
