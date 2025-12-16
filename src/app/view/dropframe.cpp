@@ -71,6 +71,7 @@ void DropFrame::paintEvent(QPaintEvent *e)
         QPixmap pixmap;
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         // Qt5: 使用 DGuiApplicationHelper
+        using namespace Dtk::Gui;
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType) {
             pixmap = QPixmap(":/theme/light/image/dash.svg").scaled(this->size());

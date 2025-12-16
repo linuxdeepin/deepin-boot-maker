@@ -15,9 +15,9 @@
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QRegExp>
 #include <QTextCodec>
-#else
-#include <QRegularExpression>
 #endif
+
+#include <QRegularExpression>
 
 #include <qglobal.h>
 #ifdef Q_OS_WIN32
@@ -511,8 +511,8 @@ QList<DeviceInfo> ListUsbDrives()
         QString filePath = usbfileinfoL.at(i).canonicalFilePath();
 
         // 过滤USB和MMC设备，但排除网络相关设备
-        bool isUsbOrMmc = fileName.contains(QRegExp("^usb-\\S{1,}$")) || fileName.contains(QRegExp("^mmc-\\S{1,}$"));
-        bool isNetwork = fileName.contains(QRegExp("nfs-|cifs-|smbfs-|sshfs-|ftpfs-|davfs-"));
+        bool isUsbOrMmc = fileName.contains(QRegularExpression("^usb-\\S{1,}$")) || fileName.contains(QRegularExpression("^mmc-\\S{1,}$"));
+        bool isNetwork = fileName.contains(QRegularExpression("nfs-|cifs-|smbfs-|sshfs-|ftpfs-|davfs-"));
 
         if (isUsbOrMmc && !isNetwork) {
             removeDevice.insert(filePath, fileName);

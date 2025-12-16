@@ -2,7 +2,11 @@ include($$PWD/../vendor/env.pri)
 
 # QT += dtk6core
 
-PKGCONFIG += dtk6core
+versionAtLeast(QT_VERSION, 6.0.0) {
+    PKGCONFIG += dtk6core
+} else {
+    PKGCONFIG += dtkcore
+}
 
 unix{
     QT += dbus
