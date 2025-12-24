@@ -14,3 +14,6 @@ osx
 .cursorindexingignore
 # SpecStory explanation file
 .specstory/.what-is-this.md
+
+# Auto Claude data directory
+.auto-claude/
