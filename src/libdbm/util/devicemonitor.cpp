@@ -25,14 +25,12 @@ DeviceMonitor::DeviceMonitor(QObject *parent) : QObject(parent)
     m_timer->setInterval(2000);
     connect(m_timer, &QTimer::timeout, this, [ = ] {
         QList<DeviceInfo> list = Utils::ListUsbDrives();
-        qDebug() << "Detected" << list.length() << "USB devices";
+        QStringList devices;
         for (int i = 0; i < list.size(); i++)
         {
-            qDebug() << "Device" << i << "- Path:" << list.at(i).path 
-                     << "Label:" << list.at(i).label 
-                     << "Type:" << list.at(i).fstype
-                     << "Format needed:" << list.at(i).needFormat;
+            devices << list.at(i).path;
         }
+        qDebug() << "Detected" << list.length() << "USB devices: " << devices;
 
         QList<DeviceInfo> intersectList = this->getIntersectDevice(list);
         qDebug() << "Found" << intersectList.size() << "unchanged devices";

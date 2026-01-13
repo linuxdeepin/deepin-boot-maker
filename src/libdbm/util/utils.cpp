@@ -477,8 +477,6 @@ bool isUsbDisk(const QString &dev)
 
 QList<DeviceInfo> ListUsbDrives()
 {
-    qDebug() << "Listing USB drives";
-    qDebug() << "Start getting device list";
     QList<DeviceInfo> deviceList;
 #ifdef Q_OS_WIN32
     QFileInfoList extdrivesList = QDir::drives();
@@ -487,7 +485,6 @@ QList<DeviceInfo> ListUsbDrives()
         QString deviceLetter = extdrivesList.at(i).path().toUpper();
         if (QDir::toNativeSeparators(deviceLetter) != QDir::toNativeSeparators(QDir::rootPath().toUpper()) && !QDir::toNativeSeparators(deviceLetter).contains("A:") && !QDir::toNativeSeparators(deviceLetter).contains("B:")) {
             if (GetDriveType(LPWSTR(deviceLetter.utf16())) == 2) {
-                qDebug() << "Found removable drive:" << deviceLetter;
                 DeviceInfo info;
                 info.path = QDir::toNativeSeparators(deviceLetter);
                 deviceList.push_back(info);
@@ -499,7 +496,6 @@ QList<DeviceInfo> ListUsbDrives()
 #ifdef Q_OS_LINUX
     QDir devlstdir("/dev/disk/by-id/");
     QFileInfoList usbfileinfoL = devlstdir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files);
-    qDebug() << "Step 1: Scan /dev/disk/by-id/ directory, found" << usbfileinfoL.size() << "device files";
 
     QMap<QString, DeviceInfo> dfDeviceInfos = CommandDfParse();
     QMap<QString, DeviceInfo> lsblkDeviceInfos = CommandLsblkParse();
@@ -518,13 +514,7 @@ QList<DeviceInfo> ListUsbDrives()
             removeDevice.insert(filePath, fileName);
         }
     }
-    qDebug() << "Step 4: Filter devices - Found" << removeDevice.size() << "USB/MMC devices from" << usbfileinfoL.size() << "total devices";
 
-    for (auto it = removeDevice.begin(); it != removeDevice.end(); ++it) {
-        qDebug() << "  Device path:" << it.key() << "Device name:" << it.value();
-    }
-
-    qDebug() << "Step 5: Traverse device partitions and filter eligible devices";
     int processedCount = 0;
     int validCount = 0;
 
@@ -533,7 +523,6 @@ QList<DeviceInfo> ListUsbDrives()
         if (!removeDevice.contains(devicePath)) {
             continue;
         }
-        qDebug() << "Processing device" << processedCount << ":" << devicePath << "with" << lsblkDeviceInfos.value(devicePath).children.size() << "partitions";
         // find first partition
         QString strDiskName = devicePath;
         DeviceInfo diskinfo = lsblkDeviceInfos.value(devicePath);
@@ -541,7 +530,6 @@ QList<DeviceInfo> ListUsbDrives()
 
         if (partitionNames.isEmpty()) {
             // 设备没有分区，作为整个磁盘展示
-            qDebug() << "  Device" << devicePath << "has no partitions, showing as whole disk";
             DeviceInfo wholeDevice = diskinfo;
             wholeDevice.isDisk = true;
             wholeDevice.strDev = "";
@@ -555,25 +543,17 @@ QList<DeviceInfo> ListUsbDrives()
 
             deviceList.push_back(wholeDevice);
             validCount++;
-            qDebug() << "    Added to device list (item" << validCount << "):" << wholeDevice.path
-                       << "Label:" << wholeDevice.label
-                       << "Size:" << wholeDevice.total << "MB"
-                       << "Need format:" << wholeDevice.needFormat;
         } else {
             // 设备有分区，遍历分区
             foreach (QString strPartionName, partitionNames) {
                 bool needformat = true;
                 DeviceInfo partitionInfo = diskinfo.children.value(strPartionName);
 
-                qDebug() << "  Check partition" << strPartionName << "filesystem:" << partitionInfo.fstype;
-
                 if (partitionInfo.fstype != "vfat") {
                     needformat = true;
-                    qDebug() << "    Filesystem is not vfat, need format";
                 }
                 else {
                     needformat = false;
-                    qDebug() << "    Filesystem is vfat, no need to format";
                 }
 
                 DeviceInfo dfinfo = dfDeviceInfos.value(strPartionName);
@@ -587,14 +567,9 @@ QList<DeviceInfo> ListUsbDrives()
                 partitionInfo.needFormat = needformat;
                 deviceList.push_back(partitionInfo);
                 validCount++;
-                qDebug() << "    Added to device list (item" << validCount << "):" << partitionInfo.path
-                           << "Size:" << partitionInfo.total << "MB"
-                           << "Need format:" << needformat;
-                qDebug() << partitionInfo.path << partitionInfo.used << partitionInfo.total << partitionInfo.target << partitionInfo.needFormat;
             }
         }
     }
-    qDebug() << "Step 5 completed: Processed" << processedCount << "devices, added" << validCount << "partitions to list";
 #endif
 
 #ifdef Q_OS_MAC
@@ -610,7 +585,6 @@ QList<DeviceInfo> ListUsbDrives()
     for (int i = 0; i < usbdevsL.size(); ++i) {
         if (isUsbDisk("/dev/" + usbdevsL.at(i))) {
             auto path = "/dev/" + usbdevsL.at(i);
-            qDebug() << "Found USB device:" << path;
             fulldrivelist.append(path);
 
             DeviceInfo info;
@@ -619,19 +593,9 @@ QList<DeviceInfo> ListUsbDrives()
         }
     }
 
-    qDebug() << "Found USB devices:" << fulldrivelist;
     outfile.close();
     outfile.remove();
 #endif
-    qDebug() << "Get device list completed: Found" << deviceList.size() << "available devices";
-    for (int i = 0; i < deviceList.size(); ++i) {
-        qDebug() << "  Device" << (i+1) << ":" << deviceList.at(i).path
-                   << "Label:" << deviceList.at(i).label
-                   << "Filesystem:" << deviceList.at(i).fstype
-                   << "Size:" << deviceList.at(i).total << "MB"
-                   << "Used:" << deviceList.at(i).used << "MB"
-                   << "Need format:" << deviceList.at(i).needFormat;
-    }
     return deviceList;
 }
 
