@@ -1,3 +1,15 @@
+deepin-boot-maker (6.0.13) unstable; urgency=medium
+
+  * fix: bash command hardening
+  * feat: Support creating bootable USB drives from unpartitioned USB disks
+  * feat: Add Qt5 compilation compatibility
+  * chore:  enhance service security
+  * chore: clean up verbose debug logs in device detection
+  * chore: enhance D-Bus service security configuration
+  * build(debian): separate Qt5/Qt6 build configurations for V25/V20 support
+
+ -- wangrong <wangrong@uniontech.com>  Thu, 29 Jan 2026 17:02:51 +0800
+
 deepin-boot-maker (6.0.12) unstable; urgency=medium
 
   * chore: Update compiler flags for security enhancements
