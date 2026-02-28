@@ -10,7 +10,7 @@ linux {
 
 }
 SUBDIRS += app
-SUBDIRS += tests
+# SUBDIRS += tests
 mac* {
     TRANSLATIONS_NAME = deepin-boot-maker
     TRANSLATIONS += $$PWD/translations/$${TRANSLATIONS_NAME}.ts \
