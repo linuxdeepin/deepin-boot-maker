@@ -17,7 +17,6 @@ public:
     {
     }
     ~BootMakerServicePrivate() {}
-    bool checkCaller();
     qint64 dbusCallerPid();
 
     bool disableCheck = false;

@@ -58,51 +58,6 @@ bool checkAuthorization(qint64 pid, const QString &action)
 #endif
 }
 
-#if 0 // Not use now
-int getProcIdByExeName(std::string execName)
-{
-    int pid = -1;
-
-    // Open the /proc directory
-    DIR *dp = opendir("/proc");
-    if (dp != NULL) {
-        // Enumerate all entries in directory until process found
-        struct dirent *dirp;
-        while (pid < 0 && (dirp = readdir(dp))) {
-            // Skip non-numeric entries
-            int id = atoi(dirp->d_name);
-            if (id > 0) {
-                // Read contents of virtual /proc/{pid}/cmdline file
-                auto exeSymlinkPath = std::string("/proc/") + dirp->d_name + "/exe";
-                char *actualpath = realpath(exeSymlinkPath.c_str(), NULL);
-                if (actualpath) {
-                    // Compare against requested process name
-                    if (execName == actualpath) {
-                        pid = id;
-                    }
-                }
-            }
-        }
-    }
-
-    closedir(dp);
-
-    return pid;
-}
-#endif
-
-static QString getProcIdExe(qint64 id)
-{
-    QString execName;
-    if (id > 0) {
-        // Read contents of virtual /proc/{pid}/cmdline file
-        QString exeSymlinkPath = QString("/proc/%1/exe").arg(id);
-        char *actualpath = realpath(exeSymlinkPath.toStdString().c_str(), NULL);
-        execName = QString(actualpath);
-    }
-    return execName;
-}
-
 BootMakerService::BootMakerService(QObject *parent) :
     QObject(parent), d_ptr(new BootMakerServicePrivate(this))
 {
@@ -152,7 +107,7 @@ void BootMakerService::Reboot()
 void BootMakerService::Start()
 {
     Q_D(BootMakerService);
-    if (!d->checkCaller()) {
+    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
         return;
     }
 
@@ -162,7 +117,7 @@ void BootMakerService::Start()
 void BootMakerService::Stop()
 {
     Q_D(BootMakerService);
-    if (!d->checkCaller()) {
+    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
         return;
     }
 
@@ -178,7 +133,7 @@ QString BootMakerService::DeviceList()
 {
     qDebug() << "BootMakerService DeviceList";
     Q_D(BootMakerService);
-    if (!d->checkCaller()) {
+    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
         return "";
     }
     return deviceListToJson(d->bm->deviceList());
@@ -187,10 +142,6 @@ QString BootMakerService::DeviceList()
 bool BootMakerService::Install(const QString &image, const QString &device, const QString &partition,  bool formatDevice)
 {
     Q_D(BootMakerService);
-    if (!d->checkCaller()) {
-        return false;
-    }
-
     if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
         return false;
     }
@@ -204,38 +155,12 @@ bool BootMakerService::CheckFile(const QString &filepath)
 {
     Q_D(BootMakerService);
 
-    // if (!d->checkCaller()) {
+    // if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
     //     return false;
     // }
     return d->bm->checkfile(filepath);
 //    emit d->bm->startCheckfile(filepath);
 //    return true;
-}
-
-bool BootMakerServicePrivate::checkCaller()
-{
-    if (disableCheck) {
-        return true;
-    }
-
-    Q_Q(BootMakerService);
-    if (!q->calledFromDBus()) {
-        return false;
-    }
-
-    qint64 callerPid = dbusCallerPid();
-    QString callerExe = getProcIdExe(callerPid);
-    QString dbmExe = QStandardPaths::findExecutable("deepin-boot-maker", {"/usr/bin"});
-
-    qDebug() << "callerPid is: " << callerPid << "callerExe is:" << callerExe;
-
-    if (callerExe != dbmExe) {
-        qDebug() << QString("caller not authorized") ;
-        return false;
-    }
-    qDebug() <<  QString("caller authorized");
-
-    return true;
 }
 
 /**
