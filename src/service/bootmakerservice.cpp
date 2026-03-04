@@ -39,12 +39,12 @@ const QString s_PolkitActionReboot = "com.deepin.bootmaker.reboot";
    @note Available on linux/unix/macos platform.
    @return check passed.
  */
-bool checkAuthorization(qint64 pid, const QString &action)
+bool checkAuthorization(const QString &dbusBusName, const QString &action)
 {
 #if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
     PolkitQt1::Authority::Result ret = PolkitQt1::Authority::instance()->checkAuthorizationSync(
         action,
-        PolkitQt1::UnixProcessSubject(pid),
+        PolkitQt1::SystemBusNameSubject(dbusBusName),
         PolkitQt1::Authority::AllowUserInteraction);
 
     if (PolkitQt1::Authority::Yes == ret) {
@@ -100,16 +100,13 @@ BootMakerService::~BootMakerService()
 void BootMakerService::Reboot()
 {
     Q_D(BootMakerService);
-    if (checkAuthorization(d->dbusCallerPid(), s_PolkitActionReboot))
+    if (checkAuthorization(d->dbusCallerBusName(), s_PolkitActionReboot))
         d->bm->reboot();
 }
 
 void BootMakerService::Start()
 {
     Q_D(BootMakerService);
-    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
-        return;
-    }
 
     emit s_StartBootMarker();
 }
@@ -117,9 +114,6 @@ void BootMakerService::Start()
 void BootMakerService::Stop()
 {
     Q_D(BootMakerService);
-    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
-        return;
-    }
 
     qDebug() << "service exit by call Stop";
     qApp->exit(0);
@@ -133,16 +127,13 @@ QString BootMakerService::DeviceList()
 {
     qDebug() << "BootMakerService DeviceList";
     Q_D(BootMakerService);
-    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
-        return "";
-    }
     return deviceListToJson(d->bm->deviceList());
 }
 
 bool BootMakerService::Install(const QString &image, const QString &device, const QString &partition,  bool formatDevice)
 {
     Q_D(BootMakerService);
-    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
+    if (!d->disableCheck && !checkAuthorization(d->dbusCallerBusName(), s_PolkitActionCreate)) {
         return false;
     }
 
@@ -155,6 +146,7 @@ bool BootMakerService::CheckFile(const QString &filepath)
 {
     Q_D(BootMakerService);
 
+    // if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
     // if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
     //     return false;
     // }
@@ -180,4 +172,18 @@ qint64 BootMakerServicePrivate::dbusCallerPid()
     }
 
     return 0;
+}
+
+/**
+   @return DBus interface caller bus name
+    If the call is not from dbus (from UT), return empty string
+ */
+QString BootMakerServicePrivate::dbusCallerBusName()
+{
+    Q_Q(BootMakerService);
+    if (!q->calledFromDBus()) {
+        return QString();
+    }
+
+    return q->message().service();
 }

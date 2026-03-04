@@ -18,6 +18,7 @@ public:
     }
     ~BootMakerServicePrivate() {}
     qint64 dbusCallerPid();
+    QString dbusCallerBusName();
 
     bool disableCheck = false;
     BootMaker *bm = nullptr;
