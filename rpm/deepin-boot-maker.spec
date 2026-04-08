@@ -34,7 +34,7 @@ BuildRequires: libXext-devel
 Requires: syslinux
 Requires: syslinux-nonlinux
 %endif
-Requires: p7zip
+Requires: 7zip
 Requires: mtools
 Requires: udisks2
 Requires: genisoimage
