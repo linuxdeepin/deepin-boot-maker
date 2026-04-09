@@ -1,3 +1,10 @@
+deepin-boot-maker (6.0.14) unstable; urgency=medium
+
+  * deps: migrate from p7zip-full to 7zip package
+  * chore(CI): add debian check workflow
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 09 Apr 2026 13:47:50 +0800
+
 deepin-boot-maker (6.0.13) unstable; urgency=medium
 
   * fix: bash command hardening
