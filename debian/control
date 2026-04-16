@@ -30,7 +30,7 @@ Vcs-Browser: https://salsa.debian.org/pkg-deepin-team/deepin-boot-maker
 
 Package: deepin-boot-maker
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, 7zip, mtools, udisks2,
+Depends: ${shlibs:Depends}, ${misc:Depends}, p7zip-full, mtools, udisks2,
  syslinux [linux-amd64 linux-i386],
  syslinux-common [linux-amd64 linux-i386], genisoimage,
  dde-qt6integration
