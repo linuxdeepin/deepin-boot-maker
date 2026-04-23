@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -17,8 +17,7 @@ public:
     {
     }
     ~BootMakerServicePrivate() {}
-    bool checkCaller();
-    qint64 dbusCallerPid();
+    bool checkAuthorization(const QString &action);
 
     bool disableCheck = false;
     BootMaker *bm = nullptr;

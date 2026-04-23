@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -43,17 +43,21 @@ const QString s_PolkitActionReboot = "com.deepin.bootmaker.reboot";
 /**
    @brief Polkit action authorization check.
         Use com.deepin.bootmaker.policy config file.
-        Default action id: "com.deepin.bootmaker"
    @note Available on linux/unix/macos platform.
    @return check passed.
  */
-bool checkAuthorization(qint64 pid, const QString &action)
+bool checkAuthorization(const QString &busName, const QString &action)
 {
 #if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
-    qDebug() << "Checking authorization for action:" << action << "PID:" << pid;
-    PolkitQt1::Authority::Result ret = PolkitQt1::Authority::instance()->checkAuthorizationSync(
+    qDebug() << "Checking authorization for action:" << action << "BusName:" << busName;
+    auto authority = PolkitQt1::Authority::instance();
+    if (!authority) {
+        qWarning() << "Failed to get Polkit authority instance";
+        return false;
+    }
+    PolkitQt1::Authority::Result ret = authority->checkAuthorizationSync(
         action,
-        PolkitQt1::UnixProcessSubject(pid),
+        PolkitQt1::SystemBusNameSubject(busName),
         PolkitQt1::Authority::AllowUserInteraction);
 
     if (PolkitQt1::Authority::Yes == ret) {
@@ -67,53 +71,6 @@ bool checkAuthorization(qint64 pid, const QString &action)
     qDebug() << "Authorization check skipped on non-Linux/Unix/Mac platform";
     return true;
 #endif
-}
-
-#if 0 // Not use now
-int getProcIdByExeName(std::string execName)
-{
-    int pid = -1;
-
-    // Open the /proc directory
-    DIR *dp = opendir("/proc");
-    if (dp != NULL) {
-        // Enumerate all entries in directory until process found
-        struct dirent *dirp;
-        while (pid < 0 && (dirp = readdir(dp))) {
-            // Skip non-numeric entries
-            int id = atoi(dirp->d_name);
-            if (id > 0) {
-                // Read contents of virtual /proc/{pid}/cmdline file
-                auto exeSymlinkPath = std::string("/proc/") + dirp->d_name + "/exe";
-                char *actualpath = realpath(exeSymlinkPath.c_str(), NULL);
-                if (actualpath) {
-                    // Compare against requested process name
-                    if (execName == actualpath) {
-                        pid = id;
-                    }
-                }
-            }
-        }
-    }
-
-    closedir(dp);
-
-    return pid;
-}
-#endif
-
-static QString getProcIdExe(qint64 id)
-{
-    qDebug() << "Getting executable path for process ID:" << id;
-    QString execName;
-    if (id > 0) {
-        // Read contents of virtual /proc/{pid}/cmdline file
-        QString exeSymlinkPath = QString("/proc/%1/exe").arg(id);
-        char *actualpath = realpath(exeSymlinkPath.toStdString().c_str(), NULL);
-        execName = QString(actualpath);
-        qDebug() << "Process executable path:" << execName;
-    }
-    return execName;
 }
 
 BootMakerService::BootMakerService(QObject *parent) :
@@ -161,7 +118,7 @@ void BootMakerService::Reboot()
 {
     Q_D(BootMakerService);
     qInfo() << "Reboot requested";
-    if (checkAuthorization(d->dbusCallerPid(), s_PolkitActionReboot)) {
+    if (d->checkAuthorization(s_PolkitActionReboot)) {
         qDebug() << "Reboot authorized, proceeding";
         d->bm->reboot();
     } else {
@@ -173,8 +130,8 @@ void BootMakerService::Start()
 {
     Q_D(BootMakerService);
     qInfo() << "Start requested";
-    if (!d->checkCaller()) {
-        qWarning() << "Start request denied - Invalid caller";
+    if (!d->checkAuthorization(s_PolkitActionCreate)) {
+        qWarning() << "Start request denied - Authorization failed";
         return;
     }
 
@@ -186,8 +143,8 @@ void BootMakerService::Stop()
 {
     Q_D(BootMakerService);
     qInfo() << "Stop requested";
-    if (!d->checkCaller()) {
-        qWarning() << "Stop request denied - Invalid caller";
+    if (!d->checkAuthorization(s_PolkitActionCreate)) {
+        qWarning() << "Stop request denied - Authorization failed";
         return;
     }
 
@@ -203,8 +160,8 @@ QString BootMakerService::DeviceList()
 {
     Q_D(BootMakerService);
     qDebug() << "Device list requested";
-    if (!d->checkCaller()) {
-        qWarning() << "Device list request denied - Invalid caller";
+    if (!d->checkAuthorization(s_PolkitActionCreate)) {
+        qWarning() << "Device list request denied - Authorization failed";
         return "";
     }
     return deviceListToJson(d->bm->deviceList());
@@ -215,12 +172,7 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
     Q_D(BootMakerService);
     qInfo() << "Install requested - Image:" << image << "Device:" << device << "Partition:" << partition;
     
-    if (!d->checkCaller()) {
-        qWarning() << "Install request denied - Invalid caller";
-        return false;
-    }
-
-    if (!d->disableCheck && !checkAuthorization(d->dbusCallerPid(), s_PolkitActionCreate)) {
+    if (!d->checkAuthorization(s_PolkitActionCreate)) {
         qWarning() << "Install request denied - Authorization failed";
         return false;
     }
@@ -237,50 +189,22 @@ bool BootMakerService::CheckFile(const QString &filepath)
     return d->bm->checkfile(filepath);
 }
 
-bool BootMakerServicePrivate::checkCaller()
+bool BootMakerServicePrivate::checkAuthorization(const QString &action)
 {
     if (disableCheck) {
-        qDebug() << "Caller check disabled";
+        qDebug() << "Authorization check disabled";
         return true;
     }
 
     Q_Q(BootMakerService);
     if (!q->calledFromDBus()) {
-        qWarning() << "Caller check failed - Not called from DBus";
+        qWarning() << "Authorization check failed - Not called from DBus";
         return false;
     }
 
-    qint64 callerPid = dbusCallerPid();
-    QString callerExe = getProcIdExe(callerPid);
-    QString dbmExe = QStandardPaths::findExecutable("deepin-boot-maker", {"/usr/bin"});
+    QString busName = q->message().service();
+    bool ret = ::checkAuthorization(busName, action);
+    qDebug() << "Authorization check result: " << ret;
 
-    qDebug() << "Caller check - PID:" << callerPid << "Executable:" << callerExe;
-
-    if (callerExe != dbmExe) {
-        qWarning() << "Caller not authorized - Invalid executable";
-        return false;
-    }
-    qDebug() << "Caller authorized";
-    return true;
-}
-
-/**
-   @return DBus interface caller pid
-    If the call is not from dbus (from UT), return 0
- */
-qint64 BootMakerServicePrivate::dbusCallerPid()
-{
-    Q_Q(BootMakerService);
-    if (!q->calledFromDBus()) {
-        qDebug() << "Not called from DBus, returning 0";
-        return 0;
-    }
-
-    auto interface = q->connection().interface();
-    if (interface) {
-        return static_cast<qint64>(interface->servicePid(q->message().service()).value());
-    }
-
-    qDebug() << "Failed to get DBus caller PID";
-    return 0;
+    return ret;
 }
