@@ -1,3 +1,10 @@
+deepin-boot-maker (6.0.15) unstable; urgency=medium
+
+  * Revert "deps: migrate from p7zip-full to 7zip package"
+  * refactor: improve Polkit authorization using SystemBusNameSubject
+
+ -- wangrong <wangrong@uniontech.com>  Fri, 24 Apr 2026 10:09:40 +0800
+
 deepin-boot-maker (6.0.14) unstable; urgency=medium
 
   * deps: migrate from p7zip-full to 7zip package
