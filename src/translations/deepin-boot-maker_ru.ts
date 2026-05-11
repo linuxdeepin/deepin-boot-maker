@@ -29,7 +29,7 @@
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="37"/>
         <source>Internal Error</source>
-        <translation>Внутренняя Ошибка</translation>
+        <translation>Внутренняя ошибка</translation>
     </message>
 </context>
 <context>
@@ -37,12 +37,12 @@
     <message>
         <location filename="../app/bmwindow.cpp" line="69"/>
         <source>Boot Maker is a simple tool to write system image files into USB flash drives and other media.</source>
-        <translation>BootMaker - это простой инструмент для записи файлов системных образов на USB-флешки и другие носители.</translation>
+        <translation>BootMaker — это простой инструмент для записи файлов системных образов на USB-флешки и другие носители.</translation>
     </message>
     <message>
         <location filename="../app/bmwindow.cpp" line="71"/>
         <source>Boot Maker</source>
-        <translation>Средство для создания  Загрузочного Диска</translation>
+        <translation>Средство создания загрузочного диска</translation>
     </message>
 </context>
 <context>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../app/view/resultview.cpp" line="175"/>
         <source>Submit Feedback</source>
-        <translation>Отправить Отзыв</translation>
+        <translation>Отправить отзыв</translation>
     </message>
     <message>
         <location filename="../app/view/resultview.cpp" line="198"/>
@@ -207,12 +207,12 @@
         <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>OK</source>
         <comment>button</comment>
-        <translation>OK</translation>
+        <translation>ОК</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
         <source>You have selected the ISO image in this USB flash drive. Formatting it will erase all your files. Please reselect the image file or cancel the formatting.</source>
-        <translation>Вы выбрали ISO-образ на этом USB-накопителе. Форматирование сотрет все ваши файлы. Пожалуйста, повторно выберите файл изображения или отмените форматирование.</translation>
+        <translation>Вы выбрали ISO-образ на этом USB-накопителе. Форматирование сотрёт все ваши файлы. Пожалуйста, повторно выберите файл изображения или отмените форматирование.</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="385"/>
