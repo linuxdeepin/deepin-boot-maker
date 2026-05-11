@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
 <context>
     <name>BMHandler</name>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="20"/>
         <source>Disk Format Error: Please reformat it or disable &quot;Auto scan USB storage devices&quot; in Security Center</source>
-        <translation>Ошибка форматирования диска: Пожалуйста, переформатируйте диск или отключите &quot;Автоматическое сканирование внешних дисков&quot; в Защитнике Windows</translation>
+        <translation>Ошибка форматирования диска: Пожалуйста, переформатируйте диск или отключите «Автоматическое сканирование внешних дисков» в Защитнике Windows</translation>
     </message>
     <message>
         <location filename="../libdbm/backend/bmhandler.cpp" line="23"/>
