@@ -49,7 +49,7 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
 # eliminate files in src/tools
-Files: src/tools/exportPot src/tools/importPo src/tools/importPo.bat
+Files: src/tools/exportPot src/tools/exportPot.bat src/tools/importPo src/tools/importPo.bat
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
