@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -171,6 +171,14 @@ void QtBaseInstaller::checkError()
     }
 
     qInfo() << "begin check error";
+
+    // Check if the partition device still exists (handles physical USB removal)
+    if (!QFile::exists(m_strPartionName)) {
+        qCritical() << "Error::get(Error::USBMountFailed) device removed:" << m_strPartionName;
+        emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBMountFailed);
+        return;
+    }
+
     QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
     if (strDisk.isEmpty()) {
