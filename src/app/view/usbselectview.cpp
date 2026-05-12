@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -129,6 +129,7 @@ UsbSelectView::UsbSelectView(DWidget *parent) : DWidget(parent)
     font.setWeight(QFont::Normal);
     m_warningHint->setFont(font);
     m_warningHint->setAlignment(Qt::AlignCenter);
+    m_warningHint->setFixedHeight(50);
     QHBoxLayout* pWarningLayout = new QHBoxLayout;
     pWarningLayout->setContentsMargins(30, 0, 30, 0);
     pWarningLayout->addWidget(m_warningHint);
