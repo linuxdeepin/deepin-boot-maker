@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2015 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -324,7 +324,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             deviceCount++;
             info.path = reg.cap(1);
             info.label = reg.cap(2);
-            info.total = reg.cap(3).toLongLong() * 1024 / 1024; // MB
+            info.total = reg.cap(3).toLongLong() / 1024 / 1024; // MB
             info.uuid = reg.cap(4);
             info.fstype = reg.cap(5);
             type = reg.cap(6);
