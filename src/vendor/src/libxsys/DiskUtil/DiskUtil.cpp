@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2015 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -642,8 +642,18 @@ bool CreatePartition(const QString& diskDev)
 
     qDebug() << "Creating partition for disk" << diskDev;
 
-    QString cmd = QString("echo -e 'o\\nn\\np\\n1\\n\\n\\nw' | fdisk ") + diskDev;
-    XSys::Result result = XSys::SynExec("bash", "-c \"" + cmd + "\"");
+    QTemporaryFile tmpFile;
+    if (!tmpFile.open()) {
+        qWarning() << "Failed to create fdisk input file:" << tmpFile.errorString();
+        return false;
+    }
+    QTextStream out(&tmpFile);
+    out << "o\nn\np\n1\n\n\nw\n";
+    tmpFile.close();
+
+    XSys::Result result = XSys::SynExec(XSys::FS::SearchBin("fdisk"),
+                                        diskDev,
+                                        tmpFile.fileName());
 
     if (!result.isSuccess()) {
         qWarning() << "Failed to create partition table with fdisk for" << diskDev;
