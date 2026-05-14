@@ -14,25 +14,10 @@
 #include <DApplication>
 #include <DWidgetUtil>
 #include <DGuiApplicationHelper>
-#include <QDBusConnection>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <DApplicationSettings>
 #endif
-
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#if defined (Q_OS_LINUX)
-#include <polkit-qt5-1/PolkitQt1/Authority>
-#include <polkit-qt5-1/PolkitQt1/Subject>
-#endif
-#else
-#if defined (Q_OS_LINUX)
-#include <polkit-qt6-1/PolkitQt1/Authority>
-#include <polkit-qt6-1/PolkitQt1/Subject>
-#endif
-#endif
-
-const QString s_PolkitActionCreate = "com.deepin.bootmaker.create";
 
 
 DCORE_USE_NAMESPACE
@@ -68,27 +53,6 @@ static bool switchToRoot(QApplication &app)
 
 #endif
 
-// 在前端中预先进行身份验证, 便于流程控制
-bool checkAuthorization()
-{
-#if defined (Q_OS_LINUX)
-    QString busName = QDBusConnection::systemBus().baseService();
-    auto authority = PolkitQt1::Authority::instance();
-    if (!authority) {
-        qWarning() << "Failed to get Polkit authority instance";
-        return false;
-    }
-    PolkitQt1::Authority::Result ret = authority->checkAuthorizationSync(
-        s_PolkitActionCreate,
-        PolkitQt1::SystemBusNameSubject(busName),
-        PolkitQt1::Authority::AllowUserInteraction);
-
-    return PolkitQt1::Authority::Yes == ret;
-#else
-    return true;
-#endif
-}
-
 int main(int argc, char **argv)
 {
     qInfo() << "Starting Boot Maker application";
@@ -113,11 +77,6 @@ int main(int argc, char **argv)
     app.setApplicationVersion(DApplication::buildVersion("20191031"));
 //    app.setApplicationVersion(DApplication::buildVersion(VERSION));
 //    app.setTheme("light");
-
-    if (!checkAuthorization()) {
-        qInfo() << "Authorization failed, exiting";
-        return 1;
-    }
 
 #ifdef Q_OS_MAC
     qDebug() << "Checking root privileges on macOS";

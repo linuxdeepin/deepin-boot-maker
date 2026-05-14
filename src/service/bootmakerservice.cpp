@@ -128,26 +128,14 @@ void BootMakerService::Reboot()
 
 void BootMakerService::Start()
 {
-    Q_D(BootMakerService);
-    qInfo() << "Start requested";
-    if (!d->checkAuthorization(s_PolkitActionCreate)) {
-        qWarning() << "Start request denied - Authorization failed";
-        return;
-    }
-
+    // 启动服务, 不会修改系统, 不需要鉴权
     qDebug() << "Starting Boot Maker";
     emit s_StartBootMarker();
 }
 
 void BootMakerService::Stop()
 {
-    Q_D(BootMakerService);
-    qInfo() << "Stop requested";
-    if (!d->checkAuthorization(s_PolkitActionCreate)) {
-        qWarning() << "Stop request denied - Authorization failed";
-        return;
-    }
-
+    // 停止服务, 不会修改系统, 不需要鉴权
     qDebug() << "Stopping Boot Maker Service";
     qApp->exit(0);
 }
@@ -158,12 +146,9 @@ void BootMakerService::Stop()
 //! return json of devicelist
 QString BootMakerService::DeviceList()
 {
+    // BootMaker::deviceList() 是只读操作, 不需要鉴权
     Q_D(BootMakerService);
     qDebug() << "Device list requested";
-    if (!d->checkAuthorization(s_PolkitActionCreate)) {
-        qWarning() << "Device list request denied - Authorization failed";
-        return "";
-    }
     return deviceListToJson(d->bm->deviceList());
 }
 
@@ -184,6 +169,7 @@ bool BootMakerService::Install(const QString &image, const QString &device, cons
 
 bool BootMakerService::CheckFile(const QString &filepath)
 {
+    // BootMaker::checkfile() 是只读操作, 不需要鉴权
     Q_D(BootMakerService);
     qDebug() << "File check requested:" << filepath;
     return d->bm->checkfile(filepath);
