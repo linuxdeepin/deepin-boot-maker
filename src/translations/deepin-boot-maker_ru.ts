@@ -81,7 +81,7 @@
     <message>
         <location filename="../app/view/isoselectview.cpp" line="378"/>
         <source>Detecting ISO file, please wait...</source>
-        <translation>Обнаружение файла ISO, пожалуйста, подождите...</translation>
+        <translation>Обнаружение файла ISO, пожалуйста, подождите…</translation>
     </message>
 </context>
 <context>
@@ -94,7 +94,7 @@
     <message>
         <location filename="../app/view/progressview.cpp" line="46"/>
         <source>Burning, please wait...</source>
-        <translation>Запись, пожалуйста подождите... </translation>
+        <translation>Запись, пожалуйста подождите…</translation>
     </message>
     <message>
         <location filename="../app/view/progressview.cpp" line="54"/>
