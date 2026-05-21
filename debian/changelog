@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.17) unstable; urgency=medium
+
+  * fix(disk): propagate SetPartionLabel errors to installer layer
+
+ -- wangrong <wangrong@uniontech.com>  Thu, 21 May 2026 21:58:37 +0800
+
 deepin-boot-maker (6.0.16) unstable; urgency=medium
 
   * fix(disk): use temp file instead of shell pipe for fdisk input
