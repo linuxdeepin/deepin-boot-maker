@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -47,7 +47,10 @@ bool QtX86Installer::installBootload()
     }
 
     qDebug() << "Setting partition label for image:" << m_strImage;
-    XSys::DiskUtil::SetPartionLabel(m_strPartionName, m_strImage);
+    if (!XSys::DiskUtil::SetPartionLabel(m_strPartionName, m_strImage)) {
+        qCritical() << "Failed to set partition label";
+        return false;
+    }
     
     qInfo() << "Bootloader installation completed successfully";
     return true;

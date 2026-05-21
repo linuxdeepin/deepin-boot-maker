@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2015 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -63,6 +63,10 @@ Result SynExec(const QString &exec, const QString &param, const QString &execPip
     Result ret = runApp(exec, param, execPipeIn);
     qInfo() << "call:" << exec + " " + param << "with:" << execPipeIn ;
     qInfo() << "resut:" << ret.isSuccess();
+    if (!ret.isSuccess()) {
+        qInfo() << "stdout:" << ret.result();
+        qInfo() << "stderr:" << ret.errmsg();
+    }
     return ret;
 }
 

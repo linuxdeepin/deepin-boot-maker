@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2015 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -34,7 +34,7 @@ bool FormatPartion(const QString& targetDev);
 bool CreatePartition(const QString& diskDev);
 QStringList GetPartionOfDisk(const QString& strDisk);
 bool SetActivePartion(const QString& strDisk, const QString& strPartion);
-void SetPartionLabel(const QString& strPartion, const QString& strImage);
+bool SetPartionLabel(const QString& strPartion, const QString& strImage);
 QString getPartitionUUID(const QString& strPartition);
 }
 

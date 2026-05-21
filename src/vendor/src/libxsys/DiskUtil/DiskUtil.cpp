@@ -745,33 +745,38 @@ bool SetActivePartion(const QString& strDisk, const QString& strPartion)
     return ret.isSuccess();
 }
 
-void SetPartionLabel(const QString& strPartion, const QString& strImage)
+bool SetPartionLabel(const QString& strPartion, const QString& strImage)
 {
-    /*QProcess cannot handle Chinese paths*/
-    XSys::SynExec(XSys::FS::SearchBin("fsck"), QString("-y %1").arg(strPartion));
-    QStringList args;
-    args << "-i" << strImage << "-d";
-    XSys::Result ret3 = XSys::SynExec("isoinfo", args);
-
-    if (!ret3.isSuccess()) {
-        qWarning() << "call isoinfo failed" << ret3.result();
-        return;
+    if (!XSys::SynExec(XSys::FS::SearchBin("fsck"), QStringList{"-y", strPartion}).isSuccess()) {
+        qWarning() << "fsck failed on" << strPartion << ", continuing anyway";
     }
 
-    QStringList volume = ret3.result().split("\n").filter("Volume id");
-    QString tem = volume.takeAt(0);
-    QStringList strValues = tem.split(":");
-    QString strName = QString("UNKNOWN");
-    QString strTemp;
-
-    if (2 <= strValues.size()) {
-        strTemp = strValues.at(1);
-        strTemp = strTemp.trimmed();
+    XSys::Result isoResult = XSys::SynExec("isoinfo", QStringList{"-i", strImage, "-d"});
+    if (!isoResult.isSuccess()) {
+        qWarning() << "call isoinfo failed:" << isoResult.result();
+        return false;
     }
 
-    //标签名最长长度为十一位
-    strName = strTemp.isEmpty()?strName:(strTemp.length() > 11)?strTemp.left(11):strTemp;
-    XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QString(" %1 \"%2\"").arg(strPartion).arg(strName));
+    // Volume id 格式: "Volume id: DEEPIN" 或 "Volume id: UOS"
+    QString volumeId;
+    for (const QString &line : isoResult.result().split("\n")) {
+        if (line.startsWith("Volume id:")) {
+            volumeId = line.split(":").last().trimmed();
+            break;
+        }
+    }
+
+    if (volumeId.isEmpty()) {
+        qWarning() << "No volume id found in isoinfo output";
+        return false;
+    }
+
+    // FAT32 卷标最长 11 字符
+    QString label = volumeId.left(11);
+    if (volumeId.length() > 11) {
+        qWarning() << "Volume id truncated:" << volumeId << "->" << label;
+    }
+    return XSys::SynExec(XSys::FS::SearchBin("fatlabel"), QStringList{strPartion, label}).isSuccess();
 }
 
 QString getPartitionUUID(const QString& strPartition)
