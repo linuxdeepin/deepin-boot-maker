@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -18,7 +18,7 @@ void UnitTestObj::SetUpTestCase()
 
 void UnitTestObj::TearDownTestCase()
 {
-    delete  m_pBMinterFace;
+    // BMInterface::ref() 返回单例引用，不能 delete，由 DSingleton 自动管理生命周期
     m_pBMinterFace = nullptr;
 }
 

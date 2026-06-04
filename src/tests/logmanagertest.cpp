@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -21,7 +21,9 @@ TEST_F(LogManagerTest, setSystemlog)
 //    EXPECT_EQ(DBMLogManager::setSystemLog(),true);
 
     DBMLogManager::setSystemLog(true);
-
+    // 恢复状态，避免影响后续 registerFileAppender 测试
+    // systemLog=true 时日志路径切换到 /var/log/deepin/，普通用户无写权限
+    DBMLogManager::setSystemLog(false);
 }
 
 TEST_F(LogManagerTest, registerConsoleAppender)
