@@ -128,7 +128,13 @@ void BootMakerService::Reboot()
 
 void BootMakerService::Start()
 {
-    // 启动服务, 不会修改系统, 不需要鉴权
+    Q_D(BootMakerService);
+    qInfo() << "Start requested";
+    if (!d->checkAuthorization(s_PolkitActionCreate)) {
+        qWarning() << "Start request denied - Authorization failed";
+        return;
+    }
+
     qDebug() << "Starting Boot Maker";
     emit s_StartBootMarker();
 }
