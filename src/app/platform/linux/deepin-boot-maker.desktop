@@ -10,6 +10,7 @@ Terminal=false
 Type=Application
 Version=1.0
 X-Deepin-Vendor=deepin
+X-Deepin-Singleton=true
 
 # Translations:
 # Do not manually modify!
