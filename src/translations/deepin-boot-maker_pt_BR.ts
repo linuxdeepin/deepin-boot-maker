@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
 <context>
     <name>BMHandler</name>
     <message>
@@ -209,7 +207,7 @@
         <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>OK</source>
         <comment>button</comment>
-        <translation>Ok</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
