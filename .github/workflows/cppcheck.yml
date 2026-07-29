@@ -14,9 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: export
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: refs/heads/${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          allow-unsafe-pr-checkout: true
           persist-credentials: false
       - uses: linuxdeepin/action-cppcheck@main
         with:
