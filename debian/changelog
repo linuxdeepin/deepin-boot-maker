@@ -1,3 +1,12 @@
+deepin-boot-maker (6.0.19) unstable; urgency=medium
+
+  * chore: Update version to 6.0.19
+  * chore: Sync by https://github.com/linuxdeepin/.github/commit/826bedc64f009f4d9ebb5fba0ffe1637f1f02667
+  * fix: add X-Deepin-Singleton flag to desktop file
+  * fix: remove deepin prefix from Chinese translations in desktop file
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Thu, 30 Jul 2026 15:27:09 +0800
+
 deepin-boot-maker (6.0.18) unstable; urgency=medium
 
   * fix(tests): fix unit test bugs and migrate coverage script to Qt6
