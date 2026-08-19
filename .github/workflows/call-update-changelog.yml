@@ -1,0 +1,53 @@
+name: Call update changelog
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Target version; leave empty to auto bump"
+        required: false
+        type: string
+      name:
+        description: "Maintainer name used in debian/changelog"
+        required: true
+        type: string
+      email:
+        description: "Maintainer email used in debian/changelog"
+        required: true
+        type: string
+      base_branch:
+        description: "Base branch to read and target"
+        required: false
+        default: master
+        type: string
+      distribution:
+        description: "Changelog distribution"
+        required: false
+        default: unstable
+        type: string
+      create_pr:
+        description: "Create a pull request after generating changelog"
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  update_changelog:
+    uses: linuxdeepin/.github/.github/workflows/update-changelog.yml@master
+    with:
+      version: ${{ inputs.version }}
+      name: ${{ inputs.name }}
+      email: ${{ inputs.email }}
+      base_branch: ${{ inputs.base_branch }}
+      distribution: ${{ inputs.distribution }}
+      create_pr: ${{ inputs.create_pr }}
+    secrets: inherit
+
+  show_result:
+    runs-on: ubuntu-latest
+    needs: update_changelog
+    steps:
+      - name: Show update changelog result
+        run: |
+          echo "Version: ${{ needs.update_changelog.outputs.version }}"
+          echo "Pull Request URL: ${{ needs.update_changelog.outputs.pr_url }}"
