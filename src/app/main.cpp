@@ -1,10 +1,9 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include <QDebug>
 #include <QIcon>
-#include <QProcess>
 
 #include "bmwindow.h"
 #include <bminterface.h>
@@ -18,36 +17,6 @@
 
 DCORE_USE_NAMESPACE
 DWIDGET_USE_NAMESPACE
-
-#ifdef Q_OS_MAC
-static bool switchToRoot(QApplication &app)
-{
-    QStringList allappargs = app.arguments();
-    QProcess whoamip;
-    whoamip.start("whoami");
-    whoamip.waitForFinished();
-
-    if (QString(whoamip.readAll()).remove("\r").remove("\n") != "root") {
-        QString argsconc = "";
-        QString argsconcSingleQuote = "";
-
-        for (int i = 1; i < allappargs.size(); ++i) {
-            argsconc += QString("\"%1\" ").arg(allappargs.at(i));
-            argsconcSingleQuote += QString("'%1' ").arg(allappargs.at(i));
-        }
-
-        argsconc += "\"rootcheck=no\"";
-        argsconcSingleQuote += "'rootcheck=no'";
-
-        QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
-        return true;
-
-    }
-
-    return false;
-}
-
-#endif
 
 int main(int argc, char **argv)
 {
@@ -73,22 +42,15 @@ int main(int argc, char **argv)
 //    app.setApplicationVersion(DApplication::buildVersion(VERSION));
 //    app.setTheme("light");
 
-#ifdef Q_OS_MAC
-    if (switchToRoot(app)) {
-        exit(0);
-    }
-#endif
     const QString m_format = "%{time}{yyyyMMdd.HH:mm:ss.zzz}[%{type:1}][%{function:-40} %{line:-4} %{threadid:-8} ] %{message}\n";
     DLogManager::setLogFormat(m_format);
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
 
-#ifndef Q_OS_MAC
     qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");
     if (!DGuiApplicationHelper::instance()->setSingleInstance(app.applicationName(), DGuiApplicationHelper::UserScope)) {
         exit(0);
     }
-#endif
 
 #ifdef Q_OS_WIN
     Utils::loadFonts();
