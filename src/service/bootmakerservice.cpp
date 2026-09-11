@@ -14,7 +14,7 @@
 #include <QStandardPaths>
 
 #include <sys/types.h>
-#include <dirent.h>
+#include <fcntl.h>
 #include <errno.h>
 #include <vector>
 #include <string>
@@ -158,27 +158,54 @@ QString BootMakerService::DeviceList()
     return deviceListToJson(d->bm->deviceList());
 }
 
-bool BootMakerService::Install(const QString &image, const QString &device, const QString &partition, bool formatDevice)
+bool BootMakerService::Install(const QString &device, const QString &partition, bool formatDevice, const QDBusUnixFileDescriptor &fd)
 {
     Q_D(BootMakerService);
-    qInfo() << "Install requested - Image:" << image << "Device:" << device << "Partition:" << partition;
-    
+    qInfo() << "Install requested - Device:" << device << "Partition:" << partition
+            << "fd valid:" << fd.isValid();
+
     if (!d->checkAuthorization(s_PolkitActionCreate)) {
         qWarning() << "Install request denied - Authorization failed";
         return false;
     }
 
+    // With ProtectHome=true the service cannot reach the ISO by path. The
+    // front-end passes the opened descriptor; reopen it via the
+    // /proc/self/fd/<n> magic link, which resolves against the already-open
+    // inode and bypasses the mount-namespace restriction.
+    if (!fd.isValid()) {
+        qWarning() << "Install request denied - No valid file descriptor passed";
+        return false;
+    }
+
+    int n = fd.fileDescriptor();
+    // Keep the descriptor alive for the whole install; clear O_CLOEXEC so the
+    // 7z/isoinfo children spawned via QProcess inherit it.
+    fcntl(n, F_SETFD, 0);
+    d->imageFd = fd;
+    QString imagePath = QString("/proc/self/fd/%1").arg(n);
+    qDebug() << "Using passed file descriptor" << n << "as" << imagePath;
+
     qDebug() << "Starting installation process";
-    emit d->bm->startInstall(image, device, partition, formatDevice);
+    emit d->bm->startInstall(imagePath, device, partition, formatDevice);
     return true;
 }
 
-bool BootMakerService::CheckFile(const QString &filepath)
+bool BootMakerService::CheckFile(const QDBusUnixFileDescriptor &fd)
 {
     // BootMaker::checkfile() 是只读操作, 不需要鉴权
     Q_D(BootMakerService);
-    qDebug() << "File check requested:" << filepath;
-    return d->bm->checkfile(filepath);
+    qDebug() << "File check requested - fd valid:" << fd.isValid();
+    if (!fd.isValid()) {
+        qWarning() << "File check denied - No valid file descriptor passed";
+        return false;
+    }
+
+    int n = fd.fileDescriptor();
+    fcntl(n, F_SETFD, 0);
+    QString path = QString("/proc/self/fd/%1").arg(n);
+    qDebug() << "Using passed file descriptor" << n << "as" << path;
+    return d->bm->checkfile(path);
 }
 
 bool BootMakerServicePrivate::checkAuthorization(const QString &action)

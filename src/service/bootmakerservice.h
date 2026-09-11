@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once
 
-#include <QObject>
+#include <QDBusUnixFileDescriptor>
 #include <QDBusContext>
 #include <QScopedPointer>
 
@@ -32,11 +32,11 @@ public slots:
     Q_SCRIPTABLE void Start();
     Q_SCRIPTABLE void Stop();
     Q_SCRIPTABLE QString DeviceList();
-    Q_SCRIPTABLE bool Install(const QString &image,
-                              const QString &device,
+    Q_SCRIPTABLE bool Install(const QString &device,
                               const QString &partition,
-                              bool  formatDevice);
-    Q_SCRIPTABLE bool CheckFile(const QString &filepath);
+                              bool  formatDevice,
+                              const QDBusUnixFileDescriptor &fd);
+    Q_SCRIPTABLE bool CheckFile(const QDBusUnixFileDescriptor &fd);
 
 private:
     QScopedPointer<BootMakerServicePrivate> d_ptr;

@@ -18,6 +18,10 @@
     <method name="DeviceList">
       <arg type="s" direction="out"/>
     </method>
+    <method name="CheckFile">
+      <arg type="b" direction="out"/>
+      <arg name="fd" type="h" direction="in"/>
+    </method>
     <method name="Reboot">
     </method>
     <method name="Start">
@@ -26,10 +30,10 @@
     </method>
     <method name="Install">
       <arg type="b" direction="out"/>
-      <arg name="image" type="s" direction="in"/>
       <arg name="device" type="s" direction="in"/>
       <arg name="partition" type="s" direction="in"/>
       <arg name="formatDevice" type="b" direction="in"/>
+      <arg name="fd" type="h" direction="in"/>
     </method>
   </interface>
 </node>

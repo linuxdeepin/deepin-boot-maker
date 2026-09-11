@@ -1,9 +1,12 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
 #include "bootmakerservicetest.h"
 #include "../service/bootmakerservice_p.h"
+#include <QTemporaryFile>
+#include <QDBusUnixFileDescriptor>
+#include <unistd.h>
 #include <QDebug>
 
 // Sets up the test fixture.
@@ -50,7 +53,16 @@ TEST_F(BootMakerServiceTest, Slots)
     QString ret = m_bootMakerService->DeviceList();
     qInfo() << "ret = " << ret;
 
-    EXPECT_TRUE(m_bootMakerService->Install("~/Downloads/uniontechos-desktop-21.0-home-beta6-amd64.iso","/dev/sdb","/dev/sdb1",false));
+    // Install/CheckFile only take a file descriptor now; open one so the fd is
+    // valid (an invalid fd is rejected).
+    QTemporaryFile isoFile;
+    ASSERT_TRUE(isoFile.open());
+    QDBusUnixFileDescriptor fd(dup(isoFile.handle()));
 
-    EXPECT_TRUE(m_bootMakerService->CheckFile("/dev/sdb1"));
+    EXPECT_TRUE(m_bootMakerService->Install("/dev/sdb", "/dev/sdb1", false, fd));
+    EXPECT_TRUE(m_bootMakerService->CheckFile(fd));
+
+    // No descriptor -> rejected.
+    EXPECT_FALSE(m_bootMakerService->Install("/dev/sdb", "/dev/sdb1", false, QDBusUnixFileDescriptor()));
+    EXPECT_FALSE(m_bootMakerService->CheckFile(QDBusUnixFileDescriptor()));
 }
