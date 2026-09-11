@@ -8,7 +8,6 @@
 #include "bootmakerservice.h"
 
 #include <backend/bootmaker.h>
-
 class BootMakerServicePrivate
 {
 public:
@@ -21,7 +20,9 @@ public:
 
     bool disableCheck = false;
     BootMaker *bm = nullptr;
-
+    // Holds the ISO file descriptor forwarded by the front-end so 7z/isoinfo
+    // can reach the file via /proc/self/fd/<n> under ProtectHome=true.
+    QDBusUnixFileDescriptor imageFd;
     BootMakerService *q_ptr;
     Q_DECLARE_PUBLIC(BootMakerService)
 };
