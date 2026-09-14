@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.20) unstable; urgency=medium
+
+  * fix(service): pass ISO file descriptor instead of path over D-Bus
+
+ -- wangrong <wangrong@uniontech.com>  Mon, 14 Sep 2026 16:28:14 +0800
+
 deepin-boot-maker (6.0.19) unstable; urgency=medium
 
   * chore: Update version to 6.0.19
