@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -60,6 +60,73 @@ void SevenZip::stopProcess()
     QProcess::execute(strCmd);
 }
 
+QStringList SevenZip::parseOversizeBootPaths(const QString &sltOutput)
+{
+    // FAT32 single file size limit: 4GiB - 1 byte.
+    static const qint64 kFat32MaxFileSize = 4294967295LL;
+
+    QStringList result;
+
+    QString curPath;
+    bool curIsFile = false;
+    bool curSizeValid = false;
+    qint64 curSize = 0;
+
+    // An entry ends when the next "Path = " starts, so we only rely on fields
+    // that exist in both old p7zip and new 7-Zip `-slt` output.
+    auto flush = [&]() {
+        if (curIsFile && curSizeValid && curSize > kFat32MaxFileSize
+                && curPath.startsWith(QStringLiteral("[BOOT]/"))) {
+            result << curPath;
+        }
+        curPath.clear();
+        curIsFile = false;
+        curSizeValid = false;
+        curSize = 0;
+    };
+
+    const QStringList lines = sltOutput.split(QLatin1Char('\n'));
+    for (QString line : lines) {
+        if (line.endsWith(QLatin1Char('\r')))
+            line.chop(1);
+
+        if (line.startsWith(QStringLiteral("Path = "))) {
+            flush();
+            curPath = line.mid(7);
+        } else if (line.startsWith(QStringLiteral("Folder = "))) {
+            curIsFile = (line.mid(9).trimmed() == QLatin1String("-"));
+        } else if (line.startsWith(QStringLiteral("Size = "))) {
+            const QString sizeStr = line.mid(7).trimmed();
+            curSize = sizeStr.toLongLong(&curSizeValid);
+        }
+    }
+    flush();
+
+    return result;
+}
+
+QStringList SevenZip::oversizeBootPaths() const
+{
+    QStringList result;
+
+    // Use a dedicated process; it inherits the current environment. LANG is not
+    // needed here because the "-slt" field names are not localized.
+    QProcess listProcess;
+
+    qInfo() << "scan iso for oversize [BOOT] entries:" << m_sevenZip << m_archiveFile;
+    listProcess.start(m_sevenZip, QStringList() << "l" << "-slt" << m_archiveFile);
+    if (!listProcess.waitForStarted(-1) || !listProcess.waitForFinished(-1)) {
+        // Fall back to no exclusion so old/unsupported 7z keeps working.
+        qWarning() << "scan iso failed, skip [BOOT] exclusion:" << listProcess.errorString();
+        return result;
+    }
+
+    result = parseOversizeBootPaths(QString::fromUtf8(listProcess.readAllStandardOutput()));
+    if (!result.isEmpty())
+        qInfo() << "detected oversize [BOOT] entries:" << result;
+    return result;
+}
+
 bool SevenZip::extract()
 {
     qDebug() << "Starting extraction of archive:" << m_archiveFile;
@@ -77,6 +144,21 @@ bool SevenZip::extract()
 #else
          ;
 #endif
+
+    // Newer 7-Zip versions expose the El Torito boot image as a synthetic
+    // "[BOOT]/..." entry whose data overlaps the live filesystem. When such an
+    // entry exceeds the FAT32 single file limit it cannot be written to the
+    // target partition and extraction fails. Exclude only the oversized
+    // entries; versions that do not expose them (e.g. old p7zip) return an
+    // empty list and keep the previous behavior.
+    // Note: 7-Zip's "-x!" wildcard matcher treats only '*' and '?' as special;
+    // '[' and ']' are matched literally (unlike POSIX fnmatch), so the
+    // "[BOOT]/..." path is used as-is without escaping.
+    const QStringList oversizeBootEntries = oversizeBootPaths();
+    for (const QString &bootPath : oversizeBootEntries) {
+        qWarning() << "exclude oversize [BOOT] entry from extraction:" << bootPath;
+        args << (QStringLiteral("-x!") + bootPath);
+    }
 
     QStringList env = QProcess::systemEnvironment();
     env << "VDPAU_DRIVER=va_gl";

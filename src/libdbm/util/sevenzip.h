@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -9,6 +9,7 @@
 #include <QThread>
 #include <QProcess>
 #include <QEventLoop>
+#include <QStringList>
 
 class SevenZipProcessParser : public QThread
 {
@@ -45,6 +46,12 @@ public:
     bool extract();
     bool check();
 
+    // Parse the output of `7z l -slt` and return the paths of files located
+    // under "[BOOT]" whose size exceeds the FAT32 single file limit
+    // (4GiB - 1). Kept public static so it can be unit tested with captured
+    // output from both old (p7zip) and new (7-Zip) versions.
+    static QStringList parseOversizeBootPaths(const QString &sltOutput);
+
 signals:
     void progressChanged(int);
 
@@ -52,6 +59,11 @@ private slots:
     void handleFinished();
 
 private:
+    // Runs `7z l -slt <archive>` and returns the oversize "[BOOT]" paths.
+    // Returns an empty list when the scan fails so callers fall back to the
+    // previous behavior (no exclusion).
+    QStringList oversizeBootPaths() const;
+
     QProcess                m_sevenz;
     QString                 m_sevenZip;
     QString                 m_archiveFile;
