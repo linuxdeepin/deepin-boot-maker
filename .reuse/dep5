@@ -53,6 +53,11 @@ Files: src/tools/exportPot src/tools/exportPot.bat src/tools/importPo src/tools/
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
+# generated license check report (CI)
+Files: reuse_lint_report.md
+Copyright: None
+License: CC0-1.0
+
 # eliminate file in src/app
 Files: src/app/app.pro src/app/vendor.pri src/app/view/resource/resource.qrc src/app/windows.qrc src/app/platform/*
 Copyright: UnionTech Software Technology Co., Ltd.
