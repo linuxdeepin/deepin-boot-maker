@@ -1,3 +1,9 @@
+deepin-boot-maker (6.0.21) unstable; urgency=medium
+
+  * fix: exclude oversize El Torito [BOOT] entry during iso extraction
+
+ -- wangrong <wangrong@uniontech.com>  Fri, 18 Sep 2026 13:16:27 +0800
+
 deepin-boot-maker (6.0.20) unstable; urgency=medium
 
   * fix(service): pass ISO file descriptor instead of path over D-Bus
