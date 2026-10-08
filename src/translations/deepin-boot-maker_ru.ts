@@ -207,7 +207,7 @@
         <location filename="../app/view/usbselectview.cpp" line="385"/>
         <source>OK</source>
         <comment>button</comment>
-        <translation>ОК</translation>
+        <translation>Хорошо</translation>
     </message>
     <message>
         <location filename="../app/view/usbselectview.cpp" line="377"/>
