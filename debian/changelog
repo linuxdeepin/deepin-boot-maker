@@ -1,3 +1,10 @@
+deepin-boot-maker (6.0.22) unstable; urgency=medium
+
+  * docs(boot-maker): add Portuguese help manual
+  * [skip CI] Translate deepin-boot-maker.ts in ru
+
+ -- re2zero <yangwu@uniontech.com>  Thu, 29 Oct 2026 20:40:58 +0800
+
 deepin-boot-maker (6.0.21) unstable; urgency=medium
 
   * fix: exclude oversize El Torito [BOOT] entry during iso extraction
