@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/logger.h"
+#include "util/ddlog.h"
 #include "LogManager.h"
 
 #include "util/utils.h"
@@ -17,30 +19,25 @@ const QString BootMakerPath = "/com/deepin/bootmaker";
 
 int main(int argc, char *argv[])
 {
-    qInfo() << "Starting Boot Maker Service";
-    
+    // 动态日志规则（调试模式）必须在任何日志打印之前初始化；
+    // MLogger 内部会读取 QT_LOGGING_RULES 环境变量作为基线并接管日志级别控制
+    MLogger mlogger;
+
+    qCInfo(serviceLog) << "Starting Boot Maker Service";
+
     QString PATH = qgetenv("PATH");
-    qDebug() << "Initial PATH:" << PATH;
+    qCDebug(serviceLog) << "Initial PATH:" << PATH;
 
     if (PATH.isEmpty()) {
-        qDebug() << "PATH is empty, setting default to /usr/bin";
+        qCDebug(serviceLog) << "PATH is empty, setting default to /usr/bin";
         PATH = "/usr/bin";
     }
 
     PATH += ":/usr/sbin";
     PATH += ":/sbin";
     qputenv("PATH", PATH.toLatin1());
-    qDebug() << "Updated PATH:" << PATH;
+    qCDebug(serviceLog) << "Updated PATH:" << PATH;
 
-    QString strDebug = qgetenv("QT_LOGGING_RULES");
-    qDebug() << "Initial QT_LOGGING_RULES:" << strDebug;
-
-    if (strDebug.isEmpty()) {
-        qDebug() << "Setting default QT_LOGGING_RULES to *.debug=false";
-        strDebug = "*.debug=false";
-    }
-
-    qputenv("QT_LOGGING_RULES", strDebug.toLatin1());
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     // 在Qt6中，这个步骤是不必要的，因为Qt6默认使用UTF-8
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
@@ -50,7 +47,7 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     a.setOrganizationName("deepin");
     a.setApplicationName("deepin-boot-maker-service");
-    qDebug() << "Application initialized with name:" << a.applicationName();
+    qCDebug(serviceLog) << "Application initialized with name:" << a.applicationName();
 
     BootMakerService service;
 
@@ -60,27 +57,27 @@ int main(int argc, char *argv[])
     DBMLogManager::registerFileAppender();
     DBMLogManager::registerConsoleAppender();
 
-    qInfo() << "Log file path:" << DBMLogManager::getlogFilePath();
-    qDebug() << "Environment PATH:" << PATH;
+    qCInfo(serviceLog) << "Log file path:" << DBMLogManager::getlogFilePath();
+    qCDebug(serviceLog) << "Environment PATH:" << PATH;
 
-    qDebug() << "Registering D-Bus service:" << BootMakerServiceName;
+    qCDebug(serviceLog) << "Registering D-Bus service:" << BootMakerServiceName;
     auto systemBus = QDBusConnection::systemBus();
     if (!systemBus.registerService(BootMakerServiceName)) {
-        qCritical() << "Failed to register D-Bus service:" << systemBus.lastError().message();
+        qCCritical(serviceLog) << "Failed to register D-Bus service:" << systemBus.lastError().message();
         exit(0x0001);
     }
-    qInfo() << "D-Bus service registered successfully";
+    qCInfo(serviceLog) << "D-Bus service registered successfully";
 
-    qDebug() << "Registering D-Bus object at path:" << BootMakerPath;
+    qCDebug(serviceLog) << "Registering D-Bus object at path:" << BootMakerPath;
     if (!systemBus.registerObject(BootMakerPath,
                                   &service,
                                   QDBusConnection::ExportAllSlots |
                                   QDBusConnection::ExportAllSignals)) {
-        qCritical() << "Failed to register D-Bus object:" << systemBus.lastError().message();
+        qCCritical(serviceLog) << "Failed to register D-Bus object:" << systemBus.lastError().message();
         exit(0x0002);
     }
-    qInfo() << "D-Bus object registered successfully";
+    qCInfo(serviceLog) << "D-Bus object registered successfully";
 
-    qInfo() << "Boot Maker Service started successfully";
+    qCInfo(serviceLog) << "Boot Maker Service started successfully";
     return a.exec();
 }

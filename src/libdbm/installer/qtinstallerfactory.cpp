@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "../util/ddlog.h"
 #include "qtinstallerfactory.h"
 
 #if defined(Q_PROCESSOR_X86)
@@ -23,7 +24,7 @@ QtInstallerFactory*  QtInstallerFactory::m_pSelf = nullptr;
 QtInstallerFactory* QtInstallerFactory::getInstance()
 {
     if (nullptr == m_pSelf) {
-        qDebug() << "Creating new QtInstallerFactory instance";
+        qCDebug(installerLog) << "Creating new QtInstallerFactory instance";
         m_pSelf = new QtInstallerFactory;
     }
 
@@ -32,23 +33,23 @@ QtInstallerFactory* QtInstallerFactory::getInstance()
 
 QtBaseInstaller* QtInstallerFactory::createInstaller()
 {
-    qDebug() << "Creating platform-specific installer";
+    qCDebug(installerLog) << "Creating platform-specific installer";
     QtBaseInstaller* pInstaller = nullptr;
 
 #if defined(Q_PROCESSOR_X86)
-    qDebug() << "Detected X86_64 architecture, creating X86 installer";
+    qCDebug(installerLog) << "Detected X86_64 architecture, creating X86 installer";
     pInstaller = new QtX86Installer();
 #elif defined(Q_PROCESSOR_MIPS)
-    qDebug() << "Detected MIPS architecture, creating MIPS installer";
+    qCDebug(installerLog) << "Detected MIPS architecture, creating MIPS installer";
     pInstaller = new QtMipsInstaller;
 #elif defined(Q_PROCESSOR_ARM)
-    qDebug() << "Detected ARM architecture, creating ARM installer";
+    qCDebug(installerLog) << "Detected ARM architecture, creating ARM installer";
     pInstaller = new QtArmInstaller;
 #elif defined(__sw_64__)
-    qDebug() << "Detected SW architecture, creating SW installer";
+    qCDebug(installerLog) << "Detected SW architecture, creating SW installer";
     pInstaller = new QtSwInstaller;
 #else
-    qDebug() << "Detected unknown architecture, creating generic installer";
+    qCDebug(installerLog) << "Detected unknown architecture, creating generic installer";
     pInstaller = new QtOtherInstaller;
 #endif
 
@@ -57,5 +58,5 @@ QtBaseInstaller* QtInstallerFactory::createInstaller()
 
 QtInstallerFactory::QtInstallerFactory(QObject *parent) : QObject(parent)
 {
-    qDebug() << "Initializing QtInstallerFactory";
+    qCDebug(installerLog) << "Initializing QtInstallerFactory";
 }

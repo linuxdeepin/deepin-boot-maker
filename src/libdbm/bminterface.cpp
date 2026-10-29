@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "bminterface.h"
 
 #include <QDebug>
@@ -32,23 +33,23 @@ BMInterface::BMInterface(QObject *parent) :
 {
     Q_D(BMInterface);
 
-    qDebug() << "Initializing Boot Maker Interface";
+    qCDebug(backendLog) << "Initializing Boot Maker Interface";
     qRegisterMetaType<QList<DeviceInfo>>();
 
 #ifdef Q_OS_LINUX
-    qDebug() << "Creating D-Bus handler for Linux platform";
+    qCDebug(backendLog) << "Creating D-Bus handler for Linux platform";
     d->handler = new BMDbusHandler;
 #else
-    qDebug() << "Creating Boot Maker handler for non-Linux platform";
+    qCDebug(backendLog) << "Creating Boot Maker handler for non-Linux platform";
     d->handler = new BootMaker;
 #endif
 
-    qDebug() << "Moving handler to worker thread";
+    qCDebug(backendLog) << "Moving handler to worker thread";
     QThread *handlerwork = new QThread;
     d->handler->moveToThread(handlerwork);
     handlerwork->start();
 
-    qDebug() << "Setting up signal connections";
+    qCDebug(backendLog) << "Setting up signal connections";
     connect(d->handler, &BMHandler::removablePartitionsChanged,
             this, &BMInterface::deviceListChanged);
     connect(d->handler, &BMHandler::finished,
@@ -63,38 +64,38 @@ BMInterface::BMInterface(QObject *parent) :
             d->handler, &BMHandler::startInstall );
     connect(d->handler, &BMHandler::startInstallRet,
             this, &BMInterface::startInstallRet);
-    qDebug() << "Boot Maker Interface initialization completed";
+    qCDebug(backendLog) << "Boot Maker Interface initialization completed";
 }
 
 BMInterface::~BMInterface()
 {
-    qDebug() << "Destroying Boot Maker Interface";
+    qCDebug(backendLog) << "Destroying Boot Maker Interface";
 }
 
 void BMInterface::start()
 {
     Q_D(BMInterface);
-    qInfo() << "Starting Boot Maker handler";
+    qCInfo(backendLog) << "Starting Boot Maker handler";
     return d->handler->start();
 }
 
 void BMInterface::stop()
 {
     Q_D(BMInterface);
-    qInfo() << "Stopping Boot Maker handler";
+    qCInfo(backendLog) << "Stopping Boot Maker handler";
     return d->handler->stop();
 }
 
 void BMInterface::reboot()
 {
     Q_D(BMInterface);
-    qInfo() << "Initiating system reboot";
+    qCInfo(backendLog) << "Initiating system reboot";
     return d->handler->reboot();
 }
 
 QList<DeviceInfo> BMInterface::deviceList()
 {
-    qDebug() << "Retrieving device list";
+    qCDebug(backendLog) << "Retrieving device list";
     Q_D(BMInterface);
     return d->handler->deviceList();
 }
@@ -109,7 +110,7 @@ bool BMInterface::checkfile(const QString &filepath)
 //{
 //    Q_D(BMInterface);
 //    emit d->handler->reportProgress(5, 0, "init", "");
-//    qDebug() << "start BMInterface::install";
+//    qCDebug(backendLog) << "start BMInterface::install";
 //    emit d->handler->startInstall(image,device, partition, formatDevice);
 //    return true;
 //}

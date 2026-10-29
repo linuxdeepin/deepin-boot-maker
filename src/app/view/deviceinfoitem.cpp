@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "deviceinfoitem.h"
 #include "widgetutil.h"
 
@@ -32,7 +33,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
                                const QString &cap, int percent, DWidget *parent)
     : DWidget(parent)
 {
-    qDebug() << "Creating DeviceInfoItem:" << name << "device:" << device << "capacity:" << cap << "percent:" << percent;
+    qCDebug(appLog) << "Creating DeviceInfoItem:" << name << "device:" << device << "capacity:" << cap << "percent:" << percent;
     s_removeDevice = WidgetUtil::getDpiPixmap(":/theme/light/image/drive.svg", this);
 
     auto mainLayout = new QHBoxLayout(this);
@@ -108,7 +109,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
     this, [ = ] {
-        qDebug() << "Theme changed for device:" << name;
+        qCDebug(appLog) << "Theme changed for device:" << name;
         DPalette pa;
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType)
@@ -138,7 +139,7 @@ DeviceInfoItem::DeviceInfoItem(const QString &name, const QString &device,
 DeviceInfoItem::DeviceInfoItem(DWidget *parent) :
     DeviceInfoItem("Remove Device", "NULL", "0/0G", 0, parent)
 {
-    qDebug() << "Creating default DeviceInfoItem for device removal";
+    qCDebug(appLog) << "Creating default DeviceInfoItem for device removal";
     setProperty("needformat", false);
 }
 
