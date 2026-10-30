@@ -1,7 +1,8 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "isoselectview.h"
 #include "widgetutil.h"
 #include "bminterface.h"
@@ -49,27 +50,27 @@ void ThreadCheckFile::run()
     bool checkok = false;
     while (restart) {
         restart = false;
-        qDebug() << "Checking ISO file:" << m_file;
+        qCDebug(appLog) << "Checking ISO file:" << m_file;
         checkok = BMInterface::instance()->checkfile(m_file);
     }
-    qInfo() << "ISO file check result:" << checkok << "for file:" << m_file;
+    qCInfo(appLog) << "ISO file check result:" << checkok << "for file:" << m_file;
     emit checkFileFinish(checkok);
 #else
     restart = true;
     bool checkok = false;
     while (restart) {
         restart = false;
-        qDebug() << "Checking ISO file:" << m_file;
+        qCDebug(appLog) << "Checking ISO file:" << m_file;
         checkok = BMInterface::ref().checkfile(m_file);
     }
-    qInfo() << "ISO file check result:" << checkok << "for file:" << m_file;
+    qCInfo(appLog) << "ISO file check result:" << checkok << "for file:" << m_file;
     emit checkFileFinish(checkok);
 #endif
 }
 
 ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
 {
-    qDebug() << "Initializing ISOSelectView";
+    qCDebug(appLog) << "Initializing ISOSelectView";
     setObjectName("ISOSelectView");
     setAutoFillBackground(true);
 
@@ -183,16 +184,16 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     slot_ThemeChange();
     connect(&t_checkfile, &ThreadCheckFile::checkFileFinish,
     this, [ = ](bool result) {
-        qDebug() << "File check finished, result:" << result;
+        qCDebug(appLog) << "File check finished, result:" << result;
         m_checkFile->setText("");
         QString stateText = "";
         if (!result) {
-            qWarning() << "Invalid ISO file detected";
+            qCWarning(appLog) << "Invalid ISO file detected";
             stateText = tr("Illegal ISO image file");
         }
         m_nextSetp->setDisabled(false);
         if ("" != stateText) {
-            qDebug() << "Updating UI for invalid ISO file";
+            qCDebug(appLog) << "Updating UI for invalid ISO file";
             isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/disc_dark.svg", this));
             QString stateTemplateText = QString(s_stateTemplate).arg(stateText);
             m_hits->setText(stateTemplateText);
@@ -207,7 +208,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
                 }
             }
         } else {
-            qDebug() << "Updating UI for valid ISO file";
+            qCDebug(appLog) << "Updating UI for valid ISO file";
             isoIcon->setPixmap(WidgetUtil::getDpiPixmap(":/theme/light/image/media-optical-96px.svg", this));
             int itemCount = isoPanelLayout->count();
             for (int i = (itemCount - 1); i >= 0; --i) { 
@@ -258,7 +259,7 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
     });
 
     connect(m_fileSelect, &DLabel::linkActivated, this, [ = ](const QString & /*link*/) {
-        qDebug() << "Opening file dialog for ISO selection";
+        qCDebug(appLog) << "Opening file dialog for ISO selection";
         DFileDialog fileDlg(this);
         fileDlg.setViewMode(DFileDialog::Detail);
         fileDlg.setFileMode(DFileDialog::ExistingFile);
@@ -267,12 +268,12 @@ ISOSelectView::ISOSelectView(DWidget *parent) : DWidget(parent)
         fileDlg.selectNameFilter("ISO (*.iso)");
         if (DFileDialog::Accepted == fileDlg.exec()) {
             QString text = fileDlg.selectedFiles().first();
-            qInfo() << "ISO file selected from dialog:" << text;
+            qCInfo(appLog) << "ISO file selected from dialog:" << text;
             onFileSelected(text);
         }
     });
     connect(m_nextSetp, &DPushButton::clicked, this, [=]{
-        qInfo() << "Next button clicked, selected ISO file:" << m_isoFilePath;
+        qCInfo(appLog) << "Next button clicked, selected ISO file:" << m_isoFilePath;
         emit isoFileSelected(m_isoFilePath);
     });
     connect(isoPanel, &DropFrame::fileDrop, this, &ISOSelectView::onFileSelected);
@@ -363,7 +364,7 @@ bool ISOSelectView::eventFilter(QObject *obj, QEvent *event)
 
 void ISOSelectView::onFileSelected(const QString &file)
 {
-    qDebug() << "File selected:" << file;
+    qCDebug(appLog) << "File selected:" << file;
     QFileInfo info(file);
     QFontMetrics fontWidth(m_fileLabel->font());
     QString elidedText = fontWidth.elidedText(info.fileName(), Qt::ElideMiddle, m_fileLabel->width() - 20);
@@ -384,10 +385,10 @@ void ISOSelectView::onFileSelected(const QString &file)
     spliter->hide();
     t_checkfile.setFile(file);
     if (t_checkfile.isRunning()) {
-        qDebug() << "Restarting file check for:" << file;
+        qCDebug(appLog) << "Restarting file check for:" << file;
         t_checkfile.setRestart();
     } else {
-        qDebug() << "Starting file check for:" << file;
+        qCDebug(appLog) << "Starting file check for:" << file;
         t_checkfile.start();
     }
 }

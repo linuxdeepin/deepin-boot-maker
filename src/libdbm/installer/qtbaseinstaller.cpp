@@ -1,7 +1,8 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "../util/ddlog.h"
 #include "qtbaseinstaller.h"
 #include "../util/utils.h"
 
@@ -16,46 +17,46 @@ QtBaseInstaller::QtBaseInstaller(QObject *parent) : QObject(parent)
   ,m_bRunning(false)
   ,m_bStop(false)
 {
-    qDebug() << "Initializing QtBaseInstaller";
+    qCDebug(installerLog) << "Initializing QtBaseInstaller";
 }
 
 void QtBaseInstaller::setformat(bool bFormat)
 {
-    qDebug() << "Setting format flag:" << bFormat;
+    qCDebug(installerLog) << "Setting format flag:" << bFormat;
     m_bFormat = bFormat;
 }
 
 void QtBaseInstaller::setPartionName(const QString& strPartionName)
 {
-    qDebug() << "Setting partition name:" << strPartionName;
+    qCDebug(installerLog) << "Setting partition name:" << strPartionName;
     m_strPartionName = strPartionName;
 }
 
 void QtBaseInstaller::setImage(const QString& strImage)
 {
-    qDebug() << "Setting image path:" << strImage;
+    qCDebug(installerLog) << "Setting image path:" << strImage;
     m_strImage = strImage;
 }
 
 void QtBaseInstaller::beginInstall()
 {
-    qDebug() << "Starting installation process";
+    qCDebug(installerLog) << "Starting installation process";
     m_bRunning = true;
     m_bStop = false;
     bool bRet = hasEnoughSpace();
 
     if (!bRet) {
-        qWarning() << "Insufficient space check failed";
+        qCWarning(installerLog) << "Insufficient space check failed";
         checkError();
         return;
     }
     else {
-        qDebug() << "USB space check completed successfully";
+        qCDebug(installerLog) << "USB space check completed successfully";
         emit this->reportProgress(5, "check usb space finished", "");
     }
 
     if (m_bStop) {
-        qDebug() << "Installation stopped by user";
+        qCDebug(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
@@ -63,17 +64,17 @@ void QtBaseInstaller::beginInstall()
     bRet = checkISOIntegrity();
 
     if (!bRet) {
-        qWarning() << "ISO integrity check failed";
+        qCWarning(installerLog) << "ISO integrity check failed";
         checkError();
         return;
     }
     else {
-        qDebug() << "ISO integrity check completed successfully";
+        qCDebug(installerLog) << "ISO integrity check completed successfully";
         emit this->reportProgress(10, "check integrity finished", "");
     }
 
     if (m_bStop) {
-        qDebug() << "Installation stopped by user";
+        qCDebug(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
@@ -81,17 +82,17 @@ void QtBaseInstaller::beginInstall()
     bRet = formatUsb();
 
     if (!bRet) {
-        qWarning() << "USB formatting failed";
+        qCWarning(installerLog) << "USB formatting failed";
         checkError();
         return;
     }
     else {
-        qDebug() << "USB formatting completed successfully";
+        qCDebug(installerLog) << "USB formatting completed successfully";
         emit this->reportProgress(15, "format usb finished", "");
     }
 
     if (m_bStop) {
-        qDebug() << "Installation stopped by user";
+        qCDebug(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
@@ -99,17 +100,17 @@ void QtBaseInstaller::beginInstall()
     bRet = installBootload();
 
     if (!bRet) {
-        qWarning() << "Bootloader installation failed";
+        qCWarning(installerLog) << "Bootloader installation failed";
         checkError();
         return;
     }
     else {
-        qDebug() << "Bootloader installation completed successfully";
+        qCDebug(installerLog) << "Bootloader installation completed successfully";
         emit this->reportProgress(20, "install bootloader finished", "");
     }
 
     if (m_bStop) {
-        qDebug() << "Installation stopped by user";
+        qCDebug(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
@@ -117,20 +118,20 @@ void QtBaseInstaller::beginInstall()
     bRet = extractISO();
 
     if (!bRet) {
-        qWarning() << "ISO extraction failed";
+        qCWarning(installerLog) << "ISO extraction failed";
         checkError();
         return;
     }
     else {
-        qDebug() << "ISO extraction completed successfully";
+        qCDebug(installerLog) << "ISO extraction completed successfully";
         emit this->reportProgress(80, "extract ISO finished", "");
     }
 
-    qDebug() << "Starting IO synchronization";
+    qCDebug(installerLog) << "Starting IO synchronization";
     emit this->reportProgress(81, "begin sync IO", "");
 
     if (m_bStop) {
-        qInfo() << "Installation stopped by user";
+        qCInfo(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
@@ -138,38 +139,38 @@ void QtBaseInstaller::beginInstall()
     bRet = syncIO();
 
     if (!bRet) {
-        qWarning() << "IO synchronization failed";
+        qCWarning(installerLog) << "IO synchronization failed";
         checkError();
         return;
     }
     else {
-        qDebug() << "IO synchronization completed successfully";
+        qCDebug(installerLog) << "IO synchronization completed successfully";
         emit this->reportProgress(90, "sync IO finished", "");
     }
 
     if (m_bStop) {
-        qDebug() << "Installation stopped by user";
+        qCDebug(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
 
-    qInfo() << "Configuring syslinux";
+    qCInfo(installerLog) << "Configuring syslinux";
     configSyslinux();
     //通过判断镜像中是否存在anaconda的文件夹来推测该镜像的安装器
 
     if(needAddRepo()) {
-        qInfo() << "Repository configuration needed - modifying boot files";
+        qCInfo(installerLog) << "Repository configuration needed - modifying boot files";
         modifyBootGrubFile("/EFI/BOOT/grub.cfg");
         modifyBootGrubFile("/syslinux/syslinux.cfg");
     } else {
-        qInfo() << "No repository configuration needed";
+        qCInfo(installerLog) << "No repository configuration needed";
     }
 
-    qInfo() << "Installation process completed";
+    qCInfo(installerLog) << "Installation process completed";
     emit this->reportProgress(100, "finish", "");
 
     if (m_bStop) {
-        qInfo() << "Installation stopped by user";
+        qCInfo(installerLog) << "Installation stopped by user";
         m_bRunning = false;
         return;
     }
@@ -177,34 +178,34 @@ void QtBaseInstaller::beginInstall()
     bRet = ejectDisk();
 
     if (!bRet) {
-        qWarning() << "Disk ejection failed";
+        qCWarning(installerLog) << "Disk ejection failed";
         checkError();
         return;
     }
     else {
-        qInfo() << "Disk ejected successfully";
+        qCInfo(installerLog) << "Disk ejected successfully";
         emit this->reportProgress(101, "finish", "");
     }
 
-    qInfo() << "Installation process finished";
+    qCInfo(installerLog) << "Installation process finished";
     m_bRunning = false;
 }
 
 void QtBaseInstaller::checkError()
 {
-    qInfo() << "Checking installation error";
+    qCInfo(installerLog) << "Checking installation error";
     m_bRunning = false;
 
     if (m_bStop) {
-        qInfo() << "Installation stopped by user";
+        qCInfo(installerLog) << "Installation stopped by user";
         return;
     }
 
-    qInfo() << "Beginning error check";
+    qCInfo(installerLog) << "Beginning error check";
     QString strDisk = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
     if (strDisk.isEmpty()) {
-        qCritical() << "Failed to get partition disk information";
+        qCCritical(installerLog) << "Failed to get partition disk information";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBMountFailed);
         return;
     }
@@ -231,44 +232,44 @@ void QtBaseInstaller::checkError()
         }
 
         if (!bFind) {
-            qCritical() << "Partition not found in disk partitions";
+            qCCritical(installerLog) << "Partition not found in disk partitions";
             emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBMountFailed);
             return;
         }
     }
 
     if (m_progressStatus == CHECKSPACE) {
-        qCritical() << "Error::get(Error::USBSizeError)";
+        qCCritical(installerLog) << "Error::get(Error::USBSizeError)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBSizeError);
         return;
     }
     else if (m_progressStatus == CHECKINTEGRITY) {
-        qCritical() << "Error::get(Error::CheckImageIntegrityFailed)";
+        qCCritical(installerLog) << "Error::get(Error::CheckImageIntegrityFailed)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::CheckImageIntegrityFailed);
         return;
     }
     else if (m_progressStatus == FORMATUSB) {
-        qCritical() << "Error::get(Error::USBFormatError)";
+        qCCritical(installerLog) << "Error::get(Error::USBFormatError)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::USBFormatError);
     }
     else if (m_progressStatus == INSTALLBOOTLOADER) {
-        qCritical() << "Error::get(Error::InstallBootloaderFailed)";
+        qCCritical(installerLog) << "Error::get(Error::InstallBootloaderFailed)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::InstallBootloaderFailed);
     }
     else if (m_progressStatus == GETINSTALLDIR) {
-        qCritical() << "Error::get(Error::GetUsbInstallDirFailed)";
+        qCCritical(installerLog) << "Error::get(Error::GetUsbInstallDirFailed)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::GetUsbInstallDirFailed);
     }
     else if (m_progressStatus == EXTRACTISO) {
-        qCritical() << "Error::get(Error::ExtractImgeFailed)";
+        qCCritical(installerLog) << "Error::get(Error::ExtractImgeFailed)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::ExtractImgeFailed);
     }
     else if (m_progressStatus == SYNCIO) {
-        qCritical() << "Error::get(Error::SyncIOFailed)";
+        qCCritical(installerLog) << "Error::get(Error::SyncIOFailed)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::SyncIOFailed);
     }
     else {
-        qCritical() << "Error::get(Error::UnDefinedError)";
+        qCCritical(installerLog) << "Error::get(Error::UnDefinedError)";
         emit progressfinished(m_progressStatus, BMHandler::ErrorType::UnDefinedError);
     }
 }
@@ -280,52 +281,52 @@ bool QtBaseInstaller::isRunning() const
 
 void QtBaseInstaller::stopInstall()
 {
-    qInfo() << "Stopping installation process - Current status:" << m_progressStatus;
+    qCInfo(installerLog) << "Stopping installation process - Current status:" << m_progressStatus;
     m_bStop = true;
 
     if(EXTRACTISO == m_progressStatus || CHECKINTEGRITY == m_progressStatus) {
-        qInfo() << "Stopping SevenZip process";
+        qCInfo(installerLog) << "Stopping SevenZip process";
         m_sevenZipCheck.stopProcess();
     }
 }
 
 bool QtBaseInstaller::hasEnoughSpace()
 {
-    qInfo() << "Checking available space";
+    qCInfo(installerLog) << "Checking available space";
     m_progressStatus = CHECKSPACE;
     QFileInfo isoInfo(m_strImage);
     //分区没有挂载时是获取不到正确的可用空间和分区大小的,因些需要先进行挂载。
     QString strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
 
     if (strMountPt.isEmpty()) {
-        qInfo() << "Mounting partition for space check";
+        qCInfo(installerLog) << "Mounting partition for space check";
         XSys::DiskUtil::Mount(m_strPartionName);
     }
 
     strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
 
     if (strMountPt.isEmpty()) {
-        qCritical() << "Failed to get mount point for space check";
+        qCCritical(installerLog) << "Failed to get mount point for space check";
         return false;
     }
 
 #define KByt 1024
     if (m_bFormat) {
         if (isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionTotalSpace(m_strPartionName)) {
-            qCritical() << "Insufficient total space on partition";
+            qCCritical(installerLog) << "Insufficient total space on partition";
             return false;
         }
         else {
-            qInfo() << "Sufficient total space available";
+            qCInfo(installerLog) << "Sufficient total space available";
             return true;
         }
     } else {
         if (isoInfo.size() / KByt > XSys::DiskUtil::GetPartitionFreeSpace(m_strPartionName)) {
-            qCritical() << "Insufficient free space on partition";
+            qCCritical(installerLog) << "Insufficient free space on partition";
             return false;
         }
         else {
-            qInfo() << "Sufficient free space available";
+            qCInfo(installerLog) << "Sufficient free space available";
             return true;
         }
     }
@@ -333,40 +334,40 @@ bool QtBaseInstaller::hasEnoughSpace()
 
 bool QtBaseInstaller::checkISOIntegrity()
 {
-    qInfo() << "Checking ISO integrity";
+    qCInfo(installerLog) << "Checking ISO integrity";
     m_progressStatus = CHECKINTEGRITY;
 
     m_sevenZipCheck.setArchiveFile(m_strImage);
     m_sevenZipCheck.setOutputDirectory("");
 
     if (!m_sevenZipCheck.check()) {
-        qCritical() << "ISO integrity check failed";
+        qCCritical(installerLog) << "ISO integrity check failed";
         return false;
     }
     else {
-        qInfo() << "ISO integrity check passed";
+        qCInfo(installerLog) << "ISO integrity check passed";
         return true;
     }
 }
 
 bool QtBaseInstaller::umountPartion()
 {
-    qInfo() << "Unmounting partition:" << m_strPartionName;
+    qCInfo(installerLog) << "Unmounting partition:" << m_strPartionName;
     return XSys::DiskUtil::UmountPartion(m_strPartionName);
 }
 
 bool QtBaseInstaller::umountDisk()
 {
-    qInfo() << "Unmounting disk";
+    qCInfo(installerLog) << "Unmounting disk";
     bool bRet = false;
     QString device = XSys::DiskUtil::GetPartitionDisk(m_strPartionName);
 
     if (!XSys::DiskUtil::UmountDisk(device)) {
-        qCritical() << "Failed to unmount disk:" << device;
+        qCCritical(installerLog) << "Failed to unmount disk:" << device;
         bRet = false;
     }
     else {
-        qInfo() << "Disk unmounted successfully";
+        qCInfo(installerLog) << "Disk unmounted successfully";
         bRet = true;
     }
 
@@ -380,11 +381,11 @@ QString QtBaseInstaller::getMountPoint()
 
 bool QtBaseInstaller::ejectDisk()
 {
-    qInfo() << "Ejecting disk";
+    qCInfo(installerLog) << "Ejecting disk";
     m_progressStatus = EJECTDISK;
 
     if (!(umountDisk())) {
-        qCritical() << "Failed to unmount disk before ejection";
+        qCCritical(installerLog) << "Failed to unmount disk before ejection";
         return false;
     }
 
@@ -395,11 +396,11 @@ bool QtBaseInstaller::ejectDisk()
 
 bool QtBaseInstaller::formatUsb()
 {
-    qInfo() << "Formatting USB device";
+    qCInfo(installerLog) << "Formatting USB device";
     m_progressStatus = FORMATUSB;
 
     if (!umountPartion()) {
-        qCritical() << "Failed to unmount partition before formatting";
+        qCCritical(installerLog) << "Failed to unmount partition before formatting";
         return false;
     }
 
@@ -422,22 +423,22 @@ bool QtBaseInstaller::formatUsb()
 
         // 如果是 disk 节点，需要先创建分区
         if (isDisk) {
-            qDebug() << "Detected disk device" << targetDev << "without partition, creating partition...";
+            qCDebug(installerLog) << "Detected disk device" << targetDev << "without partition, creating partition...";
             if (!XSys::DiskUtil::CreatePartition(targetDev)) {
-                qCritical() << "Failed to create partition for" << targetDev;
+                qCCritical(installerLog) << "Failed to create partition for" << targetDev;
                 return false;
             }
             // 使用新创建的分区
             targetDev = targetDev + "1";
             m_strPartionName = targetDev;
-            qDebug() << "Partition created successfully, using" << targetDev;
+            qCDebug(installerLog) << "Partition created successfully, using" << targetDev;
         }
 
         // 格式化分区
         if (!XSys::DiskUtil::FormatPartion(targetDev)) {
             return false;
         }
-        qInfo() << "Partition formatted successfully";
+        qCInfo(installerLog) << "Partition formatted successfully";
     }
 
     return true;
@@ -445,13 +446,13 @@ bool QtBaseInstaller::formatUsb()
 
 bool QtBaseInstaller::installBootload()
 {
-    qInfo() << "Installing bootloader";
+    qCInfo(installerLog) << "Installing bootloader";
     return false;
 }
 
 bool QtBaseInstaller::extractISO()
 {
-    qInfo() << "Extracting ISO to partition:" << m_strPartionName;
+    qCInfo(installerLog) << "Extracting ISO to partition:" << m_strPartionName;
     XSys::SynExec("partprobe", m_strPartionName);
     m_progressStatus = GETINSTALLDIR;
     //由于前面的命令中会自动挂载系统，而导致如果操作过快会获取挂载点为空，然后在后面再次进行挂载时又挂载失败。因此加一个延时，让系统内核状态同步完成。
@@ -470,22 +471,22 @@ bool QtBaseInstaller::extractISO()
     } while(iTestCount > 0);
 
     if (installDir.isEmpty()) {
-        qInfo() << "Mounting partition for extraction";
+        qCInfo(installerLog) << "Mounting partition for extraction";
         XSys::DiskUtil::Mount(m_strPartionName);
         installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
     }
 
     if (installDir.isEmpty()) {
-        qCritical() << "Failed to get mount point for extraction";
+        qCCritical(installerLog) << "Failed to get mount point for extraction";
         return false;
     }
 
     if (m_bStop) {
-        qInfo() << "Extraction stopped by user";
+        qCInfo(installerLog) << "Extraction stopped by user";
         return true;
     }
 
-    qInfo() << "Clearing target device files";
+    qCInfo(installerLog) << "Clearing target device files";
     m_progressStatus = EXTRACTISO;
     Utils::ClearTargetDev(installDir);
     m_sevenZipCheck.setArchiveFile(m_strImage);
@@ -495,35 +496,35 @@ bool QtBaseInstaller::extractISO()
 
 bool QtBaseInstaller::syncIO()
 {
-    qInfo() << "Synchronizing IO";
+    qCInfo(installerLog) << "Synchronizing IO";
     m_progressStatus = SYNCIO;
     return XSys::SynExec("sync", "").isSuccess();
 }
 
 bool QtBaseInstaller::configSyslinux()
 {
-    qInfo() << "Configuring syslinux";
+    qCInfo(installerLog) << "Configuring syslinux";
     XSys::SynExec("sync", "");
     QString installDir = XSys::DiskUtil::MountPoint(m_strPartionName);
-    qDebug() << "Configuring syslinux in directory:" << installDir;
+    qCDebug(installerLog) << "Configuring syslinux in directory:" << installDir;
     bool result = XSys::Syslinux::ConfigSyslinx(installDir).isSuccess();
     if (result) {
-        qInfo() << "Syslinux configuration completed successfully";
+        qCInfo(installerLog) << "Syslinux configuration completed successfully";
     } else {
-        qCritical() << "Syslinux configuration failed";
+        qCCritical(installerLog) << "Syslinux configuration failed";
     }
     return result;
 }
 
 bool QtBaseInstaller::needAddRepo()
 {
-    qInfo() << "Checking if repository configuration is needed";
+    qCInfo(installerLog) << "Checking if repository configuration is needed";
     QStringList args;
     args << "-f" << "-i" << m_strImage;
     XSys::Result ret = XSys::SynExec("isoinfo", args);
 
     if (!ret.isSuccess()) {
-        qWarning() << "Failed to execute isoinfo:" << ret.result();
+        qCWarning(installerLog) << "Failed to execute isoinfo:" << ret.result();
         return false;
     }
 
@@ -539,7 +540,7 @@ bool QtBaseInstaller::needAddRepo()
 
 void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
 {
-    qInfo() << "Modifying boot grub file:" << grub_file_name;
+    qCInfo(installerLog) << "Modifying boot grub file:" << grub_file_name;
     QString strMountPt = XSys::DiskUtil::MountPoint(m_strPartionName);
     QString strFullFileName = strMountPt + grub_file_name;
 
@@ -547,7 +548,7 @@ void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
         QFile readFile(strFullFileName);
 
         if (!readFile.open(QIODevice::ReadOnly)) {
-            qCritical() << "Failed to open grub file for reading:" << readFile.errorString();
+            qCCritical(installerLog) << "Failed to open grub file for reading:" << readFile.errorString();
             return;
         }
 
@@ -556,7 +557,7 @@ void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
         QFile writeFile(strTempFileName);
 
         if (!writeFile.open(QIODevice::ReadWrite|QIODevice::Truncate)) {
-            qCritical() << "Failed to open temporary file for writing:" << writeFile.errorString();
+            qCCritical(installerLog) << "Failed to open temporary file for writing:" << writeFile.errorString();
             return;
         }
 
@@ -578,8 +579,8 @@ void QtBaseInstaller::modifyBootGrubFile(QString grub_file_name)
         writeFile.close();
         QFile::remove(strFullFileName);
         QFile::rename(strTempFileName, strFullFileName);
-        qInfo() << "Grub file modified successfully";
+        qCInfo(installerLog) << "Grub file modified successfully";
     } else {
-        qWarning() << "Grub file not found:" << strFullFileName;
+        qCWarning(installerLog) << "Grub file not found:" << strFullFileName;
     }
 }
