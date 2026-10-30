@@ -1,7 +1,8 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "progressview.h"
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
@@ -120,7 +121,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
     // TODO dtk6 中BMInterface::instance()被屏蔽了
     connect(&BMInterface::ref(), &BMInterface::reportProgress,
     this, [ = ](quint32 current, quint32 error, const QString & title, const QString & description) {
-        qDebug() << error << current << title << description;
+        qCDebug(appLog) << error << current << title << description;
 
         if (current <= 70) {
             m_waterProgress->setValue(static_cast<int>(current));
@@ -131,7 +132,7 @@ ProgressView::ProgressView(DWidget *parent) : DWidget(parent)
             }
         }
         else {
-            qDebug() << "finish" << current << error;
+            qCDebug(appLog) << "finish" << current << error;
 
             if(m_iInterval != -1) {
                 QObject::killTimer(m_iInterval);
