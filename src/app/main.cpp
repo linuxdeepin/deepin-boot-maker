@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/logger.h"
+#include "util/ddlog.h"
 #include <QDebug>
 #include <QIcon>
 #include <QProcess>
@@ -75,7 +77,7 @@ static bool checkAuthorization()
     QString busName = QDBusConnection::systemBus().baseService();
     auto authority = PolkitQt1::Authority::instance();
     if (!authority) {
-        qWarning() << "Failed to get Polkit authority instance";
+        qCWarning(appLog) << "Failed to get Polkit authority instance";
         return false;
     }
     PolkitQt1::Authority::Result ret = authority->checkAuthorizationSync(
@@ -91,7 +93,10 @@ static bool checkAuthorization()
 
 int main(int argc, char **argv)
 {
-    qInfo() << "Starting Boot Maker application";
+    // 动态日志规则（调试模式）必须在任何日志打印、Application 实例化之前初始化
+    MLogger mlogger;
+
+    qCInfo(appLog) << "Starting Boot Maker application";
     Utils::initResource();
 #ifndef Q_OS_WIN
 #if defined(DTK_STATIC_LIB)
@@ -100,7 +105,7 @@ int main(int argc, char **argv)
 #endif
 
     if (!QString(qgetenv("XDG_CURRENT_DESKTOP")).toLower().startsWith("deepin")) {
-        qInfo() << "Setting XDG_CURRENT_DESKTOP to Deepin";
+        qCInfo(appLog) << "Setting XDG_CURRENT_DESKTOP to Deepin";
         setenv("XDG_CURRENT_DESKTOP", "Deepin", 1);
     }
 
@@ -115,14 +120,14 @@ int main(int argc, char **argv)
 //    app.setTheme("light");
 
     if (!checkAuthorization()) {
-        qInfo() << "Authorization failed, exiting";
+        qCInfo(appLog) << "Authorization failed, exiting";
         exit(0);
     }
 
 #ifdef Q_OS_MAC
-    qDebug() << "Checking root privileges on macOS";
+    qCDebug(appLog) << "Checking root privileges on macOS";
     if (switchToRoot(app)) {
-        qDebug() << "Switching to root user, exiting current instance";
+        qCDebug(appLog) << "Switching to root user, exiting current instance";
         exit(0);
     }
 #endif
@@ -132,25 +137,25 @@ int main(int argc, char **argv)
     DLogManager::registerFileAppender();
 
 #ifndef Q_OS_MAC
-    qDebug() << "Setting up single instance check";
+    qCDebug(appLog) << "Setting up single instance check";
     qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");
     if (!DGuiApplicationHelper::instance()->setSingleInstance(app.applicationName(), DGuiApplicationHelper::UserScope)) {
-        qDebug() << "Another instance is already running, exiting";
+        qCDebug(appLog) << "Another instance is already running, exiting";
         exit(0);
     }
 #endif
 
 #ifdef Q_OS_WIN
-    qDebug() << "Loading fonts on Windows";
+    qCDebug(appLog) << "Loading fonts on Windows";
     Utils::loadFonts();
     app.setWindowIcon(QIcon(":/theme/light/image/deepin-boot-maker.svg"));
 #endif
-    qDebug() << "Loading translations";
+    qCDebug(appLog) << "Loading translations";
     app.loadTranslator();
     Utils::loadTranslate();
     app.setApplicationDisplayName(QObject::tr("Boot Maker"));
 
-    qDebug() << "Boot Maker UI starting";
+    qCDebug(appLog) << "Boot Maker UI starting";
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     DApplicationSettings savetheme;
 #endif
@@ -160,13 +165,13 @@ int main(int argc, char **argv)
 //    w.waitAuth();
     auto ret =  app.exec();
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    qInfo() << "Stopping BMInterface instance";
+    qCInfo(appLog) << "Stopping BMInterface instance";
     BMInterface::instance()->stop();
 #else
-    qInfo() << "Stopping BMInterface reference";
+    qCInfo(appLog) << "Stopping BMInterface reference";
     BMInterface::ref().stop();
 #endif
-    qDebug() << "Application exiting with code:" << ret;
+    qCDebug(appLog) << "Application exiting with code:" << ret;
     return ret;
 }
 
@@ -174,7 +179,7 @@ int main(int argc, char **argv)
 namespace Utils {
 void loadFonts()
 {
-    qInfo() << "Loading preferred fonts on Windows";
+    qCInfo(appLog) << "Loading preferred fonts on Windows";
     QFontDatabase database;
     QStringList fontlist = database.families();
 
@@ -186,13 +191,13 @@ void loadFonts()
 
     foreach (QString font, preferList) {
         if (fontlist.contains(font)) {
-            qInfo() << "Setting application font to:" << font;
+            qCInfo(appLog) << "Setting application font to:" << font;
             QFont newFont = QFont(font);
             qApp->setFont(newFont);
             return;
         }
     }
-    qWarning() << "No preferred fonts found, using system default";
+    qCWarning(appLog) << "No preferred fonts found, using system default";
 }
 }
 #endif

@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "bootmakerservice.h"
 #include "bootmakerservice_p.h"
 
@@ -49,10 +50,10 @@ const QString s_PolkitActionReboot = "com.deepin.bootmaker.reboot";
 bool checkAuthorization(const QString &busName, const QString &action)
 {
 #if defined (Q_OS_LINUX) || defined (Q_OS_UNIX) ||  defined (Q_OS_MAC)
-    qDebug() << "Checking authorization for action:" << action << "BusName:" << busName;
+    qCDebug(serviceLog) << "Checking authorization for action:" << action << "BusName:" << busName;
     auto authority = PolkitQt1::Authority::instance();
     if (!authority) {
-        qWarning() << "Failed to get Polkit authority instance";
+        qCWarning(serviceLog) << "Failed to get Polkit authority instance";
         return false;
     }
     PolkitQt1::Authority::Result ret = authority->checkAuthorizationSync(
@@ -61,14 +62,14 @@ bool checkAuthorization(const QString &busName, const QString &action)
         PolkitQt1::Authority::AllowUserInteraction);
 
     if (PolkitQt1::Authority::Yes == ret) {
-        qDebug() << "Authorization check passed for action:" << action;
+        qCDebug(serviceLog) << "Authorization check passed for action:" << action;
         return true;
     } else {
-        qWarning() << "Policy authorization check failed for action:" << action;
+        qCWarning(serviceLog) << "Policy authorization check failed for action:" << action;
         return false;
     }
 #else
-    qDebug() << "Authorization check skipped on non-Linux/Unix/Mac platform";
+    qCDebug(serviceLog) << "Authorization check skipped on non-Linux/Unix/Mac platform";
     return true;
 #endif
 }
@@ -77,17 +78,17 @@ BootMakerService::BootMakerService(QObject *parent) :
     QObject(parent), d_ptr(new BootMakerServicePrivate(this))
 {
     Q_D(BootMakerService);
-    qDebug() << "Initializing Boot Maker Service";
+    qCDebug(serviceLog) << "Initializing Boot Maker Service";
     
     d->bm = new BootMaker();
     QThread *bmThread = new QThread();
     d->bm->moveToThread(bmThread);
     bmThread->start();
-    qDebug() << "Boot Maker handler moved to worker thread";
+    qCDebug(serviceLog) << "Boot Maker handler moved to worker thread";
 
     connect(d->bm, &BootMaker::removablePartitionsChanged,
     this, [ = ](const QList<DeviceInfo> &addlist, const QList<DeviceInfo>& dellist) {
-        qDebug() << "Device list changed - Added:" << addlist.size() << "Removed:" << dellist.size();
+        qCDebug(serviceLog) << "Device list changed - Added:" << addlist.size() << "Removed:" << dellist.size();
         emit DeviceListChanged(deviceListToJson(addlist), deviceListToJson(dellist));
     });
     connect(d->bm, &BootMaker::finished,
@@ -99,50 +100,50 @@ BootMakerService::BootMakerService(QObject *parent) :
 
     connect(d->bm, &BootMaker::finished,
     this, [ = ](int errcode, const QString &) {
-        qDebug() << "Boot Maker finished with error code:" << errcode;
+        qCDebug(serviceLog) << "Boot Maker finished with error code:" << errcode;
         QThread::msleep(1000);
         qApp->exit(errcode);
     });
 
     connect(this, &BootMakerService::s_StartBootMarker,
             d->bm, &BootMaker::start);
-    qDebug() << "Boot Maker Service initialization completed";
+    qCDebug(serviceLog) << "Boot Maker Service initialization completed";
 }
 
 BootMakerService::~BootMakerService()
 {
-    qDebug() << "Destroying Boot Maker Service";
+    qCDebug(serviceLog) << "Destroying Boot Maker Service";
 }
 
 void BootMakerService::Reboot()
 {
     Q_D(BootMakerService);
-    qInfo() << "Reboot requested";
+    qCInfo(serviceLog) << "Reboot requested";
     if (d->checkAuthorization(s_PolkitActionReboot)) {
-        qDebug() << "Reboot authorized, proceeding";
+        qCDebug(serviceLog) << "Reboot authorized, proceeding";
         d->bm->reboot();
     } else {
-        qWarning() << "Reboot request denied - Authorization failed";
+        qCWarning(serviceLog) << "Reboot request denied - Authorization failed";
     }
 }
 
 void BootMakerService::Start()
 {
     Q_D(BootMakerService);
-    qInfo() << "Start requested";
+    qCInfo(serviceLog) << "Start requested";
     if (!d->checkAuthorization(s_PolkitActionCreate)) {
-        qWarning() << "Start request denied - Authorization failed";
+        qCWarning(serviceLog) << "Start request denied - Authorization failed";
         return;
     }
 
-    qDebug() << "Starting Boot Maker";
+    qCDebug(serviceLog) << "Starting Boot Maker";
     emit s_StartBootMarker();
 }
 
 void BootMakerService::Stop()
 {
     // 停止服务, 不会修改系统, 不需要鉴权
-    qDebug() << "Stopping Boot Maker Service";
+    qCDebug(serviceLog) << "Stopping Boot Maker Service";
     qApp->exit(0);
 }
 
@@ -154,18 +155,18 @@ QString BootMakerService::DeviceList()
 {
     // BootMaker::deviceList() 是只读操作, 不需要鉴权
     Q_D(BootMakerService);
-    qDebug() << "Device list requested";
+    qCDebug(serviceLog) << "Device list requested";
     return deviceListToJson(d->bm->deviceList());
 }
 
 bool BootMakerService::Install(const QString &device, const QString &partition, bool formatDevice, const QDBusUnixFileDescriptor &fd)
 {
     Q_D(BootMakerService);
-    qInfo() << "Install requested - Device:" << device << "Partition:" << partition
+    qCInfo(serviceLog) << "Install requested - Device:" << device << "Partition:" << partition
             << "fd valid:" << fd.isValid();
 
     if (!d->checkAuthorization(s_PolkitActionCreate)) {
-        qWarning() << "Install request denied - Authorization failed";
+        qCWarning(serviceLog) << "Install request denied - Authorization failed";
         return false;
     }
 
@@ -174,7 +175,7 @@ bool BootMakerService::Install(const QString &device, const QString &partition, 
     // /proc/self/fd/<n> magic link, which resolves against the already-open
     // inode and bypasses the mount-namespace restriction.
     if (!fd.isValid()) {
-        qWarning() << "Install request denied - No valid file descriptor passed";
+        qCWarning(serviceLog) << "Install request denied - No valid file descriptor passed";
         return false;
     }
 
@@ -184,9 +185,9 @@ bool BootMakerService::Install(const QString &device, const QString &partition, 
     fcntl(n, F_SETFD, 0);
     d->imageFd = fd;
     QString imagePath = QString("/proc/self/fd/%1").arg(n);
-    qDebug() << "Using passed file descriptor" << n << "as" << imagePath;
+    qCDebug(serviceLog) << "Using passed file descriptor" << n << "as" << imagePath;
 
-    qDebug() << "Starting installation process";
+    qCDebug(serviceLog) << "Starting installation process";
     emit d->bm->startInstall(imagePath, device, partition, formatDevice);
     return true;
 }
@@ -195,35 +196,35 @@ bool BootMakerService::CheckFile(const QDBusUnixFileDescriptor &fd)
 {
     // BootMaker::checkfile() 是只读操作, 不需要鉴权
     Q_D(BootMakerService);
-    qDebug() << "File check requested - fd valid:" << fd.isValid();
+    qCDebug(serviceLog) << "File check requested - fd valid:" << fd.isValid();
     if (!fd.isValid()) {
-        qWarning() << "File check denied - No valid file descriptor passed";
+        qCWarning(serviceLog) << "File check denied - No valid file descriptor passed";
         return false;
     }
 
     int n = fd.fileDescriptor();
     fcntl(n, F_SETFD, 0);
     QString path = QString("/proc/self/fd/%1").arg(n);
-    qDebug() << "Using passed file descriptor" << n << "as" << path;
+    qCDebug(serviceLog) << "Using passed file descriptor" << n << "as" << path;
     return d->bm->checkfile(path);
 }
 
 bool BootMakerServicePrivate::checkAuthorization(const QString &action)
 {
     if (disableCheck) {
-        qDebug() << "Authorization check disabled";
+        qCDebug(serviceLog) << "Authorization check disabled";
         return true;
     }
 
     Q_Q(BootMakerService);
     if (!q->calledFromDBus()) {
-        qWarning() << "Authorization check failed - Not called from DBus";
+        qCWarning(serviceLog) << "Authorization check failed - Not called from DBus";
         return false;
     }
 
     QString busName = q->message().service();
     bool ret = ::checkAuthorization(busName, action);
-    qDebug() << "Authorization check result: " << ret;
+    qCDebug(serviceLog) << "Authorization check result: " << ret;
 
     return ret;
 }

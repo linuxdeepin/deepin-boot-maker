@@ -1,7 +1,8 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "resultview.h"
 #include "widgetutil.h"
 #include "deviceinfoitem.h"
@@ -154,23 +155,23 @@ ResultView::ResultView(DWidget *parent) : DWidget(parent)
 void ResultView::updateResult(quint32 error, const QString &/*title*/, const QString &/*description*/)
 {
     auto errorType = static_cast<BMHandler::ErrorType>(error);
-    qInfo() << "Updating result view with error type:" << errorType;
+    qCInfo(appLog) << "Updating result view with error type:" << errorType;
 
     switch (errorType) {
     case BMHandler::NoError:
-        qInfo() << "Operation completed successfully";
+        qCInfo(appLog) << "Operation completed successfully";
         m_rebootLater->disconnect();
         connect(m_rebootLater, &DPushButton::clicked,
         this, [ = ]() {
-            qInfo() << "User clicked 'Done' button, exiting application";
+            qCInfo(appLog) << "User clicked 'Done' button, exiting application";
             qApp->exit(0);
         });
         return;
     case BMHandler::SyscExecFailed:
     case BMHandler::ErrorType::InstallBootloaderFailed:
-        qWarning() << "Critical operation failed:" << errorType;
+        qCWarning(appLog) << "Critical operation failed:" << errorType;
         if (DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType() != DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosProfessional) {
-            qInfo() << "Non-professional edition detected, showing feedback option";
+            qCInfo(appLog) << "Non-professional edition detected, showing feedback option";
             m_logHits->setText(tr("The error log will be uploaded automatically with the feedback. We cannot improve without your feedback"));
             m_rebootLater->setText(tr("Submit Feedback"));
             m_logHits->adjustSize();
@@ -178,7 +179,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
             connect(m_rebootLater, &DPushButton::clicked,
             this, [ = ]() {
                 auto editionType = DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::uosEditionType();
-                qInfo() << "User clicked feedback button, edition type:" << editionType;
+                qCInfo(appLog) << "User clicked feedback button, edition type:" << editionType;
                 // FIXME: call feedback 非专业版保持链接进社区
                 if (editionType == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosCommunity) {
                     QDesktopServices::openUrl(QString("https://bbs.deepin.org/post/209286"));
@@ -188,19 +189,19 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
                 (editionType == DTK_NAMESPACE::DCORE_NAMESPACE::DSysInfo::UosEnterprise)) {
                     QDesktopServices::openUrl(QString("https://bbs.chinauos.com/zh/post/5609"));
                 } else {
-                    qInfo() << "Launching deepin-feedback";
+                    qCInfo(appLog) << "Launching deepin-feedback";
                     QProcess::startDetached("deepin-feedback");
                 }
             });
 
         } else {
-            qInfo() << "Professional edition detected, showing after-sales service option";
+            qCInfo(appLog) << "Professional edition detected, showing after-sales service option";
             m_rebootLater->setText(tr("After-Sale Services"));
             m_logHits->adjustSize();
             m_rebootLater->disconnect();
             connect(m_rebootLater, &DPushButton::clicked,
             this, [ = ]() {
-                qInfo() << "User clicked after-sales service button";
+                qCInfo(appLog) << "User clicked after-sales service button";
                 // FIXME: call service-support  fix bug 19711 专业版不再调用deepin-feedback链接进社区，而是调用服务与支持客户端
                 QDBusInterface syssupport("com.deepin.dde.ServiceAndSupport", "/com/deepin/dde/ServiceAndSupport", "com.deepin.dde.ServiceAndSupport");
                 syssupport.call("ServiceSession", 2);
@@ -208,13 +209,13 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
         }
         break;
     default:
-        qWarning() << "Operation failed with error:" << errorType << "-" << BMHandler::errorString(errorType);
+        qCWarning(appLog) << "Operation failed with error:" << errorType << "-" << BMHandler::errorString(errorType);
         m_logHits->setText(BMHandler::errorString(errorType));
         m_rebootLater->setText(tr("Close", "button"));
         m_rebootLater->disconnect();
         connect(m_rebootLater, &DPushButton::clicked,
         this, [ = ]() {
-            qInfo() << "User clicked close button after error, exiting application";
+            qCInfo(appLog) << "User clicked close button after error, exiting application";
             qApp->exit(0);
         });
         break;
@@ -228,7 +229,7 @@ void ResultView::updateResult(quint32 error, const QString &/*title*/, const QSt
 void ResultView::onLogLinkActivated(const QString &link)
 {
     if (link == "#show_log") {
-        qInfo() << "User clicked to view log file:" << Dtk::Core::DLogManager::getlogFilePath();
+        qCInfo(appLog) << "User clicked to view log file:" << Dtk::Core::DLogManager::getlogFilePath();
         QDesktopServices::openUrl(QUrl::fromLocalFile(Dtk::Core::DLogManager::getlogFilePath()));
     }
 }
