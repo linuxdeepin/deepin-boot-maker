@@ -21,6 +21,7 @@ SOURCES += \
     util/devicemonitor.cpp \
     util/sevenzip.cpp \
     util/utils.cpp \
+    util/logger.cpp \
     bminterface.cpp \
     backend/bmhandler.cpp \
     installer/qtbaseinstaller.cpp \
@@ -37,6 +38,8 @@ HEADERS += \
     util/devicemonitor.h \
     util/sevenzip.h \
     util/utils.h \
+    util/logger.h \
+    util/ddlog.h \
     bminterface.h \
     installer/qtbaseinstaller.h \
     installer/qtinstallerfactory.h \

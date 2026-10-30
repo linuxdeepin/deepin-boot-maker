@@ -1,9 +1,10 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
 #pragma once
 
+#include "../util/ddlog.h"
 #include "bmhandler.h"
 #include "bmdbusinterface.h"
 #include "../util/deviceinfo.h"
@@ -24,16 +25,16 @@ public:
                                      QDBusConnection::systemBus(),
                                      this);
         if (!m_dbus->isValid()) {
-            qDebug() << "m_dbus isValid false error:" << m_dbus->lastError();
+            qCDebug(backendLog) << "m_dbus isValid false error:" << m_dbus->lastError();
         }
 
         // Not default timeout (~25s), waiting for polkit authorization to complete.
         m_dbus->setTimeout(INT_MAX);
 
-        qDebug() << "m_dbus isValid true";
+        qCDebug(backendLog) << "m_dbus isValid true";
         connect(m_dbus, &BMDBusInterface::DeviceListChanged,
         this, [ = ](const QString & addlistJson, const QString& dellistJson) {
-            qDebug() << "DeviceListChanged,";
+            qCDebug(backendLog) << "DeviceListChanged,";
             emit removablePartitionsChanged(deviceListFromJson(addlistJson), deviceListFromJson(dellistJson));
         });
         connect(m_dbus, &BMDBusInterface::Finished,
@@ -54,9 +55,9 @@ public slots:
 
     void start() override
     {
-        qDebug() << "start";
+        qCDebug(backendLog) << "start";
         m_dbus->Start();
-        qDebug() << "m_dbus Start error:" << m_dbus->lastError();
+        qCDebug(backendLog) << "m_dbus Start error:" << m_dbus->lastError();
     }
 
     void stop() override
@@ -66,7 +67,7 @@ public slots:
 
     const QList<DeviceInfo> deviceList() const override
     {
-        qDebug() << "deviceList";
+        qCDebug(backendLog) << "deviceList";
         return  deviceListFromJson(m_dbus->DeviceList());
     }
 
@@ -75,7 +76,7 @@ public slots:
                  const QString &partition,
                  bool  formatDevice) override
     {
-        qDebug() << "install";
+        qCDebug(backendLog) << "install";
         bool ret = m_dbus->Install(image, device, partition, formatDevice);
         Q_EMIT startInstallRet(ret);
         return ret;
@@ -83,7 +84,7 @@ public slots:
 
     bool checkfile(const QString &filepath) override
     {
-        qDebug() << "checkfile";
+        qCDebug(backendLog) << "checkfile";
         return m_dbus->CheckFile(filepath);
     }
 

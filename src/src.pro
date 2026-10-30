@@ -8,6 +8,11 @@ SUBDIRS += vendor/src/libxsys \
 linux {
     SUBDIRS += service
 
+    # DConfig 调试模式日志规则 meta（应用内动态调整日志级别使用），
+    # 安装到 /usr/share/dsg/configs/org.deepin.boot-maker/ 供主程序与服务进程共用
+    dconfig_meta.path = $${PREFIX}/share/dsg/configs/org.deepin.boot-maker
+    dconfig_meta.files = $$PWD/configs/org.deepin.boot-maker.json
+    INSTALLS += dconfig_meta
 }
 SUBDIRS += app
 
