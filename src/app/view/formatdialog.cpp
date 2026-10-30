@@ -1,7 +1,8 @@
-// SPDX-FileCopyrightText: 2021 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2021 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "util/ddlog.h"
 #include "formatdialog.h"
 
 #include <DFontSizeManager>
@@ -13,7 +14,7 @@
 NewStr autoCutText(const QString &text, DLabel *pDesLbl)
 {
     if (text.isEmpty() || nullptr == pDesLbl) {
-        qDebug() << "Invalid input for autoCutText: empty text or null label";
+        qCDebug(appLog) << "Invalid input for autoCutText: empty text or null label";
         return NewStr();
     }
 
@@ -25,11 +26,11 @@ NewStr autoCutText(const QString &text, DLabel *pDesLbl)
     NewStr newstr;
     int width = pDesLbl->width();
     if (titlewidth < width) {
-        qDebug() << "Text fits in one line:" << strText;
+        qCDebug(appLog) << "Text fits in one line:" << strText;
         newstr.strList.append(strText);
         newstr.resultStr += strText;
     } else {
-        qDebug() << "Text needs multiple lines, width:" << width << "text width:" << titlewidth;
+        qCDebug(appLog) << "Text needs multiple lines, width:" << width << "text width:" << titlewidth;
         for (int i = 0; i < strText.count(); i++) {
             str += strText.at(i);
             
@@ -52,7 +53,7 @@ NewStr autoCutText(const QString &text, DLabel *pDesLbl)
 FormatDialog::FormatDialog(QWidget *parent)
     : DDialog(parent)
 {
-    qDebug() << "Initializing FormatDialog";
+    qCDebug(appLog) << "Initializing FormatDialog";
     setFixedWidth(380);
     // 设置对话框图标
     setIcon(QMessageBox::standardIcon(QMessageBox::Icon::Warning));
@@ -65,7 +66,7 @@ FormatDialog::~FormatDialog()
 
 void FormatDialog::initDialog(const QString &titleText, const QString &strFormatText, const QString btnMsg1, DDialog::ButtonType btnType1, const QString btnMsg2, DDialog::ButtonType btnType2)
 {
-    qDebug() << "Initializing dialog with title:" << titleText;
+    qCDebug(appLog) << "Initializing dialog with title:" << titleText;
     // 设置title
     if (!titleText.isEmpty())
         setTitle(titleText);
@@ -80,10 +81,10 @@ void FormatDialog::initDialog(const QString &titleText, const QString &strFormat
 
     // 按钮
     if (btnMsg2.isEmpty()) {
-        qDebug() << "Adding single button:" << btnMsg1;
+        qCDebug(appLog) << "Adding single button:" << btnMsg1;
         addButton(btnMsg1, false, btnType1);
     } else {
-        qDebug() << "Adding two buttons:" << btnMsg1 << "and" << btnMsg2;
+        qCDebug(appLog) << "Adding two buttons:" << btnMsg1 << "and" << btnMsg2;
         addButton(btnMsg1, false, btnType1);
         addButton(btnMsg2, true, btnType2);
     }
@@ -97,16 +98,16 @@ void FormatDialog::initDialog(const QString &titleText, const QString &strFormat
 
 void FormatDialog::autoFeed(DLabel *label)
 {
-    qDebug() << "Auto feeding text for label";
+    qCDebug(appLog) << "Auto feeding text for label";
     NewStr newstr = autoCutText(m_strFormatText, label);
     label->setText(newstr.resultStr);
     int height_lable = newstr.strList.size() * newstr.fontHeifht;
     label->setFixedHeight(height_lable);
     if (0 == m_iLabelOldHeight) { // 第一次exec自动调整
-        qDebug() << "First time auto feed, adjusting size";
+        qCDebug(appLog) << "First time auto feed, adjusting size";
         adjustSize();
     } else {
-        qDebug() << "Adjusting height from" << m_iLabelOldHeight << "to" << height_lable;
+        qCDebug(appLog) << "Adjusting height from" << m_iLabelOldHeight << "to" << height_lable;
         setFixedHeight(m_iDialogOldHeight - m_iLabelOldHeight + height_lable); //字号变化后自适应调整
     }
     m_iLabelOldHeight = height_lable;
@@ -116,7 +117,7 @@ void FormatDialog::autoFeed(DLabel *label)
 void FormatDialog::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::FontChange) {
-        qDebug() << "Font change event detected";
+        qCDebug(appLog) << "Font change event detected";
         Dtk::Widget::DLabel *p = findChild<Dtk::Widget::DLabel *>("ContentLabel");
         if (nullptr != p) {
             autoFeed(p);

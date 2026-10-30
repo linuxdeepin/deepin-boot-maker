@@ -1,7 +1,8 @@
-// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2015 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
+#include "ddlog.h"
 #include "utils.h"
 
 #include <QtCore>
@@ -26,7 +27,7 @@
 
 static void initQRC()
 {
-    qDebug() << "Initializing resource files";
+    qCDebug(utilLog) << "Initializing resource files";
 #ifdef Q_OS_LINUX
     //Q_INIT_RESOURCE(blob_linux);
 #else
@@ -38,7 +39,7 @@ namespace Utils {
 
 bool isUft8(const QByteArray &byArr)
 {
-    qDebug() << "Checking UTF-8 encoding";
+    qCDebug(utilLog) << "Checking UTF-8 encoding";
     unsigned int nBytes = 0;//UFT8可用1-6个字节编码,ASCII用一个字节
     bool bAllAscii = true;
 
@@ -65,7 +66,7 @@ bool isUft8(const QByteArray &byArr)
                     nBytes = 2;
                 }
                 else {
-                    qDebug() << "Invalid UTF-8 sequence detected";
+                    qCDebug(utilLog) << "Invalid UTF-8 sequence detected";
                     return false;
                 }
 
@@ -73,7 +74,7 @@ bool isUft8(const QByteArray &byArr)
             }
         } else {
             if ((chr & 0xC0) != 0x80) {
-                qDebug() << "Invalid UTF-8 continuation byte";
+                qCDebug(utilLog) << "Invalid UTF-8 continuation byte";
                 return false;
             }
 
@@ -82,7 +83,7 @@ bool isUft8(const QByteArray &byArr)
     }
 
     if (nBytes != 0)  {
-        qDebug() << "Incomplete UTF-8 sequence";
+        qCDebug(utilLog) << "Incomplete UTF-8 sequence";
         return false;
     }
 
@@ -95,7 +96,7 @@ bool isUft8(const QByteArray &byArr)
 
 bool isGBK(const QByteArray &byArr)
 {
-    qDebug() << "Checking GBK encoding";
+    qCDebug(utilLog) << "Checking GBK encoding";
     unsigned int nBytes = 0;
     bool bAllAscii = true;
 
@@ -113,7 +114,7 @@ bool isGBK(const QByteArray &byArr)
                     nBytes = +2;
                 }
                 else {
-                    qDebug() << "Invalid GBK sequence";
+                    qCDebug(utilLog) << "Invalid GBK sequence";
                     return false;
                 }
 
@@ -122,7 +123,7 @@ bool isGBK(const QByteArray &byArr)
         }
         else {
             if (chr < 0x40 || chr>0xFE) {
-                qDebug() << "Invalid GBK continuation byte";
+                qCDebug(utilLog) << "Invalid GBK continuation byte";
                 return false;
             }
 
@@ -131,7 +132,7 @@ bool isGBK(const QByteArray &byArr)
     }
 
     if (nBytes != 0) {//违返规则
-        qDebug() << "Incomplete GBK sequence";
+        qCDebug(utilLog) << "Incomplete GBK sequence";
         return false;
     }
 
@@ -144,7 +145,7 @@ bool isGBK(const QByteArray &byArr)
 
 void loadTranslate()
 {
-    qDebug() << "Loading translations";
+    qCDebug(utilLog) << "Loading translations";
     QTranslator *qtTranslator = new QTranslator;
     qtTranslator->load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     qApp->installTranslator(qtTranslator);
@@ -200,26 +201,26 @@ void loadTranslate()
         tranlateUrl = ":/translations/deepin-boot-maker.qm";
     }
 
-    qDebug() << "System locale:" << clangcode;
-    qDebug() << "Loading translation file:" << tranlateUrl;
+    qCDebug(utilLog) << "System locale:" << clangcode;
+    qCDebug(utilLog) << "Loading translation file:" << tranlateUrl;
 
     if (translator->load(tranlateUrl)) {
         qApp->installTranslator(translator);
-        qDebug() << "Translation loaded successfully";
+        qCDebug(utilLog) << "Translation loaded successfully";
     } else {
-        qWarning() << "Failed to load translation file:" << tranlateUrl;
+        qCWarning(utilLog) << "Failed to load translation file:" << tranlateUrl;
     }
 #endif
 }
 
 QString UsbShowText(const QString &dev)
 {
-    qDebug() << "Getting USB device display text for:" << dev;
+    qCDebug(utilLog) << "Getting USB device display text for:" << dev;
     QString showText;
     if (!dev.isEmpty()) {
         QString label = XSys::DiskUtil::GetPartitionLabel(dev);
         if (label.isEmpty()) {
-            qDebug() << "No label found, using default label";
+            qCDebug(utilLog) << "No label found, using default label";
             label = QObject::tr("Removable disk");
         }
 #ifdef Q_OS_UNIX
@@ -229,14 +230,14 @@ QString UsbShowText(const QString &dev)
 #ifdef Q_OS_WIN32
         showText = QString("(%1:) %2").arg(dev.at(0)).arg(label);
 #endif
-        qDebug() << "Device display text:" << showText;
+        qCDebug(utilLog) << "Device display text:" << showText;
     }
     return showText;
 }
 
 void ClearTargetDev(const QString &targetPath)
 {
-    qInfo() << "Clearing target device at:" << targetPath;
+    qCInfo(utilLog) << "Clearing target device at:" << targetPath;
     QStringList dirlist;
     dirlist.append("/boot/");
     dirlist.append("/EFI/");
@@ -251,12 +252,12 @@ void ClearTargetDev(const QString &targetPath)
 
     foreach (QString dirname, dirlist) {
         QString fullDir = targetPath + dirname;
-        qDebug() << "Removing directory:" << fullDir;
+        qCDebug(utilLog) << "Removing directory:" << fullDir;
         XSys::FS::RmDir(fullDir);
     }
 
 #ifdef Q_OS_UNIX
-    qDebug() << "Syncing filesystem";
+    qCDebug(utilLog) << "Syncing filesystem";
     XSys::SynExec("sync", "");
 #endif
 }
@@ -264,7 +265,7 @@ void ClearTargetDev(const QString &targetPath)
 #ifdef Q_OS_UNIX
 QMap<QString, DeviceInfo> CommandDfParse()
 {
-    qDebug() << "Step 2: Execute df command to get disk usage";
+    qCDebug(utilLog) << "Step 2: Execute df command to get disk usage";
     QProcess df;
     // 排除网络文件系统类型，避免因为远程挂载卡死
     df.start("df", QStringList{"-k", "--output=source,used,avail",
@@ -291,10 +292,10 @@ QMap<QString, DeviceInfo> CommandDfParse()
         }
         devInfo.used = static_cast<quint32>(infos.at(1).toInt() / 1024);
         devInfo.total = static_cast<quint32>((infos.at(2).toInt() + infos.at(1).toInt()) / 1024);
-        qDebug() << "device path" << devInfo.path << "used: " << devInfo.used << "total: " << devInfo.total;
+        qCDebug(utilLog) << "device path" << devInfo.path << "used: " << devInfo.used << "total: " << devInfo.total;
         deviceInfos.insert(devInfo.path, devInfo);
     }
-    qDebug() << "Step 2 completed: df command finished, got" << deviceInfos.size() << "disk info";
+    qCDebug(utilLog) << "Step 2 completed: df command finished, got" << deviceInfos.size() << "disk info";
     return deviceInfos;
 }
 
@@ -327,11 +328,11 @@ static QByteArray unescapeLimited(const QString &str)
 
 QMap<QString, DeviceInfo> CommandLsblkParse()
 {
-    qDebug() << "Step 3: Execute lsblk command to get device details";
+    qCDebug(utilLog) << "Step 3: Execute lsblk command to get device details";
     QProcess lsblk;
     lsblk.start("lsblk", QStringList { "-b", "-p", "-P", "-o", "name,label,size,uuid,fstype,type" });
     lsblk.waitForFinished(-1);
-    qDebug() << "Step 3 completed: lsblk command finished";
+    qCDebug(utilLog) << "Step 3 completed: lsblk command finished";
     QString line;
     DeviceInfo info;
     QString diskDevPath;
@@ -366,7 +367,7 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
             info.fstype = match.captured(5);
             type = match.captured(6);
 #endif
-            qDebug() << "Parse device" << deviceCount << ":" << info.path << "Type:" << type;
+            qCDebug(utilLog) << "Parse device" << deviceCount << ":" << info.path << "Type:" << type;
 
             if (!type.compare("disk")) {
                 diskDevPath = info.path;
@@ -410,18 +411,18 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
         if (isPart && !diskDevPath.isEmpty() && (info.path.left(currentPartPath.length()) == currentPartPath)) {
             info.isDisk = false;
             info.strDev = diskDevPath;
-            qDebug() << "  Add partition to device" << diskDevPath << ":" << info.path;
+            qCDebug(utilLog) << "  Add partition to device" << diskDevPath << ":" << info.path;
             deviceInfos[diskDevPath].children.insert(info.path, info);
         } else {   // 否则就是 part, 如sdb。
             info.isDisk = true;
             info.strDev = "";
-            qDebug() << "  Add disk device:" << info.path;
+            qCDebug(utilLog) << "  Add disk device:" << info.path;
             deviceInfos.insert(info.path, info);
             // 记录当前是part的情况
             currentPartPath = info.path;
         }
     } while(true);
-    qDebug() << "Step 2 completed: Parse lsblk output finished, total" << deviceCount << "devices parsed";
+    qCDebug(utilLog) << "Step 2 completed: Parse lsblk output finished, total" << deviceCount << "devices parsed";
 
     return deviceInfos;
 }
@@ -429,18 +430,18 @@ QMap<QString, DeviceInfo> CommandLsblkParse()
 
 bool CheckInstallDisk(const QString &targetDev)
 {
-    qDebug() << "Checking installation disk:" << targetDev;
+    qCDebug(utilLog) << "Checking installation disk:" << targetDev;
     if (XSys::DiskUtil::PF_FAT32 != XSys::DiskUtil::GetPartitionFormat(targetDev)) {
-        qWarning() << "Invalid disk format for:" << targetDev;
+        qCWarning(utilLog) << "Invalid disk format for:" << targetDev;
         return false;
     }
 
     QString targetPath = XSys::DiskUtil::MountPoint(targetDev);
-    qDebug() << "Target mount point:" << targetPath;
+    qCDebug(utilLog) << "Target mount point:" << targetPath;
     QFile test(QDir::toNativeSeparators(targetPath + "/" + "UOS"));
 
     if (!test.open(QIODevice::ReadWrite)) {
-        qWarning() << "Failed to open test file:" << test.fileName();
+        qCWarning(utilLog) << "Failed to open test file:" << test.fileName();
         return false;
     }
 
@@ -449,20 +450,20 @@ bool CheckInstallDisk(const QString &targetDev)
     QByteArray data = UOS.readAll();
 
     if (data.length() != test.write(data)) {
-        qWarning() << "Failed to write test file:" << UOS.fileName();
+        qCWarning(utilLog) << "Failed to write test file:" << UOS.fileName();
         return false;
     }
 
     test.close();
     UOS.close();
     test.remove();
-    qInfo() << "Installation disk check passed";
+    qCInfo(utilLog) << "Installation disk check passed";
     return true;
 }
 
 bool isUsbDisk(const QString &dev)
 {
-    qDebug() << "Checking if device is USB:" << dev;
+    qCDebug(utilLog) << "Checking if device is USB:" << dev;
     QString out = XSys::FS::TmpFilePath("diskutil_isusb_out");
     XSys::SynExec("diskutil", QString(" \"  info %1 > \"%2\" \" ").arg(dev).arg(out));
     QFile outfile(out);
@@ -471,7 +472,7 @@ bool isUsbDisk(const QString &dev)
     outfile.close();
     outfile.remove();
     bool isUsb = info.contains(QRegularExpression("Protocol:\\s+USB"));
-    qDebug() << "Device" << dev << "is USB:" << isUsb;
+    qCDebug(utilLog) << "Device" << dev << "is USB:" << isUsb;
     return isUsb;
 }
 
@@ -601,7 +602,7 @@ QList<DeviceInfo> ListUsbDrives()
 
 void initResource()
 {
-    qDebug() << "Initializing application resources";
+    qCDebug(utilLog) << "Initializing application resources";
     initQRC();
 }
 }
