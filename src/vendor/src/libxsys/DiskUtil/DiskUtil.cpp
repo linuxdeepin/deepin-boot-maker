@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2015 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-only
 
@@ -742,20 +742,44 @@ void SetPartionLabel(const QString& strPartion, const QString& strImage)
     args << "-i" << strImage << "-d";
     XSys::Result ret3 = XSys::SynExec("isoinfo", args);
 
-    if (!ret3.isSuccess()) {
-        qWarning() << "call isoinfo failed" << ret3.result();
-        return;
-    }
-
-    QStringList volume = ret3.result().split("\n").filter("Volume id");
-    QString tem = volume.takeAt(0);
-    QStringList strValues = tem.split(":");
     QString strName = QString("UNKNOWN");
     QString strTemp;
 
-    if (2 <= strValues.size()) {
-        strTemp = strValues.at(1);
-        strTemp = strTemp.trimmed();
+    if (ret3.isSuccess()) {
+        QStringList volume = ret3.result().split("\n").filter("Volume id");
+        if (!volume.isEmpty()) {
+            QStringList strValues = volume.first().split(":");
+            if (2 <= strValues.size()) {
+                strTemp = strValues.at(1).trimmed();
+            }
+        }
+    } else {
+        qWarning() << "call isoinfo failed" << ret3.result();
+
+        QStringList blkidArgs;
+        blkidArgs << "-o" << "value" << "-s" << "LABEL" << strImage;
+        XSys::Result retBlkid = XSys::SynExec("blkid", blkidArgs);
+        if (retBlkid.isSuccess()) {
+            strTemp = retBlkid.result().trimmed();
+        }
+
+        if (strTemp.isEmpty()) {
+            QStringList args7z;
+            args7z << "l" << "-slt" << strImage;
+            XSys::Result ret7z = XSys::SynExec("7z", args7z);
+            if (ret7z.isSuccess()) {
+                QStringList lines = ret7z.result().split("\n");
+                for (const QString &line : lines) {
+                    if (line.contains("Volume id", Qt::CaseInsensitive)) {
+                        QStringList parts = line.split("=");
+                        if (2 <= parts.size()) {
+                            strTemp = parts.at(1).trimmed();
+                        }
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     //标签名最长长度为十一位
